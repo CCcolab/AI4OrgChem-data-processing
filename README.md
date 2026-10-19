@@ -36,11 +36,11 @@ F01使用合成数学账本；F02只复核历史保存的水分子结果，**不
 
 | 顺序 | 在线阅读（含保存输出） | Colab交互运行 |
 | --- | --- | --- |
-| 1 | [A01 · 课程导学](lessons/A01.ipynb) | [在Colab打开](https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/f157a76e24ef0469f3c99de20f98c9ef13f19c1d/colab/A01-colab.ipynb) |
-| 2 | [A02 · Python、数组与单位](lessons/A02.ipynb) | [在Colab打开](https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/f157a76e24ef0469f3c99de20f98c9ef13f19c1d/colab/A02-colab.ipynb) |
-| 3 | [B03 · 表格拟合与残差](lessons/B03.ipynb) | [在Colab打开](https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/f157a76e24ef0469f3c99de20f98c9ef13f19c1d/colab/B03-colab.ipynb) |
-| 4 | [F01 · 能量账本](lessons/F01.ipynb) | [在Colab打开](https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/f157a76e24ef0469f3c99de20f98c9ef13f19c1d/colab/F01-colab.ipynb) |
-| 5 | [F02 · 保存水分子结果复核](lessons/F02.ipynb) | [在Colab打开](https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/f157a76e24ef0469f3c99de20f98c9ef13f19c1d/colab/F02-colab.ipynb) |
+| 1 | [A01 · 课程导学](lessons/A01.ipynb) | [在Colab打开](https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/487fe4b8e4cf60d56706bcf28d59d726956ddafa/colab/A01-colab.ipynb) |
+| 2 | [A02 · Python、数组与单位](lessons/A02.ipynb) | [在Colab打开](https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/487fe4b8e4cf60d56706bcf28d59d726956ddafa/colab/A02-colab.ipynb) |
+| 3 | [B03 · 表格拟合与残差](lessons/B03.ipynb) | [在Colab打开](https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/487fe4b8e4cf60d56706bcf28d59d726956ddafa/colab/B03-colab.ipynb) |
+| 4 | [F01 · 能量账本](lessons/F01.ipynb) | [在Colab打开](https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/487fe4b8e4cf60d56706bcf28d59d726956ddafa/colab/F01-colab.ipynb) |
+| 5 | [F02 · 保存水分子结果复核](lessons/F02.ipynb) | [在Colab打开](https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/487fe4b8e4cf60d56706bcf28d59d726956ddafa/colab/F02-colab.ipynb) |
 
 
 推荐顺序：A01 → A02 → B03 → F01 → F02。量子化学基础较好的学习者可选择A01的quantum路线。
