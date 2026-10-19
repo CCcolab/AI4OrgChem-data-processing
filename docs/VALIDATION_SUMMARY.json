@@ -8,8 +8,8 @@
       "parameter": {
         "LEARNING_ROUTE": "full"
       },
-      "candidate_sha256": "bf485e4a1a19eaa1b01f0f012d0d74f77f5bfa6df0fa66254545db43928a6f57",
-      "result_sha256": "1ad4f484d0dbfafbfe8c15b420a52393535c4c4ed38ec3b2d0c8df14adf5682d",
+      "candidate_sha256": "ecc6fbb5f4818217bf39b9f22b23846001d56a5f30a800564b9fa1098e1921e0",
+      "result_sha256": "086616301233f88ef534a886e926d3683abed58d675ad5b72b36ef3ef276824f",
       "figures": 0,
       "lesson_manifest_entries": 3
     },
@@ -19,8 +19,8 @@
       "parameter": {
         "LEARNING_ROUTE": "quantum"
       },
-      "candidate_sha256": "bf485e4a1a19eaa1b01f0f012d0d74f77f5bfa6df0fa66254545db43928a6f57",
-      "result_sha256": "df3d78aa308c2ca45f2345f13307c8b388f42b4aaf29cebbd484d3c3c064b1ba",
+      "candidate_sha256": "ecc6fbb5f4818217bf39b9f22b23846001d56a5f30a800564b9fa1098e1921e0",
+      "result_sha256": "bd98a6dbae686bc3fb3e28e604c0594a17b9bd191d6e19c6f24c595a3bb1d281",
       "figures": 0,
       "lesson_manifest_entries": 3
     },
@@ -30,8 +30,8 @@
       "parameter": {
         "ENERGY_UNIT": "hartree"
       },
-      "candidate_sha256": "c966c33b36536c1f13d7d998cb8486cddc85665e8392670077be451d1bf96687",
-      "result_sha256": "d07a7248a403a50949d4f20fbbbc14bd596464a4ac2513b44a98341742a1466d",
+      "candidate_sha256": "e4ed034ca56a11b8892b07659f4a996f7cf7e5daf0c6bf86487600c9e8341670",
+      "result_sha256": "2c6ec23d74e0224972460b04ea0ba7bea2790019b76c924dfb025cb916ec551f",
       "figures": 1,
       "lesson_manifest_entries": 6
     },
@@ -41,8 +41,8 @@
       "parameter": {
         "ENERGY_UNIT": "kJ/mol"
       },
-      "candidate_sha256": "c966c33b36536c1f13d7d998cb8486cddc85665e8392670077be451d1bf96687",
-      "result_sha256": "0f87a2a7d6ad4545126dd6aad91bfd358a920ba39e2d17ef9cab99e1a42a6d5c",
+      "candidate_sha256": "e4ed034ca56a11b8892b07659f4a996f7cf7e5daf0c6bf86487600c9e8341670",
+      "result_sha256": "b5691e02d9b8ef7f00afb1b82f06db110ade29c91c38ace0d1f9f422eccf9d5d",
       "figures": 1,
       "lesson_manifest_entries": 6
     },
@@ -52,8 +52,8 @@
       "parameter": {
         "Y_SHIFT": 0.0
       },
-      "candidate_sha256": "7e0a460f81045423453e2be2ebf2e908370168cfb7299a11e8d87c1a84c831db",
-      "result_sha256": "337d293a15ac737210f240293d69fde2ebb32e38e6737aa2a55a7fab4728ddfc",
+      "candidate_sha256": "0be9b65f66a7bab8e7d3571084c8b392b0d797e0157e84fa51556b3c953a0896",
+      "result_sha256": "bb5ca4ab01bd7998b431e2d28afe8993220cc447935c40ead9cb1f0ded174b17",
       "figures": 1,
       "lesson_manifest_entries": 20
     },
@@ -63,8 +63,8 @@
       "parameter": {
         "Y_SHIFT": 0.5
       },
-      "candidate_sha256": "7e0a460f81045423453e2be2ebf2e908370168cfb7299a11e8d87c1a84c831db",
-      "result_sha256": "19506127b07cd63eaa0e9daaf5986c10be71ac7a381260e0656cc5800309e401",
+      "candidate_sha256": "0be9b65f66a7bab8e7d3571084c8b392b0d797e0157e84fa51556b3c953a0896",
+      "result_sha256": "048d221f6a4dc4df0a4bf571246181b75c63430b25527e619e978790fc86d288",
       "figures": 1,
       "lesson_manifest_entries": 20
     },
@@ -74,8 +74,8 @@
       "parameter": {
         "OMIT_LAST_TERM": false
       },
-      "candidate_sha256": "1e686e4228635791b1450854adc9bf71c051b108c412ac3844b2c46a2b703fa1",
-      "result_sha256": "e38b5a82c67d8c0574e58098b7d1f5a48f61a05195d697879facce84465bfbda",
+      "candidate_sha256": "eda944cc7063732729951f0b3732cb37fbc1586ce9ae2975576f5f564a6f2eac",
+      "result_sha256": "e136db7ad0e4abebc5cd3a199ffc93e20eda746e4cd9cce1fcc51c3e851f53db",
       "figures": 1,
       "lesson_manifest_entries": 44
     },
@@ -85,8 +85,8 @@
       "parameter": {
         "OMIT_LAST_TERM": true
       },
-      "candidate_sha256": "1e686e4228635791b1450854adc9bf71c051b108c412ac3844b2c46a2b703fa1",
-      "result_sha256": "9c825d8e15e5afc96a64576fe6e7ff96ca6dd1f782247f6f50641502b690f982",
+      "candidate_sha256": "eda944cc7063732729951f0b3732cb37fbc1586ce9ae2975576f5f564a6f2eac",
+      "result_sha256": "75de6faa47f40ed40d07dd1f65a0047af1a46fb01bf1faa80872b9464b53aa98",
       "figures": 1,
       "lesson_manifest_entries": 44
     },
@@ -96,8 +96,8 @@
       "parameter": {
         "FLIP_OCCUPIED_ORBITAL": false
       },
-      "candidate_sha256": "c4c95d3002ad99b1a539c55067dcc4d87ee220232ace775d1eddf66209da394e",
-      "result_sha256": "f58e88d1b01688bb26dc7dcbc865460d720c6051a8fcb12b3187c0e9df72edf6",
+      "candidate_sha256": "b434aee829232aafbf788466cce248992ea5c63e78af4c3dba7f926d5bb62c65",
+      "result_sha256": "305326832d6fd3a0fc68ac9555f175b02e10e3e7e7ea3c2016c70a9dde04e1a6",
       "figures": 1,
       "lesson_manifest_entries": 57
     },
@@ -107,16 +107,66 @@
       "parameter": {
         "FLIP_OCCUPIED_ORBITAL": true
       },
-      "candidate_sha256": "c4c95d3002ad99b1a539c55067dcc4d87ee220232ace775d1eddf66209da394e",
-      "result_sha256": "2299094638cc058fbe74caf66aedf50ca704a3b872d6ceeeb907aa9addc77ba3",
+      "candidate_sha256": "b434aee829232aafbf788466cce248992ea5c63e78af4c3dba7f926d5bb62c65",
+      "result_sha256": "afce07bb06e3ecdeb6bf1a191f67c758b9acd400f8c5c18e735e9cf6380a0c74",
       "figures": 1,
       "lesson_manifest_entries": 57
     }
   ],
   "native_outer_notebooks_verified": 5,
   "embedded_result_ZIPs_verified": 5,
-  "standalone_ZIP_button_download": "NOT_VERIFIED",
+  "standalone_result_ZIPs_verified": 5,
+  "standalone_ZIP_button_download": "PASS_USER_DOWNLOADED_FILES_VERIFIED",
+  "downloads": [
+    {
+      "lesson": "A01",
+      "downloaded_sha256": "f1bcbbb325d1c2d72271931cce93cdfe3dc923b33614cf16bc47a5d230e5ff1e",
+      "embedded_result_ZIP_sha256": "bd98a6dbae686bc3fb3e28e604c0594a17b9bd191d6e19c6f24c595a3bb1d281",
+      "standalone_result_ZIP_sha256": "bd98a6dbae686bc3fb3e28e604c0594a17b9bd191d6e19c6f24c595a3bb1d281",
+      "parameter": {
+        "LEARNING_ROUTE": "quantum"
+      }
+    },
+    {
+      "lesson": "A02",
+      "downloaded_sha256": "6e65cf73a8313f66ed371f377c9ac9c3ed0c2d396af588647330a0c21f1015e3",
+      "embedded_result_ZIP_sha256": "b5691e02d9b8ef7f00afb1b82f06db110ade29c91c38ace0d1f9f422eccf9d5d",
+      "standalone_result_ZIP_sha256": "b5691e02d9b8ef7f00afb1b82f06db110ade29c91c38ace0d1f9f422eccf9d5d",
+      "parameter": {
+        "ENERGY_UNIT": "kJ/mol"
+      }
+    },
+    {
+      "lesson": "B03",
+      "downloaded_sha256": "c72518655b259e03e310a8de978f7e1fff866117deddfd3830ed9d99986576e7",
+      "embedded_result_ZIP_sha256": "048d221f6a4dc4df0a4bf571246181b75c63430b25527e619e978790fc86d288",
+      "standalone_result_ZIP_sha256": "048d221f6a4dc4df0a4bf571246181b75c63430b25527e619e978790fc86d288",
+      "parameter": {
+        "Y_SHIFT": 0.5
+      }
+    },
+    {
+      "lesson": "F01",
+      "downloaded_sha256": "5dd2e68fad0e7864707950fce8e977c427e58d64667fe4c4e39bb98734c6053f",
+      "embedded_result_ZIP_sha256": "75de6faa47f40ed40d07dd1f65a0047af1a46fb01bf1faa80872b9464b53aa98",
+      "standalone_result_ZIP_sha256": "75de6faa47f40ed40d07dd1f65a0047af1a46fb01bf1faa80872b9464b53aa98",
+      "parameter": {
+        "OMIT_LAST_TERM": true
+      }
+    },
+    {
+      "lesson": "F02",
+      "downloaded_sha256": "87ceba5d73e4a5bb55e1124529b30aaac57f5b4f13870c970e03dfe2757af088",
+      "embedded_result_ZIP_sha256": "afce07bb06e3ecdeb6bf1a191f67c758b9acd400f8c5c18e735e9cf6380a0c74",
+      "standalone_result_ZIP_sha256": "afce07bb06e3ecdeb6bf1a191f67c758b9acd400f8c5c18e735e9cf6380a0c74",
+      "parameter": {
+        "FLIP_OCCUPIED_ORBITAL": true
+      }
+    }
+  ],
   "new_rhf": "NOT_EXECUTED",
-  "public_wrapper_changes": "Markdown status/navigation, hidden setup metadata and a title comment; computational AST, embedded resources and saved outputs unchanged",
-  "public_remote_check": "PENDING_FIRST_PUSH"
+  "default_setup_collapsed": "PASS",
+  "headings_without_dates": "PASS",
+  "github_entry_and_Drive_save_reopen": "PASS",
+  "status_only_update": "Exact code, embedded payload, outputs and metadata unchanged from tested candidates; candidate hashes identify the pre-status-update tested files."
 }
