@@ -2,8 +2,12 @@
   "schema": "adp-course-publication-v1",
   "version": "0.1.0",
   "new_rhf": "NOT_EXECUTED",
-  "course_commit": "18108082ef8f6e0ff9fe7e5a9abfeef0016b03a4",
+  "course_commit": "f157a76e24ef0469f3c99de20f98c9ef13f19c1d",
   "files": [
+    {
+      "file": ".gitattributes",
+      "sha256": "8b9c3028d6467ff3be7c793141927841d70f47f52d0590677438f488ca154992"
+    },
     {
       "file": ".gitignore",
       "sha256": "19ff32ce0cf95dbb589b7f6faacec6510a35429bb82d102e74e250d3647f0713"
@@ -30,7 +34,7 @@
     },
     {
       "file": "COLAB_LINKS.md",
-      "sha256": "28d8c8cfd9a5fb9329375ae240fcdedff34e6b9103ec57c570d5b59776f57b06"
+      "sha256": "fc0ccdfeecb5f76f2b5d3b8185ded4fef992a02b2292ebd55febbcdd34ed8f50"
     },
     {
       "file": "docs/RIGHTS_REVIEW.md",
@@ -50,7 +54,7 @@
     },
     {
       "file": "github-entrypoints.json",
-      "sha256": "4e7692aa2400ab62decb575960d4a8933abca391d3ebdf6f9dabc9173f5acfbd"
+      "sha256": "520e8e736c64af66169983d2baf8c65b688b04968e948fa5ecbe47e3dc4f699e"
     },
     {
       "file": "lessons/A01.ipynb",
@@ -74,11 +78,11 @@
     },
     {
       "file": "publication-target.json",
-      "sha256": "a235e4832cc2635fc682a773ce9b904d49a2ffa33a82054f561927fd4868987a"
+      "sha256": "38103ee4b16ab1f8d81022bc896702cb2098c7e275f61e216152a15953514447"
     },
     {
       "file": "README.md",
-      "sha256": "99c548aabbb32fb752f2b09a33a7cf77f1b6271f93957510ce7cb8d6dc5ae4a9"
+      "sha256": "5cfa199751169252be224d92fb3a784e9f7d495fda4a0029d4cfdf3106e9eae5"
     },
     {
       "file": "tools/configure_links.py",
