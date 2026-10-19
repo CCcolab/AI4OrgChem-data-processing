@@ -1,0 +1,37 @@
+[
+  {
+    "lesson": "A01",
+    "path": "colab/A01-colab.ipynb",
+    "github_read": "https://github.com/CCcolab/AI4OrgChem-data-processing/blob/18108082ef8f6e0ff9fe7e5a9abfeef0016b03a4/lessons/A01.ipynb",
+    "colab": "https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/18108082ef8f6e0ff9fe7e5a9abfeef0016b03a4/colab/A01-colab.ipynb",
+    "remote_validation": "NOT_EXECUTED"
+  },
+  {
+    "lesson": "A02",
+    "path": "colab/A02-colab.ipynb",
+    "github_read": "https://github.com/CCcolab/AI4OrgChem-data-processing/blob/18108082ef8f6e0ff9fe7e5a9abfeef0016b03a4/lessons/A02.ipynb",
+    "colab": "https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/18108082ef8f6e0ff9fe7e5a9abfeef0016b03a4/colab/A02-colab.ipynb",
+    "remote_validation": "NOT_EXECUTED"
+  },
+  {
+    "lesson": "B03",
+    "path": "colab/B03-colab.ipynb",
+    "github_read": "https://github.com/CCcolab/AI4OrgChem-data-processing/blob/18108082ef8f6e0ff9fe7e5a9abfeef0016b03a4/lessons/B03.ipynb",
+    "colab": "https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/18108082ef8f6e0ff9fe7e5a9abfeef0016b03a4/colab/B03-colab.ipynb",
+    "remote_validation": "NOT_EXECUTED"
+  },
+  {
+    "lesson": "F01",
+    "path": "colab/F01-colab.ipynb",
+    "github_read": "https://github.com/CCcolab/AI4OrgChem-data-processing/blob/18108082ef8f6e0ff9fe7e5a9abfeef0016b03a4/lessons/F01.ipynb",
+    "colab": "https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/18108082ef8f6e0ff9fe7e5a9abfeef0016b03a4/colab/F01-colab.ipynb",
+    "remote_validation": "NOT_EXECUTED"
+  },
+  {
+    "lesson": "F02",
+    "path": "colab/F02-colab.ipynb",
+    "github_read": "https://github.com/CCcolab/AI4OrgChem-data-processing/blob/18108082ef8f6e0ff9fe7e5a9abfeef0016b03a4/lessons/F02.ipynb",
+    "colab": "https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/18108082ef8f6e0ff9fe7e5a9abfeef0016b03a4/colab/F02-colab.ipynb",
+    "remote_validation": "NOT_EXECUTED"
+  }
+]
