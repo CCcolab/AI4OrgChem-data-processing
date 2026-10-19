@@ -14,23 +14,23 @@
     },
     {
       "file": "colab/A01-colab.ipynb",
-      "sha256": "474872973f6b1ab67d4d18abd1f4ea1b9a006338b8d752bb0df6857fb962b6c5"
+      "sha256": "431b476eae57b318400b276ccf0153069210d37ba09691b44ec391289b31868f"
     },
     {
       "file": "colab/A02-colab.ipynb",
-      "sha256": "6227cc4f92b6c826e7cafd4075798f4e847f4f205969536e2bb349c14ebc10af"
+      "sha256": "1adbe4b69fa70337fd4074ad6bd0ed03880520918230dee184fd94f6bc298213"
     },
     {
       "file": "colab/B03-colab.ipynb",
-      "sha256": "29f26fd96278116c0b39302fb1e5926a6f67ff3df8e0262dce33bc975cbce05f"
+      "sha256": "cef79f4378fb79901955743bc1a094fd82a419d7e2b80fd5ed95c8b1ef2b46e7"
     },
     {
       "file": "colab/F01-colab.ipynb",
-      "sha256": "3498c643a6fac1b971ca62955a714c94b22a9f48201d3629a237fed1d0140c68"
+      "sha256": "64ff03b3f66c774190fbaf698409b324416ff0454ca11a33de4f740a988d2451"
     },
     {
       "file": "colab/F02-colab.ipynb",
-      "sha256": "1edab1a94e863b6e1fd07804ea96a19d36ee0e2bd3546768b5ed325403b98b61"
+      "sha256": "b62982f17b06a00f503fda95d2fcea8a3fae53b9a6b8a82f66a54b518011e3c2"
     },
     {
       "file": "COLAB_LINKS.md",
@@ -42,7 +42,7 @@
     },
     {
       "file": "docs/RUNNING.md",
-      "sha256": "8277fd9a5f5f3fdf6935e606403d79ed19984f8410a6646f8b1ea9ed315f46fe"
+      "sha256": "e8c594ff36317bc46dd23f2c287a5d26574c7deff95c2dfa2db9baa4ccf9e28f"
     },
     {
       "file": "docs/STATUS.md",
@@ -50,7 +50,7 @@
     },
     {
       "file": "docs/VALIDATION_SUMMARY.json",
-      "sha256": "e05820cfa4ced01aedccbe46ae1f4086088519734df4c9b6268fb3ca7ab9eac5"
+      "sha256": "3eca6a11dbb5913c435ca2126d80a895a33bd82db56cbc4ccd41ec7b3e055250"
     },
     {
       "file": "github-entrypoints.json",
@@ -58,23 +58,23 @@
     },
     {
       "file": "lessons/A01.ipynb",
-      "sha256": "70cb4cc5b7c4063ed01e4df6b6545f10106603e22b909fc38c107887512d05ea"
+      "sha256": "8ca316b9442e9d45073959dfa5994d1ecda93a2d505aa817946aa2b1fa9efa78"
     },
     {
       "file": "lessons/A02.ipynb",
-      "sha256": "623b376b0c115f3c340e45947e70c2e5a16b35bf9bb54028fd70312b7847dca8"
+      "sha256": "746d72c3e41d9f4124ab64507b29b8840d8b983c69a071a14ca5825d658c7a1f"
     },
     {
       "file": "lessons/B03.ipynb",
-      "sha256": "dd6ff6c1524da933c06a57e568dfadc69a843a76cec9ca594af1fc739acb880f"
+      "sha256": "9883749f605f240324a4702f951748dc883898cee3760b2cbe68c20510b6e1e3"
     },
     {
       "file": "lessons/F01.ipynb",
-      "sha256": "f44e07fc5caccf53ba40e2088113341fcbfe69d127ede4e81bd3fcaa9a9eeb8c"
+      "sha256": "6675952b0e9d4c11b0dd1953d78da67440f0312695fc1066cecfc6a9330ab7bd"
     },
     {
       "file": "lessons/F02.ipynb",
-      "sha256": "ccf8a55ff864480cf6b86850ed8211661b72c391e0077ad673c5f97bdf44524c"
+      "sha256": "43414a4d4c2b27b49a635faddc69cbdd9011d4c16f9f66e235056af72ec42afc"
     },
     {
       "file": "publication-target.json",

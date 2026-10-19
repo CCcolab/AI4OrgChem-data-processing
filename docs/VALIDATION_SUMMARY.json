@@ -117,6 +117,6 @@
   "embedded_result_ZIPs_verified": 5,
   "standalone_ZIP_button_download": "NOT_VERIFIED",
   "new_rhf": "NOT_EXECUTED",
-  "public_wrapper_changes": "Markdown status/navigation only; exact cloud-tested code and payload retained",
+  "public_wrapper_changes": "Markdown status/navigation, hidden setup metadata and a title comment; computational AST, embedded resources and saved outputs unchanged",
   "public_remote_check": "PENDING_FIRST_PUSH"
 }
