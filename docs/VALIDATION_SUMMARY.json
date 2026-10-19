@@ -1,0 +1,122 @@
+{
+  "date": "2026-10-19",
+  "software_version": "0.1.0",
+  "cloud_runs": [
+    {
+      "lesson": "A01",
+      "mode": "default",
+      "parameter": {
+        "LEARNING_ROUTE": "full"
+      },
+      "candidate_sha256": "bf485e4a1a19eaa1b01f0f012d0d74f77f5bfa6df0fa66254545db43928a6f57",
+      "result_sha256": "1ad4f484d0dbfafbfe8c15b420a52393535c4c4ed38ec3b2d0c8df14adf5682d",
+      "figures": 0,
+      "lesson_manifest_entries": 3
+    },
+    {
+      "lesson": "A01",
+      "mode": "modified",
+      "parameter": {
+        "LEARNING_ROUTE": "quantum"
+      },
+      "candidate_sha256": "bf485e4a1a19eaa1b01f0f012d0d74f77f5bfa6df0fa66254545db43928a6f57",
+      "result_sha256": "df3d78aa308c2ca45f2345f13307c8b388f42b4aaf29cebbd484d3c3c064b1ba",
+      "figures": 0,
+      "lesson_manifest_entries": 3
+    },
+    {
+      "lesson": "A02",
+      "mode": "default",
+      "parameter": {
+        "ENERGY_UNIT": "hartree"
+      },
+      "candidate_sha256": "c966c33b36536c1f13d7d998cb8486cddc85665e8392670077be451d1bf96687",
+      "result_sha256": "d07a7248a403a50949d4f20fbbbc14bd596464a4ac2513b44a98341742a1466d",
+      "figures": 1,
+      "lesson_manifest_entries": 6
+    },
+    {
+      "lesson": "A02",
+      "mode": "modified",
+      "parameter": {
+        "ENERGY_UNIT": "kJ/mol"
+      },
+      "candidate_sha256": "c966c33b36536c1f13d7d998cb8486cddc85665e8392670077be451d1bf96687",
+      "result_sha256": "0f87a2a7d6ad4545126dd6aad91bfd358a920ba39e2d17ef9cab99e1a42a6d5c",
+      "figures": 1,
+      "lesson_manifest_entries": 6
+    },
+    {
+      "lesson": "B03",
+      "mode": "default",
+      "parameter": {
+        "Y_SHIFT": 0.0
+      },
+      "candidate_sha256": "7e0a460f81045423453e2be2ebf2e908370168cfb7299a11e8d87c1a84c831db",
+      "result_sha256": "337d293a15ac737210f240293d69fde2ebb32e38e6737aa2a55a7fab4728ddfc",
+      "figures": 1,
+      "lesson_manifest_entries": 20
+    },
+    {
+      "lesson": "B03",
+      "mode": "modified",
+      "parameter": {
+        "Y_SHIFT": 0.5
+      },
+      "candidate_sha256": "7e0a460f81045423453e2be2ebf2e908370168cfb7299a11e8d87c1a84c831db",
+      "result_sha256": "19506127b07cd63eaa0e9daaf5986c10be71ac7a381260e0656cc5800309e401",
+      "figures": 1,
+      "lesson_manifest_entries": 20
+    },
+    {
+      "lesson": "F01",
+      "mode": "default",
+      "parameter": {
+        "OMIT_LAST_TERM": false
+      },
+      "candidate_sha256": "1e686e4228635791b1450854adc9bf71c051b108c412ac3844b2c46a2b703fa1",
+      "result_sha256": "e38b5a82c67d8c0574e58098b7d1f5a48f61a05195d697879facce84465bfbda",
+      "figures": 1,
+      "lesson_manifest_entries": 44
+    },
+    {
+      "lesson": "F01",
+      "mode": "modified",
+      "parameter": {
+        "OMIT_LAST_TERM": true
+      },
+      "candidate_sha256": "1e686e4228635791b1450854adc9bf71c051b108c412ac3844b2c46a2b703fa1",
+      "result_sha256": "9c825d8e15e5afc96a64576fe6e7ff96ca6dd1f782247f6f50641502b690f982",
+      "figures": 1,
+      "lesson_manifest_entries": 44
+    },
+    {
+      "lesson": "F02",
+      "mode": "default",
+      "parameter": {
+        "FLIP_OCCUPIED_ORBITAL": false
+      },
+      "candidate_sha256": "c4c95d3002ad99b1a539c55067dcc4d87ee220232ace775d1eddf66209da394e",
+      "result_sha256": "f58e88d1b01688bb26dc7dcbc865460d720c6051a8fcb12b3187c0e9df72edf6",
+      "figures": 1,
+      "lesson_manifest_entries": 57
+    },
+    {
+      "lesson": "F02",
+      "mode": "modified",
+      "parameter": {
+        "FLIP_OCCUPIED_ORBITAL": true
+      },
+      "candidate_sha256": "c4c95d3002ad99b1a539c55067dcc4d87ee220232ace775d1eddf66209da394e",
+      "result_sha256": "2299094638cc058fbe74caf66aedf50ca704a3b872d6ceeeb907aa9addc77ba3",
+      "figures": 1,
+      "lesson_manifest_entries": 57
+    }
+  ],
+  "native_outer_notebooks_verified": 5,
+  "embedded_result_ZIPs_verified": 5,
+  "standalone_ZIP_button_download": "NOT_VERIFIED",
+  "new_rhf": "NOT_EXECUTED",
+  "public_wrapper_changes": "Markdown status/navigation only; exact cloud-tested code and payload retained",
+  "public_remote_check": "PENDING_FIRST_PUSH"
+}
