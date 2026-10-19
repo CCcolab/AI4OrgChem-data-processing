@@ -9,3 +9,5 @@
 | B03 | [阅读](https://github.com/CCcolab/AI4OrgChem-data-processing/blob/6fcc28bc8253e8ebe28f837108ec8af319e71d76/lessons/B03.ipynb) | [Colab](https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/6fcc28bc8253e8ebe28f837108ec8af319e71d76/colab/B03-colab.ipynb) |
 | F01 | [阅读](https://github.com/CCcolab/AI4OrgChem-data-processing/blob/6fcc28bc8253e8ebe28f837108ec8af319e71d76/lessons/F01.ipynb) | [Colab](https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/6fcc28bc8253e8ebe28f837108ec8af319e71d76/colab/F01-colab.ipynb) |
 | F02 | [阅读](https://github.com/CCcolab/AI4OrgChem-data-processing/blob/6fcc28bc8253e8ebe28f837108ec8af319e71d76/lessons/F02.ipynb) | [Colab](https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/6fcc28bc8253e8ebe28f837108ec8af319e71d76/colab/F02-colab.ipynb) |
+
+五课原生Notebook及独立结果ZIP下载已验收。计算内容保持不变，本固定提交只同步完成状态；新RHF继续未验收。详见[验收摘要](docs/ACCEPTANCE.md)。
