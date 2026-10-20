@@ -50,12 +50,16 @@
       "sha256": "771293b05ab8e29754130b8ce83425483b4a2de366b2ce7bf15d1f5f1c5ddae8"
     },
     {
+      "file": "docs/SKILL_ONLINE_ACCEPTANCE.md",
+      "sha256": "482e18daf472245d92032c929953f0f4774275f90dbd426d1dca2ecc97f9e227"
+    },
+    {
       "file": "docs/SKILL_RUNNING.md",
-      "sha256": "488a87eec769528b72706ff913daa288ed0efa37dad2ee8884965c305cacce75"
+      "sha256": "706ecc35e26f7bb1f98ed2fb94864a9de461660d11c470049ce5dfdbbf3a8eb3"
     },
     {
       "file": "docs/SKILL_STATUS.md",
-      "sha256": "4c25e9d2d3a0b5f4fe406ca8aff8e13fa7fabacb1b156ed2aaa910d1f1ed3d61"
+      "sha256": "fb444309a2378fe2f1f0442c0c8fb1645f071014c009586269d6648a7552e0c9"
     },
     {
       "file": "docs/STATUS.md",
@@ -99,7 +103,7 @@
     },
     {
       "file": "README.md",
-      "sha256": "bbff25f25b7891fcb0847662c4d7944afa558e37381a44a4855e0517369816a4"
+      "sha256": "2f1f0577b9e5786cea72e8060dd974ee3f20b7740a6e749be5ea9ca32a606c06"
     },
     {
       "file": "skills/table-fitting-residuals/caffeine-calibration.csv",

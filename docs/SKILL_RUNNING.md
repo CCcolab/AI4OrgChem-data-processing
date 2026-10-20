@@ -9,3 +9,12 @@
 核对PASS_REAL_MODEL_AND_TOOL_CALL、COLAB位置、实际模型名及tool_calls=1。核对数值结果、单位与残差，不能把R²高或正的截距当作物理因果证据。结果ZIP通过课末链接下载，外层.ipynb通过“文件→下载→下载.ipynb”保存，两者分别核验。
 
 保存的示例图只用于GitHub阅读，不代表你已执行。Notebook当前分发版本的真实在线验收见SKILL_STATUS.md。新RHF未验收；试学、专家解释评定及其它Skill不在本页验收范围。
+
+
+## 下载兼容性与替代步骤
+
+若Chrome弹出“无法加载显示输出内容所需的JavaScript文件”，先保存Notebook。无需关闭标签页或降低浏览器安全设置；可在能显示已保存输出的浏览器查看图表。
+
+原生Notebook使用“文件→下载→下载.ipynb”。结果ZIP也可通过Colab左侧“文件”面板下载：展开本次table-skill工作目录，再展开本次run目录，对skill-results.zip点击右侧更多操作→下载。以run-receipt.json的参数区分本次运行；每次运行使用新目录。验收用两轮合并ZIP位于工作目录，由验收辅助单元生成，不是教学模板默认输出。
+
+本轮实际下载已按上述文件菜单/文件面板方式核验，详见[在线复验记录](SKILL_ONLINE_ACCEPTANCE.md)。HTML下载按钮在Chrome仍存在上述兼容性限制。

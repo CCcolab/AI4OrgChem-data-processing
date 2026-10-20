@@ -23,7 +23,7 @@
 
 ## 完成与未验收范围
 
-来源样板已完成默认/修改参数的真实Colab调用、保存、原生Notebook和ZIP实际下载验收。本次GitHub分发副本的在线复验单独报告，见 [当前Skill状态](docs/SKILL_STATUS.md)，不自动继承来源样板的全部PASS。
+本次GitHub分发副本已完成独立环境安装、默认/修改参数的DeepSeek真实工具调用、保存、原生Notebook和两轮结果ZIP实际下载复验。详见 [当前Skill状态](docs/SKILL_STATUS.md) 与 [在线复验记录](docs/SKILL_ONLINE_ACCEPTANCE.md)。Chrome课末HTML下载存在输出加载限制，已验证的替代下载步骤见运行指引；模型解释未经专家独立审核。
 
 本页完整实现的是未加权、带截距线性OLS样板。其余14项Skill及18项通用候选仍按后续计划接入，不代表已开放33个服务。模型解释、教学试学与程序运行分别评价。**新RHF继续未验收。**
 
