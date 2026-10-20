@@ -21,12 +21,12 @@
 
 本地Jupyter读取你设置的.env路径。详情见 [配置说明](skills/table-fitting-residuals/CONFIGURATION_zh-CN.md) 和 [运行指引](docs/SKILL_RUNNING.md)。无需本机Web服务或Docker；依赖安装和模型调用需要网络。
 
-## 完成与未验收范围
+## 运行与结果
 
-本次GitHub分发副本已完成独立环境安装、默认/修改参数的DeepSeek真实工具调用、保存、原生Notebook和两轮结果ZIP实际下载复验。详见 [当前Skill状态](docs/SKILL_STATUS.md) 与 [在线复验记录](docs/SKILL_ONLINE_ACCEPTANCE.md)。Chrome课末HTML下载存在输出加载限制，已验证的替代下载步骤见运行指引；模型解释未经专家独立审核。
+表格拟合样板支持带截距的普通最小二乘线性校准、残差分析和未知样品浓度反算。已完成默认与修改参数的DeepSeek真实工具调用、Notebook保存，以及原生Notebook和结果ZIP下载验证。操作步骤见 [运行指引](docs/SKILL_RUNNING.md)，验证详情见 [在线复验记录](docs/SKILL_ONLINE_ACCEPTANCE.md)。
 
-本页完整实现的是未加权、带截距线性OLS样板。其余14项Skill及18项通用候选仍按后续计划接入，不代表已开放33个服务。模型解释、教学试学与程序运行分别评价。**新RHF继续未验收。**
+运行后可查看数值结果、图表和模型解释，并下载结果文件。若Chrome课末下载区域加载异常，可按运行指引通过Colab文件面板下载ZIP。
 
-旧五课入口作为 [历史原型说明](LEGACY_FIVE_LESSONS.md) 保留，不再作为当前平台教学组织依据。
+## 数据与方法来源
 
-数据出处、方法依据与适用范围详见Skill页面。保留Harvey教材CC BY-NC-SA 4.0归属及NIST方法引用；项目级代码许可仍按 [既有许可说明](docs/RIGHTS_REVIEW.md) 执行，本次不新增许可证。当前仓库不含.env、密钥、私有数据库、本机部署或原始私有验收附件。
+本例采用David Harvey教材中的咖啡因HPLC校准数据，方法说明引用NIST统计手册。数据出处、CC BY-NC-SA 4.0归属及适用范围见 [Skill说明](skills/table-fitting-residuals/README.md)；代码许可信息见 [许可说明](docs/RIGHTS_REVIEW.md)。
