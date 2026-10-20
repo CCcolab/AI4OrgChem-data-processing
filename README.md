@@ -27,6 +27,19 @@
 
 运行后可查看数值结果、图表和模型解释，并下载结果文件。若Chrome课末下载区域加载异常，可按运行指引通过Colab文件面板下载ZIP。
 
-## 数据与方法来源
+## 参考资料说明
 
-本例采用David Harvey教材中的咖啡因HPLC校准数据，方法说明引用NIST统计手册。数据出处、CC BY-NC-SA 4.0归属及适用范围见 [Skill说明](skills/table-fitting-residuals/README.md)；代码许可信息见 [许可说明](docs/RIGHTS_REVIEW.md)。
+各Skill页面按“知识点—出处—使用位置”组织参考资料。化学概念参考相应领域教材；公式和算法参考方法论文、专业手册或软件官方文档；示例数据注明教材题目、论文附件、公开数据集或真实计算记录；Skill功能和参数以对应的指令及实际程序为依据。
+
+资料通过作者、大学、出版社和官方文档网站提供的合法开放原文，或合法获取的图书馆与正版资料核对。引用注明作者、书名或论文题名、版本、章节／页码／公式号和可访问链接。教材内容与模型生成的解释分别标识；转载文字、图片和数据时，按相应许可注明归属与改动。
+
+### 当前表格拟合案例的参考资料
+
+| 用途 | 参考资料与定位 | 本页采用的内容 |
+| --- | --- | --- |
+| 教材与示例数据 | David Harvey，《Analytical Chemistry 2.1》，第12.5节，Exercise 12.5.2：[作者与教材介绍](https://sites.google.com/depauw.edu/dth/analytical-curriculum-projects/analytical-chemistry-2-1) · [教材题目与数据表](https://chem.libretexts.org/Courses/BethuneCookman_University/B-CU%3A_CH-345_Quantitative_Analysis/Book%3A_Analytical_Chemistry_2.1_%28Harvey%29/12%3A_Chromatographic_and_Electrophoretic_Methods/12.05%3A_High-Performance_Liquid_Chromatography) | 本科分析化学开放教材中的咖啡因HPLC外标校准练习；逐项转录4组浓度—峰面积及待测峰面积424195，教材参考答案94.4 mg/L |
+| 线性拟合方法 | NIST/SEMATECH统计手册，[§4.4.3.1 Least Squares](https://www.itl.nist.gov/div898/handbook/pmd/section4/pmd431.htm) | 最小二乘准则、带截距直线模型和系数计算 |
+| 残差与结果判读 | NIST/SEMATECH统计手册，[§4.4.4 How can I tell if a model fits my data?](https://www.itl.nist.gov/div898/handbook/pmd/section4/pmd44.htm) | 观测减预测的残差定义、残差图及结合多项证据判断拟合质量 |
+| Skill功能与调用 | [table-fitting-residuals指令](skills/table-fitting-residuals/SKILL.md) · [功能及参数说明](skills/table-fitting-residuals/README.md) | 表格检查、拟合任务和结果解释的调用约定；本页实现带截距的普通最小二乘校准 |
+
+教材将该题数据归于Kusch与Knupp发表于 *Chem. Educator*（2003，8，201–205）的研究。本例的直接数据依据是上述教材题目，引用链与转录记录见 [数据来源记录](skills/table-fitting-residuals/data-provenance.json) 和 [参考资料清单](skills/table-fitting-residuals/sources.json)。Harvey教材相关内容按CC BY-NC-SA 4.0注明归属；代码许可信息见 [许可说明](docs/RIGHTS_REVIEW.md)。
