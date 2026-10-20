@@ -1,0 +1,17 @@
+{
+  "kind": "source_sample_saved_output_not_current_run",
+  "dataset": "harvey-caffeine-hplc-exercise-12.5.2",
+  "parameters": {
+    "include_highest_standard": true,
+    "unknown_peak_area": 424195.0,
+    "fit_intercept": true
+  },
+  "source_location": "COLAB",
+  "source_model": "deepseek-flash",
+  "source_api_rounds": 2,
+  "source_tool_calls": 1,
+  "source_numerical_checks": "PASS",
+  "png_sha256": "e9fe0a01f415bbf6cf73904b3b45f5eafee55981fd794eb4cbcaa154ba36b964",
+  "interpretation": "High R squared and a fitted intercept do not establish a physical baseline, a mechanism or model adequacy.",
+  "new_rhf": "NOT_EXECUTED"
+}

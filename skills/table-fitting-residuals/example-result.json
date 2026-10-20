@@ -1,0 +1,42 @@
+{
+  "execution_status": "SUCCEEDED",
+  "numerical_checks": "PASS",
+  "analysis_scope": "descriptive external-standard OLS calibration only",
+  "n": 4,
+  "df_residual": 2,
+  "intercept": 16714.88489208635,
+  "intercept_unit": "peak area arbitrary units",
+  "slope": 4317.536115107914,
+  "slope_unit": "peak area arbitrary units / (mg/L)",
+  "rss": 77729900.3597121,
+  "rss_unit": "(peak area arbitrary units)^2",
+  "r_squared": 0.9998080456519541,
+  "residual_convention": "observed minus fitted",
+  "unknown_peak_area": 424195.0,
+  "sample_concentration_mg_L": 94.37792857876974,
+  "inside_calibration_range": true,
+  "used_ids": [
+    "standard-50",
+    "standard-100",
+    "standard-125",
+    "standard-250"
+  ],
+  "independent_decimal_oracle": {
+    "intercept": "16714.8848920863309352517985611510791366906475",
+    "slope": "4317.53611510791366906474820143884892086330935",
+    "concentration_mg_L": "94.3779285787697459742227081552908073469560776"
+  },
+  "checks": {
+    "intercept_abs_error": 1.8189894035458565e-11,
+    "slope_abs_error": 9.094947017729282e-13,
+    "concentration_abs_error": 0.0,
+    "residual_sum_abs": 3.4924596548080444e-10,
+    "normal_equation_residual_scaled": 1.382114015677469e-16
+  },
+  "limitations": [
+    "4 source standards, or a declared 3-point sensitivity subset; no replicates",
+    "No proof of linearity or homoscedasticity from a high R squared",
+    "No uncertainty interval, detection limit, reaction mechanism or new HPLC experiment claimed"
+  ],
+  "new_rhf": "NOT_EXECUTED"
+}

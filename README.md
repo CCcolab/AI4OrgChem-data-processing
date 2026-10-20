@@ -1,55 +1,32 @@
-# AI4OrgChem-data-processing · 五课在线学习
+# AI4OrgChem-data-processing · Agent Skills
 
-以 Jupyter Notebook（.ipynb）为主要载体。**先在线阅读，再到 Colab 修改参数并运行。** GitHub阅读无需注册本平台账号，也不需要本机服务或登录令牌。
+**在线了解我们创建的Agent Skill，下载Notebook，在Colab或本地实际调用。** 每个Skill使用一页说明与一份可运行.ipynb，提供功能、知识和数据出处、运行环境、调用模板、参数、结果解释及下载。
 
-## 为什么首批安排五课？
+本仓库保持**私有**，需要已授权的GitHub账号访问。GitHub页面用于阅读；Colab提供Python运行环境。模型实际调用由你的DeepSeek凭据授权，数值由白名单程序计算；不使用OpenAI API或SDK。
 
-这五课是平台首批开放的学习路线，由 **两课公共基础（A01、A02）＋三个数据分析案例（B03、F01、F02）** 组成。它们共用一套学习流程：理解问题与输入 → 运行分析 → 查看图表 → 修改参数 → 保存证据 → 解释结果。
+## 当前Skill样板
 
-A01帮助你找到入口并理解结果状态；A02准备三个案例共同需要的数组、单位和数据追溯知识。随后从表格拟合进入数据分析，再用能量账本学习来源与闭合检查，最后复核保存的水分子计算结果，逐步增加化学和数学背景要求。
-
-“五课”指当前已交付的首批课程，并非完整课程总数，也不是把15项能力或18个通用Skill拆成五份。后续课程按建设规划逐步增加，未列为开放的内容不视为已完成。
-
-## 每课包括什么？
-
-| 课程与作用 | 主要内容 | 本课动手练习 | 学完应能解释什么？ |
+| Skill | 在线介绍与图表 | Notebook | 参数与任务 |
 | --- | --- | --- | --- |
-| **A01 · 课程导学**：建立学习与证据意识 | 学习路线；GitHub阅读与Colab运行的区别；程序执行状态与科学检查结论；保存文件；与Runtime后端的关系 | 将路线从`full`改为`quantum`，运行后核对路线顺序并保存结果 | 为什么程序执行完成不等于科学检查通过？为什么复核旧数据不等于完成新计算？ |
-| **A02 · Python、数组与单位**：准备共同的数据基础 | 数组形状、记录ID与对齐；显式单位及换算；未知单位、非有限值等输入拒绝；图表、CSV/JSON与可追溯保存 | 将显示单位从`hartree`改为`kJ/mol`，核对数值、图轴和保存文件 | 为什么换单位会改变数字而不改变同一个量？为什么不能把缺失值或非法值随意填零？ |
-| **B03 · 表格拟合与残差**：理解模型与数据的差异 | 合成教学表格的线性/二次最小二乘拟合；系数与单位；残差、RSS和R²；解析基准与拒绝例 | 将`Y_SHIFT`从`0.0`改为`0.5`；观察截距变为1.5，斜率2、RSS14及残差不变 | 哪些量随整体平移改变？拟合好为什么仍不能直接证明因果、反应机理或样本外预测准确？ |
-| **F01 · 能量账本**：理解来源、符号和检查失败 | 合成能量分项的有符号组成；统一单位；参考值与闭合残差；漏项、协议冲突和来源哈希错误；保存并重载结果 | 将`OMIT_LAST_TERM`从`False`改为`True`；保留漏项后的FAIL和−0.5 Eh残差 | 为什么任务能执行成功，而科学检查必须FAIL？数值闭合为什么不等于物理分解唯一？ |
-| **F02 · 保存水分子结果复核**：解释计算结果中的不变量 | 历史RHF/6-31G(d)保存数据的来源与AO顺序；非正交AO密度下的Tr(DS)电子数；密度与能量重建；轨道变号；坏度量反例与DIAGNOSTIC边界 | 将`FLIP_OCCUPIED_ORBITAL`从`False`改为`True`；核对电子数10、密度和总能不变 | 为什么不能用Tr(D)直接当电子数？为什么轨道系数可以变号而物理密度不变？哪些检查不能授予科学资格？ |
+| 表格拟合与残差分析 | [功能、来源与用法](skills/table-fitting-residuals/README.md) | [在线预览并下载.ipynb](skills/table-fitting-residuals/table-fitting-residuals.ipynb) | [参数](skills/table-fitting-residuals/parameters.json) · [任务模板](skills/table-fitting-residuals/task-template.txt) |
 
-每课都提供两种载体：**阅读Notebook**保存讲解、代码和输出，适合先了解问题；**Colab适配Notebook**提供参数表单、从头执行、结果回显及保存下载入口。A01以路线和状态辨析为主，A02及三个案例包含相应的数据图表。样本来源与适用范围在各课中说明。
+以David Harvey教材中咖啡因HPLC外标校准表为例，实际调用table-fitting-residuals Skill，拟合带截距直线、检查残差并反算浓度。数据是教材转录，不是AI编造或本项目新实验。本例属于有机物分析数据处理，不把它称为有机反应机理课程。
 
-F01使用合成数学账本；F02只复核历史保存的水分子结果，**不会在本课运行新RHF**。
+## 如何在线运行
 
-## 如何选课和理解编号？
+1. 打开上表Notebook，在GitHub文件页面点击 **Download raw file（下载原始文件）**，得到.ipynb。
+2. 打开 [Google Colab](https://colab.research.google.com/)，选择“文件→上传笔记本”，上传刚下载的文件。私有仓库不能依靠匿名Colab链接自动读取，不需要把GitHub令牌填入Notebook。
+3. 在Colab左侧Secret保存DEEPSEEK_API_KEY并授权当前Notebook。不要修改代码中的变量名，不上传整份.env。
+4. 从头运行，修改参数后再运行相关单元，核对真实回执及图表，最后下载结果ZIP及执行后的Notebook。
 
-- **初学者或跨专业学习者**：建议按A01 → A02 → B03 → F01学习；F02的独立解释需要量子化学与线性代数背景，可在补齐先修后进入。
-- **已有量子化学基础的学习者**：先读A01并核对A02的单位与数组约定，可选择`quantum`路线A01 → A02 → F01 → F02，按需回看B03。
-- **操作与解释分别要求**：A01/A02/B03建议“跟随操作：入门，独立解释：基础”；F01为“入门／进阶”，F02为“基础／进阶”。这些等级按前置知识设计，仍待试学校准；不与Runtime的L0–L4运行验收等级混用。
+本地Jupyter读取你设置的.env路径。详情见 [配置说明](skills/table-fitting-residuals/CONFIGURATION_zh-CN.md) 和 [运行指引](docs/SKILL_RUNNING.md)。无需本机Web服务或Docker；依赖安装和模型调用需要网络。
 
-编号沿用完整课程规划：**A是“导学与共同基础”，B是“实验表格、图表与拟合”，F是“计算化学证据复核”**；后面的数字是该章内的课次。因此B03前面的B01/B02暂未开放，并不表示当前页面漏课。字母和数字都不表示考试分数、学习等级或软件版本。
+## 完成与未验收范围
 
-## 开始学习
+来源样板已完成默认/修改参数的真实Colab调用、保存、原生Notebook和ZIP实际下载验收。本次GitHub分发副本的在线复验单独报告，见 [当前Skill状态](docs/SKILL_STATUS.md)，不自动继承来源样板的全部PASS。
 
-| 顺序 | 在线阅读（含保存输出） | Colab交互运行 |
-| --- | --- | --- |
-| 1 | [A01 · 课程导学](lessons/A01.ipynb) | [在Colab打开](https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/6fcc28bc8253e8ebe28f837108ec8af319e71d76/colab/A01-colab.ipynb) |
-| 2 | [A02 · Python、数组与单位](lessons/A02.ipynb) | [在Colab打开](https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/6fcc28bc8253e8ebe28f837108ec8af319e71d76/colab/A02-colab.ipynb) |
-| 3 | [B03 · 表格拟合与残差](lessons/B03.ipynb) | [在Colab打开](https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/6fcc28bc8253e8ebe28f837108ec8af319e71d76/colab/B03-colab.ipynb) |
-| 4 | [F01 · 能量账本](lessons/F01.ipynb) | [在Colab打开](https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/6fcc28bc8253e8ebe28f837108ec8af319e71d76/colab/F01-colab.ipynb) |
-| 5 | [F02 · 保存水分子结果复核](lessons/F02.ipynb) | [在Colab打开](https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/6fcc28bc8253e8ebe28f837108ec8af319e71d76/colab/F02-colab.ipynb) |
+本页完整实现的是未加权、带截距线性OLS样板。其余14项Skill及18项通用候选仍按后续计划接入，不代表已开放33个服务。模型解释、教学试学与程序运行分别评价。**新RHF继续未验收。**
 
+旧五课入口作为 [历史原型说明](LEGACY_FIVE_LESSONS.md) 保留，不再作为当前平台教学组织依据。
 
-推荐顺序：A01 → A02 → B03 → F01 → F02。量子化学基础较好的学习者可选择A01的quantum路线。
-
-[运行、修改与保存](docs/RUNNING.md) · [完成与未验收范围](docs/STATUS.md) · [固定提交入口](COLAB_LINKS.md) · [许可与来源](docs/RIGHTS_REVIEW.md)
-
-软件核心0.1.0。五课已完成从GitHub首页进入新版Colab、默认/修改参数共10轮真实运行与Drive保存复开；五份原生Notebook和五份独立结果ZIP下载均已验收，内嵌ZIP及独立ZIP与云端结果SHA-256一致。准备长代码默认折叠，标题无日期；新RHF继续未验收。跟随操作与独立解释分别评价；自动断言不认证学习者的解释能力。15项能力和18项候选Skill是后续规划，不代表已开放33门课程或计算服务。
-
-本仓库仅含经过检查的公开课程副本，不含本地部署、令牌、私有数据库或原始验收记录。当前未指定项目级开源许可证，请阅读许可说明；不标称MIT、Apache或CC授权。
-
-
-本次完成范围见[下载与运行验收摘要](docs/ACCEPTANCE.md)；旧Drive副本不会自动更新，请从上表重新打开新版。
+数据出处、方法依据与适用范围详见Skill页面。保留Harvey教材CC BY-NC-SA 4.0归属及NIST方法引用；项目级代码许可仍按 [既有许可说明](docs/RIGHTS_REVIEW.md) 执行，本次不新增许可证。当前仓库不含.env、密钥、私有数据库、本机部署或原始私有验收附件。

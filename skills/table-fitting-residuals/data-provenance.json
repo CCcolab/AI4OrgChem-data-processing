@@ -1,0 +1,16 @@
+{
+  "dataset_id": "harvey-caffeine-hplc-exercise-12.5.2",
+  "source_id": "data",
+  "file": "caffeine-calibration.csv",
+  "sha256": "e1ad5d64e7fa286dc7b3a5c871579710e9245280ccf09bd087e917e3d63576db",
+  "rows": 4,
+  "columns": {
+    "concentration_mg_L": "mg/L",
+    "peak_area_au": "arbitrary peak area units"
+  },
+  "unknown_peak_area": 424195,
+  "textbook_rounded_answer_mg_L": 94.4,
+  "scope": "Textbook exercise reproducing published data; not independently authenticated raw laboratory records",
+  "conversion": "Direct numeric transcription; no deleted or imputed data",
+  "source_license": "CC BY-NC-SA 4.0 as displayed by LibreTexts; attribution preserved; no new project-code license selected"
+}

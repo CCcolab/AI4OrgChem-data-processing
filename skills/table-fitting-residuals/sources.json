@@ -1,0 +1,63 @@
+[
+  {
+    "id": "skill",
+    "type": "created_skill_usage_specification",
+    "title": "table-fitting-residuals SKILL.md",
+    "url": "https://github.com/CCcolab/AI4OrgChem-Runtime/blob/5cb1d9629c41a81fbe281e793dd5af08a84956f1/skills/table-fitting-residuals/SKILL.md",
+    "sha256": "9ab4b2dbc60bd6cceb41b4bf31fdc080a62826790dc1d7b18b73e9aae0d570a7",
+    "review": "Local exact bytes match catalog; tool instructions, not an independent chemistry textbook",
+    "reviewed_on": "2026-10-19"
+  },
+  {
+    "id": "data",
+    "type": "authored_textbook_exercise",
+    "author": "David Harvey",
+    "title": "Analytical Chemistry 2.1, 12.5, Exercise 12.5.2",
+    "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/12:_Chromatographic_and_Electrophoretic_Methods/12.05:_High-Performance_Liquid_Chromatography",
+    "license_as_displayed": "CC BY-NC-SA 4.0",
+    "review": "Four concentration/peak-area pairs and unknown signal directly checked on the exercise page; not a new experiment",
+    "original_paper_cited_by_textbook": "Kusch, P.; Knupp, G., Chem. Educator, 2003, 8, 201–205",
+    "original_paper_directly_reviewed": false,
+    "reviewed_on": "2026-10-19"
+  },
+  {
+    "id": "ols",
+    "type": "official_statistical_handbook",
+    "title": "NIST/SEMATECH e-Handbook 4.4.3.1 Least Squares",
+    "url": "https://www.itl.nist.gov/div898/handbook/pmd/section4/pmd431.htm",
+    "supports": "Least-squares criterion and model fitting",
+    "reviewed_on": "2026-10-19"
+  },
+  {
+    "id": "residuals",
+    "type": "official_statistical_handbook",
+    "title": "NIST/SEMATECH e-Handbook 4.4.4 Model Validation",
+    "url": "https://www.itl.nist.gov/div898/handbook/pmd/section4/pmd44.htm",
+    "supports": "Observed-minus-fitted residuals; residual plots; R squared is insufficient",
+    "reviewed_on": "2026-10-19"
+  },
+  {
+    "id": "tool-calling",
+    "type": "official_provider_documentation",
+    "title": "DeepSeek Tool Calls",
+    "url": "https://api-docs.deepseek.com/guides/tool_calls/",
+    "supports": "Model emits tool calls, caller executes tools and returns results",
+    "reviewed_on": "2026-10-19"
+  },
+  {
+    "id": "api",
+    "type": "official_provider_documentation",
+    "title": "DeepSeek Chat Completions",
+    "url": "https://api-docs.deepseek.com/api/create-chat-completion/",
+    "supports": "HTTPS request fields and tool-call response format",
+    "reviewed_on": "2026-10-19"
+  },
+  {
+    "id": "model",
+    "type": "official_provider_documentation",
+    "title": "DeepSeek Models and Pricing",
+    "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+    "supports": "deepseek-flash; authenticated model list separately checked",
+    "reviewed_on": "2026-10-19"
+  }
+]

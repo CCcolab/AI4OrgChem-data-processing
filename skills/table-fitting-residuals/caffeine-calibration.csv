@@ -1,0 +1,5 @@
+id,concentration_mg_L,peak_area_au
+standard-50,50.0,226724
+standard-100,100.0,453762
+standard-125,125.0,559443
+standard-250,250.0,1093637
