@@ -135,7 +135,7 @@
     },
     {
       "file": "tests/guard/test_platform_boundary.py",
-      "sha256": "8ccdc03530c7ee569b7dae2d008a19d48047fc394cb8f493ff380876fe0dde10"
+      "sha256": "1f3d4eeaa010f99bca58aac1066ef74cbcd64b71ffda536d14bd4c2e532f667e"
     },
     {
       "file": "tests/guard/test_workflow_gate.py",
@@ -143,7 +143,7 @@
     },
     {
       "file": "tools/check_platform_boundary.py",
-      "sha256": "98cb75f0d287973a27c078a61adc1a79ea95d2c9557f76abc2a2ad3560eef526"
+      "sha256": "c154e8aaa715a597a2dd5b41408753c34de36fddb676202c3bf1ba2a93430bfa"
     },
     {
       "file": "tools/package_checked_skill.py",

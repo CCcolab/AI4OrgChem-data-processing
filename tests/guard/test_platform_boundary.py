@@ -25,6 +25,8 @@ class BoundaryTests(unittest.TestCase):
     def test_relative_import_is_blocked(self):self.inspect('renamed.py','from ..localweb.guard import Job','retired_service_import')
     def test_renamed_launcher_is_blocked(self):self.inspect('run-anything.ps1','python -m ai4orgchem_data_processing.deployment.control start','retired_launcher_command')
     def test_launcher_filename_is_blocked(self):self.inspect('scripts/start-platform.ps1','# disabled\n','retired_launcher')
+    def test_old_installer_is_blocked(self):self.inspect('scripts/install-local.ps1','# installer\n','retired_launcher')
+    def test_old_frontend_tree_is_blocked(self):self.inspect('web/index.html','<html>legacy</html>','retired_web_tree')
     def test_port_binding_is_blocked(self):self.inspect('service.py','import uvicorn\nuvicorn.run(app,port=8765)','retired_port_binding')
     def test_socket_binding_is_blocked(self):self.inspect('service.py',"sock.bind(('127.0.0.1',8765))",'retired_port_binding')
     def test_port_default_is_blocked(self):self.inspect('service.py',"p.add_argument('--port',default=8765)",'retired_port_binding')

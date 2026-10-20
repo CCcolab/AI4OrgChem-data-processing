@@ -9,7 +9,8 @@ from pathlib import Path, PurePosixPath
 
 CANONICAL = 'https://github.com/CCcolab/AI4OrgChem-data-processing/blob/main/START_HERE_zh-CN.md'
 BLOCKED_SCRIPTS = {'start-platform.ps1','stop-platform.ps1','status-platform.ps1',
-                   'start-local.ps1','stop-local.ps1','status-local.ps1','configure-backend.ps1'}
+                   'start-local.ps1','stop-local.ps1','status-local.ps1','configure-backend.ps1',
+                   'install-local.ps1','extract-delivery.py','verify-bundle.py','package_platform.py'}
 EXCLUDED = {'.git','__pycache__','.pytest_cache','node_modules','build','dist','local-config',
             'publication','validation','deliveries','repro','environment'}
 MAX_FILE = 64 * 1024 * 1024
@@ -25,6 +26,7 @@ class Guard:
         if item not in self.findings and len(self.findings)<100:self.findings.append(item)
     def path(self, name, nested=False):
         value=name.replace('\\','/');p=PurePosixPath(value);parts=p.parts;lower=[x.lower() for x in parts]
+        if lower and lower[0] in {'web','api','worker'}:self.fail(name,'retired_web_tree')
         if nested and (value.startswith('/') or '..' in parts or any(':' in x for x in parts)):
             self.fail(name,'unsafe_archive_path')
         if any(x=='ai4orgchem_data_processing' and i+1<len(lower) and lower[i+1] in {'localweb','deployment'} for i,x in enumerate(lower)):
