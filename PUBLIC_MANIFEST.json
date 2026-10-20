@@ -1,45 +1,33 @@
 {
-  "schema": "adp-private-skill-publication-v2",
+  "schema": "adp-private-skill-publication-v3",
   "version": "0.1.0",
   "visibility": "PRIVATE",
-  "new_rhf": "NOT_EXECUTED",
-  "legacy_course_commit": "b888896a2471196a8cd83710bc7ebed8f3b1dc45",
+  "entry": "START_HERE_zh-CN.md",
+  "legacy_web_enabled": false,
   "files": [
     {
       "file": ".gitattributes",
       "sha256": "8b9c3028d6467ff3be7c793141927841d70f47f52d0590677438f488ca154992"
     },
     {
+      "file": ".githooks/pre-commit",
+      "sha256": "6a483f69bb90a74a1f4db552a6124c7d056d7c16f60eee8fc2a2685e8ab04185"
+    },
+    {
+      "file": ".githooks/pre-push",
+      "sha256": "20faf38c82c22712a1c77fb13ca0fbc62034bd7274258cfb4e1f94bb3ea1ccff"
+    },
+    {
+      "file": ".github/workflows/platform-boundary.yml",
+      "sha256": "6757f3952240e4aefdecafd5eadcf290be0840508faff0f9daa7b6aa548a0743"
+    },
+    {
       "file": ".gitignore",
       "sha256": "19ff32ce0cf95dbb589b7f6faacec6510a35429bb82d102e74e250d3647f0713"
     },
     {
-      "file": "colab/A01-colab.ipynb",
-      "sha256": "92cf6b76d20e6165f467a23b52309857af776cd4822560c4aefb6446062e683b"
-    },
-    {
-      "file": "colab/A02-colab.ipynb",
-      "sha256": "8f06904598e4e5b71e7df45d57b409d1a8e4f406623ea5586bc407c6072f8b7a"
-    },
-    {
-      "file": "colab/B03-colab.ipynb",
-      "sha256": "5090a85f40540b976e4cf8ef59cce96406b9e0ddd0c6cc9c25e00921e8d9ccaa"
-    },
-    {
-      "file": "colab/F01-colab.ipynb",
-      "sha256": "e2faf7aace9371a45a103de3f4183daa1319950867aa5ddaa82b0acfc1605d12"
-    },
-    {
-      "file": "colab/F02-colab.ipynb",
-      "sha256": "de7520c197de83e17fa522c8f747fbc55f1993b434476b870a1522401d297be1"
-    },
-    {
-      "file": "COLAB_LINKS.md",
-      "sha256": "22f9ff979eb9fb1dc354fd17444aecf059a2c44bf602ec41d20bc1fc4b04c5af"
-    },
-    {
-      "file": "docs/ACCEPTANCE.md",
-      "sha256": "727cac764b488b3aaac2e3b77c29da44f3626a0e7cf9ead9935bb40cf2449c3b"
+      "file": "docs/PLATFORM_BOUNDARY_GUARD_zh-CN.md",
+      "sha256": "9780210ebbede539d0389fa3ca50cd6ca9dae612684cb3b80e0c2f1198229345"
     },
     {
       "file": "docs/RIGHTS_REVIEW.md",
@@ -47,7 +35,7 @@
     },
     {
       "file": "docs/RUNNING.md",
-      "sha256": "771293b05ab8e29754130b8ce83425483b4a2de366b2ce7bf15d1f5f1c5ddae8"
+      "sha256": "b5debf1921b0589dde46f45d7a7796b8a4167087fd278ecb73eeb394f302a246"
     },
     {
       "file": "docs/SKILL_ONLINE_ACCEPTANCE.md",
@@ -59,51 +47,19 @@
     },
     {
       "file": "docs/SKILL_STATUS.md",
-      "sha256": "fb444309a2378fe2f1f0442c0c8fb1645f071014c009586269d6648a7552e0c9"
+      "sha256": "16ca0d5052cb4fdabfb4cbac9f4aedf3c662b9d998dca22df7016af6a28aade7"
     },
     {
       "file": "docs/STATUS.md",
-      "sha256": "aa0b561bf42088b8443395c9d2468c98cf4877d7bf5e3abf5207681ffab4d08e"
+      "sha256": "b5debf1921b0589dde46f45d7a7796b8a4167087fd278ecb73eeb394f302a246"
     },
     {
-      "file": "docs/VALIDATION_SUMMARY.json",
-      "sha256": "64b2ce0e3797f7ce6a4a7bef22f28ad92658a4f321f773ae40ee54e2cc233268"
-    },
-    {
-      "file": "github-entrypoints.json",
-      "sha256": "5ca1df57ae51344b0c62a16151a4067eb8289dc5dfad15345b1311d9cb70f799"
-    },
-    {
-      "file": "LEGACY_FIVE_LESSONS.md",
-      "sha256": "6fa45be160b9fadb0cdeabf62f8579e2e1117cf7f841f5b1bda150b1edb1c25a"
-    },
-    {
-      "file": "lessons/A01.ipynb",
-      "sha256": "cca0a004494108bdb6c63bd506e58f5a37b1394932d25df6d151c1bcdabbc0be"
-    },
-    {
-      "file": "lessons/A02.ipynb",
-      "sha256": "77a9e6a3b0b8f0615be343e484065647625ba45e4d5419b4f0597d6f5cf5846e"
-    },
-    {
-      "file": "lessons/B03.ipynb",
-      "sha256": "b70273afd6adc15a7b94d4edbc178ede970e0ace735d69d8238ccd34d18ab03e"
-    },
-    {
-      "file": "lessons/F01.ipynb",
-      "sha256": "2959708a4f432136bbdbef2c6afb147d514b1e42b3fd0f9885b7fca6338e71f0"
-    },
-    {
-      "file": "lessons/F02.ipynb",
-      "sha256": "426699d74613f8477a40234e8ddaf151ae3e534ce7b04275c2294e384c8b6d46"
-    },
-    {
-      "file": "publication-target.json",
-      "sha256": "da12cda02c1f65f0d0421e9a300275cea97f9d5a0e592a781a43f723cd1531d4"
+      "file": "PLATFORM_ENTRY.json",
+      "sha256": "7ed7f0e099f0c105605932dc4cfceda3ab648456590562583c262e8ad95ffc94"
     },
     {
       "file": "README.md",
-      "sha256": "32f536513ee19b42b224aa4041f9cec4d0801ac001a3e52e01f99dfe4870157e"
+      "sha256": "3bcd95b0719c39ad8234cdf40102e3acdbaa11e17489e8e592de64a290e1164e"
     },
     {
       "file": "skills/table-fitting-residuals/caffeine-calibration.csv",
@@ -174,8 +130,28 @@
       "sha256": "29ca6d5347165cd9e8c1c1cecdc225ded6b0489fe18d8d6efcc70585290efcd3"
     },
     {
-      "file": "tools/configure_links.py",
-      "sha256": "1f7c90fc4a36b27348be7e531fcbf24e7974d48c6d8a2bb36b7b91f14e8df048"
+      "file": "START_HERE_zh-CN.md",
+      "sha256": "43a61d734684744cc17094bdfbcead5831dd28e6d2701abd4ad814377cf993e8"
+    },
+    {
+      "file": "tests/guard/test_platform_boundary.py",
+      "sha256": "8ccdc03530c7ee569b7dae2d008a19d48047fc394cb8f493ff380876fe0dde10"
+    },
+    {
+      "file": "tests/guard/test_workflow_gate.py",
+      "sha256": "49ac1e8b1cb27ecd20df3137ea1f756f278deb9a66dd5b09c9ba148fc0f805b4"
+    },
+    {
+      "file": "tools/check_platform_boundary.py",
+      "sha256": "98cb75f0d287973a27c078a61adc1a79ea95d2c9557f76abc2a2ad3560eef526"
+    },
+    {
+      "file": "tools/package_checked_skill.py",
+      "sha256": "12371090a0fca0c87d5eab0ae4b8641261ac7752a8e01e85f26fc4f951883da3"
+    },
+    {
+      "file": "tools/publish_checked_skill.py",
+      "sha256": "641f9bdfaff46807941f33002761079b3eaeee4ad5fe256e0c28a6fb161bb652"
     }
   ]
 }

@@ -1,0 +1,12 @@
+{
+  "schema": "adp-current-entry-v1",
+  "platform": "AI4OrgChem-data-processing",
+  "version": "0.1.0",
+  "canonical_url": "https://github.com/CCcolab/AI4OrgChem-data-processing/blob/main/START_HERE_zh-CN.md",
+  "entry_file": "START_HERE_zh-CN.md",
+  "organization": "one_page_per_skill",
+  "reading": "GitHub",
+  "interactive_runtime": ["Colab", "local Jupyter"],
+  "legacy_web_enabled": false,
+  "visibility": "PRIVATE"
+}

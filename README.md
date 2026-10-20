@@ -1,5 +1,7 @@
 # AI4OrgChem-data-processing · Agent Skills
 
+**[统一使用入口](https://github.com/CCcolab/AI4OrgChem-data-processing/blob/main/START_HERE_zh-CN.md)**
+
 **在线了解我们创建的Agent Skill，下载Notebook，在Colab或本地实际调用。** 每个Skill使用一页说明与一份可运行.ipynb，提供功能、知识和数据出处、运行环境、调用模板、参数、结果解释及下载。
 
 本仓库保持**私有**，需要已授权的GitHub账号访问。GitHub页面用于阅读；Colab提供Python运行环境。模型实际调用由你的DeepSeek凭据授权，数值由白名单程序计算；不使用OpenAI API或SDK。

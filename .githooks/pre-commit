@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+ROOT=$(git rev-parse --show-toplevel)
+if [ -x "$ROOT/.venv/Scripts/python.exe" ]; then PY="$ROOT/.venv/Scripts/python.exe"; else PY=python; fi
+exec "$PY" -B "$ROOT/tools/check_platform_boundary.py" --root "$ROOT" --scope staged

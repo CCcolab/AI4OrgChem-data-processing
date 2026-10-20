@@ -10,4 +10,4 @@
 | 其余Skill | 尚未由本样板验收 |
 | 新RHF | NOT_EXECUTED／未验收 |
 
-详见[本次在线复验](SKILL_ONLINE_ACCEPTANCE.md)和[运行与下载说明](SKILL_RUNNING.md)。本轮状态更新不改变已测试的Notebook与内嵌资源。原五课保留为历史原型，当前以一页一个Agent Skill组织。仓库保持私有，不含密钥、私有数据库或原始私有验收附件。
+详见[本次在线复验](SKILL_ONLINE_ACCEPTANCE.md)和[运行与下载说明](SKILL_RUNNING.md)。本轮状态更新不改变已测试的Notebook与内嵌资源。当前以一页一个Agent Skill组织，统一入口为根目录START_HERE_zh-CN.md。仓库保持私有，不含密钥、私有数据库或原始私有验收附件。
