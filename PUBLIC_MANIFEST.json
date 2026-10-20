@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "visibility": "PRIVATE",
   "new_rhf": "NOT_EXECUTED",
-  "legacy_course_commit": "6fcc28bc8253e8ebe28f837108ec8af319e71d76",
+  "legacy_course_commit": "b9233ab89d802f06b966f516a2df5964f52f09d7",
   "files": [
     {
       "file": ".gitattributes",
@@ -35,7 +35,7 @@
     },
     {
       "file": "COLAB_LINKS.md",
-      "sha256": "4b4327e34f270b0dd033e33a0edd705c2d7de0cf467e80b4b3d435818db8343c"
+      "sha256": "3a39c4e5b7dc8aa01856ab2ff3cc1bd2108a1ccf51b107b007174d4ecf15bf4b"
     },
     {
       "file": "docs/ACCEPTANCE.md",
@@ -71,11 +71,11 @@
     },
     {
       "file": "github-entrypoints.json",
-      "sha256": "a9f15b8a999c6f6317c8f030d3735a3d5d4f73d97533615abacae27198a005a6"
+      "sha256": "ad09cb8d7691a7fb667a5ab5520a8a1b065a1393891c63df9f053fe1abce6c1e"
     },
     {
       "file": "LEGACY_FIVE_LESSONS.md",
-      "sha256": "ca06cd9682bfff2719b73c795616222bae2a4c0af21801307888ff3addffe67d"
+      "sha256": "2aa7efda390deb9ba18293a3f924cd4d1149386e0e5ea0033271e42cd186d362"
     },
     {
       "file": "lessons/A01.ipynb",
@@ -99,7 +99,7 @@
     },
     {
       "file": "publication-target.json",
-      "sha256": "a2ebe1e409a6a7eabd338dd3a7d50c53e94256793eba993ab3b491c3b2c7dbf8"
+      "sha256": "71ecec15f75e19b85bf87c81f84df6535c9301435d37917324c07727b37e25b7"
     },
     {
       "file": "README.md",

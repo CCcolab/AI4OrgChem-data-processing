@@ -1,7 +1,7 @@
 {
   "owner": "CCcolab",
   "repo": "AI4OrgChem-data-processing",
-  "ref": "6fcc28bc8253e8ebe28f837108ec8af319e71d76",
-  "remote_validation": "PASS_PRIOR_GITHUB_ENTRY_WORKFLOW_SAME_COMPUTATION_STATUS_UPDATE",
+  "ref": "b9233ab89d802f06b966f516a2df5964f52f09d7",
+  "remote_validation": "WEB_SERVICE_REMOVED_CODE_AND_HASH_VERIFIED_CLOUD_NOT_RETESTED",
   "last_executed_course_commit": "487fe4b8e4cf60d56706bcf28d59d726956ddafa"
 }

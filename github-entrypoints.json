@@ -2,41 +2,41 @@
   {
     "lesson": "A01",
     "path": "colab/A01-colab.ipynb",
-    "github_read": "https://github.com/CCcolab/AI4OrgChem-data-processing/blob/6fcc28bc8253e8ebe28f837108ec8af319e71d76/lessons/A01.ipynb",
-    "colab": "https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/6fcc28bc8253e8ebe28f837108ec8af319e71d76/colab/A01-colab.ipynb",
-    "remote_validation": "PASS_PRIOR_GITHUB_ENTRY_WORKFLOW_SAME_COMPUTATION_STATUS_UPDATE",
+    "github_read": "https://github.com/CCcolab/AI4OrgChem-data-processing/blob/b9233ab89d802f06b966f516a2df5964f52f09d7/lessons/A01.ipynb",
+    "colab": "https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/b9233ab89d802f06b966f516a2df5964f52f09d7/colab/A01-colab.ipynb",
+    "remote_validation": "WEB_SERVICE_REMOVED_CODE_AND_HASH_VERIFIED_CLOUD_NOT_RETESTED",
     "last_executed_course_commit": "487fe4b8e4cf60d56706bcf28d59d726956ddafa"
   },
   {
     "lesson": "A02",
     "path": "colab/A02-colab.ipynb",
-    "github_read": "https://github.com/CCcolab/AI4OrgChem-data-processing/blob/6fcc28bc8253e8ebe28f837108ec8af319e71d76/lessons/A02.ipynb",
-    "colab": "https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/6fcc28bc8253e8ebe28f837108ec8af319e71d76/colab/A02-colab.ipynb",
-    "remote_validation": "PASS_PRIOR_GITHUB_ENTRY_WORKFLOW_SAME_COMPUTATION_STATUS_UPDATE",
+    "github_read": "https://github.com/CCcolab/AI4OrgChem-data-processing/blob/b9233ab89d802f06b966f516a2df5964f52f09d7/lessons/A02.ipynb",
+    "colab": "https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/b9233ab89d802f06b966f516a2df5964f52f09d7/colab/A02-colab.ipynb",
+    "remote_validation": "WEB_SERVICE_REMOVED_CODE_AND_HASH_VERIFIED_CLOUD_NOT_RETESTED",
     "last_executed_course_commit": "487fe4b8e4cf60d56706bcf28d59d726956ddafa"
   },
   {
     "lesson": "B03",
     "path": "colab/B03-colab.ipynb",
-    "github_read": "https://github.com/CCcolab/AI4OrgChem-data-processing/blob/6fcc28bc8253e8ebe28f837108ec8af319e71d76/lessons/B03.ipynb",
-    "colab": "https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/6fcc28bc8253e8ebe28f837108ec8af319e71d76/colab/B03-colab.ipynb",
-    "remote_validation": "PASS_PRIOR_GITHUB_ENTRY_WORKFLOW_SAME_COMPUTATION_STATUS_UPDATE",
+    "github_read": "https://github.com/CCcolab/AI4OrgChem-data-processing/blob/b9233ab89d802f06b966f516a2df5964f52f09d7/lessons/B03.ipynb",
+    "colab": "https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/b9233ab89d802f06b966f516a2df5964f52f09d7/colab/B03-colab.ipynb",
+    "remote_validation": "WEB_SERVICE_REMOVED_CODE_AND_HASH_VERIFIED_CLOUD_NOT_RETESTED",
     "last_executed_course_commit": "487fe4b8e4cf60d56706bcf28d59d726956ddafa"
   },
   {
     "lesson": "F01",
     "path": "colab/F01-colab.ipynb",
-    "github_read": "https://github.com/CCcolab/AI4OrgChem-data-processing/blob/6fcc28bc8253e8ebe28f837108ec8af319e71d76/lessons/F01.ipynb",
-    "colab": "https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/6fcc28bc8253e8ebe28f837108ec8af319e71d76/colab/F01-colab.ipynb",
-    "remote_validation": "PASS_PRIOR_GITHUB_ENTRY_WORKFLOW_SAME_COMPUTATION_STATUS_UPDATE",
+    "github_read": "https://github.com/CCcolab/AI4OrgChem-data-processing/blob/b9233ab89d802f06b966f516a2df5964f52f09d7/lessons/F01.ipynb",
+    "colab": "https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/b9233ab89d802f06b966f516a2df5964f52f09d7/colab/F01-colab.ipynb",
+    "remote_validation": "WEB_SERVICE_REMOVED_CODE_AND_HASH_VERIFIED_CLOUD_NOT_RETESTED",
     "last_executed_course_commit": "487fe4b8e4cf60d56706bcf28d59d726956ddafa"
   },
   {
     "lesson": "F02",
     "path": "colab/F02-colab.ipynb",
-    "github_read": "https://github.com/CCcolab/AI4OrgChem-data-processing/blob/6fcc28bc8253e8ebe28f837108ec8af319e71d76/lessons/F02.ipynb",
-    "colab": "https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/6fcc28bc8253e8ebe28f837108ec8af319e71d76/colab/F02-colab.ipynb",
-    "remote_validation": "PASS_PRIOR_GITHUB_ENTRY_WORKFLOW_SAME_COMPUTATION_STATUS_UPDATE",
+    "github_read": "https://github.com/CCcolab/AI4OrgChem-data-processing/blob/b9233ab89d802f06b966f516a2df5964f52f09d7/lessons/F02.ipynb",
+    "colab": "https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/b9233ab89d802f06b966f516a2df5964f52f09d7/colab/F02-colab.ipynb",
+    "remote_validation": "WEB_SERVICE_REMOVED_CODE_AND_HASH_VERIFIED_CLOUD_NOT_RETESTED",
     "last_executed_course_commit": "487fe4b8e4cf60d56706bcf28d59d726956ddafa"
   }
 ]
