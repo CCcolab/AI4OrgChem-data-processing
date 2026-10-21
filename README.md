@@ -2,33 +2,36 @@
 
 **[统一使用入口](https://github.com/CCcolab/AI4OrgChem-data-processing/blob/main/START_HERE_zh-CN.md)**
 
-从具体化学问题选择Skill，阅读知识与数据来源，在Notebook中修改参数并实际调用工具，核对结果后下载。页面同时提供教学说明和可运行.ipynb。
+按有机化学专业应用选择Skill。先读知识和数据来源，再取得Notebook，在自己的Colab或本地Jupyter实际调用工具，解释并保存结果。
 
-导航采用7个专业应用分类和1个共用支持分类；本页按分类显示已经可以使用的页面，空分类不生成栏目或占位链接。[分类与页面索引](NAVIGATION.json)。
+导航沿用既定的**7个专业应用分类＋1个共用支持分类**，下面只列实际提供的Skill页面。分类名称与Skill调用名固定，页面简称用于阅读。
+
+| 入口 | 包含什么 |
+| --- | --- |
+| 教学与来源 | 学习目标、必要知识、具体参考章节与数据出处、示例图表和结果解释 |
+| Notebook程序 | 获取原生.ipynb的专用入口，提供Notebook ZIP和文件校验 |
+| 运行与下载 | 运行环境、凭据配置、调用模板与参数、Colab操作、保存和结果下载 |
 
 ## 有机分子结构与身份识别
 
-| Skill | 教学与来源 | Notebook | 运行与下载 |
+| Skill | 教学与来源 | Notebook程序 | 运行与下载 |
 | --- | --- | --- | --- |
-| 分析有机分子｜SMILES与RDKit | [介绍](skills/organic-smiles-rdkit/README.md) | [阅读及下载](skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb) | [操作指南](skills/organic-smiles-rdkit/DOWNLOADS.md) |
+| **SMILES 与 RDKit** | [知识与示例](skills/organic-smiles-rdkit/TEACHING.md) | [获取.ipynb](skills/organic-smiles-rdkit/NOTEBOOK.md) | [Colab操作与结果下载](skills/organic-smiles-rdkit/RUNNING.md) |
 
 ## 有机分析与实验数据处理
 
-| Skill | 教学与来源 | Notebook | 运行与下载 |
+| Skill | 教学与来源 | Notebook程序 | 运行与下载 |
 | --- | --- | --- | --- |
-| 表格拟合与残差分析 | [介绍](skills/table-fitting-residuals/README.md) | [阅读及下载](skills/table-fitting-residuals/table-fitting-residuals.ipynb) | [操作指南](docs/SKILL_RUNNING.md) |
+| **表格拟合与残差分析** | [知识与示例](skills/table-fitting-residuals/TEACHING.md) | [获取.ipynb](skills/table-fitting-residuals/NOTEBOOK.md) | [Colab操作与结果下载](skills/table-fitting-residuals/RUNNING.md) |
 
-## 如何运行
+## 开始使用
 
-仓库保持私有，使用已授权GitHub账号阅读和下载。点击Notebook文件页Download raw file，再到[Google Colab](https://colab.research.google.com/)选择“文件→上传笔记本”，保存自己的副本。按各页配置同名Colab Secret或本地.env，代码中不填写密钥值。GitHub提供阅读和下载；Colab或本地Jupyter执行程序。
+1. 进入“教学与来源”，确认问题、数据和知识出处。
+2. 进入“Notebook程序”，下载ZIP并解压得到.ipynb；也可使用原生文件页的Download raw file按钮。
+3. 在[Google Colab](https://colab.research.google.com/)选择“文件→上传笔记本”，保存自己的副本；按“运行与下载”配置Secret、修改参数、运行并下载结果。
 
-原生Notebook通过文件菜单下载；结果ZIP按对应运行指南下载。保存的数值和图表供阅读，新结果以你本次真实运行和复核为准。[运行与下载说明](docs/SKILL_RUNNING.md)。
+仓库保持私有，阅读和下载需使用已获授权的GitHub账号。Colab登录自己的Google账号；代码中不填写密钥值。GitHub页面用于学习与材料获取，计算在Colab或自己的Jupyter中进行。
 
 ## 参考资料说明
 
-| 页面 | 知识和数据依据 |
-| --- | --- |
-| SMILES与RDKit | [Daylight SMILES](https://www.daylight.com/dayhtml/doc/theory/theory.smiles.html)、[SMARTS](https://www.daylight.com/dayhtml/doc/theory/theory.smarts.html)、[RDKit官方文档](https://www.rdkit.org/docs/GettingStartedInPython.html)；课程Lecture 3作背景，样本为自主组织的教学结构，详见[逐项来源](skills/organic-smiles-rdkit/sources.json)及[数据说明](skills/organic-smiles-rdkit/data-provenance.json) |
-| 表格拟合 | David Harvey《Analytical Chemistry 2.1》12.5节Exercise 12.5.2的咖啡因HPLC校准表；方法引用NIST统计手册，详见[知识来源](skills/table-fitting-residuals/sources.json)及[数据说明](skills/table-fitting-residuals/data-provenance.json) |
-
-每页区分文献知识、教学样本和程序结果，引用具体章节和链接。跟随操作与独立解释分别评价，结果适用范围见各页。[来源与许可说明](docs/RIGHTS_REVIEW.md)。
+SMILES与RDKit依据Daylight SMILES/SMARTS和RDKit官方文档，AI4Chem Lecture 3作背景，数据为自主组织的教学结构。表格拟合使用David Harvey《Analytical Chemistry 2.1》12.5节Exercise 12.5.2咖啡因HPLC校准表，方法参考NIST统计手册。具体章节、链接、归属和数据处理见各Skill“教学与来源”。[来源与许可](docs/RIGHTS_REVIEW.md)。

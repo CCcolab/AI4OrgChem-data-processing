@@ -47,7 +47,7 @@
     },
     {
       "file": "docs/SKILL_RUNNING.md",
-      "sha256": "99b097a1ac2459ed863ea9901f8311618f06d0ace78f00c7163234d9bf7d0a7d"
+      "sha256": "573977c459845187978381e93f8760fe3e42d530d959133797a62c7939e621ff"
     },
     {
       "file": "docs/SKILL_STATUS.md",
@@ -59,7 +59,7 @@
     },
     {
       "file": "NAVIGATION.json",
-      "sha256": "f37fdd88652122b70a1b085c307cecef9954efcf919e7b9654a89bb5362c8581"
+      "sha256": "be92e66fad2cbc5500d97602415e26fa2023a6b58d1f14d8232beaf85f9be9b6"
     },
     {
       "file": "PLATFORM_ENTRY.json",
@@ -67,7 +67,7 @@
     },
     {
       "file": "README.md",
-      "sha256": "cd9c300767ff3d6ea27bcebbc2771cf34c5d988ed6c3bb9f83b0a0825fa1c36d"
+      "sha256": "90ac9e18030e7a8e2eba03f5d620dfb5763cd567e13bba617644d418aec85328"
     },
     {
       "file": "skills/organic-smiles-rdkit/CONFIGURATION_zh-CN.md",
@@ -83,7 +83,7 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/DOWNLOADS.md",
-      "sha256": "779a378c4677f9de9823a314ac03675bda0595e4cc9d28bc45d05fcebc51834c"
+      "sha256": "177c6288863aa55fb7300f6b4ee9137660fabd421e91d79f0598f8816e79a5d7"
     },
     {
       "file": "skills/organic-smiles-rdkit/example-molecules.png",
@@ -106,8 +106,16 @@
       "sha256": "87bbb47ec0c847c8811c98ded10d099d8879dbb9bbbba5cec624cfea10e866c8"
     },
     {
+      "file": "skills/organic-smiles-rdkit/NOTEBOOK.md",
+      "sha256": "266f2ab0e6ec389656e2f9231c5f15f82a6e07a646d44a21901da6101d8c08c0"
+    },
+    {
       "file": "skills/organic-smiles-rdkit/organic-smiles-rdkit-materials.zip",
       "sha256": "b8ac4e9a73230ad50e3653d8c553891730143f3e952d1da01c1a337c587671fc"
+    },
+    {
+      "file": "skills/organic-smiles-rdkit/organic-smiles-rdkit-notebook.zip",
+      "sha256": "81fca01151baa687776118934286de8ece59f3f27b380c7d0ac880eea181fea9"
     },
     {
       "file": "skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb",
@@ -132,6 +140,10 @@
     {
       "file": "skills/organic-smiles-rdkit/resource-manifest.json",
       "sha256": "fda5938aa8825d2145387f376626725935f9b0f2c697d00a0ff9086d4d05cb04"
+    },
+    {
+      "file": "skills/organic-smiles-rdkit/RUNNING.md",
+      "sha256": "74f05d8f98ea24e904f9210de53b0195782b1706b890c341d16a4ac03db928d8"
     },
     {
       "file": "skills/organic-smiles-rdkit/saved-output-provenance.json",
@@ -162,6 +174,10 @@
       "sha256": "73254171924f3f5e7382b0e7c089f488639f0135d2ec728054e6ded37fbc00e8"
     },
     {
+      "file": "skills/organic-smiles-rdkit/TEACHING.md",
+      "sha256": "3d5426ba6ad2d1fbadc5f36aed6777ad01f769b68140f26a1ad63d85529118ad"
+    },
+    {
       "file": "skills/table-fitting-residuals/caffeine-calibration.csv",
       "sha256": "e1ad5d64e7fa286dc7b3a5c871579710e9245280ccf09bd087e917e3d63576db"
     },
@@ -190,6 +206,10 @@
       "sha256": "fa7d3ec5ade6a267c4ef157ac227aec70afa42f50c2b037ce640c81d704d4153"
     },
     {
+      "file": "skills/table-fitting-residuals/NOTEBOOK.md",
+      "sha256": "e977aab04ebaf820b09d88bf52107bc86c7c30a5e476155e8ca4491533c6c9f4"
+    },
+    {
       "file": "skills/table-fitting-residuals/parameters.json",
       "sha256": "0ac042b8a69f0d83d43f39b71522e5d13515e58c9b0da724a7e6c2231cff7db9"
     },
@@ -204,6 +224,10 @@
     {
       "file": "skills/table-fitting-residuals/resource-manifest.json",
       "sha256": "262925e08dcb2b15a50618f960da21dd49e43c17689ce08b83eac35af739b44a"
+    },
+    {
+      "file": "skills/table-fitting-residuals/RUNNING.md",
+      "sha256": "19602a37fe0ac94bcaedfcf5475547177a39a2a4be5714b2e9af4bef79b56b52"
     },
     {
       "file": "skills/table-fitting-residuals/saved-output-provenance.json",
@@ -222,6 +246,10 @@
       "sha256": "82f71b267054287f3d1a21b98ae738c61eebe36d85c56f16c60e18732f62ba96"
     },
     {
+      "file": "skills/table-fitting-residuals/table-fitting-residuals-notebook.zip",
+      "sha256": "2772af97feaa63c83b57ac17b2239c5ce9beebef4ce2fe9bb64e41f2327a5622"
+    },
+    {
       "file": "skills/table-fitting-residuals/table-fitting-residuals.ipynb",
       "sha256": "a8f35998fc4a957c9e059475fc3cc07be0693060e80b02d439b3a55600f9a099"
     },
@@ -230,8 +258,12 @@
       "sha256": "29ca6d5347165cd9e8c1c1cecdc225ded6b0489fe18d8d6efcc70585290efcd3"
     },
     {
+      "file": "skills/table-fitting-residuals/TEACHING.md",
+      "sha256": "81f8f7462ef9db776159e3d0ee40fed518cbbe9e27b157a5d001d6b064869062"
+    },
+    {
       "file": "START_HERE_zh-CN.md",
-      "sha256": "c6561d07b4a3dab461c1e14bc0d551d73d8fabb9c1f48e207ed516e7b87302fe"
+      "sha256": "efe5d3630183d87b633e38b6bbe9845a7ae1147b26bdc5fc17e526308223e599"
     },
     {
       "file": "tests/guard/test_platform_boundary.py",
@@ -239,7 +271,7 @@
     },
     {
       "file": "tests/guard/test_skill_navigation.py",
-      "sha256": "846daa696faed8c9914b71632b8351ef93fbb32ab8f7f4433282ee6e2a243247"
+      "sha256": "2685aff111a7d1cce08257538d36102e480a7b3d14880a4ec242f32f0498ae73"
     },
     {
       "file": "tests/guard/test_workflow_gate.py",

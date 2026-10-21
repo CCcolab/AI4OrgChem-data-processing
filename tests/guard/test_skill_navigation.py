@@ -41,9 +41,61 @@ class SkillNavigationTests(unittest.TestCase):
             for cat in nav['categories']:
                 self.assertEqual('## ' + cat['title'] in text, bool(cat['skills']))
             for skill in nav['skills']:
-                for key in ['page', 'notebook', 'run']:
+                for key in ['page', 'notebook_entry', 'run']:
                     self.assertTrue((ROOT / skill[key]).is_file())
                     self.assertIn(skill[key], text)
+
+    def test_canonical_names_and_professional_categories(self):
+        nav = read_json(ROOT / 'NAVIGATION.json')
+        self.assertEqual([c['title'] for c in nav['categories']], [
+            '有机分子结构与身份识别', '有机分析与实验数据处理', '物理有机与能量分析',
+            '计算有机化学与电子结构', '分子结构优化与多态比较', '化学信息学与分子设计',
+            '化学实验设计与优化', '共用运行支持'])
+        skills = {s['id']: s for s in nav['skills']}
+        self.assertEqual(skills['organic-smiles-rdkit']['title'], 'SMILES 与 RDKit')
+        self.assertEqual(skills['organic-smiles-rdkit']['category'], 'organic-structure')
+        self.assertEqual(skills['table-fitting-residuals']['category'], 'organic-analysis')
+        self.assertEqual(skills['table-fitting-residuals']['title'], '表格拟合与残差分析')
+
+    def test_teaching_and_running_have_separate_responsibilities(self):
+        for skill in read_json(ROOT / 'NAVIGATION.json')['skills']:
+            teaching = (ROOT / skill['page']).read_text('utf-8')
+            running = (ROOT / skill['run']).read_text('utf-8')
+            self.assertTrue(skill['page'].endswith('/TEACHING.md'))
+            self.assertTrue(skill['run'].endswith('/RUNNING.md'))
+            self.assertIn('sources.json', teaching)
+            self.assertIn('data-provenance.json', teaching)
+            self.assertIn('## 学习目标', teaching)
+            self.assertIn('## 自测', teaching)
+            self.assertNotIn('DEEPSEEK_API_KEY', teaching)
+            for term in ['DEEPSEEK_API_KEY', '## 3. 参数与调用模板', '## 5. 保存Notebook与下载结果', '文件 → 上传笔记本', 'Download raw file']:
+                if term == 'Download raw file':
+                    self.assertIn(term, (ROOT / skill['notebook_entry']).read_text('utf-8'))
+                else:
+                    self.assertIn(term, running)
+
+    def test_notebook_archives_are_exact_native_notebooks(self):
+        for skill in read_json(ROOT / 'NAVIGATION.json')['skills']:
+            notebook = ROOT / skill['notebook']
+            with zipfile.ZipFile(ROOT / skill['notebook_zip']) as archive:
+                self.assertEqual(archive.namelist(), [notebook.name])
+                self.assertEqual(archive.read(notebook.name), notebook.read_bytes())
+            nb = read_json(notebook)
+            self.assertEqual(nb['nbformat'], 4)
+            self.assertEqual(len({c['id'] for c in nb['cells']}), len(nb['cells']))
+            self.assertTrue(all(c['cell_type'] in ('markdown','code','raw') for c in nb['cells']))
+
+    def test_homepage_notebook_links_use_reliable_retrieval_page(self):
+        nav = read_json(ROOT / 'NAVIGATION.json')
+        for name in ['README.md', 'START_HERE_zh-CN.md']:
+            text = (ROOT / name).read_text('utf-8')
+            links = re.findall(r'\[[^\]]+\]\(([^)]+)\)', text)
+            self.assertFalse(any(link.endswith('.ipynb') for link in links))
+        for skill in nav['skills']:
+            entry = (ROOT / skill['notebook_entry']).read_text('utf-8')
+            self.assertIn('https://github.com/CCcolab/AI4OrgChem-data-processing/raw/refs/heads/main/' + skill['notebook_zip'], entry)
+            self.assertIn('https://colab.research.google.com/', entry)
+            self.assertNotIn('colab.research.google.com/drive/', entry)
 
     def test_markdown_local_links_resolve(self):
         for path in ROOT.rglob('*.md'):

@@ -1,9 +1,9 @@
 {
-  "schema": "adp-professional-navigation-v1",
+  "schema": "adp-professional-navigation-v2",
   "render_empty_categories": false,
   "categories": [
     {
-      "id": "structure",
+      "id": "organic-structure",
       "title": "有机分子结构与身份识别",
       "kind": "professional_application",
       "skills": [
@@ -11,7 +11,7 @@
       ]
     },
     {
-      "id": "analysis",
+      "id": "organic-analysis",
       "title": "有机分析与实验数据处理",
       "kind": "professional_application",
       "skills": [
@@ -19,37 +19,37 @@
       ]
     },
     {
-      "id": "physical-energy",
+      "id": "physical-organic",
       "title": "物理有机与能量分析",
       "kind": "professional_application",
       "skills": []
     },
     {
-      "id": "electronic",
+      "id": "computational-organic",
       "title": "计算有机化学与电子结构",
       "kind": "professional_application",
       "skills": []
     },
     {
-      "id": "optimization-states",
+      "id": "structure-state-response",
       "title": "分子结构优化与多态比较",
       "kind": "professional_application",
       "skills": []
     },
     {
-      "id": "cheminformatics",
+      "id": "cheminformatics-design",
       "title": "化学信息学与分子设计",
       "kind": "professional_application",
       "skills": []
     },
     {
-      "id": "experiment-design",
+      "id": "synthesis-experiment-optimization",
       "title": "化学实验设计与优化",
       "kind": "professional_application",
       "skills": []
     },
     {
-      "id": "support",
+      "id": "cross-domain-runtime",
       "title": "共用运行支持",
       "kind": "shared_support",
       "skills": []
@@ -58,19 +58,25 @@
   "skills": [
     {
       "id": "organic-smiles-rdkit",
-      "title": "分析有机分子｜SMILES与RDKit",
-      "category": "structure",
-      "page": "skills/organic-smiles-rdkit/README.md",
+      "title": "SMILES 与 RDKit",
+      "canonical_skill_title": "分析有机分子｜SMILES 与 RDKit",
+      "category": "organic-structure",
+      "page": "skills/organic-smiles-rdkit/TEACHING.md",
       "notebook": "skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb",
-      "run": "skills/organic-smiles-rdkit/DOWNLOADS.md"
+      "notebook_entry": "skills/organic-smiles-rdkit/NOTEBOOK.md",
+      "notebook_zip": "skills/organic-smiles-rdkit/organic-smiles-rdkit-notebook.zip",
+      "run": "skills/organic-smiles-rdkit/RUNNING.md"
     },
     {
       "id": "table-fitting-residuals",
       "title": "表格拟合与残差分析",
-      "category": "analysis",
-      "page": "skills/table-fitting-residuals/README.md",
+      "canonical_skill_title": "表格拟合与残差分析",
+      "category": "organic-analysis",
+      "page": "skills/table-fitting-residuals/TEACHING.md",
       "notebook": "skills/table-fitting-residuals/table-fitting-residuals.ipynb",
-      "run": "docs/SKILL_RUNNING.md"
+      "notebook_entry": "skills/table-fitting-residuals/NOTEBOOK.md",
+      "notebook_zip": "skills/table-fitting-residuals/table-fitting-residuals-notebook.zip",
+      "run": "skills/table-fitting-residuals/RUNNING.md"
     }
   ]
 }
