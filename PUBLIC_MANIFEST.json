@@ -138,6 +138,10 @@
       "sha256": "90aa5f4528f7dfdbcb739c0209a133053b5dc22bc6f598cc855681c792303a39"
     },
     {
+      "file": "skills/organic-smiles-rdkit/SHA256SUMS.txt",
+      "sha256": "5d2e3fb3607979bb7d60851c88165cb367bd3baafb5c3b17f0491463e634f490"
+    },
+    {
       "file": "skills/organic-smiles-rdkit/SKILL.md",
       "sha256": "1ae51f1e60940447a44501d1854cce8a3743dffcb03e5c3c9878d48ad3ff015f"
     },
@@ -235,7 +239,7 @@
     },
     {
       "file": "tests/guard/test_skill_navigation.py",
-      "sha256": "59f24dbb85983a25e34fd6ed0da706e17b4ccba9a976ce25480cffa9f2e50842"
+      "sha256": "846daa696faed8c9914b71632b8351ef93fbb32ab8f7f4433282ee6e2a243247"
     },
     {
       "file": "tests/guard/test_workflow_gate.py",

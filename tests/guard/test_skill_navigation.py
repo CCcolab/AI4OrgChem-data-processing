@@ -132,7 +132,8 @@ class SkillNavigationTests(unittest.TestCase):
     def test_full_file_inventory_and_sha256(self):
         manifest = read_json(ROOT / 'PUBLIC_MANIFEST.json')
         rows = manifest['files']
-        expected = {p.relative_to(ROOT).as_posix() for p in ROOT.rglob('*') if p.is_file() and not any(part.startswith('.') and part != '.gitattributes' and part != '.gitignore' and part not in ('.githooks', '.github') for part in p.relative_to(ROOT).parts) and p.name not in ('PUBLIC_MANIFEST.json', 'SHA256SUMS.txt') and '__pycache__' not in p.parts}
+        expected = {p.relative_to(ROOT).as_posix() for p in ROOT.rglob('*') if p.is_file() and not any(part.startswith('.') and part != '.gitattributes' and part != '.gitignore' and part not in ('.githooks', '.github') for part in p.relative_to(ROOT).parts) and p.relative_to(ROOT).as_posix() not in ('PUBLIC_MANIFEST.json', 'SHA256SUMS.txt') and '__pycache__' not in p.parts}
+        self.assertIn('skills/organic-smiles-rdkit/SHA256SUMS.txt', expected)
         self.assertEqual({r['file'] for r in rows}, expected)
         for row in rows:
             self.assertEqual(digest((ROOT / row['file']).read_bytes()), row['sha256'])
