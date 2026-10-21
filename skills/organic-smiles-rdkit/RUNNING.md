@@ -14,8 +14,12 @@
 
 实际调用顺序：写入并校验SKILL.md和工具 → 参数表单 → 读取凭据 → 运行skill_agent → Agent加载同一SKILL.md并发起白名单工具调用 → RDKit数值计算 → 输出和下载。skill_agent中的`skill=(root/'SKILL.md').read_text('utf-8')`及构造模型消息的代码都在准备单元源码中。
 
+### 1. 环境、Skill和工具源码准备
+
+点击下方展开第1个完整代码单元；运行Notebook时应先执行这一单元，再继续第2～6步。
+
 <details>
-<summary>展开单元1：完整环境准备、SKILL.md、样本和工具源码</summary>
+<summary>展开第1个代码单元：完整环境准备、SKILL.md、样本和工具源码</summary>
 
 ~~~~python
 # @title 1. 环境、Skill和工具源码准备（可展开查看完整源码）

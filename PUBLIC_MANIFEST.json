@@ -115,7 +115,7 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/organic-smiles-rdkit-materials.zip",
-      "sha256": "8f45bc3473979950e35d96131b373770e3e4f4e5847e9277e39e0e4cf94e8622"
+      "sha256": "c9be1da3c4d9151e68d77a5b60bbf9b14fd74d92d7a26909c3236f98eb6f4c9c"
     },
     {
       "file": "skills/organic-smiles-rdkit/organic-smiles-rdkit-notebook.zip",
@@ -131,7 +131,7 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/PUBLICATION_CHECK.json",
-      "sha256": "75923444f5fb1eb2891e9584a20fa033f909efb264ab8a634874d095db94a6e6"
+      "sha256": "5a6d5280da18df2667b8386d41afd709e6a8edfece8830bd5368c9bb6b459a6c"
     },
     {
       "file": "skills/organic-smiles-rdkit/README.md",
@@ -151,7 +151,7 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/RUNNING.md",
-      "sha256": "9c03ce30d3458a7bb1d921b18a945b6c6accf62f9c8c25793d145874a5e17eb4"
+      "sha256": "18fd9eda9fd00be4b47995787dee8cfd8e2b59e127158f39f1a489f11b4d9c09"
     },
     {
       "file": "skills/organic-smiles-rdkit/saved-output-provenance.json",
@@ -159,7 +159,7 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/SHA256SUMS.txt",
-      "sha256": "ac1631e68ac69b7f1c23c21def01642edb8ed4a32b9e8f29f48b0c38931965b8"
+      "sha256": "b6b2ab1efdf3fb25dee3607d42413ebc8b79ff50aede122064aec5b1b428041f"
     },
     {
       "file": "skills/organic-smiles-rdkit/SINGLE_PAGE_MANIFEST.json",
