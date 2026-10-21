@@ -4,7 +4,7 @@
 
 本页集中显示程序、实际参数案例与下载，不需要在多个说明页面间往返。 **执行和下载状态由程序回执、文件清单与实际ZIP决定。结果区先展示程序核验状态；模型原文单独展开，不能据其判断文件是否已生成。** GitHub展示代码与保存的输出，点击下面按钮在 Colab 云端实际执行。
 
-**[▶ 在 Colab 运行](https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/main/skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb)**
+**[▶ 在 Colab 运行](https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/4e5e17a7c883dced207830d8e66fc4179666a411/skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb)**
 
 <details>
 <summary>首次运行：账号授权、保存副本与操作步骤</summary>
