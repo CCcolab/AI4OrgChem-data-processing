@@ -4,10 +4,11 @@
     "title": "AI4Chem Lecture 3 — SMILES and RDKit",
     "url": "https://zzhenglab.github.io/ai4chem/lecture-03.html",
     "locator": "§1.1–1.7 SMILES；§2 quick start；§4 canonicalization/similarity；§5 pandas",
-    "supports": "课程背景和本地示例结构；本页独立编写解释及程序，不复制整页。",
+    "supports": "仅记录既有molecules.csv中source_id=course的教学输入取材；不作为SKILL.md指令或方法内容的基础。",
     "rights": "仅链接和少量结构事实；不推定整课有本项目再分发许可。",
     "reviewed_on": "2026-10-20",
-    "review_scope": "SELECTED_BODY_SECTIONS_AND_LOCAL_API_TESTS_NOT_WHOLE_TEXT"
+    "review_scope": "SELECTED_BODY_SECTIONS_AND_LOCAL_API_TESTS_NOT_WHOLE_TEXT",
+    "role": "TEACHING_INPUT_PROVENANCE_ONLY_NOT_SKILL_INSTRUCTION_BASIS"
   },
   {
     "id": "smiles",

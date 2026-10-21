@@ -68,5 +68,7 @@
       "url": "https://www.rdkit.org/docs/source/rdkit.DataStructs.cDataStructs.html",
       "locator": "TanimotoSimilarity bit-vector overload"
     }
-  ]
+  ],
+  "instruction_reference_scope": "Official method/API documents; curriculum selection inspiration is not instruction-content provenance.",
+  "course_reference_scope": "Retained only for existing teaching-input provenance; historical selected-section check is not a claim that Skill text derives from the course."
 }

@@ -25,7 +25,7 @@
 
 | 知识点 | 在有机化学中的用法 | 具体出处 |
 | --- | --- | --- |
-| SMILES连接、芳香性、电荷与组分 | 区分苯环、官能团、离子和盐，保留原始结构 | [Daylight SMILES §3.1–3.2](https://www.daylight.com/dayhtml/doc/theory/theory.smiles.html)；[AI4Chem Lecture 3 §1](https://zzhenglab.github.io/ai4chem/lecture-03.html) |
+| SMILES连接、芳香性、电荷与组分 | 区分苯环、官能团、离子和盐，保留原始结构 | [Daylight SMILES §3.1–3.2](https://www.daylight.com/dayhtml/doc/theory/theory.smiles.html) |
 | 同位素与局部立体编码 | 不凭@/@@直接命名R/S；不为未指定中心补构型 | [Daylight §3.3.1–3.3.3](https://www.daylight.com/dayhtml/doc/theory/theory.smiles.html) |
 | canonical isomeric SMILES | 同一版本下比较规范表示；不自动合并酸碱、盐和互变异构体 | [RDKit Reading and Writing Molecules](https://www.rdkit.org/docs/GettingStartedInPython.html) |
 | SMARTS查询 | 本例`[CX3](=O)[OX2H1]`查找含OH的羧酸片段，不把乙酸根合并为乙酸 | [Daylight SMARTS §4.1–4.3](https://www.daylight.com/dayhtml/doc/theory/theory.smarts.html)；RDKit Substructure Searching |
@@ -43,7 +43,7 @@ $$T(A,B)=\frac{|A\cap B|}{|A\cup B|}$$
 
 `molecules.csv`为本项目编写的教学结构集：课程中出现的简单结构，加上用于检验表示、电荷、手性、同位素和错误处理的记录。不是实验数据、临床数据或数据库批量下载。009/010仅标记相反局部手性，不凭符号指定R/S；011/012为故意无效输入。逐记录说明、来源和SHA-256见`data-provenance.json`。
 
-课程§1.3把两个不同结构写成“same structure”的示例不照搬，本页使用CCO/OCC演示同一乙醇的两种写法。程序依据官方接口并实测，不复制课程示意数值或图片。官方网页显示版本可能晚于本页固定包，实际运行记录和接口测试才是本例版本依据。引用开放可读资料不代表取得整篇再分发许可；保留链接与归属，代码许可沿用项目现有安排，不擅自新增许可证。
+本页使用CCO/OCC演示同一乙醇的两种写法，按SMILES规则核对身份。程序依据官方接口并实测，不把外部说明性数字当作真实结果。官方网页显示版本可能晚于本页固定包，实际运行记录和接口测试才是本例版本依据。知识方法引用与教学输入的取材记录分别标注，详见sources.json与data-provenance.json；代码许可沿用项目现有安排，不擅自新增许可证。
 
 
 [逐项知识来源与章节](sources.json) · [逐记录数据来源与哈希](data-provenance.json) · [14条原始教学记录](molecules.csv)

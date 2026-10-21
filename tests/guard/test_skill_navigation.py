@@ -114,8 +114,12 @@ class SkillNavigationTests(unittest.TestCase):
     def test_notebook_identity_and_default_collapse(self):
         nbfile = PAGE / 'organic-smiles-rdkit.ipynb'
         proof = read_json(PAGE / 'PUBLICATION_CHECK.json')
-        self.assertEqual(digest(nbfile.read_bytes()), proof['accepted_notebook_sha256'])
+        self.assertEqual(digest(nbfile.read_bytes()), proof['published_notebook_sha256'])
+        self.assertEqual(proof['current_instruction_cloud_reacceptance'], 'NOT_RUN')
+        self.assertFalse(proof['notebook_bytes_unchanged'])
         nb = read_json(nbfile)
+        self.assertEqual(nb['metadata']['adp']['skill_sha256'], digest((PAGE / 'SKILL.md').read_bytes()))
+        self.assertEqual(proof['skill_sha256'], digest((PAGE / 'SKILL.md').read_bytes()))
         self.assertEqual(len(nb['cells']), 13)
         metadata = nb['cells'][1]['metadata']
         self.assertTrue(metadata['collapsed'])
@@ -151,7 +155,7 @@ class SkillNavigationTests(unittest.TestCase):
         self.assertEqual((params['radius'], params['fp_size'], params['reference_id']), (2, 2048, '005'))
         self.assertTrue(params['include_chirality'])
 
-    def test_material_download_preserves_accepted_sources(self):
+    def test_material_download_matches_current_sources(self):
         with zipfile.ZipFile(PAGE / 'organic-smiles-rdkit-materials.zip') as archive:
             self.assertIsNone(archive.testzip())
             self.assertEqual(len(archive.namelist()), 16)

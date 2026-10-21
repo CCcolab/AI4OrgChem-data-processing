@@ -6,7 +6,7 @@
 
 ## 获取.ipynb文件
 
-**[下载Notebook ZIP](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/refs/heads/main/skills/organic-smiles-rdkit/organic-smiles-rdkit-notebook.zip)**，解压后得到 **`organic-smiles-rdkit.ipynb`**。ZIP只含这一份已经验收的原生Notebook，代码及保存输出保持原字节。
+**[下载Notebook ZIP](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/refs/heads/main/skills/organic-smiles-rdkit/organic-smiles-rdkit-notebook.zip)**，解压后得到 **`organic-smiles-rdkit.ipynb`**。ZIP只含这一份原生Notebook。已同步来源说明修订后的Skill与资源清单；数值工具、调用程序和历史保存输出保持不变，当前指令文本没有重新进行云端调用验收。
 
 也可以打开[原生Notebook文件页](organic-smiles-rdkit.ipynb)，点击文件工具栏右上角的下载图标 **Download raw file**。无论预览区域是否成功显示，该按钮用于下载文件；不要把浏览器显示的JSON文本当作课程正文。
 
@@ -22,7 +22,7 @@
 
 | 文件 | SHA-256 |
 | --- | --- |
-| organic-smiles-rdkit.ipynb | `894737fd5daf0acc950de4437f4eb018b37c469740c84144d45c8fc19eac3cb6` |
-| organic-smiles-rdkit-notebook.zip | `81fca01151baa687776118934286de8ece59f3f27b380c7d0ac880eea181fea9` |
+| organic-smiles-rdkit.ipynb | `8a3fdffcd69b86c54229923b333b046d0ef8113fed5258d1224edebfd190e82e` |
+| organic-smiles-rdkit-notebook.zip | `fdd805aae99794e557439274d3bc229a236681f59c851059ac3299f547b3745e` |
 
 完整材料的校验见[全仓SHA256SUMS](../../SHA256SUMS.txt)。

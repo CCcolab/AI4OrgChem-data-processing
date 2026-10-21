@@ -34,4 +34,4 @@
 
 ## 参考资料说明
 
-SMILES与RDKit依据Daylight SMILES/SMARTS和RDKit官方文档，AI4Chem Lecture 3作背景，数据为自主组织的教学结构。表格拟合使用David Harvey《Analytical Chemistry 2.1》12.5节Exercise 12.5.2咖啡因HPLC校准表，方法参考NIST统计手册。具体章节、链接、归属和数据处理见各Skill“教学与来源”。[来源与许可](docs/RIGHTS_REVIEW.md)。
+SMILES与RDKit依据Daylight SMILES/SMARTS和RDKit官方文档；教学输入的具体取材记录单独列在数据说明中。表格拟合使用David Harvey《Analytical Chemistry 2.1》12.5节Exercise 12.5.2咖啡因HPLC校准表，方法参考NIST统计手册。具体章节、链接、归属和数据处理见各Skill“教学与来源”。[来源与许可](docs/RIGHTS_REVIEW.md)。
