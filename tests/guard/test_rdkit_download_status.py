@@ -1,10 +1,11 @@
 """Program evidence wins over model wording; failures never become PASS."""
 from pathlib import Path
-import hashlib, importlib.util, json, tempfile, unittest, zipfile
+import hashlib, json, tempfile, types, unittest, zipfile
+from rdkit_notebook_resources import resource_bytes
 
 ROOT=Path(__file__).resolve().parents[2]
-spec=importlib.util.spec_from_file_location('rdkit_file_presentation',ROOT/'skills/organic-smiles-rdkit/result_presentation.py')
-module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+module=types.ModuleType('rdkit_file_presentation')
+exec(compile(resource_bytes()['result_presentation.py'],'<Notebook:result_presentation.py>','exec'),module.__dict__)
 
 class DownloadEvidenceTests(unittest.TestCase):
     def setUp(self):

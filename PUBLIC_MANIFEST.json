@@ -30,12 +30,8 @@
       "sha256": "7fbc25cad8b6fd1f699f0e6ff3cf46358db9af8cdd82fcbfcd5de08eeae72188"
     },
     {
-      "file": "docs/RDKIT_PAGE_CHECK.md",
-      "sha256": "650d3205ca3bc64a44429f8779b8885d91e614aaa0c99b85e4bc4374e93323c8"
-    },
-    {
       "file": "docs/RIGHTS_REVIEW.md",
-      "sha256": "d87649aa47f18f40209877577fa19b47774f65bf27cab2cb4d6bb6907dc4c4e3"
+      "sha256": "e69b3b4f89478e54625fa5d0f918f96bf8d8c308a72fc76b94241ac6fa2de1fa"
     },
     {
       "file": "docs/RUNNING.md",
@@ -47,11 +43,11 @@
     },
     {
       "file": "docs/SKILL_RUNNING.md",
-      "sha256": "573977c459845187978381e93f8760fe3e42d530d959133797a62c7939e621ff"
+      "sha256": "b7d9ca0d71f6ab97b8f587d4a9b549c58bc8e95958e5d1114a153224d4465103"
     },
     {
       "file": "docs/SKILL_STATUS.md",
-      "sha256": "1f4fd344f186698f4bac2b206336c16fb19d3d1f573c46c226290c246019825d"
+      "sha256": "e10677f584c3342320f2fcff19c81845d90c94ab68006789eb42a3d9a02dbdec"
     },
     {
       "file": "docs/STATUS.md",
@@ -59,7 +55,7 @@
     },
     {
       "file": "NAVIGATION.json",
-      "sha256": "c1435200b784869fa2d85505cb9714989870b866cb584df34f8d8c0815018869"
+      "sha256": "bdcf8ca301ce3d7df9a8b99cd12ec32d0003fb654ac0180976da8cfe968f3e18"
     },
     {
       "file": "PLATFORM_ENTRY.json",
@@ -67,127 +63,27 @@
     },
     {
       "file": "README.md",
-      "sha256": "f9997622f60fddcb0510c460f11226baa94a75e92ecdc47be0f30d36f16d5220"
+      "sha256": "3b38f87aceb91c4344d501c45b79e14155a5f659acabc1072afa32b12e1ba240"
     },
     {
-      "file": "skills/organic-smiles-rdkit/CONFIGURATION_zh-CN.md",
-      "sha256": "a6a01dfd4a1581211c6c9419ec1c3613f6fe34d36b4d878e94d1f5240fd150bb"
-    },
-    {
-      "file": "skills/organic-smiles-rdkit/credential_config.py",
-      "sha256": "a132c259a3c877f52f008f61b349e3b72fd4223efbfe3193277de1b475cf22cb"
-    },
-    {
-      "file": "skills/organic-smiles-rdkit/data-provenance.json",
-      "sha256": "aaf94ca0579840355748c9de326d3c9221781748629b449d705fc708b5772a55"
-    },
-    {
-      "file": "skills/organic-smiles-rdkit/DOWNLOAD_STATUS_CHECK.json",
-      "sha256": "d2e8376fb57df991457448a68db557b62d14e0b833ffed7012e81a8e2ddfbc68"
-    },
-    {
-      "file": "skills/organic-smiles-rdkit/DOWNLOADS.md",
-      "sha256": "177c6288863aa55fb7300f6b4ee9137660fabd421e91d79f0598f8816e79a5d7"
-    },
-    {
-      "file": "skills/organic-smiles-rdkit/example-molecules.png",
+      "file": "skills/organic-smiles-rdkit/assets/example-molecules.png",
       "sha256": "a62ae370831bb1a21ace779a92b4e9afe3c31ee577e4261dd5f8d6d1d1cb6f6c"
     },
     {
-      "file": "skills/organic-smiles-rdkit/example-results.zip",
-      "sha256": "5ce4f1a3f8cbc198bf0c02a66964a5882fffdfe90eada5a611fa200fbeac7e8f"
-    },
-    {
-      "file": "skills/organic-smiles-rdkit/example-similarity.png",
+      "file": "skills/organic-smiles-rdkit/assets/example-similarity.png",
       "sha256": "c896ef535c77df157fd7b237119bf01f0a0e2df80640476b1679a0a722625e25"
-    },
-    {
-      "file": "skills/organic-smiles-rdkit/molecule_tool.py",
-      "sha256": "737506dc2ad129b3ca81f835abdcb17e19f043bb229102d5400fbd77c3058d90"
-    },
-    {
-      "file": "skills/organic-smiles-rdkit/molecules.csv",
-      "sha256": "87bbb47ec0c847c8811c98ded10d099d8879dbb9bbbba5cec624cfea10e866c8"
-    },
-    {
-      "file": "skills/organic-smiles-rdkit/NOTEBOOK.md",
-      "sha256": "8351f278995c8ea5de310379be1985a5fd5521ce61042deeef0e81692ffcca64"
-    },
-    {
-      "file": "skills/organic-smiles-rdkit/organic-smiles-rdkit-materials.zip",
-      "sha256": "6ef9e1ba520be202296ea32df4ed55f81ab366b1ab36f6009aa2346566a9a68b"
-    },
-    {
-      "file": "skills/organic-smiles-rdkit/organic-smiles-rdkit-notebook.zip",
-      "sha256": "b88591e7a625d78039c7707b97837b9c042e19d3395f662e1fec4bc95143bbf7"
     },
     {
       "file": "skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb",
       "sha256": "68099f342608ab28f6cf3a0c1ac9032d692d4c5c6d78ab5e2da7d8d2c9ccfb51"
     },
     {
-      "file": "skills/organic-smiles-rdkit/parameters.json",
-      "sha256": "a9892264468d9545980c6acb83181c8bf65dbd28783ec0ef05f58dd1b4032de6"
-    },
-    {
-      "file": "skills/organic-smiles-rdkit/PUBLICATION_CHECK.json",
-      "sha256": "a350d7d313f1e88e655eed71a21b0cedecdf8659f152da27a080c44c8d2a174a"
-    },
-    {
       "file": "skills/organic-smiles-rdkit/README.md",
-      "sha256": "dd15b1baa568a910e60eaacf2e680377340bf1662018d86812b424bc9ec722f3"
-    },
-    {
-      "file": "skills/organic-smiles-rdkit/requirements-colab.txt",
-      "sha256": "cf69cc546f34666b0b9c568c5f5f9bb4600bba4d0b2a0fb5905f229d68b6d321"
-    },
-    {
-      "file": "skills/organic-smiles-rdkit/resource-manifest.json",
-      "sha256": "d619ffbb83c4d0e1810cf898b68adba78596ae23180bc93d9d43dad10c41409e"
-    },
-    {
-      "file": "skills/organic-smiles-rdkit/result_presentation.py",
-      "sha256": "ae4c115f1fdb76f8a14f8dc7a9feb031dee3104ad2d4ca03ab8b0649bbc9ce16"
-    },
-    {
-      "file": "skills/organic-smiles-rdkit/RUNNING.md",
-      "sha256": "4e8ce9dcbe09a32f304da99ebbae0b5c070bf3b8a9c3561f2a90e15e58899d6d"
-    },
-    {
-      "file": "skills/organic-smiles-rdkit/saved-output-provenance.json",
-      "sha256": "0d726b03525bea028428561adffbf14901ae861d55f439271cec728f4a186f6d"
-    },
-    {
-      "file": "skills/organic-smiles-rdkit/SHA256SUMS.txt",
-      "sha256": "f1fe4e544dddc6c7a3c1d7c6cadae7924f8e874ee27dfd5427d80401ed4c9fd1"
-    },
-    {
-      "file": "skills/organic-smiles-rdkit/SINGLE_PAGE_MANIFEST.json",
-      "sha256": "d7d10c5a874cee24384620e220e0e3add4dfabd7719f21df7bcaac431568b7c9"
+      "sha256": "fdb822e69f72db5f0e156b45b1ffcf38ce5e2a1e3fc1ab844cca3ddff8b11248"
     },
     {
       "file": "skills/organic-smiles-rdkit/SKILL.md",
       "sha256": "f79b96d8d40a9d955f68642e8bb94ef205ff71ccaec7519864abad8a5499f776"
-    },
-    {
-      "file": "skills/organic-smiles-rdkit/skill_agent.py",
-      "sha256": "487ee81ddf57a13a53e0ea3e88db790c58b8cde544db7a9da2596d816f0fd2e1"
-    },
-    {
-      "file": "skills/organic-smiles-rdkit/SOURCE_REVIEW.json",
-      "sha256": "5deb50a99bc8c09de27f4bb2929289c992a0c0b573bdd1aea047481e2850541b"
-    },
-    {
-      "file": "skills/organic-smiles-rdkit/sources.json",
-      "sha256": "4609b562981364dfac0aae8bbba5f9ab686288665324f5cee437f5ed99e870e3"
-    },
-    {
-      "file": "skills/organic-smiles-rdkit/task-template.txt",
-      "sha256": "73254171924f3f5e7382b0e7c089f488639f0135d2ec728054e6ded37fbc00e8"
-    },
-    {
-      "file": "skills/organic-smiles-rdkit/TEACHING.md",
-      "sha256": "dea3a75d9ac597df9d654907f70e19a2b6b5c52090c511d85c058f9cc4c06b48"
     },
     {
       "file": "skills/table-fitting-residuals/caffeine-calibration.csv",
@@ -275,7 +171,11 @@
     },
     {
       "file": "START_HERE_zh-CN.md",
-      "sha256": "f9997622f60fddcb0510c460f11226baa94a75e92ecdc47be0f30d36f16d5220"
+      "sha256": "3b38f87aceb91c4344d501c45b79e14155a5f659acabc1072afa32b12e1ba240"
+    },
+    {
+      "file": "tests/guard/rdkit_notebook_resources.py",
+      "sha256": "742d8f71c3d41870d082ea652c98010da6aa6da3d1e2e03c7a09ad47898ed5fd"
     },
     {
       "file": "tests/guard/test_platform_boundary.py",
@@ -283,11 +183,11 @@
     },
     {
       "file": "tests/guard/test_rdkit_download_status.py",
-      "sha256": "1e6a29f77db8045360ec71363c151d377d180cc683c93e0e30787a892a243e2f"
+      "sha256": "d6cda7f91b0132238468adcf3cb7d857beb373048faa24e7eb9d5c54329eddfc"
     },
     {
       "file": "tests/guard/test_skill_navigation.py",
-      "sha256": "af53f268c29adbca54df4a0e8db973aac2553253fd6ed0a6ce89dfc30c86df58"
+      "sha256": "82d55998528134ad6e2f82dae141c210b53040782327642e21ff85d5e97ba436"
     },
     {
       "file": "tests/guard/test_workflow_gate.py",

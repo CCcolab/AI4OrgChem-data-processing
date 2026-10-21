@@ -10,6 +10,7 @@ import unittest
 import zipfile
 from pathlib import Path
 from urllib.parse import unquote
+from rdkit_notebook_resources import resource_bytes
 
 ROOT = Path(__file__).resolve().parents[2]
 PAGE = ROOT / 'skills/organic-smiles-rdkit'
@@ -78,7 +79,7 @@ class SkillNavigationTests(unittest.TestCase):
 
     def test_teaching_and_running_have_separate_responsibilities(self):
         for skill in read_json(ROOT / 'NAVIGATION.json')['skills']:
-            if skill.get('layout') == 'single-page-code-example-download-v1':
+            if skill.get('layout') == 'single-readme-three-files-v1':
                 text=(ROOT / skill['run']).read_text('utf-8')
                 blocks=re.findall(r'(?ms)^~~~~python\n(.*?)^~~~~[ \t]*$',text)
                 notebook=read_json(ROOT / skill['notebook'])
@@ -108,6 +109,7 @@ class SkillNavigationTests(unittest.TestCase):
     def test_notebook_archives_are_exact_native_notebooks(self):
         for skill in read_json(ROOT / 'NAVIGATION.json')['skills']:
             notebook = ROOT / skill['notebook']
+            if skill['id']=='organic-smiles-rdkit':continue
             with zipfile.ZipFile(ROOT / skill['notebook_zip']) as archive:
                 self.assertEqual(archive.namelist(), [notebook.name])
                 self.assertEqual(archive.read(notebook.name), notebook.read_bytes())
@@ -126,7 +128,8 @@ class SkillNavigationTests(unittest.TestCase):
             self.assertNotIn('教学与来源',text)
         for skill in nav['skills']:
             entry = (ROOT / skill['notebook_entry']).read_text('utf-8')
-            self.assertIn('https://github.com/CCcolab/AI4OrgChem-data-processing/raw/refs/heads/main/' + skill['notebook_zip'], entry)
+            for target in skill.get('downloads',{'notebook':skill.get('notebook_zip')}).values():
+                self.assertIn('https://github.com/CCcolab/AI4OrgChem-data-processing/raw/refs/heads/main/'+target,entry)
             self.assertIn('https://colab.research.google.com/', entry)
             self.assertNotIn('colab.research.google.com/drive/', entry)
 
@@ -164,85 +167,70 @@ class SkillNavigationTests(unittest.TestCase):
                 self.assertTrue((path.parent / local).exists(), (path, target))
 
     def test_notebook_identity_and_default_collapse(self):
-        nbfile = PAGE / 'organic-smiles-rdkit.ipynb'
-        proof = read_json(PAGE / 'PUBLICATION_CHECK.json')
-        self.assertEqual(digest(nbfile.read_bytes()), proof['published_notebook_sha256'])
-        self.assertEqual(proof['current_instruction_cloud_reacceptance'], 'NOT_RUN')
-        self.assertFalse(proof['notebook_bytes_unchanged'])
-        nb = read_json(nbfile)
-        self.assertEqual(nb['metadata']['adp']['skill_sha256'], digest((PAGE / 'SKILL.md').read_bytes()))
-        self.assertEqual(proof['skill_sha256'], digest((PAGE / 'SKILL.md').read_bytes()))
-        self.assertEqual(len(nb['cells']), 13)
-        metadata = nb['cells'][1]['metadata']
-        self.assertTrue(metadata['collapsed'])
-        self.assertTrue(metadata['jupyter']['source_hidden'])
-        self.assertEqual(len([o for c in nb['cells'] for o in c.get('outputs', []) if 'image/png' in o.get('data', {})]), 2)
-        self.assertNotIn('colab.research.google.com/drive/', nbfile.read_text('utf-8'))
+        nbfile=PAGE/'organic-smiles-rdkit.ipynb'
+        self.assertEqual(digest(nbfile.read_bytes()),'68099f342608ab28f6cf3a0c1ac9032d692d4c5c6d78ab5e2da7d8d2c9ccfb51')
+        nb=read_json(nbfile)
+        self.assertEqual(nb['metadata']['adp']['skill_sha256'],digest((PAGE/'SKILL.md').read_bytes()))
+        self.assertEqual(len(nb['cells']),13)
+        self.assertTrue(nb['cells'][1]['metadata']['collapsed'])
+        self.assertTrue(nb['cells'][1]['metadata']['jupyter']['source_hidden'])
+        self.assertNotIn('colab.research.google.com/drive/',nbfile.read_text('utf-8'))
 
     def test_embedded_resources_match_delivered_sources(self):
-        nb = read_json(PAGE / 'organic-smiles-rdkit.ipynb')
-        values = {}
-        for node in ast.parse(''.join(nb['cells'][1]['source'])).body:
-            if isinstance(node, ast.Assign):
-                for target in node.targets:
-                    if isinstance(target, ast.Name):
-                        try: values[target.id] = ast.literal_eval(node.value)
-                        except (ValueError,TypeError): pass
-        self.assertNotIn('BUNDLE_B64',values)
-        resources=values['RESOURCE_TEXT']
-        for name,text in resources.items():
-            raw=(text.replace('\n','\r\n') if name in values['RESOURCE_CRLF'] else text).encode('utf-8')
-            self.assertEqual(raw, (PAGE / name).read_bytes(), name)
-        self.assertEqual(resources['SKILL.md'],(PAGE/'SKILL.md').read_text('utf-8'))
+        resources=resource_bytes()
+        self.assertEqual(len(resources),14)
+        self.assertEqual(resources['SKILL.md'],(PAGE/'SKILL.md').read_bytes())
+        for name in ['molecule_tool.py','skill_agent.py','credential_config.py','result_presentation.py']:
+            compile(resources[name],name,'exec')
+        self.assertNotIn('BUNDLE_B64',''.join(read_json(PAGE/'organic-smiles-rdkit.ipynb')['cells'][1]['source']))
 
     def test_teaching_inputs_and_parameters_are_explicit(self):
-        provenance = read_json(PAGE / 'data-provenance.json')
-        self.assertEqual(digest((PAGE / 'molecules.csv').read_bytes()), provenance['sha256'])
-        rows = list(csv.DictReader(io.StringIO((PAGE / 'molecules.csv').read_text('utf-8'))))
-        self.assertEqual(len(rows), 14)
-        self.assertEqual(len({r['id'] for r in rows}), 14)
-        self.assertEqual(rows[10]['smiles'], 'C1CC')
-        self.assertEqual(rows[11]['smiles'], '')
-        self.assertEqual(provenance['kind'], 'AUTHORED_TEACHING_STRUCTURES_NOT_EXPERIMENTAL_DATA')
-        params = read_json(PAGE / 'parameters.json')
-        self.assertEqual((params['radius'], params['fp_size'], params['reference_id']), (2, 2048, '005'))
+        resources=resource_bytes()
+        provenance=json.loads(resources['data-provenance.json'])
+        self.assertEqual(digest(resources['molecules.csv']),provenance['sha256'])
+        rows=list(csv.DictReader(io.StringIO(resources['molecules.csv'].decode())))
+        self.assertEqual(len(rows),14)
+        self.assertEqual(len({r['id'] for r in rows}),14)
+        self.assertEqual(rows[10]['smiles'],'C1CC')
+        self.assertEqual(rows[11]['smiles'],'')
+        self.assertEqual(provenance['kind'],'AUTHORED_TEACHING_STRUCTURES_NOT_EXPERIMENTAL_DATA')
+        params=json.loads(resources['parameters.json'])
+        self.assertEqual((params['radius'],params['fp_size'],params['reference_id']),(2,2048,'005'))
         self.assertTrue(params['include_chirality'])
 
-    def test_material_download_matches_current_sources(self):
-        with zipfile.ZipFile(PAGE / 'organic-smiles-rdkit-materials.zip') as archive:
-            self.assertIsNone(archive.testzip())
-            self.assertEqual(len(archive.namelist()), 17)
-            for name in archive.namelist():
-                self.assertEqual(archive.read(name), (PAGE / name).read_bytes(), name)
+    def test_minimal_skill_directory_has_only_learning_files(self):
+        self.assertEqual({p.name for p in PAGE.iterdir()},{'README.md','SKILL.md','organic-smiles-rdkit.ipynb','assets'})
+        self.assertEqual({p.name for p in (PAGE/'assets').iterdir()},{'example-molecules.png','example-similarity.png'})
+        for path in PAGE.rglob('*'):
+            self.assertFalse(path.is_symlink())
+            self.assertNotIn(path.suffix,{'.json','.zip','.py'})
+        self.assertFalse((ROOT/'docs/RDKIT_PAGE_CHECK.md').exists())
 
-    def test_example_download_has_two_verified_numeric_runs(self):
-        with zipfile.ZipFile(PAGE / 'example-results.zip') as archive:
-            self.assertIsNone(archive.testzip())
-            manifest = json.loads(archive.read('SHA256_MANIFEST.json'))
-            self.assertEqual(len(manifest), 16)
-            self.assertEqual(set(archive.namelist()), {r['file'] for r in manifest} | {'SHA256_MANIFEST.json'})
-            for item in manifest:
-                self.assertEqual(digest(archive.read(item['file'])), item['sha256'])
-                self.assertNotRegex(item['file'], r'(?i)trace|receipt|agent|\.env|token|database')
-            for run, radius in [('run-1', 2), ('run-2', 3)]:
-                result = json.loads(archive.read(run + '/numerical-result.json'))
-                self.assertEqual((result['records'], result['valid'], result['rejected']), (14, 12, 2))
-                self.assertEqual(result['parameters']['radius'], radius)
-                self.assertTrue(all(result['checks'].values()))
-                self.assertEqual(result['new_rhf'], 'NOT_ACCEPTED')
+    def test_readme_merges_learning_configuration_sources_and_downloads(self):
+        text=(PAGE/'README.md').read_text('utf-8')
+        prose=re.sub(r'(?ms)^(`{3,}|~{3,})[^\n]*\n.*?^\1[ \t]*$','',text)
+        for term in ['学习目标','必要知识与参考资料','数据从哪里来','DEEPSEEK_API_KEY','ENV_FILE','调用模板与参数含义','radius=3','实际参数调用案例与输出结果','分别下载Notebook和SKILL.md']:
+            self.assertIn(term,prose)
+        for name in ['RUNNING.md','TEACHING.md','NOTEBOOK.md','DOWNLOADS.md','PUBLICATION_CHECK.json','SOURCE_REVIEW.json','materials.zip','notebook.zip']:
+            self.assertNotIn(']('+name,prose)
+        for source in json.loads(resource_bytes()['sources.json']):
+            if source['id']!='tanimoto':self.assertIn(source['url'].split('#')[0],prose)
+        self.assertIn('www.rdkit.org',prose)
+        self.assertIn('www.daylight.com',prose)
 
     def test_displayed_pngs_are_native_notebook_outputs(self):
         nb = read_json(PAGE / 'organic-smiles-rdkit.ipynb')
         images = [base64.b64decode(''.join(o['data']['image/png'])) for c in nb['cells'] for o in c.get('outputs', []) if 'image/png' in o.get('data', {})]
         for name, data in zip(['example-molecules.png', 'example-similarity.png'], images):
             self.assertTrue(data.startswith(b'\x89PNG\r\n\x1a\n'))
-            self.assertEqual((PAGE / name).read_bytes(), data)
+            self.assertEqual((PAGE / 'assets' / name).read_bytes(), data)
 
     def test_full_file_inventory_and_sha256(self):
         manifest = read_json(ROOT / 'PUBLIC_MANIFEST.json')
         rows = manifest['files']
         expected = {p.relative_to(ROOT).as_posix() for p in ROOT.rglob('*') if p.is_file() and not any(part.startswith('.') and part != '.gitattributes' and part != '.gitignore' and part not in ('.githooks', '.github') for part in p.relative_to(ROOT).parts) and p.relative_to(ROOT).as_posix() not in ('PUBLIC_MANIFEST.json', 'SHA256SUMS.txt') and '__pycache__' not in p.parts}
-        self.assertIn('skills/organic-smiles-rdkit/SHA256SUMS.txt', expected)
+        self.assertNotIn('skills/organic-smiles-rdkit/SHA256SUMS.txt', expected)
+        self.assertIn('skills/organic-smiles-rdkit/README.md',expected)
         self.assertEqual({r['file'] for r in rows}, expected)
         for row in rows:
             self.assertEqual(digest((ROOT / row['file']).read_bytes()), row['sha256'])

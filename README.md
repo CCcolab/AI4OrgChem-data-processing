@@ -8,7 +8,7 @@
 
 ## 有机分子结构与身份识别
 
-- [SMILES 与 RDKit](skills/organic-smiles-rdkit/RUNNING.md)
+- [SMILES 与 RDKit](skills/organic-smiles-rdkit/README.md)
 - 解析化学结构标识符｜PubChem 与 CIR
 
 ## 有机分析与实验数据处理
