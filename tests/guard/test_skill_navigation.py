@@ -28,7 +28,7 @@ class SkillNavigationTests(unittest.TestCase):
         self.assertEqual(len({c['id'] for c in cats}), 8)
         self.assertEqual(sum(c['kind'] == 'professional_application' for c in cats), 7)
         self.assertEqual(sum(c['kind'] == 'shared_support' for c in cats), 1)
-        self.assertFalse(nav['render_empty_categories'])
+        self.assertTrue(nav['render_empty_categories'])
         assigned = [s for c in cats for s in c['skills']]
         self.assertCountEqual(assigned, [s['id'] for s in nav['skills']])
         self.assertEqual(len(set(assigned)), len(assigned))
@@ -39,11 +39,30 @@ class SkillNavigationTests(unittest.TestCase):
         for name in ['README.md', 'START_HERE_zh-CN.md']:
             text = (ROOT / name).read_text('utf-8')
             for cat in nav['categories']:
-                self.assertEqual('## ' + cat['title'] in text, bool(cat['skills']))
+                self.assertIn('## ' + cat['title'],text)
             for skill in nav['skills']:
                 for key in ['run']:
                     self.assertTrue((ROOT / skill[key]).is_file())
                     self.assertIn(skill[key], text)
+
+    def test_training_list_contains_all_33_unique_skills_and_only_real_links(self):
+        nav=read_json(ROOT/'NAVIGATION.json')
+        items=nav['training_catalog']
+        self.assertEqual(len(items),33)
+        self.assertEqual(len({s['id'] for s in items}),33)
+        self.assertCountEqual([x for c in nav['categories'] for x in c['catalog_skills']],[s['id'] for s in items])
+        self.assertEqual([len(c['catalog_skills']) for c in nav['categories']],[2,3,4,7,2,10,4,1])
+        for filename in ['README.md','START_HERE_zh-CN.md']:
+            text=(ROOT/filename).read_text('utf-8')
+            self.assertEqual(len(re.findall(r'^- ',text,re.M)),33)
+            self.assertNotIn('| ---',text)
+            for skill in items:
+                if skill['has_learning_page']:
+                    self.assertIn('- ['+skill['title']+']('+skill['page']+')',text)
+                    self.assertTrue((ROOT/skill['page']).is_file())
+                else:
+                    self.assertIn('- '+skill['title']+'\n',text)
+                    self.assertNotIn('page',skill)
 
     def test_canonical_names_and_professional_categories(self):
         nav = read_json(ROOT / 'NAVIGATION.json')
@@ -102,12 +121,32 @@ class SkillNavigationTests(unittest.TestCase):
         for name in ['README.md', 'START_HERE_zh-CN.md']:
             text = (ROOT / name).read_text('utf-8')
             links = re.findall(r'\[[^\]]+\]\(([^)]+)\)', text)
-            self.assertFalse(any(link.endswith('.ipynb') for link in links))
+            self.assertFalse(any(link.endswith('.ipynb') and not link.startswith('https://colab.research.google.com/github/') for link in links))
+            self.assertEqual(len(links),len(nav['skills']))
+            self.assertNotIn('教学与来源',text)
         for skill in nav['skills']:
             entry = (ROOT / skill['notebook_entry']).read_text('utf-8')
             self.assertIn('https://github.com/CCcolab/AI4OrgChem-data-processing/raw/refs/heads/main/' + skill['notebook_zip'], entry)
             self.assertIn('https://colab.research.google.com/', entry)
             self.assertNotIn('colab.research.google.com/drive/', entry)
+
+    def test_direct_colab_routes_are_pinned_and_match_delivered_notebooks(self):
+        from urllib.parse import urlparse
+        for skill in read_json(ROOT / 'NAVIGATION.json')['skills']:
+            url=urlparse(skill['colab_url'])
+            self.assertEqual(url.scheme,'https')
+            self.assertEqual(url.netloc,'colab.research.google.com')
+            self.assertFalse(url.query)
+            self.assertFalse(url.fragment)
+            self.assertRegex(skill['colab_source_commit'],r'^[a-f0-9]{40}$')
+            self.assertEqual(url.path,'/github/CCcolab/AI4OrgChem-data-processing/blob/'+skill['colab_source_commit']+'/'+skill['notebook'])
+            self.assertEqual(digest((ROOT/skill['notebook']).read_bytes()),skill['colab_notebook_sha256'])
+            running=(ROOT/skill['run']).read_text('utf-8')
+            self.assertIn('[▶ 在 Colab 运行]('+skill['colab_url']+')',running)
+            self.assertIn('包括私有代码库',running)
+            self.assertIn('保存副本',running)
+            self.assertIn('repo',running)
+            self.assertNotRegex(skill['colab_url'],r'(?i)token|access_token|github_pat|ghp_')
 
     def test_markdown_local_links_resolve(self):
         for path in ROOT.rglob('*.md'):

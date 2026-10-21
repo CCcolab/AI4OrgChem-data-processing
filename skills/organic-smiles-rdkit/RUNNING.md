@@ -2,7 +2,23 @@
 
 分类：**有机分子结构与身份识别** · Skill调用名：`organic-smiles-rdkit`
 
-本页集中显示程序、实际参数案例与下载，不需要在多个说明页面间往返。 **执行和下载状态由程序回执、文件清单与实际ZIP决定。结果区先展示程序核验状态；模型原文单独展开，不能据其判断文件是否已生成。** GitHub用于阅读；运行时将下载的.ipynb上传自己的[Google Colab](https://colab.research.google.com/)，或用本地Jupyter打开。
+本页集中显示程序、实际参数案例与下载，不需要在多个说明页面间往返。 **执行和下载状态由程序回执、文件清单与实际ZIP决定。结果区先展示程序核验状态；模型原文单独展开，不能据其判断文件是否已生成。** GitHub展示代码与保存的输出，点击下面按钮在 Colab 云端实际执行。
+
+**[▶ 在 Colab 运行](https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/72a69915b6ea0250c99bf2fe6c498a212852c03a/skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb)**
+
+<details>
+<summary>首次运行：账号授权、保存副本与操作步骤</summary>
+
+1. 登录自己的 Google 账号。当前仓库为私有仓库，GitHub 账号也须有本仓库访问权限。
+2. 首次连接私有 GitHub 时，在 Colab“文件 → 打开笔记本 → GitHub”勾选“包括私有代码库”，由你本人完成 GitHub 授权，再点击上面的运行按钮。Colab 申请的 `repo` 与 `gist` 权限包含公私仓库读写，范围大于只读本仓库；请先核对授权页。
+3. Notebook 打开后，选择“文件 → 在云端硬盘中保存副本”。这是你自己的运行副本，源仓库文件保持不变。
+4. 在左侧钥匙 Secret 为 `DEEPSEEK_API_KEY` 开启当前 Notebook 访问权限。密钥只保存在 Secret，不填进代码。
+5. 选择“代码执行程序 → 全部运行”，首次自动安装独立环境依赖，按提示完成必要的凭据授权。
+6. 默认参数 `RADIUS=2`；改为 `3` 后重跑第2～6步。第5步核对程序回执与图表，第6步下载结果 ZIP；文件菜单可保存并下载含输出的 `.ipynb`。
+
+如果提示找不到 Notebook，先检查 GitHub 账号的私有仓库权限和 Colab 的私有仓库授权。无需在代码中填写 GitHub Token。也可用底部下载的同一 Notebook 在自己的 Jupyter 中运行。
+
+</details>
 
 ## ① 完整Notebook代码：加载与调用SKILL.md
 

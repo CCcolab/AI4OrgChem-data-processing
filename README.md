@@ -1,20 +1,64 @@
-# AI4OrgChem-data-processing · Agent Skills
+# AI4OrgChem-data-processing · Skill 培训内容
 
 <!-- Canonical entry: https://github.com/CCcolab/AI4OrgChem-data-processing/blob/main/START_HERE_zh-CN.md -->
 
-按化学问题选择Skill，进入“运行与下载”。SMILES与RDKit已合并为一页：完整Notebook代码（含加载SKILL.md）、实际参数案例与输出、分别下载.ipynb和SKILL.md。
+按七个专业应用分类和一个共用支持分类浏览，共33项Skill。点击带链接的名称进入学习与运行页面；普通文字为Skill目录名称。
 
-导航沿用7个专业应用分类＋1个共用支持分类，仅列实际提供的页面。仓库保持私有，使用已授权GitHub账号阅读与下载；计算在自己的Colab或本地Jupyter进行。
+每个页面集中提供：完整Notebook代码、参数案例与输出、Colab在线运行，以及Notebook和SKILL.md下载。
 
 ## 有机分子结构与身份识别
 
-| Skill | 使用入口 |
-| --- | --- |
-| SMILES 与 RDKit | [运行与下载](skills/organic-smiles-rdkit/RUNNING.md) |
+- [SMILES 与 RDKit](skills/organic-smiles-rdkit/RUNNING.md)
+- 解析化学结构标识符｜PubChem 与 CIR
 
 ## 有机分析与实验数据处理
 
-| Skill | 使用入口 |
-| --- | --- |
-| 表格拟合与残差分析 | [运行与下载](skills/table-fitting-residuals/RUNNING.md) |
+- 整理化学数据｜Pandas 清洗与统计
+- [表格拟合与残差分析](skills/table-fitting-residuals/RUNNING.md)
+- 绘制科研图表｜实验数据与误差分析
 
+## 物理有机与能量分析
+
+- 分子图匹配与能量账本复核
+- 同哈密顿量路径闭合核对
+- 几何扫描能量分解与曲率分析
+- 核排斥能与几何响应分析
+
+## 计算有机化学与电子结构
+
+- RHF 单点计算助手
+- 轨道局域化与密度不变性验证
+- 非正交子空间投影与泄漏分析
+- 片段工作基组装与一致性审计
+- 镜面对称轨道适配与奇偶性分析
+- 矩阵分区掩码与正定性检查
+- 固定协议条件态与能量复核
+
+## 分子结构优化与多态比较
+
+- 约束优化与结构响应
+- 多态与尺寸比较
+
+## 化学信息学与分子设计
+
+- 可视化化学空间｜PCA、t-SNE 与 UMAP
+- 聚类化学分子｜KMeans、层次聚类与 DBSCAN
+- 构建化学预测模型｜回归与分类
+- 验证化学预测模型｜交叉验证与解释
+- 构建化学树模型｜决策树与随机森林
+- 构建化学神经网络｜MLP 回归与分类
+- 构建分子图神经网络｜GNN 与 MPNN
+- 预测分子性质与反应活性｜Chemprop
+- 预训练分子表示｜对比学习与掩码学习
+- 生成候选分子｜SMILES VAE 与潜空间采样
+
+## 化学实验设计与优化
+
+- 优化化学实验｜贝叶斯优化与条件推荐
+- 权衡化学目标｜多目标贝叶斯优化
+- 筛选实验方案｜多臂老虎机与探索利用
+- 学习序贯策略｜Q-learning 与化学模拟环境
+
+## 共用运行支持
+
+- Runtime 使用助手

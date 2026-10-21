@@ -7,7 +7,7 @@
   "publication_scope": "File availability determined by validated actual receipt, disk files and ZIP; raw model text preserved separately",
   "example_results": "Allowlisted numeric/CSV/PNG subset of verified two-run results; no model trace, receipt or private execution identifier",
   "result_zip_sha256": "5ce4f1a3f8cbc198bf0c02a66964a5882fffdfe90eada5a611fa200fbeac7e8f",
-  "materials_zip_sha256": "c9be1da3c4d9151e68d77a5b60bbf9b14fd74d92d7a26909c3236f98eb6f4c9c",
+  "materials_zip_sha256": "6ef9e1ba520be202296ea32df4ed55f81ab366b1ab36f6009aa2346566a9a68b",
   "published_notebook_sha256": "68099f342608ab28f6cf3a0c1ac9032d692d4c5c6d78ab5e2da7d8d2c9ccfb51",
   "previous_accepted_notebook_sha256": "894737fd5daf0acc950de4437f4eb018b37c469740c84144d45c8fc19eac3cb6",
   "source_cloud_skill_sha256": "f79b96d8d40a9d955f68642e8bb94ef205ff71ccaec7519864abad8a5499f776",

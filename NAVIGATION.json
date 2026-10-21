@@ -1,6 +1,6 @@
 {
-  "schema": "adp-professional-navigation-v2",
-  "render_empty_categories": false,
+  "schema": "adp-professional-navigation-v3",
+  "render_empty_categories": true,
   "categories": [
     {
       "id": "organic-structure",
@@ -8,6 +8,10 @@
       "kind": "professional_application",
       "skills": [
         "organic-smiles-rdkit"
+      ],
+      "catalog_skills": [
+        "organic-smiles-rdkit",
+        "chemical-identifier-resolution"
       ]
     },
     {
@@ -16,43 +20,88 @@
       "kind": "professional_application",
       "skills": [
         "table-fitting-residuals"
+      ],
+      "catalog_skills": [
+        "chemical-pandas-cleaning",
+        "table-fitting-residuals",
+        "chemical-experimental-plotting"
       ]
     },
     {
       "id": "physical-organic",
       "title": "物理有机与能量分析",
       "kind": "professional_application",
-      "skills": []
+      "skills": [],
+      "catalog_skills": [
+        "molecular-graph-energy-ledger",
+        "same-hamiltonian-path-closure",
+        "scan-energy-curvature",
+        "nuclear-repulsion-response"
+      ]
     },
     {
       "id": "computational-organic",
       "title": "计算有机化学与电子结构",
       "kind": "professional_application",
-      "skills": []
+      "skills": [],
+      "catalog_skills": [
+        "rhf-single-point",
+        "orbital-localization-density",
+        "nonorthogonal-subspace",
+        "fragment-working-basis",
+        "reflection-parity",
+        "partition-mask-audit",
+        "fixed-protocol-energy-review"
+      ]
     },
     {
       "id": "structure-state-response",
       "title": "分子结构优化与多态比较",
       "kind": "professional_application",
-      "skills": []
+      "skills": [],
+      "catalog_skills": [
+        "constrained-optimization-response",
+        "multistate-size-comparison"
+      ]
     },
     {
       "id": "cheminformatics-design",
       "title": "化学信息学与分子设计",
       "kind": "professional_application",
-      "skills": []
+      "skills": [],
+      "catalog_skills": [
+        "chemical-space-embedding",
+        "chemical-molecule-clustering",
+        "chemical-regression-classification",
+        "chemical-model-validation",
+        "chemical-tree-forest-models",
+        "chemical-mlp-models",
+        "molecular-gnn-mpnn",
+        "chemical-chemprop-prediction",
+        "molecular-self-supervised-pretraining",
+        "molecular-smiles-vae"
+      ]
     },
     {
       "id": "synthesis-experiment-optimization",
       "title": "化学实验设计与优化",
       "kind": "professional_application",
-      "skills": []
+      "skills": [],
+      "catalog_skills": [
+        "chemical-bayesian-optimization",
+        "chemical-multiobjective-optimization",
+        "chemical-multiarmed-bandit",
+        "chemical-q-learning-simulation"
+      ]
     },
     {
       "id": "cross-domain-runtime",
       "title": "共用运行支持",
       "kind": "shared_support",
-      "skills": []
+      "skills": [],
+      "catalog_skills": [
+        "runtime-usage-assistant"
+      ]
     }
   ],
   "skills": [
@@ -66,7 +115,10 @@
       "notebook_entry": "skills/organic-smiles-rdkit/RUNNING.md",
       "notebook_zip": "skills/organic-smiles-rdkit/organic-smiles-rdkit-notebook.zip",
       "run": "skills/organic-smiles-rdkit/RUNNING.md",
-      "layout": "single-page-code-example-download-v1"
+      "layout": "single-page-code-example-download-v1",
+      "colab_url": "https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/72a69915b6ea0250c99bf2fe6c498a212852c03a/skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb",
+      "colab_source_commit": "72a69915b6ea0250c99bf2fe6c498a212852c03a",
+      "colab_notebook_sha256": "68099f342608ab28f6cf3a0c1ac9032d692d4c5c6d78ab5e2da7d8d2c9ccfb51"
     },
     {
       "id": "table-fitting-residuals",
@@ -77,7 +129,212 @@
       "notebook": "skills/table-fitting-residuals/table-fitting-residuals.ipynb",
       "notebook_entry": "skills/table-fitting-residuals/NOTEBOOK.md",
       "notebook_zip": "skills/table-fitting-residuals/table-fitting-residuals-notebook.zip",
-      "run": "skills/table-fitting-residuals/RUNNING.md"
+      "run": "skills/table-fitting-residuals/RUNNING.md",
+      "colab_url": "https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/72a69915b6ea0250c99bf2fe6c498a212852c03a/skills/table-fitting-residuals/table-fitting-residuals.ipynb",
+      "colab_source_commit": "72a69915b6ea0250c99bf2fe6c498a212852c03a",
+      "colab_notebook_sha256": "a8f35998fc4a957c9e059475fc3cc07be0693060e80b02d439b3a55600f9a099"
+    }
+  ],
+  "training_catalog": [
+    {
+      "id": "organic-smiles-rdkit",
+      "title": "SMILES 与 RDKit",
+      "category": "organic-structure",
+      "has_learning_page": true,
+      "page": "skills/organic-smiles-rdkit/RUNNING.md"
+    },
+    {
+      "id": "chemical-identifier-resolution",
+      "title": "解析化学结构标识符｜PubChem 与 CIR",
+      "category": "organic-structure",
+      "has_learning_page": false
+    },
+    {
+      "id": "chemical-pandas-cleaning",
+      "title": "整理化学数据｜Pandas 清洗与统计",
+      "category": "organic-analysis",
+      "has_learning_page": false
+    },
+    {
+      "id": "table-fitting-residuals",
+      "title": "表格拟合与残差分析",
+      "category": "organic-analysis",
+      "has_learning_page": true,
+      "page": "skills/table-fitting-residuals/RUNNING.md"
+    },
+    {
+      "id": "chemical-experimental-plotting",
+      "title": "绘制科研图表｜实验数据与误差分析",
+      "category": "organic-analysis",
+      "has_learning_page": false
+    },
+    {
+      "id": "molecular-graph-energy-ledger",
+      "title": "分子图匹配与能量账本复核",
+      "category": "physical-organic",
+      "has_learning_page": false
+    },
+    {
+      "id": "same-hamiltonian-path-closure",
+      "title": "同哈密顿量路径闭合核对",
+      "category": "physical-organic",
+      "has_learning_page": false
+    },
+    {
+      "id": "scan-energy-curvature",
+      "title": "几何扫描能量分解与曲率分析",
+      "category": "physical-organic",
+      "has_learning_page": false
+    },
+    {
+      "id": "nuclear-repulsion-response",
+      "title": "核排斥能与几何响应分析",
+      "category": "physical-organic",
+      "has_learning_page": false
+    },
+    {
+      "id": "rhf-single-point",
+      "title": "RHF 单点计算助手",
+      "category": "computational-organic",
+      "has_learning_page": false
+    },
+    {
+      "id": "orbital-localization-density",
+      "title": "轨道局域化与密度不变性验证",
+      "category": "computational-organic",
+      "has_learning_page": false
+    },
+    {
+      "id": "nonorthogonal-subspace",
+      "title": "非正交子空间投影与泄漏分析",
+      "category": "computational-organic",
+      "has_learning_page": false
+    },
+    {
+      "id": "fragment-working-basis",
+      "title": "片段工作基组装与一致性审计",
+      "category": "computational-organic",
+      "has_learning_page": false
+    },
+    {
+      "id": "reflection-parity",
+      "title": "镜面对称轨道适配与奇偶性分析",
+      "category": "computational-organic",
+      "has_learning_page": false
+    },
+    {
+      "id": "partition-mask-audit",
+      "title": "矩阵分区掩码与正定性检查",
+      "category": "computational-organic",
+      "has_learning_page": false
+    },
+    {
+      "id": "fixed-protocol-energy-review",
+      "title": "固定协议条件态与能量复核",
+      "category": "computational-organic",
+      "has_learning_page": false
+    },
+    {
+      "id": "constrained-optimization-response",
+      "title": "约束优化与结构响应",
+      "category": "structure-state-response",
+      "has_learning_page": false
+    },
+    {
+      "id": "multistate-size-comparison",
+      "title": "多态与尺寸比较",
+      "category": "structure-state-response",
+      "has_learning_page": false
+    },
+    {
+      "id": "chemical-space-embedding",
+      "title": "可视化化学空间｜PCA、t-SNE 与 UMAP",
+      "category": "cheminformatics-design",
+      "has_learning_page": false
+    },
+    {
+      "id": "chemical-molecule-clustering",
+      "title": "聚类化学分子｜KMeans、层次聚类与 DBSCAN",
+      "category": "cheminformatics-design",
+      "has_learning_page": false
+    },
+    {
+      "id": "chemical-regression-classification",
+      "title": "构建化学预测模型｜回归与分类",
+      "category": "cheminformatics-design",
+      "has_learning_page": false
+    },
+    {
+      "id": "chemical-model-validation",
+      "title": "验证化学预测模型｜交叉验证与解释",
+      "category": "cheminformatics-design",
+      "has_learning_page": false
+    },
+    {
+      "id": "chemical-tree-forest-models",
+      "title": "构建化学树模型｜决策树与随机森林",
+      "category": "cheminformatics-design",
+      "has_learning_page": false
+    },
+    {
+      "id": "chemical-mlp-models",
+      "title": "构建化学神经网络｜MLP 回归与分类",
+      "category": "cheminformatics-design",
+      "has_learning_page": false
+    },
+    {
+      "id": "molecular-gnn-mpnn",
+      "title": "构建分子图神经网络｜GNN 与 MPNN",
+      "category": "cheminformatics-design",
+      "has_learning_page": false
+    },
+    {
+      "id": "chemical-chemprop-prediction",
+      "title": "预测分子性质与反应活性｜Chemprop",
+      "category": "cheminformatics-design",
+      "has_learning_page": false
+    },
+    {
+      "id": "molecular-self-supervised-pretraining",
+      "title": "预训练分子表示｜对比学习与掩码学习",
+      "category": "cheminformatics-design",
+      "has_learning_page": false
+    },
+    {
+      "id": "molecular-smiles-vae",
+      "title": "生成候选分子｜SMILES VAE 与潜空间采样",
+      "category": "cheminformatics-design",
+      "has_learning_page": false
+    },
+    {
+      "id": "chemical-bayesian-optimization",
+      "title": "优化化学实验｜贝叶斯优化与条件推荐",
+      "category": "synthesis-experiment-optimization",
+      "has_learning_page": false
+    },
+    {
+      "id": "chemical-multiobjective-optimization",
+      "title": "权衡化学目标｜多目标贝叶斯优化",
+      "category": "synthesis-experiment-optimization",
+      "has_learning_page": false
+    },
+    {
+      "id": "chemical-multiarmed-bandit",
+      "title": "筛选实验方案｜多臂老虎机与探索利用",
+      "category": "synthesis-experiment-optimization",
+      "has_learning_page": false
+    },
+    {
+      "id": "chemical-q-learning-simulation",
+      "title": "学习序贯策略｜Q-learning 与化学模拟环境",
+      "category": "synthesis-experiment-optimization",
+      "has_learning_page": false
+    },
+    {
+      "id": "runtime-usage-assistant",
+      "title": "Runtime 使用助手",
+      "category": "cross-domain-runtime",
+      "has_learning_page": false
     }
   ]
 }

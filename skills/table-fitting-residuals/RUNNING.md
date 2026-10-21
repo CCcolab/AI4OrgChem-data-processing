@@ -8,7 +8,11 @@
 
 ## 1. 准备Notebook与环境
 
-从[Notebook程序入口](NOTEBOOK.md)下载ZIP并解压得到`table-fitting-residuals.ipynb`。打开[Google Colab](https://colab.research.google.com/)，选择 **文件 → 上传笔记本**，上传后先在自己的账号保存副本，再从第一单元开始运行。
+**[▶ 在 Colab 运行](https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/72a69915b6ea0250c99bf2fe6c498a212852c03a/skills/table-fitting-residuals/table-fitting-residuals.ipynb)**
+
+直接打开仓库中的 Notebook，登录自己的 Google 账号后保存副本，再从第一单元开始运行。私有仓库首次需在 Colab“文件 → 打开笔记本 → GitHub”勾选“包括私有代码库”，由你本人核对并授权 `repo`（公私仓库读写）与 `gist` 权限。账号需已获本仓库访问权；代码不填写 GitHub Token。
+
+下载副本仅作备用：从[Notebook程序入口](NOTEBOOK.md)下载ZIP并解压，在 Colab 选择 **文件 → 上传笔记本**，或在本地 Jupyter 打开。
 
 Python 3.12及以上，固定NumPy 2.4.6、Matplotlib 3.11.2。准备单元在会话中建立独立venv并核验内嵌源码和样本哈希，CPU即可，无需Docker或GPU。
 
