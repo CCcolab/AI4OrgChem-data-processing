@@ -4,12 +4,13 @@
   "skill_sha256": "f79b96d8d40a9d955f68642e8bb94ef205ff71ccaec7519864abad8a5499f776",
   "source_cloud_checks": 173,
   "source_cloud_scope": "Two real Colab/DeepSeek/RDKit runs radius 2 and 3, saved native notebook and actual ZIP downloads",
-  "publication_scope": "Source-declaration correction; local resource/Skill/package and unchanged numerical-tool checks. Earlier cloud evidence is historical, not a new invocation of revised Skill text.",
+  "publication_scope": "Single page and readable-source Notebook bootstrap checked locally; no new cloud/model invocation",
   "example_results": "Allowlisted numeric/CSV/PNG subset of verified two-run results; no model trace, receipt or private execution identifier",
   "result_zip_sha256": "17a26f413be23b230d4d12f137c05cf29cfb246e7222ce8cffba6ca5ae6d6557",
-  "materials_zip_sha256": "c22c499a5d4d0ac99b5d05de4eb485660adff46ccaa9beca586063efc8f5044e",
-  "published_notebook_sha256": "8a3fdffcd69b86c54229923b333b046d0ef8113fed5258d1224edebfd190e82e",
+  "materials_zip_sha256": "1ab6fca313b7862794068be8abfd10c9433502106e0c3681c75729d50b841098",
+  "published_notebook_sha256": "6fef3ab14f2ed3fcb2c9ea235b0f7291b03fb2b946624c1166e9c5221156584a",
   "previous_accepted_notebook_sha256": "894737fd5daf0acc950de4437f4eb018b37c469740c84144d45c8fc19eac3cb6",
   "source_cloud_skill_sha256": "1ae51f1e60940447a44501d1854cce8a3743dffcb03e5c3c9878d48ad3ff015f",
-  "current_instruction_cloud_reacceptance": "NOT_RUN"
+  "current_instruction_cloud_reacceptance": "NOT_RUN",
+  "previous_notebook_sha256": "8a3fdffcd69b86c54229923b333b046d0ef8113fed5258d1224edebfd190e82e"
 }

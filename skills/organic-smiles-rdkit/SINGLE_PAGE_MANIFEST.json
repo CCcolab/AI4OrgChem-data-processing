@@ -1,0 +1,67 @@
+{
+  "schema": "skill-single-page-v1",
+  "page": "RUNNING.md",
+  "notebook": "organic-smiles-rdkit.ipynb",
+  "skill": "SKILL.md",
+  "code_cells": [
+    {
+      "index": 1,
+      "sha256": "b5955a2a859f43c380fba3dd0aa675debb9562340a69a898fa2921da35c6451c",
+      "lines": 616
+    },
+    {
+      "index": 3,
+      "sha256": "b436124030a788948bc6520d1714cb418c8340a3a89bbd9a4a93532dcf3c087f",
+      "lines": 8
+    },
+    {
+      "index": 5,
+      "sha256": "cff1e830ca36ea913c8d2a0d7762db61993befab669bcccb34e618b402d3b15a",
+      "lines": 8
+    },
+    {
+      "index": 7,
+      "sha256": "8af1a7e924c461d55ba95ad8334e7a9d845f58e5c9bc240699f5bb01bf4cd410",
+      "lines": 28
+    },
+    {
+      "index": 9,
+      "sha256": "c1384b7f50635c0f37fdc5d30c95bdf9665fb7f5f471ad565865baec8b59a886",
+      "lines": 6
+    },
+    {
+      "index": 11,
+      "sha256": "0186f077705ccd0a1734c2719653ddd8dd1039061f00babd8f3a320d818d76e6",
+      "lines": 24
+    }
+  ],
+  "code_cell_count": 6,
+  "complete_code_present": true,
+  "resource_format": "RESOURCE_TEXT",
+  "resource_files": [
+    "CONFIGURATION_zh-CN.md",
+    "credential_config.py",
+    "data-provenance.json",
+    "molecule_tool.py",
+    "molecules.csv",
+    "parameters.json",
+    "README.md",
+    "requirements-colab.txt",
+    "SKILL.md",
+    "skill_agent.py",
+    "sources.json",
+    "task-template.txt",
+    "resource-manifest.json"
+  ],
+  "resource_crlf": [
+    "CONFIGURATION_zh-CN.md",
+    "data-provenance.json",
+    "molecules.csv",
+    "parameters.json",
+    "requirements-colab.txt",
+    "task-template.txt"
+  ],
+  "example_origin": "Previously verified real Colab radius 2 and 3; not new outputs under the current readable bootstrap",
+  "new_model_calls": 0,
+  "current_notebook_cloud_reacceptance": "NOT_RUN"
+}

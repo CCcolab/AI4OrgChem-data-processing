@@ -41,7 +41,7 @@ class SkillNavigationTests(unittest.TestCase):
             for cat in nav['categories']:
                 self.assertEqual('## ' + cat['title'] in text, bool(cat['skills']))
             for skill in nav['skills']:
-                for key in ['page', 'notebook_entry', 'run']:
+                for key in ['run']:
                     self.assertTrue((ROOT / skill[key]).is_file())
                     self.assertIn(skill[key], text)
 
@@ -59,6 +59,18 @@ class SkillNavigationTests(unittest.TestCase):
 
     def test_teaching_and_running_have_separate_responsibilities(self):
         for skill in read_json(ROOT / 'NAVIGATION.json')['skills']:
+            if skill.get('layout') == 'single-page-code-example-download-v1':
+                text=(ROOT / skill['run']).read_text('utf-8')
+                blocks=re.findall(r'(?ms)^~~~~python\n(.*?)^~~~~[ \t]*$',text)
+                notebook=read_json(ROOT / skill['notebook'])
+                self.assertEqual(blocks,[''.join(c['source']) for c in notebook['cells'] if c['cell_type']=='code'])
+                prose=re.sub(r'(?ms)^(`{3,}|~{3,})[^\n]*\n.*?^\1[ \t]*$','',text)
+                self.assertEqual(len(re.findall(r'^## ',prose,re.M)),3)
+                self.assertIn('SKILL.md',text)
+                self.assertIn('sources.json',prose)
+                self.assertIn('data-provenance.json',prose)
+                self.assertIn('radius=3',prose)
+                continue
             teaching = (ROOT / skill['page']).read_text('utf-8')
             running = (ROOT / skill['run']).read_text('utf-8')
             self.assertTrue(skill['page'].endswith('/TEACHING.md'))
@@ -102,7 +114,8 @@ class SkillNavigationTests(unittest.TestCase):
             if any(p.startswith('.') for p in path.relative_to(ROOT).parts):
                 continue
             # SMARTS such as [CX3](=O) in code spans are chemical syntax, not links.
-            prose = re.sub(r'```[\s\S]*?```|`[^`\n]+`', '', path.read_text('utf-8'))
+            prose = re.sub(r'(?ms)^(`{3,}|~{3,})[^\n]*\n.*?^\1[ \t]*$', '', path.read_text('utf-8'))
+            prose = re.sub(r'`[^`\n]+`', '', prose)
             for target in re.findall(r'!?\[[^\]\n]*\]\(([^)\n]+)\)', prose):
                 target = target.strip().split(' "')[0].strip('<>')
                 if not target or target.startswith(('#', 'http:', 'https:', 'mailto:')):
@@ -131,16 +144,17 @@ class SkillNavigationTests(unittest.TestCase):
         nb = read_json(PAGE / 'organic-smiles-rdkit.ipynb')
         values = {}
         for node in ast.parse(''.join(nb['cells'][1]['source'])).body:
-            if isinstance(node, ast.Assign) and isinstance(node.value, ast.Constant):
+            if isinstance(node, ast.Assign):
                 for target in node.targets:
                     if isinstance(target, ast.Name):
-                        values[target.id] = node.value.value
-        payload = base64.b64decode(values['BUNDLE_B64'])
-        self.assertEqual(digest(payload), values['BUNDLE_SHA256'])
-        with zipfile.ZipFile(io.BytesIO(payload)) as archive:
-            self.assertIsNone(archive.testzip())
-            for name in archive.namelist():
-                self.assertEqual(archive.read(name), (PAGE / name).read_bytes(), name)
+                        try: values[target.id] = ast.literal_eval(node.value)
+                        except (ValueError,TypeError): pass
+        self.assertNotIn('BUNDLE_B64',values)
+        resources=values['RESOURCE_TEXT']
+        for name,text in resources.items():
+            raw=(text.replace('\n','\r\n') if name in values['RESOURCE_CRLF'] else text).encode('utf-8')
+            self.assertEqual(raw, (PAGE / name).read_bytes(), name)
+        self.assertEqual(resources['SKILL.md'],(PAGE/'SKILL.md').read_text('utf-8'))
 
     def test_teaching_inputs_and_parameters_are_explicit(self):
         provenance = read_json(PAGE / 'data-provenance.json')

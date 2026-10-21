@@ -56,6 +56,20 @@ class Guard:
                     self.fail(name,'retired_service_import')
             if isinstance(node,ast.Assign):
                 names=[t.id.upper() for t in node.targets if isinstance(t,ast.Name)]
+                if 'RESOURCE_TEXT' in names:
+                    try:
+                        resources=ast.literal_eval(node.value)
+                        if not isinstance(resources,dict) or any(not isinstance(k,str) or not isinstance(v,str) for k,v in resources.items()):
+                            raise ValueError('Resource mapping must contain literal text')
+                    except (ValueError,TypeError,SyntaxError,RecursionError,MemoryError):
+                        self.fail(name,'invalid_inline_resources')
+                    else:
+                        if depth>=MAX_DEPTH:self.fail(name,'payload_depth_limit')
+                        else:
+                            for resource_name,resource_text in resources.items():
+                                self.path(resource_name,nested=True)
+                                self.embedded+=1
+                                self.inspect(name+'!'+resource_name,resource_text.encode('utf-8'),depth+1)
                 if isinstance(node.value,ast.Constant) and node.value.value==8765 and any(n in {'PORT','HTTP_PORT','SERVICE_PORT','LISTEN_PORT'} for n in names):
                     self.fail(name,'retired_port_configuration')
                 if isinstance(node.value,ast.Constant) and isinstance(node.value.value,str) and any(n.endswith(('_B64','_BASE64')) and any(k in n for k in ('BUNDLE','RESOURCE','ARCHIVE','WHEEL','PACKAGE')) for n in names):

@@ -61,11 +61,12 @@
       "title": "SMILES 与 RDKit",
       "canonical_skill_title": "分析有机分子｜SMILES 与 RDKit",
       "category": "organic-structure",
-      "page": "skills/organic-smiles-rdkit/TEACHING.md",
+      "page": "skills/organic-smiles-rdkit/RUNNING.md",
       "notebook": "skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb",
-      "notebook_entry": "skills/organic-smiles-rdkit/NOTEBOOK.md",
+      "notebook_entry": "skills/organic-smiles-rdkit/RUNNING.md",
       "notebook_zip": "skills/organic-smiles-rdkit/organic-smiles-rdkit-notebook.zip",
-      "run": "skills/organic-smiles-rdkit/RUNNING.md"
+      "run": "skills/organic-smiles-rdkit/RUNNING.md",
+      "layout": "single-page-code-example-download-v1"
     },
     {
       "id": "table-fitting-residuals",

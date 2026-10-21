@@ -44,6 +44,17 @@ class BoundaryTests(unittest.TestCase):
     def test_clean_notebook_payload_is_allowed(self):
         raw=bundle({'molecules.csv':'id,smiles\n1,CCO'})
         self.inspect('lesson.ipynb',json.dumps({'cells':[{'cell_type':'code','source':["RESOURCE_B64 = "+repr(base64.b64encode(raw).decode())]}]}))
+    def test_readable_notebook_resources_are_allowed(self):
+        source='RESOURCE_TEXT = '+repr({'molecules.csv':'id,smiles\n1,CCO\n'})
+        self.inspect('lesson.ipynb',json.dumps({'cells':[{'cell_type':'code','source':[source]}]}))
+    def test_readable_notebook_resource_import_is_checked(self):
+        source='RESOURCE_TEXT = '+repr({'renamed.py':'from ai4orgchem_data_processing.localweb.app import create_app\n'})
+        self.inspect('lesson.ipynb',json.dumps({'cells':[{'cell_type':'code','source':[source]}]}),'retired_service_import')
+    def test_readable_notebook_resource_filename_is_checked(self):
+        source='RESOURCE_TEXT = '+repr({'start-platform.ps1':'echo old\n'})
+        self.inspect('lesson.ipynb',json.dumps({'cells':[{'cell_type':'code','source':[source]}]}),'retired_launcher')
+    def test_readable_notebook_resource_must_be_literal(self):
+        self.inspect('lesson.py','RESOURCE_TEXT = build_dynamic_resources()','invalid_inline_resources')
     def test_malformed_payload_is_blocked(self):self.inspect('lesson.py',"BUNDLE_B64 = 'not base64'",'invalid_embedded_payload')
     def test_corrupt_archive_is_blocked(self):self.inspect('x.zip',b'PK\x03\x04broken','unreadable_archive')
     def test_base64_signature_is_not_a_payload(self):self.inspect('signatures.py',"MAGIC = ('UEsDB', 'H4sI')")

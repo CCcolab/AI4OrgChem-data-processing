@@ -59,7 +59,7 @@
     },
     {
       "file": "NAVIGATION.json",
-      "sha256": "be92e66fad2cbc5500d97602415e26fa2023a6b58d1f14d8232beaf85f9be9b6"
+      "sha256": "3740374c82ce90b947393801b0f74e24115c6e6ebf42c47148281de8e7d5d43c"
     },
     {
       "file": "PLATFORM_ENTRY.json",
@@ -67,7 +67,7 @@
     },
     {
       "file": "README.md",
-      "sha256": "6c253d5187c809f37258005ac88d5485b452b39e08be4285a4d3a131fcde3bc6"
+      "sha256": "dfa2249a35e6f0015e82d249cbbbd7c6089bfc44932a18920d3bc7f64fb8f401"
     },
     {
       "file": "skills/organic-smiles-rdkit/CONFIGURATION_zh-CN.md",
@@ -111,15 +111,15 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/organic-smiles-rdkit-materials.zip",
-      "sha256": "c22c499a5d4d0ac99b5d05de4eb485660adff46ccaa9beca586063efc8f5044e"
+      "sha256": "1ab6fca313b7862794068be8abfd10c9433502106e0c3681c75729d50b841098"
     },
     {
       "file": "skills/organic-smiles-rdkit/organic-smiles-rdkit-notebook.zip",
-      "sha256": "fdd805aae99794e557439274d3bc229a236681f59c851059ac3299f547b3745e"
+      "sha256": "c39e2e0a247be6f7242f8eb502db7868f16389c71493890368afadc1ce2e0fbb"
     },
     {
       "file": "skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb",
-      "sha256": "8a3fdffcd69b86c54229923b333b046d0ef8113fed5258d1224edebfd190e82e"
+      "sha256": "6fef3ab14f2ed3fcb2c9ea235b0f7291b03fb2b946624c1166e9c5221156584a"
     },
     {
       "file": "skills/organic-smiles-rdkit/parameters.json",
@@ -127,7 +127,7 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/PUBLICATION_CHECK.json",
-      "sha256": "a1bb96675e8d06b60858016638fbe0b4eb40eccd476999a249db73a10a4bb799"
+      "sha256": "0b564aae7747ad33b42f523e49dec22a87101a7ed3010042eadf88c42062136c"
     },
     {
       "file": "skills/organic-smiles-rdkit/README.md",
@@ -143,7 +143,7 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/RUNNING.md",
-      "sha256": "74f05d8f98ea24e904f9210de53b0195782b1706b890c341d16a4ac03db928d8"
+      "sha256": "ac33f4b40c15b0229901d10a3d03c7f05c38d464525d0173d87177901b0623b0"
     },
     {
       "file": "skills/organic-smiles-rdkit/saved-output-provenance.json",
@@ -151,7 +151,11 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/SHA256SUMS.txt",
-      "sha256": "85aad073deb8b2706127d6383a952d41030efd146033c855eb1c680eeac249aa"
+      "sha256": "3bf8cf66e0a1b024c9603f49128f0adaff666b673d3691599bffd63fc8b1e353"
+    },
+    {
+      "file": "skills/organic-smiles-rdkit/SINGLE_PAGE_MANIFEST.json",
+      "sha256": "14535067c505f2b7aa75e2ee9221af0f3689632038a40ed47eb23e36889a006f"
     },
     {
       "file": "skills/organic-smiles-rdkit/SKILL.md",
@@ -263,15 +267,15 @@
     },
     {
       "file": "START_HERE_zh-CN.md",
-      "sha256": "42415def40f11fee2d3a42fec1ccfc4d74a32be47dc03c9b955c3c4dc606de86"
+      "sha256": "39a4df1686919e8205644dbf59eab8e992651f81e04019b39ad811fb743d4522"
     },
     {
       "file": "tests/guard/test_platform_boundary.py",
-      "sha256": "1f3d4eeaa010f99bca58aac1066ef74cbcd64b71ffda536d14bd4c2e532f667e"
+      "sha256": "156b47969dd49f38ded139625d4e91071a65676b8afd2b85ac390cc8bfbd54e1"
     },
     {
       "file": "tests/guard/test_skill_navigation.py",
-      "sha256": "ec8ea1734a6012af3d55d51e31264c9a3aa45bf0f77f84f1102853ad127b2f71"
+      "sha256": "f74d897330f9bc4aab57ac2729f1f870afc065bcf8a8e337a4436b4db5339759"
     },
     {
       "file": "tests/guard/test_workflow_gate.py",
@@ -279,7 +283,7 @@
     },
     {
       "file": "tools/check_platform_boundary.py",
-      "sha256": "c154e8aaa715a597a2dd5b41408753c34de36fddb676202c3bf1ba2a93430bfa"
+      "sha256": "fc2af27ac404115a0071cff671f2e87854b5f802e8ecd81b3ac5f5ba90afca83"
     },
     {
       "file": "tools/package_checked_skill.py",
