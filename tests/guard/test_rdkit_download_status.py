@@ -1,6 +1,6 @@
 """Program evidence wins over model wording; failures never become PASS."""
 from pathlib import Path
-import hashlib, json, tempfile, types, unittest, zipfile
+import base64,hashlib, json, sys,tempfile, types, unittest, zipfile
 from rdkit_notebook_resources import resource_bytes
 
 ROOT=Path(__file__).resolve().parents[2]
@@ -28,6 +28,22 @@ class DownloadEvidenceTests(unittest.TestCase):
         self.write('export-manifest.json',[{'file':n,'sha256':hashlib.sha256((self.root/n).read_bytes()).hexdigest()} for n in names])
         with zipfile.ZipFile(self.root/'organic-smiles-rdkit-results.zip','w') as z:
             for n in names+['export-manifest.json']:z.write(self.root/n,n)
+    def test_frontend_cells_load_helper_in_clean_parent_path(self):
+        workspace=self.root/'runtime-workspace';workspace.mkdir()
+        (workspace/'result_presentation.py').write_bytes(resource_bytes()['result_presentation.py'])
+        self.assertNotIn(str(workspace),sys.path)
+        self.assertNotIn('result_presentation',sys.modules)
+        notebook=json.loads((ROOT/'skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb').read_text('utf-8'))
+        outputs=[]
+        namespace={'workspace':workspace,'run_output':self.root,'run_history':[self.root],
+                   'display':outputs.append,'Markdown':lambda text:text,'HTML':lambda text:text,
+                   'Image':lambda **kwargs:kwargs,'json':json,'zipfile':zipfile,'base64':base64,'hashlib':hashlib}
+        for i in [9,11]:exec(compile(''.join(notebook['cells'][i]['source']),'<frontend-cell>','exec'),namespace)
+        self.assertEqual(namespace['presentation']['status']['status'],'PASS_VERIFIED_DOWNLOAD')
+        self.assertEqual(namespace['verified_download']['status'],'PASS_VERIFIED_DOWNLOAD')
+        self.assertTrue((workspace/'organic-smiles-rdkit-all-runs.zip').is_file())
+        self.assertEqual(Path(namespace['presentation_module'].__file__),workspace/'result_presentation.py')
+
     def test_denial_cannot_override_actual_files(self):
         view=module.display_bundle(self.root)
         self.assertEqual(view['status']['status'],'PASS_VERIFIED_DOWNLOAD')

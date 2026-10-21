@@ -4,7 +4,7 @@
 
 本页集中显示程序、实际参数案例与下载，不需要在多个说明页面间往返。 **执行和下载状态由程序回执、文件清单与实际ZIP决定。结果区先展示程序核验状态；模型原文单独展开，不能据其判断文件是否已生成。** GitHub展示代码与保存的输出，点击下面按钮在 Colab 云端实际执行。
 
-**[▶ 在 Colab 运行](https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/72a69915b6ea0250c99bf2fe6c498a212852c03a/skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb)**
+**[▶ 在 Colab 运行](https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/main/skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb)**
 
 <details>
 <summary>首次运行：账号授权、保存副本与操作步骤</summary>
@@ -895,8 +895,11 @@ print(json.dumps(receipt,ensure_ascii=False,indent=2))
 
 ~~~~python
 # @title 5. 查看程序回执、真实结果与模型解释
-from result_presentation import display_bundle
-presentation=display_bundle(run_output)
+import importlib.util
+presentation_spec=importlib.util.spec_from_file_location('organic_result_presentation',workspace/'result_presentation.py')
+presentation_module=importlib.util.module_from_spec(presentation_spec)
+presentation_spec.loader.exec_module(presentation_module)
+presentation=presentation_module.display_bundle(run_output)
 display(Markdown(presentation['markdown']))
 numerical=json.loads((run_output/'numerical-result.json').read_text('utf-8'))
 print(json.dumps(numerical,ensure_ascii=False,indent=2))
@@ -909,8 +912,11 @@ display(HTML(presentation['raw_model_html']))
 
 ~~~~python
 # @title 6. 校验、保存及下载结果
-from result_presentation import verify_download
-verified_download=verify_download(run_output)
+import importlib.util
+presentation_spec=importlib.util.spec_from_file_location('organic_result_presentation',workspace/'result_presentation.py')
+presentation_module=importlib.util.module_from_spec(presentation_spec)
+presentation_spec.loader.exec_module(presentation_module)
+verified_download=presentation_module.verify_download(run_output)
 print('程序核验：结果文件已生成；下载状态以实际回执与ZIP为准。')
 archive=run_output/'organic-smiles-rdkit-results.zip'
 with zipfile.ZipFile(archive) as z:
@@ -996,7 +1002,7 @@ print('PASS：结果ZIP完整性与清单哈希。共'+str(len(run_history))+'�
 
 | 当前程序文件 | SHA-256 |
 | --- | --- |
-| organic-smiles-rdkit.ipynb | `68099f342608ab28f6cf3a0c1ac9032d692d4c5c6d78ab5e2da7d8d2c9ccfb51` |
+| organic-smiles-rdkit.ipynb | `5dccc983a118284394952a366877dd81054aafd7f568caa985d6e56705fb30f1` |
 | SKILL.md | `f79b96d8d40a9d955f68642e8bb94ef205ff71ccaec7519864abad8a5499f776` |
 
 运行前只需本页所列Notebook。准备单元会在自己的工作目录中生成运行模块、数据、配置说明及resource-manifest.json；SKILL.md中提及的该清单指运行目录文件。页面目录不重复分发这些模块。

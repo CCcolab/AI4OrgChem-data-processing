@@ -141,8 +141,9 @@ class SkillNavigationTests(unittest.TestCase):
             self.assertEqual(url.netloc,'colab.research.google.com')
             self.assertFalse(url.query)
             self.assertFalse(url.fragment)
-            self.assertRegex(skill['colab_source_commit'],r'^[a-f0-9]{40}$')
-            self.assertEqual(url.path,'/github/CCcolab/AI4OrgChem-data-processing/blob/'+skill['colab_source_commit']+'/'+skill['notebook'])
+            ref=skill.get('colab_source_commit',skill.get('colab_source_ref'))
+            self.assertRegex(ref,r'^(?:[a-f0-9]{40}|main)$')
+            self.assertEqual(url.path,'/github/CCcolab/AI4OrgChem-data-processing/blob/'+ref+'/'+skill['notebook'])
             self.assertEqual(digest((ROOT/skill['notebook']).read_bytes()),skill['colab_notebook_sha256'])
             running=(ROOT/skill['run']).read_text('utf-8')
             self.assertIn('[▶ 在 Colab 运行]('+skill['colab_url']+')',running)
@@ -168,7 +169,7 @@ class SkillNavigationTests(unittest.TestCase):
 
     def test_notebook_identity_and_default_collapse(self):
         nbfile=PAGE/'organic-smiles-rdkit.ipynb'
-        self.assertEqual(digest(nbfile.read_bytes()),'68099f342608ab28f6cf3a0c1ac9032d692d4c5c6d78ab5e2da7d8d2c9ccfb51')
+        self.assertEqual(digest(nbfile.read_bytes()),'5dccc983a118284394952a366877dd81054aafd7f568caa985d6e56705fb30f1')
         nb=read_json(nbfile)
         self.assertEqual(nb['metadata']['adp']['skill_sha256'],digest((PAGE/'SKILL.md').read_bytes()))
         self.assertEqual(len(nb['cells']),13)
