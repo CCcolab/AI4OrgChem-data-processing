@@ -2,7 +2,7 @@
 
 分类：**有机分子结构与身份识别** · Skill调用名：`organic-smiles-rdkit`
 
-本页集中显示程序、实际参数案例与下载，不需要在多个说明页面间往返。GitHub用于阅读；运行时将下载的.ipynb上传自己的[Google Colab](https://colab.research.google.com/)，或用本地Jupyter打开。
+本页集中显示程序、实际参数案例与下载，不需要在多个说明页面间往返。 **执行和下载状态由程序回执、文件清单与实际ZIP决定。结果区先展示程序核验状态；模型原文单独展开，不能据其判断文件是否已生成。**GitHub用于阅读；运行时将下载的.ipynb上传自己的[Google Colab](https://colab.research.google.com/)，或用本地Jupyter打开。
 
 ## ① 完整Notebook代码：加载与调用SKILL.md
 
@@ -411,6 +411,7 @@ SMARTS 用 Chem.MolFromSmarts 并检查 None，与 SMILES 结构解析明确区�
 from pathlib import Path
 import hashlib,json,time,urllib.request,urllib.error,zipfile
 from molecule_tool import analyze,validate,dump,sha
+from result_presentation import tool_file_evidence,verify_download,model_denies_files
 MODEL='deepseek-flash'
 ENDPOINT='https://api.deepseek.com/chat/completions'
 
@@ -431,7 +432,7 @@ def run(root,params,output,key,location):
     rounds=[];events=[];result=None;start=time.monotonic()
     skill=(root/'SKILL.md').read_text('utf-8');skill_hash=sha(root/'SKILL.md')
     tools=[{'type':'function','function':{'name':'analyze_organic_molecules','description':'Run bounded RDKit parsing, descriptors, SMARTS, Morgan similarities and checks on the provided teaching structures; no arbitrary code, edits or network lookup.','parameters':{'type':'object','properties':{'radius':{'type':'integer','minimum':1,'maximum':4},'fp_size':{'type':'integer','enum':[1024,2048,4096]},'include_chirality':{'type':'boolean'},'query_smarts':{'type':'string'},'reference_id':{'type':'string'}},'required':list(params),'additionalProperties':False}}}]
-    messages=[{'role':'system','content':skill+'\n\n适配器说明：Skill默认交付代码。本次用户明确授权在Colab验收执行，覆盖默认不执行步骤，只能调用analyze_organic_molecules白名单工具，不生成或运行任意代码。必须严格采用用户参数。工具返回真实结果后用中文约200字解释结构、无效记录、身份和相似度局限；不编造数据，不预测活性或反应。'},
+    messages=[{'role':'system','content':skill+'\n\n适配器说明：Skill默认交付代码。本次用户明确授权在Colab验收执行，覆盖默认不执行步骤，只能调用analyze_organic_molecules白名单工具，不生成或运行任意代码。必须严格采用用户参数。工具返回真实结果后用中文约200字解释结构、无效记录、身份和相似度局限；不编造数据，不预测活性或反应。文件状态只依据program_files中程序核对的实际文件；数值文件已写入，ZIP由程序在本段模型回复后封装。不要声称本次未执行或未生成文件，不要虚构下载地址；下载统一提示使用Notebook课末程序下载单元。模型不决定文件是否可下载。'},
         {'role':'user','content':(root/'task-template.txt').read_text('utf-8')+'\n参数：'+json.dumps(params,ensure_ascii=False)+'\n样本：\n'+(root/'molecules.csv').read_text('utf-8')}]
     try:
         for i in range(3):
@@ -455,17 +456,18 @@ def run(root,params,output,key,location):
                 if args!=params:raise ValueError('模型改变用户参数，拒绝执行。')
                 result=analyze(root,args,output)
                 events.append({'name':tc['function']['name'],'arguments':args,'numerical_sha256':sha(output/'numerical-result.json'),'status':'PASS'})
-                messages.append({'role':'tool','tool_call_id':tc['id'],'content':json.dumps(result,ensure_ascii=False)})
+                messages.append({'role':'tool','tool_call_id':tc['id'],'content':json.dumps({'analysis':result,'program_files':tool_file_evidence(output)},ensure_ascii=False)})
         else:raise RuntimeError('超出3轮API预算。')
         dump(output/'agent-trace.json',{'rounds':rounds,'tool_events':events,'credentials_persisted':False})
-        receipt={'status':'PASS_REAL_MODEL_AND_TOOL_CALL','skill':'organic-smiles-rdkit','skill_sha256':skill_hash,'execution_location':location,'parameters':params,'provider':'DeepSeek','model':rounds[-1]['model'],'api_rounds':len(rounds),'tool_calls':len(events),'numerical_checks':'PASS','model_interpretation':'GENERATED_NOT_EXPERT_CERTIFIED','elapsed_s':round(time.monotonic()-start,3),'budget':{'api_rounds':3,'per_request_s':60,'auto_retry':False},'new_rhf':'NOT_ACCEPTED'}
+        receipt={'status':'PASS_REAL_MODEL_AND_TOOL_CALL','skill':'organic-smiles-rdkit','skill_sha256':skill_hash,'execution_location':location,'parameters':params,'provider':'DeepSeek','model':rounds[-1]['model'],'api_rounds':len(rounds),'tool_calls':len(events),'program_files_provided_to_model':True,'model_file_status_claim':'CONTRADICTED' if model_denies_files(msg['content']) else 'NOT_FLAGGED_NOT_CERTIFIED','numerical_checks':'PASS','model_interpretation':'GENERATED_NOT_EXPERT_CERTIFIED','elapsed_s':round(time.monotonic()-start,3),'budget':{'api_rounds':3,'per_request_s':60,'auto_retry':False},'new_rhf':'NOT_ACCEPTED'}
         dump(output/'run-receipt.json',receipt)
-        for name in ['molecule_tool.py','skill_agent.py','credential_config.py','requirements-colab.txt','task-template.txt','resource-manifest.json']:(output/name).write_bytes((root/name).read_bytes())
+        for name in ['molecule_tool.py','skill_agent.py','credential_config.py','result_presentation.py','requirements-colab.txt','task-template.txt','resource-manifest.json']:(output/name).write_bytes((root/name).read_bytes())
         manifest=[{'file':p.name,'sha256':sha(p)} for p in sorted(output.iterdir()) if p.is_file()]
         dump(output/'export-manifest.json',manifest)
         with zipfile.ZipFile(output/'organic-smiles-rdkit-results.zip','x',zipfile.ZIP_DEFLATED) as z:
             for p in sorted(output.iterdir()):
                 if p.is_file() and p.suffix!='.zip':z.write(p,p.name)
+        verify_download(output)
         return receipt
     except Exception as exc:
         output.mkdir(exist_ok=True)
@@ -559,6 +561,97 @@ def run(root,params,output,key,location):
 ''',
     'task-template.txt': r'''使用 organic-smiles-rdkit。用户明确授权在本Notebook中通过已审阅的analyze_organic_molecules工具执行一次。样本为molecules.csv中的教学有机结构，按参数计算解析状态、canonical isomeric SMILES、分子式、电荷、MolWt、MolLogP、HBD/HBA、TPSA、SMARTS匹配、Murcko骨架及Morgan bit Tanimoto。保留ID、无效记录、重复映射、盐/电荷/同位素/立体信息；不变换结构、不联网查分子、不推断活性或机理。不得改用户参数或执行任意生成代码。先检查输入，再调用白名单工具，用真实结果说明局限并提供下载。
 ''',
+    'result_presentation.py': r'''"""Determine file availability from program evidence; preserve raw model text."""
+from pathlib import Path
+import hashlib
+import html
+import json
+import re
+import zipfile
+
+REQUIRED = ('analysis.csv', 'errors.csv', 'duplicates.csv', 'similarity.csv',
+            'molecules.png', 'similarity.png', 'parameters.json', 'numerical-result.json')
+
+def _sha(data):
+    return hashlib.sha256(data).hexdigest()
+
+def _file(root, name):
+    if Path(name).name != name or name in ('', '.', '..') or '\\' in name:
+        raise ValueError('文件清单包含非法路径。')
+    path = root / name
+    if path.is_symlink() or not path.is_file() or path.stat().st_size == 0:
+        raise ValueError('结果文件缺失、为空或为链接：' + name)
+    return path
+
+def tool_file_evidence(output):
+    """Only existing numeric files are reported; the ZIP is created later."""
+    root = Path(output)
+    numeric = json.loads(_file(root, 'numerical-result.json').read_text('utf-8'))
+    if numeric.get('status') != 'PASS_BOUNDED_RDKIT_ANALYSIS' or not numeric.get('checks') or not all(v is True for v in numeric['checks'].values()):
+        raise ValueError('数值程序没有通过，不能宣称已有合格结果。')
+    return {'status': 'FILES_WRITTEN_BY_PROGRAM', 'files': [
+        {'file': n, 'bytes': _file(root, n).stat().st_size,
+         'sha256': _sha(_file(root, n).read_bytes())} for n in REQUIRED],
+        'zip_status': 'CREATED_BY_PROGRAM_AFTER_FINAL_MODEL_REPLY',
+        'download_instructions': '使用Notebook课末下载单元；文件状态以程序回执、文件清单和实际ZIP为准。'}
+
+def model_denies_files(text):
+    return bool(re.search(r'(?:未|没有|并未|尚未)生成(?:任何|可供|可)?下载文件|未生成可下载文件|no downloadable files (?:were |have been )?(?:generated|created)', text, re.I))
+
+def verify_download(output):
+    """Reject missing files, bad receipts, tampering and invalid archives."""
+    root = Path(output)
+    tool_file_evidence(root)
+    receipt = json.loads(_file(root, 'run-receipt.json').read_text('utf-8'))
+    numeric = json.loads((root/'numerical-result.json').read_text('utf-8'))
+    if receipt.get('status') != 'PASS_REAL_MODEL_AND_TOOL_CALL' or receipt.get('tool_calls') != 1:
+        raise ValueError('没有合格的真实程序回执。')
+    if receipt.get('parameters') != numeric.get('parameters'):
+        raise ValueError('程序回执与数值参数不一致。')
+    if receipt.get('skill_sha256') != _sha(_file(root, 'SKILL.md').read_bytes()):
+        raise ValueError('Skill身份与实际文件不一致。')
+    manifest = json.loads(_file(root, 'export-manifest.json').read_text('utf-8'))
+    names = [entry['file'] for entry in manifest]
+    if len(set(names)) != len(names) or not set(REQUIRED).union({'run-receipt.json', 'SKILL.md', 'agent-explanation.md'}).issubset(names):
+        raise ValueError('结果清单不完整或包含重复项。')
+    for entry in manifest:
+        if _sha(_file(root, entry['file']).read_bytes()) != entry['sha256']:
+            raise ValueError('实际结果文件哈希不一致：' + entry['file'])
+    archive = _file(root, 'organic-smiles-rdkit-results.zip')
+    with zipfile.ZipFile(archive) as z:
+        if len(z.namelist()) != len(set(z.namelist())) or set(z.namelist()) != set(names).union({'export-manifest.json'}):
+            raise ValueError('下载ZIP与清单文件集合不一致。')
+        if sum(x.file_size for x in z.infolist()) > 20_000_000 or z.testzip() is not None:
+            raise ValueError('下载ZIP损坏或超出本页大小范围。')
+        if z.read('export-manifest.json') != (root/'export-manifest.json').read_bytes():
+            raise ValueError('下载ZIP内清单不一致。')
+        for entry in manifest:
+            if _sha(z.read(entry['file'])) != entry['sha256']:
+                raise ValueError('下载ZIP文件哈希不一致。')
+    return {'status': 'PASS_VERIFIED_DOWNLOAD', 'files_generated': True,
+            'archive': archive.name, 'archive_sha256': _sha(archive.read_bytes()),
+            'archive_bytes': archive.stat().st_size, 'manifest_files': len(names),
+            'execution_location': receipt['execution_location'], 'parameters': receipt['parameters'],
+            'basis': 'Actual program receipt, file manifest, disk files and ZIP bytes'}
+
+def display_bundle(output):
+    status = verify_download(output)
+    raw = (Path(output)/'agent-explanation.md').read_text('utf-8')
+    warning = model_denies_files(raw)
+    message = ('### 程序执行与下载（已核验）\n\n'
+               '已完成真实Skill与RDKit调用，已生成并校验结果文件。\n\n'
+               f"- 本轮ZIP：`{status['archive']}`（{status['archive_bytes']}字节）\n"
+               f"- SHA-256：`{status['archive_sha256']}`\n"
+               f"- 清单文件：{status['manifest_files']}项；实际运行位置：{status['execution_location']}\n\n"
+               '**请使用课末下载单元保存结果；文件状态以本区程序回执、文件清单及实际下载文件为准。**\n\n')
+    if warning:
+        message += '**模型文件状态声明有误：原文与实际程序证据不一致。本次文件已生成且ZIP校验通过。**\n\n'
+    message += '模型文字仅供结果解释参考，不决定执行或文件下载状态。原文保留在结果包中，也可在下方展开核对。'
+    raw_html = ('<details><summary>查看原始模型解释（文件状态以程序核验为准）</summary><pre style="white-space:pre-wrap">'
+                + html.escape(raw) + '</pre></details>')
+    return {'status': status, 'markdown': message, 'raw_model_html': raw_html,
+            'model_file_claim': 'CONTRADICTED' if warning else 'NOT_FLAGGED_NOT_CERTIFIED'}
+''',
     'resource-manifest.json': r'''[
   {
     "file": "CONFIGURATION_zh-CN.md",
@@ -598,7 +691,7 @@ def run(root,params,output,key,location):
   },
   {
     "file": "skill_agent.py",
-    "sha256": "d42b85ebd13d7d5d49f474277408abb2ba9a419330393bbce61f4625a20c5a61"
+    "sha256": "487ee81ddf57a13a53e0ea3e88db790c58b8cde544db7a9da2596d816f0fd2e1"
   },
   {
     "file": "sources.json",
@@ -607,6 +700,10 @@ def run(root,params,output,key,location):
   {
     "file": "task-template.txt",
     "sha256": "73254171924f3f5e7382b0e7c089f488639f0135d2ec728054e6ded37fbc00e8"
+  },
+  {
+    "file": "result_presentation.py",
+    "sha256": "ae4c115f1fdb76f8a14f8dc7a9feb031dee3104ad2d4ca03ab8b0649bbc9ce16"
   }
 ]
 ''',
@@ -700,18 +797,24 @@ print(json.dumps(receipt,ensure_ascii=False,indent=2))
 ### 5. 查看真实结果
 
 ~~~~python
-# @title 5. 查看真实结果
+# @title 5. 查看程序回执、真实结果与模型解释
+from result_presentation import display_bundle
+presentation=display_bundle(run_output)
+display(Markdown(presentation['markdown']))
 numerical=json.loads((run_output/'numerical-result.json').read_text('utf-8'))
 print(json.dumps(numerical,ensure_ascii=False,indent=2))
 display(Image(filename=str(run_output/'molecules.png')))
 display(Image(filename=str(run_output/'similarity.png')))
-display(Markdown('### Agent解释（需独立审阅）\n'+(run_output/'agent-explanation.md').read_text('utf-8')))
+display(HTML(presentation['raw_model_html']))
 ~~~~
 
 ### 6. 校验、保存及下载结果
 
 ~~~~python
 # @title 6. 校验、保存及下载结果
+from result_presentation import verify_download
+verified_download=verify_download(run_output)
+print('程序核验：结果文件已生成；下载状态以实际回执与ZIP为准。')
 archive=run_output/'organic-smiles-rdkit-results.zip'
 with zipfile.ZipFile(archive) as z:
     if z.testzip() is not None:raise ValueError('ZIP损坏。')
@@ -739,7 +842,10 @@ print('PASS：结果ZIP完整性与清单哈希。共'+str(len(run_history))+'�
 
 ## ② 实际参数调用案例与输出结果
 
-以下来自已保存并校验的真实Colab两轮运行；本次页面整理没有重新发起模型请求。两轮使用同一14条教学记录（12条有效、2条明确拒绝）。历史示例用于说明如何调用及判读，新结果由你运行Notebook产生。
+**文件状态依据：程序真实回执 → 实际文件及清单哈希 → ZIP完整性。** 模型接收已生成文件清单；结果区先展示程序核验，再单独展开原始模型解释。模型再次否定文件时，界面明确纠正该声明；缺文件或校验失败会停止，不显示“已生成”。原始模型回复不被改写。
+
+
+以下来自本版在独立本地Python环境中的两轮真实DeepSeek与RDKit调用（实际位置LOCAL）。两轮使用同一14条教学记录（12条有效、2条明确拒绝）；原Colab运行和错误回复保留在项目历史验收材料中。新结果由你运行Notebook产生。
 
 | 参数 | 默认案例 | 修改参数案例 |
 | --- | --- | --- |
@@ -789,9 +895,9 @@ print('PASS：结果ZIP完整性与清单哈希。共'+str(len(run_history))+'�
 
 **运行后保存结果：** 用Colab“文件→保存副本/保存”保存自己的Notebook；“文件→下载→下载.ipynb”保存含执行输出的文件。下载单元提供本轮`organic-smiles-rdkit-results.zip`及全部运行`organic-smiles-rdkit-all-runs.zip`。若输出区按钮加载失败，用Colab左侧“文件”面板在本轮run目录下载本轮ZIP，工作目录下载合并ZIP。
 
-[下载已保存的两轮结果示例ZIP](example-results.zip)。下载后核对analysis.csv、errors.csv、duplicates.csv、similarity.csv、参数及逐文件清单。
+[下载已保存的两轮结果示例ZIP](example-results.zip)。下载后核对analysis.csv、errors.csv、duplicates.csv、similarity.csv、参数及逐文件清单。以实际下载文件和程序回执为准；模型文字不决定文件是否存在。
 
 | 当前程序文件 | SHA-256 |
 | --- | --- |
-| organic-smiles-rdkit.ipynb | `6fef3ab14f2ed3fcb2c9ea235b0f7291b03fb2b946624c1166e9c5221156584a` |
+| organic-smiles-rdkit.ipynb | `68099f342608ab28f6cf3a0c1ac9032d692d4c5c6d78ab5e2da7d8d2c9ccfb51` |
 | SKILL.md | `f79b96d8d40a9d955f68642e8bb94ef205ff71ccaec7519864abad8a5499f776` |

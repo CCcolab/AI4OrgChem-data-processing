@@ -6,8 +6,8 @@
   "code_cells": [
     {
       "index": 1,
-      "sha256": "b5955a2a859f43c380fba3dd0aa675debb9562340a69a898fa2921da35c6451c",
-      "lines": 616
+      "sha256": "16baa7d2f0593416dcf852c2d756a69e709e7f595fbc149fd213ba6aacfb3bc1",
+      "lines": 713
     },
     {
       "index": 3,
@@ -26,13 +26,13 @@
     },
     {
       "index": 9,
-      "sha256": "c1384b7f50635c0f37fdc5d30c95bdf9665fb7f5f471ad565865baec8b59a886",
-      "lines": 6
+      "sha256": "114d280941493597c3ae747230f93ea9c87673153ac367c48cd5d8648940805a",
+      "lines": 9
     },
     {
       "index": 11,
-      "sha256": "0186f077705ccd0a1734c2719653ddd8dd1039061f00babd8f3a320d818d76e6",
-      "lines": 24
+      "sha256": "0fccad87f72432f4c299b11d91fc7ef6bd5e227a09f9b59fefca5e70c1b69f59",
+      "lines": 27
     }
   ],
   "code_cell_count": 6,
@@ -51,7 +51,8 @@
     "skill_agent.py",
     "sources.json",
     "task-template.txt",
-    "resource-manifest.json"
+    "resource-manifest.json",
+    "result_presentation.py"
   ],
   "resource_crlf": [
     "CONFIGURATION_zh-CN.md",
@@ -63,5 +64,6 @@
   ],
   "example_origin": "Previously verified real Colab radius 2 and 3; not new outputs under the current readable bootstrap",
   "new_model_calls": 0,
-  "current_notebook_cloud_reacceptance": "NOT_RUN"
+  "current_notebook_cloud_reacceptance": "NOT_RUN",
+  "file_status_policy": "Validated program receipt + manifest + actual file/ZIP; raw model explanation kept in expandable audit section"
 }

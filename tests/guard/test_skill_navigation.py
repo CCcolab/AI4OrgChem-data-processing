@@ -172,7 +172,7 @@ class SkillNavigationTests(unittest.TestCase):
     def test_material_download_matches_current_sources(self):
         with zipfile.ZipFile(PAGE / 'organic-smiles-rdkit-materials.zip') as archive:
             self.assertIsNone(archive.testzip())
-            self.assertEqual(len(archive.namelist()), 16)
+            self.assertEqual(len(archive.namelist()), 17)
             for name in archive.namelist():
                 self.assertEqual(archive.read(name), (PAGE / name).read_bytes(), name)
 

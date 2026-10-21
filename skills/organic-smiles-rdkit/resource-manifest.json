@@ -37,7 +37,7 @@
   },
   {
     "file": "skill_agent.py",
-    "sha256": "d42b85ebd13d7d5d49f474277408abb2ba9a419330393bbce61f4625a20c5a61"
+    "sha256": "487ee81ddf57a13a53e0ea3e88db790c58b8cde544db7a9da2596d816f0fd2e1"
   },
   {
     "file": "sources.json",
@@ -46,5 +46,9 @@
   {
     "file": "task-template.txt",
     "sha256": "73254171924f3f5e7382b0e7c089f488639f0135d2ec728054e6ded37fbc00e8"
+  },
+  {
+    "file": "result_presentation.py",
+    "sha256": "ae4c115f1fdb76f8a14f8dc7a9feb031dee3104ad2d4ca03ab8b0649bbc9ce16"
   }
 ]
