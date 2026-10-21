@@ -2,7 +2,7 @@
 
 分类：**有机分子结构与身份识别** · Skill调用名：`organic-smiles-rdkit`
 
-本页集中显示程序、实际参数案例与下载，不需要在多个说明页面间往返。 **执行和下载状态由程序回执、文件清单与实际ZIP决定。结果区先展示程序核验状态；模型原文单独展开，不能据其判断文件是否已生成。**GitHub用于阅读；运行时将下载的.ipynb上传自己的[Google Colab](https://colab.research.google.com/)，或用本地Jupyter打开。
+本页集中显示程序、实际参数案例与下载，不需要在多个说明页面间往返。 **执行和下载状态由程序回执、文件清单与实际ZIP决定。结果区先展示程序核验状态；模型原文单独展开，不能据其判断文件是否已生成。** GitHub用于阅读；运行时将下载的.ipynb上传自己的[Google Colab](https://colab.research.google.com/)，或用本地Jupyter打开。
 
 ## ① 完整Notebook代码：加载与调用SKILL.md
 
@@ -794,7 +794,7 @@ run_history.append(run_output)
 print(json.dumps(receipt,ensure_ascii=False,indent=2))
 ~~~~
 
-### 5. 查看真实结果
+### 5. 查看程序回执、真实结果与模型解释
 
 ~~~~python
 # @title 5. 查看程序回执、真实结果与模型解释
