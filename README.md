@@ -2,46 +2,33 @@
 
 **[统一使用入口](https://github.com/CCcolab/AI4OrgChem-data-processing/blob/main/START_HERE_zh-CN.md)**
 
-**在线了解我们创建的Agent Skill，下载Notebook，在Colab或本地实际调用。** 每个Skill使用一页说明与一份可运行.ipynb，提供功能、知识和数据出处、运行环境、调用模板、参数、结果解释及下载。
+从具体化学问题选择Skill，阅读知识与数据来源，在Notebook中修改参数并实际调用工具，核对结果后下载。页面同时提供教学说明和可运行.ipynb。
 
-本仓库保持**私有**，需要已授权的GitHub账号访问。GitHub页面用于阅读；Colab提供Python运行环境。模型实际调用由你的DeepSeek凭据授权，数值由白名单程序计算；不使用OpenAI API或SDK。
+导航采用7个专业应用分类和1个共用支持分类；本页按分类显示已经可以使用的页面，空分类不生成栏目或占位链接。[分类与页面索引](NAVIGATION.json)。
 
-## 当前Skill样板
+## 有机分子结构与身份识别
 
-| Skill | 在线介绍与图表 | Notebook | 参数与任务 |
+| Skill | 教学与来源 | Notebook | 运行与下载 |
 | --- | --- | --- | --- |
-| 表格拟合与残差分析 | [功能、来源与用法](skills/table-fitting-residuals/README.md) | [在线预览并下载.ipynb](skills/table-fitting-residuals/table-fitting-residuals.ipynb) | [参数](skills/table-fitting-residuals/parameters.json) · [任务模板](skills/table-fitting-residuals/task-template.txt) |
+| 分析有机分子｜SMILES与RDKit | [介绍](skills/organic-smiles-rdkit/README.md) | [阅读及下载](skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb) | [操作指南](skills/organic-smiles-rdkit/DOWNLOADS.md) |
 
-以David Harvey教材中咖啡因HPLC外标校准表为例，实际调用table-fitting-residuals Skill，拟合带截距直线、检查残差并反算浓度。数据是教材转录，不是AI编造或本项目新实验。本例属于有机物分析数据处理，不把它称为有机反应机理课程。
+## 有机分析与实验数据处理
 
-## 如何在线运行
+| Skill | 教学与来源 | Notebook | 运行与下载 |
+| --- | --- | --- | --- |
+| 表格拟合与残差分析 | [介绍](skills/table-fitting-residuals/README.md) | [阅读及下载](skills/table-fitting-residuals/table-fitting-residuals.ipynb) | [操作指南](docs/SKILL_RUNNING.md) |
 
-1. 打开上表Notebook，在GitHub文件页面点击 **Download raw file（下载原始文件）**，得到.ipynb。
-2. 打开 [Google Colab](https://colab.research.google.com/)，选择“文件→上传笔记本”，上传刚下载的文件。私有仓库不能依靠匿名Colab链接自动读取，不需要把GitHub令牌填入Notebook。
-3. 在Colab左侧Secret保存DEEPSEEK_API_KEY并授权当前Notebook。不要修改代码中的变量名，不上传整份.env。
-4. 从头运行，修改参数后再运行相关单元，核对真实回执及图表，最后下载结果ZIP及执行后的Notebook。
+## 如何运行
 
-本地Jupyter读取你设置的.env路径。详情见 [配置说明](skills/table-fitting-residuals/CONFIGURATION_zh-CN.md) 和 [运行指引](docs/SKILL_RUNNING.md)。无需本机Web服务或Docker；依赖安装和模型调用需要网络。
+仓库保持私有，使用已授权GitHub账号阅读和下载。点击Notebook文件页Download raw file，再到[Google Colab](https://colab.research.google.com/)选择“文件→上传笔记本”，保存自己的副本。按各页配置同名Colab Secret或本地.env，代码中不填写密钥值。GitHub提供阅读和下载；Colab或本地Jupyter执行程序。
 
-## 运行与结果
-
-表格拟合样板支持带截距的普通最小二乘线性校准、残差分析和未知样品浓度反算。已完成默认与修改参数的DeepSeek真实工具调用、Notebook保存，以及原生Notebook和结果ZIP下载验证。操作步骤见 [运行指引](docs/SKILL_RUNNING.md)，验证详情见 [在线复验记录](docs/SKILL_ONLINE_ACCEPTANCE.md)。
-
-运行后可查看数值结果、图表和模型解释，并下载结果文件。若Chrome课末下载区域加载异常，可按运行指引通过Colab文件面板下载ZIP。
+原生Notebook通过文件菜单下载；结果ZIP按对应运行指南下载。保存的数值和图表供阅读，新结果以你本次真实运行和复核为准。[运行与下载说明](docs/SKILL_RUNNING.md)。
 
 ## 参考资料说明
 
-各Skill页面按“知识点—出处—使用位置”组织参考资料。化学概念参考相应领域教材；公式和算法参考方法论文、专业手册或软件官方文档；示例数据注明教材题目、论文附件、公开数据集或真实计算记录；Skill功能和参数以对应的指令及实际程序为依据。
+| 页面 | 知识和数据依据 |
+| --- | --- |
+| SMILES与RDKit | [Daylight SMILES](https://www.daylight.com/dayhtml/doc/theory/theory.smiles.html)、[SMARTS](https://www.daylight.com/dayhtml/doc/theory/theory.smarts.html)、[RDKit官方文档](https://www.rdkit.org/docs/GettingStartedInPython.html)；课程Lecture 3作背景，样本为自主组织的教学结构，详见[逐项来源](skills/organic-smiles-rdkit/sources.json)及[数据说明](skills/organic-smiles-rdkit/data-provenance.json) |
+| 表格拟合 | David Harvey《Analytical Chemistry 2.1》12.5节Exercise 12.5.2的咖啡因HPLC校准表；方法引用NIST统计手册，详见[知识来源](skills/table-fitting-residuals/sources.json)及[数据说明](skills/table-fitting-residuals/data-provenance.json) |
 
-资料通过作者、大学、出版社和官方文档网站提供的合法开放原文，或合法获取的图书馆与正版资料核对。引用注明作者、书名或论文题名、版本、章节／页码／公式号和可访问链接。教材内容与模型生成的解释分别标识；转载文字、图片和数据时，按相应许可注明归属与改动。
-
-### 当前表格拟合案例的参考资料
-
-| 用途 | 参考资料与定位 | 本页采用的内容 |
-| --- | --- | --- |
-| 教材与示例数据 | David Harvey，《Analytical Chemistry 2.1》，第12.5节，Exercise 12.5.2：[作者与教材介绍](https://sites.google.com/depauw.edu/dth/analytical-curriculum-projects/analytical-chemistry-2-1) · [教材题目与数据表](https://chem.libretexts.org/Courses/BethuneCookman_University/B-CU%3A_CH-345_Quantitative_Analysis/Book%3A_Analytical_Chemistry_2.1_%28Harvey%29/12%3A_Chromatographic_and_Electrophoretic_Methods/12.05%3A_High-Performance_Liquid_Chromatography) | 本科分析化学开放教材中的咖啡因HPLC外标校准练习；逐项转录4组浓度—峰面积及待测峰面积424195，教材参考答案94.4 mg/L |
-| 线性拟合方法 | NIST/SEMATECH统计手册，[§4.4.3.1 Least Squares](https://www.itl.nist.gov/div898/handbook/pmd/section4/pmd431.htm) | 最小二乘准则、带截距直线模型和系数计算 |
-| 残差与结果判读 | NIST/SEMATECH统计手册，[§4.4.4 How can I tell if a model fits my data?](https://www.itl.nist.gov/div898/handbook/pmd/section4/pmd44.htm) | 观测减预测的残差定义、残差图及结合多项证据判断拟合质量 |
-| Skill功能与调用 | [table-fitting-residuals指令](skills/table-fitting-residuals/SKILL.md) · [功能及参数说明](skills/table-fitting-residuals/README.md) | 表格检查、拟合任务和结果解释的调用约定；本页实现带截距的普通最小二乘校准 |
-
-教材将该题数据归于Kusch与Knupp发表于 *Chem. Educator*（2003，8，201–205）的研究。本例的直接数据依据是上述教材题目，引用链与转录记录见 [数据来源记录](skills/table-fitting-residuals/data-provenance.json) 和 [参考资料清单](skills/table-fitting-residuals/sources.json)。Harvey教材相关内容按CC BY-NC-SA 4.0注明归属；代码许可信息见 [许可说明](docs/RIGHTS_REVIEW.md)。
+每页区分文献知识、教学样本和程序结果，引用具体章节和链接。跟随操作与独立解释分别评价，结果适用范围见各页。[来源与许可说明](docs/RIGHTS_REVIEW.md)。

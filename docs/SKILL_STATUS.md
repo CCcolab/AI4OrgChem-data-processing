@@ -1,13 +1,10 @@
-# Skill当前状态
+# 可用Skill与验收范围
 
-| 范围 | 状态 |
-| --- | --- |
-| 来源样板 | 已验收：来源、配置、真实两轮调用、参数修改、保存、原生Notebook及ZIP实际下载 |
-| GitHub分发副本 | 已复验：独立依赖安装、资源校验、从头运行、表单修改、DeepSeek真实两轮工具调用、保存及实际下载 |
-| 在线阅读与图表 | 已核对首页、Skill说明、Notebook预览和图表；私有仓库使用下载后上传Colab方式 |
-| 课末HTML下载在Chrome的兼容性 | 存在输出JavaScript加载故障；ZIP已通过文件面板实际下载，原生Notebook通过文件菜单实际下载；不声称HTML按钮在Chrome端到端通过 |
-| 模型解释独立专家评定、教学试学 | 未验收 |
-| 其余Skill | 尚未由本样板验收 |
-| 新RHF | NOT_EXECUTED／未验收 |
+| 页面 | 已有实测依据 | 范围 |
+| --- | --- | --- |
+| 表格拟合与残差分析 | 两轮真实Colab/DeepSeek工具调用、参数修改、保存、原生Notebook和ZIP实际下载 | 有出处咖啡因数据的带截距未加权OLS校准 |
+| SMILES与RDKit | radius=2/3两轮真实Colab/DeepSeek/RDKit调用、保存及原生Notebook/ZIP下载；Notebook沿用已验原字节 | 14条教学记录、12有效2拒绝；解析、规范异构表示、描述符、SMARTS、Morgan/Tanimoto和Murcko |
 
-详见[本次在线复验](SKILL_ONLINE_ACCEPTANCE.md)和[运行与下载说明](SKILL_RUNNING.md)。本轮状态更新不改变已测试的Notebook与内嵌资源。当前以一页一个Agent Skill组织，统一入口为根目录START_HERE_zh-CN.md。仓库保持私有，不含密钥、私有数据库或原始私有验收附件。
+本次RDKit页面同步核对了源文件身份、官方知识来源、数据、阅读输出、导航、资源和下载，并执行本地默认/修改参数数值回放。没有以此声称又完成一轮付费Colab模型调用。详见[RDKit页面核对](RDKIT_PAGE_CHECK.md)。
+
+原生Notebook和ZIP文件菜单/文件面板下载已有实际文件证据；Chrome富输出按钮的兼容性限制仍按运行指南处理。页面的程序检查、模型解释和学习者独立解释分别评价，适用范围以各页为准。

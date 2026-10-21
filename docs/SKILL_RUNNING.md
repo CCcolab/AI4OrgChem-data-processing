@@ -1,20 +1,16 @@
 # Skill运行与下载
 
-仓库保持私有。用已授权GitHub账号阅读Notebook，点击文件页Download raw file下载.ipynb，再到Colab“文件→上传笔记本”。Google登录及Secret配置由使用者本人操作。新Notebook需单独确认Secret访问权限；无需公开仓库或填写GitHub令牌。
+[统一入口](../START_HERE_zh-CN.md)
 
-准备单元自带Skill与数据、核对哈希并创建独立venv。参数默认为4个标准、未知峰面积424195、带截距true。将include_highest_standard改为false是明确使用前三个标准的敏感性练习，不认定最高点错误。来源样板的反算浓度为94.37792857876974与94.11215895100756 mg/L，实际新结果以本次程序输出为准。
+| 页面 | 参数修改与操作指南 |
+| --- | --- |
+| [SMILES与RDKit](../skills/organic-smiles-rdkit/README.md) | [Notebook及材料下载、Colab上传、radius=2改3](../skills/organic-smiles-rdkit/DOWNLOADS.md) |
+| [表格拟合](../skills/table-fitting-residuals/README.md) | [Notebook](../skills/table-fitting-residuals/table-fitting-residuals.ipynb)；include_highest_standard从true改false，按[配置说明](../skills/table-fitting-residuals/CONFIGURATION_zh-CN.md)运行 |
 
-先运行环境、参数、凭据、调用、显示和下载单元，再按表单修改参数并重跑参数至下载。凭据每次读取到内存，子进程运行后清除所选变量；不显示或写入Notebook输出。缺配置、未授权、HTTP错误及超时会停止，不算通过，不自动重试。
+私有仓库使用已授权GitHub账号。先从Notebook文件页Download raw file下载.ipynb，再在[Colab](https://colab.research.google.com/)选择“文件→上传笔记本”，保存自己的副本。不要把GitHub令牌或DeepSeek密钥写进代码。Colab Secret为DEEPSEEK_API_KEY并单独授权当前Notebook；本地使用自己的.env。
 
-核对PASS_REAL_MODEL_AND_TOOL_CALL、COLAB位置、实际模型名及tool_calls=1。核对数值结果、单位与残差，不能把R²高或正的截距当作物理因果证据。结果ZIP通过课末链接下载，外层.ipynb通过“文件→下载→下载.ipynb”保存，两者分别核验。
+依次运行环境、参数、凭据、调用、结果和下载单元；依赖安装和模型调用需要网络及自己的额度，按页面说明控制预算。模型选择白名单工具，程序完成真实数值计算；保存的示例不是新运行。修改参数后使用新输出目录，不覆盖旧结果。
 
-保存的示例图只用于GitHub阅读，不代表你已执行。Notebook当前分发版本的真实在线验收见SKILL_STATUS.md。新RHF未验收；试学、专家解释评定及其它Skill不在本页验收范围。
+用“文件→下载→下载.ipynb”保存原生Notebook，结果ZIP单独保存。若Chrome富输出JavaScript加载异常，无需关闭标签页或降低安全设置；从Colab左侧文件面板找到本次工作目录和run目录下载ZIP。表格页文件为skill-results.zip；RDKit页为organic-smiles-rdkit-results.zip，合并文件organic-smiles-rdkit-all-runs.zip位于工作目录。
 
-
-## 下载兼容性与替代步骤
-
-若Chrome弹出“无法加载显示输出内容所需的JavaScript文件”，先保存Notebook。无需关闭标签页或降低浏览器安全设置；可在能显示已保存输出的浏览器查看图表。
-
-原生Notebook使用“文件→下载→下载.ipynb”。结果ZIP也可通过Colab左侧“文件”面板下载：展开本次table-skill工作目录，再展开本次run目录，对skill-results.zip点击右侧更多操作→下载。以run-receipt.json的参数区分本次运行；每次运行使用新目录。验收用两轮合并ZIP位于工作目录，由验收辅助单元生成，不是教学模板默认输出。
-
-本轮实际下载已按上述文件菜单/文件面板方式核验，详见[在线复验记录](SKILL_ONLINE_ACCEPTANCE.md)。HTML下载按钮在Chrome仍存在上述兼容性限制。
+下载后核对参数、清单及SHA。模型解释与数值检查分别阅读；具体适用范围、来源和结果判读见各页。

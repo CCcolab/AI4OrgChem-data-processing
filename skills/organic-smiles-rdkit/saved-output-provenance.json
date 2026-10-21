@@ -1,0 +1,11 @@
+{
+  "origin": "Real Colab default run; modified radius 3 independently retained and checked",
+  "raw_default_notebook_sha256": "1e029e0ea9f40cfdf1383b160a0cb4098d7d56202aeeb40f391520be489bbc75",
+  "raw_two_run_native_notebook_sha256": "ae0b94f5538aa9fc4a8a4de1e92a3d2371c28bc41fda211ee0a58dc0ff40c029",
+  "browser_downloaded_results_sha256": "887c50cd314c4712818bbe3d6ce9f9e99d876a169fed7a71444122a7ce141984",
+  "candidate_source_notebook_sha256": "78c1832133e4cf8ba60341bf244249d4b9d0c4736b59dc0cfba0b7118a4e5248",
+  "source_code_unchanged_from_candidate": true,
+  "private_execution_metadata_removed": true,
+  "saved_output_selection": "numeric stdout and two real images only; model text and ZIP/trace payload excluded",
+  "new_rhf": "NOT_ACCEPTED"
+}

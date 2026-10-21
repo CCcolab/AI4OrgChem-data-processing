@@ -1,0 +1,12 @@
+{
+  "accepted_notebook_sha256": "894737fd5daf0acc950de4437f4eb018b37c469740c84144d45c8fc19eac3cb6",
+  "notebook_bytes_unchanged": true,
+  "runtime_code_unchanged": true,
+  "skill_sha256": "1ae51f1e60940447a44501d1854cce8a3743dffcb03e5c3c9878d48ad3ff015f",
+  "source_cloud_checks": 173,
+  "source_cloud_scope": "Two real Colab/DeepSeek/RDKit runs radius 2 and 3, saved native notebook and actual ZIP downloads",
+  "publication_scope": "Same accepted notebook; source, navigation, downloads and local numerical replay checked; no new paid cloud/model run claimed",
+  "example_results": "Allowlisted numeric/CSV/PNG subset of verified two-run results; no model trace, receipt or private execution identifier",
+  "result_zip_sha256": "17a26f413be23b230d4d12f137c05cf29cfb246e7222ce8cffba6ca5ae6d6557",
+  "materials_zip_sha256": "b8ac4e9a73230ad50e3653d8c553891730143f3e952d1da01c1a337c587671fc"
+}
