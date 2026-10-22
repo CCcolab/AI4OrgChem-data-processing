@@ -29,8 +29,8 @@ run_output = lab.call_skill(skill_text=skill_text, parameters=parameters)
 
 ### 分别下载Notebook和SKILL.md
 
-- [下载Notebook](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/8ccd5f6e4ea3123c48ca7be0f66d856ee4d616fc/skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb)
-- [下载SKILL.md](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/8ccd5f6e4ea3123c48ca7be0f66d856ee4d616fc/skills/organic-smiles-rdkit/SKILL.md)
+- [下载Notebook](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/683159535a04047e97be195c7e69f2ada19160c7/skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb)
+- [下载SKILL.md](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/683159535a04047e97be195c7e69f2ada19160c7/skills/organic-smiles-rdkit/SKILL.md)
 - [完整配套模块ZIP](runtime/rdkit-runtime.zip)
 
 私有仓库下载仍要求已登录且有访问权限。运行后的实际结果在Colab第⑤步下载；含本轮输出的原生Notebook使用“文件→保存/下载”。完整模块可以在`runtime`目录查阅，内部验收和诊断材料不在本学习目录分发。
