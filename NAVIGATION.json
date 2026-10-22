@@ -115,14 +115,14 @@
       "notebook_entry": "skills/organic-smiles-rdkit/README.md",
       "run": "skills/organic-smiles-rdkit/README.md",
       "layout": "five-part-colab-modules-v1",
-      "colab_url": "https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/683159535a04047e97be195c7e69f2ada19160c7/skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb",
+      "colab_url": "https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/86af9ce2553edc92a3501f03956f46839e5479db/skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb",
       "colab_notebook_sha256": "602a09bb8d7480691cc2487de2df5311bcd1b3ab768ac88eb53298b3b645bf9e",
       "downloads": {
         "notebook": "skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb",
         "skill": "skills/organic-smiles-rdkit/SKILL.md"
       },
-      "colab_source_commit": "683159535a04047e97be195c7e69f2ada19160c7",
-      "download_source_ref": "683159535a04047e97be195c7e69f2ada19160c7"
+      "colab_source_commit": "86af9ce2553edc92a3501f03956f46839e5479db",
+      "download_source_ref": "86af9ce2553edc92a3501f03956f46839e5479db"
     },
     {
       "id": "table-fitting-residuals",
