@@ -55,7 +55,7 @@
     },
     {
       "file": "NAVIGATION.json",
-      "sha256": "0f197ab9e3d5ce42b70646034813a48c69e88ffdb5653ee82b9656a9d1d48306"
+      "sha256": "3f0d75e6f33e3b204ca26ce8a35ce4552eada65bbbfb3a7d460310db16988de7"
     },
     {
       "file": "PLATFORM_ENTRY.json",
@@ -71,7 +71,7 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/assets/example-results.zip",
-      "sha256": "c7f1ef240a8b0c81f98ce9bb74de0f449a513ead8b9bd7d6ccd943830b2baca6"
+      "sha256": "ae72e1787b0be6030de49fe4d6bb2b3e63f35f4b78f7f7e1b3fa75260a2a4c05"
     },
     {
       "file": "skills/organic-smiles-rdkit/assets/example-similarity.png",
@@ -79,11 +79,11 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb",
-      "sha256": "91e14ed2236f4fec055a138ddec9fe86375345e7f929bf50de7612633b36589c"
+      "sha256": "a78306354da4d57fd8c0f3c5ab67809aece4d5eee1f429848f5c58e06c494cf8"
     },
     {
       "file": "skills/organic-smiles-rdkit/README.md",
-      "sha256": "c7ef30090b6e6a121507bc3032b5a8dca7d88918df064f9895d5ca92f021debf"
+      "sha256": "460185fb470f9f78d0b08b016f6875d0bec2ec4815aa9043d1bc52a27f357b7e"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/colab_workflow.py",
@@ -115,7 +115,7 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/rdkit-runtime.zip",
-      "sha256": "07a85e2b69ec9f7023a73a13ad61b78610de3240eccec2bf6e6529812dc16038"
+      "sha256": "f51566ad434fa54ad5a1a91bfaa70292fe82580b62e5eb46160775dc6f6da39d"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/README.md",
@@ -127,7 +127,7 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/resource-manifest.json",
-      "sha256": "ff951ffb567550a9ddb420e7488ad9527d1c7962c625f3f7722566a33aa9fd89"
+      "sha256": "68f0019ad958f0b96075934c7833a50f68cfeb7b43068b988c1f97890310e1e8"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/result_presentation.py",
@@ -135,7 +135,7 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/SKILL.md",
-      "sha256": "f79b96d8d40a9d955f68642e8bb94ef205ff71ccaec7519864abad8a5499f776"
+      "sha256": "7c5d4259dae1369a49cde0ee30ef2387505671f51e8ba760ad123161de8c4510"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/skill_agent.py",
@@ -151,7 +151,7 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/SKILL.md",
-      "sha256": "f79b96d8d40a9d955f68642e8bb94ef205ff71ccaec7519864abad8a5499f776"
+      "sha256": "7c5d4259dae1369a49cde0ee30ef2387505671f51e8ba760ad123161de8c4510"
     },
     {
       "file": "skills/table-fitting-residuals/caffeine-calibration.csv",

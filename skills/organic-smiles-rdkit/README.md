@@ -133,6 +133,8 @@ lab.show_downloads(run_output)
 
 Notebook内提供“在Colab运行”按钮、首次账号授权、保存副本、Secret配置与①至⑤步骤。Colab读取同名`DEEPSEEK_API_KEY` Secret，本地按`ENV_FILE`读取自己的.env；不要把值写进代码或上传.env。
 
+**[查看SKILL.md源码（Code）](https://github.com/CCcolab/AI4OrgChem-data-processing/blob/main/skills/organic-smiles-rdkit/SKILL.md?plain=1)**
+
 ### 分别下载Notebook和SKILL.md
 
 - [下载Notebook](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/9480b97b5c41f730cbd504900008e2cab0b79d0e/skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb)
