@@ -83,7 +83,7 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/README.md",
-      "sha256": "e3f7ac26580bf951d0d2d52cadd188f7f621ef783512002f51631485744b5370"
+      "sha256": "c7ef30090b6e6a121507bc3032b5a8dca7d88918df064f9895d5ca92f021debf"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/colab_workflow.py",
