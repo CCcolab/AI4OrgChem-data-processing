@@ -55,7 +55,7 @@
     },
     {
       "file": "NAVIGATION.json",
-      "sha256": "64892d5b109dc8386b6c8903938c2a836ad278c2dc7d44a1a22fa1f1b6ff22a9"
+      "sha256": "241362291a11ad9f5c294d6b34013ea1142796ffb27a091f8146227a877c2816"
     },
     {
       "file": "PLATFORM_ENTRY.json",
@@ -79,7 +79,7 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb",
-      "sha256": "a78306354da4d57fd8c0f3c5ab67809aece4d5eee1f429848f5c58e06c494cf8"
+      "sha256": "d61b12babc57ee817f764cbd5601d45bdf2f90e65b371c6fe139f10c112fc9ae"
     },
     {
       "file": "skills/organic-smiles-rdkit/README.md",
