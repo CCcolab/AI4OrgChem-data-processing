@@ -55,7 +55,7 @@
     },
     {
       "file": "NAVIGATION.json",
-      "sha256": "fbab2e5c6afacbbdf35c54ee6080be82c797418012a7bb516477d33fcc30106f"
+      "sha256": "8a6b2d4db5e60242f8b0f6f3c09d7e7f520b2e233e1188c06c7e39a0705a0bb1"
     },
     {
       "file": "PLATFORM_ENTRY.json",
@@ -75,7 +75,7 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb",
-      "sha256": "e8e5612c76b1cead7d697eb4769f115fd69c5ec181bb41ee1d3d3d82a0f39e92"
+      "sha256": "602a09bb8d7480691cc2487de2df5311bcd1b3ab768ac88eb53298b3b645bf9e"
     },
     {
       "file": "skills/organic-smiles-rdkit/README.md",
@@ -251,7 +251,7 @@
     },
     {
       "file": "tests/guard/test_skill_navigation.py",
-      "sha256": "61ca0a89e1e86d83300c05a89e9ba33c7e3e817a0fa5e9e2caa84bbd0754fc98"
+      "sha256": "b4c905ee809b7bcc72130cdb359475b154910e41d6971fd2ef8e1707e8fc1a18"
     },
     {
       "file": "tests/guard/test_workflow_gate.py",

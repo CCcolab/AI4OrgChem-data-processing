@@ -161,7 +161,7 @@ class SkillNavigationTests(unittest.TestCase):
                 self.assertNotIn('[▶ 在 Colab 运行]',running)
                 self.assertNotIn('包括私有代码库',running)
                 self.assertIn('[打开运行Notebook](organic-smiles-rdkit.ipynb)',running)
-                self.assertIn('[▶ 在 Colab 运行](https://colab.research.google.com/github/',intro)
+                self.assertIn('[▶ 在 Colab 运行](https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/main/',intro)
                 for term in ['首次运行：账号授权、保存副本与操作步骤','包括私有代码库','保存副本','repo','gist','DEEPSEEK_API_KEY','ENV_FILE','文件 → 下载 → 下载.ipynb']:
                     self.assertIn(term,intro)
             else:
