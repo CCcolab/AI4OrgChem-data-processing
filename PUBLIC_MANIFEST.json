@@ -55,7 +55,7 @@
     },
     {
       "file": "NAVIGATION.json",
-      "sha256": "241362291a11ad9f5c294d6b34013ea1142796ffb27a091f8146227a877c2816"
+      "sha256": "c3a192830f8315c4a56940abf62f19efc9610a800cc596a8519b58928c89e440"
     },
     {
       "file": "PLATFORM_ENTRY.json",
@@ -83,7 +83,7 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/README.md",
-      "sha256": "e620fa08089ed3a5702967954e3809d1940d97c53c234e770ff0cbd187456ece"
+      "sha256": "5825c56fab712d9ee66281f91eb03c4b57fe0d5790dfa898001edb19442d2751"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/colab_workflow.py",
