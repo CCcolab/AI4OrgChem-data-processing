@@ -55,7 +55,7 @@
     },
     {
       "file": "NAVIGATION.json",
-      "sha256": "1c6da6c660a772221f7eb5209867625ef941056cf55d4330a3955907c49af271"
+      "sha256": "34182426bdb3b4d324899f348646519abb1fc914b4d841776468d5b19c63f541"
     },
     {
       "file": "PLATFORM_ENTRY.json",
@@ -79,7 +79,7 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/README.md",
-      "sha256": "845eb235d1de86787ceb6c1a9e14d74ad60b8540aa0066191c24260142975ff0"
+      "sha256": "fe0fe6594105064b58dacbb3fb0089ea66b7cec1cfcc3df4892a64ddb521d690"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/colab_workflow.py",
@@ -251,7 +251,7 @@
     },
     {
       "file": "tests/guard/test_skill_navigation.py",
-      "sha256": "85878e97a24618869474acd2492597f9d7b3c7f245383a12359ac66f8ab8b344"
+      "sha256": "f72e09176bb8aa5b0c00da6947cfebb930028bd3b9915225526b0c350f1d7180"
     },
     {
       "file": "tests/guard/test_workflow_gate.py",

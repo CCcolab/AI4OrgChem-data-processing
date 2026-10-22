@@ -139,7 +139,7 @@ class SkillNavigationTests(unittest.TestCase):
         for skill in nav['skills']:
             entry = (ROOT / skill['notebook_entry']).read_text('utf-8')
             for target in skill.get('downloads',{'notebook':skill.get('notebook_zip')}).values():
-                self.assertIn('https://github.com/CCcolab/AI4OrgChem-data-processing/raw/refs/heads/main/'+target,entry)
+                self.assertIn('https://github.com/CCcolab/AI4OrgChem-data-processing/raw/'+skill.get('download_source_ref','refs/heads/main')+'/'+target,entry)
             self.assertIn('https://colab.research.google.com/', entry)
             self.assertNotIn('colab.research.google.com/drive/', entry)
 
