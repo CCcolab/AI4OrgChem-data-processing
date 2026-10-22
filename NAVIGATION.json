@@ -116,7 +116,7 @@
       "run": "skills/organic-smiles-rdkit/README.md",
       "layout": "five-part-colab-modules-v1",
       "colab_url": "https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/8ccd5f6e4ea3123c48ca7be0f66d856ee4d616fc/skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb",
-      "colab_notebook_sha256": "ff32ba69ea248390dfc695a7b293589adfd122ba7dcac08b4a67cd594c631da1",
+      "colab_notebook_sha256": "e8e5612c76b1cead7d697eb4769f115fd69c5ec181bb41ee1d3d3d82a0f39e92",
       "downloads": {
         "notebook": "skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb",
         "skill": "skills/organic-smiles-rdkit/SKILL.md"

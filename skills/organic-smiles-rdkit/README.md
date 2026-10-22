@@ -4,21 +4,11 @@
 
 从有机分子的SMILES出发，调用Skill完成结构解析、描述符、SMARTS匹配和Morgan相似度分析。本页介绍使用方法；运行界面按五步组织。
 
-**[▶ 在 Colab 运行](https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/8ccd5f6e4ea3123c48ca7be0f66d856ee4d616fc/skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb)**
+**[打开运行Notebook](organic-smiles-rdkit.ipynb)**
 
-## 运行与下载
+Notebook开头集中提供“在Colab运行”入口、首次账号授权、保存副本、Secret配置及五步操作说明；打开后按①至⑤运行。完整源码在配套`runtime`模块中，Notebook保留清晰的参数和SKILL.md调用代码。
 
-| 顺序 | 在Colab中操作 | 看到什么 |
-| --- | --- | --- |
-| ① 准备环境 | 点击运行；首次自动安装，重复运行复核并复用 | 依赖版本和准备回执，细节默认折叠 |
-| ② 设置参数 | 修改SMILES查询和指纹参数 | 可读参数表与JSON |
-| ③ 调用Skill | 读取SKILL.md，提交一次真实任务 | 明确的Skill原文读取和参数传递代码 |
-| ④ 查看结果 | 点击运行；展开模型原文 | 程序回执、分子结构图、相似度图与解释 |
-| ⑤ 保存与下载 | 点击需要的文件按钮 | 结果ZIP、Notebook、SKILL.md及完整模块ZIP |
-
-第一次登录自己的Google账号，GitHub账号须有本私有仓库权限。在Colab“打开笔记本→GitHub”选择“包括私有代码库”；核对其repo/gist授权范围并由本人完成授权。打开后在云端硬盘中保存副本。在左侧Secret授权当前Notebook读取`DEEPSEEK_API_KEY`，不在代码中填写值。Colab按①至⑤逐步运行；第③步会使用你自己的DeepSeek额度。
-
-配套模块放在`runtime`目录，Notebook同时携带相同的经哈希校验的模块包；无须单独填写GitHub Token。附件读取使用Colab内部`get_ipynb`消息接口，失败会停止并提示，不会把空响应当作成功。Notebook本身的代码只保留五个短单元。`ENV_FILE`仅供本地调用配套模块时指定自己的.env，不上传.env。
+## 调用与输出
 
 ### 调用模板与参数含义
 

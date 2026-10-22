@@ -140,7 +140,7 @@ class SkillNavigationTests(unittest.TestCase):
             entry = (ROOT / skill['notebook_entry']).read_text('utf-8')
             for target in skill.get('downloads',{'notebook':skill.get('notebook_zip')}).values():
                 self.assertIn('https://github.com/CCcolab/AI4OrgChem-data-processing/raw/'+skill.get('download_source_ref','refs/heads/main')+'/'+target,entry)
-            self.assertIn('https://colab.research.google.com/', entry)
+            if skill['id']!='organic-smiles-rdkit':self.assertIn('https://colab.research.google.com/', entry)
             self.assertNotIn('colab.research.google.com/drive/', entry)
 
     def test_direct_colab_routes_are_pinned_and_match_delivered_notebooks(self):
@@ -156,10 +156,19 @@ class SkillNavigationTests(unittest.TestCase):
             self.assertEqual(url.path,'/github/CCcolab/AI4OrgChem-data-processing/blob/'+ref+'/'+skill['notebook'])
             self.assertEqual(digest((ROOT/skill['notebook']).read_bytes()),skill['colab_notebook_sha256'])
             running=(ROOT/skill['run']).read_text('utf-8')
-            self.assertIn('[▶ 在 Colab 运行]('+skill['colab_url']+')',running)
-            self.assertIn('包括私有代码库',running)
-            self.assertIn('保存副本',running)
-            self.assertIn('repo',running)
+            if skill['id']=='organic-smiles-rdkit':
+                intro=''.join(read_json(ROOT/skill['notebook'])['cells'][0]['source'])
+                self.assertNotIn('[▶ 在 Colab 运行]',running)
+                self.assertNotIn('包括私有代码库',running)
+                self.assertIn('[打开运行Notebook](organic-smiles-rdkit.ipynb)',running)
+                self.assertIn('[▶ 在 Colab 运行](https://colab.research.google.com/github/',intro)
+                for term in ['首次运行：账号授权、保存副本与操作步骤','包括私有代码库','保存副本','repo','gist','DEEPSEEK_API_KEY','ENV_FILE','文件 → 下载 → 下载.ipynb']:
+                    self.assertIn(term,intro)
+            else:
+                self.assertIn('[▶ 在 Colab 运行]('+skill['colab_url']+')',running)
+                self.assertIn('包括私有代码库',running)
+                self.assertIn('保存副本',running)
+                self.assertIn('repo',running)
             self.assertNotRegex(skill['colab_url'],r'(?i)token|access_token|github_pat|ghp_')
 
     def test_markdown_local_links_resolve(self):
@@ -219,7 +228,7 @@ class SkillNavigationTests(unittest.TestCase):
     def test_readme_merges_learning_configuration_sources_and_downloads(self):
         text=(PAGE/'README.md').read_text('utf-8')
         prose=re.sub(r'(?ms)^(`{3,}|~{3,})[^\n]*\n.*?^\1[ \t]*$','',text)
-        for term in ['学习目标','必要知识与参考资料','数据从哪里来','DEEPSEEK_API_KEY','ENV_FILE','调用模板与参数含义','radius=3','实际参数调用案例与输出结果','分别下载Notebook和SKILL.md']:
+        for term in ['学习目标','必要知识与参考资料','数据从哪里来','调用模板与参数含义','radius=3','实际参数调用案例与输出结果','分别下载Notebook和SKILL.md']:
             self.assertIn(term,prose)
         for name in ['RUNNING.md','TEACHING.md','NOTEBOOK.md','DOWNLOADS.md','PUBLICATION_CHECK.json','SOURCE_REVIEW.json','materials.zip','notebook.zip']:
             self.assertNotIn(']('+name,prose)
