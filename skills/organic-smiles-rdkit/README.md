@@ -42,10 +42,10 @@ AI4Chem只作为Skill选题与页面组织的参考，不列为本Skill知识或
 
 | 文件（可直接下载） | 用途 | 用户操作 |
 | --- | --- | --- |
-| [molecules.csv](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/refs/heads/main/skills/organic-smiles-rdkit/runtime/molecules.csv) | 输入；列为id、label、smiles、source_id、role | Excel可选UTF-8并把id列设为文本保留001；也可用下面代码读入。保留011/012反例 |
-| [parameters.json](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/refs/heads/main/skills/organic-smiles-rdkit/runtime/parameters.json) | 五个参数的默认模板 | 对照参数表；Notebook实际采用②表单/代码中的字典，下载后修改本地文件不会自动改动云端运行 |
-| [data-provenance.json](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/refs/heads/main/skills/organic-smiles-rdkit/runtime/data-provenance.json) | 输入构造、逐记录说明及molecules.csv哈希 | 用文本编辑器阅读；用于核对输入身份，不是待拟合的数据，不是密钥配置 |
-| [sources.json](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/refs/heads/main/skills/organic-smiles-rdkit/runtime/sources.json) | 知识点、章节、URL、资料类型和核对范围 | 阅读及查证；不作为模型参数或CSV上传 |
+| [molecules.csv](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/9480b97b5c41f730cbd504900008e2cab0b79d0e/skills/organic-smiles-rdkit/runtime/molecules.csv) | 输入；列为id、label、smiles、source_id、role | Excel可选UTF-8并把id列设为文本保留001；也可用下面代码读入。保留011/012反例 |
+| [parameters.json](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/9480b97b5c41f730cbd504900008e2cab0b79d0e/skills/organic-smiles-rdkit/runtime/parameters.json) | 五个参数的默认模板 | 对照参数表；Notebook实际采用②表单/代码中的字典，下载后修改本地文件不会自动改动云端运行 |
+| [data-provenance.json](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/9480b97b5c41f730cbd504900008e2cab0b79d0e/skills/organic-smiles-rdkit/runtime/data-provenance.json) | 输入构造、逐记录说明及molecules.csv哈希 | 用文本编辑器阅读；用于核对输入身份，不是待拟合的数据，不是密钥配置 |
+| [sources.json](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/9480b97b5c41f730cbd504900008e2cab0b79d0e/skills/organic-smiles-rdkit/runtime/sources.json) | 知识点、章节、URL、资料类型和核对范围 | 阅读及查证；不作为模型参数或CSV上传 |
 
 本例Notebook已携带这四份文件，①准备环境会写入运行目录，无需先手动上传。点击上述下载链接需已登录且有本私有仓库权限。运行后结果包也保留这些说明文件。
 
@@ -109,7 +109,7 @@ lab.show_downloads(run_output)
 | 013 | C3H10ClN | 95.573 | 0 | 0.000000 | 0.000000 |
 | 014 | C2H6O | 47.061 | 0 | 0.000000 | 0.000000 |
 
-数值在表中按显示精度舍入，CSV保留程序精度；“—/拒绝”不是0或缺失值填零。完整[两组样例输出ZIP](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/refs/heads/main/skills/organic-smiles-rdkit/assets/example-results.zip)包含输入、参数、CSV、图表、数值检查及样例清单。程序生成的图对应**默认组radius=2**：
+数值在表中按显示精度舍入，CSV保留程序精度；“—/拒绝”不是0或缺失值填零。完整[两组样例输出ZIP](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/9480b97b5c41f730cbd504900008e2cab0b79d0e/skills/organic-smiles-rdkit/assets/example-results.zip)包含输入、参数、CSV、图表、数值检查及样例清单。程序生成的图对应**默认组radius=2**：
 
 ![默认参数下的结构与ID](assets/example-molecules.png)
 ![默认参数下相对于005苯的Morgan相似度](assets/example-similarity.png)
@@ -133,8 +133,8 @@ Notebook内提供“在Colab运行”按钮、首次账号授权、保存副本�
 
 ### 分别下载Notebook和SKILL.md
 
-- [下载Notebook](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/refs/heads/main/skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb)
-- [下载SKILL.md](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/refs/heads/main/skills/organic-smiles-rdkit/SKILL.md)
-- [完整配套模块ZIP](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/refs/heads/main/skills/organic-smiles-rdkit/runtime/rdkit-runtime.zip)
+- [下载Notebook](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/9480b97b5c41f730cbd504900008e2cab0b79d0e/skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb)
+- [下载SKILL.md](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/9480b97b5c41f730cbd504900008e2cab0b79d0e/skills/organic-smiles-rdkit/SKILL.md)
+- [完整配套模块ZIP](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/9480b97b5c41f730cbd504900008e2cab0b79d0e/skills/organic-smiles-rdkit/runtime/rdkit-runtime.zip)
 
 样例CSV/JSON的独立下载及用法见上面的文件表。真正运行后在Notebook⑤下载本轮结果；含输出的执行版用“文件→保存”，再选“文件→下载→下载.ipynb”。

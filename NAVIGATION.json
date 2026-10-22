@@ -115,14 +115,14 @@
       "notebook_entry": "skills/organic-smiles-rdkit/README.md",
       "run": "skills/organic-smiles-rdkit/README.md",
       "layout": "five-part-colab-modules-v1",
-      "colab_url": "https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/main/skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb",
+      "colab_url": "https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/9480b97b5c41f730cbd504900008e2cab0b79d0e/skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb",
       "colab_notebook_sha256": "91e14ed2236f4fec055a138ddec9fe86375345e7f929bf50de7612633b36589c",
       "downloads": {
         "notebook": "skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb",
         "skill": "skills/organic-smiles-rdkit/SKILL.md"
       },
-      "colab_source_commit": "main",
-      "download_source_ref": "refs/heads/main"
+      "colab_source_commit": "9480b97b5c41f730cbd504900008e2cab0b79d0e",
+      "download_source_ref": "9480b97b5c41f730cbd504900008e2cab0b79d0e"
     },
     {
       "id": "table-fitting-residuals",
