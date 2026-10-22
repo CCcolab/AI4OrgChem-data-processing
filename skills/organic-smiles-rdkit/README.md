@@ -2,43 +2,10 @@
 
 分类：**有机分子结构与身份识别** · Skill：`organic-smiles-rdkit`
 
-从有机分子的SMILES出发，调用Skill完成结构解析、描述符、SMARTS匹配和Morgan相似度分析。本页介绍使用方法；运行界面按五步组织。
-
-**[打开运行Notebook](organic-smiles-rdkit.ipynb)**
-
-Notebook开头集中提供“在Colab运行”入口、首次账号授权、保存副本、Secret配置及五步操作说明；打开后按①至⑤运行。完整源码在配套`runtime`模块中，Notebook保留清晰的参数和SKILL.md调用代码。
-
-## 调用与输出
-
-### 调用模板与参数含义
-
-```python
-skill_file = lab.workspace / "SKILL.md"
-skill_text = skill_file.read_text(encoding="utf-8")
-run_output = lab.call_skill(skill_text=skill_text, parameters=parameters)
-```
-
-参数：`radius=2`（1–4）、`fp_size=2048`、`include_chirality=True`、`query_smarts="[CX3](=O)[OX2H1]"`、`reference_id="005"`。练习改为radius=3，再运行②至⑤；每轮保存新结果目录。默认样本是14条教学结构，不是实验测量。
-
-### 实际参数调用案例与输出结果
-
-既有保存示例中，14条记录有12条有效、2条故意无效；CCO/OCC判为同一规范表示，原始行与重复映射保留。酸/酸根、盐、同位素和立体信息保留。相似度用于比较所选指纹，不能据此判断生物活性或机理。当前运行以你自己的程序回执与实际文件为准。
-
-![结构示例](assets/example-molecules.png)
-![相似度示例](assets/example-similarity.png)
-
-### 分别下载Notebook和SKILL.md
-
-- [下载Notebook](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/86af9ce2553edc92a3501f03956f46839e5479db/skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb)
-- [下载SKILL.md](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/86af9ce2553edc92a3501f03956f46839e5479db/skills/organic-smiles-rdkit/SKILL.md)
-- [完整配套模块ZIP](runtime/rdkit-runtime.zip)
-
-私有仓库下载仍要求已登录且有访问权限。运行后的实际结果在Colab第⑤步下载；含本轮输出的原生Notebook使用“文件→保存/下载”。完整模块可以在`runtime`目录查阅，内部验收和诊断材料不在本学习目录分发。
+从有机分子的SMILES出发，调用Skill完成结构解析、描述符、SMARTS匹配和Morgan相似度分析。先了解本Skill涉及的知识点和数据，再查看调用示例；页面下部提供Notebook运行与下载入口。
 
 ## 知识与数据来源
 
-<details>
-<summary>学习目标、知识与数据来源</summary>
 
 ### 学习目标
 
@@ -84,6 +51,35 @@ $$T(A,B)=\frac{|A\cap B|}{|A\cup B|}$$
 
 原有数据文件保留的输入取材链接：[AI4Chem结构示例](https://zzhenglab.github.io/ai4chem/lecture-03.html)，仅对应source_id=course的记录，不作为本Skill指令或方法内容的基础。Tanimoto接口依据见[RDKit DataStructs — TanimotoSimilarity](https://www.rdkit.org/docs/source/rdkit.DataStructs.cDataStructs.html)。
 
+## 调用与输出
 
-</details>
+### 调用模板与参数含义
 
+```python
+skill_file = lab.workspace / "SKILL.md"
+skill_text = skill_file.read_text(encoding="utf-8")
+run_output = lab.call_skill(skill_text=skill_text, parameters=parameters)
+```
+
+参数：`radius=2`（1–4）、`fp_size=2048`、`include_chirality=True`、`query_smarts="[CX3](=O)[OX2H1]"`、`reference_id="005"`。练习改为radius=3，再运行②至⑤；每轮保存新结果目录。默认样本是14条教学结构，不是实验测量。
+
+### 实际参数调用案例与输出结果
+
+既有保存示例中，14条记录有12条有效、2条故意无效；CCO/OCC判为同一规范表示，原始行与重复映射保留。酸/酸根、盐、同位素和立体信息保留。相似度用于比较所选指纹，不能据此判断生物活性或机理。当前运行以你自己的程序回执与实际文件为准。
+
+![结构示例](assets/example-molecules.png)
+![相似度示例](assets/example-similarity.png)
+
+## 运行与下载
+
+**[打开运行Notebook](organic-smiles-rdkit.ipynb)**
+
+Notebook开头集中提供“在Colab运行”入口、首次账号授权、保存副本、Secret配置及五步操作说明；打开后按①至⑤运行。完整源码在配套`runtime`模块中，Notebook保留清晰的参数和SKILL.md调用代码。
+
+### 分别下载Notebook和SKILL.md
+
+- [下载Notebook](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/86af9ce2553edc92a3501f03956f46839e5479db/skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb)
+- [下载SKILL.md](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/86af9ce2553edc92a3501f03956f46839e5479db/skills/organic-smiles-rdkit/SKILL.md)
+- [完整配套模块ZIP](runtime/rdkit-runtime.zip)
+
+私有仓库下载仍要求已登录且有访问权限。运行后的实际结果在Colab第⑤步下载；含本轮输出的原生Notebook使用“文件→保存/下载”。完整模块可以在`runtime`目录查阅，内部验收和诊断材料不在本学习目录分发。
