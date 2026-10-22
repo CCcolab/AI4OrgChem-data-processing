@@ -19,7 +19,7 @@
     },
     {
       "file": ".github/workflows/platform-boundary.yml",
-      "sha256": "0e8d73b71c8ae6ead2cc77baf7bb0cb22aea7f521d1d7ea6862083ada4b1d41c"
+      "sha256": "25b7db6c273d4affa756f303afc579f916c1605949c2e0bd0b22f465aff1e8e4"
     },
     {
       "file": ".gitignore",

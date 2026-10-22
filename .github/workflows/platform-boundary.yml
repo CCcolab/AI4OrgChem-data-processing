@@ -45,7 +45,9 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install pinned scientific wheels
-        run: python -m pip install --only-binary=:all: --retries 0 --timeout 20 -r skills/organic-smiles-rdkit/runtime/requirements-colab.txt
+        run: >-
+          python -m pip install --only-binary=:all: --retries 0 --timeout 20
+          -r skills/organic-smiles-rdkit/runtime/requirements-colab.txt
       - name: Test RDKit boundaries and offline provider failures
         env:
           MPLBACKEND: Agg
