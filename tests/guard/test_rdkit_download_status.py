@@ -31,18 +31,24 @@ class DownloadEvidenceTests(unittest.TestCase):
     def test_frontend_cells_load_helper_in_clean_parent_path(self):
         workspace=self.root/'runtime-workspace';workspace.mkdir()
         (workspace/'result_presentation.py').write_bytes(resource_bytes()['result_presentation.py'])
+        (workspace/'SKILL.md').write_bytes((self.root/'SKILL.md').read_bytes())
         self.assertNotIn(str(workspace),sys.path)
         self.assertNotIn('result_presentation',sys.modules)
         notebook=json.loads((ROOT/'skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb').read_text('utf-8'))
+        runtime=types.ModuleType('colab_workflow')
+        exec(compile(resource_bytes()['colab_workflow.py'],'<companion>','exec'),runtime.__dict__)
+        lab=runtime.Lab();lab.workspace=workspace;lab.history=[self.root]
+        lab.bundle=ROOT/'skills/organic-smiles-rdkit/runtime/rdkit-runtime.zip';lab.notebook=notebook
+        namespace={'lab':lab,'run_output':self.root}
         outputs=[]
-        namespace={'workspace':workspace,'run_output':self.root,'run_history':[self.root],
-                   'display':outputs.append,'Markdown':lambda text:text,'HTML':lambda text:text,
-                   'Image':lambda **kwargs:kwargs,'json':json,'zipfile':zipfile,'base64':base64,'hashlib':hashlib}
-        for i in [9,11]:exec(compile(''.join(notebook['cells'][i]['source']),'<frontend-cell>','exec'),namespace)
-        self.assertEqual(namespace['presentation']['status']['status'],'PASS_VERIFIED_DOWNLOAD')
-        self.assertEqual(namespace['verified_download']['status'],'PASS_VERIFIED_DOWNLOAD')
+        from unittest.mock import patch
+        with patch('IPython.display.display',outputs.append):
+            for i in [7,9]:exec(compile(''.join(notebook['cells'][i]['source']),'<frontend-cell>','exec'),namespace)
+        self.assertEqual(len(outputs),2)
+        self.assertIn('程序回执',outputs[0].data)
+        self.assertIn('下载SKILL.md',outputs[1].data)
         self.assertTrue((workspace/'organic-smiles-rdkit-all-runs.zip').is_file())
-        self.assertEqual(Path(namespace['presentation_module'].__file__),workspace/'result_presentation.py')
+        self.assertEqual(Path(lab._presentation().__file__),workspace/'result_presentation.py')
 
     def test_denial_cannot_override_actual_files(self):
         view=module.display_bundle(self.root)

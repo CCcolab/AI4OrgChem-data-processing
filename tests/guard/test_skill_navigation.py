@@ -79,6 +79,16 @@ class SkillNavigationTests(unittest.TestCase):
 
     def test_teaching_and_running_have_separate_responsibilities(self):
         for skill in read_json(ROOT / 'NAVIGATION.json')['skills']:
+            if skill.get('layout') == 'five-part-colab-modules-v1':
+                nb=read_json(ROOT/skill['notebook'])
+                code=[''.join(c['source']) for c in nb['cells'] if c['cell_type']=='code']
+                self.assertEqual(len(code),5)
+                self.assertTrue(all(len(c.splitlines())<=20 for c in code))
+                self.assertIn('skill_file.read_text',code[2])
+                self.assertIn('lab.call_skill(skill_text=skill_text, parameters=parameters)',code[2])
+                self.assertNotIn('RESOURCE_TEXT',''.join(code))
+                self.assertTrue(resource_bytes())
+                continue
             if skill.get('layout') == 'single-readme-three-files-v1':
                 text=(ROOT / skill['run']).read_text('utf-8')
                 blocks=re.findall(r'(?ms)^~~~~python\n(.*?)^~~~~[ \t]*$',text)
@@ -169,17 +179,17 @@ class SkillNavigationTests(unittest.TestCase):
 
     def test_notebook_identity_and_default_collapse(self):
         nbfile=PAGE/'organic-smiles-rdkit.ipynb'
-        self.assertEqual(digest(nbfile.read_bytes()),'5dccc983a118284394952a366877dd81054aafd7f568caa985d6e56705fb30f1')
         nb=read_json(nbfile)
-        self.assertEqual(nb['metadata']['adp']['skill_sha256'],digest((PAGE/'SKILL.md').read_bytes()))
-        self.assertEqual(len(nb['cells']),13)
-        self.assertTrue(nb['cells'][1]['metadata']['collapsed'])
-        self.assertTrue(nb['cells'][1]['metadata']['jupyter']['source_hidden'])
+        attachment=nb['metadata']['adp_runtime_bundle']
+        self.assertEqual(attachment['sha256'],digest((PAGE/'runtime/rdkit-runtime.zip').read_bytes()))
+        self.assertEqual(len(nb['cells']),10)
+        self.assertEqual(nb['cells'][1]['metadata']['cellView'],'form')
+        self.assertTrue(all(c['execution_count'] is None and not c['outputs'] for c in nb['cells'] if c['cell_type']=='code'))
         self.assertNotIn('colab.research.google.com/drive/',nbfile.read_text('utf-8'))
 
     def test_embedded_resources_match_delivered_sources(self):
         resources=resource_bytes()
-        self.assertEqual(len(resources),14)
+        self.assertEqual(len(resources),15)
         self.assertEqual(resources['SKILL.md'],(PAGE/'SKILL.md').read_bytes())
         for name in ['molecule_tool.py','skill_agent.py','credential_config.py','result_presentation.py']:
             compile(resources[name],name,'exec')
@@ -200,11 +210,10 @@ class SkillNavigationTests(unittest.TestCase):
         self.assertTrue(params['include_chirality'])
 
     def test_minimal_skill_directory_has_only_learning_files(self):
-        self.assertEqual({p.name for p in PAGE.iterdir()},{'README.md','SKILL.md','organic-smiles-rdkit.ipynb','assets'})
+        self.assertEqual({p.name for p in PAGE.iterdir()},{'README.md','SKILL.md','organic-smiles-rdkit.ipynb','assets','runtime'})
         self.assertEqual({p.name for p in (PAGE/'assets').iterdir()},{'example-molecules.png','example-similarity.png'})
-        for path in PAGE.rglob('*'):
-            self.assertFalse(path.is_symlink())
-            self.assertNotIn(path.suffix,{'.json','.zip','.py'})
+        self.assertFalse(any(p.is_symlink() for p in PAGE.rglob('*')))
+        self.assertEqual(resource_bytes()['SKILL.md'],(PAGE/'SKILL.md').read_bytes())
         self.assertFalse((ROOT/'docs/RDKIT_PAGE_CHECK.md').exists())
 
     def test_readme_merges_learning_configuration_sources_and_downloads(self):

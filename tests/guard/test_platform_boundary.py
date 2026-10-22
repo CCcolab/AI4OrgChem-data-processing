@@ -50,6 +50,17 @@ class BoundaryTests(unittest.TestCase):
     def test_readable_notebook_resource_import_is_checked(self):
         source='RESOURCE_TEXT = '+repr({'renamed.py':'from ai4orgchem_data_processing.localweb.app import create_app\n'})
         self.inspect('lesson.ipynb',json.dumps({'cells':[{'cell_type':'code','source':[source]}]}),'retired_service_import')
+    def test_runtime_metadata_cannot_hide_retired_code(self):
+        raw=bundle({'renamed.py':'from ai4orgchem_data_processing.localweb.app import create_app\n'})
+        n={'cells':[],'metadata':{'adp_runtime_bundle':{'schema':'adp-notebook-runtime-v1','zip_base64':base64.b64encode(raw).decode()}}}
+        self.inspect('lesson.ipynb',json.dumps(n),'retired_service_import')
+    def test_runtime_metadata_clean_module_allowed(self):
+        raw=bundle({'analysis.py':'value=1\n'})
+        n={'cells':[],'metadata':{'adp_runtime_bundle':{'schema':'adp-notebook-runtime-v1','zip_base64':base64.b64encode(raw).decode()}}}
+        self.inspect('lesson.ipynb',json.dumps(n))
+    def test_runtime_metadata_corruption_rejected(self):
+        n={'cells':[],'metadata':{'adp_runtime_bundle':{'schema':'adp-notebook-runtime-v1','zip_base64':'not valid'}}}
+        self.inspect('lesson.ipynb',json.dumps(n),'invalid_embedded_payload')
     def test_readable_notebook_resource_filename_is_checked(self):
         source='RESOURCE_TEXT = '+repr({'start-platform.ps1':'echo old\n'})
         self.inspect('lesson.ipynb',json.dumps({'cells':[{'cell_type':'code','source':[source]}]}),'retired_launcher')

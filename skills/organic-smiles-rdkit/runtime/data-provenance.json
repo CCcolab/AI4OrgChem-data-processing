@@ -1,0 +1,23 @@
+{
+  "dataset_id": "organic-smiles-teaching-structures-v1",
+  "file": "molecules.csv",
+  "sha256": "87bbb47ec0c847c8811c98ded10d099d8879dbb9bbbba5cec624cfea10e866c8",
+  "rows": 14,
+  "valid_expected": 12,
+  "rejected_expected": 2,
+  "kind": "AUTHORED_TEACHING_STRUCTURES_NOT_EXPERIMENTAL_DATA",
+  "construction": "课程中出现的简单结构与项目编写的表示/电荷/立体/同位素/拒绝测试组合；不是从数据库批量下载。",
+  "sources": {
+    "course": "https://zzhenglab.github.io/ai4chem/lecture-03.html",
+    "project": "本项目独立编写的教学和反例记录。"
+  },
+  "record_notes": {
+    "002": "按SMILES连接规则将乙醇反向书写；不是另一化合物。",
+    "009/010": "同一连接结构的相反局部手性标记；不凭@/@@命名R/S。",
+    "011/012": "故意构造无效/空输入，不是真实化合物。",
+    "014": "显式13C同位素教学结构；不是天然丰度测量。"
+  },
+  "rights": "仅使用简单结构事实和自主编写记录，保留课程链接；未复制课程图片、整段正文或专有实验数据，未新增项目许可证。",
+  "processing": "保留全部原始字符串及ID；不去盐、不中和、不做互变异构归一、不丢弃立体信息。",
+  "external_lookup": false
+}

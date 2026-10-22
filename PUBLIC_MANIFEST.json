@@ -1,5 +1,5 @@
 {
-  "schema": "adp-private-skill-publication-v3",
+  "schema": "adp-private-skill-publication-v4",
   "version": "0.1.0",
   "visibility": "PRIVATE",
   "entry": "START_HERE_zh-CN.md",
@@ -55,7 +55,7 @@
     },
     {
       "file": "NAVIGATION.json",
-      "sha256": "76bbc9034cb64783af05fd3153be17917c310fd56789531b9e03486a81c5a617"
+      "sha256": "1c6da6c660a772221f7eb5209867625ef941056cf55d4330a3955907c49af271"
     },
     {
       "file": "PLATFORM_ENTRY.json",
@@ -75,11 +75,75 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb",
-      "sha256": "5dccc983a118284394952a366877dd81054aafd7f568caa985d6e56705fb30f1"
+      "sha256": "ff32ba69ea248390dfc695a7b293589adfd122ba7dcac08b4a67cd594c631da1"
     },
     {
       "file": "skills/organic-smiles-rdkit/README.md",
-      "sha256": "0b884ece2fc618ac75e4dcac455fbc4d35274a060dc0f73cdd1a8e933d2c3988"
+      "sha256": "845eb235d1de86787ceb6c1a9e14d74ad60b8540aa0066191c24260142975ff0"
+    },
+    {
+      "file": "skills/organic-smiles-rdkit/runtime/colab_workflow.py",
+      "sha256": "73afe5e3325ab736931f16f4607d4cda648521d420bb251a7fa33e3f69c5b306"
+    },
+    {
+      "file": "skills/organic-smiles-rdkit/runtime/CONFIGURATION_zh-CN.md",
+      "sha256": "a6a01dfd4a1581211c6c9419ec1c3613f6fe34d36b4d878e94d1f5240fd150bb"
+    },
+    {
+      "file": "skills/organic-smiles-rdkit/runtime/credential_config.py",
+      "sha256": "a132c259a3c877f52f008f61b349e3b72fd4223efbfe3193277de1b475cf22cb"
+    },
+    {
+      "file": "skills/organic-smiles-rdkit/runtime/data-provenance.json",
+      "sha256": "aaf94ca0579840355748c9de326d3c9221781748629b449d705fc708b5772a55"
+    },
+    {
+      "file": "skills/organic-smiles-rdkit/runtime/molecule_tool.py",
+      "sha256": "737506dc2ad129b3ca81f835abdcb17e19f043bb229102d5400fbd77c3058d90"
+    },
+    {
+      "file": "skills/organic-smiles-rdkit/runtime/molecules.csv",
+      "sha256": "87bbb47ec0c847c8811c98ded10d099d8879dbb9bbbba5cec624cfea10e866c8"
+    },
+    {
+      "file": "skills/organic-smiles-rdkit/runtime/parameters.json",
+      "sha256": "a9892264468d9545980c6acb83181c8bf65dbd28783ec0ef05f58dd1b4032de6"
+    },
+    {
+      "file": "skills/organic-smiles-rdkit/runtime/rdkit-runtime.zip",
+      "sha256": "9aa81e8912b81787ff338d9461e04dcb21204a72b1cc9731cead3755d0906a8a"
+    },
+    {
+      "file": "skills/organic-smiles-rdkit/runtime/README.md",
+      "sha256": "dd15b1baa568a910e60eaacf2e680377340bf1662018d86812b424bc9ec722f3"
+    },
+    {
+      "file": "skills/organic-smiles-rdkit/runtime/requirements-colab.txt",
+      "sha256": "cf69cc546f34666b0b9c568c5f5f9bb4600bba4d0b2a0fb5905f229d68b6d321"
+    },
+    {
+      "file": "skills/organic-smiles-rdkit/runtime/resource-manifest.json",
+      "sha256": "d619ffbb83c4d0e1810cf898b68adba78596ae23180bc93d9d43dad10c41409e"
+    },
+    {
+      "file": "skills/organic-smiles-rdkit/runtime/result_presentation.py",
+      "sha256": "ae4c115f1fdb76f8a14f8dc7a9feb031dee3104ad2d4ca03ab8b0649bbc9ce16"
+    },
+    {
+      "file": "skills/organic-smiles-rdkit/runtime/SKILL.md",
+      "sha256": "f79b96d8d40a9d955f68642e8bb94ef205ff71ccaec7519864abad8a5499f776"
+    },
+    {
+      "file": "skills/organic-smiles-rdkit/runtime/skill_agent.py",
+      "sha256": "487ee81ddf57a13a53e0ea3e88db790c58b8cde544db7a9da2596d816f0fd2e1"
+    },
+    {
+      "file": "skills/organic-smiles-rdkit/runtime/sources.json",
+      "sha256": "4609b562981364dfac0aae8bbba5f9ab686288665324f5cee437f5ed99e870e3"
+    },
+    {
+      "file": "skills/organic-smiles-rdkit/runtime/task-template.txt",
+      "sha256": "73254171924f3f5e7382b0e7c089f488639f0135d2ec728054e6ded37fbc00e8"
     },
     {
       "file": "skills/organic-smiles-rdkit/SKILL.md",
@@ -175,19 +239,19 @@
     },
     {
       "file": "tests/guard/rdkit_notebook_resources.py",
-      "sha256": "742d8f71c3d41870d082ea652c98010da6aa6da3d1e2e03c7a09ad47898ed5fd"
+      "sha256": "d3e59e8702e16763927529f7b955eaf1c7360c2fe5364c255a8f49f01c1148a6"
     },
     {
       "file": "tests/guard/test_platform_boundary.py",
-      "sha256": "156b47969dd49f38ded139625d4e91071a65676b8afd2b85ac390cc8bfbd54e1"
+      "sha256": "b06326f792cfbd7ce9ea5528b6937ffe1628e792a717f22a6a4f31c53c681187"
     },
     {
       "file": "tests/guard/test_rdkit_download_status.py",
-      "sha256": "30c889766529a66a2c3a2a57449d3e0703a40678a1318fc9e4c2047ef36c8cd2"
+      "sha256": "b120d48aea27dde57ca7cc99d1c02f1cfc2e282a997648b6e8872a10d44149b9"
     },
     {
       "file": "tests/guard/test_skill_navigation.py",
-      "sha256": "eacdfac8d8d94870223866141dd9d11aeee7e32c2f159de0fc85eb3ac27d3188"
+      "sha256": "85878e97a24618869474acd2492597f9d7b3c7f245383a12359ac66f8ab8b344"
     },
     {
       "file": "tests/guard/test_workflow_gate.py",
@@ -195,7 +259,7 @@
     },
     {
       "file": "tools/check_platform_boundary.py",
-      "sha256": "fc2af27ac404115a0071cff671f2e87854b5f802e8ecd81b3ac5f5ba90afca83"
+      "sha256": "1215cbec6084423f37af13003c986cf6be219f719544c2a59237974d583afe43"
     },
     {
       "file": "tools/package_checked_skill.py",

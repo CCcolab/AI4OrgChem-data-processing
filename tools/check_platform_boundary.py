@@ -97,7 +97,8 @@ class Guard:
         if depth>64:self.fail(name,'json_depth_limit');return
         if isinstance(obj,dict):
             for k,v in obj.items():
-                if k in {'application/zip','application/octet-stream'} and isinstance(v,str):self.decode_payload(v,name,depth,required=True)
+                if k=='zip_base64' and obj.get('schema')=='adp-notebook-runtime-v1':self.decode_payload(v,name,0,required=True)
+                elif k in {'application/zip','application/octet-stream'} and isinstance(v,str):self.decode_payload(v,name,depth,required=True)
                 elif k=='application/zip' and isinstance(v,list):self.decode_payload(''.join(v),name,depth,required=True)
                 elif isinstance(v,(dict,list)):self.json_payloads(v,name,depth+1)
         elif isinstance(obj,list):
