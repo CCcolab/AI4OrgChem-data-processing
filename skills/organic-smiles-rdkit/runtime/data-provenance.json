@@ -1,15 +1,14 @@
 {
-  "dataset_id": "organic-smiles-teaching-structures-v1",
+  "dataset_id": "organic-smiles-teaching-structures-v2",
   "file": "molecules.csv",
-  "sha256": "87bbb47ec0c847c8811c98ded10d099d8879dbb9bbbba5cec624cfea10e866c8",
+  "sha256": "53c3bcfc388c523402ccac7723ac27ba6a21fd20c518a3f2dfba32706e41a21e",
   "rows": 14,
   "valid_expected": 12,
   "rejected_expected": 2,
   "kind": "AUTHORED_TEACHING_STRUCTURES_NOT_EXPERIMENTAL_DATA",
-  "construction": "课程中出现的简单结构与项目编写的表示/电荷/立体/同位素/拒绝测试组合；不是从数据库批量下载。",
+  "construction": "项目组织的通用分子结构教学输入和表示/电荷/立体/同位素/拒绝反例；按公开SMILES规则及固定RDKit版本核对，不是外部课程或数据库数据文件的下载。",
   "sources": {
-    "course": "https://zzhenglab.github.io/ai4chem/lecture-03.html",
-    "project": "本项目独立编写的教学和反例记录。"
+    "project": "本项目教学输入的构造与核对标签；不是外部数据下载来源。"
   },
   "record_notes": {
     "002": "按SMILES连接规则将乙醇反向书写；不是另一化合物。",
@@ -17,7 +16,13 @@
     "011/012": "故意构造无效/空输入，不是真实化合物。",
     "014": "显式13C同位素教学结构；不是天然丰度测量。"
   },
-  "rights": "仅使用简单结构事实和自主编写记录，保留课程链接；未复制课程图片、整段正文或专有实验数据，未新增项目许可证。",
+  "rights": "本版不收录外部课程正文、图片、代码或Notebook；不主张已获外部课程再分发授权；未新增项目许可证。",
   "processing": "保留全部原始字符串及ID；不去盐、不中和、不做互变异构归一、不丢弃立体信息。",
-  "external_lookup": false
+  "external_lookup": false,
+  "source_id_definition": "project表示本例组织与核对的教学记录。旧版course标签不再作为课程取材或授权证据；旧版保存在项目历史记录。",
+  "verification_basis": [
+    "Daylight SMILES §3.2及§3.3的编码规则",
+    "固定RDKit版本的解析、规范表示、身份与数值回归检查"
+  ],
+  "revision": "v2-source-attribution-correction; molecular strings, record order and analysis protocol unchanged"
 }

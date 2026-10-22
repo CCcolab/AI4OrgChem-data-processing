@@ -210,6 +210,9 @@ class SkillNavigationTests(unittest.TestCase):
         self.assertEqual(digest(resources['molecules.csv']),provenance['sha256'])
         rows=list(csv.DictReader(io.StringIO(resources['molecules.csv'].decode())))
         self.assertEqual(len(rows),14)
+        self.assertEqual({r['source_id'] for r in rows},{'project'})
+        self.assertNotIn('course',provenance['sources'])
+        self.assertTrue(all(x['id']!='course' for x in json.loads(resources['sources.json'])))
         self.assertEqual(len({r['id'] for r in rows}),14)
         self.assertEqual(rows[10]['smiles'],'C1CC')
         self.assertEqual(rows[11]['smiles'],'')
@@ -220,7 +223,7 @@ class SkillNavigationTests(unittest.TestCase):
 
     def test_minimal_skill_directory_has_only_learning_files(self):
         self.assertEqual({p.name for p in PAGE.iterdir()},{'README.md','SKILL.md','organic-smiles-rdkit.ipynb','assets','runtime'})
-        self.assertEqual({p.name for p in (PAGE/'assets').iterdir()},{'example-molecules.png','example-similarity.png'})
+        self.assertEqual({p.name for p in (PAGE/'assets').iterdir()},{'example-molecules.png','example-similarity.png','example-results.zip'})
         self.assertFalse(any(p.is_symlink() for p in PAGE.rglob('*')))
         self.assertEqual(resource_bytes()['SKILL.md'],(PAGE/'SKILL.md').read_bytes())
         self.assertFalse((ROOT/'docs/RDKIT_PAGE_CHECK.md').exists())

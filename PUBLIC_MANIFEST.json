@@ -55,7 +55,7 @@
     },
     {
       "file": "NAVIGATION.json",
-      "sha256": "a134438cd84af3b7e75cd0fc803c7412853eed9cdd113f893fad53da22d3dda4"
+      "sha256": "719b2e366443233d33eefcc16e25e56257f7ab2e41507efa5dec8f2484ce1a31"
     },
     {
       "file": "PLATFORM_ENTRY.json",
@@ -70,16 +70,20 @@
       "sha256": "a62ae370831bb1a21ace779a92b4e9afe3c31ee577e4261dd5f8d6d1d1cb6f6c"
     },
     {
+      "file": "skills/organic-smiles-rdkit/assets/example-results.zip",
+      "sha256": "c7f1ef240a8b0c81f98ce9bb74de0f449a513ead8b9bd7d6ccd943830b2baca6"
+    },
+    {
       "file": "skills/organic-smiles-rdkit/assets/example-similarity.png",
       "sha256": "c896ef535c77df157fd7b237119bf01f0a0e2df80640476b1679a0a722625e25"
     },
     {
       "file": "skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb",
-      "sha256": "602a09bb8d7480691cc2487de2df5311bcd1b3ab768ac88eb53298b3b645bf9e"
+      "sha256": "91e14ed2236f4fec055a138ddec9fe86375345e7f929bf50de7612633b36589c"
     },
     {
       "file": "skills/organic-smiles-rdkit/README.md",
-      "sha256": "61262a0a0c4f71e58ca94a73244eba6ead6630802db8805d79b3580b860276ad"
+      "sha256": "dc58e3be0a765c8822609b70b02a92742a2ccaf2821b2400bd921214e85c1389"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/colab_workflow.py",
@@ -95,7 +99,7 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/data-provenance.json",
-      "sha256": "aaf94ca0579840355748c9de326d3c9221781748629b449d705fc708b5772a55"
+      "sha256": "5ccbcf659f76f098317882e13a3b85519e68bab7e22d9caa78055f1e922bd3d5"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/molecule_tool.py",
@@ -103,7 +107,7 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/molecules.csv",
-      "sha256": "87bbb47ec0c847c8811c98ded10d099d8879dbb9bbbba5cec624cfea10e866c8"
+      "sha256": "53c3bcfc388c523402ccac7723ac27ba6a21fd20c518a3f2dfba32706e41a21e"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/parameters.json",
@@ -111,11 +115,11 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/rdkit-runtime.zip",
-      "sha256": "9aa81e8912b81787ff338d9461e04dcb21204a72b1cc9731cead3755d0906a8a"
+      "sha256": "07a85e2b69ec9f7023a73a13ad61b78610de3240eccec2bf6e6529812dc16038"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/README.md",
-      "sha256": "dd15b1baa568a910e60eaacf2e680377340bf1662018d86812b424bc9ec722f3"
+      "sha256": "6422a03088fc781acf96ff5b50db68984df06029cc2e60af12971a26a7eb12e7"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/requirements-colab.txt",
@@ -123,7 +127,7 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/resource-manifest.json",
-      "sha256": "d619ffbb83c4d0e1810cf898b68adba78596ae23180bc93d9d43dad10c41409e"
+      "sha256": "ff951ffb567550a9ddb420e7488ad9527d1c7962c625f3f7722566a33aa9fd89"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/result_presentation.py",
@@ -139,7 +143,7 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/sources.json",
-      "sha256": "4609b562981364dfac0aae8bbba5f9ab686288665324f5cee437f5ed99e870e3"
+      "sha256": "42e40a81c2434c227081a04efb2b5eadd3d3ab49a105249abe4196d455db3a8f"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/task-template.txt",
@@ -251,7 +255,7 @@
     },
     {
       "file": "tests/guard/test_skill_navigation.py",
-      "sha256": "b4c905ee809b7bcc72130cdb359475b154910e41d6971fd2ef8e1707e8fc1a18"
+      "sha256": "da7b5bcd2a9ef0a407c965bc25e0ce65eee387a739c030176464bb143e8163f6"
     },
     {
       "file": "tests/guard/test_workflow_gate.py",

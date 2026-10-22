@@ -115,14 +115,14 @@
       "notebook_entry": "skills/organic-smiles-rdkit/README.md",
       "run": "skills/organic-smiles-rdkit/README.md",
       "layout": "five-part-colab-modules-v1",
-      "colab_url": "https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/86af9ce2553edc92a3501f03956f46839e5479db/skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb",
-      "colab_notebook_sha256": "602a09bb8d7480691cc2487de2df5311bcd1b3ab768ac88eb53298b3b645bf9e",
+      "colab_url": "https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/main/skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb",
+      "colab_notebook_sha256": "91e14ed2236f4fec055a138ddec9fe86375345e7f929bf50de7612633b36589c",
       "downloads": {
         "notebook": "skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb",
         "skill": "skills/organic-smiles-rdkit/SKILL.md"
       },
-      "colab_source_commit": "86af9ce2553edc92a3501f03956f46839e5479db",
-      "download_source_ref": "86af9ce2553edc92a3501f03956f46839e5479db"
+      "colab_source_commit": "main",
+      "download_source_ref": "refs/heads/main"
     },
     {
       "id": "table-fitting-residuals",
