@@ -13,6 +13,8 @@ description: 使用RDKit处理有机分子SMILES，生成结构解析、描述�
 - Notebook参数：`radius`为1–4整数，`fp_size`为1024/2048/4096，`include_chirality`为布尔值，`query_smarts`为有效SMARTS，`reference_id`须对应有效记录。严格采用用户参数，不由模型改写。
 - 本例默认`radius=2, fp_size=2048, include_chirality=True, query_smarts="[CX3](=O)[OX2H1]", reference_id="005"`。修改`radius=3`可比较指纹参数的影响。
 
+本页工具边界：CSV为1–50行、五列完整、ID唯一，总大小≤128000字节；SMILES≤512字符、分子≤128原子，不接受名称/CXSMILES后缀或虚拟原子。SMARTS≤120字符、查询≤32原子，匹配超过1000项时拒绝统计，不报告截断数为完整结果。具体文件格式见README。
+
 ## 分析要求
 
 - 先检查空结构，再解析并校验价态；解析失败保留ID和错误原因，不传给后续计算，不把错误或缺失结果填为0。

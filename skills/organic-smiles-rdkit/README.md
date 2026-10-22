@@ -90,6 +90,16 @@ lab.show_downloads(run_output)
 | query_smarts | `[CX3](=O)[OX2H1]` | analysis.csv的query_match_count；003、007、008各1，004乙酸根为0 |
 | reference_id | "005"；有效输入ID | similarity.csv的reference_id均为005；苯与自身相似度为1 |
 
+### 本页工具的输入与执行边界
+
+本轮边界约定为`rdkit-bounded-teaching-v2`；五个分析参数及内置14条结构保持一致。
+
+Notebook使用内置的14条教学输入，不提供任意CSV上传入口。配套工具用于本地开发复核时要求：UTF-8、五列完整、ID唯一且为1–64位字母/数字/点/下划线/连字符（字母或数字开头）；1–50行，CSV不超过128000字节，SMILES不超过512字符、每个分子不超过128个原子。字段不接受控制字符或电子表格公式前缀。名称请放label列；结构列只接收SMILES，不接受名称后缀、CXSMILES或虚拟原子。无效结构按行保留，参照ID必须有效。
+
+SMARTS不超过120字符、32个查询原子；匹配超过1000项时明确拒绝统计，防止将截断数当成完整结果。解析后原子索引从0开始，指向本轮RDKit分子，不是原始字符串的字符位置。接口依据：[RDKit名称与CXSMILES解析说明](https://www.rdkit.org/docs/RDKit_Book.html#reading-molecule-names)、[GetSubstructMatches与maxMatches](https://www.rdkit.org/docs/source/rdkit.Chem.rdchem.html#rdkit.Chem.rdchem.Mol.GetSubstructMatches)；本页固定版本另以实际接口和反例复核。
+
+调用前复核全部运行资源，并在发送模型请求前检查输入格式和参照结构；模型只能使用一次限定工具，最多3轮请求、每轮60秒，不自动重试，不跟随API重定向。模型响应上限1MB；分析子进程230秒，超时后终止，清理最多15秒。失败不生成成功验收回执。合并下载最多20轮、20MB清单数据，超限时仍提供本轮下载，不收录清单以外的临时文件。以上是单用户教学任务边界，不是多用户服务的负载能力保证。
+
 ### 实际参数调用案例与输出结果
 
 下面是**同一输入、同一固定程序**在本地重算的两组保存结果，不是模型编写的数值。默认组严格采用上面的全部参数；对照组只把`radius`从2改为3，其余四项不变。两组均14条记录、12有效、2拒绝，16项程序检查通过。001/002规范表示相同但两行都保留；011/012进入errors.csv。
@@ -131,7 +141,22 @@ lab.show_downloads(run_output)
 
 **[打开运行Notebook](organic-smiles-rdkit.ipynb)**
 
-Notebook内提供“在Colab运行”按钮、首次账号授权、保存副本、Secret配置与①至⑤步骤。Colab读取同名`DEEPSEEK_API_KEY` Secret，本地按`ENV_FILE`读取自己的.env；不要把值写进代码或上传.env。
+Notebook内提供“在Colab运行”按钮、首次账号授权、保存副本、Secret配置与①至⑤步骤。Colab读取同名`DEEPSEEK_API_KEY` Secret；不要把值写进代码或上传.env。Notebook①使用Colab接口；本地Python应使用配套模块，而非直接执行该Colab准备单元。
+
+本地使用配套模块时，在已安装requirements-colab.txt依赖的Python 3.12/3.13环境运行；将模块ZIP解压到同一目录，再使用：
+
+```python
+from pathlib import Path
+import json
+from colab_workflow import Lab
+
+ENV_FILE = Path.home() / ".env"  # 改为自己已有的配置文件，不填写密钥值
+lab = Lab.prepare(Path("rdkit-runtime.zip"))
+parameters = json.loads((lab.workspace / "parameters.json").read_text("utf-8"))
+skill_text = (lab.workspace / "SKILL.md").read_text("utf-8")
+run_output = lab.call_skill(skill_text=skill_text, parameters=parameters, env_file=ENV_FILE)
+print(run_output)  # 在此目录查看程序回执与结果ZIP
+```
 
 **[查看SKILL.md源码（Code）](https://github.com/CCcolab/AI4OrgChem-data-processing/blob/main/skills/organic-smiles-rdkit/SKILL.md?plain=1)**
 
@@ -142,3 +167,5 @@ Notebook内提供“在Colab运行”按钮、首次账号授权、保存副本�
 - [完整配套模块ZIP](https://github.com/CCcolab/AI4OrgChem-data-processing/blob/825fb070c50eee69e358a5b72950b1504539426c/skills/organic-smiles-rdkit/runtime/rdkit-runtime.zip)
 
 样例CSV/JSON的独立下载及用法见上面的文件表。真正运行后在Notebook⑤下载本轮结果；含输出的执行版用“文件→保存”，再选“文件→下载→下载.ipynb”。
+
+开发者复核：在仓库根目录、已安装配套依赖的Python环境运行`python -B -m unittest discover -s tests/rdkit -p "test_*.py" -v`。测试覆盖输入边界、参数组合、化学身份、资源篡改、超时和下载；模型响应使用离线模拟，不消耗API额度，也不代替Colab真实验收。

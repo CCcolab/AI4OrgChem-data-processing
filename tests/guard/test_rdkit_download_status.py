@@ -30,8 +30,7 @@ class DownloadEvidenceTests(unittest.TestCase):
             for n in names+['export-manifest.json']:z.write(self.root/n,n)
     def test_frontend_cells_load_helper_in_clean_parent_path(self):
         workspace=self.root/'runtime-workspace';workspace.mkdir()
-        (workspace/'result_presentation.py').write_bytes(resource_bytes()['result_presentation.py'])
-        (workspace/'SKILL.md').write_bytes((self.root/'SKILL.md').read_bytes())
+        for name,raw in resource_bytes().items():(workspace/name).write_bytes(raw)
         self.assertNotIn(str(workspace),sys.path)
         self.assertNotIn('result_presentation',sys.modules)
         notebook=json.loads((ROOT/'skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb').read_text('utf-8'))
@@ -39,8 +38,10 @@ class DownloadEvidenceTests(unittest.TestCase):
         exec(compile(resource_bytes()['colab_workflow.py'],'<companion>','exec'),runtime.__dict__)
         lab=runtime.Lab();lab.workspace=workspace;lab.history=[self.root]
         lab.bundle=ROOT/'skills/organic-smiles-rdkit/runtime/rdkit-runtime.zip';lab.notebook=notebook
+        lab.bundle_sha256=hashlib.sha256(lab.bundle.read_bytes()).hexdigest()
         namespace={'lab':lab,'run_output':self.root}
         outputs=[]
+        (self.root/'not-for-export.txt').write_text('test-only private note',encoding='utf-8')
         from unittest.mock import patch
         with patch('IPython.display.display',outputs.append):
             for i in [7,9]:exec(compile(''.join(notebook['cells'][i]['source']),'<frontend-cell>','exec'),namespace)
@@ -48,6 +49,8 @@ class DownloadEvidenceTests(unittest.TestCase):
         self.assertIn('程序回执',outputs[0].data)
         self.assertIn('下载SKILL.md',outputs[1].data)
         self.assertTrue((workspace/'organic-smiles-rdkit-all-runs.zip').is_file())
+        with zipfile.ZipFile(workspace/'organic-smiles-rdkit-all-runs.zip') as z:
+            self.assertNotIn('run-1/not-for-export.txt',z.namelist())
         self.assertEqual(Path(lab._presentation().__file__),workspace/'result_presentation.py')
 
     def test_denial_cannot_override_actual_files(self):

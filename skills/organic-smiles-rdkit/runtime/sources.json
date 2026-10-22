@@ -107,5 +107,23 @@
     "supports": "圆形指纹方法的延伸阅读；不将RDKit实现与论文实现直接等同。",
     "reviewed_on": "2026-10-22",
     "review_scope": "BIBLIOGRAPHY_AND_INDEXED_AUTHOR_ABSTRACT_NOT_FULL_TEXT"
+  },
+  {
+    "id": "parser_boundaries",
+    "title": "RDKit Book — Reading molecule names",
+    "url": "https://www.rdkit.org/docs/RDKit_Book.html#reading-molecule-names",
+    "locator": "parseName、allowCXSMILES同时关闭时的行为",
+    "type": "软件官方文档",
+    "reviewed_on": "2026-10-22",
+    "review_scope": "SELECTED_PUBLIC_SECTION_AND_LOCAL_2026_03_6_API_REPLAY"
+  },
+  {
+    "id": "match_bounds",
+    "title": "RDKit Mol.GetSubstructMatches",
+    "url": "https://www.rdkit.org/docs/source/rdkit.Chem.rdchem.html#rdkit.Chem.rdchem.Mol.GetSubstructMatches",
+    "locator": "maxMatches参数与组合增长说明",
+    "type": "软件官方文档",
+    "reviewed_on": "2026-10-22",
+    "review_scope": "SELECTED_PUBLIC_API_AND_LOCAL_SATURATION_COUNTEREXAMPLE"
   }
 ]
