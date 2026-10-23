@@ -1,7 +1,7 @@
 {
   "schema": "adp-private-python-skill-publication-v1",
   "version": "0.1.0",
-  "revision": "python-r1",
+  "revision": "python-readme-r2",
   "visibility": "PRIVATE",
   "entry": "START_HERE_zh-CN.md",
   "legacy_web_enabled": false,
@@ -60,11 +60,11 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/downloads/organic-smiles-rdkit-python.zip",
-      "sha256": "ca91460226a826b760577064449303d2fee1461a7c1964c2cb5c6b8fbb404143"
+      "sha256": "8f6f15bc358906b98e71104fc2e5dc2b420a07b8a2ce3749ce9cb41cf41d2cae"
     },
     {
       "file": "skills/organic-smiles-rdkit/downloads/organic-smiles-rdkit-python.zip.sha256",
-      "sha256": "9a03205efb9b658eafe05c21e7aede13010cc0808c41b42eb34087da8d36505a"
+      "sha256": "20a94c364e9a97b227c0e3d4eeab076e99d1bcbdf970a098f92c24b5bd39a00a"
     },
     {
       "file": "skills/organic-smiles-rdkit/organic-smiles-rdkit.py",
@@ -72,7 +72,7 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/README.md",
-      "sha256": "a4f59fdd7ccb55ebe03216f6ece3ab06bf9ee9aebe4d27b18272649f88773941"
+      "sha256": "e48d2c7641b4cf9ec105990341e77cfd3a456bb6064e94744fde03081220dd6b"
     },
     {
       "file": "skills/organic-smiles-rdkit/requirements.txt",
@@ -144,15 +144,15 @@
     },
     {
       "file": "skills/table-fitting-residuals/downloads/table-fitting-residuals-python.zip",
-      "sha256": "dd7fb741ed5381328b3a211ae0be0521fa585a2d7f5554a297fa9a1d34adf255"
+      "sha256": "ec968164cdcb990b27ac7d13844199774c330f44cc9034ab2901fa0121e180d9"
     },
     {
       "file": "skills/table-fitting-residuals/downloads/table-fitting-residuals-python.zip.sha256",
-      "sha256": "11ad665886ca0733ebf10bc349e6d7fd71e273af2404c0863fc204765325127e"
+      "sha256": "b8d3e00903d4139690a1aebb008448a37cade53d3cced9981c76edb15630e151"
     },
     {
       "file": "skills/table-fitting-residuals/README.md",
-      "sha256": "9f5ff4c720e8f2e148dad53fd042416e041aef052bea0f1dc4b9aa833746d2c1"
+      "sha256": "5ba454fadd53815a97c500b0ab5a67c5dd974413db9ae8d7806327aeb6c9dd0b"
     },
     {
       "file": "skills/table-fitting-residuals/requirements.txt",

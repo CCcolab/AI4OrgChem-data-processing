@@ -42,7 +42,7 @@ SMILES描述结构，SMARTS描述查询模式；规范SMILES用于同版本下�
 
 ## 调用、参数与对应输出
 
-默认：`python organic-smiles-rdkit.py --output ../results-radius2`；将参数模板中的radius改为3后，用`--params`传入并保存到另一新目录。
+默认：`python organic-smiles-rdkit.py --output ../rdkit-default`；将参数模板中的radius改为3后，用`--params`传入并保存到另一新目录。
 
 | 模板字段 | 本例值/范围 | 对应输出与应观察的变化 |
 | --- | --- | --- |
@@ -101,44 +101,90 @@ SMARTS不超过120字符、32个查询原子；匹配超过1000项时明确拒�
 
 ## 运行与下载
 
-推荐下载[完整Python代码包](downloads/organic-smiles-rdkit-python.zip)，解压并进入该Skill目录。程序入口为[organic-smiles-rdkit.py](organic-smiles-rdkit.py)，同级保留`runtime`目录。单独下载入口文件不能代替完整代码包。
+### 1. 下载并在Windows短路径解压
 
-Windows PowerShell示例；先安装Python 3.12或3.13：
+下载[完整Python代码包](downloads/organic-smiles-rdkit-python.zip?raw=1)；私有仓库下载需要已有访问权限。程序入口为`organic-smiles-rdkit.py`，必须与`runtime`目录保持同级，不能只下载入口文件。
+
+**Windows请使用有写入权限的短目录，避免在多层长目录中安装依赖。** 例如把ZIP“全部解压”到`D:\Chem\r`，解压后进入`D:\Chem\r\organic-smiles-rdkit`。没有D盘时使用自己可写入的其它短目录，并替换下面示例路径。两个Skill分别解压到独立目录。
+
+如果安装NumPy时出现`No such file or directory`，且路径很长或提示`Windows Long Path support`，请保留原目录，在更短的新目录重新解压并重新建立环境；无需修改系统长路径设置。
+
+在含`README.md`、`requirements.txt`和`.py`的Skill文件夹打开PowerShell，或先执行：
 
 ```powershell
+Set-Location -LiteralPath 'D:\Chem\r\organic-smiles-rdkit'
+```
+
+### 2. 建立环境并完成默认运行
+
+先安装Python 3.12或3.13，并确认`python --version`显示所选版本。以下命令逐行执行；安装报错时先停止，查看错误再继续。无需激活虚拟环境，所有安装和运行都显式使用它的Python：
+
+```powershell
+python --version
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
-.\.venv\Scripts\python.exe organic-smiles-rdkit.py --output ..\results-default
+.\.venv\Scripts\python.exe -m pip check
+.\.venv\Scripts\python.exe organic-smiles-rdkit.py --output ..\rdkit-default
 ```
 
-macOS/Linux使用`.venv/bin/python`执行同样的安装和运行命令。默认模式只做本地数值计算，无需模型账号、API密钥或联网请求；依赖首次安装需要获取对应软件包。
+首次安装依赖需要联网；默认数值计算不需要模型账号、API密钥或`.env`，不会调用模型。看到`PASS_LOCAL_NUMERICAL`后，在Skill目录的上一层找到`rdkit-default`结果文件夹。
 
-完成后双击结果目录的`report.html`查看回执、参数和图表；保留`results.zip`及`results.zip.sha256`。报告为自包含HTML，没有外部脚本、输出框架或本地Web服务。代码输出`PASS_LOCAL_NUMERICAL`，明确表示没有调用模型。
+### 3. 复制参数、修改后再运行
 
-### 修改参数再运行
-
-复制[runtime/parameters.json](runtime/parameters.json)为自己的参数文件，按上表修改后运行到新目录：
+保留原模板，先复制：
 
 ```powershell
-.\.venv\Scripts\python.exe organic-smiles-rdkit.py --params my-parameters.json --output ..\results-modified
-.\.venv\Scripts\python.exe organic-smiles-rdkit.py --verify ..\results-modified
+Copy-Item -LiteralPath runtime\parameters.json -Destination my-parameters.json
 ```
 
-已有结果目录拒绝覆盖；`--verify`只核对文件和ZIP的SHA-256，不重复计算。
+用记事本等文本编辑器打开`my-parameters.json`，只把`radius`从2改为3，其余四项保持不变。将内容改为下面的JSON并保存。JSON布尔值写小写`true`/`false`，字符串保留双引号；不要修改`runtime`中的原模板。
+
+```json
+{
+  "radius": 3,
+  "fp_size": 2048,
+  "include_chirality": true,
+  "query_smarts": "[CX3](=O)[OX2H1]",
+  "reference_id": "005"
+}
+```
+
+回到同一个PowerShell窗口，运行到另一新目录并校验：
+
+```powershell
+.\.venv\Scripts\python.exe organic-smiles-rdkit.py --params my-parameters.json --output ..\rdkit-radius3
+.\.venv\Scripts\python.exe organic-smiles-rdkit.py --verify ..\rdkit-radius3
+```
+
+两轮均应得到14条记录、12条有效、2条拒绝及16项通过的程序检查；比较`similarity.csv`中同一ID的相似度变化。每轮实际参数在结果的`parameters.json`和程序回执中保存；`--verify`只核对已有文件和ZIP的SHA-256，不重复计算。
+
+### 4. 查看结果并另存一份
+
+双击`..\rdkit-default\report.html`或`..\rdkit-radius3\report.html`，查看程序回执、实际参数和图表。报告自包含图片，无需启动Web服务。CSV、JSON和PNG也可在同一结果目录单独查看；文件状态以实际程序回执、文件清单和ZIP为准。
+
+要保存默认结果的完整副本，先选择一个尚不存在的目标文件夹，再执行：
+
+```powershell
+Copy-Item -LiteralPath ..\rdkit-default -Destination ..\rdkit-default-saved -Recurse
+.\.venv\Scripts\python.exe organic-smiles-rdkit.py --verify ..\rdkit-default-saved
+Get-FileHash -LiteralPath ..\rdkit-default-saved\results.zip -Algorithm SHA256
+```
+
+保留整个结果文件夹，其中`results.zip`为可携带结果包，`results.zip.sha256`为ZIP哈希，`SHA256SUMS.txt`为逐文件清单。最后一条命令显示的哈希应与`results.zip.sha256`中的值相同。修改参数的结果可用同样方法另存到新的目录。
+
+**已有结果目录不会覆盖。** 若提示“结果目录已存在”，为`--output`换一个新目录名；不要删除原始数据或旧结果。macOS/Linux在本机终端用`.venv/bin/python`替换上述Python路径，并使用相应的文件复制命令。
 
 ### 可选：让Agent读取SKILL.md并解释结果
 
-`SKILL.md`是给AI助手的技能指令；`.py`是执行数值计算的程序。默认数值模式读取并记录Skill身份，不能把它称为真实Agent调用。确需模型解释时，再显式开启：
+`SKILL.md`是给AI助手的技能指令；`.py`是执行数值计算的程序。默认数值模式记录Skill身份，不能称为真实Agent调用。确需模型解释时才显式开启：
 
 ```powershell
 .\.venv\Scripts\python.exe organic-smiles-rdkit.py --agent --env-file .env --output ..\results-agent
 ```
 
-`.env`是自己已有的本地配置文件，程序只读其中`DEEPSEEK_API_KEY`，不把值写进代码、命令行、日志或结果包；不自动读取其它配置。该模式使用自己的DeepSeek账号和额度，不使用OpenAI服务。不配置`--agent`就不会读取密钥或调用模型。真实模式必须有实际工具调用回执，模型文字不能替代程序文件检查；本次迁移只做离线模拟验证，没有新增真实模型调用。
+该可选模式只从自己已有的本地`.env`读取`DEEPSEEK_API_KEY`，使用自己的DeepSeek账号和额度；不把密钥值写入代码、命令行、日志或结果包。本轮README复验只运行默认数值模式，没有调用模型。
 
 ### 下载文件
 
-- [完整Python代码包](downloads/organic-smiles-rdkit-python.zip)：入口、Skill、依赖清单及配套源码与数据。
-- [查看Python入口源码](organic-smiles-rdkit.py) · [查看SKILL.md源码](SKILL.md?plain=1) · [依赖清单](requirements.txt)。
-
-仓库为私有；取得完整代码包后，日常运行只需要本地Python环境。33项Skill按专业分类组织，本页仅承诺上述已实现的限定任务。
+- [完整Python代码包](downloads/organic-smiles-rdkit-python.zip?raw=1)：README、入口、SKILL.md、依赖清单、源码及数据。
+- [Python入口源码](organic-smiles-rdkit.py) · [SKILL.md源码](SKILL.md?plain=1) · [依赖清单](requirements.txt)。
