@@ -1,0 +1,6 @@
+id,label,smiles
+E01,ethanol,CCO
+E02,ethanol-reversed,OCC
+B01,benzene,c1ccccc1
+X01,invalid-ring,C1CC
+X02,empty,

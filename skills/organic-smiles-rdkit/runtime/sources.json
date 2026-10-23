@@ -125,5 +125,41 @@
     "type": "软件官方文档",
     "reviewed_on": "2026-10-22",
     "review_scope": "SELECTED_PUBLIC_API_AND_LOCAL_SATURATION_COUNTEREXAMPLE"
+  },
+  {
+    "id": "stereo-semantics",
+    "url": "https://www.rdkit.org/docs/RDKit_Book.html",
+    "locator": "Stereochemistry: Identification of potential stereoatoms/stereobonds; Sources of information; Support for non-tetrahedral atomic stereochemistry",
+    "supports": "不同类型立体编码及部分支持；本地固定版本实测无效标签清理与潜在未指定立体。",
+    "rights": "链接及自主概述，不再分发官方原文。",
+    "reviewed_on": "2026-10-23",
+    "version_note": "滚动官方文档标为2026.09.1；本包固定2026.03.6，数值与行为以本地该版本回归为据。"
+  },
+  {
+    "id": "descriptor-conventions",
+    "url": "https://www.rdkit.org/docs/source/rdkit.Chem.rdMolDescriptors.html",
+    "locator": "CalcMolFormula(separateIsotopes, abbreviateHIsotopes); CalcTPSA(includeSandP); CalcNumHBD; CalcNumHBA",
+    "supports": "分子式同位素选项与TPSA硫磷选项；接口约定，不是实验适用性认证。",
+    "rights": "链接及自主概述，不再分发官方原文。",
+    "reviewed_on": "2026-10-23",
+    "version_note": "滚动官方文档标为2026.09.1；本包固定2026.03.6，数值与行为以本地该版本回归为据。"
+  },
+  {
+    "id": "crippen-definition",
+    "url": "https://www.rdkit.org/docs/source/rdkit.Chem.Crippen.html",
+    "locator": "MolLogP: Wildman-Crippen atom contribution scheme",
+    "supports": "原子贡献模型估计值，不等于盐的实验分配系数或logD。",
+    "rights": "链接及自主概述，不再分发官方原文。",
+    "reviewed_on": "2026-10-23",
+    "version_note": "滚动官方文档标为2026.09.1；本包固定2026.03.6，数值与行为以本地该版本回归为据。"
+  },
+  {
+    "id": "hbond-pinned-implementation",
+    "url": "https://github.com/rdkit/rdkit/blob/Release_2026_03_6/Code/GraphMol/Descriptors/Lipinski.cpp",
+    "locator": "calcNumHBD; calcNumHBA versus calcLipinskiHBD/calcLipinskiHBA",
+    "supports": "固定版本规则定义；对应输入结构，不进行pH下质子化预测。",
+    "rights": "链接及自主概述，不再分发官方原文。",
+    "reviewed_on": "2026-10-23",
+    "version_note": "滚动官方文档标为2026.09.1；本包固定2026.03.6，数值与行为以本地该版本回归为据。"
   }
 ]

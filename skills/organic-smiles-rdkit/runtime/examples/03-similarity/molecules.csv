@@ -1,0 +1,6 @@
+id,label,smiles
+B01,benzene,c1ccccc1
+P01,phenol,Oc1ccccc1
+A03,benzoic-acid,O=C(O)c1ccccc1
+A04,aspirin,CC(=O)Oc1ccccc1C(=O)O
+E01,ethanol,CCO

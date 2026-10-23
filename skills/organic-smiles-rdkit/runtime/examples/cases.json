@@ -1,0 +1,26 @@
+{
+  "descriptors": {
+    "input": "runtime/examples/01-descriptors/molecules.csv",
+    "parameters": "runtime/examples/01-descriptors/parameters.json",
+    "task": "解析CSV，计算分子式和描述符，保留重复、无效及空结构记录。",
+    "kind": "AUTHORED_TEACHING_STRUCTURES_NOT_EXPERIMENTAL_DATA"
+  },
+  "smarts": {
+    "input": "runtime/examples/02-smarts/molecules.csv",
+    "parameters": "runtime/examples/02-smarts/parameters.json",
+    "task": "用羧酸SMARTS查询，比较羧酸、乙酸根与酚的匹配结果。",
+    "kind": "AUTHORED_TEACHING_STRUCTURES_NOT_EXPERIMENTAL_DATA"
+  },
+  "similarity": {
+    "input": "runtime/examples/03-similarity/molecules.csv",
+    "parameters": "runtime/examples/03-similarity/parameters.json",
+    "task": "计算相对于苯的Morgan相似度；与radius=3的独立结果比较。",
+    "kind": "AUTHORED_TEACHING_STRUCTURES_NOT_EXPERIMENTAL_DATA"
+  },
+  "chemical-regression": {
+    "input": "runtime/examples/chemistry-boundaries.csv",
+    "parameters": "runtime/examples/01-descriptors/parameters.json",
+    "task": "显式化学语义回归",
+    "kind": "AUTHORED_BOUNDARY_FIXTURE_NOT_EXPERIMENTAL"
+  }
+}

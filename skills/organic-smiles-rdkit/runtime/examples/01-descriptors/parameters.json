@@ -1,0 +1,7 @@
+{
+  "radius": 2,
+  "fp_size": 2048,
+  "include_chirality": true,
+  "query_smarts": "[#6]",
+  "reference_id": "E01"
+}

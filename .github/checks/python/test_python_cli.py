@@ -28,9 +28,9 @@ class PythonCliTests(unittest.TestCase):
         site = cls.base / "offline"
         site.mkdir()
         (site / "sitecustomize.py").write_text(
-            "import urllib.request\n"
+            "import socket,urllib.request\n"
             "def denied(*args, **kwargs): raise AssertionError('NETWORK_FORBIDDEN')\n"
-            "urllib.request.urlopen=denied\n",
+            "urllib.request.urlopen=denied\nsocket.socket.connect=denied\nsocket.getaddrinfo=denied\n",
             encoding="utf-8",
         )
         cls.env = dict(
@@ -40,7 +40,7 @@ class PythonCliTests(unittest.TestCase):
         for id_ in IDS:
             page = ROOT / "skills" / id_
             for mode in ["default", "modified"]:
-                params = json.loads((page / "runtime/parameters.json").read_bytes())
+                params = json.loads((page / ("runtime/examples/03-similarity/parameters.json" if id_ == IDS[0] else "runtime/parameters.json")).read_bytes())
                 if mode == "modified":
                     if id_ == IDS[0]:
                         params["radius"] = 3
@@ -50,7 +50,7 @@ class PythonCliTests(unittest.TestCase):
                 parameter_file.write_text(json.dumps(params), encoding="utf-8")
                 output = cls.base / f"{id_}-{mode}"
                 process = cls.cli(
-                    id_, "--params", str(parameter_file), "--output", str(output)
+                    id_, *(["--case", "similarity"] if id_ == IDS[0] else []), "--params", str(parameter_file), "--output", str(output)
                 )
                 if process.returncode:
                     raise AssertionError(process.stdout + process.stderr)
@@ -64,7 +64,7 @@ class PythonCliTests(unittest.TestCase):
     def cli(cls, id_, *args, page=None):
         page = page or ROOT / "skills" / id_
         return subprocess.run(
-            [sys.executable, "-B", str(page / (id_ + ".py")), *args],
+            [sys.executable, "-B", str(page / (("runtime/" if id_ == IDS[0] else "") + id_ + ".py")), *args],
             cwd=cls.base,
             env=cls.env,
             capture_output=True,
@@ -76,7 +76,7 @@ class PythonCliTests(unittest.TestCase):
     def test_four_real_numerical_runs_without_provider(self):
         for (id_, mode), output in self.results.items():
             receipt = json.loads((output / "run-receipt.json").read_bytes())
-            self.assertEqual(receipt["status"], "PASS_LOCAL_NUMERICAL")
+            self.assertEqual(receipt["status"], "PASS_LOCAL_TOOLS" if id_ == IDS[0] else "PASS_LOCAL_NUMERICAL")
             self.assertEqual(receipt["model_calls"], 0)
             self.assertFalse(receipt["agent_called"])
             skill = ROOT / "skills" / id_ / "SKILL.md"
@@ -93,10 +93,10 @@ class PythonCliTests(unittest.TestCase):
                 return list(csv.DictReader(stream))
 
         a, b = rows("default", "analysis.csv"), rows("modified", "analysis.csv")
-        self.assertEqual(len(a), 14)
-        self.assertEqual(len(rows("default", "errors.csv")), 2)
+        self.assertEqual(len(a), 5)
+        self.assertEqual(len(rows("default", "errors.csv")), 0)
         for x, y in zip(a, b):
-            for key in ["id", "canonical_isomeric_smiles", "formula", "mol_wt"]:
+            for key in ["id", "canonical_isomeric_smiles", "formula", "mol_wt_g_mol"]:
                 if key in x:
                     self.assertEqual(x[key], y[key])
         self.assertNotEqual(
@@ -122,9 +122,9 @@ class PythonCliTests(unittest.TestCase):
     def test_reports_are_self_contained_and_link_actual_zip(self):
         for output in self.results.values():
             text = (output / "report.html").read_text("utf-8")
-            self.assertIn("PASS_LOCAL_NUMERICAL", text)
+            self.assertTrue("PASS_LOCAL_NUMERICAL" in text or "PASS_LOCAL_TOOLS" in text)
             self.assertIn("data:image/png;base64,", text)
-            self.assertIn("href='results.zip'", text)
+            self.assertTrue("href='results.zip'" in text or 'href="results.zip"' in text)
             self.assertNotIn("<script", text.lower())
             self.assertNotIn("<iframe", text.lower())
             self.assertNotIn("https://", text)
@@ -144,7 +144,7 @@ class PythonCliTests(unittest.TestCase):
     def test_invalid_json_and_parameters_rejected_before_output(self):
         for id_ in IDS:
             valid = json.loads(
-                (ROOT / "skills" / id_ / "runtime/parameters.json").read_bytes()
+                (ROOT / "skills" / id_ / ("runtime/examples/03-similarity/parameters.json" if id_ == IDS[0] else "runtime/parameters.json")).read_bytes()
             )
             bad = dict(valid)
             bad["radius" if id_ == IDS[0] else "unknown_peak_area"] = True

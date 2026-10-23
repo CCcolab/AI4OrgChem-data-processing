@@ -1,7 +1,7 @@
 """Real RDKit boundary tests and explicitly offline provider failure simulations.
 
 Run with Python 3.12/3.13 and the runtime requirements installed.
-Network calls are replaced in every agent test; these are not Colab acceptance.
+Network calls are replaced in every agent test; these are not live-provider acceptance.
 """
 
 from pathlib import Path
@@ -24,10 +24,12 @@ ROOT = Path(__file__).resolve().parents[3]
 RT = ROOT / "skills/organic-smiles-rdkit/runtime"
 sys.path.insert(0, str(RT))
 import molecule_tool as tool
-import skill_agent as agent
+import agent
+import execution
 import credential_config as credentials
 
-DEFAULT = json.loads((RT / "parameters.json").read_bytes())
+PAGE = RT.parent
+DEFAULT = json.loads((RT / "examples/02-smarts/parameters.json").read_bytes())
 
 
 class WorkspaceTest(unittest.TestCase):
@@ -44,7 +46,7 @@ class WorkspaceTest(unittest.TestCase):
         root = self.base / "input"
         root.mkdir()
         for name in ["SKILL.md", "sources.json"]:
-            (root / name).write_bytes((RT / name).read_bytes())
+            (root / name).write_bytes(((PAGE if name == "SKILL.md" else RT) / name).read_bytes())
         if raw is None:
             with (root / "molecules.csv").open("w", encoding="utf-8", newline="") as f:
                 writer = csv.DictWriter(f, fieldnames=tool.INPUT_FIELDS)
@@ -59,6 +61,10 @@ class WorkspaceTest(unittest.TestCase):
 
     def row(self, smiles="CCO", id_="x"):
         return dict(id=id_, label="test", smiles=smiles, source_id="test", role="test")
+
+    def boundary_root(self):
+        with (RT / 'examples/chemistry-boundaries.csv').open(encoding='utf-8', newline='') as f:
+            return self.input_root([self.row(row['smiles'], row['id']) for row in csv.DictReader(f)])
 
 
 class ParameterAndInputTests(WorkspaceTest):
@@ -177,6 +183,7 @@ class ParameterAndInputTests(WorkspaceTest):
 
 class ChemistryRegressionTests(WorkspaceTest):
     def test_parameter_matrix_retains_chemical_identity(self):
+        root = self.boundary_root()
         for radius in [1, 2, 3, 4]:
             for bits in [1024, 2048, 4096]:
                 for chirality in [False, True]:
@@ -186,27 +193,29 @@ class ChemistryRegressionTests(WorkspaceTest):
                             radius=radius,
                             fp_size=bits,
                             include_chirality=chirality,
+                            reference_id="E01",
                         )
                         output = self.base / f"out-{radius}-{bits}-{chirality}"
-                        result = tool.analyze(RT, params, output)
+                        result = tool.analyze(root, params, output)
                         self.assertEqual(
                             (result["records"], result["valid"], result["rejected"]),
-                            (14, 12, 2),
+                            (29, 24, 5),
                         )
                         self.assertTrue(all(result["checks"].values()))
-                        self.assertEqual(len(result["checks"]), 16)
+                        self.assertEqual(len(result["checks"]), 6)
                         self.assertEqual(
                             (output / "molecules.csv").read_bytes(),
-                            (RT / "molecules.csv").read_bytes(),
+                            (root / "molecules.csv").read_bytes(),
                         )
 
     def test_chirality_parameter_changes_fingerprint_not_structure(self):
         scores = {}
         canonical = {}
+        root = self.boundary_root()
         for flag in [False, True]:
             output = self.base / str(flag)
             tool.analyze(
-                RT, dict(DEFAULT, reference_id="009", include_chirality=flag), output
+                root, dict(DEFAULT, reference_id="EPOS", include_chirality=flag), output
             )
             with (output / "similarity.csv").open(encoding="utf-8") as f:
                 scores[flag] = {
@@ -217,8 +226,8 @@ class ChemistryRegressionTests(WorkspaceTest):
                     r["id"]: r.get("canonical_isomeric_smiles")
                     for r in csv.DictReader(f)
                 }
-        self.assertEqual(scores[False]["010"], 1.0)
-        self.assertLess(scores[True]["010"], 1.0)
+        self.assertEqual(scores[False]["ENEG"], 1.0)
+        self.assertLess(scores[True]["ENEG"], 1.0)
         self.assertEqual(canonical[False], canonical[True])
 
     def test_existing_output_never_overwritten(self):
@@ -298,7 +307,14 @@ class OfflineAgentTests(WorkspaceTest):
         opener.open.side_effect = opened
         output = self.base / "agent-output"
         with patch.object(agent.urllib.request, "build_opener", return_value=opener):
-            result = agent.run(RT, DEFAULT, output, self.KEY, "OFFLINE_TEST_DOUBLE")
+            spec = importlib.util.spec_from_file_location('tested_skill', RT / 'organic-smiles-rdkit.py')
+            api = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(api)
+            with patch.object(credentials, 'read_local_key', return_value=self.KEY):
+                result = api.run_skill(skill_file=PAGE / 'SKILL.md',
+                                       input_csv=RT / 'examples/02-smarts/molecules.csv',
+                                       parameters=DEFAULT, task='Offline CI protocol test',
+                                       output_dir=output, mode='agent', env_file=self.base / 'unused.env')
         return result, opener
 
     def test_two_round_offline_agent_calls_real_bounded_tool_and_verifies_zip(self):
@@ -314,30 +330,26 @@ class OfflineAgentTests(WorkspaceTest):
         for path in (self.base / "agent-output").iterdir():
             if path.suffix != ".zip":
                 self.assertNotIn(self.KEY.encode(), path.read_bytes())
-        self.assertEqual(receipt["execution_location"], "OFFLINE_TEST_DOUBLE")
+        self.assertEqual(receipt["status"], "PASS_MODEL_AND_TOOL_CALL")
+        execution.verify_results(self.base / "agent-output")
 
     def test_no_tool_call_cannot_pass(self):
         with self.assertRaises(RuntimeError):
             self.execute([self.reply(content="I completed it")])
 
     def test_invalid_reference_fails_before_any_provider_request(self):
-        for reference in ["absent", "011", "012"]:
-            with self.subTest(reference=reference):
-                with patch.object(agent.urllib.request, "build_opener") as opener:
-                    with self.assertRaisesRegex(ValueError, "reference_id"):
-                        agent.run(
-                            RT,
-                            dict(DEFAULT, reference_id=reference),
-                            self.base / reference,
-                            self.KEY,
-                            "OFFLINE_TEST_DOUBLE",
-                        )
-                    opener.assert_not_called()
-                failure = json.loads(
-                    (self.base / reference / "failure.json").read_text("utf-8")
-                )
-                self.assertEqual(failure["status"], "FAILED")
-                self.assertFalse((self.base / reference / "run-receipt.json").exists())
+        spec = importlib.util.spec_from_file_location('tested_skill', RT / 'organic-smiles-rdkit.py')
+        api = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(api)
+        for reference in ['absent', '011', '012']:
+            with self.subTest(reference=reference), patch.object(agent, 'request') as request:
+                with self.assertRaisesRegex(ValueError, 'reference_id'):
+                    api.run_skill(skill_file=PAGE / 'SKILL.md',
+                                  input_csv=RT / 'examples/02-smarts/molecules.csv',
+                                  parameters=dict(DEFAULT, reference_id=reference), task='Offline invalid input',
+                                  output_dir=self.base / reference, mode='agent', env_file=self.base / 'unused.env')
+                request.assert_not_called()
+                self.assertFalse((self.base / reference).exists())
 
     def test_wrong_tool_and_changed_parameters_cannot_run(self):
         for call in [
@@ -345,7 +357,7 @@ class OfflineAgentTests(WorkspaceTest):
             self.call(dict(DEFAULT, radius=3)),
             self.call(dict(DEFAULT, radius=True)),
         ]:
-            with self.subTest(call=call), self.assertRaises(ValueError):
+            with self.subTest(call=call), self.assertRaises((ValueError, RuntimeError)):
                 self.execute([self.reply(calls=[call], reason="tool_calls")])
             self.assertFalse((self.base / "agent-output/analysis.csv").exists())
             for path in (self.base / "agent-output").iterdir():
@@ -353,7 +365,7 @@ class OfflineAgentTests(WorkspaceTest):
             (self.base / "agent-output").rmdir()
 
     def test_duplicate_tool_calls_are_blocked(self):
-        with self.assertRaisesRegex(ValueError, "重复工具"):
+        with self.assertRaisesRegex(RuntimeError, "一次工具"):
             self.execute(
                 [self.reply(calls=[self.call(), self.call()], reason="tool_calls")]
             )
@@ -362,7 +374,7 @@ class OfflineAgentTests(WorkspaceTest):
     def test_broken_oversized_json_and_timeout_fail_closed(self):
         for response in [
             b"{broken",
-            b"x" * (agent.MAX_RESPONSE_BYTES + 1),
+            b"x" * (1_000_000 + 1),
             TimeoutError("timeout"),
         ]:
             with (
@@ -382,7 +394,33 @@ class OfflineAgentTests(WorkspaceTest):
             )
         for text in ['{"x":1,"x":2}', '{"x":NaN}', '{"x":Infinity}']:
             with self.assertRaises(ValueError):
-                agent.strict_json(text)
+                execution.json_text(text)
+
+
+    def test_interpretation_failure_preserves_completed_numerical_zip(self):
+        with self.assertRaises(RuntimeError):
+            self.execute([self.reply(calls=[self.call()], reason='tool_calls'), TimeoutError('offline timeout')])
+        output = self.base / 'agent-output'
+        receipt = json.loads((output / 'run-receipt.json').read_bytes())
+        self.assertEqual(receipt['status'], 'PARTIAL_NUMERICAL_COMPLETE')
+        self.assertEqual(receipt['interpretation_status'], 'FAILED')
+        self.assertEqual(receipt['tool_calls'], 1)
+        self.assertEqual(receipt['model_calls'], 2)
+        self.assertTrue((output / 'analysis.csv').is_file())
+        self.assertTrue((output / 'failure.json').is_file())
+        execution.verify_results(output)
+
+
+class ExplicitSemanticRegressionTests(WorkspaceTest):
+    def test_shipped_semantic_regression_always_executes(self):
+        output = self.base / 'chemical'
+        process = subprocess.run([sys.executable, '-B', str(RT / 'chemical_regression.py'),
+                                  '--output', str(output)], capture_output=True, timeout=240)
+        self.assertEqual(process.returncode, 0, process.stderr.decode('utf-8', errors='replace'))
+        result = json.loads((output / 'chemical-semantics-acceptance.json').read_bytes())
+        self.assertEqual(result['status'], 'PASS_CHEMICAL_SEMANTICS_DEFINED_REGRESSION')
+        self.assertEqual(len(result['checks']), 36)
+        self.assertEqual(result['model_calls'], 0)
 
 
 if __name__ == "__main__":

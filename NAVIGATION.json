@@ -114,14 +114,17 @@
       "run": "skills/organic-smiles-rdkit/README.md",
       "downloads": {
         "skill": "skills/organic-smiles-rdkit/SKILL.md",
-        "python": "skills/organic-smiles-rdkit/organic-smiles-rdkit.py",
+        "python": "skills/organic-smiles-rdkit/runtime/organic-smiles-rdkit.py",
         "package": "skills/organic-smiles-rdkit/downloads/organic-smiles-rdkit-python.zip"
       },
-      "python_entry": "skills/organic-smiles-rdkit/organic-smiles-rdkit.py",
+      "python_entry": "skills/organic-smiles-rdkit/runtime/organic-smiles-rdkit.py",
       "skill": "skills/organic-smiles-rdkit/SKILL.md",
       "download": "skills/organic-smiles-rdkit/downloads/organic-smiles-rdkit-python.zip",
       "execution": "local_python",
-      "acceptance": "PASS_LOCAL_PYTHON_DEFAULT_AND_MODIFIED"
+      "acceptance": "PASS_RUNTIME_LAYOUT_LOCAL_REPRODUCTION",
+      "chemical_semantics": "PASS_CHEMICAL_SEMANTICS_DEFINED_REGRESSION",
+      "chemical_scope": "29 authored boundary inputs; three parameter settings; not universal chemical validation",
+      "real_model_service_acceptance": "NOT_EXECUTED"
     },
     {
       "id": "table-fitting-residuals",

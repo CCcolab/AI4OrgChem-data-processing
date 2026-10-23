@@ -15,7 +15,6 @@ MAX_RECORDS = 50
 MAX_SMILES_LENGTH = 512
 MAX_ATOMS = 128
 MAX_MATCHES = 1_000
-TEACHING_CSV_SHA256 = "53c3bcfc388c523402ccac7723ac27ba6a21fd20c518a3f2dfba32706e41a21e"
 INPUT_FIELDS = ["id", "label", "smiles", "source_id", "role"]
 
 
@@ -119,22 +118,10 @@ def validate(params):
 
 
 def _molecule(raw):
-    from rdkit import Chem, rdBase
+    from chemistry import parse
 
-    if not raw.strip():
-        return None, "EMPTY_SMILES"
-    options = Chem.SmilesParserParams()
-    options.parseName = False
-    options.allowCXSMILES = False
-    with rdBase.BlockLogs():
-        mol = Chem.MolFromSmiles(raw, options)
-    if mol is None:
-        return None, "PARSE_OR_SANITIZE_FAILED"
-    if mol.GetNumAtoms() > MAX_ATOMS or any(
-        atom.GetAtomicNum() == 0 for atom in mol.GetAtoms()
-    ):
-        return None, "ATOM_LIMIT_OR_DUMMY_ATOM"
-    return mol, ""
+    mol, error, _ = parse(raw, MAX_ATOMS)
+    return mol, error
 
 
 def preflight(root, params):
@@ -161,6 +148,7 @@ def analyze(root, params, output):
         rdFingerprintGenerator,
     )
     from rdkit.Chem.Scaffolds import MurckoScaffold
+    from chemistry import DESCRIPTOR_CONVENTIONS, ERROR_TEXT, interpret, parse
 
     validate(params)
     root, output = Path(root), Path(output)
@@ -181,9 +169,12 @@ def analyze(root, params, output):
     duplicates = []
     for index, record in enumerate(inputs):
         row = {"record_index": index, **record, "parse_status": "REJECTED", "error": ""}
-        mol, error = _molecule(record["smiles"])
+        mol, error, stereo = parse(record["smiles"], MAX_ATOMS)
         if error:
             row["error"] = error
+            row["error_hint"] = ERROR_TEXT[error]
+            row["parse_details"] = json.dumps(stereo)
+            row["descriptor_applicability"] = "NOT_CALCULATED"
             results.append(row)
             continue
         canonical = Chem.MolToSmiles(mol, canonical=True, isomericSmiles=True)
@@ -207,13 +198,17 @@ def analyze(root, params, output):
             parse_status="VALID",
             canonical_isomeric_smiles=canonical,
             formula=rdMolDescriptors.CalcMolFormula(mol),
+            isotope_formula=rdMolDescriptors.CalcMolFormula(
+                mol, separateIsotopes=True, abbreviateHIsotopes=False
+            ),
             formal_charge=Chem.GetFormalCharge(mol),
             components=len(Chem.GetMolFrags(mol)),
             mol_wt_g_mol=Descriptors.MolWt(mol),
             mol_logp_model=Crippen.MolLogP(mol),
             hbd=rdMolDescriptors.CalcNumHBD(mol),
             hba=rdMolDescriptors.CalcNumHBA(mol),
-            tpsa_A2=rdMolDescriptors.CalcTPSA(mol),
+            tpsa_A2=rdMolDescriptors.CalcTPSA(mol, includeSandP=False),
+            tpsa_with_S_P_A2=rdMolDescriptors.CalcTPSA(mol, includeSandP=True),
             query_match_count=len(matches),
             query_atom_indices=json.dumps(matches),
             scaffold=scaffold,
@@ -223,6 +218,7 @@ def analyze(root, params, output):
             ),
             fingerprint_on_bits=fp.GetNumOnBits(),
         )
+        row.update(interpret(mol, stereo))
         if canonical in first:
             duplicates.append(
                 {
@@ -268,7 +264,7 @@ def analyze(root, params, output):
             math.isfinite(r[k])
             for r in results
             if r["parse_status"] == "VALID"
-            for k in ["mol_wt_g_mol", "mol_logp_model", "tpsa_A2"]
+            for k in ["mol_wt_g_mol", "mol_logp_model", "tpsa_A2", "tpsa_with_S_P_A2"]
         ),
         "tanimoto_set_oracle": True,
         "self_similarity_one": next(
@@ -277,54 +273,20 @@ def analyze(root, params, output):
         == 1.0,
         "inputs_unchanged": sha(root / "molecules.csv") == provenance["sha256"],
     }
-    # These independent chemical regression expectations apply only to the bundled teaching fixture.
-    fixture = {r["id"]: r for r in results}
-    if provenance["sha256"] == TEACHING_CSV_SHA256:
-        checks.update(
-            ethanol_equivalent=fixture["001"]["canonical_isomeric_smiles"]
-            == fixture["002"]["canonical_isomeric_smiles"],
-            acid_and_acetate_distinct=fixture["003"]["canonical_isomeric_smiles"]
-            != fixture["004"]["canonical_isomeric_smiles"]
-            and fixture["003"]["formal_charge"] == 0
-            and fixture["004"]["formal_charge"] == -1,
-            enantiomers_preserved=fixture["009"]["canonical_isomeric_smiles"]
-            != fixture["010"]["canonical_isomeric_smiles"],
-            invalid_and_empty_retained=fixture["011"]["parse_status"]
-            == fixture["012"]["parse_status"]
-            == "REJECTED",
-            disconnected_salt_retained=fixture["013"]["components"] == 2,
-            isotope_preserved="13C" in fixture["014"]["canonical_isomeric_smiles"],
-            benzene_formula=fixture["005"]["formula"] == "C6H6",
-            aspirin_formula=fixture["008"]["formula"] == "C9H8O4",
-        )
-        if params["query_smarts"] == "[CX3](=O)[OX2H1]":
-            checks["carboxylic_acid_query"] = all(
-                fixture[i]["query_match_count"] == n
-                for i, n in [("003", 1), ("004", 0), ("007", 1), ("008", 1)]
-            )
-        # Element-count formula is independent of descriptor name lookup; average atomic weights from RDKit table.
-        pt = Chem.GetPeriodicTable()
-        mass = (
-            2 * pt.GetAtomicWeight(6)
-            + 6 * pt.GetAtomicWeight(1)
-            + pt.GetAtomicWeight(8)
-        )
-        checks["ethanol_formula_and_mass"] = (
-            fixture["001"]["formula"] == "C2H6O"
-            and abs(fixture["001"]["mol_wt_g_mol"] - mass) < 1e-8
-        )
     if not all(checks.values()):
         raise ArithmeticError(
             "科学程序检查失败：" + ",".join(k for k, v in checks.items() if not v)
         )
     output.mkdir(parents=True)
     dump(output / "parameters.json", params)
+    dump(output / "descriptor-conventions.json", DESCRIPTOR_CONVENTIONS)
     for name in ["molecules.csv", "data-provenance.json", "sources.json", "SKILL.md"]:
         (output / name).write_bytes((root / name).read_bytes())
     fields = list(dict.fromkeys(k for row in results for k in row))
     for filename, rows, columns in [
         ("analysis.csv", results, fields),
         ("errors.csv", [r for r in results if r["parse_status"] != "VALID"], fields),
+        ("warnings.csv", [r for r in results if json.loads(r.get("warning_codes", "[]"))], fields),
         ("duplicates.csv", duplicates, ["id", "first_id", "rule"]),
         (
             "similarity.csv",
@@ -345,6 +307,22 @@ def analyze(root, params, output):
             returnPNG=True,
         )
     )
+    # Atom numbers use the same zero-based parsed-graph indices as query_atom_indices.
+    from rdkit.Chem.Draw import rdMolDraw2D
+    from rdkit.Chem import rdDepictor
+
+    ids = list(mols)
+    drawer = rdMolDraw2D.MolDraw2DCairo(960, ((len(ids) + 3) // 4) * 240, 240, 240)
+    drawer.drawOptions().addAtomIndices = True
+    pictured = [Chem.Mol(mols[id_]) for id_ in ids]
+    for mol in pictured:
+        rdDepictor.Compute2DCoords(mol)
+    highlights = [sorted({atom for match in mol.GetSubstructMatches(
+        query, useChirality=params['include_chirality'], maxMatches=MAX_MATCHES + 1
+    ) for atom in match}) for mol in pictured]
+    drawer.DrawMolecules(pictured, legends=ids, highlightAtoms=highlights)
+    drawer.FinishDrawing()
+    (output / 'query-highlight.png').write_bytes(drawer.GetDrawingText())
     import matplotlib
 
     matplotlib.use("Agg")
@@ -355,6 +333,8 @@ def analyze(root, params, output):
     ax.set_ylim(0, 1.05)
     ax.set_xlabel("Record ID")
     ax.set_ylabel("Morgan bit Tanimoto to " + params["reference_id"])
+    ax.set_title(f"Morgan bit | radius={params['radius']} | fpSize={params['fp_size']} | "
+                 f"chirality={params['include_chirality']} | reference={params['reference_id']}")
     fig.savefig(output / "similarity.png", dpi=130)
     plt.close(fig)
     summary = {
@@ -365,7 +345,13 @@ def analyze(root, params, output):
         "duplicates": duplicates,
         "checks": checks,
         "parameters": params,
-        "preprocessing": "No desalting, neutralization, tautomer normalization or stereochemistry removal",
+        "preprocessing": "Original input retained; no desalting, neutralization or tautomer normalization; RDKit stereo cleanup is diagnosed separately",
+        "engineering_check_scope": "Six invariants only; chemical semantic regression is a separate explicit command, never hash-gated",
+        "chemical_semantics_version": DESCRIPTOR_CONVENTIONS['version'],
+        "descriptor_conventions": DESCRIPTOR_CONVENTIONS,
+        "warning_records": sum(bool(json.loads(r.get('warning_codes', '[]'))) for r in results),
+        "applicability_counts": {scope: sum(r.get('descriptor_applicability') == scope for r in results)
+                                 for scope in sorted({r['descriptor_applicability'] for r in results})},
         "fingerprint_type": "fixed-length Morgan bit vector",
         "descriptor_units": {
             "mol_wt_g_mol": "g/mol",
@@ -379,10 +365,12 @@ def analyze(root, params, output):
             "matplotlib": importlib.metadata.version("matplotlib"),
         },
         "limitations": [
-            "Teaching structures, not an experimental dataset",
+            "Input provenance is recorded separately; structure strings alone do not authenticate experimental data",
             "SMARTS matches depend on the stated query, not a universal functional-group counter",
             "Fingerprint equality is not proof of molecular identity or biological equivalence",
             "Descriptors are computed estimates, not measured properties",
+            "Parse validity is not descriptor applicability; flags are conservative review prompts, not a validated applicability domain",
+            "Unspecified stereo is not absence of chirality or evidence of a racemate; non-tetrahedral stereo requires review",
             "No structure edits, standardization, PubChem query, activity or reaction prediction in this page",
         ],
         "new_rhf": "NOT_ACCEPTED",

@@ -1,0 +1,243 @@
+{
+  "E01": {
+    "equals": {
+      "parse_status": "VALID"
+    }
+  },
+  "EPOS": {
+    "equals": {
+      "parse_status": "VALID",
+      "stereo_status": "SPECIFIED"
+    }
+  },
+  "ENEG": {
+    "equals": {
+      "parse_status": "VALID",
+      "stereo_status": "SPECIFIED"
+    }
+  },
+  "UNSPEC": {
+    "equals": {
+      "parse_status": "VALID",
+      "stereo_status": "UNSPECIFIED_POTENTIAL_STEREO"
+    },
+    "warnings": [
+      "UNSPECIFIED_STEREO"
+    ]
+  },
+  "BADTAG": {
+    "equals": {
+      "parse_status": "VALID",
+      "stereo_status": "REVIEW_REQUIRED"
+    },
+    "warnings": [
+      "STEREO_MARKER_CLEANED"
+    ]
+  },
+  "TRANS": {
+    "equals": {
+      "parse_status": "VALID",
+      "stereo_status": "SPECIFIED"
+    }
+  },
+  "CIS": {
+    "equals": {
+      "parse_status": "VALID",
+      "stereo_status": "SPECIFIED"
+    }
+  },
+  "DBUNSPEC": {
+    "equals": {
+      "parse_status": "VALID",
+      "stereo_status": "UNSPECIFIED_POTENTIAL_STEREO"
+    },
+    "warnings": [
+      "UNSPECIFIED_STEREO"
+    ]
+  },
+  "BADDIR": {
+    "equals": {
+      "parse_status": "VALID",
+      "stereo_status": "REVIEW_REQUIRED"
+    },
+    "warnings": [
+      "DIRECTIONAL_STEREO_REVIEW"
+    ]
+  },
+  "ISO": {
+    "equals": {
+      "parse_status": "VALID",
+      "formula": "C2H6O",
+      "isotope_formula": "C[13C]H6O"
+    },
+    "approx": {
+      "mol_wt_g_mol": 47.06135484
+    }
+  },
+  "ACID": {
+    "equals": {
+      "parse_status": "VALID",
+      "formal_charge": 0,
+      "query_match_count": 1
+    }
+  },
+  "ANION": {
+    "equals": {
+      "parse_status": "VALID",
+      "formal_charge": -1,
+      "charged_atom_count": 1,
+      "query_match_count": 0
+    },
+    "warnings": [
+      "CHARGED_ATOMS"
+    ]
+  },
+  "SALT": {
+    "equals": {
+      "parse_status": "VALID",
+      "formal_charge": 0,
+      "charged_atom_count": 2,
+      "components": 2
+    },
+    "warnings": [
+      "CHARGED_ATOMS",
+      "MULTICOMPONENT",
+      "METAL"
+    ]
+  },
+  "ZWITTER": {
+    "equals": {
+      "parse_status": "VALID",
+      "formal_charge": 0,
+      "charged_atom_count": 2,
+      "components": 1
+    },
+    "warnings": [
+      "CHARGED_ATOMS"
+    ]
+  },
+  "SULFUR": {
+    "equals": {
+      "parse_status": "VALID"
+    },
+    "warnings": [
+      "TPSA_S_P_CONVENTION"
+    ],
+    "approx": {
+      "tpsa_A2": 26.02,
+      "tpsa_with_S_P_A2": 58.11
+    }
+  },
+  "PHOS": {
+    "equals": {
+      "parse_status": "VALID"
+    },
+    "warnings": [
+      "TPSA_S_P_CONVENTION"
+    ],
+    "approx": {
+      "tpsa_A2": 57.53,
+      "tpsa_with_S_P_A2": 67.34
+    }
+  },
+  "RADICAL": {
+    "equals": {
+      "parse_status": "VALID",
+      "radical_electrons": 1,
+      "descriptor_applicability": "DESCRIPTOR_INTERPRETATION_REVIEW_REQUIRED"
+    },
+    "warnings": [
+      "RADICAL"
+    ]
+  },
+  "METAL": {
+    "equals": {
+      "parse_status": "VALID",
+      "descriptor_applicability": "OUTSIDE_NOMINAL_ORGANIC_SCOPE"
+    },
+    "warnings": [
+      "METAL",
+      "NO_CARBON",
+      "CHARGED_ATOMS"
+    ]
+  },
+  "MIX": {
+    "equals": {
+      "parse_status": "VALID",
+      "components": 2,
+      "descriptor_applicability": "DESCRIPTOR_INTERPRETATION_REVIEW_REQUIRED"
+    },
+    "warnings": [
+      "MULTICOMPONENT"
+    ]
+  },
+  "CARBONIC": {
+    "equals": {
+      "parse_status": "VALID",
+      "query_match_count": 2
+    }
+  },
+  "SYNTAX": {
+    "equals": {
+      "parse_status": "REJECTED",
+      "error": "SYNTAX_ERROR",
+      "descriptor_applicability": "NOT_CALCULATED"
+    }
+  },
+  "VALENCE": {
+    "equals": {
+      "parse_status": "REJECTED",
+      "error": "VALENCE_ERROR",
+      "descriptor_applicability": "NOT_CALCULATED"
+    }
+  },
+  "AROMATIC": {
+    "equals": {
+      "parse_status": "REJECTED",
+      "error": "AROMATICITY_ERROR",
+      "descriptor_applicability": "NOT_CALCULATED"
+    }
+  },
+  "EMPTY": {
+    "equals": {
+      "parse_status": "REJECTED",
+      "error": "EMPTY_SMILES",
+      "descriptor_applicability": "NOT_CALCULATED"
+    }
+  },
+  "DUMMY": {
+    "equals": {
+      "parse_status": "REJECTED",
+      "error": "ATOM_LIMIT_OR_DUMMY_ATOM",
+      "descriptor_applicability": "NOT_CALCULATED"
+    }
+  },
+  "NON_TETRA": {
+    "equals": {
+      "parse_status": "VALID",
+      "stereo_status": "REVIEW_REQUIRED"
+    },
+    "warnings": [
+      "NON_TETRAHEDRAL_STEREO_REVIEW",
+      "METAL"
+    ]
+  },
+  "BORON": {
+    "equals": {
+      "parse_status": "VALID"
+    }
+  },
+  "NO_CARBON": {
+    "equals": {
+      "parse_status": "VALID"
+    },
+    "warnings": [
+      "NO_CARBON"
+    ]
+  },
+  "DEUTERIUM": {
+    "equals": {
+      "parse_status": "VALID"
+    }
+  }
+}

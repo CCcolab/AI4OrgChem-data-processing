@@ -1,0 +1,6 @@
+id,label,smiles
+A01,acetic-acid,CC(=O)O
+A02,acetate,CC(=O)[O-]
+P01,phenol,Oc1ccccc1
+A03,benzoic-acid,O=C(O)c1ccccc1
+A04,aspirin,CC(=O)Oc1ccccc1C(=O)O
