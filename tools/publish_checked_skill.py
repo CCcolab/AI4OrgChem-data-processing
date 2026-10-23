@@ -10,7 +10,7 @@ def main():
     root=a.repo_root.resolve();script=root/'tools/check_platform_boundary.py'
     run([sys.executable,'-B',str(script),'--root',str(root),'--scope','release'],root)
     run([sys.executable,'-B',str(script),'--root',str(root),'--scope','commit'],root)
-    run([sys.executable,'-B','-m','unittest','discover','-s','tests/guard','-p','test_*.py'],root)
+    run([sys.executable,'-B','-m','unittest','discover','-s','.github/checks/guard','-p','test_*.py'],root)
     dirty=run(['git','status','--porcelain'],root,capture_output=True,text=True).stdout
     if dirty:raise RuntimeError('Publication checkout has uncommitted or untracked files')
     remote=run(['git','remote','get-url','origin'],root,capture_output=True,text=True).stdout.strip()

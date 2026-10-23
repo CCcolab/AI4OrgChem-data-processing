@@ -22,7 +22,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Prove rejection and accepted cases
-        run: python -B -m unittest discover -s tests/guard -p 'test_*.py' -v
+        run: python -B -m unittest discover -s .github/checks/guard -p 'test_*.py' -v
       - name: Check current committed bytes
         run: python -B tools/check_platform_boundary.py --scope commit
       - name: Check publication tree
@@ -49,8 +49,8 @@ jobs:
       - name: Test RDKit boundaries and offline provider failures
         env:
           MPLBACKEND: Agg
-        run: python -B -m unittest discover -s tests/rdkit -p 'test_*.py' -v
+        run: python -B -m unittest discover -s .github/checks/rdkit -p 'test_*.py' -v
       - name: Test Python commands, parameters and result archives
         env:
           MPLBACKEND: Agg
-        run: python -B -m unittest discover -s tests/python -p 'test_*.py' -v
+        run: python -B -m unittest discover -s .github/checks/python -p 'test_*.py' -v

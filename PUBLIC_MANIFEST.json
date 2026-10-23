@@ -1,7 +1,7 @@
 {
   "schema": "adp-private-python-skill-publication-v1",
   "version": "0.1.0",
-  "revision": "python-readme-r2",
+  "revision": "python-home-cleanup-r1",
   "visibility": "PRIVATE",
   "entry": "START_HERE_zh-CN.md",
   "legacy_web_enabled": false,
@@ -19,8 +19,24 @@
       "sha256": "20faf38c82c22712a1c77fb13ca0fbc62034bd7274258cfb4e1f94bb3ea1ccff"
     },
     {
+      "file": ".github/checks/guard/test_platform_boundary.py",
+      "sha256": "83c64f011b3002d4fbbf1f8f49d3cd81de49b7736fc1c0cbd1f4497af3ccb00d"
+    },
+    {
+      "file": ".github/checks/guard/test_workflow_gate.py",
+      "sha256": "a2aefd16c4e4a3d4fe48bc5a662de15254a566e8093e34b550fe5c693fe9ae52"
+    },
+    {
+      "file": ".github/checks/python/test_python_cli.py",
+      "sha256": "51f7deca3df612777fbfe6d8b16b85acec4a99526776c5db5b11357d62a91fd0"
+    },
+    {
+      "file": ".github/checks/rdkit/test_runtime_stress.py",
+      "sha256": "527dceb39096a480d246ad0dc874b4a50ed9578e326342a157e3b6f986e5e44a"
+    },
+    {
       "file": ".github/workflows/platform-boundary.yml",
-      "sha256": "5db063a264439967a5e24825315897bc0cbb98c3e8db7bba401b678a5db0bd9a"
+      "sha256": "058e4b51653e5c561ee930050385416508a1f305ce019abe0973df67c48b2411"
     },
     {
       "file": ".gitignore",
@@ -215,22 +231,6 @@
       "sha256": "5d9eda52ada61dfc6fe738e2d7af988effc128fbcd1497f3797ec56a3ae538af"
     },
     {
-      "file": "tests/guard/test_platform_boundary.py",
-      "sha256": "28f6561c04c9b1a78f48567e4d51c80df6dcd8995a41436a43fa765ce50ffa17"
-    },
-    {
-      "file": "tests/guard/test_workflow_gate.py",
-      "sha256": "49ac1e8b1cb27ecd20df3137ea1f756f278deb9a66dd5b09c9ba148fc0f805b4"
-    },
-    {
-      "file": "tests/python/test_python_cli.py",
-      "sha256": "d8a50597f331e6eda8809b545d31ce803a227554f81d7e0f604ce16adf365640"
-    },
-    {
-      "file": "tests/rdkit/test_runtime_stress.py",
-      "sha256": "6401cff265a68d56b2ba5123952ec43ab0fd95586aa75648a95982a95a174606"
-    },
-    {
       "file": "tools/check_platform_boundary.py",
       "sha256": "1675d29b947f497814afd8ebfd34170e40e605617245088ed26c7d7ee5fb9ffc"
     },
@@ -240,7 +240,7 @@
     },
     {
       "file": "tools/publish_checked_skill.py",
-      "sha256": "641f9bdfaff46807941f33002761079b3eaeee4ad5fe256e0c28a6fb161bb652"
+      "sha256": "9c419338d7a635e1c970b8bc5b04aba5a653098635f669218540bd37221f1a88"
     }
   ]
 }
