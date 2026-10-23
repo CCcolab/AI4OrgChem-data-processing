@@ -1,7 +1,7 @@
 {
   "schema": "adp-private-python-skill-publication-v1",
   "version": "0.1.0",
-  "revision": "rdkit-chemical-review-r1",
+  "revision": "rdkit-browser-download-links-r1",
   "visibility": "PRIVATE",
   "entry": "START_HERE_zh-CN.md",
   "legacy_web_enabled": false,
@@ -80,15 +80,15 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/downloads/organic-smiles-rdkit-python.zip",
-      "sha256": "6262a6642058372c97cc2696f49678c3ec2ee42c9177c19d4b3efde5b9d4d58d"
+      "sha256": "e08884f1981b422f913c154ab05e0a39207176ea36fc792e197aabc59d4ee993"
     },
     {
       "file": "skills/organic-smiles-rdkit/downloads/organic-smiles-rdkit-python.zip.sha256",
-      "sha256": "7442a035115b5475a01b2409a3d71aad36ff395f5f895e02623e314d7553973c"
+      "sha256": "e8102f5537d713673ebb4081fc9e51989d7f0e2962823995905c900d1e20f4c9"
     },
     {
       "file": "skills/organic-smiles-rdkit/downloads/SHA256SUMS.txt",
-      "sha256": "353feef966e02cc9a261269c3c84bbfd46b502e7bc92d374092bd4b61e3c57ed"
+      "sha256": "bc9ea98fc507ab161196cc82f8a3a0fa8696be8431e4ca13d29032c8ce62e5ab"
     },
     {
       "file": "skills/organic-smiles-rdkit/downloads/SKILL-md.zip",
@@ -104,7 +104,7 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/README.md",
-      "sha256": "c6e123d9733f1c4199476698eeea3354047ac02bdec8cb8b50261b0211b5f3ea"
+      "sha256": "27bba501c77da98ddcb7e5aee7d8190a1f1015583d2f090f532aeb43bf47e64b"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/agent.py",

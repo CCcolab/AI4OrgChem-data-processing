@@ -25,7 +25,7 @@
 
 下面是本代码包SKILL.md的完整源码，包含YAML头和全部指令，可直接复制。下载导出由该文件自动生成，字节和SHA-256完全一致；只维护顶层一份SKILL.md。
 
-[下载SKILL.md源文件](downloads/SKILL.md?raw=1) · [下载SKILL.md单文件ZIP](downloads/SKILL-md.zip?raw=1)。浏览器若将.md直接显示为文本，可另存为SKILL.md，或下载ZIP。
+[查看并保存SKILL.md](downloads/SKILL.md?plain=1) · [打开SKILL.md单文件ZIP](downloads/SKILL-md.zip)。在GitHub文件页点击右上角向下箭头“Download raw file / 下载原始文件”保存原文件。
 
 ````markdown
 ---
@@ -89,7 +89,7 @@ description: 使用RDKit分析用户CSV中的有机分子SMILES，进行结构�
 
 [主程序organic-smiles-rdkit.py](runtime/organic-smiles-rdkit.py)提供可复用的run_skill()：读取SKILL.md → 加载CSV和参数 → 校验 → 工具/模型调用 → 保存真实结果。CLI和下方案例使用同一函数，不各写一套处理流程。
 
-下面是可直接运行的[通用调用模板](runtime/examples/call_skill_template.py?raw=1)全文。parameters既可传五字段字典，也可传JSON文件路径；skill_file显式指定本代码包的SKILL.md。
+下面是可直接运行的[通用调用模板](runtime/examples/call_skill_template.py)全文。parameters既可传五字段字典，也可传JSON文件路径；skill_file显式指定本代码包的SKILL.md。
 
 ```python
 """Reusable CSV-to-Skill program: replace task, input and parameters."""
@@ -145,6 +145,8 @@ if __name__ == '__main__':
 
 ## 案例程序：输入、参数、代码与实际输出
 
+本页文件链接先打开GitHub源码/文件页；请点击右上角向下箭头“Download raw file / 下载原始文件”保存，不要把整个网页另存为.py。解压后的完整代码包已含这些文件，无需逐个再下载。
+
 下列数值来自本版本实际本地计算，模型调用为0。命令在Skill文件夹中执行；先按页面下部安装依赖。每次使用一个尚不存在的结果目录。
 
 ### 案例一：结构解析与描述符
@@ -187,7 +189,7 @@ if __name__ == '__main__':
 
 </details>
 
-[下载本案例.py](runtime/examples/01_descriptors.py?raw=1)
+[查看并下载本案例.py](runtime/examples/01_descriptors.py)
 
 
 实际结果：5条输入，3条有效、2条拒绝。E01/E02均为C2H6O，MolWt为46.069 g/mol，规范SMILES相同；duplicates.csv保存E02→E01映射，两行原始记录都保留。X01/X02进入errors.csv，未填为零。
@@ -234,7 +236,7 @@ if __name__ == '__main__':
 
 </details>
 
-[下载本案例.py](runtime/examples/02_smarts.py?raw=1)
+[查看并下载本案例.py](runtime/examples/02_smarts.py)
 
 
 | ID与结构 | query_match_count | 解读 |
@@ -291,7 +293,7 @@ if __name__ == '__main__':
 
 </details>
 
-[下载本案例.py](runtime/examples/03_similarity_compare.py?raw=1)
+[查看并下载本案例.py](runtime/examples/03_similarity_compare.py)
 
 
 | ID | radius=2 Tanimoto | radius=3 Tanimoto |
@@ -356,7 +358,7 @@ if __name__ == '__main__':
 
 </details>
 
-[下载本案例.py](runtime/examples/04_user_csv.py?raw=1)
+[查看并下载本案例.py](runtime/examples/04_user_csv.py)
 
 
 主程序CLI的参数优先级为案例模板→--params完整JSON替换→--reference-id显式覆盖。案例程序直接展示自己的参数字典；通用模板使用传入的JSON文件。运行方式和实际参数都会写入运行回执，模型不能更改它们。
@@ -431,7 +433,7 @@ organic-smiles-rdkit/
 
 ## 安装、运行与保存
 
-下载[完整Python代码包](downloads/organic-smiles-rdkit-python.zip?raw=1)，在Windows有写入权限的短目录解压，例如D:\Chem\r。进入包含README.md、SKILL.md和runtime的Skill文件夹；后续命令均从此目录运行。使用Python 3.12或3.13；不修改全局环境，不需要激活虚拟环境：
+下载[完整Python代码包](downloads/organic-smiles-rdkit-python.zip)，在Windows有写入权限的短目录解压，例如D:\Chem\r。进入包含README.md、SKILL.md和runtime的Skill文件夹；后续命令均从此目录运行。使用Python 3.12或3.13；不修改全局环境，不需要激活虚拟环境：
 
 ```powershell
 python --version
@@ -474,10 +476,10 @@ Get-FileHash -LiteralPath ..\rdkit-descriptors-saved\results.zip -Algorithm SHA2
 
 | 内容 | 下载入口 |
 | --- | --- |
-| 完整SKILL.md | [源文件](downloads/SKILL.md?raw=1) · [单文件ZIP](downloads/SKILL-md.zip?raw=1) |
-| 完整调用主程序 | [organic-smiles-rdkit.py](runtime/organic-smiles-rdkit.py?raw=1) |
-| 通用调用模板 | [call_skill_template.py](runtime/examples/call_skill_template.py?raw=1) |
-| 案例程序、CSV、参数及全部模块 | [完整Python代码包](downloads/organic-smiles-rdkit-python.zip?raw=1) |
+| 完整SKILL.md | [源文件](downloads/SKILL.md?plain=1) · [单文件ZIP](downloads/SKILL-md.zip) |
+| 完整调用主程序 | [organic-smiles-rdkit.py](runtime/organic-smiles-rdkit.py) |
+| 通用调用模板 | [call_skill_template.py](runtime/examples/call_skill_template.py) |
+| 案例程序、CSV、参数及全部模块 | [完整Python代码包](downloads/organic-smiles-rdkit-python.zip) |
 
 单独的模板与案例.py需要完整代码包中的配套模块和依赖。通用模板可以复制到自己的目录，再用--skill-dir指定完整代码包；四个案例按包内目录直接运行。内部验收日志不在下载包中。
 
