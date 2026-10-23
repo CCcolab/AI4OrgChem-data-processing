@@ -80,7 +80,7 @@ def _request_context(root, params):
         {
             "role": "system",
             "content": skill
-            + "\n\n适配器说明：Skill默认交付代码。本次用户明确授权在Colab验收执行，覆盖默认不执行步骤，只能调用analyze_organic_molecules白名单工具，不生成或运行任意代码。必须严格采用用户参数。工具返回真实结果后用中文约200字解释结构、无效记录、身份和相似度局限；不编造数据，不预测活性或反应。文件状态只依据program_files中程序核对的实际文件；数值文件已写入，ZIP由程序在本段模型回复后封装。不要声称本次未执行或未生成文件，不要虚构下载地址；下载统一提示使用Notebook课末程序下载单元。模型不决定文件是否可下载。",
+            + "\n\n适配器说明：Skill默认交付代码。本次用户明确授权在本地Python执行，覆盖默认不执行步骤，只能调用analyze_organic_molecules白名单工具，不生成或运行任意代码。必须严格采用用户参数。工具返回真实结果后用中文约200字解释结构、无效记录、身份和相似度局限；不编造数据，不预测活性或反应。文件状态只依据program_files中程序核对的实际文件；数值文件已写入，ZIP由程序在本段模型回复后封装。不要声称本次未执行或未生成文件，不要虚构下载地址；下载统一提示使用结果目录中的results.zip。模型不决定文件是否可下载。",
         },
         {
             "role": "user",
@@ -236,7 +236,7 @@ def run(root, params, output, key, location):
             "skill_agent.py",
             "credential_config.py",
             "result_presentation.py",
-            "requirements-colab.txt",
+            "requirements.txt",
             "task-template.txt",
             "resource-manifest.json",
         ]:

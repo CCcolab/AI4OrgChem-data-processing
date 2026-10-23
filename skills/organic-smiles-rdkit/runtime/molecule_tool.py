@@ -71,7 +71,7 @@ def _inputs(root, expected_sha):
 
 
 def validate_parameters(params):
-    """Check the public schema without importing RDKit in the Notebook host."""
+    """Check the public schema without importing RDKit in the Python程序 host."""
     if not isinstance(params, dict) or set(params) != {
         "radius",
         "fp_size",

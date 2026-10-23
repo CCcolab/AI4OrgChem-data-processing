@@ -19,6 +19,9 @@ class BoundaryTests(unittest.TestCase):
         else:self.assertFalse(g.findings,g.result())
         return g
     def test_shared_analysis_is_allowed(self):self.inspect('src/ai4orgchem_data_processing/analysis/fitting.py','import numpy as np\ndef fit(x,y): return np.polyfit(x,y,1)\n')
+    def test_current_learning_package_requires_python(self):
+        self.inspect('skills/example/lesson.ipynb', '{}', 'unsupported_learning_artifact', public=True)
+        self.inspect('lesson.zip', bundle({'lesson.ipynb': '{}'}), 'unsupported_learning_artifact', public=True)
     def test_history_explanation_is_allowed(self):self.inspect('docs/cleanup.md','旧8765服务已移除；这里是历史边界说明。')
     def test_module_path_is_blocked(self):self.inspect('src/ai4orgchem_data_processing/localweb/app.py','x=1','retired_service_module')
     def test_renamed_import_is_blocked(self):self.inspect('renamed.py','from ai4orgchem_data_processing.localweb.app import create_app','retired_service_import')

@@ -1,5 +1,5 @@
 {
-  "schema": "adp-professional-navigation-v3",
+  "schema": "adp-professional-navigation-python-v1",
   "render_empty_categories": true,
   "categories": [
     {
@@ -111,32 +111,35 @@
       "canonical_skill_title": "分析有机分子｜SMILES 与 RDKit",
       "category": "organic-structure",
       "page": "skills/organic-smiles-rdkit/README.md",
-      "notebook": "skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb",
-      "notebook_entry": "skills/organic-smiles-rdkit/README.md",
       "run": "skills/organic-smiles-rdkit/README.md",
-      "layout": "five-part-colab-modules-v1",
-      "colab_url": "https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/5d14cc3affe25d257eba042264617427bdcb83fb/skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb",
-      "colab_notebook_sha256": "c607d687c8619be6400dc36d209d460fc6c832022837381710cefc94222ee727",
       "downloads": {
-        "notebook": "skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb",
-        "skill": "skills/organic-smiles-rdkit/SKILL.md"
+        "skill": "skills/organic-smiles-rdkit/SKILL.md",
+        "python": "skills/organic-smiles-rdkit/organic-smiles-rdkit.py",
+        "package": "skills/organic-smiles-rdkit/downloads/organic-smiles-rdkit-python.zip"
       },
-      "colab_source_commit": "5d14cc3affe25d257eba042264617427bdcb83fb",
-      "download_source_ref": "5d14cc3affe25d257eba042264617427bdcb83fb"
+      "python_entry": "skills/organic-smiles-rdkit/organic-smiles-rdkit.py",
+      "skill": "skills/organic-smiles-rdkit/SKILL.md",
+      "download": "skills/organic-smiles-rdkit/downloads/organic-smiles-rdkit-python.zip",
+      "execution": "local_python",
+      "acceptance": "PASS_LOCAL_PYTHON_DEFAULT_AND_MODIFIED"
     },
     {
       "id": "table-fitting-residuals",
       "title": "表格拟合与残差分析",
       "canonical_skill_title": "表格拟合与残差分析",
       "category": "organic-analysis",
-      "page": "skills/table-fitting-residuals/TEACHING.md",
-      "notebook": "skills/table-fitting-residuals/table-fitting-residuals.ipynb",
-      "notebook_entry": "skills/table-fitting-residuals/NOTEBOOK.md",
-      "notebook_zip": "skills/table-fitting-residuals/table-fitting-residuals-notebook.zip",
-      "run": "skills/table-fitting-residuals/RUNNING.md",
-      "colab_url": "https://colab.research.google.com/github/CCcolab/AI4OrgChem-data-processing/blob/72a69915b6ea0250c99bf2fe6c498a212852c03a/skills/table-fitting-residuals/table-fitting-residuals.ipynb",
-      "colab_source_commit": "72a69915b6ea0250c99bf2fe6c498a212852c03a",
-      "colab_notebook_sha256": "a8f35998fc4a957c9e059475fc3cc07be0693060e80b02d439b3a55600f9a099"
+      "page": "skills/table-fitting-residuals/README.md",
+      "run": "skills/table-fitting-residuals/README.md",
+      "python_entry": "skills/table-fitting-residuals/table-fitting-residuals.py",
+      "skill": "skills/table-fitting-residuals/SKILL.md",
+      "download": "skills/table-fitting-residuals/downloads/table-fitting-residuals-python.zip",
+      "execution": "local_python",
+      "acceptance": "PASS_LOCAL_PYTHON_DEFAULT_AND_MODIFIED",
+      "downloads": {
+        "skill": "skills/table-fitting-residuals/SKILL.md",
+        "python": "skills/table-fitting-residuals/table-fitting-residuals.py",
+        "package": "skills/table-fitting-residuals/downloads/table-fitting-residuals-python.zip"
+      }
     }
   ],
   "training_catalog": [
@@ -164,7 +167,7 @@
       "title": "表格拟合与残差分析",
       "category": "organic-analysis",
       "has_learning_page": true,
-      "page": "skills/table-fitting-residuals/RUNNING.md"
+      "page": "skills/table-fitting-residuals/README.md"
     },
     {
       "id": "chemical-experimental-plotting",

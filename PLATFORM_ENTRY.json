@@ -6,7 +6,11 @@
   "entry_file": "START_HERE_zh-CN.md",
   "organization": "one_page_per_skill",
   "reading": "GitHub",
-  "interactive_runtime": ["Colab", "local Jupyter"],
+  "interactive_runtime": [
+    "Python"
+  ],
   "legacy_web_enabled": false,
-  "visibility": "PRIVATE"
+  "visibility": "PRIVATE",
+  "execution": "local_python",
+  "default_model_required": false
 }

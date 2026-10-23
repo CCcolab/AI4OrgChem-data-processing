@@ -34,6 +34,7 @@ class Guard:
         if p.name.lower() in BLOCKED_SCRIPTS:self.fail(name,'retired_launcher')
         if re.search(r'(?i)AI4OrgChem-data-processing.*(?:windows.*delivery|delivery-r1[5-9]|r1[5-9].*delivery)',p.name):
             self.fail(name,'retired_deployment_bundle')
+        if self.public and p.suffix.lower()=='.ipynb':self.fail(name,'unsupported_learning_artifact')
         if self.public and (any(x in {'validation','local-config','internal-evidence','migration-backup'} for x in lower)
                             or p.name.lower() in {'.env','session-token.txt'} or p.suffix.lower() in {'.db','.sqlite','.sqlite3'}):
             self.fail(name,'private_material_in_publication')

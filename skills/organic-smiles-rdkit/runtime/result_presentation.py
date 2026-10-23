@@ -53,7 +53,7 @@ def tool_file_evidence(output):
             for n in REQUIRED
         ],
         "zip_status": "CREATED_BY_PROGRAM_AFTER_FINAL_MODEL_REPLY",
-        "download_instructions": "使用Notebook课末下载单元；文件状态以程序回执、文件清单和实际ZIP为准。",
+        "download_instructions": "使用结果目录中的results.zip；文件状态以程序回执、文件清单和实际ZIP为准。",
     }
 
 

@@ -2,7 +2,6 @@
 
 from pathlib import Path
 import re
-import sys
 
 KEY_NAME = "DEEPSEEK_API_KEY"
 
@@ -60,34 +59,5 @@ def validate_value(value, source):
     return value
 
 
-def read_colab_key(getter=None):
-    if getter is None:
-        try:
-            from google.colab import userdata
-
-            getter = userdata.get
-        except ImportError:
-            raise CredentialConfigError(
-                "当前不在Colab；请使用本地.env读取方式。"
-            ) from None
-    try:
-        value = getter(KEY_NAME)
-    except Exception as exc:
-        name = type(exc).__name__
-        if name == "SecretNotFoundError":
-            message = "Colab中未找到Secret：DEEPSEEK_API_KEY。点击左侧钥匙→添加新密钥，名称填变量名，值填密钥；不要修改代码。"
-        elif name == "NotebookAccessError":
-            message = "此Notebook未获准读取DEEPSEEK_API_KEY。请在左侧Secret开启本Notebook访问权限。"
-        else:
-            message = "Colab Secret读取失败。请确认已登录正确账号、保存同名Secret并允许此Notebook访问，再重试凭据单元。"
-        raise CredentialConfigError(message) from None
-    return validate_value(value, "Colab Secret")
-
-
-def load_credential(env_file, mode=None):
-    selected = mode or ("colab" if "google.colab" in sys.modules else "local")
-    if selected == "colab":
-        return read_colab_key()
-    if selected == "local":
-        return read_local_key(env_file)
-    raise CredentialConfigError("凭据来源必须为local或colab。")
+def load_credential(env_file):
+    return read_local_key(env_file)

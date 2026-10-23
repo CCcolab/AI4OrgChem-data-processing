@@ -21,8 +21,6 @@ jobs:
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: '3.12'
-      - name: Install Notebook display test dependency
-        run: python -m pip install 'ipython==9.17.1'
       - name: Prove rejection and accepted cases
         run: python -B -m unittest discover -s tests/guard -p 'test_*.py' -v
       - name: Check current committed bytes
@@ -47,8 +45,12 @@ jobs:
       - name: Install pinned scientific wheels
         run: >-
           python -m pip install --only-binary=:all: --retries 0 --timeout 20
-          -r skills/organic-smiles-rdkit/runtime/requirements-colab.txt
+          -r skills/organic-smiles-rdkit/requirements.txt
       - name: Test RDKit boundaries and offline provider failures
         env:
           MPLBACKEND: Agg
         run: python -B -m unittest discover -s tests/rdkit -p 'test_*.py' -v
+      - name: Test Python commands, parameters and result archives
+        env:
+          MPLBACKEND: Agg
+        run: python -B -m unittest discover -s tests/python -p 'test_*.py' -v

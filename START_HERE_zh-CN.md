@@ -1,10 +1,10 @@
-# AI4OrgChem-data-processing · Skill 培训内容
+# AI4OrgChem-data-processing · Skill技能目录
 
 <!-- Canonical entry: https://github.com/CCcolab/AI4OrgChem-data-processing/blob/main/START_HERE_zh-CN.md -->
 
-按七个专业应用分类和一个共用支持分类浏览，共33项Skill。点击带链接的名称进入学习与运行页面；普通文字为Skill目录名称。
+按七个专业应用分类和一个共用支持分类浏览，共33项Skill。点击带链接的名称学习；普通文字保留目录名称。
 
-每个页面集中提供：完整Notebook代码、参数案例与输出、Colab在线运行，以及Notebook和SKILL.md下载。
+每个已提供页面介绍知识与来源、SKILL.md调用方法、Python参数与对应输出，并提供`.py`源码和完整代码包。默认本地数值运行无需模型账号；AI解释可选。
 
 ## 有机分子结构与身份识别
 
@@ -14,7 +14,7 @@
 ## 有机分析与实验数据处理
 
 - 整理化学数据｜Pandas 清洗与统计
-- [表格拟合与残差分析](skills/table-fitting-residuals/RUNNING.md)
+- [表格拟合与残差分析](skills/table-fitting-residuals/README.md)
 - 绘制科研图表｜实验数据与误差分析
 
 ## 物理有机与能量分析
@@ -62,3 +62,4 @@
 ## 共用运行支持
 
 - Runtime 使用助手
+

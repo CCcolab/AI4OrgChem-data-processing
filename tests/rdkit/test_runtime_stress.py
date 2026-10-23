@@ -25,7 +25,6 @@ RT = ROOT / "skills/organic-smiles-rdkit/runtime"
 sys.path.insert(0, str(RT))
 import molecule_tool as tool
 import skill_agent as agent
-import colab_workflow as workflow
 import credential_config as credentials
 
 DEFAULT = json.loads((RT / "parameters.json").read_bytes())
@@ -231,157 +230,6 @@ class ChemistryRegressionTests(WorkspaceTest):
         self.assertEqual((output / "keep.txt").read_text(), "original")
 
 
-class RuntimeIntegrityTests(WorkspaceTest):
-    def test_notebook_integrity_check_still_runs_with_python_optimization(self):
-        notebook = json.loads((RT.parent / "organic-smiles-rdkit.ipynb").read_bytes())
-        document = copy.deepcopy(notebook)
-        document["metadata"]["adp_runtime_bundle"]["zip_base64"] = "bm90LWEtemlw"
-        colab = types.ModuleType("google.colab")
-        colab._message = Mock()
-        colab._message.blocking_request.return_value = {"ipynb": document}
-        google = types.ModuleType("google")
-        google.colab = colab
-        with patch.dict(sys.modules, {"google": google, "google.colab": colab}):
-            with self.assertRaisesRegex(ValueError, "配套模块校验失败"):
-                exec(
-                    compile(
-                        "".join(notebook["cells"][1]["source"]),
-                        "<optimized-bootstrap>",
-                        "exec",
-                        optimize=2,
-                    ),
-                    {},
-                )
-
-    def lab(self):
-        lab = workflow.Lab()
-        lab.workspace = self.base / "workspace"
-        lab.workspace.mkdir()
-        lab.bundle = RT / "rdkit-runtime.zip"
-        lab.bundle_sha256 = tool.sha(lab.bundle)
-        for name, raw in workflow._resources(lab.bundle).items():
-            (lab.workspace / name).write_bytes(raw)
-        return lab
-
-    def test_tampered_code_is_rejected_before_import_or_credentials(self):
-        lab = self.lab()
-        for name in [
-            "credential_config.py",
-            "skill_agent.py",
-            "result_presentation.py",
-            "molecules.csv",
-        ]:
-            with self.subTest(name=name):
-                path = lab.workspace / name
-                saved = path.read_bytes()
-                path.write_bytes(saved + b"\n# modified\n")
-                with patch.object(
-                    workflow, "_module", side_effect=AssertionError("must not import")
-                ):
-                    with self.assertRaises(ValueError):
-                        lab.call_skill(
-                            skill_text=(lab.workspace / "SKILL.md").read_text("utf-8"),
-                            parameters=DEFAULT,
-                        )
-                path.write_bytes(saved)
-
-    def test_invalid_parameters_rejected_before_missing_credentials(self):
-        lab = self.lab()
-        with self.assertRaisesRegex(ValueError, "radius"):
-            lab.call_skill(
-                skill_text=(lab.workspace / "SKILL.md").read_text("utf-8"),
-                parameters=dict(DEFAULT, radius=True),
-                env_file="does-not-exist",
-            )
-
-    def test_real_child_is_terminated_after_timeout(self):
-        lab = self.lab()
-        lab.python = Path(sys.executable)
-        lab.history = []
-        config = self.base / "test-config"
-        config.write_text("DEEPSEEK_API_KEY=TEST_ONLY_CREDENTIAL\n", encoding="utf-8")
-        original_popen = subprocess.Popen
-        children = []
-
-        def sleeping_child(args, **kwargs):
-            child = original_popen(
-                [sys.executable, "-c", "import time; time.sleep(60)"], **kwargs
-            )
-            communicate = child.communicate
-            # Scale only the scientific timeout; exercise the real termination path.
-            child.communicate = lambda timeout: communicate(
-                timeout=0.1 if timeout == 230 else timeout
-            )
-            children.append(child)
-            return child
-
-        with patch.object(workflow.subprocess, "Popen", side_effect=sleeping_child):
-            with self.assertRaisesRegex(RuntimeError, "执行超时"):
-                lab.call_skill(
-                    skill_text=(lab.workspace / "SKILL.md").read_text("utf-8"),
-                    parameters=DEFAULT,
-                    env_file=config,
-                )
-        self.assertEqual(len(children), 1)
-        self.assertIsNotNone(children[0].poll())
-        self.assertEqual(lab.history, [])
-
-    def test_cleanup_escalates_to_kill_within_declared_budgets(self):
-        lab = self.lab()
-        lab.python = Path(sys.executable)
-        config = self.base / "test-config"
-        config.write_text("DEEPSEEK_API_KEY=TEST_ONLY_CREDENTIAL\n", encoding="utf-8")
-        proc = Mock()
-        proc.communicate.side_effect = [
-            subprocess.TimeoutExpired("offline", 230),
-            subprocess.TimeoutExpired("offline", 10),
-            ("", ""),
-        ]
-        with patch.object(workflow.subprocess, "Popen", return_value=proc):
-            with self.assertRaisesRegex(RuntimeError, "执行超时"):
-                lab.call_skill(
-                    skill_text=(lab.workspace / "SKILL.md").read_text("utf-8"),
-                    parameters=DEFAULT,
-                    env_file=config,
-                )
-        proc.terminate.assert_called_once()
-        proc.kill.assert_called_once()
-        self.assertEqual(
-            [call.kwargs["timeout"] for call in proc.communicate.call_args_list],
-            [230, 10, 5],
-        )
-
-    def test_incomplete_duplicate_and_traversal_archives_rejected(self):
-        for names in [["SKILL.md"], ["../outside"], ["SKILL.md", "SKILL.md"]]:
-            with self.subTest(names=names):
-                bundle = self.base / "invalid.zip"
-                with zipfile.ZipFile(bundle, "w") as archive:
-                    for name in names:
-                        archive.writestr(name, b"test")
-                with self.assertRaises(ValueError):
-                    workflow._resources(bundle)
-        self.assertFalse((self.base.parent / "outside").exists())
-
-    def test_combined_export_count_limit_does_not_read_other_directories(self):
-        lab = workflow.Lab()
-        lab.history = [self.base / "absent"] * 21
-        with patch.object(
-            lab, "_presentation", side_effect=AssertionError("must not read")
-        ):
-            self.assertIsNone(lab._combined_export())
-
-    def test_combined_export_size_limit_does_not_create_an_archive(self):
-        lab = workflow.Lab()
-        lab.workspace = self.base
-        run = self.base / "large-run"
-        run.mkdir()
-        with (run / "large.csv").open("wb") as f:
-            f.truncate(20_000_001)
-        tool.dump(run / "export-manifest.json", [{"file": "large.csv"}])
-        lab.history = [run]
-        with patch.object(lab, "_presentation", return_value=Mock()):
-            self.assertIsNone(lab._combined_export())
-        self.assertFalse((self.base / "organic-smiles-rdkit-all-runs.zip").exists())
 
 
 class CredentialTests(WorkspaceTest):
@@ -410,19 +258,6 @@ class CredentialTests(WorkspaceTest):
             with self.assertRaises(credentials.CredentialConfigError):
                 credentials.read_local_key(path)
 
-    def test_colab_missing_and_access_denied_are_distinct(self):
-        for name, expected in [
-            ("SecretNotFoundError", "未找到Secret"),
-            ("NotebookAccessError", "未获准"),
-        ]:
-            with self.subTest(name=name):
-                getter = Mock(
-                    side_effect=type(name, (Exception,), {})("TEST_ONLY_CREDENTIAL")
-                )
-                with self.assertRaisesRegex(
-                    credentials.CredentialConfigError, expected
-                ):
-                    credentials.read_colab_key(getter)
 
 
 class OfflineAgentTests(WorkspaceTest):

@@ -2,7 +2,7 @@
 
 分类：**有机分子结构与身份识别** · Skill：`organic-smiles-rdkit`
 
-学习将分子结构写成SMILES，调用SKILL.md完成结构解析、描述符、SMARTS匹配与Morgan指纹比较。先阅读知识与数据说明，再看对应的调用和结果；运行Notebook入口在本页下部。
+先学习结构表示、参数含义和输出判读，再运行本页下部的Python程序。
 
 ## 知识与数据来源
 
@@ -36,51 +36,13 @@ SMILES描述结构，SMARTS描述查询模式；规范SMILES用于同版本下�
 
 `molecules.csv`是本项目组织和核对的14条通用结构教学输入，包含重复写法、酸/酸根、芳香结构、手性、盐、同位素及两条故意无效记录；不是实验数据或外部课程数据文件。`source_id=project`是本例输入构造/核对标签，不是数据库下载标识。逐记录说明和文件哈希在`data-provenance.json`，方法依据在`sources.json`。
 
-AI4Chem只作为Skill选题与页面组织的参考，不列为本Skill知识或数据取材来源。本版不收录该课程的正文、图片、代码或Notebook，不主张获得其再分发授权。
+### 数据和模板文件
 
-### CSV和JSON分别怎样用
+[runtime/molecules.csv](runtime/molecules.csv)为14条教学结构；[parameters.json](runtime/parameters.json)为五个参数模板；[数据来源](runtime/data-provenance.json)及[知识来源](runtime/sources.json)分别记录其出处。读取CSV时保留字符串ID；编辑参数副本后用`--params`传入，输入与参数保存在结果包中。
 
-| 单文件（查看/另存为） | 用途 | 用户操作 |
-| --- | --- | --- |
-| [molecules.csv](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/5d14cc3affe25d257eba042264617427bdcb83fb/skills/organic-smiles-rdkit/runtime/molecules.csv) | 输入；列为id、label、smiles、source_id、role | Excel可选UTF-8并把id列设为文本保留001；也可用下面代码读入。保留011/012反例 |
-| [parameters.json](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/5d14cc3affe25d257eba042264617427bdcb83fb/skills/organic-smiles-rdkit/runtime/parameters.json) | 五个参数的默认模板 | 对照参数表；Notebook实际采用②表单/代码中的字典，下载后修改本地文件不会自动改动云端运行 |
-| [data-provenance.json](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/5d14cc3affe25d257eba042264617427bdcb83fb/skills/organic-smiles-rdkit/runtime/data-provenance.json) | 输入构造、逐记录说明及molecules.csv哈希 | 用文本编辑器阅读；用于核对输入身份，不是待拟合的数据，不是密钥配置 |
-| [sources.json](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/5d14cc3affe25d257eba042264617427bdcb83fb/skills/organic-smiles-rdkit/runtime/sources.json) | 知识点、章节、URL、资料类型和核对范围 | 阅读及查证；不作为模型参数或CSV上传 |
+## 调用、参数与对应输出
 
-单文件链接可能先显示文本；如需保存，按Ctrl+S并保留表中原文件名。也可[打开输入与配套模块ZIP文件页](https://github.com/CCcolab/AI4OrgChem-data-processing/blob/5d14cc3affe25d257eba042264617427bdcb83fb/skills/organic-smiles-rdkit/runtime/rdkit-runtime.zip)，在文件页点击右上角`Download raw file`（下载原始文件），解压后四份文件都在根目录。
-
-本例Notebook已携带这四份文件，①准备环境会写入运行目录，无需先手动上传。点击上述下载链接需已登录且有本私有仓库权限。运行后结果包也保留这些说明文件。
-
-```python
-# 在Notebook①准备环境之后，可选：查看实际读入的输入和说明
-import csv, json
-with (lab.workspace / "molecules.csv").open(encoding="utf-8", newline="") as f:
-    inputs = list(csv.DictReader(f))
-provenance = json.loads((lab.workspace / "data-provenance.json").read_text("utf-8"))
-references = json.loads((lab.workspace / "sources.json").read_text("utf-8"))
-print(len(inputs), provenance["dataset_id"])  # 14 organic-smiles-teaching-structures-v2
-```
-
-## 调用与输出
-
-### 调用模板与参数含义
-
-先运行Notebook①，得到`lab`；再按下列模板设置**本次实际传入**的参数。`SKILL.md`原文由程序读取并传给Agent，不把文件名当作已调用。
-
-```python
-parameters = {
-    "radius": 2,
-    "fp_size": 2048,
-    "include_chirality": True,
-    "query_smarts": "[CX3](=O)[OX2H1]",
-    "reference_id": "005",
-}
-skill_file = lab.workspace / "SKILL.md"
-skill_text = skill_file.read_text(encoding="utf-8")
-run_output = lab.call_skill(skill_text=skill_text, parameters=parameters)
-lab.show_results(run_output)
-lab.show_downloads(run_output)
-```
+默认：`python organic-smiles-rdkit.py --output ../results-radius2`；将参数模板中的radius改为3后，用`--params`传入并保存到另一新目录。
 
 | 模板字段 | 本例值/范围 | 对应输出与应观察的变化 |
 | --- | --- | --- |
@@ -94,11 +56,11 @@ lab.show_downloads(run_output)
 
 本轮边界约定为`rdkit-bounded-teaching-v2`；五个分析参数及内置14条结构保持一致。
 
-Notebook使用内置的14条教学输入，不提供任意CSV上传入口。配套工具用于本地开发复核时要求：UTF-8、五列完整、ID唯一且为1–64位字母/数字/点/下划线/连字符（字母或数字开头）；1–50行，CSV不超过128000字节，SMILES不超过512字符、每个分子不超过128个原子。字段不接受控制字符或电子表格公式前缀。名称请放label列；结构列只接收SMILES，不接受名称后缀、CXSMILES或虚拟原子。无效结构按行保留，参照ID必须有效。
+Python程序使用内置的14条教学输入，本页命令行不接受任意CSV输入。配套工具用于本地开发复核时要求：UTF-8、五列完整、ID唯一且为1–64位字母/数字/点/下划线/连字符（字母或数字开头）；1–50行，CSV不超过128000字节，SMILES不超过512字符、每个分子不超过128个原子。字段不接受控制字符或电子表格公式前缀。名称请放label列；结构列只接收SMILES，不接受名称后缀、CXSMILES或虚拟原子。无效结构按行保留，参照ID必须有效。
 
 SMARTS不超过120字符、32个查询原子；匹配超过1000项时明确拒绝统计，防止将截断数当成完整结果。解析后原子索引从0开始，指向本轮RDKit分子，不是原始字符串的字符位置。接口依据：[RDKit名称与CXSMILES解析说明](https://www.rdkit.org/docs/RDKit_Book.html#reading-molecule-names)、[GetSubstructMatches与maxMatches](https://www.rdkit.org/docs/source/rdkit.Chem.rdchem.html#rdkit.Chem.rdchem.Mol.GetSubstructMatches)；本页固定版本另以实际接口和反例复核。
 
-调用前复核全部运行资源，并在发送模型请求前检查输入格式和参照结构；模型只能使用一次限定工具，最多3轮请求、每轮60秒，不自动重试，不跟随API重定向。模型响应上限1MB；分析子进程230秒，超时后终止，清理最多15秒。失败不生成成功验收回执。合并下载最多20轮、20MB清单数据，超限时仍提供本轮下载，不收录清单以外的临时文件。以上是单用户教学任务边界，不是多用户服务的负载能力保证。
+调用前复核全部运行资源，并在发送模型请求前检查输入格式和参照结构；模型只能使用一次限定工具，最多3轮请求、每轮60秒，不自动重试，不跟随API重定向。模型响应上限1MB；分析子进程230秒，超时后终止，清理最多15秒。失败不生成成功验收回执。每次运行生成独立结果ZIP，核对文件清单、CRC和SHA-256。以上是单用户教学任务边界，不是多用户服务的负载能力保证。
 
 ### 实际参数调用案例与输出结果
 
@@ -121,14 +83,14 @@ SMARTS不超过120字符、32个查询原子；匹配超过1000项时明确拒�
 | 013 | C3H10ClN | 95.573 | 0 | 0.000000 | 0.000000 |
 | 014 | C2H6O | 47.061 | 0 | 0.000000 | 0.000000 |
 
-数值在表中按显示精度舍入，CSV保留程序精度；“—/拒绝”不是0或缺失值填零。完整[两组样例输出ZIP（文件页）](https://github.com/CCcolab/AI4OrgChem-data-processing/blob/5d14cc3affe25d257eba042264617427bdcb83fb/skills/organic-smiles-rdkit/assets/example-results.zip)包含输入、参数、CSV、图表、数值检查及样例清单；在文件页点击`Download raw file`保存。程序生成的图对应**默认组radius=2**：
+数值在表中按显示精度舍入，CSV保留程序精度；“—/拒绝”不是0或缺失值填零。程序生成的图对应**默认组radius=2**：
 
 ![默认参数下的结构与ID](assets/example-molecules.png)
 ![默认参数下相对于005苯的Morgan相似度](assets/example-similarity.png)
 
 | 输出文件 | 与本次调用的对应关系 | 阅读方法 |
 | --- | --- | --- |
-| parameters.json | 保存实际使用的五个参数 | 先核对与本次字典/表单完全一致 |
+| parameters.json | 保存实际使用的五个参数 | 先核对与本次参数文件完全一致 |
 | analysis.csv | 14条输入的逐行结果，含解析状态、原结构、分子式、描述符及匹配数 | 按id对齐；拒绝行不当作零结果 |
 | errors.csv / duplicates.csv | 分别保留011/012及002→001映射 | 错误/重复只报告，不静默删除 |
 | similarity.csv | 有效记录与reference_id的指纹相似度，含独立位集合核算 | 比较同一id在两组参数下的值 |
@@ -139,33 +101,44 @@ SMARTS不超过120字符、32个查询原子；匹配超过1000项时明确拒�
 
 ## 运行与下载
 
-**[打开运行Notebook](organic-smiles-rdkit.ipynb)**
+推荐下载[完整Python代码包](downloads/organic-smiles-rdkit-python.zip)，解压并进入该Skill目录。程序入口为[organic-smiles-rdkit.py](organic-smiles-rdkit.py)，同级保留`runtime`目录。单独下载入口文件不能代替完整代码包。
 
-Notebook内提供“在Colab运行”按钮、首次账号授权、保存副本、Secret配置与①至⑤步骤。Colab读取同名`DEEPSEEK_API_KEY` Secret；不要把值写进代码或上传.env。Notebook①使用Colab接口；本地Python应使用配套模块，而非直接执行该Colab准备单元。
+Windows PowerShell示例；先安装Python 3.12或3.13：
 
-本地使用配套模块时，在已安装requirements-colab.txt依赖的Python 3.12/3.13环境运行；将模块ZIP解压到同一目录，再使用：
-
-```python
-from pathlib import Path
-import json
-from colab_workflow import Lab
-
-ENV_FILE = Path.home() / ".env"  # 改为自己已有的配置文件，不填写密钥值
-lab = Lab.prepare(Path("rdkit-runtime.zip"))
-parameters = json.loads((lab.workspace / "parameters.json").read_text("utf-8"))
-skill_text = (lab.workspace / "SKILL.md").read_text("utf-8")
-run_output = lab.call_skill(skill_text=skill_text, parameters=parameters, env_file=ENV_FILE)
-print(run_output)  # 在此目录查看程序回执与结果ZIP
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe organic-smiles-rdkit.py --output ..\results-default
 ```
 
-**[查看SKILL.md源码（Code）](https://github.com/CCcolab/AI4OrgChem-data-processing/blob/main/skills/organic-smiles-rdkit/SKILL.md?plain=1)**
+macOS/Linux使用`.venv/bin/python`执行同样的安装和运行命令。默认模式只做本地数值计算，无需模型账号、API密钥或联网请求；依赖首次安装需要获取对应软件包。
 
-### 分别下载Notebook和SKILL.md
+完成后双击结果目录的`report.html`查看回执、参数和图表；保留`results.zip`及`results.zip.sha256`。报告为自包含HTML，没有外部脚本、输出框架或本地Web服务。代码输出`PASS_LOCAL_NUMERICAL`，明确表示没有调用模型。
 
-- [下载Notebook](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/5d14cc3affe25d257eba042264617427bdcb83fb/skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb)
-- [下载SKILL.md](https://github.com/CCcolab/AI4OrgChem-data-processing/raw/5d14cc3affe25d257eba042264617427bdcb83fb/skills/organic-smiles-rdkit/SKILL.md)
-- [完整配套模块ZIP](https://github.com/CCcolab/AI4OrgChem-data-processing/blob/5d14cc3affe25d257eba042264617427bdcb83fb/skills/organic-smiles-rdkit/runtime/rdkit-runtime.zip)
+### 修改参数再运行
 
-样例CSV/JSON的独立下载及用法见上面的文件表。真正运行后在Notebook⑤下载本轮结果；含输出的执行版用“文件→保存”，再选“文件→下载→下载.ipynb”。
+复制[runtime/parameters.json](runtime/parameters.json)为自己的参数文件，按上表修改后运行到新目录：
 
-开发者复核：在仓库根目录、已安装配套依赖的Python环境运行`python -B -m unittest discover -s tests/rdkit -p "test_*.py" -v`。测试覆盖输入边界、参数组合、化学身份、资源篡改、超时和下载；模型响应使用离线模拟，不消耗API额度，也不代替Colab真实验收。
+```powershell
+.\.venv\Scripts\python.exe organic-smiles-rdkit.py --params my-parameters.json --output ..\results-modified
+.\.venv\Scripts\python.exe organic-smiles-rdkit.py --verify ..\results-modified
+```
+
+已有结果目录拒绝覆盖；`--verify`只核对文件和ZIP的SHA-256，不重复计算。
+
+### 可选：让Agent读取SKILL.md并解释结果
+
+`SKILL.md`是给AI助手的技能指令；`.py`是执行数值计算的程序。默认数值模式读取并记录Skill身份，不能把它称为真实Agent调用。确需模型解释时，再显式开启：
+
+```powershell
+.\.venv\Scripts\python.exe organic-smiles-rdkit.py --agent --env-file .env --output ..\results-agent
+```
+
+`.env`是自己已有的本地配置文件，程序只读其中`DEEPSEEK_API_KEY`，不把值写进代码、命令行、日志或结果包；不自动读取其它配置。该模式使用自己的DeepSeek账号和额度，不使用OpenAI服务。不配置`--agent`就不会读取密钥或调用模型。真实模式必须有实际工具调用回执，模型文字不能替代程序文件检查；本次迁移只做离线模拟验证，没有新增真实模型调用。
+
+### 下载文件
+
+- [完整Python代码包](downloads/organic-smiles-rdkit-python.zip)：入口、Skill、依赖清单及配套源码与数据。
+- [查看Python入口源码](organic-smiles-rdkit.py) · [查看SKILL.md源码](SKILL.md?plain=1) · [依赖清单](requirements.txt)。
+
+仓库为私有；取得完整代码包后，日常运行只需要本地Python环境。33项Skill按专业分类组织，本页仅承诺上述已实现的限定任务。

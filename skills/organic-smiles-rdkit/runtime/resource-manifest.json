@@ -1,19 +1,15 @@
 [
   {
-    "file": "CONFIGURATION_zh-CN.md",
-    "sha256": "a6a01dfd4a1581211c6c9419ec1c3613f6fe34d36b4d878e94d1f5240fd150bb"
-  },
-  {
     "file": "credential_config.py",
-    "sha256": "c8168bb3879b8ed71207b91b13f9ba3cd218612ab251fefc6eafbae5f2a3a298"
+    "sha256": "1853ba84938b94ddc412b1495125428c964ef72ca7d48d68cb718ad58081f9b1"
   },
   {
     "file": "data-provenance.json",
-    "sha256": "5ccbcf659f76f098317882e13a3b85519e68bab7e22d9caa78055f1e922bd3d5"
+    "sha256": "254f8dd937d4646181e385be8cfcc8516f284d1f9ed81d02323cb9facdb78f43"
   },
   {
     "file": "molecule_tool.py",
-    "sha256": "9597f47fd6bf6ad70126fbcc00ed8f783a2197dc8368805fea85009144a58303"
+    "sha256": "e0732e3962ee8c62c9544586a55ed1fc995bde9444975b154d56b8e688c6af08"
   },
   {
     "file": "molecules.csv",
@@ -24,20 +20,24 @@
     "sha256": "a9892264468d9545980c6acb83181c8bf65dbd28783ec0ef05f58dd1b4032de6"
   },
   {
-    "file": "README.md",
-    "sha256": "6422a03088fc781acf96ff5b50db68984df06029cc2e60af12971a26a7eb12e7"
+    "file": "python_runner.py",
+    "sha256": "1ceac614040a4b3d4ec6ddc280e2aeb80a9353a018e960efed781532c5d0dc8b"
   },
   {
-    "file": "requirements-colab.txt",
+    "file": "requirements.txt",
     "sha256": "cf69cc546f34666b0b9c568c5f5f9bb4600bba4d0b2a0fb5905f229d68b6d321"
   },
   {
+    "file": "result_presentation.py",
+    "sha256": "19f46b4afb14b88e195fab8b028296df8c0dd432fa2de04842ad29d8071cb2a8"
+  },
+  {
     "file": "SKILL.md",
-    "sha256": "54b4f9e039fcdcd9bc8bd28c3ef2c7dc81300222854e15c74ece1e02e3d65967"
+    "sha256": "c32a397be55a89a765cbad7a7da9442a6eed0f78ed409849051e3a2b4dad34f1"
   },
   {
     "file": "skill_agent.py",
-    "sha256": "caae776d24227e90335b6fd92f95651ad3acda78485d046ce6347ee37ed9b7e1"
+    "sha256": "55a927462ac403cc398d98dd9db2becda0eee091f220ba6bb19da35e86b96c3d"
   },
   {
     "file": "sources.json",
@@ -45,10 +45,6 @@
   },
   {
     "file": "task-template.txt",
-    "sha256": "73254171924f3f5e7382b0e7c089f488639f0135d2ec728054e6ded37fbc00e8"
-  },
-  {
-    "file": "result_presentation.py",
-    "sha256": "cd7cd4177872c9b09d6c9208ae5d6aa1951ad213ebccbd261c265769ea97aebb"
+    "sha256": "7d6065a57aaf206ed867e96bba1e052867b5dd542a8bf784cf8889a49d27b890"
   }
 ]

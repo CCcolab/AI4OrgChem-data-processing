@@ -1,6 +1,7 @@
 {
-  "schema": "adp-private-skill-publication-v4",
+  "schema": "adp-private-python-skill-publication-v1",
   "version": "0.1.0",
+  "revision": "python-r1",
   "visibility": "PRIVATE",
   "entry": "START_HERE_zh-CN.md",
   "legacy_web_enabled": false,
@@ -19,7 +20,7 @@
     },
     {
       "file": ".github/workflows/platform-boundary.yml",
-      "sha256": "25b7db6c273d4affa756f303afc579f916c1605949c2e0bd0b22f465aff1e8e4"
+      "sha256": "5db063a264439967a5e24825315897bc0cbb98c3e8db7bba401b678a5db0bd9a"
     },
     {
       "file": ".gitignore",
@@ -27,83 +28,67 @@
     },
     {
       "file": "docs/PLATFORM_BOUNDARY_GUARD_zh-CN.md",
-      "sha256": "7fbc25cad8b6fd1f699f0e6ff3cf46358db9af8cdd82fcbfcd5de08eeae72188"
+      "sha256": "6d5436e5c0f6554d543e441f0fa4b319fe356d436efeb0a7612ee36aee3671e7"
+    },
+    {
+      "file": "docs/PYTHON_USAGE.md",
+      "sha256": "118e15eefa0694d6e9df09406cb24f4871b5f66b2fc47e13eb8e1d53df9fb74a"
     },
     {
       "file": "docs/RIGHTS_REVIEW.md",
-      "sha256": "e69b3b4f89478e54625fa5d0f918f96bf8d8c308a72fc76b94241ac6fa2de1fa"
-    },
-    {
-      "file": "docs/RUNNING.md",
-      "sha256": "b5debf1921b0589dde46f45d7a7796b8a4167087fd278ecb73eeb394f302a246"
-    },
-    {
-      "file": "docs/SKILL_ONLINE_ACCEPTANCE.md",
-      "sha256": "482e18daf472245d92032c929953f0f4774275f90dbd426d1dca2ecc97f9e227"
-    },
-    {
-      "file": "docs/SKILL_RUNNING.md",
-      "sha256": "b7d9ca0d71f6ab97b8f587d4a9b549c58bc8e95958e5d1114a153224d4465103"
-    },
-    {
-      "file": "docs/SKILL_STATUS.md",
-      "sha256": "e10677f584c3342320f2fcff19c81845d90c94ab68006789eb42a3d9a02dbdec"
-    },
-    {
-      "file": "docs/STATUS.md",
-      "sha256": "b5debf1921b0589dde46f45d7a7796b8a4167087fd278ecb73eeb394f302a246"
+      "sha256": "1b8c405d051f1597150105cb4cb2cbb1a965a913fdaf19a74020368b6ae4475c"
     },
     {
       "file": "NAVIGATION.json",
-      "sha256": "29c8e91c50cf867708df8b5ed8dc031ccf6a2c210618dd510422a3cc10771a75"
+      "sha256": "6504094f4dc98535f52aeb71d365273dc2ed606b2820d60bafbb3dec1ef77000"
     },
     {
       "file": "PLATFORM_ENTRY.json",
-      "sha256": "7ed7f0e099f0c105605932dc4cfceda3ab648456590562583c262e8ad95ffc94"
+      "sha256": "97b8761d424ec0c5c706dcd59b6ff4d042b062983060d7c8a8c2fbc9da418622"
     },
     {
       "file": "README.md",
-      "sha256": "3b38f87aceb91c4344d501c45b79e14155a5f659acabc1072afa32b12e1ba240"
+      "sha256": "5d9eda52ada61dfc6fe738e2d7af988effc128fbcd1497f3797ec56a3ae538af"
     },
     {
       "file": "skills/organic-smiles-rdkit/assets/example-molecules.png",
       "sha256": "a62ae370831bb1a21ace779a92b4e9afe3c31ee577e4261dd5f8d6d1d1cb6f6c"
     },
     {
-      "file": "skills/organic-smiles-rdkit/assets/example-results.zip",
-      "sha256": "7db7e698b049608c1bf447db52a725de95d5ed673a15f40e5ed58d6553adaad9"
-    },
-    {
       "file": "skills/organic-smiles-rdkit/assets/example-similarity.png",
       "sha256": "c896ef535c77df157fd7b237119bf01f0a0e2df80640476b1679a0a722625e25"
     },
     {
-      "file": "skills/organic-smiles-rdkit/organic-smiles-rdkit.ipynb",
-      "sha256": "c607d687c8619be6400dc36d209d460fc6c832022837381710cefc94222ee727"
+      "file": "skills/organic-smiles-rdkit/downloads/organic-smiles-rdkit-python.zip",
+      "sha256": "ca91460226a826b760577064449303d2fee1461a7c1964c2cb5c6b8fbb404143"
+    },
+    {
+      "file": "skills/organic-smiles-rdkit/downloads/organic-smiles-rdkit-python.zip.sha256",
+      "sha256": "9a03205efb9b658eafe05c21e7aede13010cc0808c41b42eb34087da8d36505a"
+    },
+    {
+      "file": "skills/organic-smiles-rdkit/organic-smiles-rdkit.py",
+      "sha256": "736d2517e4ee28f0d3df44d804fb14a30bb046929a3fd2038769e7d8fe0c2606"
     },
     {
       "file": "skills/organic-smiles-rdkit/README.md",
-      "sha256": "acceab501b034d28f163cc5a491daac9e4ccb15ee291df84ace41d036ea14dcb"
+      "sha256": "a4f59fdd7ccb55ebe03216f6ece3ab06bf9ee9aebe4d27b18272649f88773941"
     },
     {
-      "file": "skills/organic-smiles-rdkit/runtime/colab_workflow.py",
-      "sha256": "bc391644a0cdc02472a17068eea30a9ad083a072e6feb521eb5945d0a81f8ab2"
-    },
-    {
-      "file": "skills/organic-smiles-rdkit/runtime/CONFIGURATION_zh-CN.md",
-      "sha256": "a6a01dfd4a1581211c6c9419ec1c3613f6fe34d36b4d878e94d1f5240fd150bb"
+      "file": "skills/organic-smiles-rdkit/requirements.txt",
+      "sha256": "cf69cc546f34666b0b9c568c5f5f9bb4600bba4d0b2a0fb5905f229d68b6d321"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/credential_config.py",
-      "sha256": "c8168bb3879b8ed71207b91b13f9ba3cd218612ab251fefc6eafbae5f2a3a298"
+      "sha256": "1853ba84938b94ddc412b1495125428c964ef72ca7d48d68cb718ad58081f9b1"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/data-provenance.json",
-      "sha256": "5ccbcf659f76f098317882e13a3b85519e68bab7e22d9caa78055f1e922bd3d5"
+      "sha256": "254f8dd937d4646181e385be8cfcc8516f284d1f9ed81d02323cb9facdb78f43"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/molecule_tool.py",
-      "sha256": "9597f47fd6bf6ad70126fbcc00ed8f783a2197dc8368805fea85009144a58303"
+      "sha256": "e0732e3962ee8c62c9544586a55ed1fc995bde9444975b154d56b8e688c6af08"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/molecules.csv",
@@ -114,32 +99,28 @@
       "sha256": "a9892264468d9545980c6acb83181c8bf65dbd28783ec0ef05f58dd1b4032de6"
     },
     {
-      "file": "skills/organic-smiles-rdkit/runtime/rdkit-runtime.zip",
-      "sha256": "c6ee56b7d99b6f4bc74ccf203727007e9b9e19fa658981cd998c80c94bec5b5f"
+      "file": "skills/organic-smiles-rdkit/runtime/python_runner.py",
+      "sha256": "1ceac614040a4b3d4ec6ddc280e2aeb80a9353a018e960efed781532c5d0dc8b"
     },
     {
-      "file": "skills/organic-smiles-rdkit/runtime/README.md",
-      "sha256": "6422a03088fc781acf96ff5b50db68984df06029cc2e60af12971a26a7eb12e7"
-    },
-    {
-      "file": "skills/organic-smiles-rdkit/runtime/requirements-colab.txt",
+      "file": "skills/organic-smiles-rdkit/runtime/requirements.txt",
       "sha256": "cf69cc546f34666b0b9c568c5f5f9bb4600bba4d0b2a0fb5905f229d68b6d321"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/resource-manifest.json",
-      "sha256": "7567935ee7dc0adbdf988fe8cdda7015ca5cc2bc78d6e3aa3ceafd814e7f73c5"
+      "sha256": "a3f3d6f5809a00d2d3ca1d7c94b306b317c47e8fe216e7dd75c462193f1f5579"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/result_presentation.py",
-      "sha256": "cd7cd4177872c9b09d6c9208ae5d6aa1951ad213ebccbd261c265769ea97aebb"
+      "sha256": "19f46b4afb14b88e195fab8b028296df8c0dd432fa2de04842ad29d8071cb2a8"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/SKILL.md",
-      "sha256": "54b4f9e039fcdcd9bc8bd28c3ef2c7dc81300222854e15c74ece1e02e3d65967"
+      "sha256": "c32a397be55a89a765cbad7a7da9442a6eed0f78ed409849051e3a2b4dad34f1"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/skill_agent.py",
-      "sha256": "caae776d24227e90335b6fd92f95651ad3acda78485d046ce6347ee37ed9b7e1"
+      "sha256": "55a927462ac403cc398d98dd9db2becda0eee091f220ba6bb19da35e86b96c3d"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/sources.json",
@@ -147,127 +128,111 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/task-template.txt",
-      "sha256": "73254171924f3f5e7382b0e7c089f488639f0135d2ec728054e6ded37fbc00e8"
+      "sha256": "7d6065a57aaf206ed867e96bba1e052867b5dd542a8bf784cf8889a49d27b890"
     },
     {
       "file": "skills/organic-smiles-rdkit/SKILL.md",
-      "sha256": "54b4f9e039fcdcd9bc8bd28c3ef2c7dc81300222854e15c74ece1e02e3d65967"
+      "sha256": "c32a397be55a89a765cbad7a7da9442a6eed0f78ed409849051e3a2b4dad34f1"
     },
     {
-      "file": "skills/table-fitting-residuals/caffeine-calibration.csv",
-      "sha256": "e1ad5d64e7fa286dc7b3a5c871579710e9245280ccf09bd087e917e3d63576db"
-    },
-    {
-      "file": "skills/table-fitting-residuals/cloud-run.py",
-      "sha256": "3e17924648c9a512951666f2704b1261984da4a5bb6268ea16dfa44bff9243e6"
-    },
-    {
-      "file": "skills/table-fitting-residuals/CONFIGURATION_zh-CN.md",
-      "sha256": "68a7ce31806924ae0e39ed3718ad1eeaeb5ab8ae9ad7177fe4b5a83a844fa474"
-    },
-    {
-      "file": "skills/table-fitting-residuals/credential_config.py",
-      "sha256": "a132c259a3c877f52f008f61b349e3b72fd4223efbfe3193277de1b475cf22cb"
-    },
-    {
-      "file": "skills/table-fitting-residuals/data-provenance.json",
-      "sha256": "6f0b4a59a50e7de5623c3a012454505eb0f343b9a535a9f91ae24f00b23d1d50"
-    },
-    {
-      "file": "skills/table-fitting-residuals/example-calibration-and-residuals.png",
+      "file": "skills/table-fitting-residuals/assets/example-calibration-and-residuals.png",
       "sha256": "e9fe0a01f415bbf6cf73904b3b45f5eafee55981fd794eb4cbcaa154ba36b964"
     },
     {
-      "file": "skills/table-fitting-residuals/example-result.json",
+      "file": "skills/table-fitting-residuals/assets/example-result.json",
       "sha256": "fa7d3ec5ade6a267c4ef157ac227aec70afa42f50c2b037ce640c81d704d4153"
     },
     {
-      "file": "skills/table-fitting-residuals/NOTEBOOK.md",
-      "sha256": "e977aab04ebaf820b09d88bf52107bc86c7c30a5e476155e8ca4491533c6c9f4"
+      "file": "skills/table-fitting-residuals/downloads/table-fitting-residuals-python.zip",
+      "sha256": "dd7fb741ed5381328b3a211ae0be0521fa585a2d7f5554a297fa9a1d34adf255"
     },
     {
-      "file": "skills/table-fitting-residuals/parameters.json",
-      "sha256": "0ac042b8a69f0d83d43f39b71522e5d13515e58c9b0da724a7e6c2231cff7db9"
+      "file": "skills/table-fitting-residuals/downloads/table-fitting-residuals-python.zip.sha256",
+      "sha256": "11ad665886ca0733ebf10bc349e6d7fd71e273af2404c0863fc204765325127e"
     },
     {
       "file": "skills/table-fitting-residuals/README.md",
-      "sha256": "e02a58b33bba806bb2a8e5b27f03340fab5b1a918bf1e0bfae4451e890ae18c9"
+      "sha256": "9f5ff4c720e8f2e148dad53fd042416e041aef052bea0f1dc4b9aa833746d2c1"
     },
     {
-      "file": "skills/table-fitting-residuals/requirements-colab.txt",
-      "sha256": "7f23be70c09a55aa5d8fae7a4ae2a74cd6d50e19e23ace52f2a6437ac078ce5a"
+      "file": "skills/table-fitting-residuals/requirements.txt",
+      "sha256": "7e6a0f6132874f4aefd68c4268b030858ce5759d865d4319a946d1249c14eeeb"
     },
     {
-      "file": "skills/table-fitting-residuals/resource-manifest.json",
-      "sha256": "262925e08dcb2b15a50618f960da21dd49e43c17689ce08b83eac35af739b44a"
+      "file": "skills/table-fitting-residuals/runtime/caffeine-calibration.csv",
+      "sha256": "e1ad5d64e7fa286dc7b3a5c871579710e9245280ccf09bd087e917e3d63576db"
     },
     {
-      "file": "skills/table-fitting-residuals/RUNNING.md",
-      "sha256": "505326433730e1ea6da18009bf2a039e4dccec4e78cea777cd032b764d759637"
+      "file": "skills/table-fitting-residuals/runtime/credential_config.py",
+      "sha256": "1853ba84938b94ddc412b1495125428c964ef72ca7d48d68cb718ad58081f9b1"
     },
     {
-      "file": "skills/table-fitting-residuals/saved-output-provenance.json",
-      "sha256": "22d2663aa4811eb341bc85b294837f8bc4798364a10c9d7e16738598d75184f5"
+      "file": "skills/table-fitting-residuals/runtime/data-provenance.json",
+      "sha256": "6f0b4a59a50e7de5623c3a012454505eb0f343b9a535a9f91ae24f00b23d1d50"
     },
     {
-      "file": "skills/table-fitting-residuals/SKILL.md",
-      "sha256": "9ab4b2dbc60bd6cceb41b4bf31fdc080a62826790dc1d7b18b73e9aae0d570a7"
+      "file": "skills/table-fitting-residuals/runtime/parameters.json",
+      "sha256": "b6abebd4aefb940dd6ddd4453da711a2ef8e5973382388bf8af32500ece37d3e"
     },
     {
-      "file": "skills/table-fitting-residuals/skill_agent.py",
-      "sha256": "cd6b06a8b1528f67b4608581f0be2e334b6dc1b1a1477c070ce1e3dfe6be479f"
+      "file": "skills/table-fitting-residuals/runtime/python_runner.py",
+      "sha256": "1ceac614040a4b3d4ec6ddc280e2aeb80a9353a018e960efed781532c5d0dc8b"
     },
     {
-      "file": "skills/table-fitting-residuals/sources.json",
+      "file": "skills/table-fitting-residuals/runtime/requirements.txt",
+      "sha256": "7e6a0f6132874f4aefd68c4268b030858ce5759d865d4319a946d1249c14eeeb"
+    },
+    {
+      "file": "skills/table-fitting-residuals/runtime/resource-manifest.json",
+      "sha256": "4623b96ad6e0f528d09f2227d9757dc88bd30dce01b679a9b8cd3fe01e1ee2ed"
+    },
+    {
+      "file": "skills/table-fitting-residuals/runtime/SKILL.md",
+      "sha256": "f74110f1618342d7503c996a54060073ce3f64a570c2db8d184ec594a4950e6a"
+    },
+    {
+      "file": "skills/table-fitting-residuals/runtime/skill_agent.py",
+      "sha256": "7d926f59f7053d8092c5dba42e74f4f3df5bc8f73e660aa53f93bb42f969c58a"
+    },
+    {
+      "file": "skills/table-fitting-residuals/runtime/sources.json",
       "sha256": "82f71b267054287f3d1a21b98ae738c61eebe36d85c56f16c60e18732f62ba96"
     },
     {
-      "file": "skills/table-fitting-residuals/table-fitting-residuals-notebook.zip",
-      "sha256": "2772af97feaa63c83b57ac17b2239c5ce9beebef4ce2fe9bb64e41f2327a5622"
+      "file": "skills/table-fitting-residuals/runtime/task-template.txt",
+      "sha256": "b35d2055977c7a600ddaefe768cfddee2c87d4100695b0ec616d9f54d2a1bbc9"
     },
     {
-      "file": "skills/table-fitting-residuals/table-fitting-residuals.ipynb",
-      "sha256": "a8f35998fc4a957c9e059475fc3cc07be0693060e80b02d439b3a55600f9a099"
+      "file": "skills/table-fitting-residuals/SKILL.md",
+      "sha256": "f74110f1618342d7503c996a54060073ce3f64a570c2db8d184ec594a4950e6a"
     },
     {
-      "file": "skills/table-fitting-residuals/task-template.txt",
-      "sha256": "29ca6d5347165cd9e8c1c1cecdc225ded6b0489fe18d8d6efcc70585290efcd3"
-    },
-    {
-      "file": "skills/table-fitting-residuals/TEACHING.md",
-      "sha256": "81f8f7462ef9db776159e3d0ee40fed518cbbe9e27b157a5d001d6b064869062"
+      "file": "skills/table-fitting-residuals/table-fitting-residuals.py",
+      "sha256": "e471c4a6bac08569ff9937d60d6e654d5f7eb8f4d295d8051ea528175e562172"
     },
     {
       "file": "START_HERE_zh-CN.md",
-      "sha256": "3b38f87aceb91c4344d501c45b79e14155a5f659acabc1072afa32b12e1ba240"
-    },
-    {
-      "file": "tests/guard/rdkit_notebook_resources.py",
-      "sha256": "d3e59e8702e16763927529f7b955eaf1c7360c2fe5364c255a8f49f01c1148a6"
+      "sha256": "5d9eda52ada61dfc6fe738e2d7af988effc128fbcd1497f3797ec56a3ae538af"
     },
     {
       "file": "tests/guard/test_platform_boundary.py",
-      "sha256": "b06326f792cfbd7ce9ea5528b6937ffe1628e792a717f22a6a4f31c53c681187"
-    },
-    {
-      "file": "tests/guard/test_rdkit_download_status.py",
-      "sha256": "4bda9a8d3e5869d33af0ee7279657844cbd5cb0272722acbcedef64d1ef99077"
-    },
-    {
-      "file": "tests/guard/test_skill_navigation.py",
-      "sha256": "da7b5bcd2a9ef0a407c965bc25e0ce65eee387a739c030176464bb143e8163f6"
+      "sha256": "28f6561c04c9b1a78f48567e4d51c80df6dcd8995a41436a43fa765ce50ffa17"
     },
     {
       "file": "tests/guard/test_workflow_gate.py",
       "sha256": "49ac1e8b1cb27ecd20df3137ea1f756f278deb9a66dd5b09c9ba148fc0f805b4"
     },
     {
+      "file": "tests/python/test_python_cli.py",
+      "sha256": "d8a50597f331e6eda8809b545d31ce803a227554f81d7e0f604ce16adf365640"
+    },
+    {
       "file": "tests/rdkit/test_runtime_stress.py",
-      "sha256": "c313432fd7b938135c3b026fa9e6ccc68d416b384beeb7675fe0380854427ca9"
+      "sha256": "6401cff265a68d56b2ba5123952ec43ab0fd95586aa75648a95982a95a174606"
     },
     {
       "file": "tools/check_platform_boundary.py",
-      "sha256": "1215cbec6084423f37af13003c986cf6be219f719544c2a59237974d583afe43"
+      "sha256": "1675d29b947f497814afd8ebfd34170e40e605617245088ed26c7d7ee5fb9ffc"
     },
     {
       "file": "tools/package_checked_skill.py",
