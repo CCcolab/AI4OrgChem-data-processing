@@ -2132,7 +2132,7 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/SKILL.md",
-      "sha256": "5ec84f397c4f0662cf63da90871d485c34aea42e8df99bc60f2862b214952049"
+      "sha256": "8f27067a628e6a81b2f87c6f13597d816831e133db897ee1bcac3e2bfed69a09"
     },
     {
       "file": "skills/organic-smiles-rdkit/assets/descriptors.png",
@@ -2148,27 +2148,27 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/downloads/SHA256SUMS.txt",
-      "sha256": "1a224465e6860376b5946ddb088f6b41efecb627862f8227710cc600edcef92c"
+      "sha256": "40680a4b2b04a3bda97c75070b6bf1d4b469c8ea880159bb71561b873703d2c5"
     },
     {
       "file": "skills/organic-smiles-rdkit/downloads/SKILL-md.zip",
-      "sha256": "1fb5017ca31cb6eeac00a52fc91fe79ad7f4abe339d3716c71b0ecf2e2575678"
+      "sha256": "11535202709d46dbe5ea87ac5bdb8b09f3ac376a7d5917fff2eb5d420cb5a96f"
     },
     {
       "file": "skills/organic-smiles-rdkit/downloads/SKILL-md.zip.sha256",
-      "sha256": "75b5f023a6b21b8c80b7a2f3c740caac7597bc287cd7f23a96d778ad8c4d35f3"
+      "sha256": "9b22f96e553c2f161d4884f1a3b06cf89a8bbe3991f81f743494f17c5058ee3d"
     },
     {
       "file": "skills/organic-smiles-rdkit/downloads/SKILL.md",
-      "sha256": "5ec84f397c4f0662cf63da90871d485c34aea42e8df99bc60f2862b214952049"
+      "sha256": "8f27067a628e6a81b2f87c6f13597d816831e133db897ee1bcac3e2bfed69a09"
     },
     {
       "file": "skills/organic-smiles-rdkit/downloads/organic-smiles-rdkit-python.zip",
-      "sha256": "d761049739330a044759b33b2540104e51d2da5851c5e948c0af0622193049ce"
+      "sha256": "1307084ce0e759b3dff60d91556615490a1d742b4f0fd059e5cec6f8697abac4"
     },
     {
       "file": "skills/organic-smiles-rdkit/downloads/organic-smiles-rdkit-python.zip.sha256",
-      "sha256": "fc27cf3ae464d315df770bc6d6273e7075b5a1a1cf9a294b5f6818466c87174a"
+      "sha256": "50e48964aa1d043f65d474c6bd9a02a763b4fd62df43bc7c1ebd7e9d9eb694e0"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/agent.py",
@@ -2268,7 +2268,7 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/resource-manifest.json",
-      "sha256": "6ac558f12653e8e81b82106eb1b4cd8b3479e0920135d9f5ab8d24ad0fbaf5fc"
+      "sha256": "497132f4bd96a63db96551cebdfce29406794cc5492ff90fd889973ff96b3f6c"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/sources.json",

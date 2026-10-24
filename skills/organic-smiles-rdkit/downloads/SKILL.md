@@ -30,7 +30,7 @@ description: 使用RDKit分析用户CSV中的有机分子SMILES，进行结构�
 
 将parse_status与descriptor_applicability分开：按组分、带电原子数、自由基及金属等提示解释范围；净电荷0不能排除盐或两性离子。盐/多组分的组合描述符不等于实际混合物物性，金属及自由基不能直接沿用普通闭壳层有机分子的亲脂性解释。保留可算数值并附警告，不另行脱盐、中和或归一化互变异构体，不伪装为实测。
 
-解析包含RDKit默认SanitizeMol清理，并非完全不改变图表达。例如CN(=O)=O会变成C[N+](=O)[O-]；cleanup_changes逐项报告清理阶段形式电荷及键类型的变化，警告PARSER_CLEANUP_CHANGED_GRAPH。芳香性识别及默认去显式氢也是解析约定。原子映射标签保留并提示ATOM_MAPPING_PRESENT；重复映射比较保留标签的规范字符串，不等同于忽略映射标签的化学身份比较。
+解析包含RDKit默认SanitizeMol清理，并非完全不改变图表达。例如`CN(=O)=O`会变成`C[N+](=O)[O-]`；cleanup_changes逐项报告清理阶段形式电荷及键类型的变化，警告PARSER_CLEANUP_CHANGED_GRAPH。芳香性识别及默认去显式氢也是解析约定。原子映射标签保留并提示ATOM_MAPPING_PRESENT；重复映射比较保留标签的规范字符串，不等同于忽略映射标签的化学身份比较。
 
 指纹碰撞和参数选择会影响相似度；分数为1不能单独证明化学身份相同或生物活性相同。Murcko骨架不是全部药效团。本Skill不提供结构编辑、联网数据库查询、活性或反应预测。
 
