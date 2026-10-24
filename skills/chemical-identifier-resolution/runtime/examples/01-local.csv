@@ -1,0 +1,4 @@
+id,query_type,query
+001,local_smiles,CCO
+002,local_smiles,OCC
+003,local_smiles,C[C@H](O)C(=O)O

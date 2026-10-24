@@ -68,13 +68,22 @@ def main():
     for id_ in rows:
         if rows[id_]['parse_status'] == 'VALID':
             assert runs['stereo-on'][id_]['canonical_isomeric_smiles'] == runs['stereo-off'][id_]['canonical_isomeric_smiles']
+    cleanup = json.loads(rows['NITRO_RAW']['stereo_details'])['cleanup_changes']
+    assert len(cleanup['atoms']) == 2 and len(cleanup['bonds']) == 1
+    assert not any(json.loads(rows['NITRO_CHARGED']['stereo_details'])['cleanup_changes'].values())
+    assert 'PARSER_CLEANUP_CHANGED_GRAPH' not in json.loads(rows['NITRO_CHARGED']['warning_codes'])
+    assert rows['MAPPED']['canonical_isomeric_smiles'] != rows['E01']['canonical_isomeric_smiles']
+    assert rows['ETHANOL_ALT']['canonical_isomeric_smiles'] == rows['E01']['canonical_isomeric_smiles']
+    checks += [{'check': name, 'status': 'PASS'} for name in [
+        'nitro_cleanup_exact_charge_and_bond_deltas', 'already_charged_nitro_no_cleanup_warning',
+        'mapped_identity_is_explicitly_label_sensitive', 'ethanol_alternative_same_canonical_key']]
     checks += [{'check': name, 'status': 'PASS'} for name in [
         'invalid_tag_cleanup_reported', 'isotope_formula_and_mass', 'explicit_deuterium_formula',
         'chirality_switch_affects_query_and_fingerprint_not_canonical_identity']]
     summary = {'status': 'PASS_CHEMICAL_SEMANTICS_DEFINED_REGRESSION',
-               'scope': 'Specified 29 authored boundary inputs, three parameter settings; not universal chemical validation',
+               'scope': 'Specified 33 authored boundary inputs, three parameter settings; not universal chemical validation',
                'model_calls': 0, 'checks': checks, 'parameters': base,
-               'version': 'rdkit-small-organic-semantics-1'}
+               'version': 'rdkit-small-organic-semantics-2'}
     (output / 'chemical-semantics-acceptance.json').write_text(
         json.dumps(summary, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(summary['status'], len(checks), 'checks; model_calls=0')

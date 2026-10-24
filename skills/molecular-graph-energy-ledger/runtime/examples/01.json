@@ -1,0 +1,27 @@
+{
+  "parameters": {
+    "mode": "graph",
+    "query_smarts": "[CX3](=O)[OX2H1]",
+    "include_chirality": true
+  },
+  "data": {
+    "molecules": [
+      {
+        "id": "acid",
+        "smiles": "CC(=O)O"
+      },
+      {
+        "id": "anion",
+        "smiles": "CC(=O)[O-]"
+      },
+      {
+        "id": "carbonic",
+        "smiles": "O=C(O)O"
+      }
+    ]
+  },
+  "provenance": {
+    "kind": "AUTHORED_TEACHING_INPUT",
+    "description": "Project-authored public small structures; not measured data."
+  }
+}

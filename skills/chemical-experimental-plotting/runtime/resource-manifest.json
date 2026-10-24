@@ -1,0 +1,42 @@
+[
+  {
+    "file": "SKILL.md",
+    "sha256": "11d958f0a497471cdbc27a40ecc409d97055494aa39db867464d4df93c05ff18"
+  },
+  {
+    "file": "runtime/examples/01-scatter.csv",
+    "sha256": "4a96f770359479df34283f4147c17fb7b0bbaeb5feeb748248b4bfae29014d12"
+  },
+  {
+    "file": "runtime/examples/01_scatter.py",
+    "sha256": "a8d5419dbff560514625d93966697e4c2c203a4d2642c86f31fe9740c3ca008b"
+  },
+  {
+    "file": "runtime/examples/02-supplied.csv",
+    "sha256": "b641bb96666bce7119eff3123c30521c56810edaf6dc6ee0c4b7b86dec08f0d2"
+  },
+  {
+    "file": "runtime/examples/02_supplied.py",
+    "sha256": "4e257faf8976d45b0ac9797083be3b8c911a39be55fddcdba39ab60282824bdb"
+  },
+  {
+    "file": "runtime/examples/03-replicates.csv",
+    "sha256": "2acca1aa4083a30e3ae77a97b9b9dd98209f904a4067a4815e4c438758bb2ff0"
+  },
+  {
+    "file": "runtime/examples/03_replicates.py",
+    "sha256": "43514636b4bd4670e3effdf14d69c2c7d3783873d6f542f42890724c895052da"
+  },
+  {
+    "file": "runtime/examples/call_skill_template.py",
+    "sha256": "3d2983ccc5b5ce3581930a61595013bc89180c02715dbb2adbc83579bad20db5"
+  },
+  {
+    "file": "runtime/plot_experiment.py",
+    "sha256": "83a6c74b92fc808156e2378450cbc7260c812aaf58600b2cc68ac57920355924"
+  },
+  {
+    "file": "runtime/requirements.txt",
+    "sha256": "7f23be70c09a55aa5d8fae7a4ae2a74cd6d50e19e23ace52f2a6437ac078ce5a"
+  }
+]

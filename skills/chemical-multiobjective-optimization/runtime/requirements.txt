@@ -1,0 +1,5 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+numpy==1.26.4
+torch==2.14.1+cpu
+botorch==0.18.1
+gpytorch==1.15.2

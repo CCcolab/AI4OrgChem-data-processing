@@ -52,34 +52,20 @@ def strict_json(path):
 def verify_resources(page):
     root = page / "runtime"
     rows = strict_json(root / "resource-manifest.json")
-    if not isinstance(rows, list) or not rows:
-        raise ValueError("资源清单无效。")
-    if any(
-        not isinstance(row, dict)
-        or set(row) != {"file", "sha256"}
-        or not isinstance(row["file"], str)
-        or not isinstance(row["sha256"], str)
-        or re.fullmatch(r"[0-9a-f]{64}", row["sha256"]) is None
-        for row in rows
-    ):
-        raise ValueError("资源清单字段或哈希无效。")
-    names = [row["file"] for row in rows]
-    actual = {
-        p.name
-        for p in root.iterdir()
-        if p.is_file() and p.name != "resource-manifest.json"
-    }
-    if len(names) != len(set(names)) or set(names) != actual:
-        raise ValueError("资源清单缺失、多余或重复。")
+    seen = set()
     for row in rows:
-        name = row["file"]
-        if Path(name).name != name or "/" in name or "\\" in name:
-            raise ValueError("资源路径不合法。")
-        path = root / name
-        if path.is_symlink() or digest(path.read_bytes()) != row["sha256"]:
-            raise ValueError("资源SHA-256不一致：" + name)
-    if (page / "SKILL.md").read_bytes() != (root / "SKILL.md").read_bytes():
-        raise ValueError("顶层SKILL.md与运行资源不一致。")
+        name = row['file']
+        path = page / name
+        if name in seen or path.is_symlink() or not path.resolve().is_relative_to(page):
+            raise ValueError('Invalid or repeated resource path')
+        if digest(path.read_bytes()) != row['sha256']:
+            raise ValueError('Resource hash mismatch: ' + name)
+        seen.add(name)
+    if not {'SKILL.md', 'runtime/skill_agent.py', 'runtime/python_runner.py',
+            'runtime/caffeine-calibration.csv', 'runtime/requirements.txt'}.issubset(seen):
+        raise ValueError('Required resources missing')
+    if (page / 'SKILL.md').read_bytes() != (root / 'SKILL.md').read_bytes():
+        raise ValueError('Skill snapshot mismatch')
     return root
 
 
@@ -95,7 +81,7 @@ def check_environment(root):
             actual[name] = importlib.metadata.version(name)
         except importlib.metadata.PackageNotFoundError:
             raise RuntimeError(
-                "缺少依赖；请先运行 python -m pip install -r requirements.txt。"
+                "缺少依赖；请先运行 python -m pip install -r runtime/requirements.txt。"
             ) from None
         # RDKit metadata normalizes a zero-padded release component.
         if tuple(int(x) for x in actual[name].split(".")) != tuple(
@@ -286,7 +272,7 @@ def verify_output(output):
 
 
 def main(kind, entry):
-    page = Path(entry).resolve().parent
+    page = Path(entry).resolve().parents[1]
     parser = argparse.ArgumentParser(
         description="本地Python计算；默认不联网、不读取密钥。"
     )

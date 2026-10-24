@@ -1,0 +1,42 @@
+{
+  "parameters": {
+    "coordinate_unit": "angstrom",
+    "energy_unit": "hartree",
+    "center_index": 1,
+    "state_id": "toy-closed-shell",
+    "method_id": "AUTHORED_ANALYTIC_FUNCTION",
+    "geometry_definition": "Synthetic scalar q, not a molecular geometry"
+  },
+  "data": {
+    "points": [
+      {
+        "coordinate": -0.1,
+        "energy_hartree": 0.8300000000000001,
+        "state_id": "toy-closed-shell",
+        "method_id": "AUTHORED_ANALYTIC_FUNCTION",
+        "converged": true,
+        "source_id": "analytic-1-plus-2q-plus-3q2-0"
+      },
+      {
+        "coordinate": 0,
+        "energy_hartree": 1,
+        "state_id": "toy-closed-shell",
+        "method_id": "AUTHORED_ANALYTIC_FUNCTION",
+        "converged": true,
+        "source_id": "analytic-1-plus-2q-plus-3q2-1"
+      },
+      {
+        "coordinate": 0.2,
+        "energy_hartree": 1.52,
+        "state_id": "toy-closed-shell",
+        "method_id": "AUTHORED_ANALYTIC_FUNCTION",
+        "converged": true,
+        "source_id": "analytic-1-plus-2q-plus-3q2-2"
+      }
+    ]
+  },
+  "provenance": {
+    "kind": "AUTHORED_TEACHING_INPUT",
+    "description": "Authored analytic E(q)=q^2/2; convergence labels are synthetic, not an SCF claim."
+  }
+}

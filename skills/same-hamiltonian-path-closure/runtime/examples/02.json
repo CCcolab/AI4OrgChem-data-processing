@@ -1,0 +1,47 @@
+{
+  "parameters": {
+    "operator_id": "toy-H",
+    "basis_id": "toy-basis",
+    "geometry_id": "toy-fixed-geometry",
+    "electron_count": 2,
+    "atol_hartree": 1e-09
+  },
+  "data": {
+    "edges": [
+      {
+        "operator_id": "toy-H",
+        "basis_id": "toy-basis",
+        "geometry_id": "toy-fixed-geometry",
+        "electron_count": 2,
+        "from": "A",
+        "to": "B",
+        "delta_hartree": "0.1",
+        "source_id": "toy-AB"
+      },
+      {
+        "operator_id": "toy-H",
+        "basis_id": "toy-basis",
+        "geometry_id": "toy-fixed-geometry",
+        "electron_count": 2,
+        "from": "B",
+        "to": "C",
+        "delta_hartree": "0.2",
+        "source_id": "toy-BC"
+      },
+      {
+        "operator_id": "toy-H",
+        "basis_id": "toy-basis",
+        "geometry_id": "toy-fixed-geometry",
+        "electron_count": 2,
+        "from": "C",
+        "to": "A",
+        "delta_hartree": "-0.29",
+        "source_id": "toy-CA"
+      }
+    ]
+  },
+  "provenance": {
+    "kind": "AUTHORED_TEACHING_INPUT",
+    "description": "Synthetic directed-cycle numbers, not independently measured energies."
+  }
+}

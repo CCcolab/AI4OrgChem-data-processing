@@ -1,0 +1,13 @@
+{
+  "parameters": {
+    "mode": "route",
+    "intent": "fixed_water_rhf"
+  },
+  "data": {
+    "user_goal": "Prepare registered fixed-water ordinary RHF route only."
+  },
+  "provenance": {
+    "kind": "AUTHORED_TEACHING_INPUT",
+    "description": "Project-authored routing request; no installed backend or new compute is assumed."
+  }
+}

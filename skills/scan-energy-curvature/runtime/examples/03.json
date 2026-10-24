@@ -1,0 +1,58 @@
+{
+  "parameters": {
+    "coordinate_unit": "angstrom",
+    "energy_unit": "hartree",
+    "center_index": 2,
+    "state_id": "toy-closed-shell",
+    "method_id": "AUTHORED_ANALYTIC_FUNCTION",
+    "geometry_definition": "Synthetic scalar q, not a molecular geometry"
+  },
+  "data": {
+    "points": [
+      {
+        "coordinate": -0.2,
+        "energy_hartree": 0.020000000000000004,
+        "state_id": "toy-closed-shell",
+        "method_id": "AUTHORED_ANALYTIC_FUNCTION",
+        "converged": true,
+        "source_id": "analytic-0.5-q-squared-0"
+      },
+      {
+        "coordinate": -0.1,
+        "energy_hartree": 0.005000000000000001,
+        "state_id": "toy-closed-shell",
+        "method_id": "AUTHORED_ANALYTIC_FUNCTION",
+        "converged": true,
+        "source_id": "analytic-0.5-q-squared-1"
+      },
+      {
+        "coordinate": 0,
+        "energy_hartree": 0.0,
+        "state_id": "toy-closed-shell",
+        "method_id": "AUTHORED_ANALYTIC_FUNCTION",
+        "converged": true,
+        "source_id": "analytic-0.5-q-squared-2"
+      },
+      {
+        "coordinate": 0.1,
+        "energy_hartree": 0.005000000000000001,
+        "state_id": "different-state",
+        "method_id": "AUTHORED_ANALYTIC_FUNCTION",
+        "converged": true,
+        "source_id": "analytic-0.5-q-squared-3"
+      },
+      {
+        "coordinate": 0.2,
+        "energy_hartree": 0.020000000000000004,
+        "state_id": "toy-closed-shell",
+        "method_id": "AUTHORED_ANALYTIC_FUNCTION",
+        "converged": true,
+        "source_id": "analytic-0.5-q-squared-4"
+      }
+    ]
+  },
+  "provenance": {
+    "kind": "AUTHORED_TEACHING_INPUT",
+    "description": "Authored analytic E(q)=q^2/2; convergence labels are synthetic, not an SCF claim."
+  }
+}

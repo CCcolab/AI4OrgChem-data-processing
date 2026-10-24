@@ -1,0 +1,4 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+numpy==1.26.4
+rdkit==2026.3.6
+torch==2.14.1+cpu

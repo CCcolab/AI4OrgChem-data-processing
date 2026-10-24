@@ -69,7 +69,7 @@ def verified_resources(root):
         p = Path(name)
         if p.is_absolute() or ".." in p.parts or ":" in name:
             raise ValueError("Invalid resource name")
-        if digest((root / name).read_bytes()) != r["sha256"]:
+        if digest((root.parent / name).read_bytes()) != r["sha256"]:
             raise ValueError("Resource hash mismatch: " + name)
     return rows
 

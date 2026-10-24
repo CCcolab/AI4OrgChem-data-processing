@@ -64,7 +64,7 @@ class PythonCliTests(unittest.TestCase):
     def cli(cls, id_, *args, page=None):
         page = page or ROOT / "skills" / id_
         return subprocess.run(
-            [sys.executable, "-B", str(page / (("runtime/" if id_ == IDS[0] else "") + id_ + ".py")), *args],
+            [sys.executable, "-B", str(page / ("runtime/" + id_ + ".py")), *args],
             cwd=cls.base,
             env=cls.env,
             capture_output=True,

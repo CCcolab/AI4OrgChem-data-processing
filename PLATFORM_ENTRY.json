@@ -12,5 +12,14 @@
   "legacy_web_enabled": false,
   "visibility": "PRIVATE",
   "execution": "local_python",
-  "default_model_required": false
+  "default_model_required": false,
+  "catalog_items": 33,
+  "distribution_status": "PYTHON_SKILLS_WITH_EXPLICIT_BACKEND_GAPS",
+  "backend_pending_skills": [
+    "rhf-single-point",
+    "orbital-localization-density",
+    "fixed-protocol-energy-review",
+    "constrained-optimization-response",
+    "multistate-size-comparison"
+  ]
 }

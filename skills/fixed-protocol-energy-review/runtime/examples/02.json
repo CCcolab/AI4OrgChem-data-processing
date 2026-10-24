@@ -1,0 +1,75 @@
+{
+  "parameters": {
+    "protocol_id": "AUTHORED_CONDITIONAL_LEDGER_ONLY",
+    "protocol_version": "1",
+    "method_id": "SYNTHETIC_NO_SCF",
+    "basis_id": "NONE",
+    "geometry_id": "toy-fixed",
+    "atol_hartree": 1e-09
+  },
+  "data": {
+    "states": [
+      {
+        "protocol_id": "AUTHORED_CONDITIONAL_LEDGER_ONLY",
+        "protocol_version": "1",
+        "method_id": "SYNTHETIC_NO_SCF",
+        "basis_id": "NONE",
+        "geometry_id": "toy-fixed",
+        "role": "ordinary",
+        "operator_definition": "Authored ordinary ledger, not a QM endpoint",
+        "occupation_definition": "Authored label, no orbitals",
+        "converged": true,
+        "endpoint_qualified": true,
+        "terms": [
+          {
+            "id": "ordinary-a",
+            "value_hartree": "-1",
+            "coefficient": "1",
+            "source_id": "toy-a"
+          },
+          {
+            "id": "ordinary-b",
+            "value_hartree": "0.2",
+            "coefficient": "1",
+            "source_id": "toy-b"
+          }
+        ],
+        "reported_total_hartree": "-0.8",
+        "total_source_id": "toy-ordinary-sum-oracle"
+      },
+      {
+        "protocol_id": "AUTHORED_CONDITIONAL_LEDGER_ONLY",
+        "protocol_version": "1",
+        "method_id": "SYNTHETIC_NO_SCF",
+        "basis_id": "NONE",
+        "geometry_id": "other-geometry",
+        "role": "conditional",
+        "operator_definition": "Authored changed-functional ledger; not physical energy",
+        "occupation_definition": "Authored label, no orbitals",
+        "converged": true,
+        "endpoint_qualified": true,
+        "terms": [
+          {
+            "id": "conditional-a",
+            "value_hartree": "-1",
+            "coefficient": "1",
+            "source_id": "toy-c"
+          },
+          {
+            "id": "conditional-b",
+            "value_hartree": "0.4",
+            "coefficient": "1",
+            "source_id": "toy-d"
+          }
+        ],
+        "reported_total_hartree": "-0.6",
+        "total_source_id": "toy-conditional-sum-oracle"
+      }
+    ],
+    "comparison_definition": "Synthetic functional difference for arithmetic only, not a bond or excitation energy"
+  },
+  "provenance": {
+    "kind": "AUTHORED_TEACHING_INPUT",
+    "description": "Synthetic protocol/energy/qualification flags. No ordinary or conditional SCF was executed."
+  }
+}

@@ -1,0 +1,54 @@
+[
+  {
+    "file": "SKILL.md",
+    "sha256": "8c0bdbc27a4f37af544d737cfd7d5217b6380b3ff8492288d401f8ea8879f638"
+  },
+  {
+    "file": "runtime/analysis.py",
+    "sha256": "ef2f29a3b3e3d9cba08a98b42587df47a134fa11bef81e831d554bb6e90a40b9"
+  },
+  {
+    "file": "runtime/examples/01.json",
+    "sha256": "9d070ccf0ff9c4af4acdcbf2d134c1b8df4010c066a6b39942f223012d06fe44"
+  },
+  {
+    "file": "runtime/examples/01_case.py",
+    "sha256": "3e4c17711cde89be52fd16d20527458af433286d22c345034220f201f62124fc"
+  },
+  {
+    "file": "runtime/examples/02.json",
+    "sha256": "b3f43b2d11cab6f17046885001d2dea44dc25d5261c89e148e7b171124fb5e6a"
+  },
+  {
+    "file": "runtime/examples/02_case.py",
+    "sha256": "3cf7d9788a5e457b3efcc21b588d36b4e7f755cee010e478d14d289f340c0958"
+  },
+  {
+    "file": "runtime/examples/03.json",
+    "sha256": "e3e1a16264ded76cdb40a2f256ed669824a7eb3291ee402e1b5df1ec679290a1"
+  },
+  {
+    "file": "runtime/examples/03_case.py",
+    "sha256": "fd9171eafc927c7b6d85e0ac63127ed7bda1dbb992f95660b2d443605c96437c"
+  },
+  {
+    "file": "runtime/examples/call_skill_template.py",
+    "sha256": "60ad78bd496f8ad45d2c98bc02ab6e86aeaa1abc8b2cd1893695bf97779e871b"
+  },
+  {
+    "file": "runtime/requirements.txt",
+    "sha256": "33eb232b2ead4ffff0e3b1256e457b26477d2ea6eded746b44a2bbcb53463814"
+  },
+  {
+    "file": "runtime/run_skill.py",
+    "sha256": "634a1309ef0e81731440c30b99207fc59a4efd420da4c64b1f1d802d53b5753f"
+  },
+  {
+    "file": "runtime/sources.json",
+    "sha256": "f9d2fc7639e2cf89eb5c014d4345169f82bac715e08d6130073d982bd824d4a2"
+  },
+  {
+    "file": "runtime/support.py",
+    "sha256": "03f4e4fc256967fd932a007df2ec483c0206c4f3827acf8cdbb5054ff4ef1f51"
+  }
+]

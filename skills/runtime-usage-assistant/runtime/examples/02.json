@@ -1,0 +1,13 @@
+{
+  "parameters": {
+    "mode": "route",
+    "intent": "conditional_user_compute"
+  },
+  "data": {
+    "user_goal": "Request an arbitrary user conditional calculation; must refuse."
+  },
+  "provenance": {
+    "kind": "AUTHORED_TEACHING_INPUT",
+    "description": "Project-authored routing request; no installed backend or new compute is assumed."
+  }
+}

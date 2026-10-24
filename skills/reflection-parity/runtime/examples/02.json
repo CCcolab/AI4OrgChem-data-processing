@@ -1,0 +1,42 @@
+{
+  "parameters": {
+    "atol": 1e-08,
+    "mirror_definition": "Authored 2D reflection exchanging two basis vectors"
+  },
+  "data": {
+    "overlap": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "reflection": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    "basis": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ]
+  },
+  "provenance": {
+    "kind": "AUTHORED_TEACHING_INPUT",
+    "description": "Authored full-space parity algebra."
+  }
+}

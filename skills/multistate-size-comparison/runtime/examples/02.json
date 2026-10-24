@@ -1,0 +1,63 @@
+{
+  "parameters": {
+    "protocol_id": "toy-weighted-state-table",
+    "method_id": "SYNTHETIC_NO_SCF",
+    "basis_id": "NONE",
+    "weight_atol": 1e-10,
+    "expected_states": {
+      "small": [
+        "a",
+        "b"
+      ],
+      "large": [
+        "a",
+        "b"
+      ]
+    },
+    "comparison_definition": "Separate fixed-weight averages per synthetic size label; no cross-composition energy subtraction"
+  },
+  "data": {
+    "states": [
+      {
+        "size": "small",
+        "id": "a",
+        "energy_hartree": 0,
+        "weight": 0.25,
+        "eligible": true,
+        "source_id": "toy-small-a",
+        "state_definition": "Authored synthetic label, not an electronic state",
+        "protocol_id": "toy-weighted-state-table",
+        "method_id": "SYNTHETIC_NO_SCF",
+        "basis_id": "NONE"
+      },
+      {
+        "size": "small",
+        "id": "b",
+        "energy_hartree": 1,
+        "weight": 0.75,
+        "eligible": true,
+        "source_id": "toy-small-b",
+        "state_definition": "Authored synthetic label, not an electronic state",
+        "protocol_id": "toy-weighted-state-table",
+        "method_id": "SYNTHETIC_NO_SCF",
+        "basis_id": "NONE"
+      },
+      {
+        "size": "large",
+        "id": "a",
+        "energy_hartree": 0.2,
+        "weight": 0.25,
+        "eligible": true,
+        "source_id": "toy-large-a",
+        "state_definition": "Authored synthetic label, not an electronic state",
+        "protocol_id": "toy-weighted-state-table",
+        "method_id": "SYNTHETIC_NO_SCF",
+        "basis_id": "NONE"
+      }
+    ]
+  },
+  "provenance": {
+    "kind": "AUTHORED_TEACHING_INPUT",
+    "description": "Synthetic energy-like values and fixed weights, no state optimizations or statistical-mechanical populations."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "parameters": {
+    "mode": "route",
+    "intent": "saved_ao_review"
+  },
+  "data": {
+    "user_goal": "Review supplied AO arrays without launching a new SCF."
+  },
+  "provenance": {
+    "kind": "AUTHORED_TEACHING_INPUT",
+    "description": "Project-authored routing request; no installed backend or new compute is assumed."
+  }
+}

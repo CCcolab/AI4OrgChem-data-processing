@@ -1,0 +1,7 @@
+id,batch,yield_pct
+001,A,0
+002,A,
+003,A,bad
+004,A,105
+005,A,inf
+006,NA,75

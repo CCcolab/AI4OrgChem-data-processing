@@ -199,7 +199,7 @@ class ChemistryRegressionTests(WorkspaceTest):
                         result = tool.analyze(root, params, output)
                         self.assertEqual(
                             (result["records"], result["valid"], result["rejected"]),
-                            (29, 24, 5),
+                            (33, 28, 5),
                         )
                         self.assertTrue(all(result["checks"].values()))
                         self.assertEqual(len(result["checks"]), 6)
@@ -419,7 +419,7 @@ class ExplicitSemanticRegressionTests(WorkspaceTest):
         self.assertEqual(process.returncode, 0, process.stderr.decode('utf-8', errors='replace'))
         result = json.loads((output / 'chemical-semantics-acceptance.json').read_bytes())
         self.assertEqual(result['status'], 'PASS_CHEMICAL_SEMANTICS_DEFINED_REGRESSION')
-        self.assertEqual(len(result['checks']), 36)
+        self.assertEqual(len(result['checks']), 44)
         self.assertEqual(result['model_calls'], 0)
 
 

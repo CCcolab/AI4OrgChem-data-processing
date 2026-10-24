@@ -1,0 +1,38 @@
+{
+  "parameters": {
+    "atol": 1e-08,
+    "rank_rtol": 1e-10
+  },
+  "data": {
+    "overlap": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "basis": [
+      [
+        1
+      ],
+      [
+        0
+      ]
+    ],
+    "vectors": [
+      [
+        0
+      ],
+      [
+        0
+      ]
+    ]
+  },
+  "provenance": {
+    "kind": "AUTHORED_TEACHING_INPUT",
+    "description": "Authored zero-vector fixture; relative leakage must be undefined, not zero."
+  }
+}

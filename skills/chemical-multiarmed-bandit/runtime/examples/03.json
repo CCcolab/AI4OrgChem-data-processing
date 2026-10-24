@@ -1,0 +1,42 @@
+{
+  "parameters": {
+    "mode": "replay",
+    "algorithm": "ucb",
+    "seed": 17,
+    "budget": 80,
+    "exploration": 1.0
+  },
+  "data": {
+    "arms": [
+      "A",
+      "B",
+      "C"
+    ],
+    "history": [
+      {
+        "arm": "A",
+        "reward": 0,
+        "source_id": "AUTHORED_0"
+      },
+      {
+        "arm": "B",
+        "reward": 1,
+        "source_id": "AUTHORED_1"
+      },
+      {
+        "arm": "C",
+        "reward": 1,
+        "source_id": "AUTHORED_2"
+      },
+      {
+        "arm": "C",
+        "reward": 0,
+        "source_id": "AUTHORED_3"
+      }
+    ]
+  },
+  "provenance": {
+    "kind": "AUTHORED_TEACHING_INPUT",
+    "description": "Authored observation history; recommendation remains pending and is not counted."
+  }
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "file": "SKILL.md",
+    "sha256": "ec225a3155d0f05b9b3e579e841ad62a0cc8ee0522b489335d41403545f5a00e"
+  },
+  {
+    "file": "runtime/examples/01-local.csv",
+    "sha256": "2204e2e163066f35551ce7df949e82f4dc812683afef49962d26bacb0df1135c"
+  },
+  {
+    "file": "runtime/examples/01_local.py",
+    "sha256": "aeb28bdd7aa0734bfa11bc347d690b446a071bb6452edfc94a678489b986ce15"
+  },
+  {
+    "file": "runtime/examples/02-pubchem.csv",
+    "sha256": "2169dbf6d4e0e4735ba70e82cd3949705fb6b61917c9ab7d7b59a627436be769"
+  },
+  {
+    "file": "runtime/examples/02_pubchem.py",
+    "sha256": "af15e9177b9364bbe53b7b45ed1f3245ac42b370cdbea9797b2db9855546d173"
+  },
+  {
+    "file": "runtime/examples/03-cir.csv",
+    "sha256": "ac1a05d852ca9c805955643fd612c88f3b42ca3196a113580664a05b426bd76a"
+  },
+  {
+    "file": "runtime/examples/03_cir.py",
+    "sha256": "e2a75c6f16b72f0aa92c66245e8372f2766d710a33488c89d44b13ca0a17cf66"
+  },
+  {
+    "file": "runtime/examples/call_skill_template.py",
+    "sha256": "fa4cad5214f74202d9ff5a1671325af008a05cdabeb9e0a07747a3492592b731"
+  },
+  {
+    "file": "runtime/requirements.txt",
+    "sha256": "49e6bca42d1ba9442f7c6570cb4a2d4a4cb23c434471987912348074eafd0938"
+  },
+  {
+    "file": "runtime/resolve_identifiers.py",
+    "sha256": "6097ffdfb5ca41fe4a875dbf901f09796652021299bcd9492d394c6593cdcef1"
+  }
+]

@@ -239,5 +239,38 @@
     "equals": {
       "parse_status": "VALID"
     }
+  },
+  "NITRO_RAW": {
+    "equals": {
+      "parse_status": "VALID",
+      "canonical_isomeric_smiles": "C[N+](=O)[O-]"
+    },
+    "warnings": [
+      "PARSER_CLEANUP_CHANGED_GRAPH",
+      "CHARGED_ATOMS"
+    ]
+  },
+  "NITRO_CHARGED": {
+    "equals": {
+      "parse_status": "VALID",
+      "canonical_isomeric_smiles": "C[N+](=O)[O-]"
+    },
+    "warnings": [
+      "CHARGED_ATOMS"
+    ]
+  },
+  "MAPPED": {
+    "equals": {
+      "parse_status": "VALID"
+    },
+    "warnings": [
+      "ATOM_MAPPING_PRESENT"
+    ]
+  },
+  "ETHANOL_ALT": {
+    "equals": {
+      "parse_status": "VALID",
+      "canonical_isomeric_smiles": "CCO"
+    }
   }
 }

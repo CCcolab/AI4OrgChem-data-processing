@@ -1,42 +1,74 @@
 [
   {
-    "file": "caffeine-calibration.csv",
+    "file": "SKILL.md",
+    "sha256": "1f06aa4bed5b21878f05a3b7854ce571bb73c08b2a3d6917f1dc7386745ccbe1"
+  },
+  {
+    "file": "runtime/caffeine-calibration.csv",
     "sha256": "e1ad5d64e7fa286dc7b3a5c871579710e9245280ccf09bd087e917e3d63576db"
   },
   {
-    "file": "credential_config.py",
+    "file": "runtime/credential_config.py",
     "sha256": "1853ba84938b94ddc412b1495125428c964ef72ca7d48d68cb718ad58081f9b1"
   },
   {
-    "file": "data-provenance.json",
+    "file": "runtime/data-provenance.json",
     "sha256": "6f0b4a59a50e7de5623c3a012454505eb0f343b9a535a9f91ae24f00b23d1d50"
   },
   {
-    "file": "parameters.json",
+    "file": "runtime/examples/02-linear.csv",
+    "sha256": "747c3a4e693fc20b9965969af37823e3386270d779bc57edbe1440d1baf32c28"
+  },
+  {
+    "file": "runtime/examples/02_linear.py",
+    "sha256": "26ba8f97f8316e0d692110cf5c4712ecd961568cf5df7618f20fdbb1e81042e7"
+  },
+  {
+    "file": "runtime/examples/03-weighted.csv",
+    "sha256": "082d8e31f91a325e60949e7bda833718b3ddb0c0e316d521fe4e4a77044651d4"
+  },
+  {
+    "file": "runtime/examples/03_weighted.py",
+    "sha256": "0a7094d3fcbfaabf0256ff40aaeb3cd7daf95b0a1f52449c06fc1ad69c653edc"
+  },
+  {
+    "file": "runtime/examples/call_skill_template.py",
+    "sha256": "a3820461f5f91f39d8132f44aac37e22696d0cb93c1458d916c54b24911aa8e8"
+  },
+  {
+    "file": "runtime/fit_csv.py",
+    "sha256": "f548e5dbeeab2c5cbf4eba7a310d4287b55c3b9d6c0998b9e8c716c05d47e448"
+  },
+  {
+    "file": "runtime/parameters.json",
     "sha256": "b6abebd4aefb940dd6ddd4453da711a2ef8e5973382388bf8af32500ece37d3e"
   },
   {
-    "file": "python_runner.py",
-    "sha256": "1ceac614040a4b3d4ec6ddc280e2aeb80a9353a018e960efed781532c5d0dc8b"
+    "file": "runtime/python_runner.py",
+    "sha256": "4a36dc4c317837e5a0ab963e3a3eec5cc47569805570bbcbceb541a400345a22"
   },
   {
-    "file": "requirements.txt",
+    "file": "runtime/requirements.txt",
     "sha256": "7e6a0f6132874f4aefd68c4268b030858ce5759d865d4319a946d1249c14eeeb"
   },
   {
-    "file": "SKILL.md",
-    "sha256": "f74110f1618342d7503c996a54060073ce3f64a570c2db8d184ec594a4950e6a"
+    "file": "runtime/SKILL.md",
+    "sha256": "1f06aa4bed5b21878f05a3b7854ce571bb73c08b2a3d6917f1dc7386745ccbe1"
   },
   {
-    "file": "skill_agent.py",
-    "sha256": "7d926f59f7053d8092c5dba42e74f4f3df5bc8f73e660aa53f93bb42f969c58a"
+    "file": "runtime/skill_agent.py",
+    "sha256": "d052e5551ace25125f3ded9bfe935d8b58346928e44080fb46cf600600cea2d2"
   },
   {
-    "file": "sources.json",
+    "file": "runtime/sources.json",
     "sha256": "82f71b267054287f3d1a21b98ae738c61eebe36d85c56f16c60e18732f62ba96"
   },
   {
-    "file": "task-template.txt",
+    "file": "runtime/table-fitting-residuals.py",
+    "sha256": "170071299ea393e0425dba48d458f3f9054068c2b7b612082d420eef94a5c57c"
+  },
+  {
+    "file": "runtime/task-template.txt",
     "sha256": "b35d2055977c7a600ddaefe768cfddee2c87d4100695b0ec616d9f54d2a1bbc9"
   }
 ]

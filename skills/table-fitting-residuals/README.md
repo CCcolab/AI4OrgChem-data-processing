@@ -70,7 +70,7 @@ $$e_i=y_i-\hat y_i,\qquad x_{sample}=(y_{sample}-a)/b.$$
 
 ## 调用、参数与对应输出
 
-默认：`python table-fitting-residuals.py --output ../fit-default`。参数模板见[runtime/parameters.json](runtime/parameters.json)。
+默认：`python runtime/table-fitting-residuals.py --output ../fit-default`。参数模板见[runtime/parameters.json](runtime/parameters.json)。
 
 | 参数 | 含义 | 对应输出 |
 | --- | --- | --- |
@@ -86,13 +86,13 @@ $$e_i=y_i-\hat y_i,\qquad x_{sample}=(y_{sample}-a)/b.$$
 
 ### 1. 下载并在Windows短路径解压
 
-下载[完整Python代码包](downloads/table-fitting-residuals-python.zip?raw=1)；私有仓库下载需要已有访问权限。程序入口为`table-fitting-residuals.py`，必须与`runtime`目录保持同级，不能只下载入口文件。
+下载[完整Python代码包](downloads/table-fitting-residuals-python.zip)；私有仓库下载需要已有访问权限。程序入口与全部依赖均在runtime，顶层只有README.md和SKILL.md；必须解压完整代码包。
 
 **Windows请使用有写入权限的短目录，避免在多层长目录中安装依赖。** 例如把ZIP“全部解压”到`D:\Chem\t`，解压后进入`D:\Chem\t\table-fitting-residuals`。没有D盘时使用自己可写入的其它短目录，并替换下面示例路径。两个Skill分别解压到独立目录。
 
 如果安装NumPy时出现`No such file or directory`，且路径很长或提示`Windows Long Path support`，请保留原目录，在更短的新目录重新解压并重新建立环境；无需修改系统长路径设置。
 
-在含`README.md`、`requirements.txt`和`.py`的Skill文件夹打开PowerShell，或先执行：
+在含`README.md`、`SKILL.md`和`runtime`的Skill文件夹打开PowerShell，或先执行：
 
 ```powershell
 Set-Location -LiteralPath 'D:\Chem\t\table-fitting-residuals'
@@ -105,9 +105,9 @@ Set-Location -LiteralPath 'D:\Chem\t\table-fitting-residuals'
 ```powershell
 python --version
 python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m pip install -r runtime\requirements.txt
 .\.venv\Scripts\python.exe -m pip check
-.\.venv\Scripts\python.exe table-fitting-residuals.py --output ..\fit-default
+.\.venv\Scripts\python.exe runtime\table-fitting-residuals.py --output ..\fit-default
 ```
 
 首次安装依赖需要联网；默认数值计算不需要模型账号、API密钥或`.env`，不会调用模型。看到`PASS_LOCAL_NUMERICAL`后，在Skill目录的上一层找到`fit-default`结果文件夹。
@@ -133,8 +133,8 @@ Copy-Item -LiteralPath runtime\parameters.json -Destination my-parameters.json
 回到同一个PowerShell窗口，运行到另一新目录并校验：
 
 ```powershell
-.\.venv\Scripts\python.exe table-fitting-residuals.py --params my-parameters.json --output ..\fit-three-points
-.\.venv\Scripts\python.exe table-fitting-residuals.py --verify ..\fit-three-points
+.\.venv\Scripts\python.exe runtime\table-fitting-residuals.py --params my-parameters.json --output ..\fit-three-points
+.\.venv\Scripts\python.exe runtime\table-fitting-residuals.py --verify ..\fit-three-points
 ```
 
 默认使用4点，反算浓度约94.37792858 mg/L；修改后使用3点，查看拟合系数、残差和反算浓度的变化。每轮实际参数在结果的`parameters.json`和程序回执中保存；`--verify`只核对已有文件和ZIP的SHA-256，不重复计算。
@@ -147,7 +147,7 @@ Copy-Item -LiteralPath runtime\parameters.json -Destination my-parameters.json
 
 ```powershell
 Copy-Item -LiteralPath ..\fit-default -Destination ..\fit-default-saved -Recurse
-.\.venv\Scripts\python.exe table-fitting-residuals.py --verify ..\fit-default-saved
+.\.venv\Scripts\python.exe runtime\table-fitting-residuals.py --verify ..\fit-default-saved
 Get-FileHash -LiteralPath ..\fit-default-saved\results.zip -Algorithm SHA256
 ```
 
@@ -160,12 +160,36 @@ Get-FileHash -LiteralPath ..\fit-default-saved\results.zip -Algorithm SHA256
 `SKILL.md`是给AI助手的技能指令；`.py`是执行数值计算的程序。默认数值模式记录Skill身份，不能称为真实Agent调用。确需模型解释时才显式开启：
 
 ```powershell
-.\.venv\Scripts\python.exe table-fitting-residuals.py --agent --env-file .env --output ..\results-agent
+.\.venv\Scripts\python.exe runtime\table-fitting-residuals.py --agent --env-file .env --output ..\results-agent
 ```
 
 该可选模式只从自己已有的本地`.env`读取`DEEPSEEK_API_KEY`，使用自己的DeepSeek账号和额度；不把密钥值写入代码、命令行、日志或结果包。本轮README复验只运行默认数值模式，没有调用模型。
 
 ### 下载文件
 
-- [完整Python代码包](downloads/table-fitting-residuals-python.zip?raw=1)：README、入口、SKILL.md、依赖清单、源码及数据。
-- [Python入口源码](table-fitting-residuals.py) · [SKILL.md源码](SKILL.md?plain=1) · [依赖清单](requirements.txt)。
+- [完整Python代码包](downloads/table-fitting-residuals-python.zip)：README、入口、SKILL.md、依赖清单、源码及数据。
+- [Python入口源码](runtime/table-fitting-residuals.py) · [SKILL.md源码](SKILL.md?plain=1) · [依赖清单](runtime/requirements.txt)。
+
+## 三个明确的调用案例与用户CSV
+
+顶层只保留README.md和SKILL.md，程序、依赖与案例在runtime。原咖啡因教材复算入口移为runtime/table-fitting-residuals.py，数值方法仍是原四点带截距OLS，不改变教材数据或来源许可。
+
+| 案例 | Python调用 | 对应结果 |
+| --- | --- | --- |
+| ①有来源的咖啡因校准 | `python runtime/table-fitting-residuals.py --output ../fit-caffeine` | 4个标准点，原待测面积424195反算94.3779286 mg/L；只用前三点时更改参数JSON并写新目录。不是本项目新实验 |
+| ②合成直线与用户CSV | `python runtime/examples/02_linear.py --output ../fit-linear` | 5点y=1+2x，系数按常数到高次顺序[1,2]；残差在浮点容差内为0；不能作为预测性能证明 |
+| ③合成二次与显式SD | `python runtime/examples/03_weighted.py --output ../fit-weighted` | 5点y=1+2x+0.5x²，sigma作为y标准差，最小化Σ((y-yhat)/sigma)²；系数[1,2,0.5]，不混淆1/sigma与1/sigma² |
+
+三个程序完整源码见[runtime入口](runtime/table-fitting-residuals.py)、[直线](runtime/examples/02_linear.py)、[加权二次](runtime/examples/03_weighted.py)；另有[完整调用模板](runtime/examples/call_skill_template.py)。第二、三例为项目编写的合成教学输入，既不是外部课程数据，也不是化学验证集。
+
+用户CSV列为id,x,y，可加sigma；ID非空且唯一，重复观测使用不同ID。数据3–1000条（二次至少4条）、全部有限、x有变异；本程序不删除缺失或错误行，文件级失败保留input.csv、parameters.json、Skill快照和failure.json并返回非零。准备自己的CSV后：
+
+```powershell
+.\.venv\Scripts\python.exe runtime\fit_csv.py --input ..\my-fit.csv --x-unit mg/L --y-unit area_au --degree 1 --output ..\my-fit-results
+```
+
+权重调用另加`--sigma-column sigma`；sigma必须是严格正的响应标准差，不是方差、任意权重或x误差。degree只接受1/2且始终拟合截距；不执行任意字符串公式或自动提高阶数。数值在缩放x的设计矩阵中求解，再把系数换回原x单位；rcond=1e-12、缩放设计条件数上限1e10是本程序工程准入规则。拟合优度R²明确为原y上的未加权、带截距定义；常量y时为null。加权RSS另行报告，不把它称为未加权RSS。
+
+输出为run-receipt.json、residuals.csv（y-yhat）、fit-and-residuals.png、原输入、实际参数、Skill快照、SHA-256及results.zip。图上误差线仅表示输入sigma，不是新推导的置信区间。本版不输出p值、置信区间、检出限、误差变量回归或预测泛化结论。x误差与观测相关性未建模，需研究者判断。
+
+程序读取完整SKILL.md并调用固定数值工具；无模型执行只保存指令身份，不宣称语言模型理解了Skill。所有结果必须在Skill目录外的新目录；已有目录拒绝覆盖。`python`在Windows替换为`.\.venv\Scripts\python.exe`。

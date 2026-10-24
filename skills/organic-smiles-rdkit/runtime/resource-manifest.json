@@ -1,15 +1,19 @@
 [
   {
+    "file": "SKILL.md",
+    "sha256": "5ec84f397c4f0662cf63da90871d485c34aea42e8df99bc60f2862b214952049"
+  },
+  {
     "file": "runtime/agent.py",
-    "sha256": "170297b83c0e20b0238570384d5c2007921a984595d78d76d8ae9e935fbf9d55"
+    "sha256": "14eec1b5d50ce6789ac5ff66e18c91596d5d2b79662d494765a1ebf38dffcc94"
   },
   {
     "file": "runtime/chemical_regression.py",
-    "sha256": "3849671b45832b9a82fa4b193de675dcccd7a5793bc7b11986138de45694b0df"
+    "sha256": "c6e515d73a0de36773fef2fb63cb2136b4de813f9fad5c123b4d6ce178b8af9a"
   },
   {
     "file": "runtime/chemistry.py",
-    "sha256": "401ad60efa0192d9ceaf2f4b24a83a45008ee06eff03cc7f9b4f9601d337a72e"
+    "sha256": "771c1acb27842fd274a79dccf870a0664b893301dd3e72d0652fe86dd6fee7ec"
   },
   {
     "file": "runtime/credential_config.py",
@@ -69,11 +73,11 @@
   },
   {
     "file": "runtime/examples/chemical-expectations.json",
-    "sha256": "3e55371a866e734495aac1117e24e265985c1142240f9caffc04a1ecfdabae26"
+    "sha256": "13af22280fd6ee80855300d9e87f50d05d09bc669b32909ee3c8e8bd23897672"
   },
   {
     "file": "runtime/examples/chemistry-boundaries.csv",
-    "sha256": "c8d27a4e22adb801e85c1a35c188c54f118ab8dcbf0165349c656500e4c27437"
+    "sha256": "d656b5a3e29717570f22fb3d687b395016700845f4357cc1af702a7042748367"
   },
   {
     "file": "runtime/examples/skill_loader.py",
@@ -85,7 +89,7 @@
   },
   {
     "file": "runtime/molecule_tool.py",
-    "sha256": "c62bc514815713f67244e137c769aed225aeb0c1d4306b6464ad9b05235bca70"
+    "sha256": "bcff5cf58e8882512b8f4d20cdc09c7284f65a8d603af216a969d1728d65dcfa"
   },
   {
     "file": "runtime/organic-smiles-rdkit.py",
@@ -98,9 +102,5 @@
   {
     "file": "runtime/sources.json",
     "sha256": "414071729d334643e4bb654660a209fe4ffc51060eb66dcbee6f51f1d999827e"
-  },
-  {
-    "file": "SKILL.md",
-    "sha256": "dd23a1d27661ef20197262dceb66e787104b2088516ad742f85359959ffb5456"
   }
 ]

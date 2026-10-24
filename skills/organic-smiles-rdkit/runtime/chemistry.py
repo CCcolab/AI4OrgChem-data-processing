@@ -1,12 +1,14 @@
 """Chemical interpretation flags, independent of parse success and net charge."""
 import json
 
-SEMANTICS_VERSION = 'rdkit-small-organic-semantics-1'
+SEMANTICS_VERSION = 'rdkit-small-organic-semantics-2'
 ORGANIC_ELEMENTS = {1, 5, 6, 7, 8, 9, 14, 15, 16, 17, 35, 53}
 METALS = ({3, 4, 11, 12, 13, 19, 20, 37, 38, 49, 50, 55, 56, 81, 82, 83, 87, 88}
           | set(range(21, 31)) | set(range(39, 49)) | set(range(57, 81))
           | set(range(89, 113)) | {113, 114, 115, 116})
 WARNING_TEXT = {
+    'PARSER_CLEANUP_CHANGED_GRAPH': 'RDKit解析清理调整了形式电荷或键表达；见cleanup_changes，原始输入仍保留。这不是额外的脱盐或中和。',
+    'ATOM_MAPPING_PRESENT': '含原子映射标签；规范字符串及重复映射保留这些标签，不是忽略映射标签的化学身份比较。',
     'STEREO_MARKER_CLEANED': '输入立体标记被RDKit清理；应核对原始结构，不能宣称该标记有效保留。',
     'DIRECTIONAL_STEREO_REVIEW': '部分斜线方向标记未对应已指定的有效双键立体信息，请核对输入。',
     'NON_TETRAHEDRAL_STEREO_REVIEW': '非四面体立体编码超出本页已验证范围，需专业复核。',
@@ -41,6 +43,8 @@ DESCRIPTOR_CONVENTIONS = {
     'tpsa_A2': {'api': 'rdMolDescriptors.CalcTPSA', 'unit': 'angstrom^2', 'includeSandP': False},
     'tpsa_with_S_P_A2': {'api': 'rdMolDescriptors.CalcTPSA', 'unit': 'angstrom^2', 'includeSandP': True},
     'protonation': 'All descriptors refer to the supplied graph; no pH prediction, neutralization or desalting.',
+    'parser_cleanup': 'Default RDKit sanitization includes valence/organometallic cleanup. Charge and bond changes from those cleanup stages are reported; aromaticity perception and H removal are also part of parsing.',
+    'duplicate_policy': 'Exact canonical isomeric SMILES equality in the pinned RDKit version, retaining atom maps; not universal or map-insensitive chemical identity.',
     'scope_policy': 'Per-record interpretation flags are conservative prompts, not a validated applicability-domain classifier.',
     'nominal_organic_atomic_numbers': sorted(ORGANIC_ELEMENTS),
     'metal_atomic_numbers_for_warning': sorted(METALS),
@@ -70,6 +74,21 @@ def parse(raw, max_atoms=128):
                   if a.GetChiralTag() != Chem.ChiralType.CHI_UNSPECIFIED}
         directions = [b.GetIdx() for b in probe.GetBonds()
                       if b.GetBondDir() in (Chem.BondDir.ENDUPRIGHT, Chem.BondDir.ENDDOWNRIGHT)]
+        # Isolate cleanup from aromaticity perception and H removal. Indices here
+        # refer to the original explicit-H graph, not the final drawing.
+        cleanup = Chem.Mol(probe)
+        Chem.Cleanup(cleanup)
+        Chem.CleanupOrganometallics(cleanup)
+        changes = {
+            'atoms': [{'index': a.GetIdx(), 'formal_charge_before': a.GetFormalCharge(),
+                       'formal_charge_after': cleanup.GetAtomWithIdx(a.GetIdx()).GetFormalCharge()}
+                      for a in probe.GetAtoms()
+                      if a.GetFormalCharge() != cleanup.GetAtomWithIdx(a.GetIdx()).GetFormalCharge()],
+            'bonds': [{'index': b.GetIdx(), 'type_before': str(b.GetBondType()),
+                       'type_after': str(cleanup.GetBondWithIdx(b.GetIdx()).GetBondType())}
+                      for b in probe.GetBonds()
+                      if b.GetBondType() != cleanup.GetBondWithIdx(b.GetIdx()).GetBondType()],
+        }
         flag = Chem.SanitizeMol(probe, catchErrors=True)
         if flag:
             if flag & Chem.SanitizeFlags.SANITIZE_PROPERTIES:
@@ -98,7 +117,8 @@ def parse(raw, max_atoms=128):
     if mol is None:
         return None, 'SANITIZATION_OTHER', {}
     return mol, '', {'input_tagged_atom_indices': sorted(tagged), 'cleaned_atom_indices': cleaned,
-                     'non_tetrahedral_atom_indices': unsupported, 'unused_direction_bond_indices': unused_directions}
+                     'non_tetrahedral_atom_indices': unsupported, 'unused_direction_bond_indices': unused_directions,
+                     'cleanup_changes': changes}
 
 
 def interpret(mol, stereo):
@@ -106,6 +126,10 @@ def interpret(mol, stereo):
     from rdkit import Chem
 
     codes = []
+    if any(stereo['cleanup_changes'].values()):
+        codes.append('PARSER_CLEANUP_CHANGED_GRAPH')
+    if any(a.GetAtomMapNum() for a in mol.GetAtoms()):
+        codes.append('ATOM_MAPPING_PRESENT')
     if stereo['cleaned_atom_indices']:
         codes.append('STEREO_MARKER_CLEANED')
     if stereo['unused_direction_bond_indices']:

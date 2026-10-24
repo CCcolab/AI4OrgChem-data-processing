@@ -1,0 +1,62 @@
+{
+  "parameters": {
+    "atol": 1e-08,
+    "rank_rtol": 1e-10
+  },
+  "data": {
+    "overlap": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "fragments": [
+      {
+        "id": "A",
+        "ao_indices": [
+          0
+        ],
+        "coefficients": [
+          [
+            1,
+            2
+          ],
+          [
+            0.1,
+            0
+          ]
+        ]
+      },
+      {
+        "id": "B",
+        "ao_indices": [
+          1
+        ],
+        "coefficients": [
+          [
+            0
+          ],
+          [
+            1
+          ]
+        ]
+      }
+    ],
+    "target_vectors": [
+      [
+        1
+      ],
+      [
+        1
+      ]
+    ]
+  },
+  "provenance": {
+    "kind": "AUTHORED_TEACHING_INPUT",
+    "description": "Authored dependent candidate columns; rank reduction from three to two."
+  }
+}

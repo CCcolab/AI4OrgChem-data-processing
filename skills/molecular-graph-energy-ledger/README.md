@@ -1,0 +1,55 @@
+# 分子图匹配与能量账本
+
+独立执行有界SMARTS图匹配或有来源的同态Hartree账本算术，保留原始结构、原子索引和科学身份，不从图生成量子能量。
+
+| 文件 | 职责 |
+| --- | --- |
+| 本README | 必要知识、三个案例、参数和使用说明 |
+| [完整SKILL.md源码](SKILL.md?plain=1) | 完整处理指令和解释边界，可保存用于自己的代理 |
+| [runtime/run_skill.py](runtime/run_skill.py) | 读取Skill→验证输入→调用[完整工具源码](runtime/analysis.py)→保存真实结果 |
+
+顶层文件只有README.md和SKILL.md；程序、依赖、参数和案例在runtime。下载[完整Python代码包](downloads/molecular-graph-energy-ledger-python.zip)或[Skill单文件ZIP](downloads/SKILL-md.zip)。私有GitHub需有权限的账号，文件页用“Download raw file”保存，不把网页另存为.py。
+
+## 知识与适用边界
+
+图模式按query_smarts和include_chirality执行GetSubstructMatches。酸OH模式在乙酸/乙酸根/碳酸分别匹配1/0/2；不是通用羧酸分类器。账本为Σ coefficient×value_hartree，使用50位Decimal，与独立声明reference_hartree按显式绝对容差比较。来源标签不等于鉴定，闭合不验证物理分解。
+
+图与账本是独立模式。图模式使用RDKit默认解析，保留原SMILES、清理/映射/立体警告及零起始匹配原子索引；SMARTS≤32原子、每分子最多1000个非截断匹配，最多50个小分子。不执行无界图枚举、通用身份认证或芳香性理论判定。账本模式只接受显式同方法、基组、几何、态与算子标签的同态Hartree线性组合；方法不同不能靠换单位解决。
+
+[RDKit查询接口](https://www.rdkit.org/docs/source/rdkit.Chem.rdchem.html)；[Daylight SMARTS](https://www.daylight.com/dayhtml/doc/theory/theory.smarts.html)；[Python Decimal](https://docs.python.org/3/library/decimal.html)。这些资料支持语言/软件与算术，不提供本案例的分子量子能量。
+
+## 安装与默认运行
+
+Windows在有写入权限的短路径（例如D:\Chem\s）解压，进入README和runtime所在目录，使用Python3.12的独立环境：
+
+```powershell
+py -3.12 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r runtime\requirements.txt
+.\.venv\Scripts\python.exe runtime\run_skill.py --output ..\molecular-graph-energy-ledger-default
+```
+
+默认运行第一个教学请求。结果必须在Skill外全新目录；第二次换一个名字，拒绝已有目录且不覆盖。结果包括request.json、SKILL.used.md、result.json、run-receipt.json、SHA256SUMS.txt和results.zip。复制结果目录或ZIP即可保存。输入/计算失败保留failure.json并退出2；数值检查失败保存结果和检查详情并退出1，不当作成功。
+
+## 三个案例：参数与对应结果
+
+下列输入和全部程序是本项目编写的教学案例；合成数字不代表实际电子能或实验测量。反例的预期失败也单独保留。
+
+| 案例 | Python调用 | 对应结果与状态 |
+| --- | --- | --- |
+| 1 酸、阴离子与碳酸查询 | `python runtime/examples/01_case.py --output ../molecular-graph-energy-ledger-1` | 匹配数1、0、2，保留查询原子索引。 退出码0。 |
+| 2 有手性约束的镜像结构查询 | `python runtime/examples/02_case.py --output ../molecular-graph-energy-ledger-2` | include_chirality=True时匹配数1、0；改False时两条都匹配。 退出码0。 |
+| 3 有明确来源的合成账本 | `python runtime/examples/03_case.py --output ../molecular-graph-energy-ledger-3` | −10+2=−8 Hartree，残差0；这是假设数字的算术，不是新QM。 退出码0。 |
+
+Windows将python替换为`.\.venv\Scripts\python.exe`。案例完整程序：[①](runtime/examples/01_case.py)、[②](runtime/examples/02_case.py)、[③](runtime/examples/03_case.py)，请求JSON在对应01.json、02.json、03.json中。
+
+## 修改参数与自己的输入
+
+复制[runtime/examples/01.json](runtime/examples/01.json)到Skill外的`..\my-request.json`，按真实数据修改parameters、data和provenance。graph参数：mode、query_smarts、include_chirality；data.molecules含id、smiles。ledger参数：mode、protocol_id、atol_hartree；data含terms、reference_hartree、reference_source、quantity_definition，项的科学身份字段见第三例JSON。不同模式不强迫同时提供图和能量。
+
+```powershell
+.\.venv\Scripts\python.exe runtime\run_skill.py --input ..\my-request.json --output ..\my-skill-results
+```
+
+只修改参数不会更改旧结果，必须写新目录。严格UTF-8 JSON≤2 MB，不接受重复键或非有限数值。不应只改科学身份标签来绕过不兼容检查，来源标签本身不证明真实性。完整可复用[调用模板](runtime/examples/call_skill_template.py)支持--skill-dir、--input和--output，程序内部实际读取顶层Skill并保存其哈希，不调用模型。
+
+软件执行通过只覆盖声明的输入和数值范围，不代表整个理论、化学身份或新量子方法获认证。下载包[SHA-256](downloads/SHA256SUMS.txt)与内部验收记录分开，内部材料不进入用户包。

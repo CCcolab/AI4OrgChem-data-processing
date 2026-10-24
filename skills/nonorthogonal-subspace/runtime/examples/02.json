@@ -1,0 +1,42 @@
+{
+  "parameters": {
+    "atol": 1e-08,
+    "rank_rtol": 1e-10
+  },
+  "data": {
+    "overlap": [
+      [
+        2,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "basis": [
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "vectors": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ]
+  },
+  "provenance": {
+    "kind": "AUTHORED_TEACHING_INPUT",
+    "description": "Authored rank-one duplicated-column algebra fixture."
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "parameters": {
+    "coordinate_unit": "angstrom"
+  },
+  "data": {
+    "nuclei": [
+      {
+        "id": "O",
+        "Z": 8,
+        "xyz": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "H1",
+        "Z": 1,
+        "xyz": [
+          0.7586,
+          0,
+          0.5043
+        ]
+      },
+      {
+        "id": "H2",
+        "Z": 1,
+        "xyz": [
+          -0.7586,
+          0,
+          0.5043
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "kind": "AUTHORED_TEACHING_INPUT",
+    "description": "Explicit teaching water nuclear coordinates; not optimized here, no electronic calculation."
+  }
+}

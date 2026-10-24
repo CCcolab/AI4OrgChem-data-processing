@@ -1,0 +1,40 @@
+{
+  "parameters": {
+    "mode": "ledger",
+    "protocol_id": "authored-sum-example",
+    "atol_hartree": 1e-09
+  },
+  "data": {
+    "terms": [
+      {
+        "source": "AUTHORED_SYNTHETIC_COMPONENT",
+        "method": "SYNTHETIC",
+        "basis": "NONE",
+        "geometry_id": "toy-state",
+        "state_id": "toy",
+        "operator_id": "toy-ledger",
+        "id": "a",
+        "coefficient": "1",
+        "value_hartree": "-10.0"
+      },
+      {
+        "source": "AUTHORED_SYNTHETIC_COMPONENT",
+        "method": "SYNTHETIC",
+        "basis": "NONE",
+        "geometry_id": "toy-state",
+        "state_id": "toy",
+        "operator_id": "toy-ledger",
+        "id": "b",
+        "coefficient": "1",
+        "value_hartree": "2.0"
+      }
+    ],
+    "reference_hartree": "-8.0",
+    "reference_source": "AUTHORED_ARITHMETIC_ORACLE",
+    "quantity_definition": "Synthetic two-term sum, not molecular electronic energy"
+  },
+  "provenance": {
+    "kind": "AUTHORED_TEACHING_INPUT",
+    "description": "Synthetic energy-like numbers validate arithmetic only; no quantum calculation."
+  }
+}

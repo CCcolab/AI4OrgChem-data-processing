@@ -345,7 +345,7 @@ def analyze(root, params, output):
         "duplicates": duplicates,
         "checks": checks,
         "parameters": params,
-        "preprocessing": "Original input retained; no desalting, neutralization or tautomer normalization; RDKit stereo cleanup is diagnosed separately",
+        "preprocessing": "Original input retained; no desalting, neutralization or tautomer normalization; default RDKit valence/organometallic and stereo cleanup is diagnosed separately",
         "engineering_check_scope": "Six invariants only; chemical semantic regression is a separate explicit command, never hash-gated",
         "chemical_semantics_version": DESCRIPTOR_CONVENTIONS['version'],
         "descriptor_conventions": DESCRIPTOR_CONVENTIONS,
@@ -371,7 +371,7 @@ def analyze(root, params, output):
             "Descriptors are computed estimates, not measured properties",
             "Parse validity is not descriptor applicability; flags are conservative review prompts, not a validated applicability domain",
             "Unspecified stereo is not absence of chirality or evidence of a racemate; non-tetrahedral stereo requires review",
-            "No structure edits, standardization, PubChem query, activity or reaction prediction in this page",
+            "No additional structure editing, desalting, neutralization, tautomer normalization, PubChem query, activity or reaction prediction",
         ],
         "new_rhf": "NOT_ACCEPTED",
     }

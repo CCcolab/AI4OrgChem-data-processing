@@ -1,0 +1,54 @@
+[
+  {
+    "file": "SKILL.md",
+    "sha256": "9a8480787784c21359a3a3e007baea38e06aac977850d9895c9bad8197626e20"
+  },
+  {
+    "file": "runtime/examples/01_prepare.py",
+    "sha256": "31e15e078f80284c19927d659516b3645f3292ac4bb1b0b2caaa4aa012c6a7bf"
+  },
+  {
+    "file": "runtime/examples/02_review.py",
+    "sha256": "9f48bc373641e9c62deb818bb89cc4780a41cf2ef7523a643d0774a2400aadf7"
+  },
+  {
+    "file": "runtime/examples/03_compute.py",
+    "sha256": "896aadce1980e3d14846206033e82432e13a9a6da056e60045d4a5036a751370"
+  },
+  {
+    "file": "runtime/fixed-water/molecule.xyz",
+    "sha256": "a056dc7e69e3b8682f8f0c4176a3d51a0cf6b0d2c2e499261b17f93532aa68c7"
+  },
+  {
+    "file": "runtime/fixed-water/request.json",
+    "sha256": "31d50fb7859d8610134002cc138e4441548691177bd067db1cc58a1a55483b92"
+  },
+  {
+    "file": "runtime/requirements.txt",
+    "sha256": "33eb232b2ead4ffff0e3b1256e457b26477d2ea6eded746b44a2bbcb53463814"
+  },
+  {
+    "file": "runtime/run_skill.py",
+    "sha256": "05faba174309e41ab2f4ad39e645386965ad84af668e0a6828c6277f62121804"
+  },
+  {
+    "file": "runtime/saved-water/arrays.npz",
+    "sha256": "a26a28d072c8709303440e18dec05535d2f6789d8b39bd7588b8b0a4bb73e919"
+  },
+  {
+    "file": "runtime/saved-water/molecule.xyz",
+    "sha256": "a056dc7e69e3b8682f8f0c4176a3d51a0cf6b0d2c2e499261b17f93532aa68c7"
+  },
+  {
+    "file": "runtime/saved-water/origin.json",
+    "sha256": "e13a7de44b2e0e4903b820a6e26f27e01353f6af554b1a43f62fe23b6db1afd7"
+  },
+  {
+    "file": "runtime/saved-water/request.json",
+    "sha256": "31d50fb7859d8610134002cc138e4441548691177bd067db1cc58a1a55483b92"
+  },
+  {
+    "file": "runtime/saved-water/result.json",
+    "sha256": "91e95a9dfb0dd942cec0ab5c71463062fc7688c15ddbcd89bd0ad423715f8db1"
+  }
+]

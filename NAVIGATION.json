@@ -7,7 +7,8 @@
       "title": "有机分子结构与身份识别",
       "kind": "professional_application",
       "skills": [
-        "organic-smiles-rdkit"
+        "organic-smiles-rdkit",
+        "chemical-identifier-resolution"
       ],
       "catalog_skills": [
         "organic-smiles-rdkit",
@@ -19,7 +20,9 @@
       "title": "有机分析与实验数据处理",
       "kind": "professional_application",
       "skills": [
-        "table-fitting-residuals"
+        "chemical-pandas-cleaning",
+        "table-fitting-residuals",
+        "chemical-experimental-plotting"
       ],
       "catalog_skills": [
         "chemical-pandas-cleaning",
@@ -31,7 +34,12 @@
       "id": "physical-organic",
       "title": "物理有机与能量分析",
       "kind": "professional_application",
-      "skills": [],
+      "skills": [
+        "molecular-graph-energy-ledger",
+        "same-hamiltonian-path-closure",
+        "scan-energy-curvature",
+        "nuclear-repulsion-response"
+      ],
       "catalog_skills": [
         "molecular-graph-energy-ledger",
         "same-hamiltonian-path-closure",
@@ -43,7 +51,15 @@
       "id": "computational-organic",
       "title": "计算有机化学与电子结构",
       "kind": "professional_application",
-      "skills": [],
+      "skills": [
+        "rhf-single-point",
+        "orbital-localization-density",
+        "nonorthogonal-subspace",
+        "fragment-working-basis",
+        "reflection-parity",
+        "partition-mask-audit",
+        "fixed-protocol-energy-review"
+      ],
       "catalog_skills": [
         "rhf-single-point",
         "orbital-localization-density",
@@ -58,7 +74,10 @@
       "id": "structure-state-response",
       "title": "分子结构优化与多态比较",
       "kind": "professional_application",
-      "skills": [],
+      "skills": [
+        "constrained-optimization-response",
+        "multistate-size-comparison"
+      ],
       "catalog_skills": [
         "constrained-optimization-response",
         "multistate-size-comparison"
@@ -68,7 +87,18 @@
       "id": "cheminformatics-design",
       "title": "化学信息学与分子设计",
       "kind": "professional_application",
-      "skills": [],
+      "skills": [
+        "chemical-space-embedding",
+        "chemical-molecule-clustering",
+        "chemical-regression-classification",
+        "chemical-model-validation",
+        "chemical-tree-forest-models",
+        "chemical-mlp-models",
+        "molecular-gnn-mpnn",
+        "chemical-chemprop-prediction",
+        "molecular-self-supervised-pretraining",
+        "molecular-smiles-vae"
+      ],
       "catalog_skills": [
         "chemical-space-embedding",
         "chemical-molecule-clustering",
@@ -86,7 +116,12 @@
       "id": "synthesis-experiment-optimization",
       "title": "化学实验设计与优化",
       "kind": "professional_application",
-      "skills": [],
+      "skills": [
+        "chemical-bayesian-optimization",
+        "chemical-multiobjective-optimization",
+        "chemical-multiarmed-bandit",
+        "chemical-q-learning-simulation"
+      ],
       "catalog_skills": [
         "chemical-bayesian-optimization",
         "chemical-multiobjective-optimization",
@@ -98,7 +133,9 @@
       "id": "cross-domain-runtime",
       "title": "共用运行支持",
       "kind": "shared_support",
-      "skills": [],
+      "skills": [
+        "runtime-usage-assistant"
+      ],
       "catalog_skills": [
         "runtime-usage-assistant"
       ]
@@ -108,40 +145,628 @@
     {
       "id": "organic-smiles-rdkit",
       "title": "SMILES 与 RDKit",
-      "canonical_skill_title": "分析有机分子｜SMILES 与 RDKit",
       "category": "organic-structure",
       "page": "skills/organic-smiles-rdkit/README.md",
       "run": "skills/organic-smiles-rdkit/README.md",
-      "downloads": {
-        "skill": "skills/organic-smiles-rdkit/SKILL.md",
-        "python": "skills/organic-smiles-rdkit/runtime/organic-smiles-rdkit.py",
-        "package": "skills/organic-smiles-rdkit/downloads/organic-smiles-rdkit-python.zip"
-      },
       "python_entry": "skills/organic-smiles-rdkit/runtime/organic-smiles-rdkit.py",
       "skill": "skills/organic-smiles-rdkit/SKILL.md",
       "download": "skills/organic-smiles-rdkit/downloads/organic-smiles-rdkit-python.zip",
       "execution": "local_python",
-      "acceptance": "PASS_RUNTIME_LAYOUT_LOCAL_REPRODUCTION",
-      "chemical_semantics": "PASS_CHEMICAL_SEMANTICS_DEFINED_REGRESSION",
-      "chemical_scope": "29 authored boundary inputs; three parameter settings; not universal chemical validation",
-      "real_model_service_acceptance": "NOT_EXECUTED"
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/organic-smiles-rdkit/SKILL.md",
+        "python": "skills/organic-smiles-rdkit/runtime/organic-smiles-rdkit.py",
+        "package": "skills/organic-smiles-rdkit/downloads/organic-smiles-rdkit-python.zip"
+      }
+    },
+    {
+      "id": "chemical-identifier-resolution",
+      "title": "解析化学结构标识符｜PubChem 与 CIR",
+      "category": "organic-structure",
+      "page": "skills/chemical-identifier-resolution/README.md",
+      "run": "skills/chemical-identifier-resolution/README.md",
+      "python_entry": "skills/chemical-identifier-resolution/runtime/resolve_identifiers.py",
+      "skill": "skills/chemical-identifier-resolution/SKILL.md",
+      "download": "skills/chemical-identifier-resolution/downloads/chemical-identifier-resolution-python.zip",
+      "execution": "local_python",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/chemical-identifier-resolution/SKILL.md",
+        "python": "skills/chemical-identifier-resolution/runtime/resolve_identifiers.py",
+        "package": "skills/chemical-identifier-resolution/downloads/chemical-identifier-resolution-python.zip"
+      }
+    },
+    {
+      "id": "chemical-pandas-cleaning",
+      "title": "整理化学数据｜Pandas 清洗与统计",
+      "category": "organic-analysis",
+      "page": "skills/chemical-pandas-cleaning/README.md",
+      "run": "skills/chemical-pandas-cleaning/README.md",
+      "python_entry": "skills/chemical-pandas-cleaning/runtime/clean_chemical_data.py",
+      "skill": "skills/chemical-pandas-cleaning/SKILL.md",
+      "download": "skills/chemical-pandas-cleaning/downloads/chemical-pandas-cleaning-python.zip",
+      "execution": "local_python",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/chemical-pandas-cleaning/SKILL.md",
+        "python": "skills/chemical-pandas-cleaning/runtime/clean_chemical_data.py",
+        "package": "skills/chemical-pandas-cleaning/downloads/chemical-pandas-cleaning-python.zip"
+      }
     },
     {
       "id": "table-fitting-residuals",
       "title": "表格拟合与残差分析",
-      "canonical_skill_title": "表格拟合与残差分析",
       "category": "organic-analysis",
       "page": "skills/table-fitting-residuals/README.md",
       "run": "skills/table-fitting-residuals/README.md",
-      "python_entry": "skills/table-fitting-residuals/table-fitting-residuals.py",
+      "python_entry": "skills/table-fitting-residuals/runtime/table-fitting-residuals.py",
       "skill": "skills/table-fitting-residuals/SKILL.md",
       "download": "skills/table-fitting-residuals/downloads/table-fitting-residuals-python.zip",
       "execution": "local_python",
-      "acceptance": "PASS_LOCAL_PYTHON_DEFAULT_AND_MODIFIED",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/table-fitting-residuals/SKILL.md",
-        "python": "skills/table-fitting-residuals/table-fitting-residuals.py",
+        "python": "skills/table-fitting-residuals/runtime/table-fitting-residuals.py",
         "package": "skills/table-fitting-residuals/downloads/table-fitting-residuals-python.zip"
+      }
+    },
+    {
+      "id": "chemical-experimental-plotting",
+      "title": "绘制科研图表｜实验数据与误差分析",
+      "category": "organic-analysis",
+      "page": "skills/chemical-experimental-plotting/README.md",
+      "run": "skills/chemical-experimental-plotting/README.md",
+      "python_entry": "skills/chemical-experimental-plotting/runtime/plot_experiment.py",
+      "skill": "skills/chemical-experimental-plotting/SKILL.md",
+      "download": "skills/chemical-experimental-plotting/downloads/chemical-experimental-plotting-python.zip",
+      "execution": "local_python",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/chemical-experimental-plotting/SKILL.md",
+        "python": "skills/chemical-experimental-plotting/runtime/plot_experiment.py",
+        "package": "skills/chemical-experimental-plotting/downloads/chemical-experimental-plotting-python.zip"
+      }
+    },
+    {
+      "id": "molecular-graph-energy-ledger",
+      "title": "分子图匹配与能量账本复核",
+      "category": "physical-organic",
+      "page": "skills/molecular-graph-energy-ledger/README.md",
+      "run": "skills/molecular-graph-energy-ledger/README.md",
+      "python_entry": "skills/molecular-graph-energy-ledger/runtime/run_skill.py",
+      "skill": "skills/molecular-graph-energy-ledger/SKILL.md",
+      "download": "skills/molecular-graph-energy-ledger/downloads/molecular-graph-energy-ledger-python.zip",
+      "execution": "local_python",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/molecular-graph-energy-ledger/SKILL.md",
+        "python": "skills/molecular-graph-energy-ledger/runtime/run_skill.py",
+        "package": "skills/molecular-graph-energy-ledger/downloads/molecular-graph-energy-ledger-python.zip"
+      }
+    },
+    {
+      "id": "same-hamiltonian-path-closure",
+      "title": "同哈密顿量路径闭合核对",
+      "category": "physical-organic",
+      "page": "skills/same-hamiltonian-path-closure/README.md",
+      "run": "skills/same-hamiltonian-path-closure/README.md",
+      "python_entry": "skills/same-hamiltonian-path-closure/runtime/run_skill.py",
+      "skill": "skills/same-hamiltonian-path-closure/SKILL.md",
+      "download": "skills/same-hamiltonian-path-closure/downloads/same-hamiltonian-path-closure-python.zip",
+      "execution": "local_python",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/same-hamiltonian-path-closure/SKILL.md",
+        "python": "skills/same-hamiltonian-path-closure/runtime/run_skill.py",
+        "package": "skills/same-hamiltonian-path-closure/downloads/same-hamiltonian-path-closure-python.zip"
+      }
+    },
+    {
+      "id": "scan-energy-curvature",
+      "title": "几何扫描能量分解与曲率分析",
+      "category": "physical-organic",
+      "page": "skills/scan-energy-curvature/README.md",
+      "run": "skills/scan-energy-curvature/README.md",
+      "python_entry": "skills/scan-energy-curvature/runtime/run_skill.py",
+      "skill": "skills/scan-energy-curvature/SKILL.md",
+      "download": "skills/scan-energy-curvature/downloads/scan-energy-curvature-python.zip",
+      "execution": "local_python",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/scan-energy-curvature/SKILL.md",
+        "python": "skills/scan-energy-curvature/runtime/run_skill.py",
+        "package": "skills/scan-energy-curvature/downloads/scan-energy-curvature-python.zip"
+      }
+    },
+    {
+      "id": "nuclear-repulsion-response",
+      "title": "核排斥能与几何响应分析",
+      "category": "physical-organic",
+      "page": "skills/nuclear-repulsion-response/README.md",
+      "run": "skills/nuclear-repulsion-response/README.md",
+      "python_entry": "skills/nuclear-repulsion-response/runtime/run_skill.py",
+      "skill": "skills/nuclear-repulsion-response/SKILL.md",
+      "download": "skills/nuclear-repulsion-response/downloads/nuclear-repulsion-response-python.zip",
+      "execution": "local_python",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/nuclear-repulsion-response/SKILL.md",
+        "python": "skills/nuclear-repulsion-response/runtime/run_skill.py",
+        "package": "skills/nuclear-repulsion-response/downloads/nuclear-repulsion-response-python.zip"
+      }
+    },
+    {
+      "id": "rhf-single-point",
+      "title": "RHF 单点计算助手",
+      "category": "computational-organic",
+      "page": "skills/rhf-single-point/README.md",
+      "run": "skills/rhf-single-point/README.md",
+      "python_entry": "skills/rhf-single-point/runtime/run_skill.py",
+      "skill": "skills/rhf-single-point/SKILL.md",
+      "download": "skills/rhf-single-point/downloads/rhf-single-point-python.zip",
+      "execution": "local_python",
+      "development_status": "PARTIAL_BACKEND_PENDING",
+      "scientific_scope": "新固定水RHF计算未执行；已验证输入准备及旧AO数组复核，不能替代新SCF。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/rhf-single-point/SKILL.md",
+        "python": "skills/rhf-single-point/runtime/run_skill.py",
+        "package": "skills/rhf-single-point/downloads/rhf-single-point-python.zip"
+      }
+    },
+    {
+      "id": "orbital-localization-density",
+      "title": "轨道局域化与密度不变性验证",
+      "category": "computational-organic",
+      "page": "skills/orbital-localization-density/README.md",
+      "run": "skills/orbital-localization-density/README.md",
+      "python_entry": "skills/orbital-localization-density/runtime/run_skill.py",
+      "skill": "skills/orbital-localization-density/SKILL.md",
+      "download": "skills/orbital-localization-density/downloads/orbital-localization-density-python.zip",
+      "execution": "local_python",
+      "development_status": "PARTIAL_BACKEND_PENDING",
+      "scientific_scope": "已验证给定旋转与密度不变性；实际Boys/Pipek局域化优化后端未执行。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/orbital-localization-density/SKILL.md",
+        "python": "skills/orbital-localization-density/runtime/run_skill.py",
+        "package": "skills/orbital-localization-density/downloads/orbital-localization-density-python.zip"
+      }
+    },
+    {
+      "id": "nonorthogonal-subspace",
+      "title": "非正交子空间投影与泄漏分析",
+      "category": "computational-organic",
+      "page": "skills/nonorthogonal-subspace/README.md",
+      "run": "skills/nonorthogonal-subspace/README.md",
+      "python_entry": "skills/nonorthogonal-subspace/runtime/run_skill.py",
+      "skill": "skills/nonorthogonal-subspace/SKILL.md",
+      "download": "skills/nonorthogonal-subspace/downloads/nonorthogonal-subspace-python.zip",
+      "execution": "local_python",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/nonorthogonal-subspace/SKILL.md",
+        "python": "skills/nonorthogonal-subspace/runtime/run_skill.py",
+        "package": "skills/nonorthogonal-subspace/downloads/nonorthogonal-subspace-python.zip"
+      }
+    },
+    {
+      "id": "fragment-working-basis",
+      "title": "片段工作基组装与一致性审计",
+      "category": "computational-organic",
+      "page": "skills/fragment-working-basis/README.md",
+      "run": "skills/fragment-working-basis/README.md",
+      "python_entry": "skills/fragment-working-basis/runtime/run_skill.py",
+      "skill": "skills/fragment-working-basis/SKILL.md",
+      "download": "skills/fragment-working-basis/downloads/fragment-working-basis-python.zip",
+      "execution": "local_python",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/fragment-working-basis/SKILL.md",
+        "python": "skills/fragment-working-basis/runtime/run_skill.py",
+        "package": "skills/fragment-working-basis/downloads/fragment-working-basis-python.zip"
+      }
+    },
+    {
+      "id": "reflection-parity",
+      "title": "镜面对称轨道适配与奇偶性分析",
+      "category": "computational-organic",
+      "page": "skills/reflection-parity/README.md",
+      "run": "skills/reflection-parity/README.md",
+      "python_entry": "skills/reflection-parity/runtime/run_skill.py",
+      "skill": "skills/reflection-parity/SKILL.md",
+      "download": "skills/reflection-parity/downloads/reflection-parity-python.zip",
+      "execution": "local_python",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/reflection-parity/SKILL.md",
+        "python": "skills/reflection-parity/runtime/run_skill.py",
+        "package": "skills/reflection-parity/downloads/reflection-parity-python.zip"
+      }
+    },
+    {
+      "id": "partition-mask-audit",
+      "title": "矩阵分区掩码与正定性检查",
+      "category": "computational-organic",
+      "page": "skills/partition-mask-audit/README.md",
+      "run": "skills/partition-mask-audit/README.md",
+      "python_entry": "skills/partition-mask-audit/runtime/run_skill.py",
+      "skill": "skills/partition-mask-audit/SKILL.md",
+      "download": "skills/partition-mask-audit/downloads/partition-mask-audit-python.zip",
+      "execution": "local_python",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/partition-mask-audit/SKILL.md",
+        "python": "skills/partition-mask-audit/runtime/run_skill.py",
+        "package": "skills/partition-mask-audit/downloads/partition-mask-audit-python.zip"
+      }
+    },
+    {
+      "id": "fixed-protocol-energy-review",
+      "title": "固定协议条件态与能量复核",
+      "category": "computational-organic",
+      "page": "skills/fixed-protocol-energy-review/README.md",
+      "run": "skills/fixed-protocol-energy-review/README.md",
+      "python_entry": "skills/fixed-protocol-energy-review/runtime/run_skill.py",
+      "skill": "skills/fixed-protocol-energy-review/SKILL.md",
+      "download": "skills/fixed-protocol-energy-review/downloads/fixed-protocol-energy-review-python.zip",
+      "execution": "local_python",
+      "development_status": "PARTIAL_BACKEND_PENDING",
+      "scientific_scope": "仅验证账本闭合与显式资格标签；新条件态量子计算未执行。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/fixed-protocol-energy-review/SKILL.md",
+        "python": "skills/fixed-protocol-energy-review/runtime/run_skill.py",
+        "package": "skills/fixed-protocol-energy-review/downloads/fixed-protocol-energy-review-python.zip"
+      }
+    },
+    {
+      "id": "constrained-optimization-response",
+      "title": "约束优化与结构响应",
+      "category": "structure-state-response",
+      "page": "skills/constrained-optimization-response/README.md",
+      "run": "skills/constrained-optimization-response/README.md",
+      "python_entry": "skills/constrained-optimization-response/runtime/run_skill.py",
+      "skill": "skills/constrained-optimization-response/SKILL.md",
+      "download": "skills/constrained-optimization-response/downloads/constrained-optimization-response-python.zip",
+      "execution": "local_python",
+      "development_status": "PARTIAL_BACKEND_PENDING",
+      "scientific_scope": "仅验证线性约束端点、给定梯度与Hessian；新量子约束优化未执行。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/constrained-optimization-response/SKILL.md",
+        "python": "skills/constrained-optimization-response/runtime/run_skill.py",
+        "package": "skills/constrained-optimization-response/downloads/constrained-optimization-response-python.zip"
+      }
+    },
+    {
+      "id": "multistate-size-comparison",
+      "title": "多态与尺寸比较",
+      "category": "structure-state-response",
+      "page": "skills/multistate-size-comparison/README.md",
+      "run": "skills/multistate-size-comparison/README.md",
+      "python_entry": "skills/multistate-size-comparison/runtime/run_skill.py",
+      "skill": "skills/multistate-size-comparison/SKILL.md",
+      "download": "skills/multistate-size-comparison/downloads/multistate-size-comparison-python.zip",
+      "execution": "local_python",
+      "development_status": "PARTIAL_BACKEND_PENDING",
+      "scientific_scope": "仅验证集合完整性及固定权重算术；新多态量子计算未执行。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/multistate-size-comparison/SKILL.md",
+        "python": "skills/multistate-size-comparison/runtime/run_skill.py",
+        "package": "skills/multistate-size-comparison/downloads/multistate-size-comparison-python.zip"
+      }
+    },
+    {
+      "id": "chemical-space-embedding",
+      "title": "可视化化学空间｜PCA、t-SNE 与 UMAP",
+      "category": "cheminformatics-design",
+      "page": "skills/chemical-space-embedding/README.md",
+      "run": "skills/chemical-space-embedding/README.md",
+      "python_entry": "skills/chemical-space-embedding/runtime/run_skill.py",
+      "skill": "skills/chemical-space-embedding/SKILL.md",
+      "download": "skills/chemical-space-embedding/downloads/chemical-space-embedding-python.zip",
+      "execution": "local_python",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/chemical-space-embedding/SKILL.md",
+        "python": "skills/chemical-space-embedding/runtime/run_skill.py",
+        "package": "skills/chemical-space-embedding/downloads/chemical-space-embedding-python.zip"
+      }
+    },
+    {
+      "id": "chemical-molecule-clustering",
+      "title": "聚类化学分子｜KMeans、层次聚类与 DBSCAN",
+      "category": "cheminformatics-design",
+      "page": "skills/chemical-molecule-clustering/README.md",
+      "run": "skills/chemical-molecule-clustering/README.md",
+      "python_entry": "skills/chemical-molecule-clustering/runtime/run_skill.py",
+      "skill": "skills/chemical-molecule-clustering/SKILL.md",
+      "download": "skills/chemical-molecule-clustering/downloads/chemical-molecule-clustering-python.zip",
+      "execution": "local_python",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/chemical-molecule-clustering/SKILL.md",
+        "python": "skills/chemical-molecule-clustering/runtime/run_skill.py",
+        "package": "skills/chemical-molecule-clustering/downloads/chemical-molecule-clustering-python.zip"
+      }
+    },
+    {
+      "id": "chemical-regression-classification",
+      "title": "构建化学预测模型｜回归与分类",
+      "category": "cheminformatics-design",
+      "page": "skills/chemical-regression-classification/README.md",
+      "run": "skills/chemical-regression-classification/README.md",
+      "python_entry": "skills/chemical-regression-classification/runtime/run_skill.py",
+      "skill": "skills/chemical-regression-classification/SKILL.md",
+      "download": "skills/chemical-regression-classification/downloads/chemical-regression-classification-python.zip",
+      "execution": "local_python",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/chemical-regression-classification/SKILL.md",
+        "python": "skills/chemical-regression-classification/runtime/run_skill.py",
+        "package": "skills/chemical-regression-classification/downloads/chemical-regression-classification-python.zip"
+      }
+    },
+    {
+      "id": "chemical-model-validation",
+      "title": "验证化学预测模型｜交叉验证与解释",
+      "category": "cheminformatics-design",
+      "page": "skills/chemical-model-validation/README.md",
+      "run": "skills/chemical-model-validation/README.md",
+      "python_entry": "skills/chemical-model-validation/runtime/run_skill.py",
+      "skill": "skills/chemical-model-validation/SKILL.md",
+      "download": "skills/chemical-model-validation/downloads/chemical-model-validation-python.zip",
+      "execution": "local_python",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/chemical-model-validation/SKILL.md",
+        "python": "skills/chemical-model-validation/runtime/run_skill.py",
+        "package": "skills/chemical-model-validation/downloads/chemical-model-validation-python.zip"
+      }
+    },
+    {
+      "id": "chemical-tree-forest-models",
+      "title": "构建化学树模型｜决策树与随机森林",
+      "category": "cheminformatics-design",
+      "page": "skills/chemical-tree-forest-models/README.md",
+      "run": "skills/chemical-tree-forest-models/README.md",
+      "python_entry": "skills/chemical-tree-forest-models/runtime/run_skill.py",
+      "skill": "skills/chemical-tree-forest-models/SKILL.md",
+      "download": "skills/chemical-tree-forest-models/downloads/chemical-tree-forest-models-python.zip",
+      "execution": "local_python",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/chemical-tree-forest-models/SKILL.md",
+        "python": "skills/chemical-tree-forest-models/runtime/run_skill.py",
+        "package": "skills/chemical-tree-forest-models/downloads/chemical-tree-forest-models-python.zip"
+      }
+    },
+    {
+      "id": "chemical-mlp-models",
+      "title": "构建化学神经网络｜MLP 回归与分类",
+      "category": "cheminformatics-design",
+      "page": "skills/chemical-mlp-models/README.md",
+      "run": "skills/chemical-mlp-models/README.md",
+      "python_entry": "skills/chemical-mlp-models/runtime/run_skill.py",
+      "skill": "skills/chemical-mlp-models/SKILL.md",
+      "download": "skills/chemical-mlp-models/downloads/chemical-mlp-models-python.zip",
+      "execution": "local_python",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/chemical-mlp-models/SKILL.md",
+        "python": "skills/chemical-mlp-models/runtime/run_skill.py",
+        "package": "skills/chemical-mlp-models/downloads/chemical-mlp-models-python.zip"
+      }
+    },
+    {
+      "id": "molecular-gnn-mpnn",
+      "title": "构建分子图神经网络｜GNN 与 MPNN",
+      "category": "cheminformatics-design",
+      "page": "skills/molecular-gnn-mpnn/README.md",
+      "run": "skills/molecular-gnn-mpnn/README.md",
+      "python_entry": "skills/molecular-gnn-mpnn/runtime/run_skill.py",
+      "skill": "skills/molecular-gnn-mpnn/SKILL.md",
+      "download": "skills/molecular-gnn-mpnn/downloads/molecular-gnn-mpnn-python.zip",
+      "execution": "local_python",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/molecular-gnn-mpnn/SKILL.md",
+        "python": "skills/molecular-gnn-mpnn/runtime/run_skill.py",
+        "package": "skills/molecular-gnn-mpnn/downloads/molecular-gnn-mpnn-python.zip"
+      }
+    },
+    {
+      "id": "chemical-chemprop-prediction",
+      "title": "预测分子性质与反应活性｜Chemprop",
+      "category": "cheminformatics-design",
+      "page": "skills/chemical-chemprop-prediction/README.md",
+      "run": "skills/chemical-chemprop-prediction/README.md",
+      "python_entry": "skills/chemical-chemprop-prediction/runtime/run_skill.py",
+      "skill": "skills/chemical-chemprop-prediction/SKILL.md",
+      "download": "skills/chemical-chemprop-prediction/downloads/chemical-chemprop-prediction-python.zip",
+      "execution": "local_python",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/chemical-chemprop-prediction/SKILL.md",
+        "python": "skills/chemical-chemprop-prediction/runtime/run_skill.py",
+        "package": "skills/chemical-chemprop-prediction/downloads/chemical-chemprop-prediction-python.zip"
+      }
+    },
+    {
+      "id": "molecular-self-supervised-pretraining",
+      "title": "预训练分子表示｜对比学习与掩码学习",
+      "category": "cheminformatics-design",
+      "page": "skills/molecular-self-supervised-pretraining/README.md",
+      "run": "skills/molecular-self-supervised-pretraining/README.md",
+      "python_entry": "skills/molecular-self-supervised-pretraining/runtime/run_skill.py",
+      "skill": "skills/molecular-self-supervised-pretraining/SKILL.md",
+      "download": "skills/molecular-self-supervised-pretraining/downloads/molecular-self-supervised-pretraining-python.zip",
+      "execution": "local_python",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/molecular-self-supervised-pretraining/SKILL.md",
+        "python": "skills/molecular-self-supervised-pretraining/runtime/run_skill.py",
+        "package": "skills/molecular-self-supervised-pretraining/downloads/molecular-self-supervised-pretraining-python.zip"
+      }
+    },
+    {
+      "id": "molecular-smiles-vae",
+      "title": "生成候选分子｜SMILES VAE 与潜空间采样",
+      "category": "cheminformatics-design",
+      "page": "skills/molecular-smiles-vae/README.md",
+      "run": "skills/molecular-smiles-vae/README.md",
+      "python_entry": "skills/molecular-smiles-vae/runtime/run_skill.py",
+      "skill": "skills/molecular-smiles-vae/SKILL.md",
+      "download": "skills/molecular-smiles-vae/downloads/molecular-smiles-vae-python.zip",
+      "execution": "local_python",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/molecular-smiles-vae/SKILL.md",
+        "python": "skills/molecular-smiles-vae/runtime/run_skill.py",
+        "package": "skills/molecular-smiles-vae/downloads/molecular-smiles-vae-python.zip"
+      }
+    },
+    {
+      "id": "chemical-bayesian-optimization",
+      "title": "优化化学实验｜贝叶斯优化与条件推荐",
+      "category": "synthesis-experiment-optimization",
+      "page": "skills/chemical-bayesian-optimization/README.md",
+      "run": "skills/chemical-bayesian-optimization/README.md",
+      "python_entry": "skills/chemical-bayesian-optimization/runtime/run_skill.py",
+      "skill": "skills/chemical-bayesian-optimization/SKILL.md",
+      "download": "skills/chemical-bayesian-optimization/downloads/chemical-bayesian-optimization-python.zip",
+      "execution": "local_python",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/chemical-bayesian-optimization/SKILL.md",
+        "python": "skills/chemical-bayesian-optimization/runtime/run_skill.py",
+        "package": "skills/chemical-bayesian-optimization/downloads/chemical-bayesian-optimization-python.zip"
+      }
+    },
+    {
+      "id": "chemical-multiobjective-optimization",
+      "title": "权衡化学目标｜多目标贝叶斯优化",
+      "category": "synthesis-experiment-optimization",
+      "page": "skills/chemical-multiobjective-optimization/README.md",
+      "run": "skills/chemical-multiobjective-optimization/README.md",
+      "python_entry": "skills/chemical-multiobjective-optimization/runtime/run_skill.py",
+      "skill": "skills/chemical-multiobjective-optimization/SKILL.md",
+      "download": "skills/chemical-multiobjective-optimization/downloads/chemical-multiobjective-optimization-python.zip",
+      "execution": "local_python",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/chemical-multiobjective-optimization/SKILL.md",
+        "python": "skills/chemical-multiobjective-optimization/runtime/run_skill.py",
+        "package": "skills/chemical-multiobjective-optimization/downloads/chemical-multiobjective-optimization-python.zip"
+      }
+    },
+    {
+      "id": "chemical-multiarmed-bandit",
+      "title": "筛选实验方案｜多臂老虎机与探索利用",
+      "category": "synthesis-experiment-optimization",
+      "page": "skills/chemical-multiarmed-bandit/README.md",
+      "run": "skills/chemical-multiarmed-bandit/README.md",
+      "python_entry": "skills/chemical-multiarmed-bandit/runtime/run_skill.py",
+      "skill": "skills/chemical-multiarmed-bandit/SKILL.md",
+      "download": "skills/chemical-multiarmed-bandit/downloads/chemical-multiarmed-bandit-python.zip",
+      "execution": "local_python",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/chemical-multiarmed-bandit/SKILL.md",
+        "python": "skills/chemical-multiarmed-bandit/runtime/run_skill.py",
+        "package": "skills/chemical-multiarmed-bandit/downloads/chemical-multiarmed-bandit-python.zip"
+      }
+    },
+    {
+      "id": "chemical-q-learning-simulation",
+      "title": "学习序贯策略｜Q-learning 与化学模拟环境",
+      "category": "synthesis-experiment-optimization",
+      "page": "skills/chemical-q-learning-simulation/README.md",
+      "run": "skills/chemical-q-learning-simulation/README.md",
+      "python_entry": "skills/chemical-q-learning-simulation/runtime/run_skill.py",
+      "skill": "skills/chemical-q-learning-simulation/SKILL.md",
+      "download": "skills/chemical-q-learning-simulation/downloads/chemical-q-learning-simulation-python.zip",
+      "execution": "local_python",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/chemical-q-learning-simulation/SKILL.md",
+        "python": "skills/chemical-q-learning-simulation/runtime/run_skill.py",
+        "package": "skills/chemical-q-learning-simulation/downloads/chemical-q-learning-simulation-python.zip"
+      }
+    },
+    {
+      "id": "runtime-usage-assistant",
+      "title": "Runtime 使用助手",
+      "category": "cross-domain-runtime",
+      "page": "skills/runtime-usage-assistant/README.md",
+      "run": "skills/runtime-usage-assistant/README.md",
+      "python_entry": "skills/runtime-usage-assistant/runtime/run_skill.py",
+      "skill": "skills/runtime-usage-assistant/SKILL.md",
+      "download": "skills/runtime-usage-assistant/downloads/runtime-usage-assistant-python.zip",
+      "execution": "local_python",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "downloads": {
+        "skill": "skills/runtime-usage-assistant/SKILL.md",
+        "python": "skills/runtime-usage-assistant/runtime/run_skill.py",
+        "package": "skills/runtime-usage-assistant/downloads/runtime-usage-assistant-python.zip"
       }
     }
   ],
@@ -151,200 +776,266 @@
       "title": "SMILES 与 RDKit",
       "category": "organic-structure",
       "has_learning_page": true,
-      "page": "skills/organic-smiles-rdkit/README.md"
+      "page": "skills/organic-smiles-rdkit/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     },
     {
       "id": "chemical-identifier-resolution",
       "title": "解析化学结构标识符｜PubChem 与 CIR",
       "category": "organic-structure",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/chemical-identifier-resolution/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     },
     {
       "id": "chemical-pandas-cleaning",
       "title": "整理化学数据｜Pandas 清洗与统计",
       "category": "organic-analysis",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/chemical-pandas-cleaning/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     },
     {
       "id": "table-fitting-residuals",
       "title": "表格拟合与残差分析",
       "category": "organic-analysis",
       "has_learning_page": true,
-      "page": "skills/table-fitting-residuals/README.md"
+      "page": "skills/table-fitting-residuals/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     },
     {
       "id": "chemical-experimental-plotting",
       "title": "绘制科研图表｜实验数据与误差分析",
       "category": "organic-analysis",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/chemical-experimental-plotting/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     },
     {
       "id": "molecular-graph-energy-ledger",
       "title": "分子图匹配与能量账本复核",
       "category": "physical-organic",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/molecular-graph-energy-ledger/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     },
     {
       "id": "same-hamiltonian-path-closure",
       "title": "同哈密顿量路径闭合核对",
       "category": "physical-organic",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/same-hamiltonian-path-closure/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     },
     {
       "id": "scan-energy-curvature",
       "title": "几何扫描能量分解与曲率分析",
       "category": "physical-organic",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/scan-energy-curvature/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     },
     {
       "id": "nuclear-repulsion-response",
       "title": "核排斥能与几何响应分析",
       "category": "physical-organic",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/nuclear-repulsion-response/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     },
     {
       "id": "rhf-single-point",
       "title": "RHF 单点计算助手",
       "category": "computational-organic",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/rhf-single-point/README.md",
+      "development_status": "PARTIAL_BACKEND_PENDING"
     },
     {
       "id": "orbital-localization-density",
       "title": "轨道局域化与密度不变性验证",
       "category": "computational-organic",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/orbital-localization-density/README.md",
+      "development_status": "PARTIAL_BACKEND_PENDING"
     },
     {
       "id": "nonorthogonal-subspace",
       "title": "非正交子空间投影与泄漏分析",
       "category": "computational-organic",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/nonorthogonal-subspace/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     },
     {
       "id": "fragment-working-basis",
       "title": "片段工作基组装与一致性审计",
       "category": "computational-organic",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/fragment-working-basis/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     },
     {
       "id": "reflection-parity",
       "title": "镜面对称轨道适配与奇偶性分析",
       "category": "computational-organic",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/reflection-parity/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     },
     {
       "id": "partition-mask-audit",
       "title": "矩阵分区掩码与正定性检查",
       "category": "computational-organic",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/partition-mask-audit/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     },
     {
       "id": "fixed-protocol-energy-review",
       "title": "固定协议条件态与能量复核",
       "category": "computational-organic",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/fixed-protocol-energy-review/README.md",
+      "development_status": "PARTIAL_BACKEND_PENDING"
     },
     {
       "id": "constrained-optimization-response",
       "title": "约束优化与结构响应",
       "category": "structure-state-response",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/constrained-optimization-response/README.md",
+      "development_status": "PARTIAL_BACKEND_PENDING"
     },
     {
       "id": "multistate-size-comparison",
       "title": "多态与尺寸比较",
       "category": "structure-state-response",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/multistate-size-comparison/README.md",
+      "development_status": "PARTIAL_BACKEND_PENDING"
     },
     {
       "id": "chemical-space-embedding",
       "title": "可视化化学空间｜PCA、t-SNE 与 UMAP",
       "category": "cheminformatics-design",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/chemical-space-embedding/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     },
     {
       "id": "chemical-molecule-clustering",
       "title": "聚类化学分子｜KMeans、层次聚类与 DBSCAN",
       "category": "cheminformatics-design",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/chemical-molecule-clustering/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     },
     {
       "id": "chemical-regression-classification",
       "title": "构建化学预测模型｜回归与分类",
       "category": "cheminformatics-design",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/chemical-regression-classification/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     },
     {
       "id": "chemical-model-validation",
       "title": "验证化学预测模型｜交叉验证与解释",
       "category": "cheminformatics-design",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/chemical-model-validation/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     },
     {
       "id": "chemical-tree-forest-models",
       "title": "构建化学树模型｜决策树与随机森林",
       "category": "cheminformatics-design",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/chemical-tree-forest-models/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     },
     {
       "id": "chemical-mlp-models",
       "title": "构建化学神经网络｜MLP 回归与分类",
       "category": "cheminformatics-design",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/chemical-mlp-models/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     },
     {
       "id": "molecular-gnn-mpnn",
       "title": "构建分子图神经网络｜GNN 与 MPNN",
       "category": "cheminformatics-design",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/molecular-gnn-mpnn/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     },
     {
       "id": "chemical-chemprop-prediction",
       "title": "预测分子性质与反应活性｜Chemprop",
       "category": "cheminformatics-design",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/chemical-chemprop-prediction/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     },
     {
       "id": "molecular-self-supervised-pretraining",
       "title": "预训练分子表示｜对比学习与掩码学习",
       "category": "cheminformatics-design",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/molecular-self-supervised-pretraining/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     },
     {
       "id": "molecular-smiles-vae",
       "title": "生成候选分子｜SMILES VAE 与潜空间采样",
       "category": "cheminformatics-design",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/molecular-smiles-vae/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     },
     {
       "id": "chemical-bayesian-optimization",
       "title": "优化化学实验｜贝叶斯优化与条件推荐",
       "category": "synthesis-experiment-optimization",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/chemical-bayesian-optimization/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     },
     {
       "id": "chemical-multiobjective-optimization",
       "title": "权衡化学目标｜多目标贝叶斯优化",
       "category": "synthesis-experiment-optimization",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/chemical-multiobjective-optimization/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     },
     {
       "id": "chemical-multiarmed-bandit",
       "title": "筛选实验方案｜多臂老虎机与探索利用",
       "category": "synthesis-experiment-optimization",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/chemical-multiarmed-bandit/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     },
     {
       "id": "chemical-q-learning-simulation",
       "title": "学习序贯策略｜Q-learning 与化学模拟环境",
       "category": "synthesis-experiment-optimization",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/chemical-q-learning-simulation/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     },
     {
       "id": "runtime-usage-assistant",
       "title": "Runtime 使用助手",
       "category": "cross-domain-runtime",
-      "has_learning_page": false
+      "has_learning_page": true,
+      "page": "skills/runtime-usage-assistant/README.md",
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     }
-  ]
+  ],
+  "revision": "skills-33-scientific-scope-20261024",
+  "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION"
 }

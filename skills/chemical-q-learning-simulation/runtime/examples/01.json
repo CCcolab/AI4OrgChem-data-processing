@@ -1,0 +1,107 @@
+{
+  "parameters": {
+    "seed": 17,
+    "episodes": 60,
+    "max_steps": 8,
+    "alpha": 0.3,
+    "gamma": 0.9,
+    "epsilon": 0.2,
+    "evaluation_episodes": 5
+  },
+  "data": {
+    "states": [
+      "start",
+      "middle",
+      "terminal"
+    ],
+    "actions": [
+      "advance",
+      "wait"
+    ],
+    "initial_state": "start",
+    "terminal_states": [
+      "terminal"
+    ],
+    "transition_probability": [
+      [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ]
+    ],
+    "transition_reward": [
+      [
+        [
+          0,
+          -0.1,
+          0
+        ],
+        [
+          -0.05,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          -0.1,
+          0,
+          0
+        ]
+      ],
+      [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    ],
+    "reward_unit": "synthetic_utility"
+  },
+  "provenance": {
+    "kind": "AUTHORED_TEACHING_INPUT",
+    "description": "Authored finite MDP; no reaction rates, chemical energies or laboratory actions."
+  }
+}

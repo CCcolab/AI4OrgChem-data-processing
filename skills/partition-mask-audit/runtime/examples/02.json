@@ -1,0 +1,46 @@
+{
+  "parameters": {
+    "atol": 1e-08,
+    "matrix_role": "hamiltonian",
+    "allowed_pairs": [
+      [
+        "A",
+        "A"
+      ],
+      [
+        "B",
+        "B"
+      ]
+    ]
+  },
+  "data": {
+    "matrix": [
+      [
+        -1,
+        0.2
+      ],
+      [
+        0.2,
+        2
+      ]
+    ],
+    "partitions": [
+      {
+        "id": "A",
+        "indices": [
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "indices": [
+          1
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "kind": "AUTHORED_TEACHING_INPUT",
+    "description": "Authored indefinite Hamiltonian-like matrix; negativity is not an error for this role."
+  }
+}

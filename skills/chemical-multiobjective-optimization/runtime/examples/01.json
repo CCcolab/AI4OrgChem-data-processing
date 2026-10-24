@@ -1,0 +1,109 @@
+{
+  "parameters": {
+    "seed": 17,
+    "directions": [
+      "maximize",
+      "maximize"
+    ],
+    "reference_point": [
+      -0.2,
+      -0.2
+    ],
+    "noise_sd": [
+      0.01,
+      0.01
+    ],
+    "maxiter": 15,
+    "mc_samples": 16
+  },
+  "data": {
+    "bounds": [
+      [
+        0.0,
+        1.0
+      ]
+    ],
+    "feature_names": [
+      "declared_control"
+    ],
+    "feature_units": [
+      "dimensionless"
+    ],
+    "observed_ids": [
+      "O1",
+      "O2",
+      "O3",
+      "O4"
+    ],
+    "observed_x": [
+      [
+        0.0
+      ],
+      [
+        0.3
+      ],
+      [
+        0.7
+      ],
+      [
+        1.0
+      ]
+    ],
+    "source_ids": [
+      "AUTHORED_1",
+      "AUTHORED_2",
+      "AUTHORED_3",
+      "AUTHORED_4"
+    ],
+    "candidate_ids": [
+      "C1",
+      "C2",
+      "C3",
+      "C4",
+      "C5"
+    ],
+    "candidate_x": [
+      [
+        0.1
+      ],
+      [
+        0.25
+      ],
+      [
+        0.5
+      ],
+      [
+        0.75
+      ],
+      [
+        0.9
+      ]
+    ],
+    "objective_units": [
+      "synthetic_objective_1",
+      "synthetic_objective_2"
+    ],
+    "observed_y": [
+      [
+        0.0,
+        1.0
+      ],
+      [
+        0.3,
+        0.91
+      ],
+      [
+        0.7,
+        0.51
+      ],
+      [
+        1.0,
+        0.0
+      ]
+    ]
+  },
+  "provenance": {
+    "kind": "AUTHORED_TEACHING_INPUT",
+    "description": "Authored two-objective numbers; no physical calibration."
+  }
+}

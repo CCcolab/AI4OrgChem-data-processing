@@ -1,0 +1,86 @@
+{
+  "parameters": {
+    "seed": 17,
+    "direction": "maximize",
+    "noise_sd": 0.01,
+    "length_scale": 0.3,
+    "xi": 0.05
+  },
+  "data": {
+    "bounds": [
+      [
+        0.0,
+        1.0
+      ]
+    ],
+    "feature_names": [
+      "declared_control"
+    ],
+    "feature_units": [
+      "dimensionless"
+    ],
+    "observed_ids": [
+      "O1",
+      "O2",
+      "O3",
+      "O4"
+    ],
+    "observed_x": [
+      [
+        0.0
+      ],
+      [
+        0.3
+      ],
+      [
+        0.7
+      ],
+      [
+        1.0
+      ]
+    ],
+    "source_ids": [
+      "AUTHORED_1",
+      "AUTHORED_2",
+      "AUTHORED_3",
+      "AUTHORED_4"
+    ],
+    "candidate_ids": [
+      "C1",
+      "C2",
+      "C3",
+      "C4",
+      "C5"
+    ],
+    "candidate_x": [
+      [
+        0.1
+      ],
+      [
+        0.25
+      ],
+      [
+        0.5
+      ],
+      [
+        0.75
+      ],
+      [
+        0.9
+      ]
+    ],
+    "objective_units": [
+      "synthetic_response"
+    ],
+    "observed_y": [
+      -0.25,
+      -0.04,
+      -0.04,
+      -0.25
+    ]
+  },
+  "provenance": {
+    "kind": "AUTHORED_TEACHING_INPUT",
+    "description": "Authored scalar quadratic-like observations; no real experiment or new objective evaluation."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "parameters": {
+    "mode": "graph",
+    "query_smarts": "C[C@H](O)C(=O)O",
+    "include_chirality": true
+  },
+  "data": {
+    "molecules": [
+      {
+        "id": "plus",
+        "smiles": "C[C@H](O)C(=O)O"
+      },
+      {
+        "id": "minus",
+        "smiles": "C[C@@H](O)C(=O)O"
+      }
+    ]
+  },
+  "provenance": {
+    "kind": "AUTHORED_TEACHING_INPUT",
+    "description": "Specified mirror-related teaching structures; no R/S assignment from @ alone."
+  }
+}

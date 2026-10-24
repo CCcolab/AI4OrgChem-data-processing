@@ -1,0 +1,45 @@
+{
+  "parameters": {
+    "coordinate_unit": "bohr",
+    "position_atol": 1e-08,
+    "gradient_atol": 1e-08,
+    "hessian_atol": 1e-08,
+    "curvature_min": 1e-08,
+    "rank_rtol": 1e-10
+  },
+  "data": {
+    "coordinates": [
+      0.1,
+      1
+    ],
+    "gradient": [
+      2,
+      0
+    ],
+    "hessian": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        3
+      ]
+    ],
+    "constraint_matrix": [
+      [
+        1,
+        0
+      ]
+    ],
+    "constraint_target": [
+      0
+    ],
+    "converged": true,
+    "source_definition": "Authored local derivatives of E=2x+0.5x^2+1.5(y-1)^2 under x=0; not a molecular calculation"
+  },
+  "provenance": {
+    "kind": "AUTHORED_TEACHING_INPUT",
+    "description": "Analytic constrained quadratic fixture. No geometry optimizer or quantum gradient was called."
+  }
+}
