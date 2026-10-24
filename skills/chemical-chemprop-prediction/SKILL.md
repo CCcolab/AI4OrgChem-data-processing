@@ -13,6 +13,10 @@ data含5–64条唯一ids、单组分SMILES及监督任务target/target_unit，�
 
 实际Chemprop BondMessagePassing、MeanAggregation、RegressionFFN，关闭batch normalization；每划分一批，num_workers=0，用Torch Adam训练MSE。目标均值和尺度仅取训练集；保存权重并重建同架构重载复核。未使用Lightning自动训练/调参或预训练下载。
 
+## 输入校验与方法依据补充
+
+数值数组在NumPy类型提升前逐项校验：JSON布尔值true/false、null、字符串或与数值混合的这些值均拒绝，不把标志列自动转换为0/1测量、目标、度量或概率。整数0/1仍可用于已声明的数值/二分类接口；缺失值须先按研究协议处理。数组结构遍历预算为100000项，另保留各模块原有形状、有限性和数据规模限制。
+
 ## 完整调用与结果
 
 1. 读取完整SKILL.md及显式JSON请求（parameters、data、provenance三部分），验证资源SHA-256及输入范围；禁止重复JSON键、NaN/Infinity和未知字段。

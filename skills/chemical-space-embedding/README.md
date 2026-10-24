@@ -18,6 +18,10 @@ StandardScaler只拟合指定参考行；PCA用全SVD，t-SNE固定500迭代、e
 
 [scikit-learn PCA](https://scikit-learn.org/stable/modules/decomposition.html#pca)、[t-SNE](https://scikit-learn.org/stable/modules/manifold.html#t-sne)、[UMAP新点变换](https://umap-learn.readthedocs.io/en/latest/transform.html)。在线文档滚动更新，实际依赖固定并记录版本。
 
+## 输入校验与方法依据补充
+
+数值数组在NumPy类型提升前逐项校验：JSON布尔值true/false、null、字符串或与数值混合的这些值均拒绝，不把标志列自动转换为0/1测量、目标、度量或概率。整数0/1仍可用于已声明的数值/二分类接口；缺失值须先按研究协议处理。数组结构遍历预算为100000项，另保留各模块原有形状、有限性和数据规模限制。
+
 ## 安装与默认运行
 
 Windows在有写入权限的短路径（例如D:\Chem\s）解压，进入README和runtime所在目录，使用Python3.12的独立环境：

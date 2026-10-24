@@ -1,5 +1,6 @@
 """Directed-cycle arithmetic with explicit operator and endpoint identities."""
-from decimal import Decimal, localcontext
+from decimal import Decimal
+from .decimal_arithmetic import bounded_decimal, exact_context
 
 
 def analyze(parameters, data):
@@ -16,8 +17,12 @@ def analyze(parameters, data):
     if not isinstance(edges, list) or not 2 <= len(edges) <= 100:
         raise ValueError('Provide 2–100 ordered directed edges forming a cycle.')
     sources = []
-    with localcontext() as context:
-        context.prec = 50
+    literals = [atol]
+    for edge in edges:
+        if not isinstance(edge, dict) or 'delta_hartree' not in edge:
+            raise ValueError('Each edge requires an explicit difference.')
+        literals.append(edge['delta_hartree'])
+    with exact_context(literals, max_terms=100) as arithmetic:
         total = Decimal(0)
         for index, edge in enumerate(edges):
             if set(edge) != {'from', 'to', 'delta_hartree', 'source_id', 'operator_id', 'basis_id', 'geometry_id', 'electron_count'}:
@@ -29,13 +34,13 @@ def analyze(parameters, data):
             for field in ['operator_id', 'basis_id', 'geometry_id', 'electron_count']:
                 if edge[field] != parameters[field]:
                     raise ValueError('Incompatible comparison identity: ' + field)
-            delta = Decimal(str(edge['delta_hartree']))
+            delta = bounded_decimal(edge['delta_hartree'])
             if not delta.is_finite():
                 raise ValueError('Finite edge differences are required.')
             total += delta
             sources.append(edge['source_id'])
-        passed = abs(total) <= Decimal(str(atol))
-        return {'scope': 'SAME_DECLARED_HAMILTONIAN_DIRECTED_CYCLE_ARITHMETIC',
+        passed = abs(total) <= bounded_decimal(atol)
+        return {'arithmetic': arithmetic, 'scope': 'SAME_DECLARED_HAMILTONIAN_DIRECTED_CYCLE_ARITHMETIC',
                 'cycle_residual_hartree': str(total), 'orientation': 'delta = E(to) - E(from)',
                 'distinct_source_ids': len(set(sources)), 'edge_count': len(edges),
                 'checks': [{'name': 'cycle_closure_absolute', 'passed': passed,

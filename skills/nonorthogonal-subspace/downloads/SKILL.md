@@ -13,6 +13,10 @@ parameters为atol、rank_rtol（1e-12至1e-4）；data为overlap、basis、vecto
 
 G=BᵀSB，按λ>rank_rtol×λmax保留Gram方向；P=B G⁺ BᵀS。分别报告vᵀSv、rᵀSr及比值；零/近零原范数的比值写null。检查P²=P、PᵀS=SP和保留范围对残差的S正交性。阈值及数值秩是工程约定，不是物理概率解释。
 
+## 输入校验与方法依据补充
+
+数值数组在NumPy类型提升前逐项校验：JSON布尔值true/false、null、字符串或与数值混合的这些值均拒绝，不把标志列自动转换为0/1测量、目标、度量或概率。整数0/1仍可用于已声明的数值/二分类接口；缺失值须先按研究协议处理。数组结构遍历预算为100000项，另保留各模块原有形状、有限性和数据规模限制。
+
 ## 完整调用与结果
 
 1. 读取完整SKILL.md及显式JSON请求（parameters、data、provenance三部分），验证资源SHA-256及输入范围；禁止重复JSON键、NaN/Infinity和未知字段。
@@ -29,3 +33,5 @@ G=BᵀSB，按λ>rank_rtol×λmax保留Gram方向；P=B G⁺ BᵀS。分别报�
 ## 方法来源
 
 投影公式在此显式给定；[NumPy eigh](https://numpy.org/doc/stable/reference/generated/numpy.linalg.eigh.html)支持对称Gram矩阵分解。软件分解不认证AO物理身份。
+
+S度量投影的依据需分两层：[Strang投影与最小二乘](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-16-projection-matrices-and-least-squares/)说明普通欧式投影；本页的推广令S=UᵀU，把保留子空间白化为UB，用其正交列Q形成QQᵀ，再还原P=U⁻¹QQᵀU。Gram相对秩阈值决定保留空间；NumPy eigh只是数值接口，不能鉴定AO身份或赋予残差能量含义。

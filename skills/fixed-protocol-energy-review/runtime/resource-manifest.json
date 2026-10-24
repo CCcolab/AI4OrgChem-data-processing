@@ -1,11 +1,15 @@
 [
   {
     "file": "SKILL.md",
-    "sha256": "8e4176fe92f3f0422612a252e587ebc2eaaf7601e88d8df2a43197b764b3afaf"
+    "sha256": "8ae9d34ea28964c7fe40d78497229456f3225588b55db8411d80200e87ad017d"
   },
   {
     "file": "runtime/analysis.py",
-    "sha256": "c623647f1fc1df68c37eace76cc98cd478b28d4f8a045544add63507887fcf1e"
+    "sha256": "331a9d5176f469bdccd840537b6acedc66739aa477400b53f00f1a07ab1f9f39"
+  },
+  {
+    "file": "runtime/decimal_arithmetic.py",
+    "sha256": "d427f3ab5ef054bc182998f9fb6ba0edc4ecf0579ac19a5fd35fc386387f0ed4"
   },
   {
     "file": "runtime/examples/01.json",

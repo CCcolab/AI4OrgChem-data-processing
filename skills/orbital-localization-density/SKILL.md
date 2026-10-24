@@ -13,6 +13,10 @@ parameters为atol、density_semantics=SPIN_SUMMED_REAL_AO_RHF；data必需overla
 
 C′=CU，D=C diag(n) Cᵀ；核对CᵀSC=I、UᵀU=I、U diag(n) Uᵀ=diag(n)、相对密度差及Tr(DS)。只有等占据混合才保持密度；占据/虚空间互混不获不变性。能量对照只在固定hcore/veff下计算，不代表新自洽端点。
 
+## 输入校验与方法依据补充
+
+数值数组在NumPy类型提升前逐项校验：JSON布尔值true/false、null、字符串或与数值混合的这些值均拒绝，不把标志列自动转换为0/1测量、目标、度量或概率。整数0/1仍可用于已声明的数值/二分类接口；缺失值须先按研究协议处理。数组结构遍历预算为100000项，另保留各模块原有形状、有限性和数据规模限制。
+
 ## 完整调用与结果
 
 1. 读取完整SKILL.md及显式JSON请求（parameters、data、provenance三部分），验证资源SHA-256及输入范围；禁止重复JSON键、NaN/Infinity和未知字段。

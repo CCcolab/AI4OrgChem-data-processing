@@ -13,6 +13,10 @@ parameters显式seed、episodes1–200、max_steps1–20、alpha、gamma<1、eps
 
 Q(s,a)←Q+alpha[r+gamma maxQ(s′,·)−Q]，仅真正terminal时bootstrap项为0。外部max_steps截断仍bootstrap；有限任务内生时间限制需把剩余时间纳入状态，本模块不替用户构造。训练后冻结Q运行greedy评价并检查不更新，保存原始轨迹和q-values.npy。
 
+## 输入校验与方法依据补充
+
+数值数组在NumPy类型提升前逐项校验：JSON布尔值true/false、null、字符串或与数值混合的这些值均拒绝，不把标志列自动转换为0/1测量、目标、度量或概率。整数0/1仍可用于已声明的数值/二分类接口；缺失值须先按研究协议处理。数组结构遍历预算为100000项，另保留各模块原有形状、有限性和数据规模限制。
+
 ## 完整调用与结果
 
 1. 读取完整SKILL.md及显式JSON请求（parameters、data、provenance三部分），验证资源SHA-256及输入范围；禁止重复JSON键、NaN/Infinity和未知字段。

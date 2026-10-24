@@ -13,6 +13,12 @@ graph参数：mode、query_smarts、include_chirality；data.molecules含id、sm
 
 图模式按query_smarts和include_chirality执行GetSubstructMatches。酸OH模式在乙酸/乙酸根/碳酸分别匹配1/0/2；不是通用羧酸分类器。账本为Σ coefficient×value_hartree，使用50位Decimal，与独立声明reference_hartree按显式绝对容差比较。来源标签不等于鉴定，闭合不验证物理分解。
 
+## 输入校验与方法依据补充
+
+能量算术采用skill-ledger-decimal-v2：每个十进制输入文字≤128字符、系数≤80位、Decimal指数在−200至200；不接收布尔值、特殊值或带空白文字。这里“系数位数/指数”指Decimal数字元组，不是化学有效数字认证。总精度由所有输入跨度及项数上界推导，上限1024位；乘积求和、独立总量差及阈值比较在同一精确上下文进行。任何Inexact/Rounded或预算越界均失败，绝不把失去的小残差当作闭合。回执的arithmetic记录策略与实际精度，原atol不变。
+
+[Python3.12 Decimal：舍入与相消](https://docs.python.org/3.12/library/decimal.html#mitigating-round-off-error-with-increased-precision)明确有限精度仍会舍入；本策略只保证所定义有界算术，不认证能量来源、方法、端点真实性或物理可比性。例如1e60+0.1−1e60必须报告0.1，不能据夸张数值声称化学合理。
+
 ## 完整调用与结果
 
 1. 读取完整SKILL.md及显式JSON请求（parameters、data、provenance三部分），验证资源SHA-256及输入范围；禁止重复JSON键、NaN/Infinity和未知字段。
@@ -29,3 +35,5 @@ graph参数：mode、query_smarts、include_chirality；data.molecules含id、sm
 ## 方法来源
 
 [RDKit查询接口](https://www.rdkit.org/docs/source/rdkit.Chem.rdchem.html)；[Daylight SMARTS](https://www.daylight.com/dayhtml/doc/theory/theory.smarts.html)；[Python Decimal](https://docs.python.org/3/library/decimal.html)。这些资料支持语言/软件与算术，不提供本案例的分子量子能量。
+
+SMARTS部分依据RDKit的查询语义；能量分项、正负号及同态协议是用户明确提供的账本定义，不由图匹配导出。Decimal说明仅支持算术实现，不是量子能量分解的理论背书。

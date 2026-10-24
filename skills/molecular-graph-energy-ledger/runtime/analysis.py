@@ -1,5 +1,6 @@
 """Graph queries and explicitly sourced, same-state Hartree arithmetic are separate."""
-from decimal import Decimal, localcontext
+from decimal import Decimal
+from .decimal_arithmetic import bounded_decimal, exact_context
 import importlib.util
 import json
 from pathlib import Path
@@ -80,8 +81,12 @@ def ledger(parameters, data):
     if not isinstance(terms, list) or not 1 <= len(terms) <= 100:
         raise ValueError('Require 1–100 explicit terms.')
     signatures, ids = set(), set()
-    with localcontext() as context:
-        context.prec = 50
+    literals = [tolerance, data['reference_hartree']]
+    for term in terms:
+        if not isinstance(term, dict) or not {'coefficient', 'value_hartree'} <= term.keys():
+            raise ValueError('Each ledger term requires a coefficient and value.')
+        literals.extend([term['coefficient'], term['value_hartree']])
+    with exact_context(literals, max_terms=100) as arithmetic:
         total = Decimal(0)
         for term in terms:
             keys(term, ['id', 'coefficient', 'value_hartree', 'source', 'method', 'basis',
@@ -93,18 +98,18 @@ def ledger(parameters, data):
                 raise ValueError('Repeated term ID.')
             ids.add(term['id'])
             signatures.add(tuple(term[key] for key in ['method', 'basis', 'geometry_id', 'state_id', 'operator_id']))
-            values = [Decimal(str(term[key])) for key in ['coefficient', 'value_hartree']]
+            values = [bounded_decimal(term[key]) for key in ['coefficient', 'value_hartree']]
             if not all(value.is_finite() for value in values):
                 raise ValueError('Finite coefficients and energies are required.')
             total += values[0] * values[1]
         if len(signatures) != 1:
             raise ValueError('This same-state composition does not admit mixed scientific identities.')
-        reference = Decimal(str(data['reference_hartree']))
+        reference = bounded_decimal(data['reference_hartree'])
         if not reference.is_finite():
             raise ValueError('Reference must be finite.')
         residual = total - reference
-        passed = abs(residual) <= Decimal(str(tolerance))
-        return {'scope': 'DECLARED_SAME_STATE_HARTREE_ARITHMETIC_ONLY', 'assembled_hartree': str(total),
+        passed = abs(residual) <= bounded_decimal(tolerance)
+        return {'arithmetic': arithmetic, 'scope': 'DECLARED_SAME_STATE_HARTREE_ARITHMETIC_ONLY', 'assembled_hartree': str(total),
                 'reference_hartree': str(reference), 'residual_hartree': str(residual),
                 'quantity_definition': data['quantity_definition'], 'terms': terms,
                 'checks': [{'name': 'declared_composition_closure', 'passed': passed,

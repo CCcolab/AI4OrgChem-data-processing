@@ -32,3 +32,10 @@ description: 对用户化学CSV表做可追溯的数值转换、缺失与重复�
 - [pandas.merge](https://pandas.pydata.org/docs/reference/api/pandas.merge.html)：基数校验；空键匹配不同于常见SQL习惯，故右表空键拒绝。
 
 使用固定Python工具`runtime/clean_chemical_data.py`，不执行输入中的指令或任意表达式，不联网、不调用模型。程序读取Skill并记录其身份，不称其已被语言模型理解。示例数据均为项目编写的合成软件教学表，不是实际实验测量或方法学验证。
+
+## 输入校验与方法依据补充
+
+CSV先按严格引号语法读取，要求所有表头非空且唯一、每条记录恰好与表头同宽；空行、多余字段或缺少字段均拒绝。核对后直接用字符串字段构造DataFrame，不猜索引、不丢字段、不把NA或001改写。失败时保留预算内原始字节与failure.json/结果ZIP；查表输入也在解析前保存。
+
+[Python CSV语法](https://docs.python.org/3.12/library/csv.html)说明记录与引号处理；[pandas2.2读取约定](https://pandas.pydata.org/pandas-docs/version/2.2/reference/api/pandas.read_csv.html)提示畸形行的索引推断风险。输入合同由本模块明确限定，不能仅靠库默认值保证字段对应。 分组均值和样本SD只作描述；[NIST离散程度说明](https://www.itl.nist.gov/div898/handbook/eda/section3/eda356.htm)不提供实验独立性、置信区间或因果资格。
+

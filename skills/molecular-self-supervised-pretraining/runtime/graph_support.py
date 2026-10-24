@@ -51,6 +51,24 @@ def graph(raw):
                 or any(b.GetStereo() != Chem.BondStereo.STEREONONE for b in mol.GetBonds())}
 
 
+def require_real_leaves(value):
+    """Validate raw numeric leaves before NumPy can promote mixed Booleans."""
+    pending = [value]
+    visited = 0
+    while pending:
+        item = pending.pop()
+        visited += 1
+        if visited > 100000:
+            raise ValueError('Numeric input exceeds the bounded traversal budget.')
+        if isinstance(item, (list, tuple)):
+            pending.extend(item)
+        elif isinstance(item, np.ndarray):
+            if item.dtype.kind not in 'if':
+                raise ValueError('Require real numeric leaves; Boolean/string/null/complex input is not admitted.')
+        elif isinstance(item, (bool, np.bool_)) or not isinstance(item, (int, float, np.integer, np.floating)):
+            raise ValueError('Require real numeric leaves; Boolean/string/null/complex input is not admitted.')
+
+
 def dataset(data, supervised=True):
     required = ['ids','smiles'] + (['target','target_unit'] if supervised else [])
     optional = ['groups','source_csv_text'] + ([] if supervised else ['target','target_unit'])
@@ -62,6 +80,7 @@ def dataset(data, supervised=True):
     graphs = [graph(raw) for raw in strings]
     y = None
     if supervised or 'target' in data:
+        require_real_leaves(data['target'])
         y = np.asarray(data['target'])
         if y.dtype.kind not in 'if' or y.shape != (len(graphs),) or not np.isfinite(y).all() or not isinstance(data.get('target_unit'),str) or not data['target_unit']:
             raise ValueError('Explicit finite aligned target and units are required.')

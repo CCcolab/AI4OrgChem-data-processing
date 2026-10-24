@@ -1,5 +1,6 @@
 """Explicit ordinary/conditional ledger review, not conditional-state compute."""
-from decimal import Decimal, localcontext
+from decimal import Decimal
+from .decimal_arithmetic import bounded_decimal, exact_context
 
 
 def analyze(parameters, data):
@@ -17,8 +18,16 @@ def analyze(parameters, data):
     if not isinstance(states, list) or len(states) != 2 or {s.get('role') for s in states} != {'ordinary', 'conditional'}:
         raise ValueError('Exactly ordinary and conditional state receipts are required.')
     checks, energies, records = [], {}, []
-    with localcontext() as context:
-        context.prec = 50
+    literals = [atol]
+    for state in states:
+        if not isinstance(state.get('terms'), list) or not 1 <= len(state['terms']) <= 32 or 'reported_total_hartree' not in state:
+            raise ValueError('Each endpoint requires1..32 terms and a reported total.')
+        literals.append(state['reported_total_hartree'])
+        for term in state['terms']:
+            if not isinstance(term, dict) or not {'coefficient', 'value_hartree'} <= term.keys():
+                raise ValueError('Each ledger term requires a coefficient and value.')
+            literals.extend([term['coefficient'], term['value_hartree']])
+    with exact_context(literals, max_terms=64) as arithmetic:
         for state in states:
             expected = set(identity_fields + ['role', 'operator_definition', 'occupation_definition', 'converged',
                                             'endpoint_qualified', 'terms', 'reported_total_hartree', 'total_source_id'])
@@ -36,16 +45,16 @@ def analyze(parameters, data):
                 if set(term) != {'id', 'value_hartree', 'coefficient', 'source_id'} or not term['id'] or term['id'] in seen or not term['source_id']:
                     raise ValueError('Terms need unique IDs, values, signed coefficients and sources.')
                 seen.add(term['id'])
-                coefficient, energy = Decimal(str(term['coefficient'])), Decimal(str(term['value_hartree']))
+                coefficient, energy = bounded_decimal(term['coefficient']), bounded_decimal(term['value_hartree'])
                 if not coefficient.is_finite() or not energy.is_finite():
                     raise ValueError('Nonfinite ledger term.')
                 value += coefficient * energy
-            reported = Decimal(str(state['reported_total_hartree']))
+            reported = bounded_decimal(state['reported_total_hartree'])
             if not reported.is_finite():
                 raise ValueError('Nonfinite independently reported total.')
             residual = abs(value - reported)
             role = state['role']
-            checks.extend([{'name': role + '_ledger_closure', 'passed': residual <= Decimal(str(atol)),
+            checks.extend([{'name': role + '_ledger_closure', 'passed': residual <= bounded_decimal(atol),
                             'actual': str(residual), 'threshold': atol},
                            {'name': role + '_declared_endpoint_qualification',
                             'passed': state['converged'] and state['endpoint_qualified'],
@@ -55,7 +64,7 @@ def analyze(parameters, data):
             records.append({'role': role, 'assembled_hartree': str(value), 'reported_hartree': str(reported),
                             'operator_definition': state['operator_definition'], 'occupation_definition': state['occupation_definition']})
         qualified = all(c['passed'] for c in checks)
-        return {'scope': 'EXPLICIT_FIXED_PROTOCOL_ENERGY_LEDGER_REVIEW_ONLY', 'checks': checks, 'states': records,
+        return {'arithmetic': arithmetic, 'scope': 'EXPLICIT_FIXED_PROTOCOL_ENERGY_LEDGER_REVIEW_ONLY', 'checks': checks, 'states': records,
                 'conditional_minus_ordinary_hartree': str(energies['conditional'] - energies['ordinary']) if qualified else None,
                 'comparison_definition': data['comparison_definition'], 'new_conditional_compute': 'NOT_ACCEPTED',
                 'limits': ['No new ordinary/conditional quantum endpoint; source labels and eligibility flags are declarations, not proof.',

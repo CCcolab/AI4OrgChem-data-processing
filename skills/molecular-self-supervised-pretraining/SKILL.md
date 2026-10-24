@@ -13,6 +13,10 @@ data含5–64条唯一ids、单组分SMILES及监督任务target/target_unit，�
 
 原子遮蔽将选中原子序数输入置零，真实类别单独保留作交叉熵目标；图对比用两种独立张量特征遮蔽、归一化嵌入及成对InfoNCE。只在训练图预训练；可选冻结编码器探针50步，训练内缩放目标，并检查编码器未改。
 
+## 输入校验与方法依据补充
+
+数值数组在NumPy类型提升前逐项校验：JSON布尔值true/false、null、字符串或与数值混合的这些值均拒绝，不把标志列自动转换为0/1测量、目标、度量或概率。整数0/1仍可用于已声明的数值/二分类接口；缺失值须先按研究协议处理。数组结构遍历预算为100000项，另保留各模块原有形状、有限性和数据规模限制。
+
 ## 完整调用与结果
 
 1. 读取完整SKILL.md及显式JSON请求（parameters、data、provenance三部分），验证资源SHA-256及输入范围；禁止重复JSON键、NaN/Infinity和未知字段。
@@ -29,3 +33,5 @@ data含5–64条唯一ids、单组分SMILES及监督任务target/target_unit，�
 ## 方法来源
 
 [MPNN](https://proceedings.mlr.press/v70/gilmer17a.html)；[SimCLR原论文](https://proceedings.mlr.press/v119/chen20j.html)用于对比目标的数学参考，其视觉增强不自动成为分子语义不变量。
+
+[SimCLR原始论文](https://proceedings.mlr.press/v119/chen20j.html)研究视觉增强与对比目标，不能直接背书本例的分子特征掩码为化学等价变换。张量loss/encoder重放只证明该实现执行；化学表示优劣须在独立真实数据与匹配从零训练对照下评价。

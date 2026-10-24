@@ -13,6 +13,10 @@ data显式ids、features二维有限实数矩阵、feature_names及逐列feature
 
 StandardScaler只拟合指定参考行；PCA用全SVD，t-SNE固定500迭代、exact和显式perplexity，UMAP固定100epochs/单线程及显式邻居数。保存坐标CSV、标注参考/查询的embedding.png和自生成joblib，报告解释方差或局部几何诊断；不训练监督标签。
 
+## 输入校验与方法依据补充
+
+数值数组在NumPy类型提升前逐项校验：JSON布尔值true/false、null、字符串或与数值混合的这些值均拒绝，不把标志列自动转换为0/1测量、目标、度量或概率。整数0/1仍可用于已声明的数值/二分类接口；缺失值须先按研究协议处理。数组结构遍历预算为100000项，另保留各模块原有形状、有限性和数据规模限制。
+
 ## 完整调用与结果
 
 1. 读取完整SKILL.md及显式JSON请求（parameters、data、provenance三部分），验证资源SHA-256及输入范围；禁止重复JSON键、NaN/Infinity和未知字段。

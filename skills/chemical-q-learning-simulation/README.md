@@ -18,6 +18,10 @@ Q(s,a)←Q+alpha[r+gamma maxQ(s′,·)−Q]，仅真正terminal时bootstrap项�
 
 [Sutton与Barto作者教材](https://www.incompleteideas.net/book/bookdraft2018mar21.pdf)Q-learning；[Farama终止与截断说明](https://gymnasium.farama.org/tutorials/gymnasium_basics/handling_time_limits/)支持bootstrap区分。
 
+## 输入校验与方法依据补充
+
+数值数组在NumPy类型提升前逐项校验：JSON布尔值true/false、null、字符串或与数值混合的这些值均拒绝，不把标志列自动转换为0/1测量、目标、度量或概率。整数0/1仍可用于已声明的数值/二分类接口；缺失值须先按研究协议处理。数组结构遍历预算为100000项，另保留各模块原有形状、有限性和数据规模限制。
+
 ## 安装与默认运行
 
 Windows在有写入权限的短路径（例如D:\Chem\s）解压，进入README和runtime所在目录，使用Python3.12的独立环境：

@@ -12,11 +12,15 @@
 
 ## 知识与适用边界
 
-检查R²=I、RᵀSR=S、BᵀSB=I以及RB−B(BᵀSRB)的平方S范数。仅闭合时对限制反射对角化，谱须为±1才输出适配列；不闭合时不贴奇偶标签。
+检查R²=I、RᵀSR=S、BᵀSB=I以及Δ=RB−B(BᵀSRB)的S范数sqrt[Tr(ΔᵀSΔ)]（残差平方S范数的平方根）。仅闭合时对限制反射对角化，谱须为±1才输出适配列；不闭合时不贴奇偶标签。
 
 代数通过不证明输入R确实对应所说几何镜面；还需坐标、原子/壳层映射和AO约定。奇偶在指定空间内定义，不能直接认证轨道化学类型、能量或密度不变性；占据兼容需单独检查。
 
 反射、度量和闭合公式在本页显式给出；[NumPy eigh](https://numpy.org/doc/stable/reference/generated/numpy.linalg.eigh.html)支持限制算子的实对称分解。
+
+## 输入校验与方法依据补充
+
+数值数组在NumPy类型提升前逐项校验：JSON布尔值true/false、null、字符串或与数值混合的这些值均拒绝，不把标志列自动转换为0/1测量、目标、度量或概率。整数0/1仍可用于已声明的数值/二分类接口；缺失值须先按研究协议处理。数组结构遍历预算为100000项，另保留各模块原有形状、有限性和数据规模限制。
 
 ## 安装与默认运行
 
@@ -53,3 +57,5 @@ Windows将python替换为`.\.venv\Scripts\python.exe`。案例完整程序：[�
 只修改参数不会更改旧结果，必须写新目录。严格UTF-8 JSON≤2 MB，不接受重复键或非有限数值。不应只改科学身份标签来绕过不兼容检查，来源标签本身不证明真实性。完整可复用[调用模板](runtime/examples/call_skill_template.py)支持--skill-dir、--input和--output，程序内部实际读取顶层Skill并保存其哈希，不调用模型。
 
 软件执行通过只覆盖声明的输入和数值范围，不代表整个理论、化学身份或新量子方法获认证。下载包[SHA-256](downloads/SHA256SUMS.txt)与内部验收记录分开，内部材料不进入用户包。
+
+闭合比较量为S范数而非其平方：平方量0.0396对应约0.1989974874，atol始终与后者比较。R²=I和RᵀSR=S在闭合空间内给±1谱是矩阵代数结论；[Strang投影课程](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-16-projection-matrices-and-least-squares/)支持子空间/投影语境，不替代真实几何镜面、AO约定和占据证据。

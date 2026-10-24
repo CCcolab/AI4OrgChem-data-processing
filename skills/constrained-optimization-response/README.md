@@ -20,6 +20,10 @@
 
 切空间投影及驻点规则在本页明示；[NumPy SVD](https://numpy.org/doc/stable/reference/generated/numpy.linalg.svd.html)和[eigh](https://numpy.org/doc/stable/reference/generated/numpy.linalg.eigh.html)支持数值处理，不能认证外部量子梯度。
 
+## 输入校验与方法依据补充
+
+数值数组在NumPy类型提升前逐项校验：JSON布尔值true/false、null、字符串或与数值混合的这些值均拒绝，不把标志列自动转换为0/1测量、目标、度量或概率。整数0/1仍可用于已声明的数值/二分类接口；缺失值须先按研究协议处理。数组结构遍历预算为100000项，另保留各模块原有形状、有限性和数据规模限制。
+
 ## 安装与默认运行
 
 Windows在有写入权限的短路径（例如D:\Chem\s）解压，进入README和runtime所在目录，使用Python3.12的独立环境：
@@ -55,3 +59,5 @@ Windows将python替换为`.\.venv\Scripts\python.exe`。案例完整程序：[�
 只修改参数不会更改旧结果，必须写新目录。严格UTF-8 JSON≤2 MB，不接受重复键或非有限数值。不应只改科学身份标签来绕过不兼容检查，来源标签本身不证明真实性。完整可复用[调用模板](runtime/examples/call_skill_template.py)支持--skill-dir、--input和--output，程序内部实际读取顶层Skill并保存其哈希，不调用模型。
 
 软件执行通过只覆盖声明的输入和数值范围，不代表整个理论、化学身份或新量子方法获认证。下载包[SHA-256](downloads/SHA256SUMS.txt)与内部验收记录分开，内部材料不进入用户包。
+
+[Boyd与Vandenberghe作者讲义第10章](https://web.stanford.edu/~boyd/cvxbook/bv_cvxslides.pdf#page=329)给出线性等式KKT与零空间消元。对Ax=b，令AZ=0，驻点检查Zᵀg，局部切向曲率检查ZᵀHZ；有限阈值只是给定数组的候选资格。非线性约束需Lagrangian Hessian，本工具不提供；没有新量子优化、全局极小或收敛真实性认证。

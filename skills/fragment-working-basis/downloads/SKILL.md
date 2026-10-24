@@ -13,6 +13,10 @@ parameters为atol、rank_rtol；data含overlap、fragments、target_vectors，�
 
 先拒绝片段列在声明支持外超过atol的元素，再合并B。按Gram保留方向构造Q=B U/√λ，检查QᵀSQ=I及目标残差平方S范数的平方根。可选一电子算子按QᵀHQ变换；没有算子时不制造能量。
 
+## 输入校验与方法依据补充
+
+数值数组在NumPy类型提升前逐项校验：JSON布尔值true/false、null、字符串或与数值混合的这些值均拒绝，不把标志列自动转换为0/1测量、目标、度量或概率。整数0/1仍可用于已声明的数值/二分类接口；缺失值须先按研究协议处理。数组结构遍历预算为100000项，另保留各模块原有形状、有限性和数据规模限制。
+
 ## 完整调用与结果
 
 1. 读取完整SKILL.md及显式JSON请求（parameters、data、provenance三部分），验证资源SHA-256及输入范围；禁止重复JSON键、NaN/Infinity和未知字段。
@@ -29,3 +33,5 @@ parameters为atol、rank_rtol；data含overlap、fragments、target_vectors，�
 ## 方法来源
 
 本页显式给出Gram正交化与一电子变换公式；[NumPy eigh](https://numpy.org/doc/stable/reference/generated/numpy.linalg.eigh.html)支持实对称分解。AO度量和片段映射真实性需另核对。
+
+Q=B U_r Λ_r⁻¹/²直接给出QᵀSQ=I；这里是按保留Gram谱定义的规范正交列。其数学正交性不保证列仍局域在单一片段，亦不是片段相互作用能或二电子张量方法的证明。

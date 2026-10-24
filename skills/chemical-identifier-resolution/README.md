@@ -88,3 +88,10 @@ print(receipt)
 网络不可达、404、限速、响应格式变化、结构无法解析均保留为FAILED_RETAINED行；命令退出码1表示含失败，2表示输入/文件级错误，0只表示本次候选查询流程无失败。查看requests.json中的HTTP状态、时间及原响应。429/503最多再试一次，超时20秒；不要无限重试或据此猜测化合物不存在。联网测试通过也不能等价为化学身份认证。
 
 下载包完整性见[SHA-256](downloads/SHA256SUMS.txt)。内部验收日志独立保存在项目内，不进入用户代码包。
+
+## 输入校验与方法依据补充
+
+CSV必须有且仅有唯一的id、query_type、query三列表头（顺序可变），逐记录严格核对字段数和引号；重复表头、空行、缺项或多项均拒绝，不覆盖或拼接查询。仅完整读取且在大小预算内的失败输入会随failure.json、Skill快照及results.zip保存。远程查询仍须显式许可；解析或校验失败不发送请求。
+
+[Python CSV语法](https://docs.python.org/3.12/library/csv.html)说明记录与引号处理；[pandas2.2读取约定](https://pandas.pydata.org/pandas-docs/version/2.2/reference/api/pandas.read_csv.html)提示畸形行的索引推断风险。输入合同由本模块明确限定，不能仅靠库默认值保证字段对应。 返回候选不是CAS登记或立体身份鉴定。
+

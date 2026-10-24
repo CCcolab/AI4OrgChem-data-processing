@@ -53,3 +53,5 @@ Windows将python替换为`.\.venv\Scripts\python.exe`。案例完整程序：[�
 只修改参数不会更改旧结果，必须写新目录。严格UTF-8 JSON≤2 MB，不接受重复键或非有限数值。不应只改科学身份标签来绕过不兼容检查，来源标签本身不证明真实性。完整可复用[调用模板](runtime/examples/call_skill_template.py)支持--skill-dir、--input和--output，程序内部实际读取顶层Skill并保存其哈希，不调用模型。
 
 软件执行通过只覆盖声明的输入和数值范围，不代表整个理论、化学身份或新量子方法获认证。下载包[SHA-256](downloads/SHA256SUMS.txt)与内部验收记录分开，内部材料不进入用户包。
+
+[NumPy非均匀差分推导](https://numpy.org/doc/stable/reference/generated/numpy.gradient.html#notes)支持三点一阶公式的光滑性前提；本程序二阶量来自同一局部二次插值，二次函数可精确核算不等于对真实势能面给出误差上界。来源/收敛标签不能自动证明电子态连续，非均匀步长和单位须随结果保留。

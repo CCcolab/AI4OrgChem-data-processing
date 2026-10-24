@@ -22,22 +22,49 @@ def dump(path, data):
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2, allow_nan=False) + '\n', encoding='utf-8')
 
 
-def read_csv(path):
-    import pandas as pd
-
+def read_source(path):
     path = Path(path)
     if path.is_symlink() or not path.is_file() or path.stat().st_size > 2_000_000:
         raise ValueError('CSV must be a regular file no larger than 2 MB.')
-    raw = path.read_bytes()
-    header = next(csv.reader(io.StringIO(raw.decode('utf-8-sig'))), [])
-    if not header or len(header) != len(set(header)):
+    return path.read_bytes()
+
+
+def read_csv(path, raw=None):
+    import pandas as pd
+
+    raw = read_source(path) if raw is None else raw
+    try:
+        records = list(csv.reader(io.StringIO(raw.decode('utf-8-sig'), newline=''), strict=True))
+    except csv.Error as error:
+        raise ValueError('Invalid CSV quoting: ' + str(error)) from None
+    header = records[0] if records else []
+    if not header or any(not value.strip() for value in header) or len(header) != len(set(header)):
         raise ValueError('CSV headers must be nonempty and unique; no automatic column renaming.')
-    # Read all fields as text: 001, NA and empty fields retain their meaning.
-    frame = pd.read_csv(io.StringIO(raw.decode('utf-8-sig')), dtype=str,
-                        keep_default_na=False, na_filter=False, on_bad_lines='error')
+    rows = records[1:]
+    if any(len(row) != len(header) for row in rows):
+        raise ValueError('Every CSV record must have exactly the header width; blank/ragged records are rejected.')
+    # Construct from checked string fields: no implicit index or NA inference.
+    frame = pd.DataFrame(rows, columns=header, dtype=str)
     if not 1 <= len(frame) <= 10000 or any(str(c).startswith('_adp_') for c in frame.columns):
         raise ValueError('Require 1–10000 rows and no reserved _adp_ columns.')
     return raw, frame
+
+
+def save_input_failure(raw, output_dir, error):
+    output = Path(output_dir).resolve()
+    if output.is_relative_to(PAGE) or output.exists():
+        raise ValueError('Use a NEW result directory outside the Skill source.')
+    output.mkdir(parents=True)
+    (output / 'input.csv').write_bytes(raw)
+    (output / 'SKILL.used.md').write_bytes((PAGE / 'SKILL.md').read_bytes())
+    dump(output / 'failure.json', {'status': 'FAILED_INPUT_RETAINED', 'type': type(error).__name__,
+                                 'message': str(error), 'model_calls': 0, 'network_calls': 0})
+    files = sorted(path for path in output.iterdir() if path.is_file())
+    (output / 'SHA256SUMS.txt').write_text(''.join(sha(path.read_bytes()) + '  ' + path.name + '\n'
+                                                for path in files), encoding='utf-8')
+    with zipfile.ZipFile(output / 'results.zip', 'w', zipfile.ZIP_DEFLATED) as archive:
+        for path in files + [output / 'SHA256SUMS.txt']:
+            archive.write(path, path.name)
 
 
 def run_skill(*, input_csv, output_dir, id_column='id', value_column='yield_pct',
@@ -56,11 +83,16 @@ def run_skill(*, input_csv, output_dir, id_column='id', value_column='yield_pct'
         raise ValueError('minimum must not exceed maximum.')
     if len({id_column, value_column, group_column}) != 3 or not isinstance(unit, str) or len(unit) > 80:
         raise ValueError('Choose three distinct columns and a short unit label.')
-    raw, original = read_csv(input_csv)
-    if not {id_column, value_column, group_column}.issubset(original.columns):
-        raise ValueError('Missing explicitly selected ID, value or group column.')
-    if original[id_column].eq('').any():
-        raise ValueError('Empty ID requires correction; repeated nonempty IDs are retained and flagged.')
+    raw = read_source(input_csv)
+    try:
+        _, original = read_csv(input_csv, raw=raw)
+        if not {id_column, value_column, group_column}.issubset(original.columns):
+            raise ValueError('Missing explicitly selected ID, value or group column.')
+        if original[id_column].eq('').any():
+            raise ValueError('Empty ID requires correction; repeated nonempty IDs are retained and flagged.')
+    except (ValueError, UnicodeError) as error:
+        save_input_failure(raw, output_dir, error)
+        raise
     output = Path(output_dir).resolve()
     if output.exists() or output.is_relative_to(PAGE):
         raise ValueError('Use a NEW output directory outside the Skill.')
@@ -100,8 +132,9 @@ def run_skill(*, input_csv, output_dir, id_column='id', value_column='yield_pct'
         if lookup_csv is not None:
             if not lookup_key or lookup_key not in frame.columns:
                 raise ValueError('Choose an existing lookup_key before joining.')
-            lookup_raw, lookup = read_csv(lookup_csv)
+            lookup_raw = read_source(lookup_csv)
             (output / 'lookup-input.csv').write_bytes(lookup_raw)
+            _, lookup = read_csv(lookup_csv, raw=lookup_raw)
             if lookup_key not in lookup or lookup[lookup_key].eq('').any() or lookup[lookup_key].duplicated().any():
                 raise ValueError('Lookup keys must be present, nonempty and unique (many_to_one).')
             if set(frame.columns).intersection(lookup.columns) != {lookup_key}:

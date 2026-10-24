@@ -13,6 +13,10 @@ parameters含mode、algorithm、seed、budget1–200、exploration；data为2–
 
 UCB先按声明顺序探索未访问臂，之后均值+exploration×sqrt(2log(t)/n)。Thompson独立Beta(1,1)先验，成功/失败更新。推荐不增加计数；保留每条奖励及模拟概率。
 
+## 输入校验与方法依据补充
+
+数值数组在NumPy类型提升前逐项校验：JSON布尔值true/false、null、字符串或与数值混合的这些值均拒绝，不把标志列自动转换为0/1测量、目标、度量或概率。整数0/1仍可用于已声明的数值/二分类接口；缺失值须先按研究协议处理。数组结构遍历预算为100000项，另保留各模块原有形状、有限性和数据规模限制。
+
 ## 完整调用与结果
 
 1. 读取完整SKILL.md及显式JSON请求（parameters、data、provenance三部分），验证资源SHA-256及输入范围；禁止重复JSON键、NaN/Infinity和未知字段。
@@ -29,3 +33,5 @@ UCB先按声明顺序探索未访问臂，之后均值+exploration×sqrt(2log(t)
 ## 方法来源
 
 [Sutton与Barto作者教材](https://www.incompleteideas.net/book/bookdraft2018mar21.pdf)第2章讨论多臂老虎机及探索；本页具体UCB/Beta更新式明确列出，不继承化学适用性。
+
+UCB方法参照[Auer等2002原论文](https://link.springer.com/article/10.1023/A:1013689704352)，本例exploration为显式教学变体，不直接继承其任意参数下的界。Beta–Bernoulli抽样参照[Russo等作者教程第12–14页](https://web.stanford.edu/~bvr/pubs/TS_Tutorial.pdf#page=13)：成功/失败更新独立后验，抽样的是成功概率而不是新奖励。仅平稳0/1奖励；不解释成连续化学产率或实验安全证据。

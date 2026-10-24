@@ -10,6 +10,7 @@ import importlib.util
 import json
 import platform
 import sys
+import types
 import zipfile
 
 PAGE = Path(__file__).resolve().parents[1]
@@ -76,7 +77,12 @@ def run_skill(*, request_file, output_dir):
     (output / 'SKILL.used.md').write_bytes(skill)
     try:
         path = PAGE / 'runtime/analysis.py'
-        spec = importlib.util.spec_from_file_location('_skill_' + sha(str(path).encode())[:16], path)
+        package_name = '_skill_' + sha(str(path.parent).encode())[:16]
+        if package_name not in sys.modules:
+            package = types.ModuleType(package_name)
+            package.__path__ = [str(path.parent)]
+            sys.modules[package_name] = package
+        spec = importlib.util.spec_from_file_location(package_name + '.analysis', path)
         backend = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(backend)
         result = backend.analyze(request['parameters'], request['data'])

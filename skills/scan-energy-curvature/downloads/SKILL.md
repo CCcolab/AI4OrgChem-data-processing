@@ -29,3 +29,5 @@ parameters：coordinate_unit、energy_unit、center_index（零起始内部点�
 ## 方法来源
 
 [NumPy差分说明](https://numpy.org/doc/stable/reference/generated/numpy.gradient.html)给出非均匀三点公式及有限差分语境；本程序显式解权重并另算二阶导数，不声称调用gradient就完成二阶或科学验证。
+
+[NumPy非均匀差分推导](https://numpy.org/doc/stable/reference/generated/numpy.gradient.html#notes)支持三点一阶公式的光滑性前提；本程序二阶量来自同一局部二次插值，二次函数可精确核算不等于对真实势能面给出误差上界。来源/收敛标签不能自动证明电子态连续，非均匀步长和单位须随结果保留。

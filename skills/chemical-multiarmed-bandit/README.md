@@ -18,6 +18,10 @@ UCB先按声明顺序探索未访问臂，之后均值+exploration×sqrt(2log(t)
 
 [Sutton与Barto作者教材](https://www.incompleteideas.net/book/bookdraft2018mar21.pdf)第2章讨论多臂老虎机及探索；本页具体UCB/Beta更新式明确列出，不继承化学适用性。
 
+## 输入校验与方法依据补充
+
+数值数组在NumPy类型提升前逐项校验：JSON布尔值true/false、null、字符串或与数值混合的这些值均拒绝，不把标志列自动转换为0/1测量、目标、度量或概率。整数0/1仍可用于已声明的数值/二分类接口；缺失值须先按研究协议处理。数组结构遍历预算为100000项，另保留各模块原有形状、有限性和数据规模限制。
+
 ## 安装与默认运行
 
 Windows在有写入权限的短路径（例如D:\Chem\s）解压，进入README和runtime所在目录，使用Python3.12的独立环境：
@@ -53,3 +57,5 @@ Windows将python替换为`.\.venv\Scripts\python.exe`。案例完整程序：[�
 只修改参数不会更改旧结果，必须写新目录。严格UTF-8 JSON≤2 MB，不接受重复键或非有限数值。不应只改科学身份标签来绕过不兼容检查，来源标签本身不证明真实性。完整可复用[调用模板](runtime/examples/call_skill_template.py)支持--skill-dir、--input和--output，程序内部实际读取顶层Skill并保存其哈希，不调用大语言模型服务；本地训练、预测或提议计算如实记录。
 
 软件执行通过只覆盖声明的输入和数值范围，不代表整个理论、化学身份或新量子方法获认证。下载包[SHA-256](downloads/SHA256SUMS.txt)与内部验收记录分开，内部材料不进入用户包。
+
+UCB方法参照[Auer等2002原论文](https://link.springer.com/article/10.1023/A:1013689704352)，本例exploration为显式教学变体，不直接继承其任意参数下的界。Beta–Bernoulli抽样参照[Russo等作者教程第12–14页](https://web.stanford.edu/~bvr/pubs/TS_Tutorial.pdf#page=13)：成功/失败更新独立后验，抽样的是成功概率而不是新奖励。仅平稳0/1奖励；不解释成连续化学产率或实验安全证据。

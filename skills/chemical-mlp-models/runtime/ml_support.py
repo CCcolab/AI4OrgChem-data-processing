@@ -22,9 +22,28 @@ def real(value, low, high, name):
     return float(value)
 
 
+def require_real_leaves(value):
+    """Validate raw numeric leaves before NumPy can promote mixed Booleans."""
+    pending = [value]
+    visited = 0
+    while pending:
+        item = pending.pop()
+        visited += 1
+        if visited > 100000:
+            raise ValueError('Numeric input exceeds the bounded traversal budget.')
+        if isinstance(item, (list, tuple)):
+            pending.extend(item)
+        elif isinstance(item, np.ndarray):
+            if item.dtype.kind not in 'if':
+                raise ValueError('Require real numeric leaves; Boolean/string/null/complex input is not admitted.')
+        elif isinstance(item, (bool, np.bool_)) or not isinstance(item, (int, float, np.integer, np.floating)):
+            raise ValueError('Require real numeric leaves; Boolean/string/null/complex input is not admitted.')
+
+
 def features(data, target=False, groups=False):
     required = ['ids', 'features', 'feature_names', 'feature_units'] + (['target', 'target_unit'] if target else []) + (['groups'] if groups else [])
     keys(data, required, ['source_csv_text'])
+    require_real_leaves(data['features'])
     x = np.asarray(data['features'])
     if x.dtype.kind not in 'if' or x.ndim != 2 or not 5 <= x.shape[0] <= 200 or not 1 <= x.shape[1] <= 32:
         raise ValueError('Use 5–200 rows and 1–32 real numeric descriptor columns; no strings/Booleans/non-numeric imputation.')
@@ -42,6 +61,7 @@ def features(data, target=False, groups=False):
     if target:
         if not isinstance(data['target_unit'], str) or not data['target_unit'].strip():
             raise ValueError('Declare target units or explicit binary-label semantics.')
+        require_real_leaves(data['target'])
         y = np.asarray(data['target'])
         if y.dtype.kind not in 'if' or y.shape != (len(x),) or not np.isfinite(y).all():
             raise ValueError('Finite real one-dimensional target aligned with IDs required.')

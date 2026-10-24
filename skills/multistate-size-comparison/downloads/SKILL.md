@@ -29,3 +29,5 @@ parameters含protocol_id、method_id、basis_id、weight_atol、expected_states�
 ## 方法来源
 
 固定加权求和与完整集合规则在本页显式定义；[NumPy average](https://numpy.org/doc/stable/reference/generated/numpy.average.html)说明一般加权平均，不提供统计力学人口或量子端点资格。
+
+固定权重加权和与声明态全集是本项目显式比较合同。NumPy average只是通用算术接口，不能作为统计力学人口、自由能、态完备性或新量子端点的依据；原始量、单位、组成、协议和来源仍须独立核对。

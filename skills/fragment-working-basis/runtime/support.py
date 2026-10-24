@@ -7,7 +7,26 @@ def keys(value, required, optional=()):
         raise ValueError('Required fields: ' + ','.join(required) + '; optional: ' + ','.join(optional))
 
 
+def require_real_leaves(value):
+    """Validate raw numeric leaves before NumPy can promote mixed Booleans."""
+    pending = [value]
+    visited = 0
+    while pending:
+        item = pending.pop()
+        visited += 1
+        if visited > 100000:
+            raise ValueError('Numeric input exceeds the bounded traversal budget.')
+        if isinstance(item, (list, tuple)):
+            pending.extend(item)
+        elif isinstance(item, np.ndarray):
+            if item.dtype.kind not in 'if':
+                raise ValueError('Require real numeric leaves; Boolean/string/null/complex input is not admitted.')
+        elif isinstance(item, (bool, np.bool_)) or not isinstance(item, (int, float, np.integer, np.floating)):
+            raise ValueError('Require real numeric leaves; Boolean/string/null/complex input is not admitted.')
+
+
 def array(value, ndim, maximum=128):
+    require_real_leaves(value)
     result = np.asarray(value)
     if result.dtype.kind not in 'if' or result.ndim != ndim or not result.size or max(result.shape) > maximum:
         raise ValueError('Require a nonempty real numeric array of the declared bounded shape; no Boolean/string/complex arrays.')

@@ -18,6 +18,12 @@
 
 本模块展示明确声明的状态差分与循环求和数学定义；[Python Decimal](https://docs.python.org/3/library/decimal.html)支持十进制运算。未核实的化学循环、约束态或跨算子端点不获科学资格，不能因算术闭合自动升级。
 
+## 输入校验与方法依据补充
+
+能量算术采用skill-ledger-decimal-v2：每个十进制输入文字≤128字符、系数≤80位、Decimal指数在−200至200；不接收布尔值、特殊值或带空白文字。这里“系数位数/指数”指Decimal数字元组，不是化学有效数字认证。总精度由所有输入跨度及项数上界推导，上限1024位；乘积求和、独立总量差及阈值比较在同一精确上下文进行。任何Inexact/Rounded或预算越界均失败，绝不把失去的小残差当作闭合。回执的arithmetic记录策略与实际精度，原atol不变。
+
+[Python3.12 Decimal：舍入与相消](https://docs.python.org/3.12/library/decimal.html#mitigating-round-off-error-with-increased-precision)明确有限精度仍会舍入；本策略只保证所定义有界算术，不认证能量来源、方法、端点真实性或物理可比性。例如1e60+0.1−1e60必须报告0.1，不能据夸张数值声称化学合理。
+
 ## 安装与默认运行
 
 Windows在有写入权限的短路径（例如D:\Chem\s）解压，进入README和runtime所在目录，使用Python3.12的独立环境：
@@ -53,3 +59,5 @@ Windows将python替换为`.\.venv\Scripts\python.exe`。案例完整程序：[�
 只修改参数不会更改旧结果，必须写新目录。严格UTF-8 JSON≤2 MB，不接受重复键或非有限数值。不应只改科学身份标签来绕过不兼容检查，来源标签本身不证明真实性。完整可复用[调用模板](runtime/examples/call_skill_template.py)支持--skill-dir、--input和--output，程序内部实际读取顶层Skill并保存其哈希，不调用模型。
 
 软件执行通过只覆盖声明的输入和数值范围，不代表整个理论、化学身份或新量子方法获认证。下载包[SHA-256](downloads/SHA256SUMS.txt)与内部验收记录分开，内部材料不进入用户包。
+
+环差定义ΔE=E(to)−E(from)。若每条边都来自同一能量表，闭合是消去共同端点的代数恒等式；只有独立来源、相同比较身份和明确桥接才可能支持额外检验。这里不宣称路径独立性或某新哈密顿量理论。

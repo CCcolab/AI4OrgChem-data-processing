@@ -1,7 +1,7 @@
 """Bounded stationary Bernoulli bandit simulation or explicitly supplied history."""
 import math
 import numpy as np
-from .support import keys,integer,real,check
+from .support import keys,integer,real,check,require_real_leaves
 
 def select(algorithm,counts,rewards,t,rng,exploration):
     missing=np.flatnonzero(counts==0)
@@ -21,6 +21,7 @@ def analyze(parameters,data):
     rng=np.random.default_rng(seed);counts=np.zeros(len(arms),dtype=int);sums=np.zeros(len(arms),dtype=int);history=[]
     probabilities=None
     if mode=='simulate':
+        require_real_leaves(data['probabilities'])
         probabilities=np.asarray(data['probabilities'])
         if probabilities.dtype.kind not in 'if' or probabilities.shape!=(len(arms),) or not np.isfinite(probabilities).all() or np.any(probabilities<0) or np.any(probabilities>1):raise ValueError('Declared finite Bernoulli probabilities per arm required.')
         for t in range(budget):

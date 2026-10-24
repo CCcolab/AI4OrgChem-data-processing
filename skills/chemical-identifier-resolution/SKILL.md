@@ -37,3 +37,10 @@ PubChem有自己的结构标准化，CIR采用其解析器及名称库；服务�
 - [RDKit解析与清理](https://www.rdkit.org/docs/RDKit_Book.html#molecular-sanitization)：本地图的约定。
 
 软件运行通过不等于所有名称均被正确解析；报告具体来源、候选数和失败，不能笼统写“身份认证通过”。
+
+## 输入校验与方法依据补充
+
+CSV必须有且仅有唯一的id、query_type、query三列表头（顺序可变），逐记录严格核对字段数和引号；重复表头、空行、缺项或多项均拒绝，不覆盖或拼接查询。仅完整读取且在大小预算内的失败输入会随failure.json、Skill快照及results.zip保存。远程查询仍须显式许可；解析或校验失败不发送请求。
+
+[Python CSV语法](https://docs.python.org/3.12/library/csv.html)说明记录与引号处理；[pandas2.2读取约定](https://pandas.pydata.org/pandas-docs/version/2.2/reference/api/pandas.read_csv.html)提示畸形行的索引推断风险。输入合同由本模块明确限定，不能仅靠库默认值保证字段对应。 返回候选不是CAS登记或立体身份鉴定。
+

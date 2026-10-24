@@ -8,6 +8,7 @@ import argparse
 import csv
 from datetime import datetime, timezone
 import hashlib
+import io
 import importlib.metadata
 import json
 import re
@@ -41,12 +42,24 @@ def cas_checksum(value):
     return sum(int(v) * n for n, v in enumerate(reversed(digits[:-1]), 1)) % 10 == int(digits[-1])
 
 
-def read_input(path):
+def read_source(path):
     if path.is_symlink() or not path.is_file() or path.stat().st_size > 32000:
         raise ValueError('Provide a regular UTF-8 CSV no larger than 32000 bytes.')
-    raw = path.read_bytes()
-    text = raw.decode('utf-8-sig')
-    rows = list(csv.DictReader(text.splitlines()))
+    return path.read_bytes()
+
+
+def read_input(path, raw=None):
+    raw = read_source(path) if raw is None else raw
+    try:
+        records = list(csv.reader(io.StringIO(raw.decode('utf-8-sig'), newline=''), strict=True))
+    except csv.Error as error:
+        raise ValueError('Invalid CSV quoting: ' + str(error)) from None
+    header = records[0] if records else []
+    if len(header) != 3 or len(set(header)) != 3 or set(header) != {'id', 'query_type', 'query'}:
+        raise ValueError('Require exactly three unique CSV headers: id,query_type,query.')
+    if any(len(row) != len(header) for row in records[1:]):
+        raise ValueError('Every CSV record must contain exactly three fields; blank/ragged records are rejected.')
+    rows = [dict(zip(header, row)) for row in records[1:]]
     if not 1 <= len(rows) <= 10:
         raise ValueError('Require 1–10 records.')
     seen = set()
@@ -179,10 +192,32 @@ def validate_query(row):
         raise ValueError('INVALID_INCHIKEY_SYNTAX')
 
 
+def save_input_failure(raw, output_dir, error):
+    output = Path(output_dir).resolve()
+    if output.is_relative_to(PAGE) or output.exists():
+        raise ValueError('Use a NEW result directory outside the Skill source.')
+    output.mkdir(parents=True)
+    (output / 'input.csv').write_bytes(raw)
+    (output / 'SKILL.used.md').write_bytes((PAGE / 'SKILL.md').read_bytes())
+    dump(output / 'failure.json', {'status': 'FAILED_INPUT_RETAINED', 'type': type(error).__name__,
+                                 'message': str(error), 'model_calls': 0, 'http_requests': 0})
+    files = sorted(path for path in output.iterdir() if path.is_file())
+    (output / 'SHA256SUMS.txt').write_text(''.join(sha(path.read_bytes()) + '  ' + path.name + '\n'
+                                                for path in files), encoding='utf-8')
+    with zipfile.ZipFile(output / 'results.zip', 'w', zipfile.ZIP_DEFLATED) as archive:
+        for path in files + [output / 'SHA256SUMS.txt']:
+            archive.write(path, path.name)
+
+
 def run_skill(*, input_csv, output_dir, service='pubchem', allow_network=False):
     if service not in {'pubchem', 'cir', 'both'} or type(allow_network) is not bool:
         raise ValueError('Invalid service or network option.')
-    raw, rows = read_input(Path(input_csv))
+    raw = read_source(Path(input_csv))
+    try:
+        _, rows = read_input(Path(input_csv), raw=raw)
+    except (ValueError, UnicodeError) as error:
+        save_input_failure(raw, output_dir, error)
+        raise
     if any(row['query_type'] != 'local_smiles' for row in rows) and not allow_network:
         raise ValueError('Remote identifiers require explicit --allow-network; nothing was sent.')
     output = Path(output_dir).resolve()

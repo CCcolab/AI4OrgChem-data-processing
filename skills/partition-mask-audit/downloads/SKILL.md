@@ -13,6 +13,10 @@ parameters为atol、matrix_role（overlap/hamiltonian）、allowed_pairs；data�
 
 生成对称布尔掩码，禁止块置0，报告移除的Frobenius范数、修改前后特征谱及对称残差。overlap角色要求原/新最小特征值严格大于atol；hamiltonian允许不定，不应用一概正定门槛。
 
+## 输入校验与方法依据补充
+
+数值数组在NumPy类型提升前逐项校验：JSON布尔值true/false、null、字符串或与数值混合的这些值均拒绝，不把标志列自动转换为0/1测量、目标、度量或概率。整数0/1仍可用于已声明的数值/二分类接口；缺失值须先按研究协议处理。数组结构遍历预算为100000项，另保留各模块原有形状、有限性和数据规模限制。
+
 ## 完整调用与结果
 
 1. 读取完整SKILL.md及显式JSON请求（parameters、data、provenance三部分），验证资源SHA-256及输入范围；禁止重复JSON键、NaN/Infinity和未知字段。
@@ -29,3 +33,5 @@ parameters为atol、matrix_role（overlap/hamiltonian）、allowed_pairs；data�
 ## 方法来源
 
 [NumPy eigvalsh/eigh](https://numpy.org/doc/stable/reference/generated/numpy.linalg.eigh.html)支持对称矩阵谱；本页显式给出掩码和角色规则。软件谱检查不认证物理算子。
+
+对称掩码只保证显式保留/删除的耦合与对称性，不一般保持正定性。Hamiltonian允许负本征值，overlap须另过正定门槛；这两个role是输入协议，不是可互换的物理解释。eigh接口不把普通特征值自动变成非正交AO广义本征能量。

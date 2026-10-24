@@ -77,3 +77,10 @@ print(receipt)
 调用时runtime须在Python模块路径中，完整模板已处理路径。run_skill实际读取并保存顶层SKILL.md及哈希，运行固定Pandas工具；未调用语言模型，不声称模型理解了指令。原始CSV需以文本方式导入电子表格，避免软件自动改变ID或把字段作为公式执行。
 
 代码包完整性见[SHA-256](downloads/SHA256SUMS.txt)。内部验收日志不进入用户包。
+
+## 输入校验与方法依据补充
+
+CSV先按严格引号语法读取，要求所有表头非空且唯一、每条记录恰好与表头同宽；空行、多余字段或缺少字段均拒绝。核对后直接用字符串字段构造DataFrame，不猜索引、不丢字段、不把NA或001改写。失败时保留预算内原始字节与failure.json/结果ZIP；查表输入也在解析前保存。
+
+[Python CSV语法](https://docs.python.org/3.12/library/csv.html)说明记录与引号处理；[pandas2.2读取约定](https://pandas.pydata.org/pandas-docs/version/2.2/reference/api/pandas.read_csv.html)提示畸形行的索引推断风险。输入合同由本模块明确限定，不能仅靠库默认值保证字段对应。 分组均值和样本SD只作描述；[NIST离散程度说明](https://www.itl.nist.gov/div898/handbook/eda/section3/eda356.htm)不提供实验独立性、置信区间或因果资格。
+

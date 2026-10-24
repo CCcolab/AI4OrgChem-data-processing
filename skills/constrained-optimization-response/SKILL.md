@@ -13,6 +13,10 @@ parameters含coordinate_unit、position_atol、gradient_atol、hessian_atol、cu
 
 对满行秩A用SVD取得切空间Z，检查||A x−b||、||Zᵀg||、明确收敛声明及ZᵀHZ的严格正最小特征值。位置/梯度/Hessian门槛有各自单位，不能混称一个无量纲阈值。完整梯度非零可以与约束内驻点相容。
 
+## 输入校验与方法依据补充
+
+数值数组在NumPy类型提升前逐项校验：JSON布尔值true/false、null、字符串或与数值混合的这些值均拒绝，不把标志列自动转换为0/1测量、目标、度量或概率。整数0/1仍可用于已声明的数值/二分类接口；缺失值须先按研究协议处理。数组结构遍历预算为100000项，另保留各模块原有形状、有限性和数据规模限制。
+
 ## 完整调用与结果
 
 1. 读取完整SKILL.md及显式JSON请求（parameters、data、provenance三部分），验证资源SHA-256及输入范围；禁止重复JSON键、NaN/Infinity和未知字段。
@@ -29,3 +33,5 @@ parameters含coordinate_unit、position_atol、gradient_atol、hessian_atol、cu
 ## 方法来源
 
 切空间投影及驻点规则在本页明示；[NumPy SVD](https://numpy.org/doc/stable/reference/generated/numpy.linalg.svd.html)和[eigh](https://numpy.org/doc/stable/reference/generated/numpy.linalg.eigh.html)支持数值处理，不能认证外部量子梯度。
+
+[Boyd与Vandenberghe作者讲义第10章](https://web.stanford.edu/~boyd/cvxbook/bv_cvxslides.pdf#page=329)给出线性等式KKT与零空间消元。对Ax=b，令AZ=0，驻点检查Zᵀg，局部切向曲率检查ZᵀHZ；有限阈值只是给定数组的候选资格。非线性约束需Lagrangian Hessian，本工具不提供；没有新量子优化、全局极小或收敛真实性认证。

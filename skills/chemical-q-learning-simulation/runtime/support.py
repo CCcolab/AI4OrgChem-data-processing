@@ -13,7 +13,26 @@ def real(value,low,high,name):
     if type(value) not in {int,float} or not np.isfinite(value) or not low<=value<=high:raise ValueError(name+' outside finite budget.')
     return float(value)
 
+def require_real_leaves(value):
+    """Validate raw numeric leaves before NumPy can promote mixed Booleans."""
+    pending = [value]
+    visited = 0
+    while pending:
+        item = pending.pop()
+        visited += 1
+        if visited > 100000:
+            raise ValueError('Numeric input exceeds the bounded traversal budget.')
+        if isinstance(item, (list, tuple)):
+            pending.extend(item)
+        elif isinstance(item, np.ndarray):
+            if item.dtype.kind not in 'if':
+                raise ValueError('Require real numeric leaves; Boolean/string/null/complex input is not admitted.')
+        elif isinstance(item, (bool, np.bool_)) or not isinstance(item, (int, float, np.integer, np.floating)):
+            raise ValueError('Require real numeric leaves; Boolean/string/null/complex input is not admitted.')
+
+
 def array(value,ndim):
+    require_real_leaves(value)
     a=np.asarray(value)
     if a.dtype.kind not in 'if' or a.ndim!=ndim or not a.size or not np.isfinite(a).all():raise ValueError('Finite real arrays required.')
     return a.astype(float)

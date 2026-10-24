@@ -1,15 +1,19 @@
 [
   {
     "file": "SKILL.md",
-    "sha256": "ac190ec033e50c0a76a293be74a7563c1d464cd764ef69f4a6bc9b5a3b0e426f"
+    "sha256": "5b1be06676baa3957f757f4a619a89fb3f48bc6c57499858a0a60c2a4d6b9edd"
   },
   {
     "file": "runtime/analysis.py",
-    "sha256": "14bb78c80966106a40c67f22c9852fb3be8b614abc791230d297764ef2098669"
+    "sha256": "a0fc425ba5e295875284b5ff627ec7bfbccc301c48d53231c8c57528524517ff"
   },
   {
     "file": "runtime/chemistry.py",
     "sha256": "771c1acb27842fd274a79dccf870a0664b893301dd3e72d0652fe86dd6fee7ec"
+  },
+  {
+    "file": "runtime/decimal_arithmetic.py",
+    "sha256": "d427f3ab5ef054bc182998f9fb6ba0edc4ecf0579ac19a5fd35fc386387f0ed4"
   },
   {
     "file": "runtime/examples/01.json",
@@ -45,6 +49,6 @@
   },
   {
     "file": "runtime/run_skill.py",
-    "sha256": "12ecb2cf1acad6162205449a5ff627fd6174171b6327d2b36ad92a3692b2a8ff"
+    "sha256": "33a9c1ae35be30759d139577a864d189679b2ee898db39506e65e888b2f0c2cf"
   }
 ]

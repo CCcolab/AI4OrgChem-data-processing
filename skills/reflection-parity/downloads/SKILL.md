@@ -11,7 +11,11 @@ description: 复核显式提供的实AO反射、度量酉性、二次反射恒�
 
 parameters为atol及mirror_definition；data为overlap、reflection、basis。S正定，B必须S正交归一，R与S同维；真实镜面、原子映射和AO变换约定由用户明确。
 
-检查R²=I、RᵀSR=S、BᵀSB=I以及RB−B(BᵀSRB)的平方S范数。仅闭合时对限制反射对角化，谱须为±1才输出适配列；不闭合时不贴奇偶标签。
+检查R²=I、RᵀSR=S、BᵀSB=I以及Δ=RB−B(BᵀSRB)的S范数sqrt[Tr(ΔᵀSΔ)]（残差平方S范数的平方根）。仅闭合时对限制反射对角化，谱须为±1才输出适配列；不闭合时不贴奇偶标签。
+
+## 输入校验与方法依据补充
+
+数值数组在NumPy类型提升前逐项校验：JSON布尔值true/false、null、字符串或与数值混合的这些值均拒绝，不把标志列自动转换为0/1测量、目标、度量或概率。整数0/1仍可用于已声明的数值/二分类接口；缺失值须先按研究协议处理。数组结构遍历预算为100000项，另保留各模块原有形状、有限性和数据规模限制。
 
 ## 完整调用与结果
 
@@ -29,3 +33,5 @@ parameters为atol及mirror_definition；data为overlap、reflection、basis。S�
 ## 方法来源
 
 反射、度量和闭合公式在本页显式给出；[NumPy eigh](https://numpy.org/doc/stable/reference/generated/numpy.linalg.eigh.html)支持限制算子的实对称分解。
+
+闭合比较量为S范数而非其平方：平方量0.0396对应约0.1989974874，atol始终与后者比较。R²=I和RᵀSR=S在闭合空间内给±1谱是矩阵代数结论；[Strang投影课程](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-16-projection-matrices-and-least-squares/)支持子空间/投影语境，不替代真实几何镜面、AO约定和占据证据。

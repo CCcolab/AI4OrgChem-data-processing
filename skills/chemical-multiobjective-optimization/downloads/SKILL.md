@@ -13,6 +13,10 @@ data显式bounds、feature_names/feature_units、observed_ids/x/y、source_ids�
 
 将min目标乘−1后统一max，X按bounds缩放、Y用Standardize；噪声方差为给定SD平方。实际拟合SingleTaskGP，CPU double，单次有界优化不自动重试。qLogNEHVI用Sobol蒙特卡洛估计并对有限池逐点评分；报告优化警告而不认证收敛。保存模型状态并重载复核后验。
 
+## 输入校验与方法依据补充
+
+数值数组在NumPy类型提升前逐项校验：JSON布尔值true/false、null、字符串或与数值混合的这些值均拒绝，不把标志列自动转换为0/1测量、目标、度量或概率。整数0/1仍可用于已声明的数值/二分类接口；缺失值须先按研究协议处理。数组结构遍历预算为100000项，另保留各模块原有形状、有限性和数据规模限制。
+
 ## 完整调用与结果
 
 1. 读取完整SKILL.md及显式JSON请求（parameters、data、provenance三部分），验证资源SHA-256及输入范围；禁止重复JSON键、NaN/Infinity和未知字段。
