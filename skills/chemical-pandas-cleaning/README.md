@@ -8,7 +8,7 @@
 | [完整SKILL.md源码](SKILL.md?plain=1) | 处理指令、数据约定及统计边界，可下载用于自己的代理 |
 | [runtime/clean_chemical_data.py](runtime/clean_chemical_data.py) | 读取Skill→校验CSV→数值分类→分组统计/受约束连接→保存完整结果 |
 
-程序、依赖和案例都在runtime。下载[完整Python代码包](downloads/chemical-pandas-cleaning-python.zip)或[Skill单文件ZIP](downloads/SKILL-md.zip)。私有GitHub文件页用“Download raw file”下载，不把网页另存为程序。
+程序、依赖和案例都在runtime。下载[完整Python代码包](downloads/chemical-pandas-cleaning-python.zip)或[Skill单文件ZIP](downloads/SKILL-md.zip)。公开GitHub文件页用“Download raw file”下载，不把网页另存为程序。
 
 ## 必要知识
 

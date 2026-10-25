@@ -8,7 +8,7 @@
 | [完整SKILL.md源码](SKILL.md?plain=1) | 处理指令、图形和统计边界，可下载用于自己的代理 |
 | [runtime/plot_experiment.py](runtime/plot_experiment.py) | 读取Skill→验证CSV与误差定义→绘图/汇总→保存原始值和实际结果 |
 
-程序、依赖和案例在runtime。下载[完整Python代码包](downloads/chemical-experimental-plotting-python.zip)或[Skill单文件ZIP](downloads/SKILL-md.zip)。私有GitHub文件页使用“Download raw file”保存，不把网页另存为.py。
+程序、依赖和案例在runtime。下载[完整Python代码包](downloads/chemical-experimental-plotting-python.zip)或[Skill单文件ZIP](downloads/SKILL-md.zip)。公开GitHub文件页使用“Download raw file”保存，不把网页另存为.py。
 
 ## 误差线先说明含义
 

@@ -20,7 +20,7 @@
 
 ## 下载、依赖与首次操作
 
-1. 下载 Python 代码包，在 Windows 解压到短路径（例如 `C:\s`），进入解出的 `fixed-protocol-energy-review` 文件夹；其它系统同样先进入该目录。所有命令均从该目录运行。无需下载整个私有仓库。
+1. 下载 Python 代码包，在 Windows 解压到短路径（例如 `C:\s`），进入解出的 `fixed-protocol-energy-review` 文件夹；其它系统同样先进入该目录。所有命令均从该目录运行。无需下载整个仓库。
 2. 已有 Python 3.10+。`prepare` 只用标准库，不安装任何软件。数组复核需要 NumPy；纯 Decimal 账本不需要 NumPy。依赖清单给出本次已验版本，当前平台可用性另行确认。本文已在 Python 3.12.14/NumPy 2.4.6 下复验，未宣称覆盖所有 Python/操作系统。
 3. 可以选择自己的现有虚拟环境；只有缺依赖且你要安装时才手动执行 `python -m pip install -r runtime/requirements.txt`。程序不会自动安装、联网或切换环境。安装后仍使用同一环境的 `python`。
 4. 结果目录必须是包外全新路径。下面 `C:/s/out/...` 是 Windows 示例；其它系统换成自己的绝对短路径。保留上一次目录，下一次更换名称。

@@ -84,7 +84,7 @@ $$e_i=y_i-\hat y_i,\qquad x_{sample}=(y_{sample}-a)/b.$$
 
 ### 1. 下载并在Windows短路径解压
 
-下载[完整Python代码包](downloads/table-fitting-residuals-python.zip)；私有仓库下载需要已有访问权限。程序入口与全部依赖均在runtime，顶层只有README.md和SKILL.md；必须解压完整代码包。
+下载[完整Python代码包](downloads/table-fitting-residuals-python.zip)；公开文件可直接下载。程序入口与全部依赖均在runtime，顶层只有README.md和SKILL.md；必须解压完整代码包。
 
 **Windows请使用有写入权限的短目录，避免在多层长目录中安装依赖。** 例如把ZIP“全部解压”到`D:\Chem\t`，解压后进入`D:\Chem\t\table-fitting-residuals`。没有D盘时使用自己可写入的其它短目录，并替换下面示例路径。两个Skill分别解压到独立目录。
 

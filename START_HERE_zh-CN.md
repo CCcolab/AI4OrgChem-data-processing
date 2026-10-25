@@ -2,7 +2,7 @@
 
 <!-- Canonical entry: https://github.com/CCcolab/AI4OrgChem-data-processing/blob/main/START_HERE_zh-CN.md -->
 
-当前Python学习版。按七个专业分类，共32项专业Skill；点击名称进入README学习，完整SKILL.md可单独下载，Python程序、依赖和案例位于runtime。各页提供代码包，不需要云端交互账号。每个Skill使用自己的独立Python环境，不将不兼容的依赖混装。
+公开Python学习版。按七个专业分类，共32项专业Skill；点击名称进入README学习，完整SKILL.md可单独下载，Python程序、依赖和案例位于runtime。各页提供代码包，不需要云端交互账号。每个Skill使用自己的独立Python环境，不将不兼容的依赖混装。
 
 **独立运行：** 用户直接选择各Skill，使用自己的Python环境和页内入口，不经过共用路由，也不强制本项目Runtime或Docker。科学库及用户已有后端仍需按页配置。[环境与后端说明](docs/RUNTIME_INDEPENDENCE.md)。
 

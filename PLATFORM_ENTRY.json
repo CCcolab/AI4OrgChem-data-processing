@@ -10,7 +10,7 @@
     "Python"
   ],
   "legacy_web_enabled": false,
-  "visibility": "PRIVATE",
+  "visibility": "PUBLIC",
   "execution": "local_python",
   "default_model_required": false,
   "catalog_items": 32,

@@ -8,7 +8,7 @@
 | [完整SKILL.md源码](SKILL.md?plain=1) | 任务指令、方法、工具流程和解释边界，可保存后接入自己的代理 |
 | [runtime/resolve_identifiers.py](runtime/resolve_identifiers.py) | 完整Python流程；读取Skill→检查CSV→本地/联网工具→保留候选和失败→保存结果 |
 
-顶层只有README.md和SKILL.md；程序、依赖、配置及案例在runtime。下载[完整Python代码包](downloads/chemical-identifier-resolution-python.zip)或[SKILL单文件ZIP](downloads/SKILL-md.zip)。私有GitHub需先登录有权限的账号；链接打开文件页后使用“Download raw file”，不要把网页另存为.py。
+顶层只有README.md和SKILL.md；程序、依赖、配置及案例在runtime。下载[完整Python代码包](downloads/chemical-identifier-resolution-python.zip)或[SKILL单文件ZIP](downloads/SKILL-md.zip)。公开GitHub文件可直接查看和下载；链接打开文件页后使用“Download raw file”，不要把网页另存为.py。
 
 ## 先理解这些边界
 

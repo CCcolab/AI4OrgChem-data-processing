@@ -143,7 +143,7 @@
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/organic-smiles-rdkit/SKILL.md",
         "python": "skills/organic-smiles-rdkit/runtime/organic-smiles-rdkit.py",
@@ -162,7 +162,7 @@
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/chemical-identifier-resolution/SKILL.md",
         "python": "skills/chemical-identifier-resolution/runtime/resolve_identifiers.py",
@@ -181,7 +181,7 @@
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/chemical-pandas-cleaning/SKILL.md",
         "python": "skills/chemical-pandas-cleaning/runtime/clean_chemical_data.py",
@@ -200,7 +200,7 @@
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/table-fitting-residuals/SKILL.md",
         "python": "skills/table-fitting-residuals/runtime/table-fitting-residuals.py",
@@ -219,7 +219,7 @@
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/chemical-experimental-plotting/SKILL.md",
         "python": "skills/chemical-experimental-plotting/runtime/plot_experiment.py",
@@ -238,7 +238,7 @@
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/molecular-graph-energy-ledger/SKILL.md",
         "python": "skills/molecular-graph-energy-ledger/runtime/run_skill.py",
@@ -257,7 +257,7 @@
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/same-hamiltonian-path-closure/SKILL.md",
         "python": "skills/same-hamiltonian-path-closure/runtime/run_skill.py",
@@ -276,7 +276,7 @@
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/scan-energy-curvature/SKILL.md",
         "python": "skills/scan-energy-curvature/runtime/run_skill.py",
@@ -295,7 +295,7 @@
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/nuclear-repulsion-response/SKILL.md",
         "python": "skills/nuclear-repulsion-response/runtime/run_skill.py",
@@ -314,7 +314,7 @@
       "execution": "local_python",
       "development_status": "PARTIAL_BACKEND_PENDING",
       "scientific_scope": "便携输入/用户后端/实AO复核可用；历史固定水结果保留，新便携PySCF任务未实算。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/rhf-single-point/downloads/SKILL.md",
         "python": "skills/rhf-single-point/runtime/run_skill.py",
@@ -335,7 +335,7 @@
       "execution": "local_python",
       "development_status": "PARTIAL_BACKEND_PENDING",
       "scientific_scope": "便携旋转/密度复核和用户后端接口可用；历史乙烯证据保留，新便携Boys/PM任务未实算。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/orbital-localization-density/downloads/SKILL.md",
         "python": "skills/orbital-localization-density/runtime/run_skill.py",
@@ -356,7 +356,7 @@
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/nonorthogonal-subspace/SKILL.md",
         "python": "skills/nonorthogonal-subspace/runtime/run_skill.py",
@@ -375,7 +375,7 @@
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/fragment-working-basis/SKILL.md",
         "python": "skills/fragment-working-basis/runtime/run_skill.py",
@@ -394,7 +394,7 @@
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/reflection-parity/SKILL.md",
         "python": "skills/reflection-parity/runtime/run_skill.py",
@@ -413,7 +413,7 @@
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/partition-mask-audit/SKILL.md",
         "python": "skills/partition-mask-audit/runtime/run_skill.py",
@@ -432,7 +432,7 @@
       "execution": "local_python",
       "development_status": "PARTIAL_BACKEND_PENDING",
       "scientific_scope": "独立用户协议账本与结果导入可用；真实条件态后端仍待验，原失败尝试未重试。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/fixed-protocol-energy-review/downloads/SKILL.md",
         "python": "skills/fixed-protocol-energy-review/runtime/run_skill.py",
@@ -453,7 +453,7 @@
       "execution": "local_python",
       "development_status": "PARTIAL_BACKEND_PENDING",
       "scientific_scope": "用户优化程序接口与给定线性约束导数复核可用；真实新优化端点/曲率仍待验。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/constrained-optimization-response/downloads/SKILL.md",
         "python": "skills/constrained-optimization-response/runtime/run_skill.py",
@@ -474,7 +474,7 @@
       "execution": "local_python",
       "development_status": "PARTIAL_BACKEND_PENDING",
       "scientific_scope": "用户态集合接口与固定非负归一化权重复核可用；真实多态集合与专用有符号公式仍待验。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/multistate-size-comparison/downloads/SKILL.md",
         "python": "skills/multistate-size-comparison/runtime/run_skill.py",
@@ -495,7 +495,7 @@
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/chemical-space-embedding/SKILL.md",
         "python": "skills/chemical-space-embedding/runtime/run_skill.py",
@@ -514,7 +514,7 @@
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/chemical-molecule-clustering/SKILL.md",
         "python": "skills/chemical-molecule-clustering/runtime/run_skill.py",
@@ -533,7 +533,7 @@
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/chemical-regression-classification/SKILL.md",
         "python": "skills/chemical-regression-classification/runtime/run_skill.py",
@@ -552,7 +552,7 @@
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/chemical-model-validation/SKILL.md",
         "python": "skills/chemical-model-validation/runtime/run_skill.py",
@@ -571,7 +571,7 @@
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/chemical-tree-forest-models/SKILL.md",
         "python": "skills/chemical-tree-forest-models/runtime/run_skill.py",
@@ -590,7 +590,7 @@
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/chemical-mlp-models/SKILL.md",
         "python": "skills/chemical-mlp-models/runtime/run_skill.py",
@@ -609,7 +609,7 @@
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/molecular-gnn-mpnn/SKILL.md",
         "python": "skills/molecular-gnn-mpnn/runtime/run_skill.py",
@@ -628,7 +628,7 @@
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/chemical-chemprop-prediction/SKILL.md",
         "python": "skills/chemical-chemprop-prediction/runtime/run_skill.py",
@@ -647,7 +647,7 @@
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/molecular-self-supervised-pretraining/SKILL.md",
         "python": "skills/molecular-self-supervised-pretraining/runtime/run_skill.py",
@@ -666,7 +666,7 @@
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/molecular-smiles-vae/SKILL.md",
         "python": "skills/molecular-smiles-vae/runtime/run_skill.py",
@@ -685,7 +685,7 @@
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/chemical-bayesian-optimization/SKILL.md",
         "python": "skills/chemical-bayesian-optimization/runtime/run_skill.py",
@@ -704,7 +704,7 @@
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/chemical-multiobjective-optimization/SKILL.md",
         "python": "skills/chemical-multiobjective-optimization/runtime/run_skill.py",
@@ -723,7 +723,7 @@
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/chemical-multiarmed-bandit/SKILL.md",
         "python": "skills/chemical-multiarmed-bandit/runtime/run_skill.py",
@@ -742,7 +742,7 @@
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+      "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/chemical-q-learning-simulation/SKILL.md",
         "python": "skills/chemical-q-learning-simulation/runtime/run_skill.py",
@@ -1008,7 +1008,7 @@
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     }
   ],
-  "revision": "professional32-independent-private-main-20261025",
-  "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+  "revision": "professional32-public-20261025",
+  "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
   "shared_routing_enabled": false
 }

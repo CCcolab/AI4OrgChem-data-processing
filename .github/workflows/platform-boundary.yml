@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Require private repository
+      - name: Validate repository visibility context
         env:
           REPO_PRIVATE: ${{ github.event.repository.private }}
-        run: test "$REPO_PRIVATE" = "true"
+        run: test "$REPO_PRIVATE" = "true" || test "$REPO_PRIVATE" = "false"
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           persist-credentials: false
@@ -32,10 +32,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Require private repository
+      - name: Validate repository visibility context
         env:
           REPO_PRIVATE: ${{ github.event.repository.private }}
-        run: test "$REPO_PRIVATE" = "true"
+        run: test "$REPO_PRIVATE" = "true" || test "$REPO_PRIVATE" = "false"
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           persist-credentials: false
