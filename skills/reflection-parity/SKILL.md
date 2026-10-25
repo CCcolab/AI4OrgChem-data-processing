@@ -27,7 +27,7 @@ R在这里作用于同一实AO系数列，即变换c↦Rc；它不是随意给�
 
 [L1：Golub、Van Loan，Matrix Computations，第4版，JHU Press，2013，ISBN 9781421407944](https://www.press.jhu.edu/books/title/10678/matrix-computations)的§7.6、§8.1提供不变子空间与谱的经典背景；±1结论的前提和推导在上文写全，不能把目录核验当作真实分子群论/AO反射表示的已读正文证明。原有Strang课程仅是投影直观的补充。
 
-本模块所引L1的作者、版次、年份和相关章节名称已对照出版社目录核验；未读取其全书正文，不声称已逐式或按页核验。上文推导由本模块明确给出，API文档仅支持实现接口。完整来源类型、访问范围和输入/保存数据身份见[runtime/sources.json](runtime/sources.json)。
+本模块所引L1的作者、版次、年份和相关章节名称已对照出版社目录核验；未读取其全书正文，不声称已逐式或按页核验。上文推导由本模块明确给出，API文档仅支持实现接口。完整来源类型、访问范围和输入/保存数据身份见[runtime/sources.json](https://github.com/CCcolab/AI4OrgChem-data-processing/blob/main/skills/reflection-parity/runtime/sources.json)。
 
 ## 输入校验与方法依据补充
 
@@ -51,3 +51,5 @@ R在这里作用于同一实AO系数列，即变换c↦Rc；它不是随意给�
 反射、度量和闭合公式在本页显式给出；[NumPy eigh](https://numpy.org/doc/stable/reference/generated/numpy.linalg.eigh.html)支持限制算子的实对称分解。
 
 闭合比较量为S范数而非其平方：平方量0.0396对应约0.1989974874，atol始终与后者比较。R²=I和RᵀSR=S在闭合空间内给±1谱是矩阵代数结论；[Strang投影课程](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-16-projection-matrices-and-least-squares/)支持子空间/投影语境，不替代真实几何镜面、AO约定和占据证据。
+
+下载指令的来源链接使用公开仓库明确地址；完整Python代码包内的来源文件位于`runtime/sources.json`。顶层维护源与下载导出字节一致。

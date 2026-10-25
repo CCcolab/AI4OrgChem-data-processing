@@ -110,3 +110,7 @@ python runtime/run_skill.py --mode backend --input runtime/examples/native-reque
 检查失败用 FAILED_NUMERICAL_CHECKS；异常用 FAILED_PARTIAL_OUTPUT_RETAINED，保留已经写出的产物、failure.json 与结果 ZIP。失败不等于合格端点。结果状态以实际回执及文件为准，外部来源声明仍需用户核对。成功输出也只证明所列检查。旧目录不会覆盖，无自动重试。
 
 本地工程验收、历史结果复核、真实后端验收分开记录。可选 PySCF 模板本轮没有运行新量子任务；也没有调用模型、安装依赖或上传内部材料。
+
+## 失败产物与输出保护
+
+对安全读取的限长常规输入，在合法全新输出目录中保存原输入、Skill及适用设置；JSON解析、缺字段、重复ID、非有限数值及CSV前处理失败均保存failure.json、SHA256SUMS.txt和results.zip，并失败退出。CSV入口同时保留原始CSV、模板和列/单位选择。输出已存在、位于源码内或为符号链接时不写入；超限或符号链接输入不复制。命令行缺少必需选项等尚未形成有效调用的错误由参数解析器拒绝，不创建结果。失败回执不代表数值或模型已执行。

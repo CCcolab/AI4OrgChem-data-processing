@@ -38,5 +38,18 @@
   "professional_categories": 7,
   "shared_routing_enabled": false,
   "standard_python_project_runtime_required": false,
-  "standard_python_docker_required": false
+  "standard_python_docker_required": false,
+  "release_validation": {
+    "third_party_review_base_commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+    "full_torch_runtime_retested": false,
+    "torch_runtime_not_retested_skills": [
+      "molecular-gnn-mpnn",
+      "molecular-self-supervised-pretraining",
+      "molecular-smiles-vae",
+      "chemical-chemprop-prediction",
+      "chemical-bayesian-optimization"
+    ],
+    "new_scientific_backends_retested": false,
+    "new_model_calls": 0
+  }
 }

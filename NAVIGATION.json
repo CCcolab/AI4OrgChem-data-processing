@@ -608,17 +608,18 @@
       "download": "skills/molecular-gnn-mpnn/downloads/molecular-gnn-mpnn-python.zip",
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
-      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。 本次修订完整Torch运行未复验。",
       "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/molecular-gnn-mpnn/SKILL.md",
         "python": "skills/molecular-gnn-mpnn/runtime/run_skill.py",
         "package": "skills/molecular-gnn-mpnn/downloads/molecular-gnn-mpnn-python.zip"
-      }
+      },
+      "full_torch_runtime_retest": "NOT_RETESTED_AFTER_THIRD_PARTY_REPAIRS"
     },
     {
       "id": "chemical-chemprop-prediction",
-      "title": "预测分子性质与反应活性｜Chemprop",
+      "title": "Chemprop分子属性回归教学",
       "category": "cheminformatics-design",
       "page": "skills/chemical-chemprop-prediction/README.md",
       "run": "skills/chemical-chemprop-prediction/README.md",
@@ -627,13 +628,14 @@
       "download": "skills/chemical-chemprop-prediction/downloads/chemical-chemprop-prediction-python.zip",
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
-      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。 本次修订完整Torch运行未复验。",
       "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/chemical-chemprop-prediction/SKILL.md",
         "python": "skills/chemical-chemprop-prediction/runtime/run_skill.py",
         "package": "skills/chemical-chemprop-prediction/downloads/chemical-chemprop-prediction-python.zip"
-      }
+      },
+      "full_torch_runtime_retest": "NOT_RETESTED_AFTER_THIRD_PARTY_REPAIRS"
     },
     {
       "id": "molecular-self-supervised-pretraining",
@@ -646,13 +648,14 @@
       "download": "skills/molecular-self-supervised-pretraining/downloads/molecular-self-supervised-pretraining-python.zip",
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
-      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。 本次修订完整Torch运行未复验。",
       "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/molecular-self-supervised-pretraining/SKILL.md",
         "python": "skills/molecular-self-supervised-pretraining/runtime/run_skill.py",
         "package": "skills/molecular-self-supervised-pretraining/downloads/molecular-self-supervised-pretraining-python.zip"
-      }
+      },
+      "full_torch_runtime_retest": "NOT_RETESTED_AFTER_THIRD_PARTY_REPAIRS"
     },
     {
       "id": "molecular-smiles-vae",
@@ -665,13 +668,14 @@
       "download": "skills/molecular-smiles-vae/downloads/molecular-smiles-vae-python.zip",
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
-      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。 本次修订完整Torch运行未复验。",
       "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/molecular-smiles-vae/SKILL.md",
         "python": "skills/molecular-smiles-vae/runtime/run_skill.py",
         "package": "skills/molecular-smiles-vae/downloads/molecular-smiles-vae-python.zip"
-      }
+      },
+      "full_torch_runtime_retest": "NOT_RETESTED_AFTER_THIRD_PARTY_REPAIRS"
     },
     {
       "id": "chemical-bayesian-optimization",
@@ -684,13 +688,14 @@
       "download": "skills/chemical-bayesian-optimization/downloads/chemical-bayesian-optimization-python.zip",
       "execution": "local_python",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
-      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。 本次修订完整Torch运行未复验。",
       "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/chemical-bayesian-optimization/SKILL.md",
         "python": "skills/chemical-bayesian-optimization/runtime/run_skill.py",
         "package": "skills/chemical-bayesian-optimization/downloads/chemical-bayesian-optimization-python.zip"
-      }
+      },
+      "full_torch_runtime_retest": "NOT_RETESTED_AFTER_THIRD_PARTY_REPAIRS"
     },
     {
       "id": "chemical-multiobjective-optimization",
@@ -953,7 +958,7 @@
     },
     {
       "id": "chemical-chemprop-prediction",
-      "title": "预测分子性质与反应活性｜Chemprop",
+      "title": "Chemprop分子属性回归教学",
       "category": "cheminformatics-design",
       "has_learning_page": true,
       "page": "skills/chemical-chemprop-prediction/README.md",
@@ -1008,7 +1013,7 @@
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     }
   ],
-  "revision": "professional32-public-20261025",
+  "revision": "professional32-thirdparty-repaired-main-20261025",
   "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
   "shared_routing_enabled": false
 }

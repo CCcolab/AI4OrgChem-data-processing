@@ -50,4 +50,8 @@ DBSCAN用eps邻域及min_samples识别密度连通结构，−1表示噪声。ep
 
 实现接口：[SKCLUSTER](https://scikit-learn.org/stable/modules/clustering.html)。
 
-ESL为2009年第2版；本次核对出版社目录中的相关主题，未声称读取受限章节正文。 各条原论文/软件文档的具体访问范围及版本记录见[runtime/sources.json](runtime/sources.json)；滚动API页面与固定运行依赖分开记录。经典书目补充基础，现代算法仍保留其原始论文，API文档继续用于接口约定。
+ESL为2009年第2版；本次核对出版社目录中的相关主题，未声称读取受限章节正文。 各条原论文/软件文档的具体访问范围及版本记录见[runtime/sources.json](https://github.com/CCcolab/AI4OrgChem-data-processing/blob/main/skills/chemical-molecule-clustering/runtime/sources.json)；滚动API页面与固定运行依赖分开记录。经典书目补充基础，现代算法仍保留其原始论文，API文档继续用于接口约定。
+
+下载指令的来源链接使用公开仓库明确地址；完整Python代码包内的来源文件位于`runtime/sources.json`。顶层维护源与下载导出字节一致。
+
+单位标签要求：feature_units的每项在去除首尾空白后必须非空；无量纲显式写dimensionless或1。保留用户单位原文，不自动换算，不将空格解释为无量纲。target_unit同样不得为空白。

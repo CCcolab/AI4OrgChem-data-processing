@@ -27,7 +27,7 @@ G=BᵀSB，按λ>rank_rtol×λmax保留Gram方向；P=B G⁺ BᵀS。分别报�
 
 [L1：Golub、Van Loan，Matrix Computations，第4版，JHU Press，2013，ISBN 9781421407944](https://www.press.jhu.edu/books/title/10678/matrix-computations)的§4.2、§5.5、§6.4是正定度量、秩亏与子空间的经典入口。原有[Strang投影课程](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-16-projection-matrices-and-least-squares/)是大学课程页，支持欧式直观，不伪装成已读加权AO投影教材正文。
 
-本模块所引L1的作者、版次、年份和相关章节名称已对照出版社目录核验；未读取其全书正文，不声称已逐式或按页核验。上文推导由本模块明确给出，API文档仅支持实现接口。完整来源类型、访问范围和输入/保存数据身份见[runtime/sources.json](runtime/sources.json)。
+本模块所引L1的作者、版次、年份和相关章节名称已对照出版社目录核验；未读取其全书正文，不声称已逐式或按页核验。上文推导由本模块明确给出，API文档仅支持实现接口。完整来源类型、访问范围和输入/保存数据身份见[runtime/sources.json](https://github.com/CCcolab/AI4OrgChem-data-processing/blob/main/skills/nonorthogonal-subspace/runtime/sources.json)。
 
 ## 输入校验与方法依据补充
 
@@ -49,3 +49,5 @@ G=BᵀSB，按λ>rank_rtol×λmax保留Gram方向；P=B G⁺ BᵀS。分别报�
 ## 方法来源
 
 投影公式在此显式给定；[NumPy eigh](https://numpy.org/doc/stable/reference/generated/numpy.linalg.eigh.html)支持对称Gram矩阵分解。软件分解不认证AO物理身份。
+
+下载指令的来源链接使用公开仓库明确地址；完整Python代码包内的来源文件位于`runtime/sources.json`。顶层维护源与下载导出字节一致。

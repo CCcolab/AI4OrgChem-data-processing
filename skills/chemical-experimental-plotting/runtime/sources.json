@@ -44,5 +44,14 @@
     "reviewed_on": "2026-10-25",
     "review_scope": "OFFICIAL_DOCUMENTATION_SELECTED_PUBLIC_TEXT",
     "rights": "链接及自主概述；不再分发参考全文。"
+  },
+  {
+    "id": "review-numerical-input-api",
+    "title": "Python statistics.stdev",
+    "url": "https://docs.python.org/3.12/library/statistics.html#statistics.stdev",
+    "type": "软件或语言官方文档",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "OFFICIAL_API_TEXT_AND_LOCAL_PINNED_RUNTIME_INPUT_CHECKS_NOT_FULL_BACKEND_VALIDATION",
+    "supports": "样本SD接口定义"
   }
 ]

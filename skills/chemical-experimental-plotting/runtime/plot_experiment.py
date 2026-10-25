@@ -4,11 +4,14 @@ No fit, interpolation, imputation, model call or automatic outlier removal.
 """
 from pathlib import Path
 import argparse
+import importlib.util
 import csv
 import hashlib
 import io
 import json
 import sys
+import statistics
+import math
 import zipfile
 
 PAGE = Path(__file__).resolve().parents[1]
@@ -22,42 +25,57 @@ def dump(path, data):
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2, allow_nan=False) + '\n', encoding='utf-8')
 
 
-def run_skill(*, input_csv, output_dir, x_unit, y_unit, mode='scatter', error_type=None):
-    import numpy as np
-    import matplotlib
-    matplotlib.use('Agg')
-    import matplotlib.pyplot as plt
+def replicate_summary(values):
+    # CPython statistics uses exact integer-ratio accumulation for float inputs.
+    # Returning a float mean still rounds to a representable observation unit.
+    center = float(statistics.mean(values))
+    deviation = float(statistics.stdev(values)) if len(values) > 1 else None
+    if not math.isfinite(center) or (deviation is not None and not math.isfinite(deviation)):
+        raise ValueError('Replicate summary is outside the finite float range.')
+    if deviation == 0 and any(value != values[0] for value in values):
+        raise ValueError('Nonzero replicate spread underflowed to zero; rescale declared units before retrying.')
+    return center, deviation
 
-    if mode not in {'scatter', 'supplied-error', 'replicate-sd'}:
-        raise ValueError('Select scatter, supplied-error or replicate-sd.')
-    if (mode == 'supplied-error' and error_type not in {'SD', 'SEM', 'CI_HALF_WIDTH'}) or (mode != 'supplied-error' and error_type is not None):
-        raise ValueError('Declare the supplied uncertainty meaning; no implicit conversion or confidence level.')
-    if not all(isinstance(unit, str) and 0 < len(unit) <= 80 for unit in [x_unit, y_unit]):
-        raise ValueError('Explicit x and y units are required.')
-    source = Path(input_csv)
-    if source.is_symlink() or not source.is_file() or source.stat().st_size > 128000:
-        raise ValueError('Provide a regular UTF-8 CSV <=128000 bytes.')
-    raw = source.read_bytes()
-    reader = csv.DictReader(io.StringIO(raw.decode('utf-8-sig')))
-    rows = list(reader)
-    needed = {'id', 'x', 'y', 'group'} | ({'yerr'} if mode == 'supplied-error' else set())
-    if (not reader.fieldnames or len(set(reader.fieldnames)) != len(reader.fieldnames)
-            or not needed.issubset(reader.fieldnames) or not 1 <= len(rows) <= 1000
-            or any(None in row or None in row.values() for row in rows)):
-        raise ValueError('Require unique headers, complete rows, id,x,y,group and optional yerr.')
-    if len({row['id'] for row in rows}) != len(rows) or any(not row['id'] or not row['group'] for row in rows):
-        raise ValueError('IDs must be unique/nonempty; group must be declared.')
-    output = Path(output_dir).resolve()
-    if output.exists() or output.is_relative_to(PAGE):
-        raise ValueError('Use a NEW result directory outside the Skill source.')
-    output.mkdir(parents=True)
-    (output / 'input.csv').write_bytes(raw)
-    skill = (PAGE / 'SKILL.md').read_bytes()
-    (output / 'SKILL.used.md').write_bytes(skill)
-    settings = {'mode': mode, 'error_type': error_type, 'x_unit': x_unit, 'y_unit': y_unit,
-                'replicate_SD_ddof': 1, 'confidence_level': 'NOT_INFERRED', 'outlier_policy': 'KEEP_ALL'}
-    dump(output / 'parameters.json', settings)
+
+def evidence_api():
+    path = PAGE / 'runtime/output_evidence.py'
+    spec = importlib.util.spec_from_file_location('_output_evidence', path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def run_skill(*, input_csv, output_dir, x_unit, y_unit, mode='scatter', error_type=None):
+    evidence = evidence_api()
+    evidence.checked_output(PAGE, output_dir)
+    raw = evidence.read_bounded(input_csv, 128000)
+    output = evidence.begin_output(PAGE, output_dir, {'input.csv': raw})
+    skill = (output / 'SKILL.used.md').read_bytes()
     try:
+        settings = {'mode': mode, 'error_type': error_type, 'x_unit': x_unit, 'y_unit': y_unit,
+                    'replicate_SD_ddof': 1, 'replicate_SD_algorithm': 'statistics.stdev_exact_ratio_accumulation',
+                    'nonzero_SD_underflow_policy': 'REJECT_NOT_ZERO', 'confidence_level': 'NOT_INFERRED', 'outlier_policy': 'KEEP_ALL'}
+        dump(output / 'parameters.json', settings)
+        import numpy as np
+        import matplotlib
+        matplotlib.use('Agg')
+        import matplotlib.pyplot as plt
+
+        if mode not in {'scatter', 'supplied-error', 'replicate-sd'}:
+            raise ValueError('Select scatter, supplied-error or replicate-sd.')
+        if (mode == 'supplied-error' and error_type not in {'SD', 'SEM', 'CI_HALF_WIDTH'}) or (mode != 'supplied-error' and error_type is not None):
+            raise ValueError('Declare the supplied uncertainty meaning; no implicit conversion or confidence level.')
+        if not all(isinstance(unit, str) and 0 < len(unit) <= 80 and unit.strip() for unit in [x_unit, y_unit]):
+            raise ValueError('Explicit x and y units are required.')
+        reader = csv.DictReader(io.StringIO(raw.decode('utf-8-sig')))
+        rows = list(reader)
+        needed = {'id', 'x', 'y', 'group'} | ({'yerr'} if mode == 'supplied-error' else set())
+        if (not reader.fieldnames or len(set(reader.fieldnames)) != len(reader.fieldnames)
+                or not needed.issubset(reader.fieldnames) or not 1 <= len(rows) <= 1000
+                or any(None in row or None in row.values() for row in rows)):
+            raise ValueError('Require unique headers, complete rows, id,x,y,group and optional yerr.')
+        if len({row['id'] for row in rows}) != len(rows) or any(not row['id'] or not row['group'] for row in rows):
+            raise ValueError('IDs must be unique/nonempty; group must be declared.')
         points = []
         for row in rows:
             point = {'id': row['id'], 'group': row['group'], 'x': float(row['x']), 'y': float(row['y']),
@@ -73,10 +91,10 @@ def run_skill(*, input_csv, output_dir, x_unit, y_unit, mode='scatter', error_ty
                 bins.setdefault((point['group'], point['x']), []).append(point)
             plotted = []
             for (group, x), observations in bins.items():
-                values = np.array([p['y'] for p in observations])
+                values = [p['y'] for p in observations]
+                center, deviation = replicate_summary(values)
                 plotted.append({'id': '|'.join(p['id'] for p in observations), 'group': group, 'x': x,
-                                'y': float(values.mean()), 'n': len(values),
-                                'yerr': float(values.std(ddof=1)) if len(values) > 1 else None})
+                                'y': center, 'n': len(values), 'yerr': deviation})
         if not all(np.isfinite(p['y']) and (p['yerr'] is None or np.isfinite(p['yerr'])) for p in plotted):
             raise ValueError('Summary overflow.')
         fig, ax = plt.subplots(figsize=(7, 5), layout='constrained')
@@ -111,13 +129,9 @@ def run_skill(*, input_csv, output_dir, x_unit, y_unit, mode='scatter', error_ty
                              'n=1 sample SD remains undefined, plotted without a zero-error claim.']}
         dump(output / 'run-receipt.json', result)
     except Exception as error:
-        dump(output / 'failure.json', {'status': 'FAILED_INPUT_RETAINED', 'type': type(error).__name__, 'message': str(error)})
+        evidence.record_failure(output, error)
         raise
-    files = sorted(p for p in output.iterdir() if p.is_file())
-    (output / 'SHA256SUMS.txt').write_text(''.join(sha(p.read_bytes()) + '  ' + p.name + '\n' for p in files), encoding='utf-8')
-    with zipfile.ZipFile(output / 'results.zip', 'w', zipfile.ZIP_DEFLATED) as archive:
-        for p in files + [output / 'SHA256SUMS.txt']:
-            archive.write(p, p.name)
+    evidence.seal_output(output)
     return result
 
 
@@ -134,7 +148,7 @@ def main():
         print(json.dumps(run_skill(input_csv=args.input, output_dir=args.output, x_unit=args.x_unit,
                                    y_unit=args.y_unit, mode=args.mode, error_type=args.error_type), ensure_ascii=False))
         return 0
-    except (ValueError, OSError, RuntimeError, ArithmeticError) as error:
+    except (ValueError, OSError, RuntimeError, ArithmeticError, ImportError) as error:
         print(str(error), file=sys.stderr)
         return 2
 

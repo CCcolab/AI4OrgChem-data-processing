@@ -55,7 +55,7 @@ def features(data, target=False, groups=False):
         raise ValueError('One unique nonempty string ID per row required.')
     if not isinstance(names, list) or len(names) != x.shape[1] or len(set(names)) != len(names) or any(not isinstance(v, str) or not v for v in names):
         raise ValueError('Explicit unique feature names required.')
-    if not isinstance(units, list) or len(units) != len(names) or any(not isinstance(v, str) or not v for v in units):
+    if not isinstance(units, list) or len(units) != len(names) or any(not isinstance(v, str) or not v.strip() for v in units):
         raise ValueError('Declare one feature unit label per column; dimensionless must be explicit.')
     y = None
     if target:

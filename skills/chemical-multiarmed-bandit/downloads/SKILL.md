@@ -52,8 +52,10 @@ UCB本例先访问未采样臂，随后用均值+exploration×√(2log(t)/n_a)�
 
 原始方法/作者专论：[AUER](https://homes.di.unimi.it/~cesabian/Pubblicazioni/ml-02.pdf)、[RUSSO](https://web.stanford.edu/~bvr/pubs/TS_Tutorial.pdf)。
 
-Sutton/Barto为2018年第2版，出版社目录确认§2.7 UCB与§6.5 Q-learning；作者整书链接本次超时，未声称重读全书。 各条原论文/软件文档的具体访问范围及版本记录见[runtime/sources.json](runtime/sources.json)；滚动API页面与固定运行依赖分开记录。经典书目补充基础，现代算法仍保留其原始论文，API文档继续用于接口约定。
+Sutton/Barto为2018年第2版，出版社目录确认§2.7 UCB与§6.5 Q-learning；作者整书链接本次超时，未声称重读全书。 各条原论文/软件文档的具体访问范围及版本记录见[runtime/sources.json](https://github.com/CCcolab/AI4OrgChem-data-processing/blob/main/skills/chemical-multiarmed-bandit/runtime/sources.json)；滚动API页面与固定运行依赖分开记录。经典书目补充基础，现代算法仍保留其原始论文，API文档继续用于接口约定。
 
 ## 方法修订身份
 
 结果method_revision=BERNOULLI_BANDIT_V2_STANDARD_THOMPSON。仅UCB按声明顺序强制访问未采样臂；Thompson从首轮Beta后验抽样。此修订替换了原先未声明的强制初始化变体，因此同seed的Thompson奖励/动作轨迹与旧结果可能不同；必须在全新目录运行并按新回执解释，不能复用旧轨迹或旧图作为本版结果。输入概率、预算和UCB探索式未改变。
+
+下载指令的来源链接使用公开仓库明确地址；完整Python代码包内的来源文件位于`runtime/sources.json`。顶层维护源与下载导出字节一致。

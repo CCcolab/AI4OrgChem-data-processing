@@ -5,6 +5,7 @@ executable formula is used. Existing HPLC reproduction remains a separate entry.
 """
 from pathlib import Path
 import argparse
+import importlib.util
 import csv
 import hashlib
 import io
@@ -23,43 +24,45 @@ def sha(raw):
     return hashlib.sha256(raw).hexdigest()
 
 
-def run_skill(*, input_csv, output_dir, x_unit, y_unit, degree=1, sigma_column=None):
-    import numpy as np
-    import matplotlib
-    matplotlib.use('Agg')
-    import matplotlib.pyplot as plt
+def evidence_api():
+    path = PAGE / 'runtime/output_evidence.py'
+    spec = importlib.util.spec_from_file_location('_output_evidence', path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
-    if type(degree) is not int or degree not in {1, 2}:
-        raise ValueError('degree must be integer 1 or 2; intercept is always fitted.')
-    if not all(isinstance(unit, str) and 0 < len(unit) <= 80 for unit in [x_unit, y_unit]):
-        raise ValueError('Declare x_unit and y_unit; use explicit arbitrary units for synthetic data.')
-    source = Path(input_csv)
-    if source.is_symlink() or not source.is_file() or source.stat().st_size > 128000:
-        raise ValueError('Provide a regular UTF-8 CSV <=128000 bytes.')
-    raw = source.read_bytes()
-    reader = csv.DictReader(io.StringIO(raw.decode('utf-8-sig')))
-    rows = list(reader)
-    if (not reader.fieldnames or len(reader.fieldnames) != len(set(reader.fieldnames))
-            or not {'id', 'x', 'y'}.issubset(reader.fieldnames) or any(None in row or None in row.values() for row in rows)
-            or not degree + 2 <= len(rows) <= 1000):
-        raise ValueError('Require unique headers id,x,y, complete records and p<n<=1000.')
-    if sigma_column is not None and (sigma_column not in reader.fieldnames or sigma_column in {'id', 'x', 'y'}):
-        raise ValueError('Choose a distinct existing sigma column containing response standard deviations.')
-    if any(not row['id'] for row in rows) or len({row['id'] for row in rows}) != len(rows):
-        raise ValueError('IDs must be nonempty and unique; keep repeated observations under distinct IDs.')
-    output = Path(output_dir).resolve()
-    if output.exists() or output.is_relative_to(PAGE):
-        raise ValueError('Use a NEW output directory outside the Skill.')
-    output.mkdir(parents=True)
-    skill = (PAGE / 'SKILL.md').read_bytes()
-    (output / 'input.csv').write_bytes(raw)
-    (output / 'SKILL.used.md').write_bytes(skill)
-    settings = {'degree': degree, 'fit_intercept': True, 'x_unit': x_unit, 'y_unit': y_unit,
-                'sigma_column': sigma_column, 'weight_definition': '1/sigma_y^2' if sigma_column else 'UNWEIGHTED',
-                'residual_definition': 'observed_y - fitted_y', 'rcond': 1e-12,
-                'scaled_design_condition_limit': 1e10, 'inference': 'NOT_PERFORMED'}
-    dump(output / 'parameters.json', settings)
+
+def run_skill(*, input_csv, output_dir, x_unit, y_unit, degree=1, sigma_column=None):
+    evidence = evidence_api()
+    evidence.checked_output(PAGE, output_dir)
+    raw = evidence.read_bounded(input_csv, 128000)
+    output = evidence.begin_output(PAGE, output_dir, {'input.csv': raw})
+    skill = (output / 'SKILL.used.md').read_bytes()
     try:
+        settings = {'degree': degree, 'fit_intercept': True, 'x_unit': x_unit, 'y_unit': y_unit,
+                    'sigma_column': sigma_column, 'weight_definition': '1/sigma_y^2' if sigma_column else 'UNWEIGHTED',
+                    'residual_definition': 'observed_y - fitted_y', 'rcond': 1e-12,
+                    'scaled_design_condition_limit': 1e10, 'inference': 'NOT_PERFORMED'}
+        dump(output / 'parameters.json', settings)
+        import numpy as np
+        import matplotlib
+        matplotlib.use('Agg')
+        import matplotlib.pyplot as plt
+
+        if type(degree) is not int or degree not in {1, 2}:
+            raise ValueError('degree must be integer 1 or 2; intercept is always fitted.')
+        if not all(isinstance(unit, str) and 0 < len(unit) <= 80 and unit.strip() for unit in [x_unit, y_unit]):
+            raise ValueError('Declare x_unit and y_unit; use explicit arbitrary units for synthetic data.')
+        reader = csv.DictReader(io.StringIO(raw.decode('utf-8-sig')))
+        rows = list(reader)
+        if (not reader.fieldnames or len(reader.fieldnames) != len(set(reader.fieldnames))
+                or not {'id', 'x', 'y'}.issubset(reader.fieldnames) or any(None in row or None in row.values() for row in rows)
+                or not degree + 2 <= len(rows) <= 1000):
+            raise ValueError('Require unique headers id,x,y, complete records and p<n<=1000.')
+        if sigma_column is not None and (sigma_column not in reader.fieldnames or sigma_column in {'id', 'x', 'y'}):
+            raise ValueError('Choose a distinct existing sigma column containing response standard deviations.')
+        if any(not row['id'] for row in rows) or len({row['id'] for row in rows}) != len(rows):
+            raise ValueError('IDs must be nonempty and unique; keep repeated observations under distinct IDs.')
         x = np.array([float(row['x']) for row in rows])
         y = np.array([float(row['y']) for row in rows])
         sigma = np.array([float(row[sigma_column]) for row in rows]) if sigma_column else np.ones(len(rows))
@@ -165,13 +168,9 @@ def run_skill(*, input_csv, output_dir, x_unit, y_unit, degree=1, sigma_column=N
         fig.savefig(output / 'fit-and-residuals.png', dpi=140)
         plt.close(fig)
     except Exception as error:
-        dump(output / 'failure.json', {'status': 'FAILED_INPUT_RETAINED', 'type': type(error).__name__, 'message': str(error)})
+        evidence.record_failure(output, error)
         raise
-    files = sorted(path for path in output.iterdir() if path.is_file())
-    (output / 'SHA256SUMS.txt').write_text(''.join(sha(path.read_bytes()) + '  ' + path.name + '\n' for path in files), encoding='utf-8')
-    with zipfile.ZipFile(output / 'results.zip', 'w', zipfile.ZIP_DEFLATED) as archive:
-        for path in files + [output / 'SHA256SUMS.txt']:
-            archive.write(path, path.name)
+    evidence.seal_output(output)
     return result
 
 
@@ -189,7 +188,7 @@ def main():
                                    x_unit=args.x_unit, y_unit=args.y_unit, degree=args.degree,
                                    sigma_column=args.sigma_column), ensure_ascii=False))
         return 0
-    except (ValueError, OSError, RuntimeError, ArithmeticError) as error:
+    except (ValueError, OSError, RuntimeError, ArithmeticError, ImportError) as error:
         print(str(error), file=sys.stderr)
         return 2
 

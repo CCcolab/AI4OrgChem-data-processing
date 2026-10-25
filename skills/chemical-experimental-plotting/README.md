@@ -91,3 +91,11 @@ print(receipt)
 调用时runtime须在Python模块路径中，完整模板已处理路径。run_skill实际读取顶层完整SKILL.md并保存哈希，运行固定绘图工具；不联网、不调用模型，也不宣称语言模型理解了Skill。
 
 代码包完整性见[SHA-256](downloads/SHA256SUMS.txt)；内部验收材料不进入用户包。
+
+## 失败产物与输出保护
+
+对安全读取的限长常规输入，在合法全新输出目录中保存原输入、Skill及适用设置；JSON解析、缺字段、重复ID、非有限数值及CSV前处理失败均保存failure.json、SHA256SUMS.txt和results.zip，并失败退出。CSV入口同时保留原始CSV、模板和列/单位选择。输出已存在、位于源码内或为符号链接时不写入；超限或符号链接输入不复制。命令行缺少必需选项等尚未形成有效调用的错误由参数解析器拒绝，不创建结果。失败回执不代表数值或模型已执行。
+
+## 样本SD的数值约定
+
+重复观测使用Python statistics.mean/stdev的稳定归约，样本SD分母n−1；n=1为未定义，不画成零误差。有限浮点原始值的均值仍按可表示浮点数舍入；若真实非零散布在返回浮点SD时下溢为0则拒绝并留痕，需由用户明确改变单位/尺度后重试，不伪造为零散布。实现定义见[Python标准库statistics](https://docs.python.org/3.12/library/statistics.html#statistics.stdev)，理论依据仍为本页原有分析化学教材。

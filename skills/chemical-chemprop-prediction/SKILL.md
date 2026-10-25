@@ -3,7 +3,7 @@ name: chemical-chemprop-prediction
 description: 使用实际Chemprop2.3.1有向键消息网络在本地CPU训练小型回归案例，保存留出预测与自生成权重；不提供预训练药效模型或化学泛化声明。
 ---
 
-# Chemprop分子属性预测流程
+# Chemprop分子属性回归教学
 
 先确认用户目标、实际输入、方法、单位和来源。没有实际工具执行时标NOT_EXECUTED，不从既有文字、模型解释或历史PASS制造新数值。
 
@@ -52,4 +52,12 @@ Chemprop自带特征与自编MPNN不同，不能逐数比较。小规模合成�
 
 实现接口：[CHEMPROPAPI](https://chemprop.readthedocs.io/en/latest/tutorial/python/models/basic_mpnn_model.html)。
 
-Hamilton引用作者2020年9月第5章预出版草稿，核对消息传递与置换性质；不冒称最终出版社修订版全文。 各条原论文/软件文档的具体访问范围及版本记录见[runtime/sources.json](runtime/sources.json)；滚动API页面与固定运行依赖分开记录。经典书目补充基础，现代算法仍保留其原始论文，API文档继续用于接口约定。
+Hamilton引用作者2020年9月第5章预出版草稿，核对消息传递与置换性质；不冒称最终出版社修订版全文。 各条原论文/软件文档的具体访问范围及版本记录见[runtime/sources.json](https://github.com/CCcolab/AI4OrgChem-data-processing/blob/main/skills/chemical-chemprop-prediction/runtime/sources.json)；滚动API页面与固定运行依赖分开记录。经典书目补充基础，现代算法仍保留其原始论文，API文档继续用于接口约定。
+
+下载指令的来源链接使用公开仓库明确地址；完整Python代码包内的来源文件位于`runtime/sources.json`。顶层维护源与下载导出字节一致。
+
+目标单位target_unit不能由空格、制表或换行组成；无量纲需显式声明。该要求同时用于JSON和CSV，不自动推断单位或改变输入标签。
+
+## 本次修订的Torch复验状态
+
+**完整Torch运行未复验。** 本次第三方意见修订验证了限定的输入/单位检查、失败保存、数值程序和分发完整性；没有在完整Torch依赖环境重新训练、推理、重载权重或验证GPU。图输入使用真实RDKit检查及原函数表达式检查，其中ndarray张量替身不等于真实Torch运行。此前案例和第三方原版本结果属于其固定版本，不能替代本修订版完整运行验收。需由具备所列依赖的环境独立复验后，再更新该状态；本页不要求调用模型服务。

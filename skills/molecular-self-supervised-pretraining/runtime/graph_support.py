@@ -3,6 +3,7 @@ import numpy as np
 import torch
 from torch import nn
 from rdkit import Chem, rdBase
+from .graph_inputs import parse_molecule
 
 
 def keys(value, required, optional=()):
@@ -23,15 +24,7 @@ def real(value, low, high, name):
 
 
 def graph(raw):
-    if not isinstance(raw, str) or not 1 <= len(raw) <= 256:
-        raise ValueError('SMILES must be 1–256 characters.')
-    options = Chem.SmilesParserParams()
-    options.parseName = False
-    options.allowCXSMILES = False
-    with rdBase.BlockLogs():
-        mol = Chem.MolFromSmiles(raw, options)
-    if mol is None or mol.GetNumAtoms() > 64 or len(Chem.GetMolFrags(mol)) != 1 or any(a.GetAtomicNum() not in {5,6,7,8,9,14,15,16,17,35,53} for a in mol.GetAtoms()):
-        raise ValueError('Only parsed single-component small organic graphs <=64 atoms are supported.')
+    mol = parse_molecule(raw)
     x = torch.tensor([[a.GetAtomicNum()/100, a.GetDegree()/4, a.GetFormalCharge()/2, float(a.GetIsAromatic())]
                       for a in mol.GetAtoms()], dtype=torch.float32)
     edges, bonds = [], []
@@ -82,7 +75,7 @@ def dataset(data, supervised=True):
     if supervised or 'target' in data:
         require_real_leaves(data['target'])
         y = np.asarray(data['target'])
-        if y.dtype.kind not in 'if' or y.shape != (len(graphs),) or not np.isfinite(y).all() or not isinstance(data.get('target_unit'),str) or not data['target_unit']:
+        if y.dtype.kind not in 'if' or y.shape != (len(graphs),) or not np.isfinite(y).all() or not isinstance(data.get('target_unit'),str) or not data['target_unit'].strip():
             raise ValueError('Explicit finite aligned target and units are required.')
         y = y.astype(float)
     if 'groups' in data and (not isinstance(data['groups'],list) or len(data['groups']) != len(graphs)

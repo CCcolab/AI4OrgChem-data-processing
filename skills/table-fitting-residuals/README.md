@@ -204,3 +204,7 @@ Get-FileHash -LiteralPath ..\fit-default-saved\results.zip -Algorithm SHA256
 
 `original_basis_diagnostic`比较观测x上原基回放与缩放预测，采用`max|差|/max|缩放预测|≤1e−10`的无量纲工程准则；没有max(1,yScale)或固定有量纲atol，故改变y单位不会掩盖相同比例的损失。全零预测要求原基也精确回放零。失稳为REPLAY_UNSTABLE并给出ORIGINAL_BASIS_REPLAY_UNSTABLE警告，仍可使用稳定表达；通过仅适用于观测x，不认证外推或测量精度。[Burden与Faires《Numerical Analysis》9版](https://www.cengage.co.in/book-list/print/numerical-analysis-c2)第1/3/4章分别涉及误差、插值与数值微分；本次核验出版社目录，未取得这些章节全文，不借目录声称已核对误差定理。
 完整章节/接口映射及访问限度见[runtime/sources.json](runtime/sources.json)。
+
+## 失败产物与输出保护
+
+对安全读取的限长常规输入，在合法全新输出目录中保存原输入、Skill及适用设置；JSON解析、缺字段、重复ID、非有限数值及CSV前处理失败均保存failure.json、SHA256SUMS.txt和results.zip，并失败退出。CSV入口同时保留原始CSV、模板和列/单位选择。输出已存在、位于源码内或为符号链接时不写入；超限或符号链接输入不复制。命令行缺少必需选项等尚未形成有效调用的错误由参数解析器拒绝，不创建结果。失败回执不代表数值或模型已执行。

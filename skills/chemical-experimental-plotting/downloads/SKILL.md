@@ -32,3 +32,7 @@ SD描述样本散布，SEM和置信区间涉及估计对象及独立性等假设
 ## 解释规则与理论依据
 
 先解释误差条对应观测散布还是估计不确定度。replicate-sd使用s²=Σ(y−mean)²/(n−1)，不能未经用户请求换成s/√n；后者解释还需独立性等条件。n=1只画点，不称零误差。用均值12/SD2/SEM2÷√3的例子区分对象，不由SD条重叠与否下显著性结论。supplied-error只复现已声明半宽，CI_HALF_WIDTH不认证置信水平。Harvey§4.1/§4.4是已核验开放教材正文，Matplotlib/NumPy为绘图/算法接口；本模块不新增区间或假设检验。见runtime/sources.json。
+
+## 样本SD的数值约定
+
+重复观测使用Python statistics.mean/stdev的稳定归约，样本SD分母n−1；n=1为未定义，不画成零误差。有限浮点原始值的均值仍按可表示浮点数舍入；若真实非零散布在返回浮点SD时下溢为0则拒绝并留痕，需由用户明确改变单位/尺度后重试，不伪造为零散布。实现定义见[Python标准库statistics](https://docs.python.org/3.12/library/statistics.html#statistics.stdev)，理论依据仍为本页原有分析化学教材。

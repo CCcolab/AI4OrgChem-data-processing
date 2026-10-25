@@ -10,6 +10,8 @@
 
 **验收范围：** 本地数值计算、旧结果后处理、合成模拟、本地机器学习训练和新量子后端执行分别记录。合成数据高分不证明化学预测能力。下列五项标“后端待验”的项目不能宣称新后端计算已完成；[查看五项状态及适用范围](docs/BACKEND_STATUS.md)。
 
+**本次修订验收边界：** 已修正第三方评审指出的SD数值边界、自由基输入范围、空白单位、失败留痕、目录文案和导出来源链接。**完整Torch训练/推理流程未复验**；输入检查、数值案例和下载一致性通过不能替代真实Torch运行。五项新真实科学后端继续待验，详见[后端状态与复验范围](docs/BACKEND_STATUS.md)。
+
 ## 有机分子结构与身份识别
 
 - [SMILES 与 RDKit](skills/organic-smiles-rdkit/README.md)
@@ -52,7 +54,7 @@
 - [构建化学树模型｜决策树与随机森林](skills/chemical-tree-forest-models/README.md)
 - [构建化学神经网络｜MLP 回归与分类](skills/chemical-mlp-models/README.md)
 - [构建分子图神经网络｜GNN 与 MPNN](skills/molecular-gnn-mpnn/README.md)
-- [预测分子性质与反应活性｜Chemprop](skills/chemical-chemprop-prediction/README.md)
+- [Chemprop分子属性回归教学](skills/chemical-chemprop-prediction/README.md)
 - [预训练分子表示｜对比学习与掩码学习](skills/molecular-self-supervised-pretraining/README.md)
 - [生成候选分子｜SMILES VAE 与潜空间采样](skills/molecular-smiles-vae/README.md)
 

@@ -27,7 +27,7 @@ parameters含protocol_id、method_id、basis_id、weight_atol、expected_states�
 
 [Q1：Helgaker、Jørgensen、Olsen，Molecular Electronic-Structure Theory，Wiley，2000，ISBN 9780471967552](https://www.wiley-vch.de/en/areas-interest/natural-sciences/molecular-electronic-structure-theory-978-0-471-96755-2)的Exact and Approximate Wave Functions、Multiconfigurational Self-Consistent Field Theory提供电子态背景，仅核验目录；不把它当作本固定权重合同或统计力学人口的证明。[O1：Boyd、Vandenberghe，Convex Optimization，Cambridge University Press，2004，§2.1.4](https://web.stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf)的作者授权正文已核读，支持非负归一权重的凸组合解释，不支持任意权重的物理人口意义。[NumPy average](https://numpy.org/doc/stable/reference/generated/numpy.average.html)是通用归一化算术API，不能替代系综理论。若未来加入物理人口/自由能功能，应另给并验证相应统计力学教材与协议。
 
-本模块所引Q1的作者、版次、年份和相关章节名称已对照出版社目录核验；未读取其全书正文，不声称已逐式或按页核验。上文推导由本模块明确给出，API文档仅支持实现接口。完整来源类型、访问范围和输入/保存数据身份见[runtime/sources.json](runtime/sources.json)。
+本模块所引Q1的作者、版次、年份和相关章节名称已对照出版社目录核验；未读取其全书正文，不声称已逐式或按页核验。上文推导由本模块明确给出，API文档仅支持实现接口。完整来源类型、访问范围和输入/保存数据身份见[runtime/sources.json](https://github.com/CCcolab/AI4OrgChem-data-processing/blob/main/skills/multistate-size-comparison/runtime/sources.json)。
 
 
 ## 科学适用性补充
@@ -70,3 +70,5 @@ receipt = bridge.run_skill(
 后端函数：run_backend(request, output_dir) 返回 {"review_request": {"parameters": ..., "data": ..., "provenance": ...}, "execution": {"kind": "明确的执行类型", ...}}。file_backend.py 是完整可运行的结果导入适配器；连接新求解器时，其物理算法、独立能量分项、端点资格和资源控制仍由真实后端及研究协议负责，不以本桥接器补造。
 
 backend_calls 只统计桥接函数进入次数，不是科学核函数调用总数；Python 模块导入也可执行代码。后端原生任务次数与资源使用须由原生日志另外证明，不能将外部模块自报的 model_calls/network_calls 当作独立监测。桥接器本身不调用模型/网络，亦不执行后台超时强杀。
+
+下载指令的来源链接使用公开仓库明确地址；完整Python代码包内的来源文件位于`runtime/sources.json`。顶层维护源与下载导出字节一致。

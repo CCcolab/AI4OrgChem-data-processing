@@ -2,7 +2,7 @@
   "schema": "skill-method-sources-v1",
   "skill": "molecular-gnn-mpnn",
   "knowledge_revision": "2026-10-25",
-  "knowledge_scope": "使用明确简化的MPNN身份，禁止继承原论文基准性能。只在训练图优化；列出未编码stereo/isotope的记录，核对相同特征策略图与组别不跨划分。置换不变性不能解释为化学身份认证。",
+  "knowledge_scope": "使用明确简化的MPNN身份，禁止继承原论文基准性能。只在训练图优化；列出未编码stereo/isotope的记录，核对相同特征策略图与组别不跨划分。置换不变性不能解释为化学身份认证。 自编四维表示不支持自由基，解析后存在自由基电子即拒绝。",
   "chapter_locator": "Hamilton作者第5章草稿，§5.1消息传递与式5.2–5.3的置换性质（可访问正文）。",
   "source_roles": {
     "textbook_or_monograph": "概念与数学基础；访问范围逐条声明",
@@ -35,6 +35,15 @@
       "edition": "ICML2017, PMLR70:1263–1272",
       "support": "Framework aggregates graph messages into graph-level functions; benchmark results belong to the original architectures/data.",
       "access_scope": "PMLR original abstract/metadata read; does not validate this teaching architecture.",
+      "verified_on": "2026-10-25"
+    },
+    {
+      "id": "review-radical-api",
+      "title": "RDKit Atom.GetNumRadicalElectrons",
+      "url": "https://www.rdkit.org/docs/source/rdkit.Chem.rdchem.html#rdkit.Chem.rdchem.Atom.GetNumRadicalElectrons",
+      "source_class": "software_documentation",
+      "support": "Read parsed radical-electron count to reject unsupported reference-MPNN inputs.",
+      "access_scope": "Official API text plus local pinned RDKit input checks; no Torch backend acceptance.",
       "verified_on": "2026-10-25"
     }
   ]

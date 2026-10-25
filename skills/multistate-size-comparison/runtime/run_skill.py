@@ -124,8 +124,6 @@ def run_skill(*, mode, request_file, output_dir, backend_file=None, execute=Fals
     if request_file.is_symlink() or not request_file.is_file() or request_file.stat().st_size > 2_000_000:
         raise ValueError('Provide a regular JSON file no larger than 2 MB.')
     raw = request_file.read_bytes()
-    request = strict_json(raw)
-    validate_request(request)
     backend = None
     if backend_file is not None:
         backend = Path(backend_file).resolve()
@@ -149,6 +147,8 @@ def run_skill(*, mode, request_file, output_dir, backend_file=None, execute=Fals
                'scientific_qualification': 'EXPLICIT_INPUTS_AND_CHECKS_ONLY'}
     error = None
     try:
+        request = strict_json(raw)
+        validate_request(request)
         if mode == 'prepare':
             receipt.update(status='PREPARED_NOT_EXECUTED', scope='INPUT_SNAPSHOT_AND_CALL_PLAN_ONLY')
             dump(output / 'backend-plan.json', {

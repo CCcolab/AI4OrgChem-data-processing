@@ -15,3 +15,15 @@ RHF与局域化提供可选现有PySCF模板；无PySCF时只准备或导入其�
 历史固定水RHF和乙烯局域化的既有验收范围保留；原条件态首次失败及修复版尚未完整重验、真实约束导数/曲率、真实多态集合等缺口不改写。五项泛用新便携后端均未在本次发布执行，不上传内部日志或旧执行身份。
 
 准备、历史数组复核、人工数学演示、真实后端运行分别记录；converged或来源标签不是独立真实性证明。普通/条件账本不生成通用条件泛函；约束复核限线性约束；多态默认非负归一化权重不是有符号LDE或自由能。当前进程Python模板不提供安全沙箱或操作系统硬资源限额。
+
+## 第三方修订后的Torch复验范围
+
+**完整Torch运行未复验，不能标为已通过。** 此状态单独说明，不将下列学习模块计入或替换上面的五项真实科学后端清单。
+
+- [molecular-gnn-mpnn](../skills/molecular-gnn-mpnn/README.md)：完整Torch训练/推理、权重重载及GPU未在本次修订重新验收。
+- [molecular-self-supervised-pretraining](../skills/molecular-self-supervised-pretraining/README.md)：完整Torch训练/推理、权重重载及GPU未在本次修订重新验收。
+- [molecular-smiles-vae](../skills/molecular-smiles-vae/README.md)：完整Torch训练/推理、权重重载及GPU未在本次修订重新验收。
+- [chemical-chemprop-prediction](../skills/chemical-chemprop-prediction/README.md)：完整Torch训练/推理、权重重载及GPU未在本次修订重新验收。
+- [chemical-bayesian-optimization](../skills/chemical-bayesian-optimization/README.md)：完整Torch训练/推理、权重重载及GPU未在本次修订重新验收。
+
+本次完成定点输入、单位、失败证据、数值边界和包/来源链接检查；图输入检查用真实RDKit及原函数表达式，ndarray替身不提供真实Torch张量或模型验收。第三方既有Linux/CPU结论固定在bb629ee，不自动推广到修订版。未重新调用模型或科学后端，内部日志不公开上传。

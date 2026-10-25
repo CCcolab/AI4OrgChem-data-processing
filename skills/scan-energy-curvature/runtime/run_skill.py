@@ -52,29 +52,36 @@ def verify_resources():
         raise ValueError('Required resource is missing.')
 
 
-def run_skill(*, request_file, output_dir):
+def evidence_api():
+    path = PAGE / 'runtime/output_evidence.py'
+    spec = importlib.util.spec_from_file_location('_output_evidence', path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def run_skill(*, request_file, output_dir, snapshots=None):
     verify_resources()
+    evidence = evidence_api()
+    evidence.checked_output(PAGE, output_dir)
     request_file = Path(request_file)
     if request_file.is_symlink() or not request_file.is_file() or request_file.stat().st_size > 2_000_000:
         raise ValueError('Provide a regular JSON request no larger than 2 MB.')
-    raw = request_file.read_bytes()
-    request = strict_json(raw)
-    if not isinstance(request, dict) or set(request) != {'parameters', 'data', 'provenance'}:
-        raise ValueError('Require exactly parameters,data,provenance.')
-    if not isinstance(request['parameters'], dict) or not isinstance(request['data'], dict):
-        raise ValueError('parameters and data must be objects.')
-    provenance = request['provenance']
-    if (not isinstance(provenance, dict) or set(provenance) != {'kind', 'description'}
-            or not all(isinstance(value, str) and value.strip() for value in provenance.values())):
-        raise ValueError('Declare provenance kind and description; it is not independently authenticated.')
-    output = Path(output_dir).resolve()
-    if output.exists() or output.is_relative_to(PAGE):
-        raise ValueError('Choose a NEW output directory outside the Skill source.')
-    output.mkdir(parents=True)
-    skill = (PAGE / 'SKILL.md').read_bytes()
-    (output / 'request.json').write_bytes(raw)
-    (output / 'SKILL.used.md').write_bytes(skill)
+    raw = evidence.read_bounded(request_file, 2_000_000)
+    retained = dict(snapshots or {})
+    retained['request.json'] = raw
+    output = evidence.begin_output(PAGE, output_dir, retained)
+    skill = (output / 'SKILL.used.md').read_bytes()
     try:
+        request = strict_json(raw)
+        if not isinstance(request, dict) or set(request) != {'parameters', 'data', 'provenance'}:
+            raise ValueError('Require exactly parameters,data,provenance.')
+        if not isinstance(request['parameters'], dict) or not isinstance(request['data'], dict):
+            raise ValueError('parameters and data must be objects.')
+        provenance = request['provenance']
+        if (not isinstance(provenance, dict) or set(provenance) != {'kind', 'description'}
+                or not all(isinstance(value, str) and value.strip() for value in provenance.values())):
+            raise ValueError('Declare provenance kind and description; it is not independently authenticated.')
         path = PAGE / 'runtime/analysis.py'
         spec = importlib.util.spec_from_file_location('_skill_' + sha(str(path).encode())[:16], path)
         backend = importlib.util.module_from_spec(spec)
@@ -96,14 +103,9 @@ def run_skill(*, request_file, output_dir):
              'model_calls': 0, 'network_calls': 0,
              'scientific_qualification': 'ONLY_EXPLICIT_CHECKS_AND_INPUTS_NOT_GENERAL_METHOD_VALIDATION'})
     except Exception as error:
-        dump(output / 'failure.json', {'status': 'FAILED_INPUT_RETAINED', 'type': type(error).__name__,
-                                     'message': str(error), 'model_calls': 0, 'network_calls': 0})
+        evidence.record_failure(output, error)
         raise
-    files = sorted(p for p in output.iterdir() if p.is_file())
-    (output / 'SHA256SUMS.txt').write_text(''.join(sha(p.read_bytes()) + '  ' + p.name + '\n' for p in files), encoding='utf-8')
-    with zipfile.ZipFile(output / 'results.zip', 'w', zipfile.ZIP_DEFLATED) as archive:
-        for path in files + [output / 'SHA256SUMS.txt']:
-            archive.write(path, path.name)
+    evidence.seal_output(output)
     return result
 
 

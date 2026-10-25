@@ -75,3 +75,7 @@ Windows将python替换为`.\.venv\Scripts\python.exe`。案例完整程序：[�
 实现接口：[BOTORCHTUT](https://botorch.org/docs/v0.17.2/tutorials/multi_objective_bo)、[BOTORCHAPI](https://botorch.readthedocs.io/en/stable/acquisition.html)。
 
 GPML为2006年专著，作者网页对应第二次印刷；第2章回归正文可访问并核对，其他章仅按已核目录定位。 各条原论文/软件文档的具体访问范围及版本记录见[runtime/sources.json](runtime/sources.json)；滚动API页面与固定运行依赖分开记录。经典书目补充基础，现代算法仍保留其原始论文，API文档继续用于接口约定。
+
+## 失败产物与输出保护
+
+对安全读取的限长常规输入，在合法全新输出目录中保存原输入、Skill及适用设置；JSON解析、缺字段、重复ID、非有限数值及CSV前处理失败均保存failure.json、SHA256SUMS.txt和results.zip，并失败退出。CSV入口同时保留原始CSV、模板和列/单位选择。输出已存在、位于源码内或为符号链接时不写入；超限或符号链接输入不复制。命令行缺少必需选项等尚未形成有效调用的错误由参数解析器拒绝，不创建结果。失败回执不代表数值或模型已执行。

@@ -82,7 +82,7 @@ def dataset(data, supervised=True):
     if supervised or 'target' in data:
         require_real_leaves(data['target'])
         y = np.asarray(data['target'])
-        if y.dtype.kind not in 'if' or y.shape != (len(graphs),) or not np.isfinite(y).all() or not isinstance(data.get('target_unit'),str) or not data['target_unit']:
+        if y.dtype.kind not in 'if' or y.shape != (len(graphs),) or not np.isfinite(y).all() or not isinstance(data.get('target_unit'),str) or not data['target_unit'].strip():
             raise ValueError('Explicit finite aligned target and units are required.')
         y = y.astype(float)
     if 'groups' in data and (not isinstance(data['groups'],list) or len(data['groups']) != len(graphs)

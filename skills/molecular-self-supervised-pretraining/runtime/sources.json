@@ -2,7 +2,7 @@
   "schema": "skill-method-sources-v1",
   "skill": "molecular-self-supervised-pretraining",
   "knowledge_revision": "2026-10-25",
-  "knowledge_scope": "无监督模式拒绝性质标签；mask_then_probe才读取显式监督标签。检查训练图范围、正对配对与排除自身；冻结探针的缩放只取训练行。SimCLR仅支持对比目标出处，其视觉增强证据不能背书分子化学语义。",
+  "knowledge_scope": "无监督模式拒绝性质标签；mask_then_probe才读取显式监督标签。检查训练图范围、正对配对与排除自身；冻结探针的缩放只取训练行。SimCLR仅支持对比目标出处，其视觉增强证据不能背书分子化学语义。 自编四维表示不支持自由基，解析后存在自由基电子即拒绝。",
   "chapter_locator": "Hamilton作者第5章草稿（正文）；Deep Learning第15章Representation Learning（目录）；SimCLR的对比损失原文。",
   "source_roles": {
     "textbook_or_monograph": "概念与数学基础；访问范围逐条声明",
@@ -55,6 +55,15 @@
       "edition": "ICML2020, PMLR119:1597–1607",
       "support": "Normalized contrastive loss, temperature, positive pair and self-exclusion; visual augmentation results do not certify molecular masking.",
       "access_scope": "Original PMLR paper PDF https://proceedings.mlr.press/v119/chen20j/chen20j.pdf inspected, especially loss/temperature sections.",
+      "verified_on": "2026-10-25"
+    },
+    {
+      "id": "review-radical-api",
+      "title": "RDKit Atom.GetNumRadicalElectrons",
+      "url": "https://www.rdkit.org/docs/source/rdkit.Chem.rdchem.html#rdkit.Chem.rdchem.Atom.GetNumRadicalElectrons",
+      "source_class": "software_documentation",
+      "support": "Read parsed radical-electron count to reject unsupported reference-MPNN inputs.",
+      "access_scope": "Official API text plus local pinned RDKit input checks; no Torch backend acceptance.",
       "verified_on": "2026-10-25"
     }
   ]
