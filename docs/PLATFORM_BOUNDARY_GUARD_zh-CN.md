@@ -1,6 +1,6 @@
 # 统一入口与旧平台防回流检查
 
-当前入口由根目录PLATFORM_ENTRY.json声明，统一指向GitHub的START_HERE_zh-CN.md。本地详细33项工作目录与GitHub已发布页面分开列示；不把本地准备状态当成已同步页面。冻结的早期README和历史记录不是当前使用入口。
+当前入口由根目录PLATFORM_ENTRY.json声明，统一指向GitHub的START_HERE_zh-CN.md。本地详细32项专业Skill工作目录与GitHub已发布页面分开列示；不把本地准备状态当成已同步页面。冻结的早期README和历史记录不是当前使用入口。
 
 ## 自动执行位置
 

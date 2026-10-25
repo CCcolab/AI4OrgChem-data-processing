@@ -128,17 +128,6 @@
         "chemical-multiarmed-bandit",
         "chemical-q-learning-simulation"
       ]
-    },
-    {
-      "id": "cross-domain-runtime",
-      "title": "共用运行支持",
-      "kind": "shared_support",
-      "skills": [
-        "runtime-usage-assistant"
-      ],
-      "catalog_skills": [
-        "runtime-usage-assistant"
-      ]
     }
   ],
   "skills": [
@@ -759,25 +748,6 @@
         "python": "skills/chemical-q-learning-simulation/runtime/run_skill.py",
         "package": "skills/chemical-q-learning-simulation/downloads/chemical-q-learning-simulation-python.zip"
       }
-    },
-    {
-      "id": "runtime-usage-assistant",
-      "title": "Runtime 使用助手",
-      "category": "cross-domain-runtime",
-      "page": "skills/runtime-usage-assistant/README.md",
-      "run": "skills/runtime-usage-assistant/README.md",
-      "python_entry": "skills/runtime-usage-assistant/runtime/run_skill.py",
-      "skill": "skills/runtime-usage-assistant/SKILL.md",
-      "download": "skills/runtime-usage-assistant/downloads/runtime-usage-assistant-python.zip",
-      "execution": "local_python",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
-      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
-      "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
-      "downloads": {
-        "skill": "skills/runtime-usage-assistant/SKILL.md",
-        "python": "skills/runtime-usage-assistant/runtime/run_skill.py",
-        "package": "skills/runtime-usage-assistant/downloads/runtime-usage-assistant-python.zip"
-      }
     }
   ],
   "training_catalog": [
@@ -1036,16 +1006,9 @@
       "has_learning_page": true,
       "page": "skills/chemical-q-learning-simulation/README.md",
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
-    },
-    {
-      "id": "runtime-usage-assistant",
-      "title": "Runtime 使用助手",
-      "category": "cross-domain-runtime",
-      "has_learning_page": true,
-      "page": "skills/runtime-usage-assistant/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     }
   ],
-  "revision": "five-portable-user-backends-private-main-20261025",
-  "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION"
+  "revision": "professional32-independent-private-main-20261025",
+  "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
+  "shared_routing_enabled": false
 }

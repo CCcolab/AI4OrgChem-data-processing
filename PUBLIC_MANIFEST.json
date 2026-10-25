@@ -1,6 +1,6 @@
 {
   "schema": "adp-private-python-skill-publication-v1",
-  "revision": "five-portable-user-backends-private-main-20261025",
+  "revision": "professional32-independent-private-main-20261025",
   "visibility": "PRIVATE",
   "entry": "START_HERE_zh-CN.md",
   "legacy_web_enabled": false,
@@ -44,27 +44,27 @@
     },
     {
       "file": "NAVIGATION.json",
-      "sha256": "f24c57098ea10041c5338b9b2ab48e041b8a1e183fd10425c1a920a76b30a6e4"
+      "sha256": "0f48961d6ef80d8762258f86bf717beac4877d3d81941c19dc060345d80dbe88"
     },
     {
       "file": "PLATFORM_ENTRY.json",
-      "sha256": "7f68df6f98ef2abf66debe7d8c29a17d87d0a3c19493c6ba87d7fdb73862bd4a"
+      "sha256": "1be2e580bf904c53bda511ba88fec47c4c94ff4c9f720eef79630f15002220db"
     },
     {
       "file": "README.md",
-      "sha256": "671e04daf2fded44c34e821d82d28cb76f6d32847ae0a2f385bea86d3cbe854c"
+      "sha256": "c66ab42058653f0dbaa3a6b6f378fd855f96e0c18c342a8e875b6b577eb0943c"
     },
     {
       "file": "START_HERE_zh-CN.md",
-      "sha256": "671e04daf2fded44c34e821d82d28cb76f6d32847ae0a2f385bea86d3cbe854c"
+      "sha256": "c66ab42058653f0dbaa3a6b6f378fd855f96e0c18c342a8e875b6b577eb0943c"
     },
     {
       "file": "docs/BACKEND_STATUS.md",
-      "sha256": "c51f9f46643f13e4b6daef937d98f760da98d67073852fdc3d4991aa4e4ab0dc"
+      "sha256": "57ffddd3652b372b5e70b642cb781a116c4e6729532d432a67fe0d6475ea422d"
     },
     {
       "file": "docs/PLATFORM_BOUNDARY_GUARD_zh-CN.md",
-      "sha256": "6d5436e5c0f6554d543e441f0fa4b319fe356d436efeb0a7612ee36aee3671e7"
+      "sha256": "6e1dbf7f236432bda68742d5af957709bdcb003dd4a3db2d5de10ae1bae5f31f"
     },
     {
       "file": "docs/PYTHON_USAGE.md",
@@ -73,6 +73,10 @@
     {
       "file": "docs/RIGHTS_REVIEW.md",
       "sha256": "2327bd3c134999d81b894e3ecb5c48b7d651819bcd81c102e16e2f1e6d80fde3"
+    },
+    {
+      "file": "docs/RUNTIME_INDEPENDENCE.md",
+      "sha256": "64d6052e1900ba598086994919c8617b95f649aa0db1123f86f9f22257367ad2"
     },
     {
       "file": "skills/chemical-bayesian-optimization/README.md",
@@ -2757,86 +2761,6 @@
     {
       "file": "skills/rhf-single-point/runtime/support.py",
       "sha256": "f95be10bf881bce85296fdcf80fbc7069b2e296baa3a359b8d42607eb1df8b23"
-    },
-    {
-      "file": "skills/runtime-usage-assistant/README.md",
-      "sha256": "02bd5fa8f98285636a1eea00c83a71c2739c1ac64a649103591f0b92ffbfc49c"
-    },
-    {
-      "file": "skills/runtime-usage-assistant/SKILL.md",
-      "sha256": "de30c593db9bba1489a3f6c8a9507430eb07db0beba43e455ddff60268ee335a"
-    },
-    {
-      "file": "skills/runtime-usage-assistant/downloads/SHA256SUMS.txt",
-      "sha256": "eaf3e08a43899131b8d8c74c9285e75a19291f127e116715bb06afa763fce76b"
-    },
-    {
-      "file": "skills/runtime-usage-assistant/downloads/SKILL-md.zip",
-      "sha256": "a368c243b0c901d2ec42cc80e1cfe0bd294f5bb5cfa8255a8ac7baf002c594e7"
-    },
-    {
-      "file": "skills/runtime-usage-assistant/downloads/SKILL-md.zip.sha256",
-      "sha256": "bbb00f79ec4762eabe3c12acfa38c2fc97a4517b86a931129af6d83fb7421e95"
-    },
-    {
-      "file": "skills/runtime-usage-assistant/downloads/SKILL.md",
-      "sha256": "de30c593db9bba1489a3f6c8a9507430eb07db0beba43e455ddff60268ee335a"
-    },
-    {
-      "file": "skills/runtime-usage-assistant/downloads/runtime-usage-assistant-python.zip",
-      "sha256": "bd3adcc8ad8062722d1d9a6469c26a6a1fbe3bbdf63ef6cb107e239ed2a99053"
-    },
-    {
-      "file": "skills/runtime-usage-assistant/downloads/runtime-usage-assistant-python.zip.sha256",
-      "sha256": "fefd993e2d3942fd53473c2604b1d06514c85ccd338a43a846cdccd83f9abb46"
-    },
-    {
-      "file": "skills/runtime-usage-assistant/runtime/analysis.py",
-      "sha256": "0fe21440ec324ff0fd036c7d89bceb243e83f3e0a9138cf75d2a8deb3edf4420"
-    },
-    {
-      "file": "skills/runtime-usage-assistant/runtime/examples/01.json",
-      "sha256": "acab3c6ec1ad8d0a5e24b2cb153fa856df9799c1fbb4136fc18ebab9193f2971"
-    },
-    {
-      "file": "skills/runtime-usage-assistant/runtime/examples/01_case.py",
-      "sha256": "843c4bcd22d24ab055a0d3db6aaf74c381ffa79ec2cfe3e84d3bf7d70ce68df0"
-    },
-    {
-      "file": "skills/runtime-usage-assistant/runtime/examples/02.json",
-      "sha256": "d23ff172a9e145975ab7b5bc3c7b7a0a608fdfbd0c5ae375c152dff233862512"
-    },
-    {
-      "file": "skills/runtime-usage-assistant/runtime/examples/02_case.py",
-      "sha256": "4f05e3a3251b403f88205fd260b4cb55c58ab911af283079d02abb6459e396af"
-    },
-    {
-      "file": "skills/runtime-usage-assistant/runtime/examples/03.json",
-      "sha256": "a0d92b345d769f05d31237f76b54be50bf588a090dc47531d114853aa3ea496f"
-    },
-    {
-      "file": "skills/runtime-usage-assistant/runtime/examples/03_case.py",
-      "sha256": "fb4fd6158c4ca108e117188453cb06c9fbad65a2350451c2d95f461c42b5ea9c"
-    },
-    {
-      "file": "skills/runtime-usage-assistant/runtime/examples/call_skill_template.py",
-      "sha256": "60ad78bd496f8ad45d2c98bc02ab6e86aeaa1abc8b2cd1893695bf97779e871b"
-    },
-    {
-      "file": "skills/runtime-usage-assistant/runtime/requirements.txt",
-      "sha256": "2586b65c6f034fab2206dbd1dc7982cb67592c268a3b6d54c9ec5607e345b37b"
-    },
-    {
-      "file": "skills/runtime-usage-assistant/runtime/resource-manifest.json",
-      "sha256": "c4a6b0b55448fadbed0fa9af13d3eb4eb1d689cd9b388f6ed86293397043d433"
-    },
-    {
-      "file": "skills/runtime-usage-assistant/runtime/run_skill.py",
-      "sha256": "634a1309ef0e81731440c30b99207fc59a4efd420da4c64b1f1d802d53b5753f"
-    },
-    {
-      "file": "skills/runtime-usage-assistant/runtime/sources.json",
-      "sha256": "f0ed7d3826809b8e478fc278be4d5834043e5d799348a374e908bb4eed189edc"
     },
     {
       "file": "skills/same-hamiltonian-path-closure/README.md",

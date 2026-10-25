@@ -13,7 +13,7 @@
   "visibility": "PRIVATE",
   "execution": "local_python",
   "default_model_required": false,
-  "catalog_items": 33,
+  "catalog_items": 32,
   "distribution_status": "PYTHON_SKILLS_WITH_EXPLICIT_BACKEND_GAPS",
   "backend_pending_skills": [
     "rhf-single-point",
@@ -34,5 +34,9 @@
     "docker_required": false,
     "model_required": false,
     "backend_selection": "USER_EXISTING_TRUSTED_BACKEND"
-  }
+  },
+  "professional_categories": 7,
+  "shared_routing_enabled": false,
+  "standard_python_project_runtime_required": false,
+  "standard_python_docker_required": false
 }

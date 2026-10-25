@@ -2,7 +2,9 @@
 
 <!-- Canonical entry: https://github.com/CCcolab/AI4OrgChem-data-processing/blob/main/START_HERE_zh-CN.md -->
 
-当前Python学习版。按七个专业分类和一个共用支持分类，共33项；点击名称进入README学习，完整SKILL.md可单独下载，Python程序、依赖和案例位于runtime。各页提供代码包，不需要云端交互账号。每个Skill使用自己的独立Python环境，不将不兼容的依赖混装。
+当前Python学习版。按七个专业分类，共32项专业Skill；点击名称进入README学习，完整SKILL.md可单独下载，Python程序、依赖和案例位于runtime。各页提供代码包，不需要云端交互账号。每个Skill使用自己的独立Python环境，不将不兼容的依赖混装。
+
+**独立运行：** 用户直接选择各Skill，使用自己的Python环境和页内入口，不经过共用路由，也不强制本项目Runtime或Docker。科学库及用户已有后端仍需按页配置。[环境与后端说明](docs/RUNTIME_INDEPENDENCE.md)。
 
 **五项便携后端：** RHF、局域化、固定协议能量、约束响应及多态比较支持独立输入准备、已有结果复核和用户已有后端调用，不强制本项目Runtime、Docker或安装登记。五项新便携真实后端继续待验；原固定协议的历史结果保留，不能据本地程序通过自动提升资格。
 
@@ -60,10 +62,6 @@
 - [权衡化学目标｜多目标贝叶斯优化](skills/chemical-multiobjective-optimization/README.md)
 - [筛选实验方案｜多臂老虎机与探索利用](skills/chemical-multiarmed-bandit/README.md)
 - [学习序贯策略｜Q-learning 与化学模拟环境](skills/chemical-q-learning-simulation/README.md)
-
-## 共用运行支持
-
-- [Runtime 使用助手](skills/runtime-usage-assistant/README.md)
 
 ## 使用与科学范围
 
