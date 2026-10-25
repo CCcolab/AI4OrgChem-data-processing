@@ -33,3 +33,21 @@ KMeans固定n_init=10，Ward仅Euclidean，DBSCAN显式eps/min_samples，保存c
 ## 方法来源
 
 [scikit-learn聚类](https://scikit-learn.org/stable/modules/clustering.html)说明算法、距离假设及评价指标。
+
+## 解释与复核要点
+
+按研究设计声明缩放和Euclidean度量；报告簇数、噪声保留及silhouette使用的非噪声子集。不得把Ward换成Tanimoto，或将KMeans局部结果、标签编号当作化学分类。
+
+KMeans在给定簇数下近似最小化Σᵢ∥xᵢ−μ_{cᵢ}∥²，n_init=10只提供多次初始化机会，不保证全局最优。Ward每次选择使簇内平方和增加最小的合并；两个簇A/B的增加量为|A||B|/(|A|+|B|)×∥μ_A−μ_B∥²，因此本接口限定Euclidean描述符。
+
+DBSCAN用eps邻域及min_samples识别密度连通结构，−1表示噪声。eps的意义取决于缩放后的描述符空间；未缩放时不同量纲会共同决定数值距离。本例silhouette=(b−a)/max(a,b)，a为簇内平均距离、b为最近其他簇平均距离；仅在去噪后至少两簇且不全为单点簇时计算。它不能证明分组稳定、化学类别真实或活性相同。
+
+## 依据的用途与访问范围
+
+章节定位：ESL第2版第14章Unsupervised Learning（目录主题定位）。
+
+基础阅读：[ESL2](https://link.springer.com/book/10.1007/978-0-387-84858-7)。
+
+实现接口：[SKCLUSTER](https://scikit-learn.org/stable/modules/clustering.html)。
+
+ESL为2009年第2版；本次核对出版社目录中的相关主题，未声称读取受限章节正文。 各条原论文/软件文档的具体访问范围及版本记录见[runtime/sources.json](runtime/sources.json)；滚动API页面与固定运行依赖分开记录。经典书目补充基础，现代算法仍保留其原始论文，API文档继续用于接口约定。

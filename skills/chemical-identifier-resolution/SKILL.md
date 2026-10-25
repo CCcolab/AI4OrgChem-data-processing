@@ -44,3 +44,6 @@ CSV必须有且仅有唯一的id、query_type、query三列表头（顺序可变
 
 [Python CSV语法](https://docs.python.org/3.12/library/csv.html)说明记录与引号处理；[pandas2.2读取约定](https://pandas.pydata.org/pandas-docs/version/2.2/reference/api/pandas.read_csv.html)提示畸形行的索引推断风险。输入合同由本模块明确限定，不能仅靠库默认值保证字段对应。 返回候选不是CAS登记或立体身份鉴定。
 
+## 解释规则与理论依据
+
+给出候选时解释标识符角色及来源：CAS校验位只检形式，CID属于数据库，InChIKey需查表而非逆哈希。用“校验正确但未证实存在”及“单一返回仍可能遗漏立体信息”作反例，不能输出身份认证结论。Gasteiger编专著II.2/II.6/V提供命名、立体及数据库背景，仅核验目录；CIR/PubChem当前行为仍依官方资料。来源访问限度见runtime/sources.json，未做远程查询不得称接口新验收通过。

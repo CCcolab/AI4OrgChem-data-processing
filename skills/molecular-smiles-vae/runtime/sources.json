@@ -1,0 +1,41 @@
+{
+  "schema": "skill-method-sources-v1",
+  "skill": "molecular-smiles-vae",
+  "knowledge_revision": "2026-10-25",
+  "knowledge_scope": "在受限C/N/O链范围内解释重参数化、KL及实际归一损失，不将beta=1冒称标准序列ELBO。逐条保留解码失败；训练集差异、新颖性或可解析率不能推导可合成性、专利新颖性或性质改进。",
+  "chapter_locator": "Deep Learning第10章Sequence Modeling与第20章Deep Generative Models（目录）；AEVB §2.4重参数化及第3节VAE（作者HTML正文）。",
+  "source_roles": {
+    "textbook_or_monograph": "概念与数学基础；访问范围逐条声明",
+    "original_paper": "原始方法及本教学简化的区别，不继承其性能",
+    "software_documentation": "API/版本行为，不能替代独立方法验证"
+  },
+  "implementation_requirements": [
+    "--extra-index-url https://download.pytorch.org/whl/cpu",
+    "numpy==1.26.4",
+    "rdkit==2026.3.6",
+    "torch==2.14.1+cpu"
+  ],
+  "version_note": "固定requirements与结果环境回执用于实际执行身份；公开文档可能滚动更新，不能据文档标题替换依赖版本。",
+  "sources": [
+    {
+      "id": "DL",
+      "title": "Goodfellow, Bengio & Courville, Deep Learning",
+      "url": "https://www.deeplearningbook.org/",
+      "source_class": "classic_textbook",
+      "edition": "MIT Press, 2016",
+      "support": "Author TOC: ch5 ML basics, ch6 feedforward networks, ch8 optimization, ch10 recurrent models, ch15 representation learning, ch20 deep generative models.",
+      "access_scope": "Author metadata, year, publisher and TOC verified. Chapter5/6 HTML requests exceeded tool size limits; no assertion of chapter-body reading.",
+      "verified_on": "2026-10-25"
+    },
+    {
+      "id": "AEVB",
+      "title": "Kingma & Welling, Auto-Encoding Variational Bayes",
+      "url": "https://arxiv.org/html/1312.6114v11",
+      "source_class": "original_paper",
+      "edition": null,
+      "support": "Variational objective, diagonal Gaussian KL and reparameterized stochastic gradient (§2.4).",
+      "access_scope": "Author-submitted HTML body read; abs1312.6114 confirms original2013 and latest v11/2022. No molecular generation evidence.",
+      "verified_on": "2026-10-25"
+    }
+  ]
+}

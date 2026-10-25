@@ -19,6 +19,15 @@
 
 来源是[PubChem官方接口](https://pubchem.ncbi.nlm.nih.gov/docs/pug-rest)、[PubChem服务论文](https://pmc.ncbi.nlm.nih.gov/articles/PMC6030920/)、[NCI CIR官方说明](https://cactus.nci.nih.gov/chemical/structure_documentation)和[RDKit解析约定](https://www.rdkit.org/docs/RDKit_Book.html#molecular-sanitization)，并非经典教材的替代。CIR官方明确提示名称解析可能遗漏立体信息；结果须结合原始结构专业核对。
 
+## 知识要点与经典依据
+
+名称是检索入口，CAS是注册标识，CID是特定数据库记录号，InChIKey是哈希式索引；它们承担的角色不同。CAS校验位可写成`d=(Σk·a_k) mod10`（去掉校验位后的数字从右向左乘1、2、…）。这只检字符串内部一致性：一个编造但校验正确的编号仍可能不存在。InChIKey不能靠反算哈希恢复原结构，须有对应数据库记录。
+
+结构候选的盐型、质子化、互变异构与立体指定可能不同。两个不同SMILES可表示同一解析图，而名称只返回一条也不意味着无歧义；CIR官方说明有优先级选择和名称立体信息丢失的可能。未指定构型、模型规范写法与实物样品的构型/纯度不能互换。比较服务时要并列原query、服务返回结构、来源与规范图，不能仅按字符串异同自动裁决。
+
+经典背景对应Gasteiger编专著II.2“Nomenclature: Automatic Generation and Conversion”、II.6立体表示及V数据库部分。[Gasteiger编《Handbook of Chemoinformatics》](https://onlinelibrary.wiley.com/doi/book/10.1002/9783527618279)，Wiley-VCH，2003；核验的是出版社/作者目录与书目，所列付费章节未作全文核验。经典结构表示背景与具体RDKit接口定义分层使用。
+[CIR官方说明](https://cactus.nci.nih.gov/chemical/structure_documentation)支持当前解析语义，PubChem官方接口支持其命名空间；这类服务文档不能被旧教材替代。具体出处与访问限制见[runtime/sources.json](runtime/sources.json)。
+
 ## 安装与结果保存
 
 Windows在有写入权限的短路径解压，例如`D:\Chem\ids`，进入包含README.md和runtime的目录。使用Python 3.12，在独立虚拟环境中安装，后续命令不需要激活环境：
@@ -94,4 +103,3 @@ print(receipt)
 CSV必须有且仅有唯一的id、query_type、query三列表头（顺序可变），逐记录严格核对字段数和引号；重复表头、空行、缺项或多项均拒绝，不覆盖或拼接查询。仅完整读取且在大小预算内的失败输入会随failure.json、Skill快照及results.zip保存。远程查询仍须显式许可；解析或校验失败不发送请求。
 
 [Python CSV语法](https://docs.python.org/3.12/library/csv.html)说明记录与引号处理；[pandas2.2读取约定](https://pandas.pydata.org/pandas-docs/version/2.2/reference/api/pandas.read_csv.html)提示畸形行的索引推断风险。输入合同由本模块明确限定，不能仅靠库默认值保证字段对应。 返回候选不是CAS登记或立体身份鉴定。
-

@@ -65,3 +65,21 @@ Windows将python替换为`.\.venv\Scripts\python.exe`。案例完整程序：[�
 ```powershell
 .\.venv\Scripts\python.exe runtime\run_from_csv.py --template runtime\examples\01.json --input runtime\examples\molecules.csv --target synthetic_response --target-unit arbitrary_synthetic_response --groups group --output ..\graph-csv-results
 ```
+
+## 知识要点、前提与公式
+
+有向键消息网络将隐藏状态附着于有向键；其更新可排除立即沿反向键返回的消息，区别于本目录自编的原子消息示范。这里直接使用Chemprop的BondMessagePassing、MeanAggregation、RegressionFFN，关闭batch normalization；均值聚合与自编MPNN的sum pooling/特征定义不同，因此不要求两者逐数一致。
+
+训练目标z_y=(y−μ_train)/s_train，优化MSE=Σ(z_y−f(G))²/n_train；预测再乘s_train加μ_train。held-out分子可以经过确定性图特征化，held-out标签不能进入目标尺度估计或梯度更新。本例固定预算手工Adam训练，不运行自动调参；实际训练与自生成权重重放不等于预训练模型推理或实验性质验证。
+
+## 基础阅读与来源层级
+
+章节定位：Hamilton作者第5章草稿（正文）；Yang等§3.2 Directed MPNN（作者论文HTML正文）。
+
+基础阅读：[HAMILTON](https://www.cs.mcgill.ca/~wlh/grl_book/)。
+
+原始方法/作者专论：[YANG](https://arxiv.org/html/1904.01561v5)。
+
+实现接口：[CHEMPROPAPI](https://chemprop.readthedocs.io/en/latest/tutorial/python/models/basic_mpnn_model.html)。
+
+Hamilton引用作者2020年9月第5章预出版草稿，核对消息传递与置换性质；不冒称最终出版社修订版全文。 各条原论文/软件文档的具体访问范围及版本记录见[runtime/sources.json](runtime/sources.json)；滚动API页面与固定运行依赖分开记录。经典书目补充基础，现代算法仍保留其原始论文，API文档继续用于接口约定。

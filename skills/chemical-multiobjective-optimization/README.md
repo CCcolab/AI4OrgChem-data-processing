@@ -57,3 +57,21 @@ Windows将python替换为`.\.venv\Scripts\python.exe`。案例完整程序：[�
 只修改参数不会更改旧结果，必须写新目录。严格UTF-8 JSON≤2 MB，不接受重复键或非有限数值。不应只改科学身份标签来绕过不兼容检查，来源标签本身不证明真实性。完整可复用[调用模板](runtime/examples/call_skill_template.py)支持--skill-dir、--input和--output，程序内部实际读取顶层Skill并保存其哈希，不调用大语言模型服务；本地训练、预测或提议计算如实记录。
 
 软件执行通过只覆盖声明的输入和数值范围，不代表整个理论、化学身份或新量子方法获认证。下载包[SHA-256](downloads/SHA256SUMS.txt)与内部验收记录分开，内部材料不进入用户包。
+
+## 知识要点、前提与公式
+
+将每个最小化目标与对应参考坐标乘−1，统一为最大化。点a支配b是各目标均不差且至少一个更好；Pareto集合取不被其他点支配者。相对参考点r的超体积HV是Pareto点与r形成矩形区域的并集体积，HVI=HV(P∪新点)−HV(P)；其单位是两个目标单位的乘积，尺度或参考点变化会改变数值。
+
+本例SingleTaskGP对两输出使用独立GP结构，并以Standardize处理目标及已给噪声方差；不声称学习目标间相关性。NEHVI对已有点潜在值/Pareto前沿的不确定性积分，qLogNEHVI使用数值稳定的对数域及平滑近似来评分，输出log_acquisition_values不能当原单位超体积。此处q=1，仅对显式有限池逐点评分；8–64个Sobol样本和有界拟合不提供收敛/全局最优保证。
+
+## 基础阅读与来源层级
+
+章节定位：GPML第2章Regression（正文）；Daulton等第4–5节与Ament等LogEI/对数超体积附录（作者HTML正文）。
+
+基础阅读：[GPML](https://gaussianprocess.org/gpml/chapters/)。
+
+原始方法/作者专论：[NEHVI](https://arxiv.org/html/2105.08195v2)、[LOGEI](https://arxiv.org/html/2310.20708v3)。
+
+实现接口：[BOTORCHTUT](https://botorch.org/docs/v0.17.2/tutorials/multi_objective_bo)、[BOTORCHAPI](https://botorch.readthedocs.io/en/stable/acquisition.html)。
+
+GPML为2006年专著，作者网页对应第二次印刷；第2章回归正文可访问并核对，其他章仅按已核目录定位。 各条原论文/软件文档的具体访问范围及版本记录见[runtime/sources.json](runtime/sources.json)；滚动API页面与固定运行依赖分开记录。经典书目补充基础，现代算法仍保留其原始论文，API文档继续用于接口约定。

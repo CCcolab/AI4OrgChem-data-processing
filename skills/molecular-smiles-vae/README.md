@@ -14,7 +14,7 @@
 
 GRU编码器输出对角高斯mu/logvar，重参数化采样；GRU解码器teacher forcing训练，损失为非PAD词元平均交叉熵+beta×样本平均KL。保存重载编码器结果，从标准正态潜变量逐词元采样，分别记录是否EOS结束、可解析、长度合规。
 
-不是通用SMILES tokenizer。空、无效、未结束或超长输出全部保存，不隐藏失败；新颖性仅相对于本次20条训练规范字符串，不代表数据库/专利新颖性、可合成性或性质改善。没有留出生成质量/泛化认证；固定预算不认证收敛。
+不是通用SMILES tokenizer。空、无效、未结束或超长输出全部保存，不隐藏失败；新颖性仅相对于本次实际训练集的规范字符串，不代表数据库/专利新颖性、可合成性或性质改善。没有留出生成质量/泛化认证；固定预算不认证收敛。
 
 [Kingma与Welling原论文](https://arxiv.org/abs/1312.6114)支持重参数化及变分目标，不能赋予本教学模型分子生成质量。
 
@@ -53,3 +53,19 @@ Windows将python替换为`.\.venv\Scripts\python.exe`。案例完整程序：[�
 只修改参数不会更改旧结果，必须写新目录。严格UTF-8 JSON≤2 MB，不接受重复键或非有限数值。不应只改科学身份标签来绕过不兼容检查，来源标签本身不证明真实性。完整可复用[调用模板](runtime/examples/call_skill_template.py)支持--skill-dir、--input和--output，程序内部实际读取顶层Skill并保存其哈希，不调用大语言模型服务；本地训练、预测或提议计算如实记录。
 
 软件执行通过只覆盖声明的输入和数值范围，不代表整个理论、化学身份或新量子方法获认证。下载包[SHA-256](downloads/SHA256SUMS.txt)与内部验收记录分开，内部材料不进入用户包。
+
+## 知识要点、前提与公式
+
+编码器给出q(z|s)=N(μ,diag(exp(logvar)))，通过z=μ+exp(logvar/2)⊙ε、ε∼N(0,I)把随机性与可微参数分开。与标准正态先验的KL为½Σ(μ²+exp(logvar)−1−logvar)。GRU解码器用teacher forcing预测下一词元；采样时从标准正态潜变量逐词元解码。
+
+标准按序列的负ELBO包含每条序列的重建负对数似然之和与KL。本实现明确使用全批非PAD词元平均CE加beta×样本平均KL；两项归一尺度不同，beta=1不应直接称为未经缩放的标准序列ELBO，改变长度分布会改变相对权重。这里只接受无分支大写C/N/O链，不是通用SMILES语法。可解析、EOS结束与长度合规分别记录，空/无效/未结束样本保留；新颖性仅对实际训练规范字符串集合。
+
+## 基础阅读与来源层级
+
+章节定位：Deep Learning第10章Sequence Modeling与第20章Deep Generative Models（目录）；AEVB §2.4重参数化及第3节VAE（作者HTML正文）。
+
+基础阅读：[DL](https://www.deeplearningbook.org/)。
+
+原始方法/作者专论：[AEVB](https://arxiv.org/html/1312.6114v11)。
+
+Deep Learning为MIT Press2016版；核对作者公开目录中的相应章节，章节正文抓取超限，不据此声称已读全书。 各条原论文/软件文档的具体访问范围及版本记录见[runtime/sources.json](runtime/sources.json)；滚动API页面与固定运行依赖分开记录。经典书目补充基础，现代算法仍保留其原始论文，API文档继续用于接口约定。

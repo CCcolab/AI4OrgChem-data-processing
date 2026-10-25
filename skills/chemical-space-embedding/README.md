@@ -65,3 +65,21 @@ Windows将python替换为`.\.venv\Scripts\python.exe`。案例完整程序：[�
 ```powershell
 .\.venv\Scripts\python.exe runtime\run_from_csv.py --template runtime\examples\01.json --input runtime\examples\molecular-descriptors.csv --features mol_wt_g_mol tpsa_A2 mol_logp_model heavy_atoms --feature-units g/mol angstrom2 dimensionless count --output ..\embedding-csv
 ```
+
+## 知识要点、前提与公式
+
+PCA把参考数据中心化后，用正交方向保留尽可能多的样本方差；等价于在给定秩下最小化平方重建误差。若中心矩阵为X=UΣVᵀ，前r个右奇异向量给出投影，解释方差比例为σᵢ²/Σⱼσⱼ²。本例先按scale选择是否用参考行StandardScaler；标准化会改变各描述符对Euclidean几何的相对权重，不能视为无影响的单位换算。
+
+t-SNE的核心目标是邻域概率分布间的KL(P∥Q)，perplexity调节有效邻域尺度；本实现联合拟合全部输入，不提供新点transform。UMAP从邻域结构构造低维表示，本例只用Euclidean度量，查询点由已拟合参考表示近似变换。局部邻域可视化不要求二维全局距离、面积、簇大小或坐标轴具有物理意义；trustworthiness只是输入/输出邻域保持程度，不是活性预测验证。
+
+## 基础阅读与来源层级
+
+章节定位：ESL第2版第14章Unsupervised Learning（目录主题定位）；t-SNE/UMAP用所列原论文补充现代方法。
+
+基础阅读：[ESL2](https://link.springer.com/book/10.1007/978-0-387-84858-7)。
+
+原始方法/作者专论：[TSNE](https://jmlr.org/papers/v9/vandermaaten08a.html)、[UMAP](https://arxiv.org/abs/1802.03426)。
+
+实现接口：[SKPCA](https://scikit-learn.org/stable/modules/decomposition.html#pca)、[SKTSNE](https://scikit-learn.org/stable/modules/manifold.html#t-sne)、[UMAPAPI](https://umap-learn.readthedocs.io/en/latest/transform.html)。
+
+ESL为2009年第2版；本次核对出版社目录中的相关主题，未声称读取受限章节正文。 各条原论文/软件文档的具体访问范围及版本记录见[runtime/sources.json](runtime/sources.json)；滚动API页面与固定运行依赖分开记录。经典书目补充基础，现代算法仍保留其原始论文，API文档继续用于接口约定。

@@ -1,0 +1,55 @@
+{
+  "source": "Fixed water request and saved result provenance remain in fixed-water/request.json and saved-water/origin.json",
+  "scope": "No new quantum calculation by knowledge enrichment.",
+  "knowledge_review": {
+    "schema": "skill-knowledge-foundations-v1",
+    "date": "2026-10-25",
+    "local_derivation": true,
+    "sources": [
+      {
+        "id": "Q1",
+        "source_type": "classic_research_monograph",
+        "authors": [
+          "Trygve Helgaker",
+          "Poul Jørgensen",
+          "Jeppe Olsen"
+        ],
+        "title": "Molecular Electronic-Structure Theory",
+        "edition": "1",
+        "year": 2000,
+        "publisher": "Wiley",
+        "isbn": "9780471967552",
+        "url": "https://www.wiley-vch.de/en/areas-interest/natural-sciences/molecular-electronic-structure-theory-978-0-471-96755-2",
+        "access_verified": "publisher_bibliography_and_table_of_contents_only",
+        "access_limit": "Book full text and specific equation pages were not read; chapter relevance is TOC-verified, not an equation-by-equation proof.",
+        "verified_on": "2026-10-25",
+        "relevant_chapters": [
+          "Atomic Basis Functions",
+          "Orbital Rotations",
+          "Hartree-Fock Theory"
+        ],
+        "module_support_scope": "Standard AO/orbital, density and variational foundations; not fixed fixture authenticity or new-SCF acceptance."
+      },
+      {
+        "id": "SCF",
+        "source_type": "official_software_documentation",
+        "title": "PySCF SCF guide",
+        "url": "https://pyscf.org/user/scf.html",
+        "supports": "Restricted ansatz, generalized SCF equation and convergence versus stability distinction.",
+        "relevant_chapters": [],
+        "module_support_scope": "Current implementation context and stability warning."
+      },
+      {
+        "id": "HF",
+        "source_type": "official_software_source",
+        "title": "PySCF pyscf.scf.hf",
+        "url": "https://pyscf.org/_modules/pyscf/scf/hf.html",
+        "supports": "make_rdm1 and energy_elec implementation conventions; not a textbook or independent scientific backend run.",
+        "relevant_chapters": [],
+        "module_support_scope": "Density and energy implementation convention."
+      }
+    ],
+    "physical_claim_limit": "Only the explicit input/array checks and derivations in this module; not external data authenticity or new scientific backend acceptance.",
+    "new_quantum_backend_execution": "NOT_EXECUTED"
+  }
+}

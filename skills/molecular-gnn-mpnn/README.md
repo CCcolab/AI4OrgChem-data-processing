@@ -65,3 +65,19 @@ Windows将python替换为`.\.venv\Scripts\python.exe`。案例完整程序：[�
 ```powershell
 .\.venv\Scripts\python.exe runtime\run_from_csv.py --template runtime\examples\01.json --input runtime\examples\molecules.csv --target synthetic_response --target-unit arbitrary_synthetic_response --groups group --output ..\graph-csv-results
 ```
+
+## 知识要点、前提与公式
+
+本教学网络用h_v⁰=ReLU(Linear(x_v))，h_v^{l+1}=ReLU(h_vˡ+Σ_{u→v}b_uv Linear_l(h_uˡ))传播消息，其中b_uv为键级/3；最后对节点向量求和再线性输出。共享消息规则及sum pooling使图级函数对节点编号置换不变，而节点表示随编号等变。一次反序检查是软件诊断，不是对所有图或化学对称性的穷尽证明。
+
+原子输入为原子序数/100、度/4、形式电荷/2及芳香标志，键只用键级；这不是唯一或完备的分子表示。手性、同位素和3D未编码，不能区分依赖这些信息的性质。重复图按忽略手性/同位素/映射的规范图标识隔离训练与测试，是保守的重复保护，并不自动隔离化学近邻或证明所有图可区分。
+
+## 基础阅读与来源层级
+
+章节定位：Hamilton作者第5章草稿，§5.1消息传递与式5.2–5.3的置换性质（可访问正文）。
+
+基础阅读：[HAMILTON](https://www.cs.mcgill.ca/~wlh/grl_book/)。
+
+原始方法/作者专论：[GILMER](https://proceedings.mlr.press/v70/gilmer17a.html)。
+
+Hamilton引用作者2020年9月第5章预出版草稿，核对消息传递与置换性质；不冒称最终出版社修订版全文。 各条原论文/软件文档的具体访问范围及版本记录见[runtime/sources.json](runtime/sources.json)；滚动API页面与固定运行依赖分开记录。经典书目补充基础，现代算法仍保留其原始论文，API文档继续用于接口约定。

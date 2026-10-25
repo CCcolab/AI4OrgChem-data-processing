@@ -1,7 +1,7 @@
 [
   {
     "file": "SKILL.md",
-    "sha256": "f7d8f718a6fe0e1f53b42a977ba9003deb5232fc71d08e974993f4514a44f715"
+    "sha256": "2815a1bada831ffc30800b39eabe05bb53fe9c366c1fd1b1d9df5ddfa822af87"
   },
   {
     "file": "runtime/examples/01-local.csv",
@@ -38,5 +38,9 @@
   {
     "file": "runtime/resolve_identifiers.py",
     "sha256": "bcf90d8460ea7b14b8223388a5d39b7d65d0e93b3673bd94008fdf20e3fbc333"
+  },
+  {
+    "file": "runtime/sources.json",
+    "sha256": "0b1b03b6b3dcde32fc32e23d016c665715259a427063f8a8511bc3bfc539cda4"
   }
 ]

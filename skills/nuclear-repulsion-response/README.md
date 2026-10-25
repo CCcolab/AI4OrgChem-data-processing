@@ -18,6 +18,17 @@
 
 [NIST CODATA2022常数表](https://physics.nist.gov/cuu/pdf/wall_2022.pdf)提供bohr/Hartree约定；Coulomb点核公式及其解析导数在本页显式给定。核项不是实验分子总能。
 
+## 知识要点与经典依据
+
+这是固定几何下点核的Coulomb项。原子单位中`Enn=Σ(i<j)ZiZj/r_ij`；Zi为真实核电荷，r以bohr计。对r=Ri−Rj，链式求导得`g_i=−ZiZj·r/r³`、`g_j=−g_i`，力为−g。两单位核在x=0和1bohr时梯度为+1/−1、力向外，核间排斥不意味着整个分子不能成键。
+
+单对Hessian块为`B=ZiZj(3rrᵀ/r⁵−I/r³)`；ii/jj块加B、ij/ji块减B。该组装给出平移方向零响应及对称性。核项可有横向负曲率，因此不能用其本身的特征值判定分子振动或平衡。分子总能还含电子动能、电子—核吸引和电子间相互作用，当前程序没有这些项。
+
+若输入坐标是Å，令a0=0.529177210544Å，r_bohr=R_Å/a0，则`g_Å=g_bohr/a0`、`H_Å=H_bohr/a0²`，能量不变。核电荷为整数并不能自动验证用户没有误填ECP电荷；2–64真实非周期点核是本模块合同。阈值与近接截断是工程保护，不是理论精确性认证。
+
+Jensen公开§1.3与§1.6.2包含Coulomb相互作用及核/电子项分离，给出模型背景；上面的导数为对此模型的显式推导。[Jensen《Introduction to Computational Chemistry》3版](https://catalogimages.wiley.com/images/db/pdf/9781118825990.excerpt.pdf)，Wiley，2017，实际核验出版社开放第1章节选；后述推导为本页给定模型的解析运算，不冒称读过整书。
+CODATA2022表提供a0与Hartree常数定义，不提供分子稳定性证明。逐项职责见[runtime/sources.json](runtime/sources.json)。
+
 ## 安装与默认运行
 
 Windows在有写入权限的短路径（例如D:\Chem\s）解压，进入README和runtime所在目录，使用Python3.12的独立环境：

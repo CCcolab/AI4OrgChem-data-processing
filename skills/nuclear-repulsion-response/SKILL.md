@@ -29,3 +29,7 @@ parameters.coordinate_unit为bohr或angstrom；data.nuclei含唯一id、整数Z�
 ## 方法来源
 
 [NIST CODATA2022常数表](https://physics.nist.gov/cuu/pdf/wall_2022.pdf)提供bohr/Hartree约定；Coulomb点核公式及其解析导数在本页显式给定。核项不是实验分子总能。
+
+## 解释规则与理论依据
+
+解释时写清Enn=ΣZiZj/r，Zi真实核电荷、原子单位与有限非周期模型。梯度g_i=−ZiZj(Ri−Rj)/r³、力=−g；Hessian单对块ZiZj(3rrᵀ/r⁵−I/r³)，对角加、交叉减。Å输入的梯度/Hessian链式因子分别1/a0、1/a0²。两核反向梯度与平移零模可作符号核对，但核项Hessian并非分子总能振动资格；不能遗漏电子项后宣称平衡结构。Jensen公开§1.3/§1.6.2为模型背景，导数按本页公式推导，CODATA只给常数。见runtime/sources.json。

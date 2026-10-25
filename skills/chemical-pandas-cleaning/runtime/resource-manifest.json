@@ -1,11 +1,11 @@
 [
   {
     "file": "SKILL.md",
-    "sha256": "90b3651ab1bda4702a03bae28bada95d1a00a28c91b2de65df2dd283d1987916"
+    "sha256": "bbc7ec72c58cb876ee84f4cea5cd06ec0d728cdcfd30434528c7c6a0e62e2696"
   },
   {
     "file": "runtime/clean_chemical_data.py",
-    "sha256": "71bb3db2fab427f8208c67b8e0e4faad690803db796ea9cf4f5a6ea09ebebd8b"
+    "sha256": "4b1366ce84d08d009520a25e9923b1b839027eb36bbe6930114bc7369269d7a6"
   },
   {
     "file": "runtime/examples/01-replicates.csv",
@@ -38,5 +38,9 @@
   {
     "file": "runtime/requirements.txt",
     "sha256": "40a09f94b2e997dcad544e70be98fe424a12a8425ff9e004259d42332bf9c70b"
+  },
+  {
+    "file": "runtime/sources.json",
+    "sha256": "0712bb4b0d7522311a07d498d717f21c5f2fdc79123ed749c13b6ae43828ad92"
   }
 ]

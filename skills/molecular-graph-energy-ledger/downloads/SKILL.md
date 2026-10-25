@@ -11,7 +11,7 @@ description: 独立执行有界SMARTS图匹配或有来源的同态Hartree账本
 
 graph参数：mode、query_smarts、include_chirality；data.molecules含id、smiles。ledger参数：mode、protocol_id、atol_hartree；data含terms、reference_hartree、reference_source、quantity_definition，项的科学身份字段见第三例JSON。不同模式不强迫同时提供图和能量。
 
-图模式按query_smarts和include_chirality执行GetSubstructMatches。酸OH模式在乙酸/乙酸根/碳酸分别匹配1/0/2；不是通用羧酸分类器。账本为Σ coefficient×value_hartree，使用50位Decimal，与独立声明reference_hartree按显式绝对容差比较。来源标签不等于鉴定，闭合不验证物理分解。
+图模式按query_smarts和include_chirality执行GetSubstructMatches。酸OH模式在乙酸/乙酸根/碳酸分别匹配1/0/2；不是通用羧酸分类器。账本为Σ coefficient×value_hartree，使用按输入跨度确定精度的有界Decimal-v2，与独立声明reference_hartree按显式绝对容差比较。来源标签不等于鉴定，闭合不验证物理分解。
 
 ## 输入校验与方法依据补充
 
@@ -37,3 +37,7 @@ graph参数：mode、query_smarts、include_chirality；data.molecules含id、sm
 [RDKit查询接口](https://www.rdkit.org/docs/source/rdkit.Chem.rdchem.html)；[Daylight SMARTS](https://www.daylight.com/dayhtml/doc/theory/theory.smarts.html)；[Python Decimal](https://docs.python.org/3/library/decimal.html)。这些资料支持语言/软件与算术，不提供本案例的分子量子能量。
 
 SMARTS部分依据RDKit的查询语义；能量分项、正负号及同态协议是用户明确提供的账本定义，不由图匹配导出。Decimal说明仅支持算术实现，不是量子能量分解的理论背书。
+
+## 解释规则与理论依据
+
+分开解释图与账本：索引是解析图/查询顺序映射，酸OH匹配只回答给定SMARTS；碳酸2次为反例。账本写出Σc_i E_i−Ereference及绝对阈值，先核对同态标签与独立参考声明；同单位或算术闭合不能补齐物理可比性，不从图制造量子能量。使用Decimal-v2回执实际精度，不沿用旧常量说明，也不把高精度算术说成物理精度。经典背景Gasteiger II.3/II.4/II.6/VI.1仅核验目录；Jensen§1.2/§1.6.2公开节选说明系统/Hamiltonian，具体分项仍由请求协议定义。见runtime/sources.json。

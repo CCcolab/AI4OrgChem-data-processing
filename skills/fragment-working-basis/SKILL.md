@@ -13,6 +13,22 @@ parameters为atol、rank_rtol；data含overlap、fragments、target_vectors，�
 
 先拒绝片段列在声明支持外超过atol的元素，再合并B。按Gram保留方向构造Q=B U/√λ，检查QᵀSQ=I及目标残差平方S范数的平方根。可选一电子算子按QᵀHQ变换；没有算子时不制造能量。
 
+## 核心知识：片段候选列与规范工作基
+
+全部片段必须使用同一实全局AO顺序和正定重叠S。片段支持是输入列在哪些AO行允许非零的声明；先拒绝支持外超过atol的系数，再合并候选B。若G=BᵀSB=UΛUᵀ，按rank_rtol保留正谱，Q=B U_r Λ_r⁻¹/²满足QᵀSQ=Λ_r⁻¹/²U_rᵀGU_rΛ_r⁻¹/²=I。这是保留空间的规范正交化，不是保证每列局域的片段算法。
+
+与对称正交化B G⁻¹/²相比，规范形式保留独立谱方向，秩亏时允许减少列数；原片段列可能在U_r中全局混合。因此组装前支持检查通过，不能推断最终每条Q仍属于单一片段。列缩放、近线性相关与Gram阈值会影响数值秩；候选数不是独立自由度数。
+
+目标T的投影为QQᵀST，残差R=T−QQᵀST；报告sqrt Tr(RᵀSR)并与atol比较。通过只说明所给目标被保留空间覆盖，不证明完整虚轨道空间或所有化学性质均被覆盖。给定一电子算子AO矩阵H时，新矩阵为QᵀHQ；Q为矩形时是子空间限制，不能当作保留全谱的可逆基变换。密度系数变换与算子矩阵变换约定也不能混用。
+
+①18个原AO按O/H1/H2输入，覆盖5条保存占据轨道，不产生片段能量；②冗余3列得到秩2体现依赖方向剔除；③支持外0.1系数应拒绝。缺少算子不补能量；二电子张量变换、片段相互作用能、SCF与新量子后端均未提供。
+
+### 经典教材、实现来源及支持范围
+
+[Q1：Helgaker、Jørgensen、Olsen，Molecular Electronic-Structure Theory，Wiley，2000，ISBN 9780471967552](https://www.wiley-vch.de/en/areas-interest/natural-sciences/molecular-electronic-structure-theory-978-0-471-96755-2)的Atomic Basis Functions/Hartree-Fock Theory配合[L1：Golub、Van Loan，Matrix Computations，第4版，JHU Press，2013，ISBN 9781421407944](https://www.press.jhu.edu/books/title/10678/matrix-computations)的§5.5、§6.4、§8.1，分别作为AO与数值子空间基础；这些章节不证明本项目片段能量方法，因为本工具并未实现该方法。
+
+本模块所引L1与Q1的作者、版次、年份和相关章节名称已对照出版社目录核验；未读取其全书正文，不声称已逐式或按页核验。上文推导由本模块明确给出，API文档仅支持实现接口。完整来源类型、访问范围和输入/保存数据身份见[runtime/sources.json](runtime/sources.json)。
+
 ## 输入校验与方法依据补充
 
 数值数组在NumPy类型提升前逐项校验：JSON布尔值true/false、null、字符串或与数值混合的这些值均拒绝，不把标志列自动转换为0/1测量、目标、度量或概率。整数0/1仍可用于已声明的数值/二分类接口；缺失值须先按研究协议处理。数组结构遍历预算为100000项，另保留各模块原有形状、有限性和数据规模限制。
@@ -33,5 +49,3 @@ parameters为atol、rank_rtol；data含overlap、fragments、target_vectors，�
 ## 方法来源
 
 本页显式给出Gram正交化与一电子变换公式；[NumPy eigh](https://numpy.org/doc/stable/reference/generated/numpy.linalg.eigh.html)支持实对称分解。AO度量和片段映射真实性需另核对。
-
-Q=B U_r Λ_r⁻¹/²直接给出QᵀSQ=I；这里是按保留Gram谱定义的规范正交列。其数学正交性不保证列仍局域在单一片段，亦不是片段相互作用能或二电子张量方法的证明。

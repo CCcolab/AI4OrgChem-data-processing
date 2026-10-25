@@ -35,3 +35,21 @@ data含5–64条唯一ids、单组分SMILES及监督任务target/target_unit，�
 [MPNN](https://proceedings.mlr.press/v70/gilmer17a.html)；[SimCLR原论文](https://proceedings.mlr.press/v119/chen20j.html)用于对比目标的数学参考，其视觉增强不自动成为分子语义不变量。
 
 [SimCLR原始论文](https://proceedings.mlr.press/v119/chen20j.html)研究视觉增强与对比目标，不能直接背书本例的分子特征掩码为化学等价变换。张量loss/encoder重放只证明该实现执行；化学表示优劣须在独立真实数据与匹配从零训练对照下评价。
+
+## 解释与复核要点
+
+无监督模式拒绝性质标签；mask_then_probe才读取显式监督标签。检查训练图范围、正对配对与排除自身；冻结探针的缩放只取训练行。SimCLR仅支持对比目标出处，其视觉增强证据不能背书分子化学语义。
+
+原子遮蔽以−log p(Z_selected|遮蔽后图)为目标：本例仅将选中原子的原子序数特征置零，真实类别另存作交叉熵标签；度、芳香性及邻接仍可提供信息，因此不称完整隐去原子身份。对比模式生成两次独立张量遮蔽，以归一化嵌入计算sim(z_i,z_j)/τ，损失为−log[exp(sim(i,pos(i))/τ)/Σ_{k≠i}exp(sim(i,k)/τ)]，pos(i)为另一视图的同一图，排除自身项。
+
+这些遮蔽不是经验证的化学等价变换，不同分子作为负例也可能化学相近。编码器只在训练图预训练；之后对所有图提取向量是无更新推断。可选冻结探针对训练嵌入和目标缩放、只训练线性头50步，并检查编码器未变化。没有匹配的从零训练对照与独立真实数据，不宣称预训练带来性能收益。
+
+## 依据的用途与访问范围
+
+章节定位：Hamilton作者第5章草稿（正文）；Deep Learning第15章Representation Learning（目录）；SimCLR的对比损失原文。
+
+基础阅读：[HAMILTON](https://www.cs.mcgill.ca/~wlh/grl_book/)、[DL](https://www.deeplearningbook.org/)。
+
+原始方法/作者专论：[GILMER](https://proceedings.mlr.press/v70/gilmer17a.html)、[SIMCLR](https://proceedings.mlr.press/v119/chen20j.html)。
+
+Deep Learning为MIT Press2016版；核对作者公开目录中的相应章节，章节正文抓取超限，不据此声称已读全书。 Hamilton引用作者2020年9月第5章预出版草稿，核对消息传递与置换性质；不冒称最终出版社修订版全文。 各条原论文/软件文档的具体访问范围及版本记录见[runtime/sources.json](runtime/sources.json)；滚动API页面与固定运行依赖分开记录。经典书目补充基础，现代算法仍保留其原始论文，API文档继续用于接口约定。

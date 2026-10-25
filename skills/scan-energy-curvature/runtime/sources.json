@@ -1,0 +1,37 @@
+[
+  {
+    "id": "classic-numerical-analysis",
+    "title": "Richard L.Burden and J.Douglas Faires, Numerical Analysis,9th ed.,Cengage India,2012",
+    "url": "https://www.cengage.co.in/book-list/print/numerical-analysis-c2",
+    "type": "经典数值教材",
+    "locator": "Chapter3 Interpolation and Polynomial Approximation;Chapter4 Numerical Differentiation and Integration",
+    "supports": "插值与差分的经典阅读定位；误差项在本页由局部多项式展开解释，不宣称已读付费定理",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "PUBLISHER_METADATA_AND_CHAPTER_TOC_NOT_FULL_CHAPTER_BODY",
+    "rights": "链接及自主概述；不再分发参考全文。",
+    "isbn": "9788131516546"
+  },
+  {
+    "id": "classic-computational-chemistry",
+    "title": "Frank Jensen, Introduction to Computational Chemistry,3rd ed.,Wiley,2017",
+    "url": "https://catalogimages.wiley.com/images/db/pdf/9781118825990.excerpt.pdf",
+    "type": "经典教材公开章节节选",
+    "locator": "§1.6.2;§1.9 Chemistry",
+    "supports": "几何参数和势能面背景，不为给定扫描的态连续性作证",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "OPEN_PUBLISHER_CHAPTER1_SELECTED_TEXT_NOT_FULL_BOOK",
+    "rights": "链接及自主概述；不再分发参考全文。",
+    "isbn": "9781118825990"
+  },
+  {
+    "id": "numpy-gradient",
+    "title": "NumPy gradient",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.gradient.html",
+    "type": "软件或语言官方文档",
+    "locator": "Notes:nonuniform three-point first derivatives",
+    "supports": "非均匀一阶推导；本模块二阶公式显式由局部插值给出",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "OFFICIAL_DOCUMENTATION_SELECTED_PUBLIC_TEXT",
+    "rights": "链接及自主概述；不再分发参考全文。"
+  }
+]

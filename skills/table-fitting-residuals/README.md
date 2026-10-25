@@ -15,7 +15,7 @@
 
 ## 这项Skill能帮你做什么
 
-它指导Agent检查表格、单位和拟合目的，选择明确模型，调用数值工具，解释残差和局限。原文允许多种分析任务；**本页实现仅限未加权、带截距线性OLS校准**，不声称覆盖加权、非线性、因果分析或完整Skill测试。
+它指导Agent检查表格、单位和拟合目的，选择明确模型，调用数值工具，解释残差和局限。**固定咖啡因入口**仅做未加权、带截距一次OLS校准；**用户CSV入口**支持带截距一次/二次最小二乘及显式sigma的WLS。二次式对系数仍是线性模型；任意非线性、因果分析及完整统计推断未实现。
 
 示例问题：已知咖啡因标准液浓度及HPLC峰面积，怎样得到校准关系？峰面积424195对应多少mg/L？拟合残差告诉我们什么？只用前三个标准时结论如何变化？
 
@@ -44,7 +44,6 @@ $$e_i=y_i-\hat y_i,\qquad x_{sample}=(y_{sample}-a)/b.$$
 
 残差检查与“高R²不充分”的说明依据 [NIST：How can I tell if a model fits my data?](https://www.itl.nist.gov/div898/handbook/pmd/section4/pmd44.htm)。本题只有4点且无重复；残差图是诊断起点，不能据此证明模型充分或方差恒定。本页不提供未经验证的置信区间、检出限或反应机理结论。
 
-
 [逐项知识来源与章节](runtime/sources.json) · [数据转录与许可说明](runtime/data-provenance.json) · [原始浓度/峰面积CSV](runtime/caffeine-calibration.csv)
 
 ## 保存的示例图表
@@ -54,7 +53,6 @@ $$e_i=y_i-\hat y_i,\qquad x_{sample}=(y_{sample}-a)/b.$$
 ![咖啡因外标校准与残差](assets/example-calibration-and-residuals.png)
 
 反算浓度94.37792857876974 mg/L。正的拟合截距本身不能确立基线或系统误差的物理成因。示例参数见[结果JSON](assets/example-result.json)，当前数值以本地运行输出为准。
-
 
 ## 怎样解释结果
 
@@ -193,3 +191,16 @@ Get-FileHash -LiteralPath ..\fit-default-saved\results.zip -Algorithm SHA256
 输出为run-receipt.json、residuals.csv（y-yhat）、fit-and-residuals.png、原输入、实际参数、Skill快照、SHA-256及results.zip。图上误差线仅表示输入sigma，不是新推导的置信区间。本版不输出p值、置信区间、检出限、误差变量回归或预测泛化结论。x误差与观测相关性未建模，需研究者判断。
 
 程序读取完整SKILL.md并调用固定数值工具；无模型执行只保存指令身份，不宣称语言模型理解了Skill。所有结果必须在Skill目录外的新目录；已有目录拒绝覆盖。`python`在Windows替换为`.\.venv\Scripts\python.exe`。
+
+## 知识要点与经典依据
+
+固定咖啡因入口复算Harvey§12.5习题；通用CSV入口选择带截距一次或二次式。一次式对x为直线，二次式仍对待估系数线性。OLS最小化`RSS=Σ(y_i−yhat_i)²`；sigma是响应标准差时，WLS最小化`Σ((y_i−yhat_i)/sigma_i)²`。以1/sigma缩放设计矩阵的行，对应的是1/sigma²目标权重，不能把方差作为sigma输入。
+
+残差e=y−yhat，RMSE=sqrt(RSS/n)，常规未加权R²=1−RSS/Σ(y−mean_y)²；常量y时后者未定义。WLS的最小目标与此未加权R²不同，后者可能为负。高R²、低RSS均不证明机理、因果或外推；x误差/响应相关性不在当前模型中。描述性求最小二乘不要求先假定正态，但经典估计误差/区间需要额外条件，本模块不输出这些推断。
+
+方法阅读用[Harvey§5.4 Linear Regression and Calibration Curves](https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/05:_Standardizing_Analytical_Methods/5.04:_Linear_Regression_and_Calibration_Curves)的未加权、残差、Weighted Linear Regression with Errors in y及Curvilinear Regression小节；开放正文已核验。教材采用归一化的方差权重，乘同一常数不改变最小化解。Harvey§12.5是题源，NIST是方法手册，NumPy是求解接口，不能把三类证据混称。本页不以作者表尚有版本差异的Miller书目作唯一基础。
+
+**用稳定表达回放预测。** 回执保留原字段`coefficients`作兼容导出，并新增`scaled_coefficients`。令`z=(x-scaled_x_center)/scaled_x_scale`，则`yhat=Σ scaled_coefficients[k]·z^k`；z无量纲，所有scaled系数单位为y，center/scale单位为x。可直接用`numpy.polynomial.polynomial.polyval(z,scaled_coefficients)`回放。原x很大而跨度很小时，原基系数会严重相消，内部RSS极小也不能认证该导出可用。
+
+`original_basis_diagnostic`比较观测x上原基回放与缩放预测，采用`max|差|/max|缩放预测|≤1e−10`的无量纲工程准则；没有max(1,yScale)或固定有量纲atol，故改变y单位不会掩盖相同比例的损失。全零预测要求原基也精确回放零。失稳为REPLAY_UNSTABLE并给出ORIGINAL_BASIS_REPLAY_UNSTABLE警告，仍可使用稳定表达；通过仅适用于观测x，不认证外推或测量精度。[Burden与Faires《Numerical Analysis》9版](https://www.cengage.co.in/book-list/print/numerical-analysis-c2)第1/3/4章分别涉及误差、插值与数值微分；本次核验出版社目录，未取得这些章节全文，不借目录声称已核对误差定理。
+完整章节/接口映射及访问限度见[runtime/sources.json](runtime/sources.json)。

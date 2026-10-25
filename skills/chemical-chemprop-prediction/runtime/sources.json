@@ -1,0 +1,52 @@
+{
+  "schema": "skill-method-sources-v1",
+  "skill": "chemical-chemprop-prediction",
+  "knowledge_revision": "2026-10-25",
+  "knowledge_scope": "明确Chemprop版本和三组件；保持目标尺度只取训练集、损失只取训练批，保留原单位留出预测。将原始D-MPNN方法来源与当前API文档分开，不把软件可解析的分子扩张为已验证物性适用域。",
+  "chapter_locator": "Hamilton作者第5章草稿（正文）；Yang等§3.2 Directed MPNN（作者论文HTML正文）。",
+  "source_roles": {
+    "textbook_or_monograph": "概念与数学基础；访问范围逐条声明",
+    "original_paper": "原始方法及本教学简化的区别，不继承其性能",
+    "software_documentation": "API/版本行为，不能替代独立方法验证"
+  },
+  "implementation_requirements": [
+    "--extra-index-url https://download.pytorch.org/whl/cpu",
+    "numpy==1.26.4",
+    "rdkit==2026.3.6",
+    "torch==2.14.1+cpu",
+    "chemprop==2.3.1"
+  ],
+  "version_note": "固定requirements与结果环境回执用于实际执行身份；公开文档可能滚动更新，不能据文档标题替换依赖版本。",
+  "sources": [
+    {
+      "id": "HAMILTON",
+      "title": "Hamilton, Graph Representation Learning",
+      "url": "https://www.cs.mcgill.ca/~wlh/grl_book/",
+      "source_class": "foundational_monograph",
+      "edition": "2020 author prepublication draft; published by Morgan & Claypool",
+      "support": "Ch5 author draft verifies permutation invariance/equivariance equations5.2–5.3, neural message passing, and invariant sum/mean/max pooling.",
+      "access_scope": "Author TOC and chapter5 September2020 prepublication PDF read: https://www.cs.mcgill.ca/~wlh/grl_book/files/GRL_Book-Chapter_5-GNNs.pdf . Draft excludes publisher revisions/formatting.",
+      "verified_on": "2026-10-25"
+    },
+    {
+      "id": "YANG",
+      "title": "Yang et al., Analyzing Learned Molecular Representations for Property Prediction",
+      "url": "https://arxiv.org/html/1904.01561v5",
+      "source_class": "original_paper",
+      "edition": null,
+      "support": "Author paper §3.2: directed-bond states/messages exclude immediate reverse-edge totters; §3.3 feature definitions and data-dependent benchmark context.",
+      "access_scope": "Author-submitted v5/2019 HTML §3.1–3.3 selectively inspected on2026-10-25. Publisher ACS DOI10.1021/acs.jcim.9b00237 remained403; publisher full text not claimed read.",
+      "verified_on": "2026-10-25"
+    },
+    {
+      "id": "CHEMPROPAPI",
+      "title": "Chemprop MPNN models",
+      "url": "https://chemprop.readthedocs.io/en/latest/tutorial/python/models/basic_mpnn_model.html",
+      "source_class": "official_software_documentation",
+      "edition": null,
+      "support": "BondMessagePassing/MeanAggregation/RegressionFFN composition; page identifies2.3.1.",
+      "access_scope": "Public official page inspected2026-10-25. Rolling documentation is API support, not independent method proof or the pinned installed version. scikit-learn stable currently identifies1.9.1; product pins1.5.1.",
+      "verified_on": "2026-10-25"
+    }
+  ]
+}

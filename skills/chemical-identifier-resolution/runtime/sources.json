@@ -1,0 +1,38 @@
+[
+  {
+    "id": "classic-chemoinformatics",
+    "title": "Gasteiger (ed.), Handbook of Chemoinformatics, Wiley-VCH,2003",
+    "url": "https://onlinelibrary.wiley.com/doi/book/10.1002/9783527618279",
+    "type": "经典编辑专著",
+    "locator": "II.2 nomenclature and conversion;II.6 stereochemistry;V databases/data sources",
+    "supports": "名称/结构表示/数据库的经典阅读定位；不验证某注册号真实存在",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "PUBLISHER_AND_AUTHOR_TOC_METADATA_NOT_PAYWALLED_CHAPTER_BODY",
+    "rights": "链接及自主概述；不再分发参考全文。",
+    "doi": "10.1002/9783527618279",
+    "isbn": "9783527306800",
+    "author_toc_url": "https://www.cup.uni-muenchen.de/oc/engel/publications/books/handbook-of-chemoinformatics/"
+  },
+  {
+    "id": "cir-semantics",
+    "title": "NCI Chemical Identifier Resolver official documentation",
+    "url": "https://cactus.nci.nih.gov/chemical/structure_documentation",
+    "type": "软件或语言官方文档",
+    "locator": "Structure Identifiers;precedence;stereochemical disclaimer",
+    "supports": "数据库查找、优先级歧义、名称立体信息可能丢失；未执行服务查询",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "OFFICIAL_DOCUMENTATION_SELECTED_PUBLIC_TEXT",
+    "rights": "链接及自主概述；不再分发参考全文。"
+  },
+  {
+    "id": "pubchem-api",
+    "title": "PubChem PUG REST official documentation",
+    "url": "https://pubchem.ncbi.nlm.nih.gov/docs/pug-rest",
+    "type": "软件或语言官方文档",
+    "locator": "Namespaces,CID and properties",
+    "supports": "接口位置；本次页面遇访问挑战，不能称公开正文或实际查询已重验",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "REFERENCE_RETAINED_CURRENT_BODY_ACCESS_CHALLENGE_NO_REMOTE_QUERY",
+    "rights": "链接及自主概述；不再分发参考全文。"
+  }
+]

@@ -1,0 +1,48 @@
+[
+  {
+    "id": "textbook-descriptive-statistics",
+    "title": "David Harvey, Analytical Chemistry2.1",
+    "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/04:_Evaluating_Analytical_Data/4.01:_Characterizing_Measurements_and_Results",
+    "type": "作者开放教材",
+    "locator": "§4.1 Mean;Standard Deviation",
+    "supports": "均值和SD的对象/公式/单位",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "OPEN_SELECTED_SECTION_BODY_NOT_FULL_BOOK_OR_ORIGINAL_EXPERIMENT",
+    "rights": "链接及自主概述；不再分发参考全文。",
+    "license_as_displayed": "CC BY-NC-SA4.0"
+  },
+  {
+    "id": "textbook-mean-uncertainty",
+    "title": "David Harvey, Analytical Chemistry2.1",
+    "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/04:_Evaluating_Analytical_Data/4.04:_The_Distribution_of_Measurements_and_Results",
+    "type": "作者开放教材",
+    "locator": "§4.4 Samples;Sampling Distribution of Mean;Confidence Intervals for Samples",
+    "supports": "SD与均值不确定度的区别及区间额外前提；本模块不计算SEM/CI",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "OPEN_SELECTED_SECTION_BODY_NOT_FULL_BOOK_OR_ORIGINAL_EXPERIMENT",
+    "rights": "链接及自主概述；不再分发参考全文。",
+    "license_as_displayed": "CC BY-NC-SA4.0"
+  },
+  {
+    "id": "matplotlib-errorbar",
+    "title": "Matplotlib Axes.errorbar",
+    "url": "https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.errorbar.html",
+    "type": "软件或语言官方文档",
+    "locator": "yerr",
+    "supports": "非负对称误差输入的画图约定；不认证统计含义",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "OFFICIAL_DOCUMENTATION_SELECTED_PUBLIC_TEXT",
+    "rights": "链接及自主概述；不再分发参考全文。"
+  },
+  {
+    "id": "numpy-std",
+    "title": "NumPy std",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.std.html",
+    "type": "软件或语言官方文档",
+    "locator": "ddof",
+    "supports": "本模块ddof=1的样本SD接口约定",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "OFFICIAL_DOCUMENTATION_SELECTED_PUBLIC_TEXT",
+    "rights": "链接及自主概述；不再分发参考全文。"
+  }
+]

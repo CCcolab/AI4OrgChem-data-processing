@@ -1,0 +1,75 @@
+{
+  "source": "Project-authored synthetic energy-ledger endpoints; not saved water arrays or a new quantum calculation.",
+  "scope": "No new quantum calculation by knowledge enrichment.",
+  "knowledge_review": {
+    "schema": "skill-knowledge-foundations-v1",
+    "date": "2026-10-25",
+    "local_derivation": true,
+    "sources": [
+      {
+        "id": "Q1",
+        "source_type": "classic_research_monograph",
+        "authors": [
+          "Trygve Helgaker",
+          "Poul Jørgensen",
+          "Jeppe Olsen"
+        ],
+        "title": "Molecular Electronic-Structure Theory",
+        "edition": "1",
+        "year": 2000,
+        "publisher": "Wiley",
+        "isbn": "9780471967552",
+        "url": "https://www.wiley-vch.de/en/areas-interest/natural-sciences/molecular-electronic-structure-theory-978-0-471-96755-2",
+        "access_verified": "publisher_bibliography_and_table_of_contents_only",
+        "access_limit": "Book full text and specific equation pages were not read; chapter relevance is TOC-verified, not an equation-by-equation proof.",
+        "verified_on": "2026-10-25",
+        "relevant_chapters": [
+          "Orbital Rotations",
+          "Hartree-Fock Theory"
+        ],
+        "module_support_scope": "Standard ordinary-state energy/variational foundations only; NOT project conditional-functional proof."
+      },
+      {
+        "id": "DEC",
+        "source_type": "official_software_documentation",
+        "title": "Python3.12 decimal",
+        "url": "https://docs.python.org/3.12/library/decimal.html#mitigating-round-off-error-with-increased-precision",
+        "supports": "Precision, rounding traps and cancellation; not source/physical qualification of energies.",
+        "relevant_chapters": [],
+        "module_support_scope": "Bounded decimal precision/rounding; not energy identity or endpoint provenance."
+      }
+    ],
+    "physical_claim_limit": "Project-specific protocol and supplied declarations, not validation of a new physical theory.",
+    "new_quantum_backend_execution": "NOT_EXECUTED"
+  },
+  "data_origin": {
+    "kind": "PROJECT_AUTHORED_TEACHING_FIXTURES",
+    "external_quantum_backend_execution": "NOT_EXECUTED",
+    "fixtures": [
+      {
+        "file": "examples/01.json",
+        "sha256": "fdeebe8081a246d6af690d969ae36993645a38d20113155205a7b6ab47837b63",
+        "provenance": {
+          "kind": "AUTHORED_TEACHING_INPUT",
+          "description": "Synthetic protocol/energy/qualification flags. No ordinary or conditional SCF was executed."
+        }
+      },
+      {
+        "file": "examples/02.json",
+        "sha256": "bb49076f9d327f5f6124b308a729129505c5fa77cd6e451c3e28a63792c79926",
+        "provenance": {
+          "kind": "AUTHORED_TEACHING_INPUT",
+          "description": "Synthetic protocol/energy/qualification flags. No ordinary or conditional SCF was executed."
+        }
+      },
+      {
+        "file": "examples/03.json",
+        "sha256": "c1e9af126f28fdde9e8f48dd02f203e386f4cfde1c8c34890bf9378dfe950263",
+        "provenance": {
+          "kind": "AUTHORED_TEACHING_INPUT",
+          "description": "Synthetic protocol/energy/qualification flags. No ordinary or conditional SCF was executed."
+        }
+      }
+    ]
+  }
+}

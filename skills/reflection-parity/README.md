@@ -10,13 +10,21 @@
 
 顶层文件只有README.md和SKILL.md；程序、依赖、参数和案例在runtime。下载[完整Python代码包](downloads/reflection-parity-python.zip)或[Skill单文件ZIP](downloads/SKILL-md.zip)。私有GitHub需有权限的账号，文件页用“Download raw file”保存，不把网页另存为.py。
 
-## 知识与适用边界
+## 核心知识：闭合子空间中的反射奇偶
 
-检查R²=I、RᵀSR=S、BᵀSB=I以及Δ=RB−B(BᵀSRB)的S范数sqrt[Tr(ΔᵀSΔ)]（残差平方S范数的平方根）。仅闭合时对限制反射对角化，谱须为±1才输出适配列；不闭合时不贴奇偶标签。
+R在这里作用于同一实AO系数列，即变换c↦Rc；它不是随意给名的算子积分矩阵。要求正定S、R²=I、RᵀSR=S和BᵀSB=I。R⁻¹=R与度量酉性联合推出RᵀS=SR，因此限制矩阵T=BᵀSRB实对称。
 
-代数通过不证明输入R确实对应所说几何镜面；还需坐标、原子/壳层映射和AO约定。奇偶在指定空间内定义，不能直接认证轨道化学类型、能量或密度不变性；占据兼容需单独检查。
+只有RB落在span(B)时才有RB=BT，也即Δ=RB−BT=0。此时二次作用得B=R²B=BT²；由B满列秩推出T²=I，故限制谱只能为±1。对T作正交对角化T=UΛUᵀ，BU就是给定空间中的奇偶适配列。若不闭合，T只是投影后的反射，出现介于−1与1的数也不能贴成真实奇偶本征值。
 
-反射、度量和闭合公式在本页显式给出；[NumPy eigh](https://numpy.org/doc/stable/reference/generated/numpy.linalg.eigh.html)支持限制算子的实对称分解。
+闭合残差比较的是sqrt Tr(ΔᵀSΔ)，并非其平方。若平方量为0.0396，范数约0.1989974874，必须按后者比较相同atol。实测微小残差只支持数值阈值内闭合；输入R代表哪个几何镜面仍需坐标、原子/壳层映射及AO球谐/相位约定证明。
+
+①保存水几何与AO标签给出明确镜面，但本次仅代数复核；②二维交换反射在完整空间有±1本征列；③只取e1时交换到e2而离开空间，应不给奇偶标签。BU的旋转没有占据信息，可能混合不等占据，因此不自动保持D；奇偶也不自动等于σ/π、成键分类、能量或新SCF资格。
+
+### 经典教材、实现来源及支持范围
+
+[L1：Golub、Van Loan，Matrix Computations，第4版，JHU Press，2013，ISBN 9781421407944](https://www.press.jhu.edu/books/title/10678/matrix-computations)的§7.6、§8.1提供不变子空间与谱的经典背景；±1结论的前提和推导在上文写全，不能把目录核验当作真实分子群论/AO反射表示的已读正文证明。原有Strang课程仅是投影直观的补充。
+
+本模块所引L1的作者、版次、年份和相关章节名称已对照出版社目录核验；未读取其全书正文，不声称已逐式或按页核验。上文推导由本模块明确给出，API文档仅支持实现接口。完整来源类型、访问范围和输入/保存数据身份见[runtime/sources.json](runtime/sources.json)。
 
 ## 输入校验与方法依据补充
 
@@ -57,5 +65,3 @@ Windows将python替换为`.\.venv\Scripts\python.exe`。案例完整程序：[�
 只修改参数不会更改旧结果，必须写新目录。严格UTF-8 JSON≤2 MB，不接受重复键或非有限数值。不应只改科学身份标签来绕过不兼容检查，来源标签本身不证明真实性。完整可复用[调用模板](runtime/examples/call_skill_template.py)支持--skill-dir、--input和--output，程序内部实际读取顶层Skill并保存其哈希，不调用模型。
 
 软件执行通过只覆盖声明的输入和数值范围，不代表整个理论、化学身份或新量子方法获认证。下载包[SHA-256](downloads/SHA256SUMS.txt)与内部验收记录分开，内部材料不进入用户包。
-
-闭合比较量为S范数而非其平方：平方量0.0396对应约0.1989974874，atol始终与后者比较。R²=I和RᵀSR=S在闭合空间内给±1谱是矩阵代数结论；[Strang投影课程](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-16-projection-matrices-and-least-squares/)支持子空间/投影语境，不替代真实几何镜面、AO约定和占据证据。

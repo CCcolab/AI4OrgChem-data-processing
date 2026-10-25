@@ -9,7 +9,7 @@ description: 用显式组别、时间顺序或IID假设执行真实折内Pipelin
 
 ## 输入与方法
 
-data显式ids、features二维有限实数矩阵、feature_names及逐列feature_units；5–200行、1–32列。不是二进制指纹/Tanimoto接口。监督数据另给target、target_unit及可选groups。parameters包含algorithm、seed、test_indices（零起始），算法专属参数见案例；分组一旦提供不得跨训练/测试。本页必须提供groups；parameters为scheme、seed、folds、alpha，scheme仅group/time/shuffle。time使用输入顺序，不自动猜时间列。
+data显式ids、features二维有限实数矩阵、feature_names及逐列feature_units；5–200行、1–32列。不是二进制指纹/Tanimoto接口。监督数据必须给target、target_unit和groups。parameters只包含scheme、seed、folds、alpha，scheme仅group/time/shuffle，不接受algorithm或test_indices。group/time检查每折声明组别不跨训练/测试；shuffle是显式IID对照，允许组别交叉并披露局限。time使用输入顺序，不自动猜时间列。
 
 各折重新拟合StandardScaler与Ridge，不在全表上预处理。group用GroupKFold；time用TimeSeriesSplit并要求已声明组别不跨折；shuffle仅作用户明确选择的IID演示。保存各折训练/测试索引、预测及MAE，均值为各折MAE等权平均，不冒称全样本池化误差。
 
@@ -33,3 +33,21 @@ data显式ids、features二维有限实数矩阵、feature_names及逐列feature
 ## 方法来源
 
 [scikit-learn交叉验证](https://scikit-learn.org/stable/modules/cross_validation.html)、[Pipeline数据泄漏](https://scikit-learn.org/stable/common_pitfalls.html#data-leakage)。
+
+## 解释与复核要点
+
+请求parameters只接受scheme、seed、folds、alpha；data必须含groups。group/time强制每折声明组别不交叉；shuffle允许交叉并标明IID假设。逐折重新拟合预处理，保存索引和预测；不得把各折等权MAE写成池化全样本误差。
+
+交叉验证评价一个明确训练流程对指定划分机制下新数据的误差；划分机制应对应使用场景。GroupKFold隔离用户声明的组，不能由组名本身证明化学骨架或实验批次独立。TimeSeriesSplit仅按输入先后扩展训练，要求真实时间含义，并在本接口检查声明组别不跨训练/测试边界。shuffle是明确选择的IID对照，故允许组别交叉，不能冒称组外化学验证。
+
+每折独立拟合StandardScaler和固定alpha的Ridge。第k折MAEₖ=Σ_{i∈testₖ}|yᵢ−ŷᵢ|/nₖ；本例报告(1/K)ΣₖMAEₖ，各折等权，区别于按nₖ加权的池化误差。这里不搜索超参数，也不提供嵌套选择；如果用这些分数挑模型，外层评估需另行设计。
+
+## 依据的用途与访问范围
+
+章节定位：ESL第2版第7章Model Assessment and Selection（目录主题定位）。
+
+基础阅读：[ESL2](https://link.springer.com/book/10.1007/978-0-387-84858-7)。
+
+实现接口：[SKCV](https://scikit-learn.org/stable/modules/cross_validation.html)、[SKLEAK](https://scikit-learn.org/stable/common_pitfalls.html#data-leakage)。
+
+ESL为2009年第2版；本次核对出版社目录中的相关主题，未声称读取受限章节正文。 各条原论文/软件文档的具体访问范围及版本记录见[runtime/sources.json](runtime/sources.json)；滚动API页面与固定运行依赖分开记录。经典书目补充基础，现代算法仍保留其原始论文，API文档继续用于接口约定。

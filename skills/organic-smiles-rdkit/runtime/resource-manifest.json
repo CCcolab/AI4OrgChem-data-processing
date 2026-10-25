@@ -1,7 +1,7 @@
 [
   {
     "file": "SKILL.md",
-    "sha256": "8f27067a628e6a81b2f87c6f13597d816831e133db897ee1bcac3e2bfed69a09"
+    "sha256": "d996f1357f4e65d83b3af042d2f0d86a11ab836102d456d37d3dd2fc30a44128"
   },
   {
     "file": "runtime/agent.py",
@@ -101,6 +101,6 @@
   },
   {
     "file": "runtime/sources.json",
-    "sha256": "414071729d334643e4bb654660a209fe4ffc51060eb66dcbee6f51f1d999827e"
+    "sha256": "2dbf4b572816fcbfc1d4a0cdb314325daccb85e53566f7ea2c24a3bbb6b8f57f"
   }
 ]

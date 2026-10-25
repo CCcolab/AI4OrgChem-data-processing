@@ -13,6 +13,22 @@ parameters为atol、rank_rtol（1e-12至1e-4）；data为overlap、basis、vecto
 
 G=BᵀSB，按λ>rank_rtol×λmax保留Gram方向；P=B G⁺ BᵀS。分别报告vᵀSv、rᵀSr及比值；零/近零原范数的比值写null。检查P²=P、PᵀS=SP和保留范围对残差的S正交性。阈值及数值秩是工程约定，不是物理概率解释。
 
+## 核心知识：S度量投影、截断与泄漏的含义
+
+前提是有限实正定S、同一AO顺序的基列B和按列的目标v。内积为⟨u,v⟩S=uᵀSv，平方范数为vᵀSv；它与普通系数平方和不同。G=BᵀSB=UΛUᵀ，仅保留λ>rank_rtol λmax的方向r，定义Q=B U_r Λ_r⁻¹/²。直接代入得QᵀSQ=I，故P=QQᵀS=B G_r⁺ BᵀS，P²=P、PᵀS=SP。
+
+令r=v−Pv，则QᵀSr=0，vᵀSv=(Pv)ᵀS(Pv)+rᵀSr。因此泄漏比例为rᵀSr/(vᵀSv)，分母为零或近零时无定义并写null；本工具只报告数值残差比例，不赋予物理概率、电子数或能量含义；归一化物理态及相应测量投影协议未在本工具中给定。谱被截断时投向的是保留子空间，不能要求残差与被丢弃的全部B方向也正交。记号G_r⁺表示按本阈值截断的逆，并不隐含所有非零数学本征值都保留。
+
+可令S=WᵀW，把WB置于欧式空间理解上述投影，再还原到原AO表示。形成Gram会把WB的奇异值平方，故Gram的相对特征值阈值对应奇异值相对阈值的平方；列缩放也可能改变有限精度的保留秩。rank_rtol与atol是数值合同，不是物理误差条。本实现不静默截断环境S，也不处理复、奇异或不定度量。
+
+①保存占据轨道目标泄漏约0，S正交虚轨道约1，均是旧数据后处理；②相关列只保留秩1而不重复计空间；③零向量投影/绝对泄漏0但相对值null。覆盖结论只关于用户实际提供的目标和保留空间，AO身份仍须独立核实。
+
+### 经典教材、实现来源及支持范围
+
+[L1：Golub、Van Loan，Matrix Computations，第4版，JHU Press，2013，ISBN 9781421407944](https://www.press.jhu.edu/books/title/10678/matrix-computations)的§4.2、§5.5、§6.4是正定度量、秩亏与子空间的经典入口。原有[Strang投影课程](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-16-projection-matrices-and-least-squares/)是大学课程页，支持欧式直观，不伪装成已读加权AO投影教材正文。
+
+本模块所引L1的作者、版次、年份和相关章节名称已对照出版社目录核验；未读取其全书正文，不声称已逐式或按页核验。上文推导由本模块明确给出，API文档仅支持实现接口。完整来源类型、访问范围和输入/保存数据身份见[runtime/sources.json](runtime/sources.json)。
+
 ## 输入校验与方法依据补充
 
 数值数组在NumPy类型提升前逐项校验：JSON布尔值true/false、null、字符串或与数值混合的这些值均拒绝，不把标志列自动转换为0/1测量、目标、度量或概率。整数0/1仍可用于已声明的数值/二分类接口；缺失值须先按研究协议处理。数组结构遍历预算为100000项，另保留各模块原有形状、有限性和数据规模限制。
@@ -33,5 +49,3 @@ G=BᵀSB，按λ>rank_rtol×λmax保留Gram方向；P=B G⁺ BᵀS。分别报�
 ## 方法来源
 
 投影公式在此显式给定；[NumPy eigh](https://numpy.org/doc/stable/reference/generated/numpy.linalg.eigh.html)支持对称Gram矩阵分解。软件分解不认证AO物理身份。
-
-S度量投影的依据需分两层：[Strang投影与最小二乘](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-16-projection-matrices-and-least-squares/)说明普通欧式投影；本页的推广令S=UᵀU，把保留子空间白化为UB，用其正交列Q形成QQᵀ，再还原P=U⁻¹QQᵀU。Gram相对秩阈值决定保留空间；NumPy eigh只是数值接口，不能鉴定AO身份或赋予残差能量含义。

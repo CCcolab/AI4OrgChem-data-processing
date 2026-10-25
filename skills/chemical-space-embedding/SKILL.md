@@ -33,3 +33,23 @@ StandardScaler只拟合指定参考行；PCA用全SVD，t-SNE固定500迭代、e
 ## 方法来源
 
 [scikit-learn PCA](https://scikit-learn.org/stable/modules/decomposition.html#pca)、[t-SNE](https://scikit-learn.org/stable/modules/manifold.html#t-sne)、[UMAP新点变换](https://umap-learn.readthedocs.io/en/latest/transform.html)。在线文档滚动更新，实际依赖固定并记录版本。
+
+## 解释与复核要点
+
+先明确描述符、单位、缩放和参考行；保持PCA/UMAP的scaler仅拟合参考行。解释PCA方差与邻域方法目标的区别，禁止从二维间距推断反应、药效或化学空间覆盖；t-SNE查询变换必须拒绝。
+
+PCA把参考数据中心化后，用正交方向保留尽可能多的样本方差；等价于在给定秩下最小化平方重建误差。若中心矩阵为X=UΣVᵀ，前r个右奇异向量给出投影，解释方差比例为σᵢ²/Σⱼσⱼ²。本例先按scale选择是否用参考行StandardScaler；标准化会改变各描述符对Euclidean几何的相对权重，不能视为无影响的单位换算。
+
+t-SNE的核心目标是邻域概率分布间的KL(P∥Q)，perplexity调节有效邻域尺度；本实现联合拟合全部输入，不提供新点transform。UMAP从邻域结构构造低维表示，本例只用Euclidean度量，查询点由已拟合参考表示近似变换。局部邻域可视化不要求二维全局距离、面积、簇大小或坐标轴具有物理意义；trustworthiness只是输入/输出邻域保持程度，不是活性预测验证。
+
+## 依据的用途与访问范围
+
+章节定位：ESL第2版第14章Unsupervised Learning（目录主题定位）；t-SNE/UMAP用所列原论文补充现代方法。
+
+基础阅读：[ESL2](https://link.springer.com/book/10.1007/978-0-387-84858-7)。
+
+原始方法/作者专论：[TSNE](https://jmlr.org/papers/v9/vandermaaten08a.html)、[UMAP](https://arxiv.org/abs/1802.03426)。
+
+实现接口：[SKPCA](https://scikit-learn.org/stable/modules/decomposition.html#pca)、[SKTSNE](https://scikit-learn.org/stable/modules/manifold.html#t-sne)、[UMAPAPI](https://umap-learn.readthedocs.io/en/latest/transform.html)。
+
+ESL为2009年第2版；本次核对出版社目录中的相关主题，未声称读取受限章节正文。 各条原论文/软件文档的具体访问范围及版本记录见[runtime/sources.json](runtime/sources.json)；滚动API页面与固定运行依赖分开记录。经典书目补充基础，现代算法仍保留其原始论文，API文档继续用于接口约定。

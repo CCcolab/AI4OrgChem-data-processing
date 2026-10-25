@@ -65,3 +65,27 @@ Windows将python替换为`.\.venv\Scripts\python.exe`。案例完整程序：[�
 ```powershell
 .\.venv\Scripts\python.exe runtime\run_from_csv.py --template runtime\examples\01.json --input runtime\examples\molecular-descriptors.csv --features mol_wt_g_mol tpsa_A2 mol_logp_model heavy_atoms --feature-units g/mol angstrom2 dimensionless count --target synthetic_response --target-unit arbitrary_synthetic_response --groups group --output ..\forest-csv
 ```
+
+## 知识要点、前提与公式
+
+回归树递归选择能降低节点内平方误差的特征阈值；分类树常用Gini不纯度1−Σₖpₖ²。有限深度限制模型复杂度，但不是泛化证明。随机森林对bootstrap样本训练多棵树，并在分裂时按库参数考虑特征子集；树间相关性会影响平均后的方差，不能只靠增加树数消除系统偏差。
+
+本实现未覆盖max_features：固定scikit-learn 1.5.1的回归森林默认1.0（全部特征），分类森林默认sqrt。不能将默认回归森林描述为每次只随机取sqrt个特征。
+
+回归森林输出各树预测均值；本例二分类森林的predict_proba是各树叶节点类别比例的平均，不能简单解释成硬投票频率，更不能视为已校准的化学风险。OOB=False，故本页只报告显式留出指标，不把未计算的OOB当验证。杂质重要性即使另行检查也有偏，不能推出因果机理。
+
+## 基础阅读与来源层级
+
+章节定位：ESL第2版第9章Additive Models, Trees, and Related Methods与第15章Random Forests（目录主题定位）。
+
+基础阅读：[ESL2](https://link.springer.com/book/10.1007/978-0-387-84858-7)。
+
+实现接口：[SKTREE](https://scikit-learn.org/stable/modules/tree.html)、[SKFOREST](https://scikit-learn.org/stable/modules/ensemble.html#forest)。
+
+ESL为2009年第2版；本次核对出版社目录中的相关主题，未声称读取受限章节正文。 各条原论文/软件文档的具体访问范围及版本记录见[runtime/sources.json](runtime/sources.json)；滚动API页面与固定运行依赖分开记录。经典书目补充基础，现代算法仍保留其原始论文，API文档继续用于接口约定。
+
+## 二分类概率证据
+
+二分类结果新增classification-probabilities.csv：id、零起始source_index、observed_class、predicted_class、probability_class_0、probability_class_1，行顺序对应test_indices。result.json中的classification_classes及classification_probability_metadata.class_order给出predict_proba列顺序[0,1]，held_out_probabilities保存同一概率矩阵；原held-out-predictions.csv保持原字段。额外检查owned_model_save_restore_probabilities复核自生成模型重载概率与类别顺序。
+
+概率来自同一次已拟合模型，未作概率校准，不代表已验证化学风险。local_prediction_runs=2表示原模型与重载模型两个推断阶段；local_prediction_method_calls明确记录二分类4次predict/predict_proba、回归2次predict。本次复用已有原模型预测，未增加拟合次数或二分类预测方法调用总数。save_model接口变更仅在本页及另外两份相同的回归/分类、树/森林、MLP支持库中同步。

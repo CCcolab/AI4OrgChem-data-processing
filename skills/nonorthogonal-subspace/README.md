@@ -10,13 +10,21 @@
 
 顶层文件只有README.md和SKILL.md；程序、依赖、参数和案例在runtime。下载[完整Python代码包](downloads/nonorthogonal-subspace-python.zip)或[Skill单文件ZIP](downloads/SKILL-md.zip)。私有GitHub需有权限的账号，文件页用“Download raw file”保存，不把网页另存为.py。
 
-## 知识与适用边界
+## 核心知识：S度量投影、截断与泄漏的含义
 
-G=BᵀSB，按λ>rank_rtol×λmax保留Gram方向；P=B G⁺ BᵀS。分别报告vᵀSv、rᵀSr及比值；零/近零原范数的比值写null。检查P²=P、PᵀS=SP和保留范围对残差的S正交性。阈值及数值秩是工程约定，不是物理概率解释。
+前提是有限实正定S、同一AO顺序的基列B和按列的目标v。内积为⟨u,v⟩S=uᵀSv，平方范数为vᵀSv；它与普通系数平方和不同。G=BᵀSB=UΛUᵀ，仅保留λ>rank_rtol λmax的方向r，定义Q=B U_r Λ_r⁻¹/²。直接代入得QᵀSQ=I，故P=QQᵀS=B G_r⁺ BᵀS，P²=P、PᵀS=SP。
 
-只处理有限实正定度量；不支持复杂、奇异或不定度量。泄漏是指定向量与指定子空间的平方S范数差，不自动等于电子数、能量损失或化学局域性。输入AO身份和度量来源必须由研究者核对。
+令r=v−Pv，则QᵀSr=0，vᵀSv=(Pv)ᵀS(Pv)+rᵀSr。因此泄漏比例为rᵀSr/(vᵀSv)，分母为零或近零时无定义并写null；本工具只报告数值残差比例，不赋予物理概率、电子数或能量含义；归一化物理态及相应测量投影协议未在本工具中给定。谱被截断时投向的是保留子空间，不能要求残差与被丢弃的全部B方向也正交。记号G_r⁺表示按本阈值截断的逆，并不隐含所有非零数学本征值都保留。
 
-投影公式在此显式给定；[NumPy eigh](https://numpy.org/doc/stable/reference/generated/numpy.linalg.eigh.html)支持对称Gram矩阵分解。软件分解不认证AO物理身份。
+可令S=WᵀW，把WB置于欧式空间理解上述投影，再还原到原AO表示。形成Gram会把WB的奇异值平方，故Gram的相对特征值阈值对应奇异值相对阈值的平方；列缩放也可能改变有限精度的保留秩。rank_rtol与atol是数值合同，不是物理误差条。本实现不静默截断环境S，也不处理复、奇异或不定度量。
+
+①保存占据轨道目标泄漏约0，S正交虚轨道约1，均是旧数据后处理；②相关列只保留秩1而不重复计空间；③零向量投影/绝对泄漏0但相对值null。覆盖结论只关于用户实际提供的目标和保留空间，AO身份仍须独立核实。
+
+### 经典教材、实现来源及支持范围
+
+[L1：Golub、Van Loan，Matrix Computations，第4版，JHU Press，2013，ISBN 9781421407944](https://www.press.jhu.edu/books/title/10678/matrix-computations)的§4.2、§5.5、§6.4是正定度量、秩亏与子空间的经典入口。原有[Strang投影课程](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-16-projection-matrices-and-least-squares/)是大学课程页，支持欧式直观，不伪装成已读加权AO投影教材正文。
+
+本模块所引L1的作者、版次、年份和相关章节名称已对照出版社目录核验；未读取其全书正文，不声称已逐式或按页核验。上文推导由本模块明确给出，API文档仅支持实现接口。完整来源类型、访问范围和输入/保存数据身份见[runtime/sources.json](runtime/sources.json)。
 
 ## 输入校验与方法依据补充
 
@@ -57,5 +65,3 @@ Windows将python替换为`.\.venv\Scripts\python.exe`。案例完整程序：[�
 只修改参数不会更改旧结果，必须写新目录。严格UTF-8 JSON≤2 MB，不接受重复键或非有限数值。不应只改科学身份标签来绕过不兼容检查，来源标签本身不证明真实性。完整可复用[调用模板](runtime/examples/call_skill_template.py)支持--skill-dir、--input和--output，程序内部实际读取顶层Skill并保存其哈希，不调用模型。
 
 软件执行通过只覆盖声明的输入和数值范围，不代表整个理论、化学身份或新量子方法获认证。下载包[SHA-256](downloads/SHA256SUMS.txt)与内部验收记录分开，内部材料不进入用户包。
-
-S度量投影的依据需分两层：[Strang投影与最小二乘](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-16-projection-matrices-and-least-squares/)说明普通欧式投影；本页的推广令S=UᵀU，把保留子空间白化为UB，用其正交列Q形成QQᵀ，再还原P=U⁻¹QQᵀU。Gram相对秩阈值决定保留空间；NumPy eigh只是数值接口，不能鉴定AO身份或赋予残差能量含义。

@@ -1,0 +1,39 @@
+{
+  "scope": "Read-only task routing and declared host-file identity; not backend operation or scientific qualification.",
+  "sources": [
+    {
+      "id": "runtime-installation-v1-contract",
+      "type": "project_specific_contract",
+      "title": "ai4orgchem-runtime-installation-v1; molecular-service/single-point/live",
+      "implementation": "runtime/analysis.py",
+      "supports": "The explicit accepted schema, service/task/mode/image_id syntax and declared host_files digest comparisons.",
+      "limits": "This is the project's bounded contract, not a universal scientific standard. It does not probe an engine, image availability or profile science gates."
+    },
+    {
+      "id": "nist-fips180-4",
+      "type": "official_engineering_standard",
+      "authors": "National Institute of Standards and Technology",
+      "title": "Secure Hash Standard (SHS), FIPS 180-4",
+      "year": 2015,
+      "url": "https://csrc.nist.gov/pubs/fips/180-4/upd1/final",
+      "doi": "10.6028/NIST.FIPS.180-4",
+      "supports": "Message-digest algorithms for detecting changes in message bytes.",
+      "access_scope": "Official publication metadata and abstract inspected; not a textbook or a certification of scientific truth.",
+      "verified_date": "2026-10-25"
+    },
+    {
+      "id": "rfc8259",
+      "type": "official_data_interchange_standard",
+      "authors": "T. Bray (editor); IETF",
+      "title": "The JavaScript Object Notation (JSON) Data Interchange Format",
+      "year": 2017,
+      "sections": ["4. Objects", "6. Numbers"],
+      "url": "https://www.rfc-editor.org/rfc/rfc8259",
+      "supports": "Distinct JSON values, duplicate-key interoperability concerns, finite-number grammar and precision/range limits.",
+      "access_scope": "Official sections inspected. RFC uniqueness is SHOULD; this module deliberately adopts a stricter rejection policy.",
+      "verified_date": "2026-10-25"
+    }
+  ],
+  "textbook_role": "A chemistry textbook cannot establish installation status. Scientific background belongs to the selected professional module; engineering standards and the exact project contract are the direct sources here.",
+  "execution_scope": "No model service, Docker, installation, registration, engine probe or new scientific calculation."
+}

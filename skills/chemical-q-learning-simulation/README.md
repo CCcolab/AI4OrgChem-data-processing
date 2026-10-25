@@ -57,3 +57,21 @@ Windows将python替换为`.\.venv\Scripts\python.exe`。案例完整程序：[�
 只修改参数不会更改旧结果，必须写新目录。严格UTF-8 JSON≤2 MB，不接受重复键或非有限数值。不应只改科学身份标签来绕过不兼容检查，来源标签本身不证明真实性。完整可复用[调用模板](runtime/examples/call_skill_template.py)支持--skill-dir、--input和--output，程序内部实际读取顶层Skill并保存其哈希，不调用大语言模型服务；本地训练、预测或提议计算如实记录。
 
 软件执行通过只覆盖声明的输入和数值范围，不代表整个理论、化学身份或新量子方法获认证。下载包[SHA-256](downloads/SHA256SUMS.txt)与内部验收记录分开，内部材料不进入用户包。
+
+## 知识要点、前提与公式
+
+有限MDP需要完整状态、动作、转移概率及奖励语义；本例学习折扣回报E[Σ_t γᵗr_t]的表格动作价值。一步Q-learning为Q(s,a)←Q(s,a)+α[r+γ max_b Q(s′,b)−Q(s,a)]；真正终态的后续价值为零。外部max_steps只是采样截断，不能抹去尚未终止环境的bootstrap；若时间上限属于任务本身，剩余时间必须纳入状态以保持Markov性。
+
+训练后冻结Q进行greedy评价；轨迹字段undiscounted_return明确求未折扣奖励和，用于描述所采样有限轨迹，区别于Q所估计的折扣动作价值。固定alpha、epsilon及有限预算未满足渐近收敛定理的全部条件，不能因评价收益较高就声称最优策略。所有概率与奖励是教学输入，不是反应动力学、电子能或实验反馈。
+
+## 基础阅读与来源层级
+
+章节定位：Sutton/Barto §6.5 Q-learning（出版社目录）；Watkins/Dayan第2节方法及收敛定理假设（作者PDF正文）。
+
+基础阅读：[SUTTON](https://mitpress.mit.edu/9780262039246/reinforcement-learning/)。
+
+原始方法/作者专论：[WATKINS](https://www.gatsby.ucl.ac.uk/~dayan/papers/cjch.pdf)。
+
+实现接口：[FARAMA](https://gymnasium.farama.org/tutorials/gymnasium_basics/handling_time_limits/)。
+
+Sutton/Barto为2018年第2版，出版社目录确认§2.7 UCB与§6.5 Q-learning；作者整书链接本次超时，未声称重读全书。 各条原论文/软件文档的具体访问范围及版本记录见[runtime/sources.json](runtime/sources.json)；滚动API页面与固定运行依赖分开记录。经典书目补充基础，现代算法仍保留其原始论文，API文档继续用于接口约定。

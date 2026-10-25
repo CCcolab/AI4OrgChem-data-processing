@@ -1,0 +1,109 @@
+{
+  "source": "Project-authored analytic constrained-quadratic fixtures and explicit counterexamples; not saved water arrays or a new geometry optimization.",
+  "scope": "No new quantum calculation by knowledge enrichment.",
+  "knowledge_review": {
+    "schema": "skill-knowledge-foundations-v1",
+    "date": "2026-10-25",
+    "local_derivation": true,
+    "sources": [
+      {
+        "id": "O1",
+        "source_type": "classic_textbook_author_authorized_fulltext",
+        "authors": [
+          "Stephen Boyd",
+          "Lieven Vandenberghe"
+        ],
+        "title": "Convex Optimization",
+        "edition": "1",
+        "year": 2004,
+        "publisher": "Cambridge University Press",
+        "isbn": "9780521833783",
+        "url": "https://web.stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf",
+        "access_verified": "author_authorized_full_text_sections_4.1.3_and_10.1.1_to_10.1.2",
+        "access_limit": "Convex global optimality statements must not be transferred to general nonconvex molecular surfaces; local tangent tests below use explicit differentiability assumptions.",
+        "authorization_url": "https://web.stanford.edu/~boyd/cvxbook/",
+        "verified_on": "2026-10-25",
+        "relevant_chapters": [
+          "4.1.3 Equivalent problems: eliminating equality constraints",
+          "10.1.1 Equality constrained convex quadratic minimization",
+          "10.1.2 Eliminating equality constraints"
+        ],
+        "module_support_scope": "Author-authorized text inspected for affine reduction/KKT; nonconvex molecular local inference stated with its own assumptions."
+      },
+      {
+        "id": "L1",
+        "source_type": "classic_research_monograph",
+        "authors": [
+          "Gene H. Golub",
+          "Charles F. Van Loan"
+        ],
+        "title": "Matrix Computations",
+        "edition": "4",
+        "year": 2013,
+        "publisher": "Johns Hopkins University Press",
+        "isbn": "9781421407944",
+        "url": "https://www.press.jhu.edu/books/title/10678/matrix-computations",
+        "access_verified": "publisher_bibliography_and_detailed_table_of_contents_only",
+        "access_limit": "Chapter text not read. Numerical formulas below are locally derived; no textbook formula numbers or page-level proof asserted.",
+        "verified_on": "2026-10-25",
+        "relevant_chapters": [
+          "6.4 Subspace Computations with the SVD"
+        ],
+        "module_support_scope": "Numerical nullspace background, TOC verified only."
+      },
+      {
+        "id": "SVD",
+        "source_type": "official_software_documentation",
+        "title": "NumPy linalg.svd",
+        "url": "https://numpy.org/doc/stable/reference/generated/numpy.linalg.svd.html",
+        "supports": "Full right singular vectors and singular-value API only.",
+        "relevant_chapters": [],
+        "module_support_scope": "SVD implementation API."
+      },
+      {
+        "id": "EIGH",
+        "source_type": "official_software_documentation",
+        "title": "NumPy linalg.eigh",
+        "url": "https://numpy.org/doc/stable/reference/generated/numpy.linalg.eigh.html",
+        "supports": "Symmetric eigendecomposition API only.",
+        "relevant_chapters": [],
+        "module_support_scope": "Reduced symmetric Hessian spectral API."
+      }
+    ],
+    "physical_claim_limit": "Only the explicit input/array checks and derivations in this module; not external data authenticity or new scientific backend acceptance.",
+    "new_quantum_backend_execution": "NOT_EXECUTED"
+  },
+  "data_origin": {
+    "kind": "PROJECT_AUTHORED_TEACHING_FIXTURES",
+    "external_quantum_backend_execution": "NOT_EXECUTED",
+    "fixtures": [
+      {
+        "file": "examples/01.json",
+        "sha256": "145946bb9b114b01ef23c09fae80cbe8461faa3a0a7ff3b9d39a05f00d9970f3",
+        "provenance": {
+          "kind": "AUTHORED_TEACHING_INPUT",
+          "description": "Analytic constrained quadratic fixture. No geometry optimizer or quantum gradient was called."
+        },
+        "source_definition": "Authored local derivatives of E=2x+0.5x^2+1.5(y-1)^2 under x=0; not a molecular calculation"
+      },
+      {
+        "file": "examples/02.json",
+        "sha256": "80b3e3cf346c61c57d746774b2c6d9bde1cae88ebe69e0117192797936b9d3c5",
+        "provenance": {
+          "kind": "AUTHORED_TEACHING_INPUT",
+          "description": "Analytic derivatives at an infeasible point of the same constrained quadratic as case01; no optimizer or quantum gradient was called."
+        },
+        "source_definition": "Authored local derivatives of E=2x+0.5x^2+1.5(y-1)^2 at (0.1,1); violates x=0, not a molecular calculation"
+      },
+      {
+        "file": "examples/03.json",
+        "sha256": "6737814a05a1b2c4697cd020d780c7751ca5fbd341805582114211e559d97dd9",
+        "provenance": {
+          "kind": "AUTHORED_TEACHING_INPUT",
+          "description": "A separately defined analytic saddle/negative-curvature fixture, not derivatives of the positive quadratic in case01; no optimizer or quantum gradient was called."
+        },
+        "source_definition": "Authored local derivatives of E=2x+0.5x^2-0.5(y-1)^2 at (0,1), under x=0; a different negative-tangent-curvature function from case01, not a molecular calculation"
+      }
+    ]
+  }
+}

@@ -10,13 +10,21 @@
 
 顶层文件只有README.md和SKILL.md；程序、依赖、参数和案例在runtime。下载[完整Python代码包](downloads/fragment-working-basis-python.zip)或[Skill单文件ZIP](downloads/SKILL-md.zip)。私有GitHub需有权限的账号，文件页用“Download raw file”保存，不把网页另存为.py。
 
-## 知识与适用边界
+## 核心知识：片段候选列与规范工作基
 
-先拒绝片段列在声明支持外超过atol的元素，再合并B。按Gram保留方向构造Q=B U/√λ，检查QᵀSQ=I及目标残差平方S范数的平方根。可选一电子算子按QᵀHQ变换；没有算子时不制造能量。
+全部片段必须使用同一实全局AO顺序和正定重叠S。片段支持是输入列在哪些AO行允许非零的声明；先拒绝支持外超过atol的系数，再合并候选B。若G=BᵀSB=UΛUᵀ，按rank_rtol保留正谱，Q=B U_r Λ_r⁻¹/²满足QᵀSQ=Λ_r⁻¹/²U_rᵀGU_rΛ_r⁻¹/²=I。这是保留空间的规范正交化，不是保证每列局域的片段算法。
 
-全局正交化可能混合片段，输出工作列不保证各自保持原片段支持。保留候选映射、秩和残差，不能把组装成功称为片段能量分解、完整轨道覆盖或新电子结构。二电子张量变换、自洽与量子后端本实现未提供。
+与对称正交化B G⁻¹/²相比，规范形式保留独立谱方向，秩亏时允许减少列数；原片段列可能在U_r中全局混合。因此组装前支持检查通过，不能推断最终每条Q仍属于单一片段。列缩放、近线性相关与Gram阈值会影响数值秩；候选数不是独立自由度数。
 
-本页显式给出Gram正交化与一电子变换公式；[NumPy eigh](https://numpy.org/doc/stable/reference/generated/numpy.linalg.eigh.html)支持实对称分解。AO度量和片段映射真实性需另核对。
+目标T的投影为QQᵀST，残差R=T−QQᵀST；报告sqrt Tr(RᵀSR)并与atol比较。通过只说明所给目标被保留空间覆盖，不证明完整虚轨道空间或所有化学性质均被覆盖。给定一电子算子AO矩阵H时，新矩阵为QᵀHQ；Q为矩形时是子空间限制，不能当作保留全谱的可逆基变换。密度系数变换与算子矩阵变换约定也不能混用。
+
+①18个原AO按O/H1/H2输入，覆盖5条保存占据轨道，不产生片段能量；②冗余3列得到秩2体现依赖方向剔除；③支持外0.1系数应拒绝。缺少算子不补能量；二电子张量变换、片段相互作用能、SCF与新量子后端均未提供。
+
+### 经典教材、实现来源及支持范围
+
+[Q1：Helgaker、Jørgensen、Olsen，Molecular Electronic-Structure Theory，Wiley，2000，ISBN 9780471967552](https://www.wiley-vch.de/en/areas-interest/natural-sciences/molecular-electronic-structure-theory-978-0-471-96755-2)的Atomic Basis Functions/Hartree-Fock Theory配合[L1：Golub、Van Loan，Matrix Computations，第4版，JHU Press，2013，ISBN 9781421407944](https://www.press.jhu.edu/books/title/10678/matrix-computations)的§5.5、§6.4、§8.1，分别作为AO与数值子空间基础；这些章节不证明本项目片段能量方法，因为本工具并未实现该方法。
+
+本模块所引L1与Q1的作者、版次、年份和相关章节名称已对照出版社目录核验；未读取其全书正文，不声称已逐式或按页核验。上文推导由本模块明确给出，API文档仅支持实现接口。完整来源类型、访问范围和输入/保存数据身份见[runtime/sources.json](runtime/sources.json)。
 
 ## 输入校验与方法依据补充
 
@@ -57,5 +65,3 @@ Windows将python替换为`.\.venv\Scripts\python.exe`。案例完整程序：[�
 只修改参数不会更改旧结果，必须写新目录。严格UTF-8 JSON≤2 MB，不接受重复键或非有限数值。不应只改科学身份标签来绕过不兼容检查，来源标签本身不证明真实性。完整可复用[调用模板](runtime/examples/call_skill_template.py)支持--skill-dir、--input和--output，程序内部实际读取顶层Skill并保存其哈希，不调用模型。
 
 软件执行通过只覆盖声明的输入和数值范围，不代表整个理论、化学身份或新量子方法获认证。下载包[SHA-256](downloads/SHA256SUMS.txt)与内部验收记录分开，内部材料不进入用户包。
-
-Q=B U_r Λ_r⁻¹/²直接给出QᵀSQ=I；这里是按保留Gram谱定义的规范正交列。其数学正交性不保证列仍局域在单一片段，亦不是片段相互作用能或二电子张量方法的证明。

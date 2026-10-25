@@ -12,7 +12,7 @@
 
 ## 知识与适用边界
 
-每条delta=E(to)−E(from)，按顺序构成首尾闭合循环，用50位Decimal求和，按显式atol_hartree和rtol=0判断。来自同一能量表的差分本就代数相消；即使闭合也不是独立验证。不同source_id只是声明，不能证明来源独立或真实性。
+每条delta=E(to)−E(from)，按顺序构成首尾闭合循环，用按输入跨度确定精度的有界Decimal-v2求和，按显式atol_hartree和rtol=0判断。来自同一能量表的差分本就代数相消；即使闭合也不是独立验证。不同source_id只是声明，不能证明来源独立或真实性。
 
 只复核给定的2–100条有向能差及比较身份；不执行SCF、寻找真实反应路径、生成缺失能差或证明能量分解唯一。算子/基组/几何/电子数必须一致，跨Hamiltonian比较需额外物理桥接，当前接口拒绝。
 
@@ -23,6 +23,16 @@
 能量算术采用skill-ledger-decimal-v2：每个十进制输入文字≤128字符、系数≤80位、Decimal指数在−200至200；不接收布尔值、特殊值或带空白文字。这里“系数位数/指数”指Decimal数字元组，不是化学有效数字认证。总精度由所有输入跨度及项数上界推导，上限1024位；乘积求和、独立总量差及阈值比较在同一精确上下文进行。任何Inexact/Rounded或预算越界均失败，绝不把失去的小残差当作闭合。回执的arithmetic记录策略与实际精度，原atol不变。
 
 [Python3.12 Decimal：舍入与相消](https://docs.python.org/3.12/library/decimal.html#mitigating-round-off-error-with-increased-precision)明确有限精度仍会舍入；本策略只保证所定义有界算术，不认证能量来源、方法、端点真实性或物理可比性。例如1e60+0.1−1e60必须报告0.1，不能据夸张数值声称化学合理。
+
+## 知识要点与经典依据
+
+设按顺序连接A→B→C→A，定义每边`ΔE=E(to)−E(from)`，则由同一组端点能量计算的和为`(EB−EA)+(EC−EB)+(EA−EC)=0`。这是消去共同端点的恒等式；拿同一表计算三条边，再用闭合来验证该表，属于循环论证。独立测量/计算来源的边可能提供额外检查，但不同source_id本身不能证明独立。
+
+本接口固定算子、基组、几何与电子数，只对这一声明范围作有向循环算术；混算子或混几何需要额外明确定义的桥接，不能换单位后直接拼合，也不能把物理化学中的热力学循环概念直接当作本程序的任意端点资格。循环和残差的单位为Hartree，阈值为显式绝对atol，rtol=0。Decimal-v2捕获所定义范围的算术舍入，不替代源能量的收敛误差或实验不确定度。
+
+Jensen§1.2/§1.6.2的系统与Hamiltonian背景用于解释“同一比较身份”；上述恒等式已在本页直接证明，不冒称某经典教材证明了本模块特有协议。[Jensen《Introduction to Computational Chemistry》3版](https://catalogimages.wiley.com/images/db/pdf/9781118825990.excerpt.pdf)，Wiley，2017，实际核验出版社开放第1章节选；后述推导为本页给定模型的解析运算，不冒称读过整书。
+浮点相消的系统阅读可查Burden/Faires第1章。[Burden与Faires《Numerical Analysis》9版](https://www.cengage.co.in/book-list/print/numerical-analysis-c2)第1/3/4章分别涉及误差、插值与数值微分；本次核验出版社目录，未取得这些章节全文，不借目录声称已核对误差定理。
+完整出处、职责与访问限度见[runtime/sources.json](runtime/sources.json)。
 
 ## 安装与默认运行
 

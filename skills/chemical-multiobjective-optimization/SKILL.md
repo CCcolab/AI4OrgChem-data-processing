@@ -33,3 +33,23 @@ data显式bounds、feature_names/feature_units、observed_ids/x/y、source_ids�
 ## 方法来源
 
 [BoTorch官方多目标教程](https://botorch.org/docs/v0.17.2/tutorials/multi_objective_bo)说明全max方向与参考点，[qLogNEHVI接口](https://botorch.readthedocs.io/en/stable/acquisition.html)说明对数采集函数；实际执行版本固定0.18.1。
+
+## 解释与复核要点
+
+同时变换目标方向和参考点，区分原单位观测HV与对数采集值。噪声输入为SD，GP输入为其平方；保留拟合警告和有限池/单提议边界。使用GP教材支持条件化，用NEHVI/LogEI原论文解释现代采集函数。
+
+将每个最小化目标与对应参考坐标乘−1，统一为最大化。点a支配b是各目标均不差且至少一个更好；Pareto集合取不被其他点支配者。相对参考点r的超体积HV是Pareto点与r形成矩形区域的并集体积，HVI=HV(P∪新点)−HV(P)；其单位是两个目标单位的乘积，尺度或参考点变化会改变数值。
+
+本例SingleTaskGP对两输出使用独立GP结构，并以Standardize处理目标及已给噪声方差；不声称学习目标间相关性。NEHVI对已有点潜在值/Pareto前沿的不确定性积分，qLogNEHVI使用数值稳定的对数域及平滑近似来评分，输出log_acquisition_values不能当原单位超体积。此处q=1，仅对显式有限池逐点评分；8–64个Sobol样本和有界拟合不提供收敛/全局最优保证。
+
+## 依据的用途与访问范围
+
+章节定位：GPML第2章Regression（正文）；Daulton等第4–5节与Ament等LogEI/对数超体积附录（作者HTML正文）。
+
+基础阅读：[GPML](https://gaussianprocess.org/gpml/chapters/)。
+
+原始方法/作者专论：[NEHVI](https://arxiv.org/html/2105.08195v2)、[LOGEI](https://arxiv.org/html/2310.20708v3)。
+
+实现接口：[BOTORCHTUT](https://botorch.org/docs/v0.17.2/tutorials/multi_objective_bo)、[BOTORCHAPI](https://botorch.readthedocs.io/en/stable/acquisition.html)。
+
+GPML为2006年专著，作者网页对应第二次印刷；第2章回归正文可访问并核对，其他章仅按已核目录定位。 各条原论文/软件文档的具体访问范围及版本记录见[runtime/sources.json](runtime/sources.json)；滚动API页面与固定运行依赖分开记录。经典书目补充基础，现代算法仍保留其原始论文，API文档继续用于接口约定。

@@ -11,7 +11,7 @@ description: 复核按顺序提供的有向能差循环、算子/基组/几何/�
 
 parameters：operator_id、basis_id、geometry_id、electron_count、atol_hartree。data.edges逐项含from、to、delta_hartree、source_id及相同四个比较身份字段。用实际来源替换合成例标签，不只修改能差数字。
 
-每条delta=E(to)−E(from)，按顺序构成首尾闭合循环，用50位Decimal求和，按显式atol_hartree和rtol=0判断。来自同一能量表的差分本就代数相消；即使闭合也不是独立验证。不同source_id只是声明，不能证明来源独立或真实性。
+每条delta=E(to)−E(from)，按顺序构成首尾闭合循环，用按输入跨度确定精度的有界Decimal-v2求和，按显式atol_hartree和rtol=0判断。来自同一能量表的差分本就代数相消；即使闭合也不是独立验证。不同source_id只是声明，不能证明来源独立或真实性。
 
 ## 输入校验与方法依据补充
 
@@ -37,3 +37,7 @@ parameters：operator_id、basis_id、geometry_id、electron_count、atol_hartre
 本模块展示明确声明的状态差分与循环求和数学定义；[Python Decimal](https://docs.python.org/3/library/decimal.html)支持十进制运算。未核实的化学循环、约束态或跨算子端点不获科学资格，不能因算术闭合自动升级。
 
 环差定义ΔE=E(to)−E(from)。若每条边都来自同一能量表，闭合是消去共同端点的代数恒等式；只有独立来源、相同比较身份和明确桥接才可能支持额外检验。这里不宣称路径独立性或某新哈密顿量理论。
+
+## 解释规则与理论依据
+
+解释循环时展开至少一个ΔE=E(to)−E(from)的端点消去式，提醒共享能量表产生的闭合是恒等式，不是独立检验。先核对固定算子/基组/几何/电子数标签，来源ID差异不等于真实性或独立性；未提供物理桥接时拒绝混身份比较。绝对atol/rtol=0是请求合同，Decimal-v2回执精度仅保证有界算术，不赋予新的物理精度。Jensen公开§1.2/§1.6.2提供Hamiltonian背景，Burden/Faires第1章仅核验目录；不能把书目说成当前协议的全文验证。见runtime/sources.json。

@@ -1,6 +1,6 @@
 {
   "schema": "adp-private-python-skill-publication-v1",
-  "revision": "skills-deep-findings-private-main-20261024",
+  "revision": "skills-knowledge-repairs-private-main-20261025",
   "visibility": "PRIVATE",
   "entry": "START_HERE_zh-CN.md",
   "legacy_web_enabled": false,
@@ -44,7 +44,7 @@
     },
     {
       "file": "NAVIGATION.json",
-      "sha256": "5b47228548b0b6ca37f7aa93805a6e8858c04fd3ea7a167ce10e86536ddafe1d"
+      "sha256": "b6404997b90955d7d0e8c376e3b9571435f0077d6abc5c161ea193e53025a980"
     },
     {
       "file": "PLATFORM_ENTRY.json",
@@ -68,43 +68,43 @@
     },
     {
       "file": "docs/PYTHON_USAGE.md",
-      "sha256": "cf698c52e7eb0f8ba8f7b4e9349a6ee69442ff15949beba3d004830bdd61c718"
+      "sha256": "3790376748ae3768a0f603cde8796ffae58de286a346b2cda74c41d4f6d3352e"
     },
     {
       "file": "docs/RIGHTS_REVIEW.md",
-      "sha256": "d968633c88b9e3d13bf1642708a26eb50d7cf6f6db03dce60817b87d814870de"
+      "sha256": "2327bd3c134999d81b894e3ecb5c48b7d651819bcd81c102e16e2f1e6d80fde3"
     },
     {
       "file": "skills/chemical-bayesian-optimization/README.md",
-      "sha256": "f5ab60f0e7d53a9acae3e5eeb4675a919f0f17b251ae72df4765f1b867ee49d2"
+      "sha256": "5e6b123729b9cc38b372cc1c0950ca6166789a7dc00d33bc21160a621bb6a3a4"
     },
     {
       "file": "skills/chemical-bayesian-optimization/SKILL.md",
-      "sha256": "758d724098d1772d32d9eec070194bfea473d1ef0e74b588521d6ef6110dbf97"
+      "sha256": "e3ae92a616d8b1ae93a98f660e475363b887fbec885928147cba2a0c3cf5812d"
     },
     {
       "file": "skills/chemical-bayesian-optimization/downloads/SHA256SUMS.txt",
-      "sha256": "a15ed50c26422767523a5b8097344243e192b35a06aabcd9bd4a66fe0cab9cfe"
+      "sha256": "018b3576c867e0e15b32097ca26bafe05a0aa4f77587e9afb7e22d235e09fdf8"
     },
     {
       "file": "skills/chemical-bayesian-optimization/downloads/SKILL-md.zip",
-      "sha256": "4a5e4414b6722c1625d955f8c928f006fbec924904ae88189c795004029482e6"
+      "sha256": "4f7d7d0d60417f6976371330c1828a8973fff1df7f1ac2a432308f84fdd18927"
     },
     {
       "file": "skills/chemical-bayesian-optimization/downloads/SKILL-md.zip.sha256",
-      "sha256": "21636ee851cbb474b3de7ded5b79abd75644daacf19260f7bf18391027a12b49"
+      "sha256": "04882575f2715fa0f32eaccc30c69e77308351051f746cdbed95562d76a2c815"
     },
     {
       "file": "skills/chemical-bayesian-optimization/downloads/SKILL.md",
-      "sha256": "758d724098d1772d32d9eec070194bfea473d1ef0e74b588521d6ef6110dbf97"
+      "sha256": "e3ae92a616d8b1ae93a98f660e475363b887fbec885928147cba2a0c3cf5812d"
     },
     {
       "file": "skills/chemical-bayesian-optimization/downloads/chemical-bayesian-optimization-python.zip",
-      "sha256": "99e147c423a812b983689450159eb0e00073bcd85a6825567cdb27d2f194582c"
+      "sha256": "2b554a3095b6daeb0d31024d69052d9bf1857f41cbe94fdd3cd645602a3b72e2"
     },
     {
       "file": "skills/chemical-bayesian-optimization/downloads/chemical-bayesian-optimization-python.zip.sha256",
-      "sha256": "d556f7f42b263480253b29eb6a13d16430fc963902753646f2f05e9fa2b79d0b"
+      "sha256": "bbde1dc2d17c408d93f731ddfe356c07c830670c69dd31316c7e119acf305ad1"
     },
     {
       "file": "skills/chemical-bayesian-optimization/runtime/analysis.py",
@@ -144,11 +144,15 @@
     },
     {
       "file": "skills/chemical-bayesian-optimization/runtime/resource-manifest.json",
-      "sha256": "16eb283199ebee6598af61570474b6f51f8383ce781e7beeb01d2d1b374aedc7"
+      "sha256": "67581432719aeed2e75f0eb4a3863c0405086ed72771acdd41fb9f7d4f3478a8"
     },
     {
       "file": "skills/chemical-bayesian-optimization/runtime/run_skill.py",
       "sha256": "634a1309ef0e81731440c30b99207fc59a4efd420da4c64b1f1d802d53b5753f"
+    },
+    {
+      "file": "skills/chemical-bayesian-optimization/runtime/sources.json",
+      "sha256": "3cf58fea35e988f49709a8460588fa3aece32712bb30e951145aeac662044112"
     },
     {
       "file": "skills/chemical-bayesian-optimization/runtime/support.py",
@@ -156,35 +160,35 @@
     },
     {
       "file": "skills/chemical-chemprop-prediction/README.md",
-      "sha256": "4b3ec9b261150e8960993a6a2d7c551c27214559d3c8fb58f5f1300a08abc745"
+      "sha256": "02a654089d6c284ea96e6eb29b4b62188a96ac1be9445d2020f3738083b0845a"
     },
     {
       "file": "skills/chemical-chemprop-prediction/SKILL.md",
-      "sha256": "3a6eba1ac0f4d33f485856515d2ad193f48006f3edc19bf946fbbe63332d72de"
+      "sha256": "f43a2e4a4c0e2e39a21c136199b38526644bf10dd627a81b300f9aa471c8c7d7"
     },
     {
       "file": "skills/chemical-chemprop-prediction/downloads/SHA256SUMS.txt",
-      "sha256": "e6fba41138a92043ec468a6291993b6a2740b99fc928488b8f65ebde468bd3c8"
+      "sha256": "983f2008097e5e1f3df4403c73015f1a6ce0b109b35fb614d4054c3814fbdfb9"
     },
     {
       "file": "skills/chemical-chemprop-prediction/downloads/SKILL-md.zip",
-      "sha256": "dfae3a9ee8e0b33a8ef5ce808667b4b8cdacbd7903391ef6a92638cd341d38f3"
+      "sha256": "0206de4630ef46f69f333ff228970f965da159e928e2ec7db6dd9db7ffc7349a"
     },
     {
       "file": "skills/chemical-chemprop-prediction/downloads/SKILL-md.zip.sha256",
-      "sha256": "59f3dd7cae480586d2f210c84e4bea114c5d3efb35807ac08f2624ab89f2a750"
+      "sha256": "02d2bbf2ee76c3691b74246ee4c4bd6bdf964ad8575633a39b918f27f4be5f5e"
     },
     {
       "file": "skills/chemical-chemprop-prediction/downloads/SKILL.md",
-      "sha256": "3a6eba1ac0f4d33f485856515d2ad193f48006f3edc19bf946fbbe63332d72de"
+      "sha256": "f43a2e4a4c0e2e39a21c136199b38526644bf10dd627a81b300f9aa471c8c7d7"
     },
     {
       "file": "skills/chemical-chemprop-prediction/downloads/chemical-chemprop-prediction-python.zip",
-      "sha256": "631d4d8094c0f3210f7d61ca368c2beb9ba5bd88eeb78e6aa49b8d5ec3bcc033"
+      "sha256": "493aab0a6efc956bac71bda1d4928b93028562f5db27cf3273b3b556bfc1452b"
     },
     {
       "file": "skills/chemical-chemprop-prediction/downloads/chemical-chemprop-prediction-python.zip.sha256",
-      "sha256": "5aea8e519762c4698ebbeb50cccefbdcc8919943d8fc465d91322e1314950106"
+      "sha256": "4afa678fe96ac06b7da66a8cdff1d89de6f06a762062d1e94a1c69e97ee4732a"
     },
     {
       "file": "skills/chemical-chemprop-prediction/runtime/analysis.py",
@@ -232,7 +236,7 @@
     },
     {
       "file": "skills/chemical-chemprop-prediction/runtime/resource-manifest.json",
-      "sha256": "cf0cd0908401a4ff01540107f3895b2d00897d8b9167bce9bf8f89916e05f87b"
+      "sha256": "c990fd6c3dd51ff41d4af0416314b0c8668f43dab489ed3682199d87f7f88492"
     },
     {
       "file": "skills/chemical-chemprop-prediction/runtime/run_from_csv.py",
@@ -243,12 +247,16 @@
       "sha256": "634a1309ef0e81731440c30b99207fc59a4efd420da4c64b1f1d802d53b5753f"
     },
     {
+      "file": "skills/chemical-chemprop-prediction/runtime/sources.json",
+      "sha256": "0391d3c5982522727bd06ad42fd514ddab7f9138c5c02101484b1b6cfbf5dedd"
+    },
+    {
       "file": "skills/chemical-experimental-plotting/README.md",
-      "sha256": "2db7657410bada385b6a5f9fef3edf469903d02bf640fc2d00dc16e6a22bc057"
+      "sha256": "866f449685c266c431cc390de4f0c1568e098721a89b0a122e3381d54739a536"
     },
     {
       "file": "skills/chemical-experimental-plotting/SKILL.md",
-      "sha256": "11d958f0a497471cdbc27a40ecc409d97055494aa39db867464d4df93c05ff18"
+      "sha256": "50713971d60ee4dc90b4a88aa9d46d02f64af3b09a58c3d9a678140ae42586ac"
     },
     {
       "file": "skills/chemical-experimental-plotting/assets/replicate-sd.png",
@@ -256,27 +264,27 @@
     },
     {
       "file": "skills/chemical-experimental-plotting/downloads/SHA256SUMS.txt",
-      "sha256": "10c38d0f25f152035289bc0ed4bb3c85ab18db1f92bfbe7ae3120a3f77e78e28"
+      "sha256": "ead9716a9aca8b6b43942d0f70fa46b2dcf6801b4e7bd990be73d6dfada1c13f"
     },
     {
       "file": "skills/chemical-experimental-plotting/downloads/SKILL-md.zip",
-      "sha256": "4b11cd5ce235b900cf153f6ed0a210cb836799b076ad01440e4d274efd0105d9"
+      "sha256": "0b79257102e010ea8b97467c7c9722514f22b2b31df2b7128e54af67d3accd51"
     },
     {
       "file": "skills/chemical-experimental-plotting/downloads/SKILL-md.zip.sha256",
-      "sha256": "4ac7e605697c1933ea40edf5a8d78d8ba4d3ea835eb96d80d81271ef953a35ff"
+      "sha256": "cb3d025c31510ce66a5376958ca47e602eca57f64fe0d53b613f555bb572c0e8"
     },
     {
       "file": "skills/chemical-experimental-plotting/downloads/SKILL.md",
-      "sha256": "11d958f0a497471cdbc27a40ecc409d97055494aa39db867464d4df93c05ff18"
+      "sha256": "50713971d60ee4dc90b4a88aa9d46d02f64af3b09a58c3d9a678140ae42586ac"
     },
     {
       "file": "skills/chemical-experimental-plotting/downloads/chemical-experimental-plotting-python.zip",
-      "sha256": "99d74ccfe0de0db0b1006d8a0062f4cc74db0efed489a017e3bab058792987ca"
+      "sha256": "3cab287cacfa1f93edd22166102a83ea95ab2af9200d4aa72a24ae9a9594ad17"
     },
     {
       "file": "skills/chemical-experimental-plotting/downloads/chemical-experimental-plotting-python.zip.sha256",
-      "sha256": "df0b7b34c135964c02051dd1235afd6e9c57007037172c91bc8b6ac19e571461"
+      "sha256": "a78cf3ba540ce2d009f0fa1527f45e2b531c50a234ab73d6d7d6bb0fdab1a072"
     },
     {
       "file": "skills/chemical-experimental-plotting/runtime/examples/01-scatter.csv",
@@ -316,39 +324,43 @@
     },
     {
       "file": "skills/chemical-experimental-plotting/runtime/resource-manifest.json",
-      "sha256": "baf5829b430fe24c9ea58d278e117423e3394ac9730dcf845732fc6810b3c121"
+      "sha256": "c34a562fcf0f8b2387c828f25eb5d70deb3cd8bd393a03457978d12cdfac1334"
+    },
+    {
+      "file": "skills/chemical-experimental-plotting/runtime/sources.json",
+      "sha256": "98f764dac3127e776ae76f744d4ec032ba32c1b85207f30d0345dde33f32dbfe"
     },
     {
       "file": "skills/chemical-identifier-resolution/README.md",
-      "sha256": "e65f9ba45ee6982408e45e3724b981d3d081c397cc6dd0cd9f61d9f269d3805d"
+      "sha256": "4f043a991c0832f694cfe0347d04fc061c14210efb7ca964d89d0d1a1daf7590"
     },
     {
       "file": "skills/chemical-identifier-resolution/SKILL.md",
-      "sha256": "f7d8f718a6fe0e1f53b42a977ba9003deb5232fc71d08e974993f4514a44f715"
+      "sha256": "2815a1bada831ffc30800b39eabe05bb53fe9c366c1fd1b1d9df5ddfa822af87"
     },
     {
       "file": "skills/chemical-identifier-resolution/downloads/SHA256SUMS.txt",
-      "sha256": "c763ded6aac25395bac43c7a899adaf2ca40a8b461d51f4e35fdba0f3f5482d8"
+      "sha256": "cf191f0e476b5e3809c1f85eca2ea0961970128e28d0fc3e1965d0e29be459a7"
     },
     {
       "file": "skills/chemical-identifier-resolution/downloads/SKILL-md.zip",
-      "sha256": "b93a20b8b7beb7184f61eaa6bc8f6d89a01cd55c59a66d13c9404dd433de47c7"
+      "sha256": "956442902c0617c7932cecf7c4cb60fd33c4d20c39542e0c3eddbef0a5aadbd9"
     },
     {
       "file": "skills/chemical-identifier-resolution/downloads/SKILL-md.zip.sha256",
-      "sha256": "90073f8478b81383a0e2d0eaeb1b58ff3728269c71c8ba9d039890b7f6e70814"
+      "sha256": "ec87f3abc445df70cd3c0a81724d5f6e41d389f710780150c20d5693ea568de7"
     },
     {
       "file": "skills/chemical-identifier-resolution/downloads/SKILL.md",
-      "sha256": "f7d8f718a6fe0e1f53b42a977ba9003deb5232fc71d08e974993f4514a44f715"
+      "sha256": "2815a1bada831ffc30800b39eabe05bb53fe9c366c1fd1b1d9df5ddfa822af87"
     },
     {
       "file": "skills/chemical-identifier-resolution/downloads/chemical-identifier-resolution-python.zip",
-      "sha256": "b034a8baeaec76400bc6f500d0e414c64ffe6721ae8816ade6741337fb08ee93"
+      "sha256": "9e36c5fbaefd7c82581c31f424f78ff3db1bcb2fc2b88c79cc98c700ba1e056f"
     },
     {
       "file": "skills/chemical-identifier-resolution/downloads/chemical-identifier-resolution-python.zip.sha256",
-      "sha256": "a3cfe2bed8bb02b6ee1bc5455446eb7ea86f8356fd0edfc6747f6fcd0c539807"
+      "sha256": "0468f38b0de206ed3baea259531ed1b7a4465600fac255b0c8d786519e6040a3"
     },
     {
       "file": "skills/chemical-identifier-resolution/runtime/examples/01-local.csv",
@@ -388,39 +400,43 @@
     },
     {
       "file": "skills/chemical-identifier-resolution/runtime/resource-manifest.json",
-      "sha256": "3b89e088b00b2b9b387cd9d997ea23a57719f6dd9e03e894335c425df3444b4c"
+      "sha256": "fc6f52ec265a9b7b6455d25ddb8a40df7b9cb2f93822cc5df37e9838471ccba2"
+    },
+    {
+      "file": "skills/chemical-identifier-resolution/runtime/sources.json",
+      "sha256": "0b1b03b6b3dcde32fc32e23d016c665715259a427063f8a8511bc3bfc539cda4"
     },
     {
       "file": "skills/chemical-mlp-models/README.md",
-      "sha256": "303bf4508516fcec2bca6e323cd22d5bad57f3e14af67b01f58baa93dba8051a"
+      "sha256": "9783761d4f2c87b7c261bae707f4ead5642f6da02e6c9e3346d552d1456f9e95"
     },
     {
       "file": "skills/chemical-mlp-models/SKILL.md",
-      "sha256": "b8f74ec147d8c89e34e8a22f43c11c9915b247c1dadada76be457fe7e7caea48"
+      "sha256": "f83b53b3d6a92d144661f8ece6f5a7f0f779718b37366be0270571ce3844d70d"
     },
     {
       "file": "skills/chemical-mlp-models/downloads/SHA256SUMS.txt",
-      "sha256": "0f2e0d765342213329a4f7b6526f34ca608ffc09b6f1fa8bfb2260e0ce190d67"
+      "sha256": "092e2b80ef81f51ac34c308b310ff0a5fb37f74e8145bb5086e5bd2e20b5d48f"
     },
     {
       "file": "skills/chemical-mlp-models/downloads/SKILL-md.zip",
-      "sha256": "5c4704d2b3851722fae6983a94c4dfab86a7afde19fb0abc4c2711acf47d11f1"
+      "sha256": "f8f9463b60fbfa16225f7f4cbbb5fcc15288e2bbfed3ab41a9b1c0122fa40c19"
     },
     {
       "file": "skills/chemical-mlp-models/downloads/SKILL-md.zip.sha256",
-      "sha256": "263c4d23479405ca228869a7de6c7006708854662338896c1e75a04d189b87db"
+      "sha256": "26236a18a92c3d36c72a4c75af0a0fb655cbfc251ebd2c4a88d4ab0b50a8c4b2"
     },
     {
       "file": "skills/chemical-mlp-models/downloads/SKILL.md",
-      "sha256": "b8f74ec147d8c89e34e8a22f43c11c9915b247c1dadada76be457fe7e7caea48"
+      "sha256": "f83b53b3d6a92d144661f8ece6f5a7f0f779718b37366be0270571ce3844d70d"
     },
     {
       "file": "skills/chemical-mlp-models/downloads/chemical-mlp-models-python.zip",
-      "sha256": "b8690f37854d2bcc747bcff29ce9fb5727508a1c46595bd486935ad8987805ce"
+      "sha256": "f35cc67e780b296fb79903619dc3498ee51f57cfec1f86d89a8639c874db083d"
     },
     {
       "file": "skills/chemical-mlp-models/downloads/chemical-mlp-models-python.zip.sha256",
-      "sha256": "b655e7302816cd202bfb6c22da655609bb2dbef73baf67939d2461865b5b9907"
+      "sha256": "67f795b7fe2f352e360cc3d72c286214be8686bc4ab0bd891e1d62feee88da9e"
     },
     {
       "file": "skills/chemical-mlp-models/runtime/analysis.py",
@@ -460,7 +476,7 @@
     },
     {
       "file": "skills/chemical-mlp-models/runtime/ml_support.py",
-      "sha256": "5a175ad0dc083437ceeeadfbaf7ce0be5564b77ab043cc2219ac2f61f4df62cf"
+      "sha256": "9c77c8b49bd62e8c8716f82c6804d1251db8da288241ce1132f5d8ea12ea3683"
     },
     {
       "file": "skills/chemical-mlp-models/runtime/requirements.txt",
@@ -468,7 +484,7 @@
     },
     {
       "file": "skills/chemical-mlp-models/runtime/resource-manifest.json",
-      "sha256": "ee9a6f4bcc46d2974a75147753d111d49f6eb678a1bb1500168c7d0d5ea40367"
+      "sha256": "7b7dc4427d030eb3f820d7a88b9eb5b6783ced5b5eefb4d0171a522fba7276fb"
     },
     {
       "file": "skills/chemical-mlp-models/runtime/run_from_csv.py",
@@ -479,36 +495,40 @@
       "sha256": "634a1309ef0e81731440c30b99207fc59a4efd420da4c64b1f1d802d53b5753f"
     },
     {
+      "file": "skills/chemical-mlp-models/runtime/sources.json",
+      "sha256": "12ee1fdd6655632e59171f7579685bfa16f3d0412cb57cade37da4b6c7de3b6c"
+    },
+    {
       "file": "skills/chemical-model-validation/README.md",
-      "sha256": "91ca20e870c2de5253b45291bc82ad154f50ef34ae3bd6513ed25161fa3ebb43"
+      "sha256": "2c1d77cf1768497b1f5d052f76cf8536492b2f7288b195f068ad91c95b30e589"
     },
     {
       "file": "skills/chemical-model-validation/SKILL.md",
-      "sha256": "382e96445d3c3157fa47a2ed2ebdab6951b15e8456beb62f9117398ce2be1e55"
+      "sha256": "a943911b30e803d508dd727f20143890632d00212d4c05f618f80ce99021c940"
     },
     {
       "file": "skills/chemical-model-validation/downloads/SHA256SUMS.txt",
-      "sha256": "644db160d651560ec3be345f03337a72405dc2577767f8c41908f91f3d1e2a2d"
+      "sha256": "680340453b3df01f74e564dae073d164c5cbe2110bc84c68253955c212b7f57c"
     },
     {
       "file": "skills/chemical-model-validation/downloads/SKILL-md.zip",
-      "sha256": "1a0d51512bf287dad9b1e56d135147facd89654d5f06dff063040b798133f485"
+      "sha256": "ae8ec65f9681f7a1b92d5b8bf8d75d26ce13b610f74f4f3ff66e2e752e34e1f8"
     },
     {
       "file": "skills/chemical-model-validation/downloads/SKILL-md.zip.sha256",
-      "sha256": "edc279fd7e7c3cc097bbc80fa0d1368e1a6b57c03312cc507f2956728a2fe881"
+      "sha256": "e8ea1e798e6c5dbe11024edea004239d33f04716dade63e7ec38d173d9324c81"
     },
     {
       "file": "skills/chemical-model-validation/downloads/SKILL.md",
-      "sha256": "382e96445d3c3157fa47a2ed2ebdab6951b15e8456beb62f9117398ce2be1e55"
+      "sha256": "a943911b30e803d508dd727f20143890632d00212d4c05f618f80ce99021c940"
     },
     {
       "file": "skills/chemical-model-validation/downloads/chemical-model-validation-python.zip",
-      "sha256": "ea0332c16c372ac09dc88b4fce065f0c1fb3b1e7afdcb6d9f31a5d49785e1746"
+      "sha256": "82a3de07ed706bcb17bd744d0b8eab18423db26ee9b472fe000ca7d70962ce86"
     },
     {
       "file": "skills/chemical-model-validation/downloads/chemical-model-validation-python.zip.sha256",
-      "sha256": "eb392f5bce6570f55af2101e60e689894b10c047cbb995b33822fbe0b37cd99c"
+      "sha256": "1b061d76b79cf1b8dfa63ec0ec1d91ee6da4353f64cc87df843dd8e451f8c1b5"
     },
     {
       "file": "skills/chemical-model-validation/runtime/analysis.py",
@@ -556,7 +576,7 @@
     },
     {
       "file": "skills/chemical-model-validation/runtime/resource-manifest.json",
-      "sha256": "5a4ab3fd57b7e2fa2a07e243fc1c7fca36513d22a687514e1e2c50806a54b735"
+      "sha256": "003efd824283e641762c2780da2630888313c1614425859135492e4239013a0d"
     },
     {
       "file": "skills/chemical-model-validation/runtime/run_from_csv.py",
@@ -567,36 +587,40 @@
       "sha256": "634a1309ef0e81731440c30b99207fc59a4efd420da4c64b1f1d802d53b5753f"
     },
     {
+      "file": "skills/chemical-model-validation/runtime/sources.json",
+      "sha256": "2383f62abdc7aa8e0f1f1af7a1e232c9260c73a7c3e9c72afe26e546ed523b6b"
+    },
+    {
       "file": "skills/chemical-molecule-clustering/README.md",
-      "sha256": "2892c0e6af96c45e9fed24e320e149b17f73c89c88393f8f2373dad11fdf447c"
+      "sha256": "693f333ed4c6711bff6cb3d63c35306108d5c513b7e400dc699a77b87ecd1251"
     },
     {
       "file": "skills/chemical-molecule-clustering/SKILL.md",
-      "sha256": "728156e68242fc600b65c927f4376dc1a9c6101837c46fcf6113ad8779f46d1b"
+      "sha256": "0356128af0bc64823af7c4256a90197114deaa413983b61a80b38a424552f949"
     },
     {
       "file": "skills/chemical-molecule-clustering/downloads/SHA256SUMS.txt",
-      "sha256": "f1b1f514b20947872ea4ffbe75b462e2c35ea9d2e93737efa1dda615428eeae3"
+      "sha256": "578d12aa1c9f252810970664102ed34e625cf9b806abb679c69cb5eed59a9f05"
     },
     {
       "file": "skills/chemical-molecule-clustering/downloads/SKILL-md.zip",
-      "sha256": "b76a10f3fce47d01e60b497cf1f90a53f2589e4c3b99d3c688a170d1bdfe0685"
+      "sha256": "fe600ad6824e8b6a2449e8d47459673eb4237f2198ba6fd6c5a4a402a2a2b10a"
     },
     {
       "file": "skills/chemical-molecule-clustering/downloads/SKILL-md.zip.sha256",
-      "sha256": "83c54d7770efa695f1056c0b0a1fb21499368107582cd7029283ed2ecf2dfc52"
+      "sha256": "dbae4ee15f96d040df6ea0e7fa303bd7d63e29442192368bdd32cb5a51778a72"
     },
     {
       "file": "skills/chemical-molecule-clustering/downloads/SKILL.md",
-      "sha256": "728156e68242fc600b65c927f4376dc1a9c6101837c46fcf6113ad8779f46d1b"
+      "sha256": "0356128af0bc64823af7c4256a90197114deaa413983b61a80b38a424552f949"
     },
     {
       "file": "skills/chemical-molecule-clustering/downloads/chemical-molecule-clustering-python.zip",
-      "sha256": "6248076399670e132fbb8bd868731aea7f18c15ea2617a9ae3789f2a630c7be2"
+      "sha256": "406dce5dcef461c344f4f20a078dbf1528799e57fbfc0b4ab2441e0a5d983919"
     },
     {
       "file": "skills/chemical-molecule-clustering/downloads/chemical-molecule-clustering-python.zip.sha256",
-      "sha256": "35afc41735748904fffe8b0b573aafae3ef44454058c5438734fcdb30a9c1f95"
+      "sha256": "de7e1776fce3551645995e6180555d0ffad5acca34996f57863f7aac6805bee3"
     },
     {
       "file": "skills/chemical-molecule-clustering/runtime/analysis.py",
@@ -644,7 +668,7 @@
     },
     {
       "file": "skills/chemical-molecule-clustering/runtime/resource-manifest.json",
-      "sha256": "8f5a612da4f48f8c87497fed403d45608c6ccdd27fa24948f63cc5b4c134f2fb"
+      "sha256": "da3cd7a372ed4c8725a42ca8d185ff15c84628b1a2c03ceb837992f6e18a9378"
     },
     {
       "file": "skills/chemical-molecule-clustering/runtime/run_from_csv.py",
@@ -655,40 +679,44 @@
       "sha256": "634a1309ef0e81731440c30b99207fc59a4efd420da4c64b1f1d802d53b5753f"
     },
     {
+      "file": "skills/chemical-molecule-clustering/runtime/sources.json",
+      "sha256": "3cfd7c743a2015b7a6ae28c1755ccbe8dfea841dd20eb6e918cea844ad60c8be"
+    },
+    {
       "file": "skills/chemical-multiarmed-bandit/README.md",
-      "sha256": "d09cdc025d73d259865a2fdf76c494f4f486f84bb9a07cdd1ba459b4f05a54d7"
+      "sha256": "e77406f5b18bbeaf24e0287c6f3eb54378a648ead8e11ce31ea8df3a8b152c7f"
     },
     {
       "file": "skills/chemical-multiarmed-bandit/SKILL.md",
-      "sha256": "22ebdf701ab740a76122994e8ecfd3f1a15eb32ccfee60a74600997c17185116"
+      "sha256": "bfc1e9fed83d64524a7943bf3c156e7017df6d7b8b04c980b3b15d814f957b66"
     },
     {
       "file": "skills/chemical-multiarmed-bandit/downloads/SHA256SUMS.txt",
-      "sha256": "bd3ec13996c7bb933723be422101599d087f49672eaabc0fd3521098768da457"
+      "sha256": "d2738523b421ae72bd0b47f581c89baa745cf49b117364371dbbd61b9e7f5219"
     },
     {
       "file": "skills/chemical-multiarmed-bandit/downloads/SKILL-md.zip",
-      "sha256": "9df9a6ee556d49a38b4a2d2033c60bd22f8749228405c58c843c7895f476d413"
+      "sha256": "a31869e0ed15a7fff09dfc3fd2f9c81bb8c77386696c69684378a028f9a81889"
     },
     {
       "file": "skills/chemical-multiarmed-bandit/downloads/SKILL-md.zip.sha256",
-      "sha256": "257f17e011cf85cc6c00b7fbfd2ea0e6976717d8c5d492fd00b09870c58fbd84"
+      "sha256": "dedc0105ce7d094567accc51dc02da00eaededb17bb077e9dcb9964f76620f51"
     },
     {
       "file": "skills/chemical-multiarmed-bandit/downloads/SKILL.md",
-      "sha256": "22ebdf701ab740a76122994e8ecfd3f1a15eb32ccfee60a74600997c17185116"
+      "sha256": "bfc1e9fed83d64524a7943bf3c156e7017df6d7b8b04c980b3b15d814f957b66"
     },
     {
       "file": "skills/chemical-multiarmed-bandit/downloads/chemical-multiarmed-bandit-python.zip",
-      "sha256": "36d1a4e6e84f45f5383c8ece488d408ff997b187e6b2cb30d208b82f328fdbc2"
+      "sha256": "5b8866509cf77ddc68ecab23a7db0b5069481a623a1762fb8ada611f863ebf44"
     },
     {
       "file": "skills/chemical-multiarmed-bandit/downloads/chemical-multiarmed-bandit-python.zip.sha256",
-      "sha256": "d4ad8444a0c085ad83251669a53f32b3502e9da6d7ac9ca0520b1ae45fe91823"
+      "sha256": "3f1ded225c96babb1610454cf360066e8f5d7704b683b9bb07313f1a31052049"
     },
     {
       "file": "skills/chemical-multiarmed-bandit/runtime/analysis.py",
-      "sha256": "a37ede6786dc064e01f78db065085118a28636be571be2355ff8ea95b962c6f2"
+      "sha256": "d7c95a980d94bbcdd07e8aeacd754311887a501b602538ea0c507810bce19813"
     },
     {
       "file": "skills/chemical-multiarmed-bandit/runtime/examples/01.json",
@@ -724,11 +752,15 @@
     },
     {
       "file": "skills/chemical-multiarmed-bandit/runtime/resource-manifest.json",
-      "sha256": "cdf09d03360f1fcc09a45c1d436063425d1b9cfb35e430e43d4369854e2776cc"
+      "sha256": "350559dc9d78797dcee6be2943324a95b7898d0ccdfc8366e6980952d1e33603"
     },
     {
       "file": "skills/chemical-multiarmed-bandit/runtime/run_skill.py",
       "sha256": "634a1309ef0e81731440c30b99207fc59a4efd420da4c64b1f1d802d53b5753f"
+    },
+    {
+      "file": "skills/chemical-multiarmed-bandit/runtime/sources.json",
+      "sha256": "bebcff6bc2f76543fc62038a1336908ac64c6fdd8e7a4e5017d3b62a21182b54"
     },
     {
       "file": "skills/chemical-multiarmed-bandit/runtime/support.py",
@@ -736,35 +768,35 @@
     },
     {
       "file": "skills/chemical-multiobjective-optimization/README.md",
-      "sha256": "219db497f06c040d51837fbfe2789270ccb6a50162dec9b1d92426ab9698228b"
+      "sha256": "7ff3177fcc13af600b7076eeaa8e530edd5059a6e095ba6776981b084ab78e4d"
     },
     {
       "file": "skills/chemical-multiobjective-optimization/SKILL.md",
-      "sha256": "537d707fc0290f05e6525ca2cd795a1812bfd76aa6d958428434b06f6e61a10c"
+      "sha256": "3f6f2af513a9f611114548d659a98fb022f349c2cafbce38905a85d5b67d0a0b"
     },
     {
       "file": "skills/chemical-multiobjective-optimization/downloads/SHA256SUMS.txt",
-      "sha256": "98d697006b3c363c99d11773b088282978b466ff44bf22071e7fb9bd35abdeb7"
+      "sha256": "b1c92840ce348e47fe0616623e31b60f24f55e1491d8dbdec595e0a8ff146d84"
     },
     {
       "file": "skills/chemical-multiobjective-optimization/downloads/SKILL-md.zip",
-      "sha256": "84b71101770323808b5e8f11e2216a9db46ec0af58b2dd5dd81dc04dee5041a3"
+      "sha256": "06d00b9d7343238254a374031e7b2e67ddcfe70e94f4e8d4080ac00188d61e4d"
     },
     {
       "file": "skills/chemical-multiobjective-optimization/downloads/SKILL-md.zip.sha256",
-      "sha256": "f575d226b1080562811ca147d323a5560d16934365dbe5cb1323644c3e409852"
+      "sha256": "6ec3947c2d3c492f750f186b675c2f6b2b7cdffeb80582b1196ffcce7c7b4b03"
     },
     {
       "file": "skills/chemical-multiobjective-optimization/downloads/SKILL.md",
-      "sha256": "537d707fc0290f05e6525ca2cd795a1812bfd76aa6d958428434b06f6e61a10c"
+      "sha256": "3f6f2af513a9f611114548d659a98fb022f349c2cafbce38905a85d5b67d0a0b"
     },
     {
       "file": "skills/chemical-multiobjective-optimization/downloads/chemical-multiobjective-optimization-python.zip",
-      "sha256": "308e40cfab9139da07a1cb49ec3b70f2cecded831a683b6dba20f4fe2f62faeb"
+      "sha256": "58ccb7529c745bc31ddbffa471386caafaa7dd65714545bbfc24ed769a5fe100"
     },
     {
       "file": "skills/chemical-multiobjective-optimization/downloads/chemical-multiobjective-optimization-python.zip.sha256",
-      "sha256": "86344038bc1fa48beb80eee31446dc100478db8a0e476f69480842a32ad4d122"
+      "sha256": "a2fe80e60e5b602ffeb43bcfb172eb2cf7565fd02a329b1afeded0ecfd094fe3"
     },
     {
       "file": "skills/chemical-multiobjective-optimization/runtime/analysis.py",
@@ -804,11 +836,15 @@
     },
     {
       "file": "skills/chemical-multiobjective-optimization/runtime/resource-manifest.json",
-      "sha256": "5f61b150566a0a72df5748f1a87a60fd0c0cdd8c82f45fd71e8a79646651ba3f"
+      "sha256": "0af81f3683759c38e9ec43f686fc7ccefd287ec73a1422404a0a522a89355134"
     },
     {
       "file": "skills/chemical-multiobjective-optimization/runtime/run_skill.py",
       "sha256": "634a1309ef0e81731440c30b99207fc59a4efd420da4c64b1f1d802d53b5753f"
+    },
+    {
+      "file": "skills/chemical-multiobjective-optimization/runtime/sources.json",
+      "sha256": "b7cd8dd9c5a6981a7ecc866bec17ca0192ab7abaaaac876abfc39628d27b53c9"
     },
     {
       "file": "skills/chemical-multiobjective-optimization/runtime/support.py",
@@ -816,39 +852,39 @@
     },
     {
       "file": "skills/chemical-pandas-cleaning/README.md",
-      "sha256": "f59c1067302c430fc3a37bab419f78f4c4acf706fecb6d2fdaf12031fea8ad00"
+      "sha256": "07940c322603518af1f969ecdd2e5e184c76bf8404dd9ee7d16b04322c252930"
     },
     {
       "file": "skills/chemical-pandas-cleaning/SKILL.md",
-      "sha256": "90b3651ab1bda4702a03bae28bada95d1a00a28c91b2de65df2dd283d1987916"
+      "sha256": "bbc7ec72c58cb876ee84f4cea5cd06ec0d728cdcfd30434528c7c6a0e62e2696"
     },
     {
       "file": "skills/chemical-pandas-cleaning/downloads/SHA256SUMS.txt",
-      "sha256": "dbca463a319e762af69cf521b613e6f489b35b2af6435be538f15839d86ee67c"
+      "sha256": "81db724bd8522104b6c2ef65fc413724df432a4d3e52d33c881d7bcfa2f5afd7"
     },
     {
       "file": "skills/chemical-pandas-cleaning/downloads/SKILL-md.zip",
-      "sha256": "de56c1bd49c6afe8df866375a6f74d955cb9dd6df0e4ba7129fe3df79f8ae57f"
+      "sha256": "7a3d56eb68ef3fde5434aec96d1b198821e75262d4815d05262157726c681f0d"
     },
     {
       "file": "skills/chemical-pandas-cleaning/downloads/SKILL-md.zip.sha256",
-      "sha256": "211c4eedd24669270943245de9b9d215c589273517c46ee5fc9e30fed8f4256b"
+      "sha256": "3c7188a942c458e83ca34fb5023100c20b840f9b82750e29e258999d0330ed8d"
     },
     {
       "file": "skills/chemical-pandas-cleaning/downloads/SKILL.md",
-      "sha256": "90b3651ab1bda4702a03bae28bada95d1a00a28c91b2de65df2dd283d1987916"
+      "sha256": "bbc7ec72c58cb876ee84f4cea5cd06ec0d728cdcfd30434528c7c6a0e62e2696"
     },
     {
       "file": "skills/chemical-pandas-cleaning/downloads/chemical-pandas-cleaning-python.zip",
-      "sha256": "04d7ad03596f9a22f3ad6bd21dfaf9ca84429130479ad7d924d7d67121edcf17"
+      "sha256": "c341fe76b95385113f93fdbfd07f226b1d6b4c5a43b1e60df4fcf8ab5cbf1d23"
     },
     {
       "file": "skills/chemical-pandas-cleaning/downloads/chemical-pandas-cleaning-python.zip.sha256",
-      "sha256": "382928bfbb62a629bc9593abc68283ff64ffd7854424832989b5ee698c425716"
+      "sha256": "c52ce7bb8336f391b70a82aeb6fdc1f79d263406e648b2c55f901395bd55bcb9"
     },
     {
       "file": "skills/chemical-pandas-cleaning/runtime/clean_chemical_data.py",
-      "sha256": "71bb3db2fab427f8208c67b8e0e4faad690803db796ea9cf4f5a6ea09ebebd8b"
+      "sha256": "4b1366ce84d08d009520a25e9923b1b839027eb36bbe6930114bc7369269d7a6"
     },
     {
       "file": "skills/chemical-pandas-cleaning/runtime/examples/01-replicates.csv",
@@ -884,39 +920,43 @@
     },
     {
       "file": "skills/chemical-pandas-cleaning/runtime/resource-manifest.json",
-      "sha256": "fca4ba630fcdc5c9ceb326678ab49b726617ef226ed903ca6dfdee88dc296723"
+      "sha256": "79d4ed4ed40c48fdf9ce6cfcda79530e93e6cf1b90b1d6d16a4ac18078ea55c5"
+    },
+    {
+      "file": "skills/chemical-pandas-cleaning/runtime/sources.json",
+      "sha256": "0712bb4b0d7522311a07d498d717f21c5f2fdc79123ed749c13b6ae43828ad92"
     },
     {
       "file": "skills/chemical-q-learning-simulation/README.md",
-      "sha256": "5ac34dd0c2a1fff3fd6572c221ba5ad737aada9ae84d6f44623cc64890b709f0"
+      "sha256": "1f8bff279d33e9640cd69e2c0b789314240b61c46e55e7cdb831162a2d159834"
     },
     {
       "file": "skills/chemical-q-learning-simulation/SKILL.md",
-      "sha256": "8f1cb2a89810cc467ab498c89146c3deba7205d5957911d8be28435ac5530caf"
+      "sha256": "74f689ac40d173cda4ef2ca00e6baad648513029b4f4d5ae6e6ec00de5abf5d3"
     },
     {
       "file": "skills/chemical-q-learning-simulation/downloads/SHA256SUMS.txt",
-      "sha256": "c0fd3a9906ec87d239223f89039c4533fce9b42d22c6624f3e69df16f582275e"
+      "sha256": "6ea7868264d13be8108d95cdfcc14252755587f0b95c664c2904c89165dc2288"
     },
     {
       "file": "skills/chemical-q-learning-simulation/downloads/SKILL-md.zip",
-      "sha256": "961b57eef72c876056ff32a435891227ec62be830f380dbb1186d19cc919ecb9"
+      "sha256": "de9e7fbda2cb4a96a5775cf07c1af2412e80d15eba65fbaa793a81c25969345b"
     },
     {
       "file": "skills/chemical-q-learning-simulation/downloads/SKILL-md.zip.sha256",
-      "sha256": "5724b45152b77262c3bf4a98d0f9e2c3bf65894eb69f26605c3e375afd9d54a0"
+      "sha256": "952916df1cd8a11d5c1f0a5dc7b53a60b8eced57df3be48f941c0c5010a0d9be"
     },
     {
       "file": "skills/chemical-q-learning-simulation/downloads/SKILL.md",
-      "sha256": "8f1cb2a89810cc467ab498c89146c3deba7205d5957911d8be28435ac5530caf"
+      "sha256": "74f689ac40d173cda4ef2ca00e6baad648513029b4f4d5ae6e6ec00de5abf5d3"
     },
     {
       "file": "skills/chemical-q-learning-simulation/downloads/chemical-q-learning-simulation-python.zip",
-      "sha256": "b1d5aa4e40b59507aafc0d4c165d02947d454824b8a5e4d948aaec804945ca35"
+      "sha256": "ccc3125eb55c231d93a4d01f703daa91649f1956a88804a8411cf8209c3053ba"
     },
     {
       "file": "skills/chemical-q-learning-simulation/downloads/chemical-q-learning-simulation-python.zip.sha256",
-      "sha256": "1ba2f7282581d7d07175409386fb488649626ddd802a38f84fc20a129e47ebcd"
+      "sha256": "5c3d33ea70888dd6e8cce236bc7390738288f5fd1d24ff67dcbc42fa1e99743b"
     },
     {
       "file": "skills/chemical-q-learning-simulation/runtime/analysis.py",
@@ -956,11 +996,15 @@
     },
     {
       "file": "skills/chemical-q-learning-simulation/runtime/resource-manifest.json",
-      "sha256": "3d5ca6dfaad040dba62c707aa6725a522d65848a9756c34926dba592a9cd06f9"
+      "sha256": "2642f634c9d674c88329a60783c95d4fde41ab88c2945672b4e4c36773ea84cd"
     },
     {
       "file": "skills/chemical-q-learning-simulation/runtime/run_skill.py",
       "sha256": "634a1309ef0e81731440c30b99207fc59a4efd420da4c64b1f1d802d53b5753f"
+    },
+    {
+      "file": "skills/chemical-q-learning-simulation/runtime/sources.json",
+      "sha256": "d2b1c4b55ef3a2d3545e445da9b0f1543e4e7f4a4f8efe209a89d9c696b6957c"
     },
     {
       "file": "skills/chemical-q-learning-simulation/runtime/support.py",
@@ -968,35 +1012,35 @@
     },
     {
       "file": "skills/chemical-regression-classification/README.md",
-      "sha256": "32ca97a40519930ba3e8abbe2cd13748c1573991ca97ae3c65ae44a6e82909be"
+      "sha256": "e4d4bcce921062b28f7c5f46f663f375bfa32643af7958e7eb49719724edcfc9"
     },
     {
       "file": "skills/chemical-regression-classification/SKILL.md",
-      "sha256": "30bde8eca422be85ab75ef8920c29d1381ba2c60ca6010d63b9a9ac1a73b25a5"
+      "sha256": "4c1b4601ad5a932da9875c6d81f2e6878bbaa28fd54a771039078e9dba527c5f"
     },
     {
       "file": "skills/chemical-regression-classification/downloads/SHA256SUMS.txt",
-      "sha256": "89b15024e317f2b1840e717bda2ce549199123b3f9c294bf1a18c709ba8a7ac3"
+      "sha256": "06280849dd62ba8ddf9a972993528af37ed6b44097c85cd9e658c6469e2dc772"
     },
     {
       "file": "skills/chemical-regression-classification/downloads/SKILL-md.zip",
-      "sha256": "7cc4aef425a5d9f855cc0e0c3809a7e6da7552a53f4231517503dd0f1ea99a04"
+      "sha256": "f60cfb985b27e2e3a48bdbdde5039e56cb4b34b9defa6efe73837b4d6f040098"
     },
     {
       "file": "skills/chemical-regression-classification/downloads/SKILL-md.zip.sha256",
-      "sha256": "0d3f6c0c4f335fe69876fda21e80b769686f7c16346eefa2b473f6de544e59e2"
+      "sha256": "7996d1ab76c4d0be08c5578e6030996697d0a672b1c03be3ef4f08a96dc542ff"
     },
     {
       "file": "skills/chemical-regression-classification/downloads/SKILL.md",
-      "sha256": "30bde8eca422be85ab75ef8920c29d1381ba2c60ca6010d63b9a9ac1a73b25a5"
+      "sha256": "4c1b4601ad5a932da9875c6d81f2e6878bbaa28fd54a771039078e9dba527c5f"
     },
     {
       "file": "skills/chemical-regression-classification/downloads/chemical-regression-classification-python.zip",
-      "sha256": "211d94446f9baac45948b0230fe9b3100e1902984161af9c9df63ce7dcb0e29f"
+      "sha256": "90c7ac5108ace26ca588916ed62d8e0be6ead7cf11833e4ef58d13d6009a4f67"
     },
     {
       "file": "skills/chemical-regression-classification/downloads/chemical-regression-classification-python.zip.sha256",
-      "sha256": "56833dd43044fd79cce67c3355e103642765c4998913d930e0fc86a1b8bff902"
+      "sha256": "c5d90f06d7342d4045d655fcdd41b1e097a57ea5597dac9d116399cbdd5a0981"
     },
     {
       "file": "skills/chemical-regression-classification/runtime/analysis.py",
@@ -1036,7 +1080,7 @@
     },
     {
       "file": "skills/chemical-regression-classification/runtime/ml_support.py",
-      "sha256": "5a175ad0dc083437ceeeadfbaf7ce0be5564b77ab043cc2219ac2f61f4df62cf"
+      "sha256": "9c77c8b49bd62e8c8716f82c6804d1251db8da288241ce1132f5d8ea12ea3683"
     },
     {
       "file": "skills/chemical-regression-classification/runtime/requirements.txt",
@@ -1044,7 +1088,7 @@
     },
     {
       "file": "skills/chemical-regression-classification/runtime/resource-manifest.json",
-      "sha256": "60de20ef08641c790cc7815f6b7df0a73919390c77d048a782407107447efce8"
+      "sha256": "518e79f88c7f4c9467f6de4a84beb4c5c66c07f752231692ff14f34a4a5e3634"
     },
     {
       "file": "skills/chemical-regression-classification/runtime/run_from_csv.py",
@@ -1055,36 +1099,40 @@
       "sha256": "634a1309ef0e81731440c30b99207fc59a4efd420da4c64b1f1d802d53b5753f"
     },
     {
+      "file": "skills/chemical-regression-classification/runtime/sources.json",
+      "sha256": "fb7a9b7a2ccc4dec9929c3b00b3cf8406d8e856c964d6716379b01639c6873d5"
+    },
+    {
       "file": "skills/chemical-space-embedding/README.md",
-      "sha256": "0c2ac1dc5645e4a87c1453dc2133fab5ae1191003883f02ee5281039da37b2d5"
+      "sha256": "aed9711f9d5392d7beab03238f0fc28eeaed74186f7b9e9d74a9170826beee20"
     },
     {
       "file": "skills/chemical-space-embedding/SKILL.md",
-      "sha256": "85c1535dac3540af9f4a03d6dd442158bc94f0b60eeb19f46c7fcbffafb1d282"
+      "sha256": "11b67c0f7df6f29af0c1eba174af8077c2d33d1b5aaf9be4b08ebc4d34be68fd"
     },
     {
       "file": "skills/chemical-space-embedding/downloads/SHA256SUMS.txt",
-      "sha256": "39eedbd194a0c29605927074410d1f9722a71535cef6076b02acd38aaa96d10d"
+      "sha256": "d585a5c2280f531d2d180db1e31c244a8b9b85bfa5d7ff6e80d3d8bd9f2ce1c8"
     },
     {
       "file": "skills/chemical-space-embedding/downloads/SKILL-md.zip",
-      "sha256": "5a87931a71060fade71f908ac14648d3c0f923ea7f55ef1a85860ae2f9c5452b"
+      "sha256": "9e35d9514a95effcfcf488f9168459824af8ee503467bc5bcd2da2da386446bc"
     },
     {
       "file": "skills/chemical-space-embedding/downloads/SKILL-md.zip.sha256",
-      "sha256": "2071ad070d7dfe4ac70193d373ed5d0542f349ab212d88d6f510bac769c99df5"
+      "sha256": "322da1cd24576bb00c66d36d4396a0d92c67bab6743c6a4ee46d08566ac9c8a2"
     },
     {
       "file": "skills/chemical-space-embedding/downloads/SKILL.md",
-      "sha256": "85c1535dac3540af9f4a03d6dd442158bc94f0b60eeb19f46c7fcbffafb1d282"
+      "sha256": "11b67c0f7df6f29af0c1eba174af8077c2d33d1b5aaf9be4b08ebc4d34be68fd"
     },
     {
       "file": "skills/chemical-space-embedding/downloads/chemical-space-embedding-python.zip",
-      "sha256": "4645e7b9966df00d6866f554d325a8cdd6a18b964d65be05f1294024a76a81e5"
+      "sha256": "ce484b1cd5cc3f788fbf88581bf6c2cb603602db1f140e0eabffdea6299cfb59"
     },
     {
       "file": "skills/chemical-space-embedding/downloads/chemical-space-embedding-python.zip.sha256",
-      "sha256": "f4d53f45b21ddcbe99a75898f11d1c2c96b56beaa8c31d5e2bb793a4ca79a998"
+      "sha256": "d79db6e31fe0406b2e7588deb2534aac53e70c03c3d97734cabb2719ae9b484f"
     },
     {
       "file": "skills/chemical-space-embedding/runtime/analysis.py",
@@ -1132,7 +1180,7 @@
     },
     {
       "file": "skills/chemical-space-embedding/runtime/resource-manifest.json",
-      "sha256": "110a396e486d1a9dad867f4791d65402193eabe644ee500e14eb03afbd502bf2"
+      "sha256": "a431c8a52e7306f756e55e125eb806e503f21d88d2215214117b012ac7f82bd0"
     },
     {
       "file": "skills/chemical-space-embedding/runtime/run_from_csv.py",
@@ -1143,36 +1191,40 @@
       "sha256": "634a1309ef0e81731440c30b99207fc59a4efd420da4c64b1f1d802d53b5753f"
     },
     {
+      "file": "skills/chemical-space-embedding/runtime/sources.json",
+      "sha256": "ff25f5a772be399a831d8ba9a25f63bee549cc25dfe2cb3c23261ce3260a71dc"
+    },
+    {
       "file": "skills/chemical-tree-forest-models/README.md",
-      "sha256": "5d0a766eff7cf05db68cf7e029c1e3bf51edac6bc91a4d55d1ecca85f646ecd2"
+      "sha256": "df5f86da42b69b860b284617ce833968b3bab858a439fde6772b194fa8194319"
     },
     {
       "file": "skills/chemical-tree-forest-models/SKILL.md",
-      "sha256": "257f00d7b93f4731482c10b4f63a6d6a9190c08d24eb65d079d5cadc31a55b3d"
+      "sha256": "85641ab71a6838adea20cabcfc369087616b6da3fc096244a6b7475336af2e84"
     },
     {
       "file": "skills/chemical-tree-forest-models/downloads/SHA256SUMS.txt",
-      "sha256": "d20c9709ba3ff8aba5801a1d457a2c2efc30acee7d18da32fd10f4e37514657f"
+      "sha256": "84ea6142790ef657bf74815cf6dd3a1f0362edc2a4bb84d8623f8a8939c2420b"
     },
     {
       "file": "skills/chemical-tree-forest-models/downloads/SKILL-md.zip",
-      "sha256": "fa12e87d68c666a029486c4f487f7492461ba3887d6764717ef5614a4b290043"
+      "sha256": "e123c58c1ee75707d57d4d0e840de4ffea2e3ef28e366b96e5c1a8ba93c60c80"
     },
     {
       "file": "skills/chemical-tree-forest-models/downloads/SKILL-md.zip.sha256",
-      "sha256": "96f310ed5bffa9ba8dd6d5cd7c5966c525f9e290cabca98a3bc5b8697600e9a5"
+      "sha256": "326700ac409c0d30925c21ac213496ae8a9bb4aec4d7be32eaaed6e413f7358f"
     },
     {
       "file": "skills/chemical-tree-forest-models/downloads/SKILL.md",
-      "sha256": "257f00d7b93f4731482c10b4f63a6d6a9190c08d24eb65d079d5cadc31a55b3d"
+      "sha256": "85641ab71a6838adea20cabcfc369087616b6da3fc096244a6b7475336af2e84"
     },
     {
       "file": "skills/chemical-tree-forest-models/downloads/chemical-tree-forest-models-python.zip",
-      "sha256": "83548da37502a96cdc65eb4e5673abab37f698cba769e2fc1fc6cd77fb810df4"
+      "sha256": "e231fe5b3496a05956c7568712b07c780ba4e6e227e78da45c9a1e694cc2459b"
     },
     {
       "file": "skills/chemical-tree-forest-models/downloads/chemical-tree-forest-models-python.zip.sha256",
-      "sha256": "f7e4b90e4a5ca7b2ffba96e53442fc459b7b354dbe718d481df5f24f668ba38c"
+      "sha256": "61558e0792fb76a10ee1c17b844b5582e887a5074ce3b3293687d5e28e3bb1d4"
     },
     {
       "file": "skills/chemical-tree-forest-models/runtime/analysis.py",
@@ -1212,7 +1264,7 @@
     },
     {
       "file": "skills/chemical-tree-forest-models/runtime/ml_support.py",
-      "sha256": "5a175ad0dc083437ceeeadfbaf7ce0be5564b77ab043cc2219ac2f61f4df62cf"
+      "sha256": "9c77c8b49bd62e8c8716f82c6804d1251db8da288241ce1132f5d8ea12ea3683"
     },
     {
       "file": "skills/chemical-tree-forest-models/runtime/requirements.txt",
@@ -1220,7 +1272,7 @@
     },
     {
       "file": "skills/chemical-tree-forest-models/runtime/resource-manifest.json",
-      "sha256": "5edadcc68ccfd0217457cd9d79a0863a337ea868a67eb43e430492fb6abb4228"
+      "sha256": "4dc2d9e334579b7bad845eb86afd5e215fb8f25d4732c421e8a630f53cebf6fd"
     },
     {
       "file": "skills/chemical-tree-forest-models/runtime/run_from_csv.py",
@@ -1231,36 +1283,40 @@
       "sha256": "634a1309ef0e81731440c30b99207fc59a4efd420da4c64b1f1d802d53b5753f"
     },
     {
+      "file": "skills/chemical-tree-forest-models/runtime/sources.json",
+      "sha256": "131130bd8b144206a909cacd032648d266727c592bcc831648404473d0c9e731"
+    },
+    {
       "file": "skills/constrained-optimization-response/README.md",
-      "sha256": "681ede3f121b41c8af2ca785cacc8245121a1a6738d216f91e1256ae1501219b"
+      "sha256": "6a87d40a63d4ccd5447511cf6a4c6e56851794defd7dfa41fda4f843811e83aa"
     },
     {
       "file": "skills/constrained-optimization-response/SKILL.md",
-      "sha256": "c0785f465e3dcd95fcfef5d7c9ae7d2e098abf5c4259be06f97137670fda3120"
+      "sha256": "5d6233a7a4c9eb0c92db855a06beba45e8554bd97830899a1c6e54ba77957a77"
     },
     {
       "file": "skills/constrained-optimization-response/downloads/SHA256SUMS.txt",
-      "sha256": "53e1a851ad056bd6fe515eb6b5f5d6bdab2ac80d6651df79c2f58327f298d5b5"
+      "sha256": "7ad68a757f3def24cb6d9ff7453cf8ae0265b6b855e2685e9cc0d66ffaf52564"
     },
     {
       "file": "skills/constrained-optimization-response/downloads/SKILL-md.zip",
-      "sha256": "960f3583056e4328f94913d6a2bc3b94f25ee5b1885679a9df05abfbe2731665"
+      "sha256": "0e5aec8438bc80e41f667ae21a2179bc28873709a68d38ed02ff77ad74e8fe89"
     },
     {
       "file": "skills/constrained-optimization-response/downloads/SKILL-md.zip.sha256",
-      "sha256": "f23184d2b560f779b195482db7a009d4a47252636ef2465cc62689681ed8371a"
+      "sha256": "41a43c202636f4975ce66dbe741866e93a3f27cf3dd3d6e90d089669d18f3dfe"
     },
     {
       "file": "skills/constrained-optimization-response/downloads/SKILL.md",
-      "sha256": "c0785f465e3dcd95fcfef5d7c9ae7d2e098abf5c4259be06f97137670fda3120"
+      "sha256": "5d6233a7a4c9eb0c92db855a06beba45e8554bd97830899a1c6e54ba77957a77"
     },
     {
       "file": "skills/constrained-optimization-response/downloads/constrained-optimization-response-python.zip",
-      "sha256": "0e6a2935ba19590d2f343af13321c59f163d604803a9eda9048a6f2537cd7410"
+      "sha256": "2d8d797ecc2b14c5bd5f97c50bf89f6d82d7c0bf8124f591373105959f059037"
     },
     {
       "file": "skills/constrained-optimization-response/downloads/constrained-optimization-response-python.zip.sha256",
-      "sha256": "a1047fd32378a6869593da87e28ad04359b2b0e7974b597f3dda6bcb9c585c85"
+      "sha256": "27bbd77f84b429bfddf319b13e6adfb556dd667ae6a0a75c8b8747d87ec6f561"
     },
     {
       "file": "skills/constrained-optimization-response/runtime/analysis.py",
@@ -1276,7 +1332,7 @@
     },
     {
       "file": "skills/constrained-optimization-response/runtime/examples/02.json",
-      "sha256": "dcbbc8117aa229cac2f2b08226c6fac20de8fcbf081941121dcff084cc9b604d"
+      "sha256": "80b3e3cf346c61c57d746774b2c6d9bde1cae88ebe69e0117192797936b9d3c5"
     },
     {
       "file": "skills/constrained-optimization-response/runtime/examples/02_case.py",
@@ -1284,7 +1340,7 @@
     },
     {
       "file": "skills/constrained-optimization-response/runtime/examples/03.json",
-      "sha256": "90874593f47ee2e418b0a9f9470d177d0e6b8fe4898194a5ca34324e3bfcbf44"
+      "sha256": "6737814a05a1b2c4697cd020d780c7751ca5fbd341805582114211e559d97dd9"
     },
     {
       "file": "skills/constrained-optimization-response/runtime/examples/03_case.py",
@@ -1300,11 +1356,15 @@
     },
     {
       "file": "skills/constrained-optimization-response/runtime/resource-manifest.json",
-      "sha256": "7e541e96fe9984fc37b7f1101c6f2ef8eebdf2e7368e1af51789f99811abdb57"
+      "sha256": "55360b210a5f5b4b2d72a8af4bdf89291e3d7c223cd25723ed954f3d3d12bea1"
     },
     {
       "file": "skills/constrained-optimization-response/runtime/run_skill.py",
       "sha256": "492adcc666a9f361f73e4de511652fdc3266d66f40d48affbd602a3c89b854a6"
+    },
+    {
+      "file": "skills/constrained-optimization-response/runtime/sources.json",
+      "sha256": "8cb376e150171961c16fe382da678511fb020707ec8d571343ff5615273fde22"
     },
     {
       "file": "skills/constrained-optimization-response/runtime/support.py",
@@ -1312,35 +1372,35 @@
     },
     {
       "file": "skills/fixed-protocol-energy-review/README.md",
-      "sha256": "999108a9f1e0af99534cfcadda010d7b25c4c7e9dccc8f772e7ea9f36cf517cb"
+      "sha256": "309403d44c20af58ecf40e760deb48251759bceddaa22cd2e7876b688d2e37a8"
     },
     {
       "file": "skills/fixed-protocol-energy-review/SKILL.md",
-      "sha256": "8ae9d34ea28964c7fe40d78497229456f3225588b55db8411d80200e87ad017d"
+      "sha256": "7e7bc87341ca68c046525dbc674cd53b992d8d6d8df53b7963f2dd2504b0dd49"
     },
     {
       "file": "skills/fixed-protocol-energy-review/downloads/SHA256SUMS.txt",
-      "sha256": "716336e41568d5190b0a433c0e8ba5dc1355695f06664e7570bbb75fc766df64"
+      "sha256": "6105811954527ad9780a86431770a3f5bc80a8aa55503b905b16cb9f57a2d5e3"
     },
     {
       "file": "skills/fixed-protocol-energy-review/downloads/SKILL-md.zip",
-      "sha256": "df41f18e37299f380e90e381442f0a82a145fe94ddfa7a83c8adfbc5068df3e5"
+      "sha256": "5cf0471e15753ef8f54548d2efe910395639dcdb95edec7440d86935ca02fe84"
     },
     {
       "file": "skills/fixed-protocol-energy-review/downloads/SKILL-md.zip.sha256",
-      "sha256": "d0ce03d4f4381626256a65188f2e4916277654ff6f497ffc004c8bb0e7f44f60"
+      "sha256": "11e2b7510eefd3615ab4656d895587e1b1155530916e475867a192ab86f403d5"
     },
     {
       "file": "skills/fixed-protocol-energy-review/downloads/SKILL.md",
-      "sha256": "8ae9d34ea28964c7fe40d78497229456f3225588b55db8411d80200e87ad017d"
+      "sha256": "7e7bc87341ca68c046525dbc674cd53b992d8d6d8df53b7963f2dd2504b0dd49"
     },
     {
       "file": "skills/fixed-protocol-energy-review/downloads/fixed-protocol-energy-review-python.zip",
-      "sha256": "b2e2d8120bd4d8001500a2c9f0b50a5b0a90c01e6e816a596a3d44af4a96a3ec"
+      "sha256": "28b6d3b89cd96035a20ec975a7f2748473f7173020fad4bee5eae3d4a4628939"
     },
     {
       "file": "skills/fixed-protocol-energy-review/downloads/fixed-protocol-energy-review-python.zip.sha256",
-      "sha256": "c92ff5962ca102ee6c85d42117271cf1e403c976f3cc841f54146394e099f94d"
+      "sha256": "f243da347a1ce1b60fc7ebb5c6d52e5aac3a218791230ecb65eaf82c977c6a4f"
     },
     {
       "file": "skills/fixed-protocol-energy-review/runtime/analysis.py",
@@ -1384,43 +1444,47 @@
     },
     {
       "file": "skills/fixed-protocol-energy-review/runtime/resource-manifest.json",
-      "sha256": "c9836cf46aecd66e7ff827f30a34d60fc740e2b08fc06ec00b0f93aadf42c253"
+      "sha256": "a570ec007d35f87e372519cbdcd280e46b36dddfa7f13adf04ed0385c32b8e66"
     },
     {
       "file": "skills/fixed-protocol-energy-review/runtime/run_skill.py",
       "sha256": "492adcc666a9f361f73e4de511652fdc3266d66f40d48affbd602a3c89b854a6"
     },
     {
+      "file": "skills/fixed-protocol-energy-review/runtime/sources.json",
+      "sha256": "dfac7a0bb4852ce4f4a0a24dcb406dabfc08d5bad4d7789d54e5fbb848441901"
+    },
+    {
       "file": "skills/fragment-working-basis/README.md",
-      "sha256": "7a15888ab0df95a3c15f6b5c208239aae4bf3575f2fa5fe0fd2bcc6570ef0d59"
+      "sha256": "bc5683b2d0b4b7c37917371f88a31cc8bdada8059d9032c14ab09e9f2f30c136"
     },
     {
       "file": "skills/fragment-working-basis/SKILL.md",
-      "sha256": "073520df4fdf3febb20a1173ff08e64610bd302c6bb41b11d37a1effffffb243"
+      "sha256": "0187c71aa0b53fbc21cb044cb5dc747d3ebae91260d793dcbb56b838c10ca77e"
     },
     {
       "file": "skills/fragment-working-basis/downloads/SHA256SUMS.txt",
-      "sha256": "ac5e895d594f52f72035a70276477267d2209b4331a75255b55e9f31efc43a7e"
+      "sha256": "eb3da5f1a54eced123a2e18e75e7f33821e7217405f1ee3c9ff0adcbbaeb9331"
     },
     {
       "file": "skills/fragment-working-basis/downloads/SKILL-md.zip",
-      "sha256": "e1bd692ca519e38b6a77d1b452968868cbedda62229e0d9a71b2b4db9a4ae067"
+      "sha256": "d50233b4bd28be0aa5fee1998606ccfa1092ca648d3d78c97e2e927fa34f8818"
     },
     {
       "file": "skills/fragment-working-basis/downloads/SKILL-md.zip.sha256",
-      "sha256": "416477dcc17585d70c74fbb3b8641f60a5a79072327502c1cd134ed11b4f6057"
+      "sha256": "3e284ff50b4a9b8b0d9ae0192ad369b06a95de9755974b91069471c0ed48a50e"
     },
     {
       "file": "skills/fragment-working-basis/downloads/SKILL.md",
-      "sha256": "073520df4fdf3febb20a1173ff08e64610bd302c6bb41b11d37a1effffffb243"
+      "sha256": "0187c71aa0b53fbc21cb044cb5dc747d3ebae91260d793dcbb56b838c10ca77e"
     },
     {
       "file": "skills/fragment-working-basis/downloads/fragment-working-basis-python.zip",
-      "sha256": "165f323d482195dc3a0b36c7b88c7531905ffe163f60202f22741229522fad11"
+      "sha256": "ba5096d4700ebd0a885e1a7a062b362f0cfddebf5bbcf5c4908dcc63cde58bd7"
     },
     {
       "file": "skills/fragment-working-basis/downloads/fragment-working-basis-python.zip.sha256",
-      "sha256": "3737263501a9f4169d9b62239ecaf62dadf5b81fe6280b574c6da142447de79c"
+      "sha256": "2de047d90140066a8837757fee7848ac91b1e53e722674ad01ee739dc48d6193"
     },
     {
       "file": "skills/fragment-working-basis/runtime/analysis.py",
@@ -1460,7 +1524,7 @@
     },
     {
       "file": "skills/fragment-working-basis/runtime/resource-manifest.json",
-      "sha256": "c2bd17491e1eb6c0aaeed732923be2b29e79013b43466ee6c2c5a77d11d98641"
+      "sha256": "25986618256afa6e2de2d820fef901b1a1a329a7fe44c16b4eae8f927850029d"
     },
     {
       "file": "skills/fragment-working-basis/runtime/run_skill.py",
@@ -1468,7 +1532,7 @@
     },
     {
       "file": "skills/fragment-working-basis/runtime/sources.json",
-      "sha256": "f9d2fc7639e2cf89eb5c014d4345169f82bac715e08d6130073d982bd824d4a2"
+      "sha256": "6e9694400696b5eb5c237eeae6b2cf4d7022c6ae01345ed9a76b8243f63c04b6"
     },
     {
       "file": "skills/fragment-working-basis/runtime/support.py",
@@ -1476,35 +1540,35 @@
     },
     {
       "file": "skills/molecular-gnn-mpnn/README.md",
-      "sha256": "787ca8686c928e6dfc99d300903e71ce05534036df0e699d4c33efaaac43cae9"
+      "sha256": "fa435e750f066f7c05564d519febb0c2ef2fc7be63e451c6c5379934177707fc"
     },
     {
       "file": "skills/molecular-gnn-mpnn/SKILL.md",
-      "sha256": "ec5f955090becb7ceb46a3c998835b6fb2d732e2008473b7512cc40fc7cd803e"
+      "sha256": "1192eeebc1e73b112be97c91a02cc4c3232fd66df3d8fcaead46fb225aa30b08"
     },
     {
       "file": "skills/molecular-gnn-mpnn/downloads/SHA256SUMS.txt",
-      "sha256": "b950ff06635f4223ee23eb94d2484cfad7fc7c9b76bb142b2cac829e479f209d"
+      "sha256": "75f97efbf85c7724ae75445fef13feb0c32a3b056c3811cc02ccab570a464461"
     },
     {
       "file": "skills/molecular-gnn-mpnn/downloads/SKILL-md.zip",
-      "sha256": "528f6f41a45e6d2221aed23661750dca38049464ead033f03bc3a336687ed5a1"
+      "sha256": "1a0edd4459a69ed6409c65a5f1712d093609c952ebd546a309ee24ae88594c0c"
     },
     {
       "file": "skills/molecular-gnn-mpnn/downloads/SKILL-md.zip.sha256",
-      "sha256": "df5b4d5c6e2307fa2646653d0ccc246bd375538322ed4b417719ba48b98c66ed"
+      "sha256": "0652f8c7c383b8d7f694660a889d7555c4b667fcbceddf0c6c271452cd76205a"
     },
     {
       "file": "skills/molecular-gnn-mpnn/downloads/SKILL.md",
-      "sha256": "ec5f955090becb7ceb46a3c998835b6fb2d732e2008473b7512cc40fc7cd803e"
+      "sha256": "1192eeebc1e73b112be97c91a02cc4c3232fd66df3d8fcaead46fb225aa30b08"
     },
     {
       "file": "skills/molecular-gnn-mpnn/downloads/molecular-gnn-mpnn-python.zip",
-      "sha256": "6884c53d70b05721322587813e00c97c4231df68a3a10615c30b21475b5577a8"
+      "sha256": "d286fb4b52b0cddb5083b4e0365d3dcf9238772594f5d2cce6b2c97c7635fc38"
     },
     {
       "file": "skills/molecular-gnn-mpnn/downloads/molecular-gnn-mpnn-python.zip.sha256",
-      "sha256": "bd0e646b8e9a9d59629e93d2aa876c2d0261153e56405ebb483c06aff967f6de"
+      "sha256": "420a591cc60138a9c08441c080e06e1a53a9613f81e47b4301722b34ce930816"
     },
     {
       "file": "skills/molecular-gnn-mpnn/runtime/analysis.py",
@@ -1552,7 +1616,7 @@
     },
     {
       "file": "skills/molecular-gnn-mpnn/runtime/resource-manifest.json",
-      "sha256": "1c62431089f8e1a5946af46957183fc05380b3956392527b9462333d9bc46e4a"
+      "sha256": "43064403e4bef2a4203464866eab6745f0bece9521cac5ceb96760588b049a62"
     },
     {
       "file": "skills/molecular-gnn-mpnn/runtime/run_from_csv.py",
@@ -1563,36 +1627,40 @@
       "sha256": "634a1309ef0e81731440c30b99207fc59a4efd420da4c64b1f1d802d53b5753f"
     },
     {
+      "file": "skills/molecular-gnn-mpnn/runtime/sources.json",
+      "sha256": "65335afb4654d5fa7c30ee8e27806a9dc97e8c5f54fbd3e0f4bf78f335f4b4b2"
+    },
+    {
       "file": "skills/molecular-graph-energy-ledger/README.md",
-      "sha256": "ccbb5d8ccc4fc0874de0348ab09a6bf49ef20a5ef2d94f996c88ffc2dd76a757"
+      "sha256": "2a9100fd16ea16053c82ac04fee1b76dad5827c6f3dd98b8a609533199065295"
     },
     {
       "file": "skills/molecular-graph-energy-ledger/SKILL.md",
-      "sha256": "5b1be06676baa3957f757f4a619a89fb3f48bc6c57499858a0a60c2a4d6b9edd"
+      "sha256": "a4c87af26857568ff5687e9998702b971f41a91126fb3525bc189b9a3d14cf5e"
     },
     {
       "file": "skills/molecular-graph-energy-ledger/downloads/SHA256SUMS.txt",
-      "sha256": "b494d918d2e6536431db343e634c53436d007911887355b810f8b40ba1852cd8"
+      "sha256": "6473752be4bab2c90c827a0741f96ad82878f4ee82145b356b81ee4b93288178"
     },
     {
       "file": "skills/molecular-graph-energy-ledger/downloads/SKILL-md.zip",
-      "sha256": "5e4782767d7d6cd41e3aa03fc6a1f90a9701b8aee94c33f9a0549f0f409a6e15"
+      "sha256": "cf27b73d645060e4e364d6f035f2dab3b90e8de15163550d172ecb911353ca53"
     },
     {
       "file": "skills/molecular-graph-energy-ledger/downloads/SKILL-md.zip.sha256",
-      "sha256": "1766243a7670899d9d63bc0136e18b786226a07c99359bfe5cc393d57f90e048"
+      "sha256": "10e44d6817f44ed9f0f964fb16033e61f29daba9b5b9df740c7f93444f7f32ea"
     },
     {
       "file": "skills/molecular-graph-energy-ledger/downloads/SKILL.md",
-      "sha256": "5b1be06676baa3957f757f4a619a89fb3f48bc6c57499858a0a60c2a4d6b9edd"
+      "sha256": "a4c87af26857568ff5687e9998702b971f41a91126fb3525bc189b9a3d14cf5e"
     },
     {
       "file": "skills/molecular-graph-energy-ledger/downloads/molecular-graph-energy-ledger-python.zip",
-      "sha256": "fdd4c635ae0dc10db67eac8e58e376245356097b7a59227f780f7ffc4d834084"
+      "sha256": "b3357db7f73697d7df9b93f7494fa51efc4bd8487c9c4bab304a086d4e53a82e"
     },
     {
       "file": "skills/molecular-graph-energy-ledger/downloads/molecular-graph-energy-ledger-python.zip.sha256",
-      "sha256": "66e7cb7d5b04e6f61a746ba9ceaf0dcc30a4fb8632a6cb4de93bb380fab8c045"
+      "sha256": "9f111c079e20b9f1304949d8e8a410d41671563396e9392cd409f7170622a541"
     },
     {
       "file": "skills/molecular-graph-energy-ledger/runtime/analysis.py",
@@ -1640,43 +1708,47 @@
     },
     {
       "file": "skills/molecular-graph-energy-ledger/runtime/resource-manifest.json",
-      "sha256": "b2e98da3f8e07d82031bdeea1fbb25b97487f8d082e90bba134c7f96af7f3eb8"
+      "sha256": "aa0be0010206bb30f2009dd0351e2510681d83ba71532ed79aa014dbadea5c73"
     },
     {
       "file": "skills/molecular-graph-energy-ledger/runtime/run_skill.py",
       "sha256": "33a9c1ae35be30759d139577a864d189679b2ee898db39506e65e888b2f0c2cf"
     },
     {
+      "file": "skills/molecular-graph-energy-ledger/runtime/sources.json",
+      "sha256": "c1acc11314e71b4c01d418b5fc72d930f2a4442b2fb6cddc9fff7ea489344d66"
+    },
+    {
       "file": "skills/molecular-self-supervised-pretraining/README.md",
-      "sha256": "9198096b5d1e19e1d70992fa84b5c8e13cf6b4c15702b5c2118d19b2f4ca6565"
+      "sha256": "60f8659437030633be51913439a68af08132ca821d4636227314e6b1e649b0f2"
     },
     {
       "file": "skills/molecular-self-supervised-pretraining/SKILL.md",
-      "sha256": "0d53618acf2324b52fb8d4b728adb4b6123e44a415b9b9fc1f084730c643d644"
+      "sha256": "6d6728c52ff2c58c5964b7ad3c1f60b413db6d28f85cd384f921c868dc52b372"
     },
     {
       "file": "skills/molecular-self-supervised-pretraining/downloads/SHA256SUMS.txt",
-      "sha256": "35865af637af1d7f6695734a8a1e629ecad018ddd5a234bfea963ff750cfc8c4"
+      "sha256": "d52b38550b090bb47c746d66c6f6f5b6f14927f610ff6aa90cdadd5ed9546adc"
     },
     {
       "file": "skills/molecular-self-supervised-pretraining/downloads/SKILL-md.zip",
-      "sha256": "62f729633ccbf71ce0c603f8e4faac65090bdfa067f85ac87000777c8fa29a42"
+      "sha256": "7e202ad53f50bbc3c64a7151e37751288632ba19736225ccc36fd3b1658a0fe7"
     },
     {
       "file": "skills/molecular-self-supervised-pretraining/downloads/SKILL-md.zip.sha256",
-      "sha256": "af6302389bea2245f3c99c8c2b8e22f159fdb6c26b2da638e42db8bc014e9f66"
+      "sha256": "7835ae88074d09062e88ade2a4533a18f235218352682f6bf15faec2eab912a1"
     },
     {
       "file": "skills/molecular-self-supervised-pretraining/downloads/SKILL.md",
-      "sha256": "0d53618acf2324b52fb8d4b728adb4b6123e44a415b9b9fc1f084730c643d644"
+      "sha256": "6d6728c52ff2c58c5964b7ad3c1f60b413db6d28f85cd384f921c868dc52b372"
     },
     {
       "file": "skills/molecular-self-supervised-pretraining/downloads/molecular-self-supervised-pretraining-python.zip",
-      "sha256": "8903fc30b05987c775de1cddec138781cac0d752bff790836ffa631263a4ef4e"
+      "sha256": "029c5f5c287f0e70be036f16c4fc52100b67a2e843bd469562a3515ad1bd9db7"
     },
     {
       "file": "skills/molecular-self-supervised-pretraining/downloads/molecular-self-supervised-pretraining-python.zip.sha256",
-      "sha256": "91c6c81b2c0deae748073172737ab3668539939fc135b902242bdec3a584c778"
+      "sha256": "3e778722b0df7808c10a79e7a82214da1b6afef2f2b8e731896743da2e200012"
     },
     {
       "file": "skills/molecular-self-supervised-pretraining/runtime/analysis.py",
@@ -1724,7 +1796,7 @@
     },
     {
       "file": "skills/molecular-self-supervised-pretraining/runtime/resource-manifest.json",
-      "sha256": "6409a63c816f9d78e1c68f4c79dff64ef954b0797db0406af02e48da741a9ece"
+      "sha256": "61f8fedd92998dbb6d973adaaf533993c410d3b3b4712066502788d8d7b6caff"
     },
     {
       "file": "skills/molecular-self-supervised-pretraining/runtime/run_from_csv.py",
@@ -1735,36 +1807,40 @@
       "sha256": "634a1309ef0e81731440c30b99207fc59a4efd420da4c64b1f1d802d53b5753f"
     },
     {
+      "file": "skills/molecular-self-supervised-pretraining/runtime/sources.json",
+      "sha256": "6aab0cf7a0f67ec836babb5c57a8e8c225b427ef64508caba3ed69f141694d14"
+    },
+    {
       "file": "skills/molecular-smiles-vae/README.md",
-      "sha256": "3c53a275d642b8af7be1083b0a4f6bdcfe4b396cdf20357efae93ff5e8dfc13f"
+      "sha256": "91147e5871cdc4264529ba1eeba4d80b07b8f662256789a6c65630e890e36cc3"
     },
     {
       "file": "skills/molecular-smiles-vae/SKILL.md",
-      "sha256": "f105a36b55e9a2e5889dbbaf662ad87b7005f348bb77d802c824566ba31fa68d"
+      "sha256": "5c51e08412f3369f5e39162ba47bfb95005e3bfcc30192d1dcfd04b2721ca089"
     },
     {
       "file": "skills/molecular-smiles-vae/downloads/SHA256SUMS.txt",
-      "sha256": "485e77425f95fe9e290db79d9a6c511d647b1478692d0051034a0609177c67b7"
+      "sha256": "42ba40ebe9cbf79ab49b6777211eb00d0dcdfecf707f7ad62aee5afd3500a5bf"
     },
     {
       "file": "skills/molecular-smiles-vae/downloads/SKILL-md.zip",
-      "sha256": "d1f2ef5c61a1353cf1c49206daa2dd5f3b887ba0ae1bfce76e20771906dca0bd"
+      "sha256": "0e3bc8d2bd160168fb2e0d3ca6b3596ff1511d31faa970ea018ffaed361d5749"
     },
     {
       "file": "skills/molecular-smiles-vae/downloads/SKILL-md.zip.sha256",
-      "sha256": "b82a1b206d2820ec6c73d685bbb70d962810ba23f60a0d567ea679a2a409cba2"
+      "sha256": "3c1da33ac6fb9bf98ede079e98484f337e83236c33278c047f9a812235e8d0a8"
     },
     {
       "file": "skills/molecular-smiles-vae/downloads/SKILL.md",
-      "sha256": "f105a36b55e9a2e5889dbbaf662ad87b7005f348bb77d802c824566ba31fa68d"
+      "sha256": "5c51e08412f3369f5e39162ba47bfb95005e3bfcc30192d1dcfd04b2721ca089"
     },
     {
       "file": "skills/molecular-smiles-vae/downloads/molecular-smiles-vae-python.zip",
-      "sha256": "9eb36589c3b7d68fa3bbb1e0f53c347541a9c86ad2f60cb0522630f9709249c3"
+      "sha256": "b614ddf850e83d8275d8f47c6fbe1c8ac2dbbc4e72c9ac5e6e22e36dd4655368"
     },
     {
       "file": "skills/molecular-smiles-vae/downloads/molecular-smiles-vae-python.zip.sha256",
-      "sha256": "cb63b32eca57f54fb0519bdcde1aaf355fb8ad2c74604b8711aa51f01d3ce29f"
+      "sha256": "db4a3cf34677e4569d0107fba9648169990c70331042861fd27726175466800c"
     },
     {
       "file": "skills/molecular-smiles-vae/runtime/analysis.py",
@@ -1804,43 +1880,47 @@
     },
     {
       "file": "skills/molecular-smiles-vae/runtime/resource-manifest.json",
-      "sha256": "390b6ae7c2d22f5ce8c3b88c2ef725a0d6842852d8391fcf9de6bade95a73413"
+      "sha256": "84c6827c08ff1eecdc9f08d8e324d80b2394672f25ac5bfbb7998e6fad471e8e"
     },
     {
       "file": "skills/molecular-smiles-vae/runtime/run_skill.py",
       "sha256": "634a1309ef0e81731440c30b99207fc59a4efd420da4c64b1f1d802d53b5753f"
     },
     {
+      "file": "skills/molecular-smiles-vae/runtime/sources.json",
+      "sha256": "f4d5e002530dcba37e12f45e3a2a962a8fb2daae0be068555b014c3ea3460f4e"
+    },
+    {
       "file": "skills/multistate-size-comparison/README.md",
-      "sha256": "78cd097a7829061604bf5a9e587b33328314ee8092ea9c5ef9ac669a44e04218"
+      "sha256": "c66ac28058f5cc6042a883c1fa49acf4fdf2abec90aea445a27657d989fac4d9"
     },
     {
       "file": "skills/multistate-size-comparison/SKILL.md",
-      "sha256": "93af68c7463a6ad2d147d8495bea5f9737d795c12c2cc1d42a62478865002ac6"
+      "sha256": "f73d676218fb746f7eb4a86a600a5ae4756a17eb867e98122bf0338d10852014"
     },
     {
       "file": "skills/multistate-size-comparison/downloads/SHA256SUMS.txt",
-      "sha256": "ff3a59d10d0f725c8c362363af5022c59e459553186719688f05dcc0ebb7fc18"
+      "sha256": "5eda0b99774b738215822d7268b091bc7f7a3c159f6494cb2a8b980a8dd0f524"
     },
     {
       "file": "skills/multistate-size-comparison/downloads/SKILL-md.zip",
-      "sha256": "a85df21a6a9bcdef1895096ea7b57da28c18a2712450ecfcef70b48ac7a2f52d"
+      "sha256": "0e5567cb2b8f13e95c048426304bf21b1f58ac131bf5d65dd9311e645d845d79"
     },
     {
       "file": "skills/multistate-size-comparison/downloads/SKILL-md.zip.sha256",
-      "sha256": "7e7622cb6df120f562b39f3284c80794f9c3f696ec48aeacea9fde18e5ae9405"
+      "sha256": "a7461b3f31f62ee76cce3a0f94d19a704626f146ac73566604e50d0c3c50f1ff"
     },
     {
       "file": "skills/multistate-size-comparison/downloads/SKILL.md",
-      "sha256": "93af68c7463a6ad2d147d8495bea5f9737d795c12c2cc1d42a62478865002ac6"
+      "sha256": "f73d676218fb746f7eb4a86a600a5ae4756a17eb867e98122bf0338d10852014"
     },
     {
       "file": "skills/multistate-size-comparison/downloads/multistate-size-comparison-python.zip",
-      "sha256": "7ce8122016db0a8a52317de207859c4014bccae3c668e9f212d2b636503a5c68"
+      "sha256": "8a6070f14c15bb504633849bc00df18a6703c428b639bc78087fd0e0e32057c2"
     },
     {
       "file": "skills/multistate-size-comparison/downloads/multistate-size-comparison-python.zip.sha256",
-      "sha256": "5e4f23ababc0438a3111966f2b72941f5677047f05c1b330003cd94064b44e0c"
+      "sha256": "180e140c6eaae97091e2b89b0187ec21be562a074344b8cbaeeb0801944a474f"
     },
     {
       "file": "skills/multistate-size-comparison/runtime/analysis.py",
@@ -1880,11 +1960,15 @@
     },
     {
       "file": "skills/multistate-size-comparison/runtime/resource-manifest.json",
-      "sha256": "8bb8373b149bd9446f693a12a7536ffd4cee161b419a3a09a88959a1f5ebdfb9"
+      "sha256": "7a6a16a4f210bf36ea80961b9b5c5836f6090f45b9f009c7d056cd1a407a804f"
     },
     {
       "file": "skills/multistate-size-comparison/runtime/run_skill.py",
       "sha256": "492adcc666a9f361f73e4de511652fdc3266d66f40d48affbd602a3c89b854a6"
+    },
+    {
+      "file": "skills/multistate-size-comparison/runtime/sources.json",
+      "sha256": "0e86e6558f853be79ca4ffb360c318a31b995d1a76d1b6c50eb538a0c6295838"
     },
     {
       "file": "skills/multistate-size-comparison/runtime/support.py",
@@ -1892,35 +1976,35 @@
     },
     {
       "file": "skills/nonorthogonal-subspace/README.md",
-      "sha256": "aebaedc0f2d415a79b39bb246d337be491421d908abbd51a5c34dd96b737cd5f"
+      "sha256": "ddf9e85b4c56097db8cc48d6b3cd433a0c4b3a798cdc6510fd9dbf46a9c77b9a"
     },
     {
       "file": "skills/nonorthogonal-subspace/SKILL.md",
-      "sha256": "dcc1338a3ced78aa18e3689621a93644b1cbef1824f78f28d1bb371f1bee6ab5"
+      "sha256": "43fd6131065771b06f0ad23b00fa67321bd86f29aa5a02f665e2ed2c131547e9"
     },
     {
       "file": "skills/nonorthogonal-subspace/downloads/SHA256SUMS.txt",
-      "sha256": "c0d13455bc7d7528dc7db01ff177f452b36223b663658253aa027ce5c83b369d"
+      "sha256": "91711993748e48eb2b5780132956b426a247bf03c92112aac7f25eeb4fd8bfbd"
     },
     {
       "file": "skills/nonorthogonal-subspace/downloads/SKILL-md.zip",
-      "sha256": "9dc5d7eb155ebccd7970208c1aac0b1a3fa6b098436edbf86148fe69381db060"
+      "sha256": "458497adae648317fdbf384730d6ad20f5f29af16ad7c096acdfe5146707ff7e"
     },
     {
       "file": "skills/nonorthogonal-subspace/downloads/SKILL-md.zip.sha256",
-      "sha256": "19eed1eb35a5317b2ad7f38644b2661b926fc30988048c846d058eaa63099907"
+      "sha256": "a3d81dcc2a793c75c71e4f97e42a608e177f08313e4d1926357ce59ef0e204e0"
     },
     {
       "file": "skills/nonorthogonal-subspace/downloads/SKILL.md",
-      "sha256": "dcc1338a3ced78aa18e3689621a93644b1cbef1824f78f28d1bb371f1bee6ab5"
+      "sha256": "43fd6131065771b06f0ad23b00fa67321bd86f29aa5a02f665e2ed2c131547e9"
     },
     {
       "file": "skills/nonorthogonal-subspace/downloads/nonorthogonal-subspace-python.zip",
-      "sha256": "47dcfbac60a1aea5aed9e3b8046ff10f6f1426d851ce76e4bca0d2413d3f3015"
+      "sha256": "95310fd4876a2f668790c87998156d1b98f4506071451c3233bc1f6aefb97060"
     },
     {
       "file": "skills/nonorthogonal-subspace/downloads/nonorthogonal-subspace-python.zip.sha256",
-      "sha256": "e8a7598ce07254984bd6ea3259742bd4775d48ba8b163376eb73808898e11b70"
+      "sha256": "67159e190e215553e18db67a888e52602e38d54eae6b29756c35da2b70a7e17c"
     },
     {
       "file": "skills/nonorthogonal-subspace/runtime/analysis.py",
@@ -1960,7 +2044,7 @@
     },
     {
       "file": "skills/nonorthogonal-subspace/runtime/resource-manifest.json",
-      "sha256": "110957e992e9d5884d6a47755fdd53366977a9af3aa0ab77e019119646dc481b"
+      "sha256": "5b301eccd9a30fbab59bb5f38923bedd2f039b5c6c041d1a98683bc200679bea"
     },
     {
       "file": "skills/nonorthogonal-subspace/runtime/run_skill.py",
@@ -1968,7 +2052,7 @@
     },
     {
       "file": "skills/nonorthogonal-subspace/runtime/sources.json",
-      "sha256": "f9d2fc7639e2cf89eb5c014d4345169f82bac715e08d6130073d982bd824d4a2"
+      "sha256": "6ee41349504d7f6141b3bb3e602d9c5cbe3fd4334221623e28a3a75ea054e4ef"
     },
     {
       "file": "skills/nonorthogonal-subspace/runtime/support.py",
@@ -1976,35 +2060,35 @@
     },
     {
       "file": "skills/nuclear-repulsion-response/README.md",
-      "sha256": "4561d2d215db028bad3cf2bda7e1a4497b4cb56c921af373a8bea9487b233167"
+      "sha256": "b4486485ee6c4ad2bf2004012e46f4a852c3cb7ef4c883d1cc40047180bbc0c7"
     },
     {
       "file": "skills/nuclear-repulsion-response/SKILL.md",
-      "sha256": "7ae84b757f880d049ce99bcdbb49b26cc77d1a7067c3fff064afa8ae3e732581"
+      "sha256": "8aca7ae55c835db2687f320bde3b4a5d39788e3412e526c0a2612972166da1a9"
     },
     {
       "file": "skills/nuclear-repulsion-response/downloads/SHA256SUMS.txt",
-      "sha256": "2c5a4179ed95552eaaa209f212f079d1335dfd5b6df7fcee6012dfefe4a569f3"
+      "sha256": "8e6f7c71b614599ee1570df2d5df04e99f83cf37cd9f5c921b234e1b19812b99"
     },
     {
       "file": "skills/nuclear-repulsion-response/downloads/SKILL-md.zip",
-      "sha256": "a3ce52406b99261a577ef21bfbd6aae19ffa34b1672b060b66a72653da9c7306"
+      "sha256": "8fd344fc198d67c1828a98f232a3b3e2e9c58b6357b409377cbc0e74f15d1ea0"
     },
     {
       "file": "skills/nuclear-repulsion-response/downloads/SKILL-md.zip.sha256",
-      "sha256": "cdb381a6754fe7b1180a73c51c892d122a015c52fdcd3ddb5a88e1a4dce38034"
+      "sha256": "4ae17b7955e0de35974b6e944b8f2ce585d112d1a359a0adf096922d7761f618"
     },
     {
       "file": "skills/nuclear-repulsion-response/downloads/SKILL.md",
-      "sha256": "7ae84b757f880d049ce99bcdbb49b26cc77d1a7067c3fff064afa8ae3e732581"
+      "sha256": "8aca7ae55c835db2687f320bde3b4a5d39788e3412e526c0a2612972166da1a9"
     },
     {
       "file": "skills/nuclear-repulsion-response/downloads/nuclear-repulsion-response-python.zip",
-      "sha256": "803648c0912b94ed2fc3aed914fd2dd92a1a4859af507e8763bf1b5b4da2a493"
+      "sha256": "c274488aa132fb2596b4c44943e429a985fab4b134435dfc041951aec0be7507"
     },
     {
       "file": "skills/nuclear-repulsion-response/downloads/nuclear-repulsion-response-python.zip.sha256",
-      "sha256": "91e06846f6a84edba662357cbc676e5bbf4c403e36bb07268403ed8f9a12bdb7"
+      "sha256": "35dc03158cc10f37664a2ca7201748c0b8995467d0642b1b578382587fd72f6e"
     },
     {
       "file": "skills/nuclear-repulsion-response/runtime/analysis.py",
@@ -2044,43 +2128,47 @@
     },
     {
       "file": "skills/nuclear-repulsion-response/runtime/resource-manifest.json",
-      "sha256": "de873a24a9bc34712962a8df2e4149af4e846b6cfbe26fdc10912f24552f01e8"
+      "sha256": "4a2cfa620418e28d2d1a1c87cee4166f97af3e44f0a994ca79c6a4728e5991a0"
     },
     {
       "file": "skills/nuclear-repulsion-response/runtime/run_skill.py",
       "sha256": "12ecb2cf1acad6162205449a5ff627fd6174171b6327d2b36ad92a3692b2a8ff"
     },
     {
+      "file": "skills/nuclear-repulsion-response/runtime/sources.json",
+      "sha256": "920ba3c8bd9efdf7b163a88867dd87a49caf3fb5f513ad28aa30e22fb9448c03"
+    },
+    {
       "file": "skills/orbital-localization-density/README.md",
-      "sha256": "a1ab872d5a1fd99ebd091668556b08b0b1d28b40e975ec752b446aebc3742b1a"
+      "sha256": "b140a3d2e626069c36f8016ad141a652903436ffafef4a24c54184cfa8fa4c4e"
     },
     {
       "file": "skills/orbital-localization-density/SKILL.md",
-      "sha256": "10cc16df5f263276bbdc823687729f5afc146b32077c094cc5f9944dd890f885"
+      "sha256": "51fdb89964504f704c0afdd6f1e52e8d7babbf59dd13acf0fadfd70c1098c213"
     },
     {
       "file": "skills/orbital-localization-density/downloads/SHA256SUMS.txt",
-      "sha256": "58ac499a98e97c51973da46999cdbf9457871ef00c17a2e31f87a17e14a720ae"
+      "sha256": "cba71b6839578ad12e09ef9c3c7693e156021eb784ef11b2288f9c2656a6699f"
     },
     {
       "file": "skills/orbital-localization-density/downloads/SKILL-md.zip",
-      "sha256": "6e68f6e597b61e7311f24f429e35c4f7f05a55a2e8078eaa83215579db75dede"
+      "sha256": "c178333813d0430c4773f1e10c02e5e07bfb7a5ff9b1ae3396717444e6ea0eca"
     },
     {
       "file": "skills/orbital-localization-density/downloads/SKILL-md.zip.sha256",
-      "sha256": "b8e5e820f6575655f59bdef8ea5d7a4629ffbdd4046915413bd61e1a1a84b323"
+      "sha256": "58ef7202e5a862cf7f6173c96583cd86f45bc54c6460bfceee046bc73f78c6c1"
     },
     {
       "file": "skills/orbital-localization-density/downloads/SKILL.md",
-      "sha256": "10cc16df5f263276bbdc823687729f5afc146b32077c094cc5f9944dd890f885"
+      "sha256": "51fdb89964504f704c0afdd6f1e52e8d7babbf59dd13acf0fadfd70c1098c213"
     },
     {
       "file": "skills/orbital-localization-density/downloads/orbital-localization-density-python.zip",
-      "sha256": "1c517a470bc8078d0ee9ab996f19769b3fd5f3f092cc1bcb5b2973a633e5b0cc"
+      "sha256": "e768d71888a37b6ea1ad0cfa748f3c2ed7cf99b388e40d7cf31b2c5a7f9009cd"
     },
     {
       "file": "skills/orbital-localization-density/downloads/orbital-localization-density-python.zip.sha256",
-      "sha256": "86842ba25e6374241a5a3f7490af91f8c65306f4a1fbfad9338ab6a18e4486cc"
+      "sha256": "55e97d7247f64d43a10eaadbc19dd73253ead9f0e81c287521ca86d2bb96275c"
     },
     {
       "file": "skills/orbital-localization-density/runtime/analysis.py",
@@ -2120,7 +2208,7 @@
     },
     {
       "file": "skills/orbital-localization-density/runtime/resource-manifest.json",
-      "sha256": "afba37645f0f308e5fbd3c0ebae873d0ef380588f42126c0b1a410ce438559c8"
+      "sha256": "711aad7e3a746215b2d6db55e2c18ae29f49f8fdffbaf22cfb4366fa39d690a7"
     },
     {
       "file": "skills/orbital-localization-density/runtime/run_skill.py",
@@ -2128,7 +2216,7 @@
     },
     {
       "file": "skills/orbital-localization-density/runtime/sources.json",
-      "sha256": "f9d2fc7639e2cf89eb5c014d4345169f82bac715e08d6130073d982bd824d4a2"
+      "sha256": "5c35ec5d0eca312a841d00f29a77c310aac31a026d8c6bea05b418cb73fd1164"
     },
     {
       "file": "skills/orbital-localization-density/runtime/support.py",
@@ -2136,11 +2224,11 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/README.md",
-      "sha256": "d40309466cd5faa82a19592ed466ec846e0d6998b3c92a8fe31b85dbc1636cb7"
+      "sha256": "4ccf0b67c964e5361d20b53b74d248d180f3343acfa581f29e8f5e05694e01e7"
     },
     {
       "file": "skills/organic-smiles-rdkit/SKILL.md",
-      "sha256": "8f27067a628e6a81b2f87c6f13597d816831e133db897ee1bcac3e2bfed69a09"
+      "sha256": "d996f1357f4e65d83b3af042d2f0d86a11ab836102d456d37d3dd2fc30a44128"
     },
     {
       "file": "skills/organic-smiles-rdkit/assets/descriptors.png",
@@ -2156,27 +2244,27 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/downloads/SHA256SUMS.txt",
-      "sha256": "40680a4b2b04a3bda97c75070b6bf1d4b469c8ea880159bb71561b873703d2c5"
+      "sha256": "eb4df4f6b8c5cb7c8fb4745621f5ff9bbc829dc57d3dcec91a00235bca7feda4"
     },
     {
       "file": "skills/organic-smiles-rdkit/downloads/SKILL-md.zip",
-      "sha256": "11535202709d46dbe5ea87ac5bdb8b09f3ac376a7d5917fff2eb5d420cb5a96f"
+      "sha256": "e3c306c28d04efad880e49029c2fc5cfe01776ec17ed6dd40cf33d9ad30dc488"
     },
     {
       "file": "skills/organic-smiles-rdkit/downloads/SKILL-md.zip.sha256",
-      "sha256": "9b22f96e553c2f161d4884f1a3b06cf89a8bbe3991f81f743494f17c5058ee3d"
+      "sha256": "93a7e84b47b49f06f48ce6e526da3beb1b6107e886db35063e2c642cd6afb4aa"
     },
     {
       "file": "skills/organic-smiles-rdkit/downloads/SKILL.md",
-      "sha256": "8f27067a628e6a81b2f87c6f13597d816831e133db897ee1bcac3e2bfed69a09"
+      "sha256": "d996f1357f4e65d83b3af042d2f0d86a11ab836102d456d37d3dd2fc30a44128"
     },
     {
       "file": "skills/organic-smiles-rdkit/downloads/organic-smiles-rdkit-python.zip",
-      "sha256": "1307084ce0e759b3dff60d91556615490a1d742b4f0fd059e5cec6f8697abac4"
+      "sha256": "658b57b0fe3a8a700cbbb67adb4cc55fd4a97a98f41353eaed455e6171829359"
     },
     {
       "file": "skills/organic-smiles-rdkit/downloads/organic-smiles-rdkit-python.zip.sha256",
-      "sha256": "50e48964aa1d043f65d474c6bd9a02a763b4fd62df43bc7c1ebd7e9d9eb694e0"
+      "sha256": "ed15db45a81edbbee7802f6ade74c5fe8f6a7b0b9ae331f3e6bd5f62838cf81f"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/agent.py",
@@ -2276,43 +2364,43 @@
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/resource-manifest.json",
-      "sha256": "497132f4bd96a63db96551cebdfce29406794cc5492ff90fd889973ff96b3f6c"
+      "sha256": "a80d4e1ffd57101b15c5f3bd33c7297ad98be53c08b7105b27e207a412fd882a"
     },
     {
       "file": "skills/organic-smiles-rdkit/runtime/sources.json",
-      "sha256": "414071729d334643e4bb654660a209fe4ffc51060eb66dcbee6f51f1d999827e"
+      "sha256": "2dbf4b572816fcbfc1d4a0cdb314325daccb85e53566f7ea2c24a3bbb6b8f57f"
     },
     {
       "file": "skills/partition-mask-audit/README.md",
-      "sha256": "b3fd5ddb3c0228464f7662941dab7f7fe12e0b40460c414e71ff8f8cdc5e3dd1"
+      "sha256": "5996dd5f000afcaa4cf4aee540ecdfbd67cf10213b2bc3563a3b0d2c12e4c92a"
     },
     {
       "file": "skills/partition-mask-audit/SKILL.md",
-      "sha256": "bced8d83aca90c76920473a3a87e1dcb4450041322097ec3e632c3a6bb6d3c2a"
+      "sha256": "fdce5c2a2a55a9d89cbcf08e3263e2dcc59f844601a883a444a372d821372976"
     },
     {
       "file": "skills/partition-mask-audit/downloads/SHA256SUMS.txt",
-      "sha256": "3ac1985522ca936344c2f8a6bf4df27235c5922c39412dbf56584a9550d905d8"
+      "sha256": "5a0fe45a1b1c0fee8ca1f8ab82c38b473ee571ccdb9c52e05b16ce609415ec92"
     },
     {
       "file": "skills/partition-mask-audit/downloads/SKILL-md.zip",
-      "sha256": "7cc37836b36707b919706293a539a0db33b98fa2ec721c8bf9b3267fd62d45cd"
+      "sha256": "ab61121a65f5804eb1be0684b357e01acb8e7cf04f6447284409bd51a340cf44"
     },
     {
       "file": "skills/partition-mask-audit/downloads/SKILL-md.zip.sha256",
-      "sha256": "ee37f0d3f3b1af1b8aa026a28de6fc1572a82a34bd02c8fed9dfac61d9070547"
+      "sha256": "71cf04fc4917df17d42e733772dcf0e8e2b8be96f10fc5239c3cbe20c52a99a2"
     },
     {
       "file": "skills/partition-mask-audit/downloads/SKILL.md",
-      "sha256": "bced8d83aca90c76920473a3a87e1dcb4450041322097ec3e632c3a6bb6d3c2a"
+      "sha256": "fdce5c2a2a55a9d89cbcf08e3263e2dcc59f844601a883a444a372d821372976"
     },
     {
       "file": "skills/partition-mask-audit/downloads/partition-mask-audit-python.zip",
-      "sha256": "6658b7f538730bf318df2124d3919749efb0044308907fd0501bb826fa6bdaf1"
+      "sha256": "69138bfb3b754b76ca527c5d4ffcc3fbbe0d7f618d6ea7a6fcf151da3d53826c"
     },
     {
       "file": "skills/partition-mask-audit/downloads/partition-mask-audit-python.zip.sha256",
-      "sha256": "e97882abca809c48817043e80f3ebaeaa6e03b959b00c76dc49aa4efe5137566"
+      "sha256": "e551e9953ab29d3fc7fd1d93ea77110b89a8ed66b69194cb1570ee014a9aa769"
     },
     {
       "file": "skills/partition-mask-audit/runtime/analysis.py",
@@ -2352,7 +2440,7 @@
     },
     {
       "file": "skills/partition-mask-audit/runtime/resource-manifest.json",
-      "sha256": "d40a75a0e4b8cbf6a475547d13e783612246900d99643ca7cb733de2a9241b68"
+      "sha256": "869205b3275338075f5dd4605968950fe0d57342d57a18707839df4e36db168a"
     },
     {
       "file": "skills/partition-mask-audit/runtime/run_skill.py",
@@ -2360,7 +2448,7 @@
     },
     {
       "file": "skills/partition-mask-audit/runtime/sources.json",
-      "sha256": "f9d2fc7639e2cf89eb5c014d4345169f82bac715e08d6130073d982bd824d4a2"
+      "sha256": "8a359d8887092bfc02c15d216933b99474b3cfff65df4249c3b2fc7b6b8eeec2"
     },
     {
       "file": "skills/partition-mask-audit/runtime/support.py",
@@ -2368,35 +2456,35 @@
     },
     {
       "file": "skills/reflection-parity/README.md",
-      "sha256": "4a31a0f6b9d8e946eb88356c0295f3ba7016406d95503530bfd179ffaeb9f2bf"
+      "sha256": "e20a8e87d8a7d91acde064231f8a07ec0fc49ee926888b9ab6cd63ed0d89c171"
     },
     {
       "file": "skills/reflection-parity/SKILL.md",
-      "sha256": "4d494f577bcdd75d31a6a6189ff00d8f65a80eb1f4f91c2807d4b88562978c69"
+      "sha256": "037d7a86154ea3cc86038a5c511a01d9d1463afe0a3112ac48a5b35588ab773d"
     },
     {
       "file": "skills/reflection-parity/downloads/SHA256SUMS.txt",
-      "sha256": "a118682ea15e4370dae1c933a45f88be7be35cca3f4c4c8612a045d58fcf9307"
+      "sha256": "6ceeb006e10f55c71a15c01255c69c2cd1f9cd1bbd442119fb457eb74da30176"
     },
     {
       "file": "skills/reflection-parity/downloads/SKILL-md.zip",
-      "sha256": "d724030a37aecb4106a32ff8d3787c32314c04ed5a1ce0d09cbbc174cfb6c9df"
+      "sha256": "cbb869455ec60274347210925b7bcaf2873e3eddd4f0bdff95eddcc78d4dffce"
     },
     {
       "file": "skills/reflection-parity/downloads/SKILL-md.zip.sha256",
-      "sha256": "738c14b523d5bfd5ccaeae5576762368d77955e6b306a0462184c471ea674f44"
+      "sha256": "f9e33312f742610cce5d7e682d09b2df902462f761a44a75574412c8c3cd18c1"
     },
     {
       "file": "skills/reflection-parity/downloads/SKILL.md",
-      "sha256": "4d494f577bcdd75d31a6a6189ff00d8f65a80eb1f4f91c2807d4b88562978c69"
+      "sha256": "037d7a86154ea3cc86038a5c511a01d9d1463afe0a3112ac48a5b35588ab773d"
     },
     {
       "file": "skills/reflection-parity/downloads/reflection-parity-python.zip",
-      "sha256": "a81c371e1365220607f31fb461983bae2f7663efe12829122f627916edf9a060"
+      "sha256": "ae177322875c2c1dcd67ff4d41427ce4404d06ab0319eaf82c38dfde91e9dd46"
     },
     {
       "file": "skills/reflection-parity/downloads/reflection-parity-python.zip.sha256",
-      "sha256": "dd96f8fce4669fb014da0f5d3b3f5e2aff6b14c9b007e66809efba87c3b0c828"
+      "sha256": "88a065bc585a9122e5fcbd724be89ccaffbb76f799ba35b8e6b6d024176939d5"
     },
     {
       "file": "skills/reflection-parity/runtime/analysis.py",
@@ -2436,7 +2524,7 @@
     },
     {
       "file": "skills/reflection-parity/runtime/resource-manifest.json",
-      "sha256": "2c2bff26d3e5e827f50d23b0138aee2362d65bab4392bfa73eb93f649a71655c"
+      "sha256": "d5f9b95f21600c8af6c18e165c92f040ac269a5f4c912b9cd6c3efa63ddf135e"
     },
     {
       "file": "skills/reflection-parity/runtime/run_skill.py",
@@ -2444,7 +2532,7 @@
     },
     {
       "file": "skills/reflection-parity/runtime/sources.json",
-      "sha256": "f9d2fc7639e2cf89eb5c014d4345169f82bac715e08d6130073d982bd824d4a2"
+      "sha256": "8d56f6a5a5e1fdd83ae401f1660dc69840b2c273295340f7e25ac6ae61d0526a"
     },
     {
       "file": "skills/reflection-parity/runtime/support.py",
@@ -2452,35 +2540,35 @@
     },
     {
       "file": "skills/rhf-single-point/README.md",
-      "sha256": "ba2f444dd106d4cef3a20a28252508a16f8794f39a963bfc0a37f17b4f40f896"
+      "sha256": "42f1ce8293aa276f44b6ab2fb9973bd7dbe445193cd0d004a90a77e8f73f2d07"
     },
     {
       "file": "skills/rhf-single-point/SKILL.md",
-      "sha256": "9a8480787784c21359a3a3e007baea38e06aac977850d9895c9bad8197626e20"
+      "sha256": "8a2f5c8651b925f3e00fe4a60ad63150d70dcbce835c9d17af0394b3eab3ceb5"
     },
     {
       "file": "skills/rhf-single-point/downloads/SHA256SUMS.txt",
-      "sha256": "ac0b3769d0ccbe2ac2d91625a3d00b20c7b92d5b893c355f6896469c8c005722"
+      "sha256": "e6b5e59630fc5cc3a73cc6282fdb0479e3d95ed33cca213ca858ac6a0262dcc6"
     },
     {
       "file": "skills/rhf-single-point/downloads/SKILL-md.zip",
-      "sha256": "216ec11f8d7ed4c4420800079999be8c882a799df07a510b887b4a31fda199e4"
+      "sha256": "95968ec6963f66af9317df046b9f796083d0f8aa555af75aad3651baf49f439e"
     },
     {
       "file": "skills/rhf-single-point/downloads/SKILL-md.zip.sha256",
-      "sha256": "0d810d42b55869973606233f299502c5430d310344a2db75a7834e040c17f4b0"
+      "sha256": "332811370dc1d48850d8e02f70ef41dd54bb0bf013b9d696a5f2f16a332fee2d"
     },
     {
       "file": "skills/rhf-single-point/downloads/SKILL.md",
-      "sha256": "9a8480787784c21359a3a3e007baea38e06aac977850d9895c9bad8197626e20"
+      "sha256": "8a2f5c8651b925f3e00fe4a60ad63150d70dcbce835c9d17af0394b3eab3ceb5"
     },
     {
       "file": "skills/rhf-single-point/downloads/rhf-single-point-python.zip",
-      "sha256": "28ac6d8bff9855797fe595b26be74c845f560270f483e300814ecc97ffbbab0f"
+      "sha256": "8c4ee8aba94ba1d565cffa5911527bfbd20db991191ae398ea15f90308009371"
     },
     {
       "file": "skills/rhf-single-point/downloads/rhf-single-point-python.zip.sha256",
-      "sha256": "b71018307ef4dc6e5e06fb8bfe61b8af6b9d7714fd7fd917a20d61f9bc031c1b"
+      "sha256": "e138f7ec6c493a2c7d2b56f5083c10979a8fb20c698fcd2057e04825f1588db2"
     },
     {
       "file": "skills/rhf-single-point/runtime/examples/01_prepare.py",
@@ -2508,7 +2596,7 @@
     },
     {
       "file": "skills/rhf-single-point/runtime/resource-manifest.json",
-      "sha256": "c78c02466f45551afc934f2c4cf340659ddf3f0c2ccccbe424e19abd4e6785bd"
+      "sha256": "a66bda421c035a7648ad6a4274dd978a7d61fe6e3381788939e1f59bd120629b"
     },
     {
       "file": "skills/rhf-single-point/runtime/run_skill.py",
@@ -2535,36 +2623,40 @@
       "sha256": "91e95a9dfb0dd942cec0ab5c71463062fc7688c15ddbcd89bd0ad423715f8db1"
     },
     {
+      "file": "skills/rhf-single-point/runtime/sources.json",
+      "sha256": "7e2bd4b72ce4f449ccbf95d6105e430d8b0b8ba7b05347c6e83e4838d3cd36af"
+    },
+    {
       "file": "skills/runtime-usage-assistant/README.md",
-      "sha256": "28acb9ccbd222b9d2a3f09e01bc48537644b2c836f7fc6b78cc4570fc069ffe7"
+      "sha256": "02bd5fa8f98285636a1eea00c83a71c2739c1ac64a649103591f0b92ffbfc49c"
     },
     {
       "file": "skills/runtime-usage-assistant/SKILL.md",
-      "sha256": "a8fdc8827d4a06a63d23753875072602f12d12eb230a506522b372cc331508f6"
+      "sha256": "de30c593db9bba1489a3f6c8a9507430eb07db0beba43e455ddff60268ee335a"
     },
     {
       "file": "skills/runtime-usage-assistant/downloads/SHA256SUMS.txt",
-      "sha256": "c7ea7737cf10088e367c35300aa6f0d0924843c7ab4ce4e49c71a7f679d78ca9"
+      "sha256": "eaf3e08a43899131b8d8c74c9285e75a19291f127e116715bb06afa763fce76b"
     },
     {
       "file": "skills/runtime-usage-assistant/downloads/SKILL-md.zip",
-      "sha256": "c599d02f5d899bb64e837b8550b0690ac3acfd2bd629d7d79642aaca7c53eb04"
+      "sha256": "a368c243b0c901d2ec42cc80e1cfe0bd294f5bb5cfa8255a8ac7baf002c594e7"
     },
     {
       "file": "skills/runtime-usage-assistant/downloads/SKILL-md.zip.sha256",
-      "sha256": "b1faa023232b924f51e1570e06fc4d86fb9b07379a224102b44a58fc96dc43de"
+      "sha256": "bbb00f79ec4762eabe3c12acfa38c2fc97a4517b86a931129af6d83fb7421e95"
     },
     {
       "file": "skills/runtime-usage-assistant/downloads/SKILL.md",
-      "sha256": "a8fdc8827d4a06a63d23753875072602f12d12eb230a506522b372cc331508f6"
+      "sha256": "de30c593db9bba1489a3f6c8a9507430eb07db0beba43e455ddff60268ee335a"
     },
     {
       "file": "skills/runtime-usage-assistant/downloads/runtime-usage-assistant-python.zip",
-      "sha256": "f61845e0bd794febaacbb5ad4a543e5cd1ac01ecccf74e131627cf1ff813297c"
+      "sha256": "bd3adcc8ad8062722d1d9a6469c26a6a1fbe3bbdf63ef6cb107e239ed2a99053"
     },
     {
       "file": "skills/runtime-usage-assistant/downloads/runtime-usage-assistant-python.zip.sha256",
-      "sha256": "b52cba26b62b50fd12f5753ebd0828955c368c505ce3c04bf83bdcb346749ae7"
+      "sha256": "fefd993e2d3942fd53473c2604b1d06514c85ccd338a43a846cdccd83f9abb46"
     },
     {
       "file": "skills/runtime-usage-assistant/runtime/analysis.py",
@@ -2604,43 +2696,47 @@
     },
     {
       "file": "skills/runtime-usage-assistant/runtime/resource-manifest.json",
-      "sha256": "a2429fe21dc0e8a54709abe09176afc7896bad3dec32ffa1ea7144fc8bffd386"
+      "sha256": "c4a6b0b55448fadbed0fa9af13d3eb4eb1d689cd9b388f6ed86293397043d433"
     },
     {
       "file": "skills/runtime-usage-assistant/runtime/run_skill.py",
       "sha256": "634a1309ef0e81731440c30b99207fc59a4efd420da4c64b1f1d802d53b5753f"
     },
     {
+      "file": "skills/runtime-usage-assistant/runtime/sources.json",
+      "sha256": "f0ed7d3826809b8e478fc278be4d5834043e5d799348a374e908bb4eed189edc"
+    },
+    {
       "file": "skills/same-hamiltonian-path-closure/README.md",
-      "sha256": "59bf394978873a51ddc183a0f617f040bada72acfba481a135ad316d3a0bfc84"
+      "sha256": "4e7b9d237ae9b9e600722a094a49e10906c57263355ca7888c8d35b86fa41739"
     },
     {
       "file": "skills/same-hamiltonian-path-closure/SKILL.md",
-      "sha256": "90a7bb673b64708f4dc1d3e2350917cdd2aefc239ac2a9775fe948aaea59e4ba"
+      "sha256": "6c3ef1538385215f96b9c2f469544498247ffc1a0994808875bb7c3b6c6d866f"
     },
     {
       "file": "skills/same-hamiltonian-path-closure/downloads/SHA256SUMS.txt",
-      "sha256": "93bd1e4b0b8d4ee524e5ad21b003647130c6d17fce03cd2c9904b23b50469b03"
+      "sha256": "bc00305eda38bbe9f57d7eee6d9194b519250c71833320d317e7997631dd9f26"
     },
     {
       "file": "skills/same-hamiltonian-path-closure/downloads/SKILL-md.zip",
-      "sha256": "688f6f979aa952bd619e443e27f8937c1ff64604dd798364ea0adc66f2d7bf8a"
+      "sha256": "87e1258577e3ff00cd3a90c9e45b16a638d391d39f8bae8b9b2356c6cedcf7aa"
     },
     {
       "file": "skills/same-hamiltonian-path-closure/downloads/SKILL-md.zip.sha256",
-      "sha256": "acd54b8faacdee41a15b5d78502b9a9223df22ec2fdc8930660348e5f31a65af"
+      "sha256": "acdd99af6ae6f56c430f1bd024187fcc233d1f03e9cf7aa629e5fd2dcc7a3c5a"
     },
     {
       "file": "skills/same-hamiltonian-path-closure/downloads/SKILL.md",
-      "sha256": "90a7bb673b64708f4dc1d3e2350917cdd2aefc239ac2a9775fe948aaea59e4ba"
+      "sha256": "6c3ef1538385215f96b9c2f469544498247ffc1a0994808875bb7c3b6c6d866f"
     },
     {
       "file": "skills/same-hamiltonian-path-closure/downloads/same-hamiltonian-path-closure-python.zip",
-      "sha256": "98e2d6ad135f9419c4695eea974137518c06ef25b0e958bca607a4f0967de985"
+      "sha256": "0c2ab577b4d88f46ce05d985ad856cdf30737a2558b6322850b7eb942a6e7d72"
     },
     {
       "file": "skills/same-hamiltonian-path-closure/downloads/same-hamiltonian-path-closure-python.zip.sha256",
-      "sha256": "fb8f24d37cd07fef7a51fd3bb1e172e45cae454687c8154e1b9451ddea178422"
+      "sha256": "a6b4e8bef1fa0753522422af33d0ece9abe0159a6c933a480f448cbc088f1d15"
     },
     {
       "file": "skills/same-hamiltonian-path-closure/runtime/analysis.py",
@@ -2684,43 +2780,47 @@
     },
     {
       "file": "skills/same-hamiltonian-path-closure/runtime/resource-manifest.json",
-      "sha256": "3d19cad4d7dfe8804ac1841355173789761336261459abd14abe42bcbf1b9404"
+      "sha256": "3b67740f18d0f99055013eb8557ba6646e503cc31002fabcd2deebc65b97a08d"
     },
     {
       "file": "skills/same-hamiltonian-path-closure/runtime/run_skill.py",
       "sha256": "33a9c1ae35be30759d139577a864d189679b2ee898db39506e65e888b2f0c2cf"
     },
     {
+      "file": "skills/same-hamiltonian-path-closure/runtime/sources.json",
+      "sha256": "172feb13bdfa65aad9b3eac03caf80342f7d719a3f9f7f09aa97c6e211d32307"
+    },
+    {
       "file": "skills/scan-energy-curvature/README.md",
-      "sha256": "ace44d55ae7d9dbbb205c3f14f8f7d0bb940da661cd860cf5f11cf8391701afe"
+      "sha256": "e1278529427b97ee8b72c803ab3c481d94c7a3fb0c03b384cf4ba1a8a4863cf2"
     },
     {
       "file": "skills/scan-energy-curvature/SKILL.md",
-      "sha256": "12c2391ea5178fb8a4062f884ba899905bb1e527648dea7a16da8f709a61d113"
+      "sha256": "aca115a1083f6b2a0c07a761ff02cf33d4879843dc489d4634aacd781652c227"
     },
     {
       "file": "skills/scan-energy-curvature/downloads/SHA256SUMS.txt",
-      "sha256": "8244e5054451241004286487a36a1ee8608d85fb3a2ce58b6bba2610c41ac97a"
+      "sha256": "2cf8a6b4f36121aa49f20a37c2710aee6ce0c6e5feb6cd16c3ee5bfae4e314fc"
     },
     {
       "file": "skills/scan-energy-curvature/downloads/SKILL-md.zip",
-      "sha256": "912b93089af87330ec9f3e2df3dbbc208ba8f920e2005c19a7d3f5ccbdb9fa72"
+      "sha256": "7412c6b59b97803866387e916a9d9ed14527d54a1bcd7b93379f3a93f19aafb8"
     },
     {
       "file": "skills/scan-energy-curvature/downloads/SKILL-md.zip.sha256",
-      "sha256": "e3f5f27c853897a6777497ba78ced5b929d77a6b4fab3c6bf48c0dfdef7fe86b"
+      "sha256": "9e77f26f0f96edc8c427250818ebd55f8cce02e0dcd307f4cfabb55e6d42e56d"
     },
     {
       "file": "skills/scan-energy-curvature/downloads/SKILL.md",
-      "sha256": "12c2391ea5178fb8a4062f884ba899905bb1e527648dea7a16da8f709a61d113"
+      "sha256": "aca115a1083f6b2a0c07a761ff02cf33d4879843dc489d4634aacd781652c227"
     },
     {
       "file": "skills/scan-energy-curvature/downloads/scan-energy-curvature-python.zip",
-      "sha256": "59c12edeaff4896e8609e1a69dfff2bab27449142cbcdcd882d92dd717b4bcf7"
+      "sha256": "2d5355a189b09daa5d9e8985144b2d224f21552d94ab4ad3dbc3a47d33b77bb3"
     },
     {
       "file": "skills/scan-energy-curvature/downloads/scan-energy-curvature-python.zip.sha256",
-      "sha256": "a25f211d8fe3ccf9cdb958bbc5d43e54331241b982fa077fb2ffd5f7a937ea34"
+      "sha256": "48aabd615d20dc3a8153fd57a27de9dbd3e58896028d8beea717447844c46e7b"
     },
     {
       "file": "skills/scan-energy-curvature/runtime/analysis.py",
@@ -2760,19 +2860,23 @@
     },
     {
       "file": "skills/scan-energy-curvature/runtime/resource-manifest.json",
-      "sha256": "c9ee0d4b0c0de04946e765a6bf4f123f570698b3920d75abe1b88d2ab5fe8f16"
+      "sha256": "0d770e2a934218b9fd090d46461ace9cfa164b135c117efdfdb9bd25372c3b82"
     },
     {
       "file": "skills/scan-energy-curvature/runtime/run_skill.py",
       "sha256": "12ecb2cf1acad6162205449a5ff627fd6174171b6327d2b36ad92a3692b2a8ff"
     },
     {
+      "file": "skills/scan-energy-curvature/runtime/sources.json",
+      "sha256": "d88a408208c0b08897f301c405816cef61525b57ba13d074adcb17da4e2f018d"
+    },
+    {
       "file": "skills/table-fitting-residuals/README.md",
-      "sha256": "fd6f5d95e69b798be39f53d548f48a6d696b928f2cd7a711d7d2d3f012d6d691"
+      "sha256": "3bf5073d1c09998a97348da6809d1d73d5d4a77a4cc3ec67f27f6de68cff8a1d"
     },
     {
       "file": "skills/table-fitting-residuals/SKILL.md",
-      "sha256": "1f06aa4bed5b21878f05a3b7854ce571bb73c08b2a3d6917f1dc7386745ccbe1"
+      "sha256": "bb76497ae493143e11a211556f86d67e077184e45442d0b25eb4dc2606a178ac"
     },
     {
       "file": "skills/table-fitting-residuals/assets/example-calibration-and-residuals.png",
@@ -2784,31 +2888,31 @@
     },
     {
       "file": "skills/table-fitting-residuals/downloads/SHA256SUMS.txt",
-      "sha256": "0829e2dc400d10e5f569651e698352813955d55866740e650ab8fbd4745df2b6"
+      "sha256": "c600e8125245cca79cc42b911057b277a71cc013ff3545d47843780fcb1f8900"
     },
     {
       "file": "skills/table-fitting-residuals/downloads/SKILL-md.zip",
-      "sha256": "ecfe039722875f2303c3073c5a288b7fcc9028178cea6d4eeac701104b024164"
+      "sha256": "8a298e09c5f1d68d894a119d22179e49e8ea0b1a1055e60dbb8fb6575c28f160"
     },
     {
       "file": "skills/table-fitting-residuals/downloads/SKILL-md.zip.sha256",
-      "sha256": "284faf497a135e7f026b5b1793bb1bbb8a0ee42ad032b746b63b69e66a1c2a8a"
+      "sha256": "0e03ec1d9c31b91161b9bd73ac9c3bb76c79e220b341b6ac48b3a4418f702d08"
     },
     {
       "file": "skills/table-fitting-residuals/downloads/SKILL.md",
-      "sha256": "1f06aa4bed5b21878f05a3b7854ce571bb73c08b2a3d6917f1dc7386745ccbe1"
+      "sha256": "bb76497ae493143e11a211556f86d67e077184e45442d0b25eb4dc2606a178ac"
     },
     {
       "file": "skills/table-fitting-residuals/downloads/table-fitting-residuals-python.zip",
-      "sha256": "39dc98e385b62c77b36fff5b78d04cc353a12bef1cef8811b88cf825cb0e687f"
+      "sha256": "cbf3b9fae496ac60f38f74c730893ba63deae51394d577e71c40e61517a49463"
     },
     {
       "file": "skills/table-fitting-residuals/downloads/table-fitting-residuals-python.zip.sha256",
-      "sha256": "877c74d347ed572eb67845d8ba76cbf14123ad13865aa04b27ceae0f088e061e"
+      "sha256": "1c9c0f749f5b97cd0c7a87f40ec24d349d541856394e72fd1e629fe2c092e7f5"
     },
     {
       "file": "skills/table-fitting-residuals/runtime/SKILL.md",
-      "sha256": "1f06aa4bed5b21878f05a3b7854ce571bb73c08b2a3d6917f1dc7386745ccbe1"
+      "sha256": "bb76497ae493143e11a211556f86d67e077184e45442d0b25eb4dc2606a178ac"
     },
     {
       "file": "skills/table-fitting-residuals/runtime/caffeine-calibration.csv",
@@ -2844,7 +2948,7 @@
     },
     {
       "file": "skills/table-fitting-residuals/runtime/fit_csv.py",
-      "sha256": "f548e5dbeeab2c5cbf4eba7a310d4287b55c3b9d6c0998b9e8c716c05d47e448"
+      "sha256": "8ec2a5a96428ad4ee39607f258123f411ea66ca4b92b05dc8f5122dfd0289d35"
     },
     {
       "file": "skills/table-fitting-residuals/runtime/parameters.json",
@@ -2860,7 +2964,7 @@
     },
     {
       "file": "skills/table-fitting-residuals/runtime/resource-manifest.json",
-      "sha256": "d47d0d0a54fbccdde3273cac320b78c4054c1020a298519079ef80558aa3d943"
+      "sha256": "d58bbfcc199747780d029f924b5147831002dbe85e46363d995103fbd044fb9b"
     },
     {
       "file": "skills/table-fitting-residuals/runtime/skill_agent.py",
@@ -2868,7 +2972,7 @@
     },
     {
       "file": "skills/table-fitting-residuals/runtime/sources.json",
-      "sha256": "82f71b267054287f3d1a21b98ae738c61eebe36d85c56f16c60e18732f62ba96"
+      "sha256": "783068edb2a379d7d00d9902c2227ff65841c2a7a78247a536809c4ed833cb33"
     },
     {
       "file": "skills/table-fitting-residuals/runtime/table-fitting-residuals.py",

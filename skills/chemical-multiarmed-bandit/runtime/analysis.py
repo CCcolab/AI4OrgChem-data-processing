@@ -4,9 +4,10 @@ import numpy as np
 from .support import keys,integer,real,check,require_real_leaves
 
 def select(algorithm,counts,rewards,t,rng,exploration):
-    missing=np.flatnonzero(counts==0)
-    if len(missing):return int(missing[0])
-    if algorithm=='ucb':return int(np.argmax(rewards/counts+exploration*np.sqrt(2*math.log(max(t,2))/counts)))
+    if algorithm=='ucb':
+        missing=np.flatnonzero(counts==0)
+        if len(missing):return int(missing[0])
+        return int(np.argmax(rewards/counts+exploration*np.sqrt(2*math.log(max(t,2))/counts)))
     return int(np.argmax(rng.beta(1+rewards,1+counts-rewards)))
 
 def analyze(parameters,data):
@@ -36,10 +37,14 @@ def analyze(parameters,data):
             sources.add(row['source_id']);a=arms.index(row['arm']);counts[a]+=1;sums[a]+=row['reward'];history.append(dict(row))
     before=counts.copy();proposal=select(algorithm,counts,sums,int(counts.sum())+1,rng,exploration)
     return {'scope':'ACTUAL_STATIONARY_BERNOULLI_BANDIT_SIMULATION_OR_HISTORY_REPLAY_NOT_CHEMICAL_EXPERIMENT',
-        'environment':{'numpy':np.__version__},'mode':mode,'algorithm':algorithm,'arm_counts':dict(zip(arms,counts.tolist())),
+        'environment':{'numpy':np.__version__},'mode':mode,'algorithm':algorithm,
+        'method_revision':'BERNOULLI_BANDIT_V2_STANDARD_THOMPSON',
+        'initialization_rule':'FIRST_UNVISITED_IN_DECLARED_ORDER' if algorithm=='ucb' else 'INDEPENDENT_BETA_POSTERIOR_DRAWS_FROM_FIRST_DECISION',
+        'revision_note':'Thompson now samples from its posterior even with unvisited arms; seeded trajectories differ from the former forced-initialization variant and require a new run.',
+        'arm_counts':dict(zip(arms,counts.tolist())),
         'arm_successes':dict(zip(arms,sums.tolist())),'history':history,'simulated_probabilities':probabilities.tolist() if probabilities is not None else None,
         'proposal':{'arm':arms[proposal],'status':'PENDING_NOT_OBSERVED'},'observed_reward_count':int(counts.sum()),
         'checks':[check('recommendation_does_not_create_observation',np.array_equal(counts,before)),check('observations_not_lost',int(counts.sum())==len(history))],
         'limits':['Only stationary Bernoulli0/1 reward; fractional yield, continuous cost and drifting conditions are unsupported.',
-                  'Thompson uses independent Beta(1,1) priors; UCB first explores unvisited arms in declared order.',
+                  'Thompson uses independent Beta(1,1) priors and posterior sampling from the first decision; only UCB forces unvisited arms in declared order.',
                   'Simulated probabilities are disclosed teaching inputs; no real experiment was performed and no best-arm/convergence guarantee is claimed.']}

@@ -1,7 +1,7 @@
 [
   {
     "file": "SKILL.md",
-    "sha256": "11d958f0a497471cdbc27a40ecc409d97055494aa39db867464d4df93c05ff18"
+    "sha256": "50713971d60ee4dc90b4a88aa9d46d02f64af3b09a58c3d9a678140ae42586ac"
   },
   {
     "file": "runtime/examples/01-scatter.csv",
@@ -38,5 +38,9 @@
   {
     "file": "runtime/requirements.txt",
     "sha256": "7f23be70c09a55aa5d8fae7a4ae2a74cd6d50e19e23ace52f2a6437ac078ce5a"
+  },
+  {
+    "file": "runtime/sources.json",
+    "sha256": "98f764dac3127e776ae76f744d4ec032ba32c1b85207f30d0345dde33f32dbfe"
   }
 ]

@@ -9,5 +9,55 @@
     "image_id": "sha256:e7ffa6420e743a0db184897d21458d69ec90c113b9e3b3c0df7fd2a94a2e202e",
     "runtime_commit": "1f139aa87dbd1dca8e318b5e9d0226b2a7c8668b"
   },
-  "scope": "Only mathematical postprocessing is newly executed; no new electronic energy generation."
+  "scope": "Only mathematical postprocessing is newly executed; no new electronic energy generation.",
+  "knowledge_review": {
+    "schema": "skill-knowledge-foundations-v1",
+    "date": "2026-10-25",
+    "local_derivation": true,
+    "sources": [
+      {
+        "id": "Q1",
+        "source_type": "classic_research_monograph",
+        "authors": [
+          "Trygve Helgaker",
+          "Poul Jørgensen",
+          "Jeppe Olsen"
+        ],
+        "title": "Molecular Electronic-Structure Theory",
+        "edition": "1",
+        "year": 2000,
+        "publisher": "Wiley",
+        "isbn": "9780471967552",
+        "url": "https://www.wiley-vch.de/en/areas-interest/natural-sciences/molecular-electronic-structure-theory-978-0-471-96755-2",
+        "access_verified": "publisher_bibliography_and_table_of_contents_only",
+        "access_limit": "Book full text and specific equation pages were not read; chapter relevance is TOC-verified, not an equation-by-equation proof.",
+        "verified_on": "2026-10-25",
+        "relevant_chapters": [
+          "Orbital Rotations",
+          "Hartree-Fock Theory"
+        ],
+        "module_support_scope": "Occupation-preserving rotation and ordinary HF foundation; not actual localization optimization."
+      },
+      {
+        "id": "LO",
+        "source_type": "official_software_documentation",
+        "title": "PySCF Localized orbitals",
+        "url": "https://pyscf.org/user/lo.html",
+        "supports": "Rotation and distinct Boys/Pipek–Mezey cost functions.",
+        "relevant_chapters": [],
+        "module_support_scope": "Distinct localization cost functions."
+      },
+      {
+        "id": "SCF",
+        "source_type": "official_software_documentation",
+        "title": "PySCF SCF guide",
+        "url": "https://pyscf.org/user/scf.html",
+        "supports": "Restricted ansatz, generalized SCF equation and convergence versus stability distinction.",
+        "relevant_chapters": [],
+        "module_support_scope": "Density and restricted-orbital context."
+      }
+    ],
+    "physical_claim_limit": "Only the explicit input/array checks and derivations in this module; not external data authenticity or new scientific backend acceptance.",
+    "new_quantum_backend_execution": "NOT_EXECUTED"
+  }
 }

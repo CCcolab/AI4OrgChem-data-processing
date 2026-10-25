@@ -59,5 +59,51 @@
     "url": "https://api-docs.deepseek.com/quick_start/pricing/",
     "supports": "deepseek-flash; authenticated model list separately checked",
     "reviewed_on": "2026-10-19"
+  },
+  {
+    "id": "textbook-regression",
+    "title": "David Harvey, Analytical Chemistry2.1",
+    "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/05:_Standardizing_Analytical_Methods/5.04:_Linear_Regression_and_Calibration_Curves",
+    "type": "作者开放教材",
+    "locator": "§5.4 Unweighted/Weighted Linear Regression with Errors in y;Evaluating a Model;Curvilinear Regression",
+    "supports": "OLS/WLS目标、残差、响应标准差权重、多项式对系数线性及x误差边界",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "OPEN_SELECTED_SECTION_BODY_NOT_FULL_BOOK_OR_ORIGINAL_EXPERIMENT",
+    "rights": "链接及自主概述；不再分发参考全文。",
+    "license_as_displayed": "CC BY-NC-SA4.0"
+  },
+  {
+    "id": "classic-numerical-analysis",
+    "title": "Richard L.Burden and J.Douglas Faires, Numerical Analysis,9th ed.,Cengage India,2012",
+    "url": "https://www.cengage.co.in/book-list/print/numerical-analysis-c2",
+    "type": "经典数值教材",
+    "locator": "Chapter1 Mathematical Preliminaries and Error Analysis",
+    "supports": "浮点消去与数值误差背景阅读；回放工程阈值是本程序合同，不由目录认证",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "PUBLISHER_METADATA_AND_CHAPTER_TOC_NOT_FULL_CHAPTER_BODY",
+    "rights": "链接及自主概述；不再分发参考全文。",
+    "isbn": "9788131516546"
+  },
+  {
+    "id": "numpy-lstsq",
+    "title": "NumPy lstsq",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.linalg.lstsq.html",
+    "type": "软件或语言官方文档",
+    "locator": "lstsq rcond/rank/singular values",
+    "supports": "固定求解接口与秩信息；缩放与导出回放阈值是程序显式工程准入",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "OFFICIAL_DOCUMENTATION_SELECTED_PUBLIC_TEXT",
+    "rights": "链接及自主概述；不再分发参考全文。"
+  },
+  {
+    "id": "numpy-polynomial",
+    "title": "NumPy Polynomial evaluation",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.polynomial.polynomial.polyval.html",
+    "type": "软件或语言官方文档",
+    "locator": "polyval increasing powers",
+    "supports": "按给定z和scaled_coefficients的求值约定；不认证外推",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "OFFICIAL_API_REFERENCE_AND_LOCAL_EVALUATION_NOT_NEW_METHOD_AUTHORITY",
+    "rights": "链接及自主概述；不再分发参考全文。"
   }
 ]

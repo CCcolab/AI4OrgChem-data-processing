@@ -1,0 +1,61 @@
+{
+  "schema": "skill-method-sources-v1",
+  "skill": "chemical-mlp-models",
+  "knowledge_revision": "2026-10-25",
+  "knowledge_scope": "保留一层、lbfgs及固定迭代预算；训练内缩放特征和回归目标，披露实际优化警告。概率输出须保留类别顺序且标未校准；软件重载一致性不能替代真实独立数据评价。",
+  "chapter_locator": "ESL第2版第11章Neural Networks；Deep Learning第6章Deep Feedforward Networks、第8章Optimization（均按目录定位）。",
+  "source_roles": {
+    "textbook_or_monograph": "概念与数学基础；访问范围逐条声明",
+    "original_paper": "原始方法及本教学简化的区别，不继承其性能",
+    "software_documentation": "API/版本行为，不能替代独立方法验证"
+  },
+  "implementation_requirements": [
+    "numpy==1.26.4",
+    "scipy==1.13.1",
+    "scikit-learn==1.5.1",
+    "joblib==1.4.2"
+  ],
+  "version_note": "固定requirements与结果环境回执用于实际执行身份；公开文档可能滚动更新，不能据文档标题替换依赖版本。",
+  "sources": [
+    {
+      "id": "ESL2",
+      "title": "Hastie, Tibshirani & Friedman, The Elements of Statistical Learning",
+      "url": "https://link.springer.com/book/10.1007/978-0-387-84858-7",
+      "source_class": "classic_textbook",
+      "edition": "2nd edition, 2009",
+      "support": "Publisher TOC: ch3 regression pp43–99; ch4 classification pp101–137; ch7 assessment pp219–259; ch9 trees pp295–336; ch11 neural networks pp389–416; ch14 unsupervised pp485–585; ch15 forests pp587–604.",
+      "access_scope": "Publisher bibliographic record and TOC verified; subscription chapter bodies not read. Author-site full-PDF attempts were inaccessible. Specific subsections are not claimed verified.",
+      "verified_on": "2026-10-25"
+    },
+    {
+      "id": "DL",
+      "title": "Goodfellow, Bengio & Courville, Deep Learning",
+      "url": "https://www.deeplearningbook.org/",
+      "source_class": "classic_textbook",
+      "edition": "MIT Press, 2016",
+      "support": "Author TOC: ch5 ML basics, ch6 feedforward networks, ch8 optimization, ch10 recurrent models, ch15 representation learning, ch20 deep generative models.",
+      "access_scope": "Author metadata, year, publisher and TOC verified. Chapter5/6 HTML requests exceeded tool size limits; no assertion of chapter-body reading.",
+      "verified_on": "2026-10-25"
+    },
+    {
+      "id": "SKMLP",
+      "title": "scikit-learn neural networks",
+      "url": "https://scikit-learn.org/stable/modules/neural_networks_supervised.html",
+      "source_class": "official_software_documentation",
+      "edition": null,
+      "support": "MLP limited CPU estimator and solver/scaling guidance.",
+      "access_scope": "Public official page inspected2026-10-25. Rolling documentation is API support, not independent method proof or the pinned installed version. scikit-learn stable currently identifies1.9.1; product pins1.5.1.",
+      "verified_on": "2026-10-25"
+    },
+    {
+      "id": "SKLEAK",
+      "title": "scikit-learn common pitfalls",
+      "url": "https://scikit-learn.org/stable/common_pitfalls.html#data-leakage",
+      "source_class": "official_software_documentation",
+      "edition": null,
+      "support": "Fit preprocessing only on training subset; Pipeline use.",
+      "access_scope": "Public official page inspected2026-10-25. Rolling documentation is API support, not independent method proof or the pinned installed version. scikit-learn stable currently identifies1.9.1; product pins1.5.1.",
+      "verified_on": "2026-10-25"
+    }
+  ]
+}

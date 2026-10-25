@@ -31,3 +31,7 @@ parameters：coordinate_unit、energy_unit、center_index（零起始内部点�
 [NumPy差分说明](https://numpy.org/doc/stable/reference/generated/numpy.gradient.html)给出非均匀三点公式及有限差分语境；本程序显式解权重并另算二阶导数，不声称调用gradient就完成二阶或科学验证。
 
 [NumPy非均匀差分推导](https://numpy.org/doc/stable/reference/generated/numpy.gradient.html#notes)支持三点一阶公式的光滑性前提；本程序二阶量来自同一局部二次插值，二次函数可精确核算不等于对真实势能面给出误差上界。来源/收敛标签不能自动证明电子态连续，非均匀步长和单位须随结果保留。
+
+## 解释规则与理论依据
+
+报告导数时保留左右步长、中心、坐标定义及单位，明确三点局部二次插值。二次函数可精确复核不等于真实PES误差证书；非均匀E=q³在0处的二阶估计为2(hp−hm)，可用于解释偏差。状态标签一致不证明电子态连续，减小h会放大能量噪声；粗细差不直接当误差界。不能把标量路径曲率当完整Hessian、频率或极小点认证。经典定位Burden/Faires第3/4章仅核验目录，Jensen§1.6.2/§1.9为已读公开节选；NumPy gradient只支撑一阶差分语境。见runtime/sources.json。

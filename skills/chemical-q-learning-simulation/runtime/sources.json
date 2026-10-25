@@ -1,0 +1,48 @@
+{
+  "schema": "skill-method-sources-v1",
+  "skill": "chemical-q-learning-simulation",
+  "knowledge_revision": "2026-10-25",
+  "knowledge_scope": "先核对MDP行和/吸收终态/奖励单位，区分terminal与外部截断，保留bootstrap规则。冻结评价不改Q，并分别解释折扣价值与未折扣轨迹回报；不把显式教学环境当真实化学环境。",
+  "chapter_locator": "Sutton/Barto §6.5 Q-learning（出版社目录）；Watkins/Dayan第2节方法及收敛定理假设（作者PDF正文）。",
+  "source_roles": {
+    "textbook_or_monograph": "概念与数学基础；访问范围逐条声明",
+    "original_paper": "原始方法及本教学简化的区别，不继承其性能",
+    "software_documentation": "API/版本行为，不能替代独立方法验证"
+  },
+  "implementation_requirements": [
+    "numpy==1.26.4"
+  ],
+  "version_note": "固定requirements与结果环境回执用于实际执行身份；公开文档可能滚动更新，不能据文档标题替换依赖版本。",
+  "sources": [
+    {
+      "id": "SUTTON",
+      "title": "Sutton & Barto, Reinforcement Learning: An Introduction",
+      "url": "https://mitpress.mit.edu/9780262039246/reinforcement-learning/",
+      "source_class": "classic_textbook",
+      "edition": "2nd edition, 2018",
+      "support": "Publisher TOC verifies ch2 bandits, §2.7 UCB p35, §6.5 Q-learning p131.",
+      "access_scope": "Publisher edition metadata and six-page TOC verified: https://mitp-content-server.mit.edu/books/content/sectbyfn/books_pres_0/10094/Toc.pdf?dl=1 . Supplied author draft URL and alternate full-PDF requests timed out; no claim to have reread full textbook.",
+      "verified_on": "2026-10-25"
+    },
+    {
+      "id": "WATKINS",
+      "title": "Watkins & Dayan, Q-learning",
+      "url": "https://www.gatsby.ucl.ac.uk/~dayan/papers/cjch.pdf",
+      "source_class": "original_paper",
+      "edition": "Machine Learning8:279–292, 1992",
+      "support": "Incremental discounted action-value update and assumptions for asymptotic convergence; finite fixed-step budget does not certify theorem conditions.",
+      "access_scope": "Author-hosted 14-page original paper read selectively, especially method and theorem assumptions.",
+      "verified_on": "2026-10-25"
+    },
+    {
+      "id": "FARAMA",
+      "title": "Farama handling time limits",
+      "url": "https://gymnasium.farama.org/tutorials/gymnasium_basics/handling_time_limits/",
+      "source_class": "official_software_documentation",
+      "edition": null,
+      "support": "External truncation retains bootstrap; terminal states do not; finite-horizon state needs remaining time.",
+      "access_scope": "Public official page inspected2026-10-25. Rolling documentation is API support, not independent method proof or the pinned installed version. scikit-learn stable currently identifies1.9.1; product pins1.5.1.",
+      "verified_on": "2026-10-25"
+    }
+  ]
+}

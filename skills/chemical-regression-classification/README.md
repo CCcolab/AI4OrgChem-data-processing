@@ -65,3 +65,25 @@ Windows将python替换为`.\.venv\Scripts\python.exe`。案例完整程序：[�
 ```powershell
 .\.venv\Scripts\python.exe runtime\run_from_csv.py --template runtime\examples\01.json --input runtime\examples\molecular-descriptors.csv --features mol_wt_g_mol tpsa_A2 mol_logp_model heavy_atoms --feature-units g/mol angstrom2 dimensionless count --target synthetic_response --target-unit arbitrary_synthetic_response --groups group --output ..\baseline-csv
 ```
+
+## 知识要点、前提与公式
+
+Ridge拟合线性均值wᵀz+b，并以平方残差和加α∥w∥²约束系数；截距不参与该惩罚。z由训练行的均值/尺度定义，因此缩放选择会改变正则化的含义。Logistic模型使用p(y=1|z)=sigmoid(wᵀz+b)，通过带L2正则的Bernoulli对数损失拟合；C控制正则强度的倒数方向，不能与Ridge的alpha直接数值类比。
+
+测试MAE=Σ|y−ŷ|/n，RMSE=√(Σ(y−ŷ)²/n)，R²=1−RSS/TSS；单样本或常量测试目标的R²在本例为null。ROC-AUC需要测试两类齐全，衡量分数排序而非概率校准。重复按同一留出分数改参会把测试集变成选择数据，需另留未触碰的最终测试。
+
+## 基础阅读与来源层级
+
+章节定位：ESL第2版第3章Linear Methods for Regression、第4章Linear Methods for Classification（目录）；Bishop第3章作者幻灯片（可访问）。
+
+基础阅读：[ESL2](https://link.springer.com/book/10.1007/978-0-387-84858-7)、[BISHOP](https://www.microsoft.com/en-us/research/people/cmbishop/prml-book/)。
+
+实现接口：[SKLINEAR](https://scikit-learn.org/stable/modules/linear_model.html)、[SKLEAK](https://scikit-learn.org/stable/common_pitfalls.html#data-leakage)。
+
+ESL为2009年第2版；本次核对出版社目录中的相关主题，未声称读取受限章节正文。 Bishop为2006年PRML；核对作者页面及第3章官方幻灯片，未声称读取工具超限的完整书稿。 各条原论文/软件文档的具体访问范围及版本记录见[runtime/sources.json](runtime/sources.json)；滚动API页面与固定运行依赖分开记录。经典书目补充基础，现代算法仍保留其原始论文，API文档继续用于接口约定。
+
+## 二分类概率证据
+
+二分类结果新增classification-probabilities.csv：id、零起始source_index、observed_class、predicted_class、probability_class_0、probability_class_1，行顺序对应test_indices。result.json中的classification_classes及classification_probability_metadata.class_order给出predict_proba列顺序[0,1]，held_out_probabilities保存同一概率矩阵；原held-out-predictions.csv保持原字段。额外检查owned_model_save_restore_probabilities复核自生成模型重载概率与类别顺序。
+
+概率来自同一次已拟合模型，未作概率校准，不代表已验证化学风险。local_prediction_runs=2表示原模型与重载模型两个推断阶段；local_prediction_method_calls明确记录二分类4次predict/predict_proba、回归2次predict。本次复用已有原模型预测，未增加拟合次数或二分类预测方法调用总数。save_model接口变更仅在本页及另外两份相同的回归/分类、树/森林、MLP支持库中同步。

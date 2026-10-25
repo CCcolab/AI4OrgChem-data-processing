@@ -1,0 +1,48 @@
+[
+  {
+    "id": "textbook-descriptive-statistics",
+    "title": "David Harvey, Analytical Chemistry2.1",
+    "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/04:_Evaluating_Analytical_Data/4.01:_Characterizing_Measurements_and_Results",
+    "type": "作者开放教材",
+    "locator": "§4.1 Mean;Standard Deviation",
+    "supports": "样本均值/样本SD、分母n−1与单位；不能证明独立性或化学来源",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "OPEN_SELECTED_SECTION_BODY_NOT_FULL_BOOK_OR_ORIGINAL_EXPERIMENT",
+    "rights": "链接及自主概述；不再分发参考全文。",
+    "license_as_displayed": "CC BY-NC-SA4.0"
+  },
+  {
+    "id": "textbook-sampling-uncertainty",
+    "title": "David Harvey, Analytical Chemistry2.1",
+    "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/04:_Evaluating_Analytical_Data/4.04:_The_Distribution_of_Measurements_and_Results",
+    "type": "作者开放教材",
+    "locator": "§4.4 Populations and Samples;Confidence Intervals for Samples",
+    "supports": "样本/总体与均值区间的额外前提；本模块不实现区间",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "OPEN_SELECTED_SECTION_BODY_NOT_FULL_BOOK_OR_ORIGINAL_EXPERIMENT",
+    "rights": "链接及自主概述；不再分发参考全文。",
+    "license_as_displayed": "CC BY-NC-SA4.0"
+  },
+  {
+    "id": "python-stable-statistics",
+    "title": "Python3.12 statistics",
+    "url": "https://docs.python.org/3.12/library/statistics.html",
+    "type": "软件或语言官方文档",
+    "locator": "mean;stdev;variance;linked Lib/statistics.py",
+    "supports": "样本统计API；本地3.12源码的整数比累积与平方根路径已检查；所有派生输出仍检查有限性",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "OFFICIAL_DOCUMENTATION_SELECTED_PUBLIC_TEXT",
+    "rights": "链接及自主概述；不再分发参考全文。"
+  },
+  {
+    "id": "nist-scale",
+    "title": "NIST/SEMATECH e-Handbook Measures of Scale",
+    "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda356.htm",
+    "type": "权威统计方法手册",
+    "locator": "1.3.5.6",
+    "supports": "SD定义及离散程度解释",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "OPEN_SELECTED_PAGE_BODY",
+    "rights": "链接及自主概述；不再分发参考全文。"
+  }
+]

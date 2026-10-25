@@ -40,3 +40,9 @@ runtime/fit_csv.py提供完整run_skill流程：读取指令→检查CSV→固�
 - [NIST残差诊断](https://www.itl.nist.gov/div898/handbook/pmd/section4/pmd44.htm)：R²不充分。
 - [NumPy lstsq](https://numpy.org/doc/stable/reference/generated/numpy.linalg.lstsq.html)：秩、奇异值及rcond。
 - 咖啡因来源与许可见README及runtime/data-provenance.json，不扩大为其他案例的来源。
+
+## 解释规则与理论依据
+
+区别固定HPLC入口（未加权带截距一次校准）与用户CSV入口（degree1/2，可选sigma WLS）。解释WLS时明确sigma为y标准差，行缩放1/sigma对应目标权重1/sigma²；e=y−yhat，RMSE分母n，常量y的R²未定义，WLS所报R²仍是原y未加权定义。不得据高R²推断机制或外推。
+
+提供可复用预测式时优先scaled_coefficients：z=(x-scaled_x_center)/scaled_x_scale，yhat=Σb_k z^k；z无量纲、b_k全为y单位、center/scale为x单位。必须同时解释original_basis_diagnostic及warnings，REPLAY_UNSTABLE的原coefficients不能当稳定模型。无量纲相对回放门槛1e−10仅是观测x上的工程诊断，零尺度另作精确零比较；它不是实验不确定度或外推保证。Harvey§5.4支持OLS/WLS/残差与多项式背景，§12.5只作咖啡因题源；NIST手册与软件求解文档分层。数值误差经典阅读Burden/Faires第1章仅核验目录。来源访问限度见runtime/sources.json。

@@ -12,7 +12,7 @@
 
 ## 知识与适用边界
 
-UCB先按声明顺序探索未访问臂，之后均值+exploration×sqrt(2log(t)/n)。Thompson独立Beta(1,1)先验，成功/失败更新。推荐不增加计数；保留每条奖励及模拟概率。
+UCB先按声明顺序探索未访问臂，之后均值+exploration×sqrt(2log(t)/n)。Thompson从第一次决策即独立抽样各臂Beta(1,1)先验/后验，按成功/失败更新；不强制逐臂初始化。推荐不增加计数；保留每条奖励及模拟概率。
 
 只支持平稳独立Bernoulli奖励，不支持连续产率、费用约束、漂移或化学实验安全。有限模拟没有最佳臂/收敛保证。历史来源标签不证明真实实验，不能把选择建议算作已完成观测。
 
@@ -59,3 +59,23 @@ Windows将python替换为`.\.venv\Scripts\python.exe`。案例完整程序：[�
 软件执行通过只覆盖声明的输入和数值范围，不代表整个理论、化学身份或新量子方法获认证。下载包[SHA-256](downloads/SHA256SUMS.txt)与内部验收记录分开，内部材料不进入用户包。
 
 UCB方法参照[Auer等2002原论文](https://link.springer.com/article/10.1023/A:1013689704352)，本例exploration为显式教学变体，不直接继承其任意参数下的界。Beta–Bernoulli抽样参照[Russo等作者教程第12–14页](https://web.stanford.edu/~bvr/pubs/TS_Tutorial.pdf#page=13)：成功/失败更新独立后验，抽样的是成功概率而不是新奖励。仅平稳0/1奖励；不解释成连续化学产率或实验安全证据。
+
+## 知识要点、前提与公式
+
+Bernoulli臂在固定未知成功率θ_a下给出0/1奖励，独立Beta(1,1)先验经S_a次成功、F_a次失败后为Beta(1+S_a,1+F_a)。标准Thompson从第一轮就对每臂独立抽取θ̃_a并选择argmax θ̃_a；抽样的是成功概率，不是伪造的新奖励。未访问臂的先验仍可直接抽样，不强制按顺序访问。
+
+UCB本例先访问未采样臂，随后用均值+exploration×√(2log(t)/n_a)选择；这是可调探索系数的教学形式，不在任意参数下继承UCB1的遗憾界。平稳、独立、0/1奖励是本地模拟假设，历史来源标签也不能自行证明真实实验。建议不更新计数；有限预算不能证明最佳臂、收敛、连续产率或实验安全。
+
+## 基础阅读与来源层级
+
+章节定位：Sutton/Barto第2章及§2.7 UCB（出版社目录）；Auer等UCB1原论文与Russo作者教程Algorithm2 BernTS（正文）。
+
+基础阅读：[SUTTON](https://mitpress.mit.edu/9780262039246/reinforcement-learning/)。
+
+原始方法/作者专论：[AUER](https://homes.di.unimi.it/~cesabian/Pubblicazioni/ml-02.pdf)、[RUSSO](https://web.stanford.edu/~bvr/pubs/TS_Tutorial.pdf)。
+
+Sutton/Barto为2018年第2版，出版社目录确认§2.7 UCB与§6.5 Q-learning；作者整书链接本次超时，未声称重读全书。 各条原论文/软件文档的具体访问范围及版本记录见[runtime/sources.json](runtime/sources.json)；滚动API页面与固定运行依赖分开记录。经典书目补充基础，现代算法仍保留其原始论文，API文档继续用于接口约定。
+
+## 方法修订身份
+
+结果method_revision=BERNOULLI_BANDIT_V2_STANDARD_THOMPSON。仅UCB按声明顺序强制访问未采样臂；Thompson从首轮Beta后验抽样。此修订替换了原先未声明的强制初始化变体，因此同seed的Thompson奖励/动作轨迹与旧结果可能不同；必须在全新目录运行并按新回执解释，不能复用旧轨迹或旧图作为本版结果。输入概率、预算和UCB探索式未改变。

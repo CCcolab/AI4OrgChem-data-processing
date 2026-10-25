@@ -161,5 +161,19 @@
     "rights": "链接及自主概述，不再分发官方原文。",
     "reviewed_on": "2026-10-23",
     "version_note": "滚动官方文档标为2026.09.1；本包固定2026.03.6，数值与行为以本地该版本回归为据。"
+  },
+  {
+    "id": "classic-chemoinformatics",
+    "title": "Gasteiger (ed.), Handbook of Chemoinformatics, Wiley-VCH,2003",
+    "url": "https://onlinelibrary.wiley.com/doi/book/10.1002/9783527618279",
+    "type": "经典编辑专著",
+    "locator": "II.3 SMILES;II.4 Graph Theory in Chemistry;II.6 stereochemistry;VI structure search",
+    "supports": "结构表示/立体/图搜索的经典背景与阅读定位；不是固定RDKit行为或实验适用性认证",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "PUBLISHER_AND_AUTHOR_TOC_METADATA_NOT_PAYWALLED_CHAPTER_BODY",
+    "rights": "链接及自主概述；不再分发参考全文。",
+    "doi": "10.1002/9783527618279",
+    "isbn": "9783527306800",
+    "author_toc_url": "https://www.cup.uni-muenchen.de/oc/engel/publications/books/handbook-of-chemoinformatics/"
   }
 ]

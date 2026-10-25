@@ -1,0 +1,25 @@
+[
+  {
+    "id": "classic-computational-chemistry",
+    "title": "Frank Jensen, Introduction to Computational Chemistry,3rd ed.,Wiley,2017",
+    "url": "https://catalogimages.wiley.com/images/db/pdf/9781118825990.excerpt.pdf",
+    "type": "经典教材公开章节节选",
+    "locator": "§1.3 Fundamental Forces;§1.6.2 Separating Nuclear and Electronic Variables",
+    "supports": "Coulomb相互作用及核/电子项分离的教材背景；导数由本页模型显式推导",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "OPEN_PUBLISHER_CHAPTER1_SELECTED_TEXT_NOT_FULL_BOOK",
+    "rights": "链接及自主概述；不再分发参考全文。",
+    "isbn": "9781118825990"
+  },
+  {
+    "id": "codata2022",
+    "title": "NIST SP961,CODATA2022 recommended constants (May2024)",
+    "url": "https://physics.nist.gov/cuu/pdf/wall_2022.pdf",
+    "type": "推荐常数标准",
+    "locator": "Bohr radius;Hartree energy",
+    "supports": "a0=0.529177210544Å及Hartree定义；不认证解析导数或分子稳定性",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "OPEN_PDF_TABLE",
+    "rights": "链接及自主概述；不再分发参考全文。"
+  }
+]

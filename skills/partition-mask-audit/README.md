@@ -10,13 +10,21 @@
 
 顶层文件只有README.md和SKILL.md；程序、依赖、参数和案例在runtime。下载[完整Python代码包](downloads/partition-mask-audit-python.zip)或[Skill单文件ZIP](downloads/SKILL-md.zip)。私有GitHub需有权限的账号，文件页用“Download raw file”保存，不把网页另存为.py。
 
-## 知识与适用边界
+## 核心知识：矩阵掩码与基变换的区别
 
-生成对称布尔掩码，禁止块置0，报告移除的Frobenius范数、修改前后特征谱及对称残差。overlap角色要求原/新最小特征值严格大于atol；hamiltonian允许不定，不应用一概正定门槛。
+前提是有限实对称矩阵、每个索引恰好出现一次的分区，以及显式允许的无序耦合对。用对称0/1矩阵M构造H′=M∘H（逐元素相乘），所以H′仍对称；但删除元素通常改变算子或度量。它与可逆基变换Hnew=TᵀHT、Snew=TᵀST不同，不能据形状相同称等价表示。
 
-掩码改变矩阵，通常改变问题，不等同于基变换。AO Hamiltonian的普通Euclidean特征值不自动等于广义本征问题的轨道能。正定与否取决于矩阵用途；不生成新条件态、SCF或能量解释。
+对overlap，uᵀSu应对所有非零u为正；本实现以原/新最小特征值均严格大于atol作数值门槛。只保留全部对角块时，各块是原SPD矩阵的主子矩阵，块直和仍SPD；任意其他对称删耦合则无此保证。例如3×3矩阵对角1、非对角0.9原最小谱0.1，单独删a–c耦合而留a–b/b–c后最小谱约−0.2727922061。
 
-[NumPy eigvalsh/eigh](https://numpy.org/doc/stable/reference/generated/numpy.linalg.eigh.html)支持对称矩阵谱；本页显式给出掩码和角色规则。软件谱检查不认证物理算子。
+Hamiltonian的负本征值本身不构成错误，能量零点可变，不能套用overlap正定门槛。在非正交AO中轨道方程是Hc=Scε；普通eig(H)只描述输入矩阵的欧式谱，不自动是广义能谱。若同时使用改后的S/H，需要重新定义科学问题、约束及求解协议，本工具不代做。
+
+①保存水S按O/H1/H2留对角块可以通过正定检查，但不代表原分子的等价度量；②不定矩阵在hamiltonian角色可通过；③相同矩阵作overlap应失败。移除Frobenius范数只是矩阵差指标，不是相互作用能、能量误差或新条件态结果。
+
+### 经典教材、实现来源及支持范围
+
+[L1：Golub、Van Loan，Matrix Computations，第4版，JHU Press，2013，ISBN 9781421407944](https://www.press.jhu.edu/books/title/10678/matrix-computations)的§4.2、§8.1、§8.7与[Q1：Helgaker、Jørgensen、Olsen，Molecular Electronic-Structure Theory，Wiley，2000，ISBN 9780471967552](https://www.wiley-vch.de/en/areas-interest/natural-sciences/molecular-electronic-structure-theory-978-0-471-96755-2)的Atomic Basis Functions/Hartree-Fock Theory分别提供数值与AO背景；正定检查不认证输入的物理算子身份。
+
+本模块所引L1与Q1的作者、版次、年份和相关章节名称已对照出版社目录核验；未读取其全书正文，不声称已逐式或按页核验。上文推导由本模块明确给出，API文档仅支持实现接口。完整来源类型、访问范围和输入/保存数据身份见[runtime/sources.json](runtime/sources.json)。
 
 ## 输入校验与方法依据补充
 
@@ -57,5 +65,3 @@ Windows将python替换为`.\.venv\Scripts\python.exe`。案例完整程序：[�
 只修改参数不会更改旧结果，必须写新目录。严格UTF-8 JSON≤2 MB，不接受重复键或非有限数值。不应只改科学身份标签来绕过不兼容检查，来源标签本身不证明真实性。完整可复用[调用模板](runtime/examples/call_skill_template.py)支持--skill-dir、--input和--output，程序内部实际读取顶层Skill并保存其哈希，不调用模型。
 
 软件执行通过只覆盖声明的输入和数值范围，不代表整个理论、化学身份或新量子方法获认证。下载包[SHA-256](downloads/SHA256SUMS.txt)与内部验收记录分开，内部材料不进入用户包。
-
-对称掩码只保证显式保留/删除的耦合与对称性，不一般保持正定性。Hamiltonian允许负本征值，overlap须另过正定门槛；这两个role是输入协议，不是可互换的物理解释。eigh接口不把普通特征值自动变成非正交AO广义本征能量。

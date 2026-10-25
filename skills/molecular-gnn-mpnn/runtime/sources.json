@@ -1,0 +1,41 @@
+{
+  "schema": "skill-method-sources-v1",
+  "skill": "molecular-gnn-mpnn",
+  "knowledge_revision": "2026-10-25",
+  "knowledge_scope": "使用明确简化的MPNN身份，禁止继承原论文基准性能。只在训练图优化；列出未编码stereo/isotope的记录，核对相同特征策略图与组别不跨划分。置换不变性不能解释为化学身份认证。",
+  "chapter_locator": "Hamilton作者第5章草稿，§5.1消息传递与式5.2–5.3的置换性质（可访问正文）。",
+  "source_roles": {
+    "textbook_or_monograph": "概念与数学基础；访问范围逐条声明",
+    "original_paper": "原始方法及本教学简化的区别，不继承其性能",
+    "software_documentation": "API/版本行为，不能替代独立方法验证"
+  },
+  "implementation_requirements": [
+    "--extra-index-url https://download.pytorch.org/whl/cpu",
+    "numpy==1.26.4",
+    "rdkit==2026.3.6",
+    "torch==2.14.1+cpu"
+  ],
+  "version_note": "固定requirements与结果环境回执用于实际执行身份；公开文档可能滚动更新，不能据文档标题替换依赖版本。",
+  "sources": [
+    {
+      "id": "HAMILTON",
+      "title": "Hamilton, Graph Representation Learning",
+      "url": "https://www.cs.mcgill.ca/~wlh/grl_book/",
+      "source_class": "foundational_monograph",
+      "edition": "2020 author prepublication draft; published by Morgan & Claypool",
+      "support": "Ch5 author draft verifies permutation invariance/equivariance equations5.2–5.3, neural message passing, and invariant sum/mean/max pooling.",
+      "access_scope": "Author TOC and chapter5 September2020 prepublication PDF read: https://www.cs.mcgill.ca/~wlh/grl_book/files/GRL_Book-Chapter_5-GNNs.pdf . Draft excludes publisher revisions/formatting.",
+      "verified_on": "2026-10-25"
+    },
+    {
+      "id": "GILMER",
+      "title": "Gilmer et al., Neural Message Passing for Quantum Chemistry",
+      "url": "https://proceedings.mlr.press/v70/gilmer17a.html",
+      "source_class": "original_paper",
+      "edition": "ICML2017, PMLR70:1263–1272",
+      "support": "Framework aggregates graph messages into graph-level functions; benchmark results belong to the original architectures/data.",
+      "access_scope": "PMLR original abstract/metadata read; does not validate this teaching architecture.",
+      "verified_on": "2026-10-25"
+    }
+  ]
+}

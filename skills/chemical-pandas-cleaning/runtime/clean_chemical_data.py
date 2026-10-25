@@ -8,6 +8,8 @@ import csv
 import hashlib
 import io
 import json
+import math
+import statistics
 import sys
 import zipfile
 
@@ -20,6 +22,47 @@ def sha(raw):
 
 def dump(path, data):
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+
+
+def archive_results(output):
+    files = sorted(path for path in output.iterdir() if path.is_file())
+    (output / 'SHA256SUMS.txt').write_text(''.join(sha(path.read_bytes()) + '  ' + path.name + '\n'
+                                                for path in files), encoding='utf-8')
+    with zipfile.ZipFile(output / 'results.zip', 'w', zipfile.ZIP_DEFLATED) as archive:
+        for path in files + [output / 'SHA256SUMS.txt']:
+            archive.write(path, path.name)
+
+
+def descriptive_summary(values):
+    """Finite float summaries using Python3.12's integer-ratio accumulators.
+
+    Do not pass a rounded float mean to stdev: its default implementation
+    retains the exact sum-of-squares arithmetic before the final square root.
+    A defined but unrepresentable SD is a calculation failure, not missing SD.
+    """
+    values = [float(value) for value in values]
+    count = len(values)
+    if not count:
+        return {'mean': None, 'sample_sd': None, 'minimum': None, 'maximum': None,
+                'sample_sd_status': 'UNDEFINED_N_LT_2'}
+    try:
+        mean = statistics.mean(values)
+        sd = statistics.stdev(values) if count > 1 else None
+        if not math.isfinite(mean) or (sd is not None and not math.isfinite(sd)):
+            raise OverflowError('Nonfinite derived statistic.')
+        if mean == 0.0:
+            # Only the zero-output branch needs an exact cancellation check.
+            # Dividing by n before summing could lose a representable small sum.
+            from fractions import Fraction
+            exact_sum = sum((Fraction.from_float(value) for value in values if value), Fraction(0))
+            if exact_sum:
+                raise OverflowError('Nonzero mean underflowed to zero in the float output.')
+        if sd == 0.0 and min(values) != max(values):
+            raise OverflowError('Nonzero sample SD underflowed to zero in the float output.')
+    except (OverflowError, ValueError) as error:
+        raise ArithmeticError('DERIVED_STATISTIC_NOT_REPRESENTABLE: ' + str(error)) from error
+    return {'mean': mean, 'sample_sd': sd, 'minimum': min(values), 'maximum': max(values),
+            'sample_sd_status': 'DEFINED' if count > 1 else 'UNDEFINED_N_LT_2'}
 
 
 def read_source(path):
@@ -102,7 +145,10 @@ def run_skill(*, input_csv, output_dir, id_column='id', value_column='yield_pct'
     (output / 'SKILL.used.md').write_bytes(skill)
     settings = {'id_column': id_column, 'value_column': value_column, 'group_column': group_column,
                 'unit': unit, 'minimum': minimum, 'maximum': maximum, 'lookup_key': lookup_key,
-                'duplicate_policy': 'FLAG_ALL_RETAIN_ALL', 'statistics': 'DESCRIPTIVE_SAMPLE_SD_DDOF_1'}
+                'duplicate_policy': 'FLAG_ALL_RETAIN_ALL', 'statistics': 'DESCRIPTIVE_SAMPLE_SD_DDOF_1',
+                'summary_algorithm': 'PYTHON312_STATISTICS_MEAN_STDEV_INTEGER_RATIO_ACCUMULATION',
+                'derived_result_policy': 'FINITE_OR_EXPLICIT_FAILURE_UNDEFINED_SD_ONLY_IF_N_LT_2',
+                'derived_zero_policy': 'REJECT_UNDERFLOWED_ZERO_PRESERVE_EXACT_ZERO'}
     dump(output / 'parameters.json', settings)
     try:
         frame = original.copy(deep=True)
@@ -144,12 +190,25 @@ def run_skill(*, input_csv, output_dir, id_column='id', value_column='yield_pct'
                                 validate='many_to_one', indicator='_adp_join_status')
             if len(frame) != len(original) or frame['_adp_record_index'].tolist() != list(range(1, len(original) + 1)):
                 raise RuntimeError('Join changed row count or ordering.')
-        summary = frame.groupby(group_column, sort=False, dropna=False)['_adp_numeric_value'].agg(
-            total_rows='size', valid_count='count', mean='mean', sample_sd='std', minimum='min', maximum='max')
-        summary['excluded_count'] = summary['total_rows'] - summary['valid_count']
-        summary['unit'] = unit
+        # Preserve row-level evidence even if a derived statistic is outside the
+        # float output range. Do not publish inf/blank as a completed summary.
         frame.to_csv(output / 'audit.csv', index=False)
         frame.loc[~status.eq('VALID')].to_csv(output / 'issues.csv', index=False)
+        summaries = []
+        for group, rows in frame.groupby(group_column, sort=False, dropna=False):
+            valid = rows['_adp_numeric_value'].dropna().tolist()
+            try:
+                computed = descriptive_summary(valid)
+            except ArithmeticError:
+                dump(output / 'statistics-failure.json', {
+                    'status': 'FAILED_DERIVED_STATISTICS', 'error_code': 'DERIVED_STATISTIC_NOT_REPRESENTABLE',
+                    'group': str(group), 'valid_count': len(valid),
+                    'sample_sd_status': 'CALCULATION_FAILED_NOT_UNDEFINED_N',
+                    'algorithm': settings['summary_algorithm'], 'python': sys.version.split()[0]})
+                raise
+            summaries.append({group_column: group, 'total_rows': len(rows), 'valid_count': len(valid),
+                              **computed, 'excluded_count': len(rows) - len(valid), 'unit': unit})
+        summary = pd.DataFrame(summaries).set_index(group_column)
         summary.to_csv(output / 'group-summary.csv')
         if not original.equals(frame[list(original.columns)]):
             raise RuntimeError('Original data changed.')
@@ -166,14 +225,13 @@ def run_skill(*, input_csv, output_dir, id_column='id', value_column='yield_pct'
                                    'No p-values, confidence interval, causal inference or chemical identity certification.']}
         dump(output / 'run-receipt.json', receipt)
     except Exception as error:
-        dump(output / 'failure.json', {'status': 'FAILED_INPUT_RETAINED', 'type': type(error).__name__,
-                                      'message': str(error), 'model_calls': 0})
+        derived_failure = isinstance(error, ArithmeticError)
+        dump(output / 'failure.json', {'status': 'FAILED_DERIVED_STATISTICS_INPUT_RETAINED' if derived_failure else 'FAILED_INPUT_RETAINED',
+                                      'error_code': 'DERIVED_STATISTIC_NOT_REPRESENTABLE' if derived_failure else None,
+                                      'type': type(error).__name__, 'message': str(error), 'model_calls': 0, 'network_calls': 0})
+        archive_results(output)
         raise
-    files = sorted(path for path in output.iterdir() if path.is_file())
-    (output / 'SHA256SUMS.txt').write_text(''.join(sha(path.read_bytes()) + '  ' + path.name + '\n' for path in files), encoding='utf-8')
-    with zipfile.ZipFile(output / 'results.zip', 'w', zipfile.ZIP_DEFLATED) as archive:
-        for path in files + [output / 'SHA256SUMS.txt']:
-            archive.write(path, path.name)
+    archive_results(output)
     return receipt
 
 
@@ -196,7 +254,7 @@ def main():
                                    minimum=args.minimum, maximum=args.maximum,
                                    lookup_csv=args.lookup, lookup_key=args.lookup_key), ensure_ascii=False))
         return 0
-    except (ValueError, OSError, RuntimeError, UnicodeError) as error:
+    except (ValueError, OSError, RuntimeError, UnicodeError, ArithmeticError) as error:
         print(str(error), file=sys.stderr)
         return 2
 

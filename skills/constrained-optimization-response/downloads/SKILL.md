@@ -13,6 +13,22 @@ parameters含coordinate_unit、position_atol、gradient_atol、hessian_atol、cu
 
 对满行秩A用SVD取得切空间Z，检查||A x−b||、||Zᵀg||、明确收敛声明及ZᵀHZ的严格正最小特征值。位置/梯度/Hessian门槛有各自单位，不能混称一个无量纲阈值。完整梯度非零可以与约束内驻点相容。
 
+## 核心知识：线性约束的切空间、驻点与局部曲率
+
+前提为同一长度单位的有限实坐标x、目标函数在端点附近二次连续可微、给定梯度g/Hessian H来自同一函数与坐标约定；A满行秩、Ax=b且至少一个自由度。本工具不验证导数来源真实性，也不优化几何。由SVD取正交零空间基Z，AZ=0、ZᵀZ=I，可行点写成x=x0+Zz。
+
+约化函数f(z)=E(x0+Zz)的梯度为Zᵀg、Hessian为ZᵀHZ。因而精确可行驻点满足Zᵀg=0，即g可处于Aᵀ的列空间，完整梯度未必为0。若约化Hessian严格正定，结合上述光滑性才有约束内严格局部极小的充分条件；容差内数据只获候选资格，不能推全局/无约束极小、分子稳定性或电子态连续性。非线性约束需约束曲率与Lagrangian Hessian，不能直接沿用当前H。
+
+本合同按||Ax−b||比较position_atol，按||Zᵀg||比较gradient_atol，H/曲率用Eh/length²；A行的缩放和各量单位必须明确。||Ax−b||是方程残差，通常不是到可行集的几何距离：x=0.1、约束x=0，A=1残差0.1，而等价A=1e−8残差1e−9。相同数值position_atol会改变门禁。因此调用者须固定约束行尺度或配套变换阈值，本实现保留原容差和算法，不暗自转为几何距离。
+
+①E=2x+0.5x²+1.5(y−1)²在(0,1)、x=0下g=(2,0)、切向曲率3；②同一函数在(0.1,1)应给g=(2.1,0)，仍因不可行失败；③另取E=2x+0.5x²−0.5(y−1)²，在(0,1)的Hyy=−1，因切向负曲率失败。这是两种明确不同的合成解析函数，均不是分子优化或量子梯度。
+
+### 经典教材、实现来源及支持范围
+
+[O1：Boyd、Vandenberghe，Convex Optimization，Cambridge University Press，2004，§4.1.3、§10.1](https://web.stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf)的[作者授权下载说明](https://web.stanford.edu/~boyd/cvxbook/)和上述零空间/KKT正文已核读；原有[作者讲义](https://web.stanford.edu/~boyd/cvxbook/bv_cvxslides.pdf#page=329)仍标为讲义。书中凸问题的全局结论不移用于任意分子势能面。[L1：Golub、Van Loan，Matrix Computations，第4版，JHU Press，2013，ISBN 9781421407944](https://www.press.jhu.edu/books/title/10678/matrix-computations)的§6.4仅核对了出版社目录，不称已读正文。
+
+O1上述章节已读授权正文；L1仅核对书目和目录，不声称逐式读全书。完整来源分类和支持边界见[runtime/sources.json](runtime/sources.json)。
+
 ## 输入校验与方法依据补充
 
 数值数组在NumPy类型提升前逐项校验：JSON布尔值true/false、null、字符串或与数值混合的这些值均拒绝，不把标志列自动转换为0/1测量、目标、度量或概率。整数0/1仍可用于已声明的数值/二分类接口；缺失值须先按研究协议处理。数组结构遍历预算为100000项，另保留各模块原有形状、有限性和数据规模限制。

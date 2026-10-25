@@ -9,5 +9,46 @@
     "image_id": "sha256:e7ffa6420e743a0db184897d21458d69ec90c113b9e3b3c0df7fd2a94a2e202e",
     "runtime_commit": "1f139aa87dbd1dca8e318b5e9d0226b2a7c8668b"
   },
-  "scope": "Only mathematical postprocessing is newly executed; no new electronic energy generation."
+  "scope": "Only mathematical postprocessing is newly executed; no new electronic energy generation.",
+  "knowledge_review": {
+    "schema": "skill-knowledge-foundations-v1",
+    "date": "2026-10-25",
+    "local_derivation": true,
+    "sources": [
+      {
+        "id": "L1",
+        "source_type": "classic_research_monograph",
+        "authors": [
+          "Gene H. Golub",
+          "Charles F. Van Loan"
+        ],
+        "title": "Matrix Computations",
+        "edition": "4",
+        "year": 2013,
+        "publisher": "Johns Hopkins University Press",
+        "isbn": "9781421407944",
+        "url": "https://www.press.jhu.edu/books/title/10678/matrix-computations",
+        "access_verified": "publisher_bibliography_and_detailed_table_of_contents_only",
+        "access_limit": "Chapter text not read. Numerical formulas below are locally derived; no textbook formula numbers or page-level proof asserted.",
+        "verified_on": "2026-10-25",
+        "relevant_chapters": [
+          "4.2 Positive Definite Systems",
+          "5.5 The Rank-Deficient Least Squares Problem",
+          "6.4 Subspace Computations with the SVD"
+        ],
+        "module_support_scope": "SPD, numerical rank and subspace foundations; weighted formula derived locally."
+      },
+      {
+        "id": "EIGH",
+        "source_type": "official_software_documentation",
+        "title": "NumPy linalg.eigh",
+        "url": "https://numpy.org/doc/stable/reference/generated/numpy.linalg.eigh.html",
+        "supports": "Symmetric eigendecomposition API only.",
+        "relevant_chapters": [],
+        "module_support_scope": "Symmetric Gram decomposition API."
+      }
+    ],
+    "physical_claim_limit": "Only the explicit input/array checks and derivations in this module; not external data authenticity or new scientific backend acceptance.",
+    "new_quantum_backend_execution": "NOT_EXECUTED"
+  }
 }

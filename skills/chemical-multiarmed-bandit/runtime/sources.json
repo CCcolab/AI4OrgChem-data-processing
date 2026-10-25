@@ -1,0 +1,48 @@
+{
+  "schema": "skill-method-sources-v1",
+  "skill": "chemical-multiarmed-bandit",
+  "knowledge_revision": "2026-10-25",
+  "knowledge_scope": "选择thompson时始终从各臂Beta后验抽样，包括零计数；未访问臂捷径仅允许UCB。报告方法修订身份和新seed轨迹，明确模拟/历史数据及PENDING建议；不得将后验抽样当新观测。",
+  "chapter_locator": "Sutton/Barto第2章及§2.7 UCB（出版社目录）；Auer等UCB1原论文与Russo作者教程Algorithm2 BernTS（正文）。",
+  "source_roles": {
+    "textbook_or_monograph": "概念与数学基础；访问范围逐条声明",
+    "original_paper": "原始方法及本教学简化的区别，不继承其性能",
+    "software_documentation": "API/版本行为，不能替代独立方法验证"
+  },
+  "implementation_requirements": [
+    "numpy==1.26.4"
+  ],
+  "version_note": "固定requirements与结果环境回执用于实际执行身份；公开文档可能滚动更新，不能据文档标题替换依赖版本。",
+  "sources": [
+    {
+      "id": "SUTTON",
+      "title": "Sutton & Barto, Reinforcement Learning: An Introduction",
+      "url": "https://mitpress.mit.edu/9780262039246/reinforcement-learning/",
+      "source_class": "classic_textbook",
+      "edition": "2nd edition, 2018",
+      "support": "Publisher TOC verifies ch2 bandits, §2.7 UCB p35, §6.5 Q-learning p131.",
+      "access_scope": "Publisher edition metadata and six-page TOC verified: https://mitp-content-server.mit.edu/books/content/sectbyfn/books_pres_0/10094/Toc.pdf?dl=1 . Supplied author draft URL and alternate full-PDF requests timed out; no claim to have reread full textbook.",
+      "verified_on": "2026-10-25"
+    },
+    {
+      "id": "AUER",
+      "title": "Auer, Cesa-Bianchi & Fischer, Finite-time Analysis of the Multiarmed Bandit Problem",
+      "url": "https://homes.di.unimi.it/~cesabian/Pubblicazioni/ml-02.pdf",
+      "source_class": "original_paper",
+      "edition": "Machine Learning47:235–256, 2002",
+      "support": "UCB1 bounded stochastic reward setting and explicit exploration index; arbitrary exploration coefficient does not inherit every bound.",
+      "access_scope": "Author-hosted 22-page paper inspected; publisher metadata DOI10.1023/A:1013689704352 independently verified.",
+      "verified_on": "2026-10-25"
+    },
+    {
+      "id": "RUSSO",
+      "title": "Russo et al., A Tutorial on Thompson Sampling",
+      "url": "https://web.stanford.edu/~bvr/pubs/TS_Tutorial.pdf",
+      "source_class": "author_monograph_tutorial",
+      "edition": null,
+      "support": "Algorithm2 BernTS (PDF page15/printed15) samples Beta posterior for every arm at every step and updates success/failure parameters; no forced unvisited-arm initialization.",
+      "access_scope": "Author-hosted 96-page PDF read selectively, including printed12–15 and Algorithm2. Independent analytic counterexample used rather than performance claim.",
+      "verified_on": "2026-10-25"
+    }
+  ]
+}

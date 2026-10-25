@@ -33,3 +33,23 @@ Q(s,a)←Q+alpha[r+gamma maxQ(s′,·)−Q]，仅真正terminal时bootstrap项�
 ## 方法来源
 
 [Sutton与Barto作者教材](https://www.incompleteideas.net/book/bookdraft2018mar21.pdf)Q-learning；[Farama终止与截断说明](https://gymnasium.farama.org/tutorials/gymnasium_basics/handling_time_limits/)支持bootstrap区分。
+
+## 解释与复核要点
+
+先核对MDP行和/吸收终态/奖励单位，区分terminal与外部截断，保留bootstrap规则。冻结评价不改Q，并分别解释折扣价值与未折扣轨迹回报；不把显式教学环境当真实化学环境。
+
+有限MDP需要完整状态、动作、转移概率及奖励语义；本例学习折扣回报E[Σ_t γᵗr_t]的表格动作价值。一步Q-learning为Q(s,a)←Q(s,a)+α[r+γ max_b Q(s′,b)−Q(s,a)]；真正终态的后续价值为零。外部max_steps只是采样截断，不能抹去尚未终止环境的bootstrap；若时间上限属于任务本身，剩余时间必须纳入状态以保持Markov性。
+
+训练后冻结Q进行greedy评价；轨迹字段undiscounted_return明确求未折扣奖励和，用于描述所采样有限轨迹，区别于Q所估计的折扣动作价值。固定alpha、epsilon及有限预算未满足渐近收敛定理的全部条件，不能因评价收益较高就声称最优策略。所有概率与奖励是教学输入，不是反应动力学、电子能或实验反馈。
+
+## 依据的用途与访问范围
+
+章节定位：Sutton/Barto §6.5 Q-learning（出版社目录）；Watkins/Dayan第2节方法及收敛定理假设（作者PDF正文）。
+
+基础阅读：[SUTTON](https://mitpress.mit.edu/9780262039246/reinforcement-learning/)。
+
+原始方法/作者专论：[WATKINS](https://www.gatsby.ucl.ac.uk/~dayan/papers/cjch.pdf)。
+
+实现接口：[FARAMA](https://gymnasium.farama.org/tutorials/gymnasium_basics/handling_time_limits/)。
+
+Sutton/Barto为2018年第2版，出版社目录确认§2.7 UCB与§6.5 Q-learning；作者整书链接本次超时，未声称重读全书。 各条原论文/软件文档的具体访问范围及版本记录见[runtime/sources.json](runtime/sources.json)；滚动API页面与固定运行依赖分开记录。经典书目补充基础，现代算法仍保留其原始论文，API文档继续用于接口约定。

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "classic-chemoinformatics",
+    "title": "Gasteiger (ed.), Handbook of Chemoinformatics, Wiley-VCH,2003",
+    "url": "https://onlinelibrary.wiley.com/doi/book/10.1002/9783527618279",
+    "type": "经典编辑专著",
+    "locator": "II.3/II.4/II.6;VI.1 2D Structure and Substructure Searching",
+    "supports": "查询、图映射和立体表示的经典定位，不为能量账本作物理证明",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "PUBLISHER_AND_AUTHOR_TOC_METADATA_NOT_PAYWALLED_CHAPTER_BODY",
+    "rights": "链接及自主概述；不再分发参考全文。",
+    "doi": "10.1002/9783527618279",
+    "isbn": "9783527306800",
+    "author_toc_url": "https://www.cup.uni-muenchen.de/oc/engel/publications/books/handbook-of-chemoinformatics/"
+  },
+  {
+    "id": "classic-computational-chemistry",
+    "title": "Frank Jensen, Introduction to Computational Chemistry,3rd ed.,Wiley,2017",
+    "url": "https://catalogimages.wiley.com/images/db/pdf/9781118825990.excerpt.pdf",
+    "type": "经典教材公开章节节选",
+    "locator": "§1.2 Describing the System;§1.6.2 Separating Nuclear and Electronic Variables",
+    "supports": "能量比较的系统/Hamiltonian背景；具体分解不由该教材认证",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "OPEN_PUBLISHER_CHAPTER1_SELECTED_TEXT_NOT_FULL_BOOK",
+    "rights": "链接及自主概述；不再分发参考全文。",
+    "isbn": "9781118825990"
+  },
+  {
+    "id": "decimal-v2-arithmetic",
+    "title": "Python3.12 Decimal",
+    "url": "https://docs.python.org/3.12/library/decimal.html",
+    "type": "软件或语言官方文档",
+    "locator": "localcontext;Inexact;Rounded;mitigating round-off error",
+    "supports": "有限精度仍可舍入；本程序自适应精度与范围由v2合同显式定义",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "OFFICIAL_DOCUMENTATION_SELECTED_PUBLIC_TEXT",
+    "rights": "链接及自主概述；不再分发参考全文。"
+  },
+  {
+    "id": "smarts-query",
+    "title": "Daylight SMARTS",
+    "url": "https://www.daylight.com/dayhtml/doc/theory/theory.smarts.html",
+    "type": "软件或语言官方文档",
+    "locator": "Atomic/Bond Primitives;Logical Operators",
+    "supports": "查询的定义语言，不是通用官能团分类器",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "OFFICIAL_DOCUMENTATION_SELECTED_PUBLIC_TEXT",
+    "rights": "链接及自主概述；不再分发参考全文。"
+  }
+]

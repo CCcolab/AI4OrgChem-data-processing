@@ -88,14 +88,20 @@ def check(name, condition, actual=None):
     return {'name': name, 'passed': bool(condition), 'actual': bool(condition) if actual is None else actual, 'threshold': True}
 
 
-def save_model(model, output, test_x):
+def save_model(model, output, test_x, expected_prediction, expected_probabilities=None):
     import joblib
     artifact = Path(output) / 'self-produced-model.joblib'
     joblib.dump(model, artifact)
     # Only load the just-created owned artifact, never a user-supplied pickle.
     restored = joblib.load(artifact)
-    expected, actual = model.predict(test_x), restored.predict(test_x)
-    return check('owned_model_save_restore_predictions', np.allclose(expected, actual, atol=1e-10, rtol=1e-10))
+    actual = restored.predict(test_x)
+    checks = [check('owned_model_save_restore_predictions', np.allclose(expected_prediction, actual, atol=1e-10, rtol=1e-10))]
+    if expected_probabilities is not None:
+        replay = restored.predict_proba(test_x)
+        checks.append(check('owned_model_save_restore_probabilities',
+                            np.array_equal(model.classes_, restored.classes_) and
+                            np.allclose(expected_probabilities, replay, atol=1e-10, rtol=1e-10)))
+    return checks
 
 
 def predictions_csv(output, ids, indices, observed, predicted):
@@ -176,11 +182,18 @@ def supervised(parameters, data, output_dir, allowed):
     if name == 'mlp_regression':
         checks.append(check('target_scaler_fitted_on_training_only', np.allclose(model.transformer_.mean_, [y[train].mean()], atol=1e-12, rtol=1e-12)))
     checks.append(check('optimizer_no_convergence_warning', not any(w['category'] == 'ConvergenceWarning' for w in caught)))
-    checks.append(save_model(model, output_dir, x[test]))
     predictions_csv(output_dir, data['ids'], test, y[test], prediction)
+    probabilities = None
+    classes = None
     if classification:
         probabilities = model.predict_proba(x[test])
+        classes = model.classes_.tolist()
         checks.append(check('probability_simplex', np.isfinite(probabilities).all() and np.allclose(probabilities.sum(axis=1), 1)))
+        with (Path(output_dir) / 'classification-probabilities.csv').open('w', newline='', encoding='utf-8') as stream:
+            writer = csv.writer(stream)
+            writer.writerow(['id', 'source_index', 'observed_class', 'predicted_class', 'probability_class_0', 'probability_class_1'])
+            writer.writerows((data['ids'][i], int(i), float(y[i]), float(label), float(p[0]), float(p[1]))
+                             for i, label, p in zip(test, prediction, probabilities))
         scores = {'accuracy': float(accuracy_score(y[test], prediction)),
                   'balanced_accuracy': float(balanced_accuracy_score(y[test], prediction)),
                   'roc_auc': float(roc_auc_score(y[test], probabilities[:, 1])) if len(set(y[test])) == 2 else None}
@@ -190,10 +203,20 @@ def supervised(parameters, data, output_dir, allowed):
         scores = {'MAE': float(mean_absolute_error(y[test], prediction)),
                   'RMSE': float(np.sqrt(mean_squared_error(y[test], prediction))),
                   'R2': float(1-rss/tss) if len(test) > 1 and tss > 0 else None}
+    checks.extend(save_model(model, output_dir, x[test], prediction, probabilities))
     return {'scope': 'BOUNDED_LOCAL_SUPERVISED_TRAINING_AND_OWNED_MODEL_REPLAY_NOT_CHEMICAL_PREDICTIVE_VALIDATION',
             'algorithm': name, 'environment': environment(), 'train_indices': train.tolist(), 'test_indices': test.tolist(),
             'held_out_metrics': scores, 'target_unit': data['target_unit'], 'optimizer_warnings': caught,
             'feature_names': data['feature_names'], 'local_training_runs': 1, 'local_prediction_runs': 2,
+            'classification_classes': classes,
+            'held_out_probabilities': probabilities.tolist() if probabilities is not None else None,
+            'classification_probability_metadata': {'class_order': classes,
+                'file': 'classification-probabilities.csv', 'columns': ['probability_class_0', 'probability_class_1'],
+                'alignment': 'test_indices order, with original id and zero-based source_index',
+                'calibration': 'NOT_CALIBRATED_NOT_VALIDATED_CHEMICAL_RISK'} if classification else None,
+            'local_prediction_runs_definition': 'Two stages: original model inference and owned restored model inference; each classification stage calls predict and predict_proba.',
+            'local_prediction_method_calls': 4 if classification else 2,
+            'local_prediction_method_calls_definition': 'Explicit application calls to predict/predict_proba at the model interface; internal estimator delegation is not counted.',
             'checks': checks, 'limits': ['Declared labels and group IDs do not authenticate experiments or chemical identity.',
                 'No automatic hyperparameter/model selection, probability calibration, uncertainty interval or causal interpretation.',
                 'A fixed holdout is not nested validation; using it repeatedly for model choice requires another untouched test set.',

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "classic-computational-chemistry",
+    "title": "Frank Jensen, Introduction to Computational Chemistry,3rd ed.,Wiley,2017",
+    "url": "https://catalogimages.wiley.com/images/db/pdf/9781118825990.excerpt.pdf",
+    "type": "经典教材公开章节节选",
+    "locator": "§1.2;§1.6.2",
+    "supports": "系统与Hamiltonian定义的背景；循环恒等式由本页明确展开",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "OPEN_PUBLISHER_CHAPTER1_SELECTED_TEXT_NOT_FULL_BOOK",
+    "rights": "链接及自主概述；不再分发参考全文。",
+    "isbn": "9781118825990"
+  },
+  {
+    "id": "classic-numerical-analysis",
+    "title": "Richard L.Burden and J.Douglas Faires, Numerical Analysis,9th ed.,Cengage India,2012",
+    "url": "https://www.cengage.co.in/book-list/print/numerical-analysis-c2",
+    "type": "经典数值教材",
+    "locator": "Chapter1 Mathematical Preliminaries and Error Analysis",
+    "supports": "算术舍入/相消背景阅读；不认证请求来源独立性",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "PUBLISHER_METADATA_AND_CHAPTER_TOC_NOT_FULL_CHAPTER_BODY",
+    "rights": "链接及自主概述；不再分发参考全文。",
+    "isbn": "9788131516546"
+  },
+  {
+    "id": "decimal-v2-arithmetic",
+    "title": "Python3.12 Decimal",
+    "url": "https://docs.python.org/3.12/library/decimal.html",
+    "type": "软件或语言官方文档",
+    "locator": "localcontext;Inexact;Rounded",
+    "supports": "有界精确十进制算术的实现基础；不是物理路径理论",
+    "reviewed_on": "2026-10-25",
+    "review_scope": "OFFICIAL_DOCUMENTATION_SELECTED_PUBLIC_TEXT",
+    "rights": "链接及自主概述；不再分发参考全文。"
+  }
+]

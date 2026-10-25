@@ -48,7 +48,7 @@ Windows将python替换为`.\.venv\Scripts\python.exe`。案例完整程序：[�
 
 ## 修改参数与自己的输入
 
-复制[runtime/examples/01.json](runtime/examples/01.json)到Skill外的`..\my-request.json`，按真实数据修改parameters、data和provenance。data显式ids、features二维有限实数矩阵、feature_names及逐列feature_units；5–200行、1–32列。不是二进制指纹/Tanimoto接口。监督数据另给target、target_unit及可选groups。parameters包含algorithm、seed、test_indices（零起始），算法专属参数见案例；分组一旦提供不得跨训练/测试。本页必须提供groups；parameters为scheme、seed、folds、alpha，scheme仅group/time/shuffle。time使用输入顺序，不自动猜时间列。
+复制[runtime/examples/01.json](runtime/examples/01.json)到Skill外的`..\my-request.json`，按真实数据修改parameters、data和provenance。data显式ids、features二维有限实数矩阵、feature_names及逐列feature_units；5–200行、1–32列。不是二进制指纹/Tanimoto接口。监督数据必须给target、target_unit和groups。parameters只包含scheme、seed、folds、alpha，scheme仅group/time/shuffle，不接受algorithm或test_indices。group/time检查每折声明组别不跨训练/测试；shuffle是显式IID对照，允许组别交叉并披露局限。time使用输入顺序，不自动猜时间列。
 
 ```powershell
 .\.venv\Scripts\python.exe runtime\run_skill.py --input ..\my-request.json --output ..\my-skill-results
@@ -60,8 +60,24 @@ Windows将python替换为`.\.venv\Scripts\python.exe`。案例完整程序：[�
 
 ## 用户CSV
 
-配套runtime/run_from_csv.py读取CSV并生成同样的显式请求，不猜测列名；使用--template指定本页案例JSON、--input指定自己的CSV、--features列出数值列、--feature-units逐列给单位，--id-column指定ID；监督学习还需--target及--target-unit，声明分组时加--groups。模板的parameters保留，data由CSV完全替换，不挪用示例标签。原CSV文本保存在实际请求内；结果仍写全新--output目录。参数含zero-based test_indices，换数据必须核对索引及分组，不自动拆分。
+配套runtime/run_from_csv.py读取CSV并生成同样的显式请求，不猜测列名；使用--template指定本页案例JSON、--input指定自己的CSV、--features列出数值列、--feature-units逐列给单位，--id-column指定ID；监督学习还需--target及--target-unit，声明分组时加--groups。模板的parameters保留，data由CSV完全替换，不挪用示例标签。原CSV文本保存在实际请求内；结果仍写全新--output目录。本页由scheme及folds生成划分，CSV行顺序和groups含义必须重新核对，不使用test_indices。
 
 ```powershell
 .\.venv\Scripts\python.exe runtime\run_from_csv.py --template runtime\examples\01.json --input runtime\examples\molecular-descriptors.csv --features mol_wt_g_mol tpsa_A2 mol_logp_model heavy_atoms --feature-units g/mol angstrom2 dimensionless count --target synthetic_response --target-unit arbitrary_synthetic_response --groups group --output ..\cv-csv
 ```
+
+## 知识要点、前提与公式
+
+交叉验证评价一个明确训练流程对指定划分机制下新数据的误差；划分机制应对应使用场景。GroupKFold隔离用户声明的组，不能由组名本身证明化学骨架或实验批次独立。TimeSeriesSplit仅按输入先后扩展训练，要求真实时间含义，并在本接口检查声明组别不跨训练/测试边界。shuffle是明确选择的IID对照，故允许组别交叉，不能冒称组外化学验证。
+
+每折独立拟合StandardScaler和固定alpha的Ridge。第k折MAEₖ=Σ_{i∈testₖ}|yᵢ−ŷᵢ|/nₖ；本例报告(1/K)ΣₖMAEₖ，各折等权，区别于按nₖ加权的池化误差。这里不搜索超参数，也不提供嵌套选择；如果用这些分数挑模型，外层评估需另行设计。
+
+## 基础阅读与来源层级
+
+章节定位：ESL第2版第7章Model Assessment and Selection（目录主题定位）。
+
+基础阅读：[ESL2](https://link.springer.com/book/10.1007/978-0-387-84858-7)。
+
+实现接口：[SKCV](https://scikit-learn.org/stable/modules/cross_validation.html)、[SKLEAK](https://scikit-learn.org/stable/common_pitfalls.html#data-leakage)。
+
+ESL为2009年第2版；本次核对出版社目录中的相关主题，未声称读取受限章节正文。 各条原论文/软件文档的具体访问范围及版本记录见[runtime/sources.json](runtime/sources.json)；滚动API页面与固定运行依赖分开记录。经典书目补充基础，现代算法仍保留其原始论文，API文档继续用于接口约定。

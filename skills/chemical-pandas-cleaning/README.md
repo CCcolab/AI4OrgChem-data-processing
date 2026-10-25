@@ -14,7 +14,15 @@
 
 原始值、解析后的数字和缺失原因应分开保存。0不是缺失；文本NA不自动解释成空。重复行可能是误录，也可能是实验重复，程序只标记、不替用户决定。分组均值与样本SD描述当前记录，不证明差异显著、测量准确或因果关系。SD使用ddof=1，只有一个有效值时不定义；技术重复不能直接当独立样本。
 
-单位参数是标签，不换算。混合单位、检测限值、百分号后缀或千位逗号需先确认规则。本版不做结构解析、实验真实性认证、置信区间、SEM或假设检验。[read_csv](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html)、[to_numeric](https://pandas.pydata.org/docs/reference/api/pandas.to_numeric.html)、[GroupBy.std](https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.DataFrameGroupBy.std.html)和[merge](https://pandas.pydata.org/docs/reference/api/pandas.merge.html)给出实际软件约定。
+单位参数是标签，不换算。混合单位、检测限值、百分号后缀或千位逗号需先确认规则。本版不做结构解析、实验真实性认证、置信区间、SEM或假设检验。[read_csv](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html)、[to_numeric](https://pandas.pydata.org/docs/reference/api/pandas.to_numeric.html)、[Python statistics](https://docs.python.org/3.12/library/statistics.html)和[merge](https://pandas.pydata.org/docs/reference/api/pandas.merge.html)给出实际软件约定。
+
+## 知识要点与经典依据
+
+把每行代表的实验单位说清楚，才能解释统计量。对组内n个有效观测，`mean=Σy_i/n`，样本SD为`s=sqrt(Σ(y_i−mean)²/(n−1))`，SD与y同单位。重复记录若是误录会改变描述统计，若是技术重复又不能自动当独立实验；所以程序保留并标记，不代替研究者决定删行。0与空缺是反例：删掉0或把空缺补0都会改变均值。右表同键多行会制造伪重复，因此连接要求many_to_one。
+
+描述统计不要求把数据先宣称为正态；若将样本方差推广为总体方差估计或生成SEM/CI，则需相应抽样、独立性及分布条件。本模块不进行这些推断。[Harvey《Analytical Chemistry2.1》§4.1](https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/04:_Evaluating_Analytical_Data/4.01:_Characterizing_Measurements_and_Results)的Mean/Standard Deviation给出定义，§4.4讨论样本、总体和均值不确定度；这里核验开放章节正文。既引NIST离散程度页是方法手册，pandas文档是表格接口依据，两者职责不同。
+
+汇总用Python3.12标准库`statistics.mean/stdev`，其整数比累积路径避免先把大和/平方和写成浮点；保留最后结果的浮点精度。有限输入仍可能使真实结果超出输出范围，或使非零均值/SD下溢为0。均值输出为0时，额外用Fraction.from_float精确和区分严格相消零；SD为0而有效值不全相同时，也明确拒绝下溢结果。范围失败保存input/audit、statistics-failure.json、failure.json和结果包，不写成功回执。`sample_sd_status=UNDEFINED_N_LT_2`仅用于n<2；n≥2成功为DEFINED，计算失败单列。单位改变与有限性不能证明数据化学合理，极大/极小值测试只检数值边界。[定义与实现来源](runtime/sources.json)。
 
 ## 安装、默认运行与保存
 
@@ -83,4 +91,3 @@ print(receipt)
 CSV先按严格引号语法读取，要求所有表头非空且唯一、每条记录恰好与表头同宽；空行、多余字段或缺少字段均拒绝。核对后直接用字符串字段构造DataFrame，不猜索引、不丢字段、不把NA或001改写。失败时保留预算内原始字节与failure.json/结果ZIP；查表输入也在解析前保存。
 
 [Python CSV语法](https://docs.python.org/3.12/library/csv.html)说明记录与引号处理；[pandas2.2读取约定](https://pandas.pydata.org/pandas-docs/version/2.2/reference/api/pandas.read_csv.html)提示畸形行的索引推断风险。输入合同由本模块明确限定，不能仅靠库默认值保证字段对应。 分组均值和样本SD只作描述；[NIST离散程度说明](https://www.itl.nist.gov/div898/handbook/eda/section3/eda356.htm)不提供实验独立性、置信区间或因果资格。
-

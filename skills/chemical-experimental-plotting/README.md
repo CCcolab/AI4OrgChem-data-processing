@@ -18,6 +18,14 @@ SD描述观测散布；SEM和置信区间描述的对象及所需假设不同，
 
 方法约定见[Matplotlib errorbar](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.errorbar.html)和[NumPy std](https://numpy.org/doc/stable/reference/generated/numpy.std.html)。软件文档描述接口和算法，不认证实验来源或统计假设。
 
+## 知识要点与经典依据
+
+对同组同x的n次观测，本程序画均值及`s=sqrt(Σ(y−mean)²/(n−1))`。SD描述观测散布；在独立同分布且方差适用的观测模型下，均值标准误估计才可写成`s/sqrt(n)`。置信区间还需置信水平、分布/抽样模型等条件，不能看到误差线就认定95%CI。
+
+反例：10、12、14的均值12、SD2，而SEM为2/√3，三者表达对象不同；单个30的SD未定义，不是0。技术重复的多个点不能自动提供独立实验的n。两个组的SD条是否重叠也不能代替对指定比较问题的统计检验。本模块不计算SEM/CI，只绘制用户声明的对称半宽，或按记录计算描述性样本SD。
+
+[Harvey《Analytical Chemistry2.1》§4.1](https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/04:_Evaluating_Analytical_Data/4.01:_Characterizing_Measurements_and_Results)给出Mean/Standard Deviation定义，[§4.4](https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_by_David_Harvey/Analytical_Chemistry_2.1_(Harvey)/04:_Evaluating_Analytical_Data/4.04:_The_Distribution_of_Measurements_and_Results)区分样本、总体与均值置信区间；开放正文已核验。Matplotlib errorbar说明画法和非负数组，不能代替教材中估计对象/前提的解释。来源与本模块未实现的推断范围见[runtime/sources.json](runtime/sources.json)。
+
 ## 安装、运行与保存
 
 Windows解压到有写入权限的短目录，例如`D:\Chem\plot`，进入README和runtime所在目录，使用Python 3.12独立环境：

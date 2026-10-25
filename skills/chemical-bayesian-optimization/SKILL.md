@@ -33,3 +33,23 @@ X按声明bounds缩放，Y仅按已有观测均值/总体SD缩放。固定振幅
 ## 方法来源
 
 [scikit-learn GaussianProcessRegressor](https://scikit-learn.org/stable/modules/gaussian_process.html)支持GP及alpha噪声约定；EI公式在本页显式给定。
+
+## 解释与复核要点
+
+保留固定核和显式单位；只在已有观测拟合，对有限候选池算best-observed固定阈值EI。解释方向、xi、潜函数SD及与noisy EI的区别，提议只标PENDING，不把预测加入观测或宣称连续域最优。
+
+固定核GP在缩放坐标上使用K+σ_n²I条件化，后验均值为k_*ᵀ(K+σ_n²I)⁻¹y_scaled，潜函数方差为k_**−k_*ᵀ(K+σ_n²I)⁻¹k_*。本例核振幅1、RBF长度尺度及噪声均显式给定，不优化超参数；Y尺度只取已有观测，noise_sd以目标原单位给定后转换为alpha方差。
+
+统一最大化方向后，best=max(sign×observed_y)，δ=sign×μ−best−xi，EI=δΦ(δ/s)+sφ(δ/s)，s=0时取max(δ,0)。xi与后验输出均在目标原单位。即使声明观测噪声，本例仍把最好观测值当固定阈值，是best-observed plug-in EI；它没有对潜在最优历史值的不确定性积分，不能称为noisy EI。潜函数SD是固定先验/噪声条件下的模型量，不是已校准物理误差。
+
+## 依据的用途与访问范围
+
+章节定位：GPML第2章Regression（正文），第4章Covariance Functions、第9.7节Global Optimization（目录）；EI/noisy EI区别保留原论文依据。
+
+基础阅读：[GPML](https://gaussianprocess.org/gpml/chapters/)。
+
+原始方法/作者专论：[EGO](https://link.springer.com/article/10.1023/A:1008306431147)、[LOGEI](https://arxiv.org/html/2310.20708v3)。
+
+实现接口：[SKGP](https://scikit-learn.org/stable/modules/gaussian_process.html)。
+
+GPML为2006年专著，作者网页对应第二次印刷；第2章回归正文可访问并核对，其他章仅按已核目录定位。 各条原论文/软件文档的具体访问范围及版本记录见[runtime/sources.json](runtime/sources.json)；滚动API页面与固定运行依赖分开记录。经典书目补充基础，现代算法仍保留其原始论文，API文档继续用于接口约定。

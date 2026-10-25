@@ -1,7 +1,7 @@
 [
   {
     "file": "SKILL.md",
-    "sha256": "9a8480787784c21359a3a3e007baea38e06aac977850d9895c9bad8197626e20"
+    "sha256": "8a2f5c8651b925f3e00fe4a60ad63150d70dcbce835c9d17af0394b3eab3ceb5"
   },
   {
     "file": "runtime/examples/01_prepare.py",
@@ -50,5 +50,9 @@
   {
     "file": "runtime/saved-water/result.json",
     "sha256": "91e95a9dfb0dd942cec0ab5c71463062fc7688c15ddbcd89bd0ad423715f8db1"
+  },
+  {
+    "file": "runtime/sources.json",
+    "sha256": "7e2bd4b72ce4f449ccbf95d6105e430d8b0b8ba7b05347c6e83e4838d3cd36af"
   }
 ]

@@ -57,3 +57,21 @@ Windows将python替换为`.\.venv\Scripts\python.exe`。案例完整程序：[�
 只修改参数不会更改旧结果，必须写新目录。严格UTF-8 JSON≤2 MB，不接受重复键或非有限数值。不应只改科学身份标签来绕过不兼容检查，来源标签本身不证明真实性。完整可复用[调用模板](runtime/examples/call_skill_template.py)支持--skill-dir、--input和--output，程序内部实际读取顶层Skill并保存其哈希，不调用大语言模型服务；本地训练、预测或提议计算如实记录。
 
 软件执行通过只覆盖声明的输入和数值范围，不代表整个理论、化学身份或新量子方法获认证。下载包[SHA-256](downloads/SHA256SUMS.txt)与内部验收记录分开，内部材料不进入用户包。
+
+## 知识要点、前提与公式
+
+固定核GP在缩放坐标上使用K+σ_n²I条件化，后验均值为k_*ᵀ(K+σ_n²I)⁻¹y_scaled，潜函数方差为k_**−k_*ᵀ(K+σ_n²I)⁻¹k_*。本例核振幅1、RBF长度尺度及噪声均显式给定，不优化超参数；Y尺度只取已有观测，noise_sd以目标原单位给定后转换为alpha方差。
+
+统一最大化方向后，best=max(sign×observed_y)，δ=sign×μ−best−xi，EI=δΦ(δ/s)+sφ(δ/s)，s=0时取max(δ,0)。xi与后验输出均在目标原单位。即使声明观测噪声，本例仍把最好观测值当固定阈值，是best-observed plug-in EI；它没有对潜在最优历史值的不确定性积分，不能称为noisy EI。潜函数SD是固定先验/噪声条件下的模型量，不是已校准物理误差。
+
+## 基础阅读与来源层级
+
+章节定位：GPML第2章Regression（正文），第4章Covariance Functions、第9.7节Global Optimization（目录）；EI/noisy EI区别保留原论文依据。
+
+基础阅读：[GPML](https://gaussianprocess.org/gpml/chapters/)。
+
+原始方法/作者专论：[EGO](https://link.springer.com/article/10.1023/A:1008306431147)、[LOGEI](https://arxiv.org/html/2310.20708v3)。
+
+实现接口：[SKGP](https://scikit-learn.org/stable/modules/gaussian_process.html)。
+
+GPML为2006年专著，作者网页对应第二次印刷；第2章回归正文可访问并核对，其他章仅按已核目录定位。 各条原论文/软件文档的具体访问范围及版本记录见[runtime/sources.json](runtime/sources.json)；滚动API页面与固定运行依赖分开记录。经典书目补充基础，现代算法仍保留其原始论文，API文档继续用于接口约定。

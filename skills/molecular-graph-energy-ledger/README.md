@@ -12,7 +12,7 @@
 
 ## 知识与适用边界
 
-图模式按query_smarts和include_chirality执行GetSubstructMatches。酸OH模式在乙酸/乙酸根/碳酸分别匹配1/0/2；不是通用羧酸分类器。账本为Σ coefficient×value_hartree，使用50位Decimal，与独立声明reference_hartree按显式绝对容差比较。来源标签不等于鉴定，闭合不验证物理分解。
+图模式按query_smarts和include_chirality执行GetSubstructMatches。酸OH模式在乙酸/乙酸根/碳酸分别匹配1/0/2；不是通用羧酸分类器。账本为Σ coefficient×value_hartree，使用按输入跨度确定精度的有界Decimal-v2，与独立声明reference_hartree按显式绝对容差比较。来源标签不等于鉴定，闭合不验证物理分解。
 
 图与账本是独立模式。图模式使用RDKit默认解析，保留原SMILES、清理/映射/立体警告及零起始匹配原子索引；SMARTS≤32原子、每分子最多1000个非截断匹配，最多50个小分子。不执行无界图枚举、通用身份认证或芳香性理论判定。账本模式只接受显式同方法、基组、几何、态与算子标签的同态Hartree线性组合；方法不同不能靠换单位解决。
 
@@ -23,6 +23,15 @@
 能量算术采用skill-ledger-decimal-v2：每个十进制输入文字≤128字符、系数≤80位、Decimal指数在−200至200；不接收布尔值、特殊值或带空白文字。这里“系数位数/指数”指Decimal数字元组，不是化学有效数字认证。总精度由所有输入跨度及项数上界推导，上限1024位；乘积求和、独立总量差及阈值比较在同一精确上下文进行。任何Inexact/Rounded或预算越界均失败，绝不把失去的小残差当作闭合。回执的arithmetic记录策略与实际精度，原atol不变。
 
 [Python3.12 Decimal：舍入与相消](https://docs.python.org/3.12/library/decimal.html#mitigating-round-off-error-with-increased-precision)明确有限精度仍会舍入；本策略只保证所定义有界算术，不认证能量来源、方法、端点真实性或物理可比性。例如1e60+0.1−1e60必须报告0.1，不能据夸张数值声称化学合理。
+
+## 知识要点与经典依据
+
+图模式输出SMARTS查询原子到解析图原子的索引映射，索引依解析后的图和查询顺序；它不是分子身份鉴定。手性是否参与由include_chirality明确控制。含OH的酸片段在乙酸/乙酸根/碳酸的1/0/2是查询语义，不是可推广到所有酸的类别判决。Gasteiger编专著II.3/II.4/II.6及VI.1提供结构、图、立体和子结构检索的经典阅读定位。[Gasteiger编《Handbook of Chemoinformatics》](https://onlinelibrary.wiley.com/doi/book/10.1002/9783527618279)，Wiley-VCH，2003；核验的是出版社/作者目录与书目，所列付费章节未作全文核验。经典结构表示背景与具体RDKit接口定义分层使用。
+
+账本模式独立计算`Eassembled=Σc_i E_i`、`residual=Eassembled−Ereference`，当`|residual|≤atol_hartree`才满足声明的算术闭合。同方法、基组、几何、态和算子标签是当前接口比较条件；同单位并不能消除不兼容。参考源须单列，不能把本次求和结果伪装为独立证据。即使−10+2=−8，也只核实这个组合，不能从图或项名导出电子能或证明能量分解唯一。
+
+Jensen§1.2/§1.6.2用于理解系统定义和Hamiltonian各项，而本模块具体分项由请求协议定义；专著不为任意账本提供物理背书。[Jensen《Introduction to Computational Chemistry》3版](https://catalogimages.wiley.com/images/db/pdf/9781118825990.excerpt.pdf)，Wiley，2017，实际核验出版社开放第1章节选；后述推导为本页给定模型的解析运算，不冒称读过整书。
+Decimal-v2按有界输入跨度确定精度并捕获舍入，精度见回执；十进制文字可避免先丢失所需小数位，但不增加实验有效数字。[来源层次与访问限度](runtime/sources.json)。
 
 ## 安装与默认运行
 

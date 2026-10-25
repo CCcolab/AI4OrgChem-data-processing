@@ -12,13 +12,21 @@
 
 顶层文件只有README.md和SKILL.md；程序、依赖、参数和案例在runtime。下载[完整Python代码包](downloads/fixed-protocol-energy-review-python.zip)或[Skill单文件ZIP](downloads/SKILL-md.zip)。私有GitHub需有权限的账号，文件页用“Download raw file”保存，不把网页另存为.py。
 
-## 知识与适用边界
+## 核心知识：项目能量合同、精确账本与物理资格
 
-逐项按声明的coefficient×value_hartree用50位Decimal求和，与reported_total_hartree按显式绝对容差比较；同方法/基组/几何/协议身份必须匹配。只有两端声明可用且账本通过才报告conditional−ordinary，否则比较量为null。来源与资格标记仍须外部实证复核。
+先给定protocol_id/version、method/basis、同一geometry身份，再逐态明确operator_definition、occupation_definition、功能式项、来源以及收敛/端点资格声明。相同方法/几何标签不足以证明普通态与条件态共享同一Hamiltonian；改变算子、占据限制或功能式通常定义了不同问题。这个模块接受的是项目明示的比较合同，不从教材推导新的通用条件态理论。
 
-本模块仅复核已给定数字及定义，不运行普通/条件SCF，不推导通用条件功能式。修改功能式所得差值不自动等于物理键能、激发能或实验观测。实际条件量子后端本轮未运行，不能用合成例通过代替；既有服务没有合格端点时继续关闭。
+每态账本L=Σk ak Ek，与另报总量Ereported比较|L−Ereported|≤atol_hartree。来源标签和endpoint_qualified/converged只是输入声明，实际资格需真实输出支持；只有两端账本和声明均通过才给Lconditional−Lordinary。算术闭合检查能发现错项/符号/数值不一致，不能证明输入能量真实、分解唯一或两端物理可比。
 
-[Python Decimal](https://docs.python.org/3/library/decimal.html)支持十进制算术；科学协议、算子、占据、端点来源需由对应真实研究协议提供，不能由软件库文档代替。
+采用skill-ledger-decimal-v2的有界自适应精确上下文，精度由输入十进制跨度和项数推导，不预先固定精度。字面量≤128字符、系数数字≤80位、指数−200至200，所需精度≤1024位；Inexact/Rounded等触发即失败。例如1e60+0.1−1e60的解析值为0.1，不能因有限精度相消变0而声称闭合。Decimal位数并不认证化学有效数字或测量不确定度。
+
+①合成功能差0.2 Eh只是合同算术；②几何身份不同拒绝；③资格声明false保留账本但比较差null。固定条件功能差不自动是物理键能、激发能、自由能或实验可观测量。新普通/条件SCF及真正端点证据仍NOT_EXECUTED；经典HF变分理论只作标准基础，不能给本项目新条件量背书。
+
+### 经典教材、实现来源及支持范围
+
+[Q1：Helgaker、Jørgensen、Olsen，Molecular Electronic-Structure Theory，Wiley，2000，ISBN 9780471967552](https://www.wiley-vch.de/en/areas-interest/natural-sciences/molecular-electronic-structure-theory-978-0-471-96755-2)的Orbital Rotations/Hartree-Fock Theory供普通态与变分概念学习；项目条件态的物理意义必须另有明确研究协议与证据，当前合成账本不能替代。保留[Decimal舍入与相消说明](https://docs.python.org/3.12/library/decimal.html#mitigating-round-off-error-with-increased-precision)作算术来源。
+
+本模块所引Q1的作者、版次、年份和相关章节名称已对照出版社目录核验；未读取其全书正文，不声称已逐式或按页核验。上文推导由本模块明确给出，API文档仅支持实现接口。完整来源类型、访问范围和输入/保存数据身份见[runtime/sources.json](runtime/sources.json)。
 
 ## 输入校验与方法依据补充
 
@@ -61,5 +69,3 @@ Windows将python替换为`.\.venv\Scripts\python.exe`。案例完整程序：[�
 只修改参数不会更改旧结果，必须写新目录。严格UTF-8 JSON≤2 MB，不接受重复键或非有限数值。不应只改科学身份标签来绕过不兼容检查，来源标签本身不证明真实性。完整可复用[调用模板](runtime/examples/call_skill_template.py)支持--skill-dir、--input和--output，程序内部实际读取顶层Skill并保存其哈希，不调用模型。
 
 软件执行通过只覆盖声明的输入和数值范围，不代表整个理论、化学身份或新量子方法获认证。下载包[SHA-256](downloads/SHA256SUMS.txt)与内部验收记录分开，内部材料不进入用户包。
-
-普通态与条件态的算子、占据、几何和泛函组成必须由实际协议及来源给定。本程序只核对该协议的账本和显式资格；缺少真实新后端证据时继续PARTIAL_BACKEND_PENDING，不以算术闭合命名物理键能、激发或可观测量。

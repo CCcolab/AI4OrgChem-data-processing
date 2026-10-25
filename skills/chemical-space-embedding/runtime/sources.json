@@ -1,0 +1,83 @@
+{
+  "schema": "skill-method-sources-v1",
+  "skill": "chemical-space-embedding",
+  "knowledge_revision": "2026-10-25",
+  "knowledge_scope": "先明确描述符、单位、缩放和参考行；保持PCA/UMAP的scaler仅拟合参考行。解释PCA方差与邻域方法目标的区别，禁止从二维间距推断反应、药效或化学空间覆盖；t-SNE查询变换必须拒绝。",
+  "chapter_locator": "ESL第2版第14章Unsupervised Learning（目录主题定位）；t-SNE/UMAP用所列原论文补充现代方法。",
+  "source_roles": {
+    "textbook_or_monograph": "概念与数学基础；访问范围逐条声明",
+    "original_paper": "原始方法及本教学简化的区别，不继承其性能",
+    "software_documentation": "API/版本行为，不能替代独立方法验证"
+  },
+  "implementation_requirements": [
+    "numpy==1.26.4",
+    "scipy==1.13.1",
+    "scikit-learn==1.5.1",
+    "joblib==1.4.2",
+    "umap-learn==0.5.7",
+    "matplotlib==3.9.2"
+  ],
+  "version_note": "固定requirements与结果环境回执用于实际执行身份；公开文档可能滚动更新，不能据文档标题替换依赖版本。",
+  "sources": [
+    {
+      "id": "ESL2",
+      "title": "Hastie, Tibshirani & Friedman, The Elements of Statistical Learning",
+      "url": "https://link.springer.com/book/10.1007/978-0-387-84858-7",
+      "source_class": "classic_textbook",
+      "edition": "2nd edition, 2009",
+      "support": "Publisher TOC: ch3 regression pp43–99; ch4 classification pp101–137; ch7 assessment pp219–259; ch9 trees pp295–336; ch11 neural networks pp389–416; ch14 unsupervised pp485–585; ch15 forests pp587–604.",
+      "access_scope": "Publisher bibliographic record and TOC verified; subscription chapter bodies not read. Author-site full-PDF attempts were inaccessible. Specific subsections are not claimed verified.",
+      "verified_on": "2026-10-25"
+    },
+    {
+      "id": "TSNE",
+      "title": "van der Maaten & Hinton, Visualizing Data using t-SNE",
+      "url": "https://jmlr.org/papers/v9/vandermaaten08a.html",
+      "source_class": "original_paper",
+      "edition": "JMLR9:2579–2605, 2008",
+      "support": "Nonparametric neighborhood visualization, not a molecular property model.",
+      "access_scope": "Original JMLR abstract/metadata read; full PDF not claimed read.",
+      "verified_on": "2026-10-25"
+    },
+    {
+      "id": "UMAP",
+      "title": "McInnes, Healy & Melville, UMAP",
+      "url": "https://arxiv.org/abs/1802.03426",
+      "source_class": "original_paper",
+      "edition": null,
+      "support": "Manifold dimension reduction; provides original-method provenance beyond software transform API.",
+      "access_scope": "Author-submitted abstract/metadata read, v3/2020; no claim of full derivation reading.",
+      "verified_on": "2026-10-25"
+    },
+    {
+      "id": "SKPCA",
+      "title": "scikit-learn PCA",
+      "url": "https://scikit-learn.org/stable/modules/decomposition.html#pca",
+      "source_class": "official_software_documentation",
+      "edition": null,
+      "support": "PCA centers; optional external standardization changes geometry; SVD and transform API.",
+      "access_scope": "Public official page inspected2026-10-25. Rolling documentation is API support, not independent method proof or the pinned installed version. scikit-learn stable currently identifies1.9.1; product pins1.5.1.",
+      "verified_on": "2026-10-25"
+    },
+    {
+      "id": "SKTSNE",
+      "title": "scikit-learn t-SNE",
+      "url": "https://scikit-learn.org/stable/modules/manifold.html#t-sne",
+      "source_class": "official_software_documentation",
+      "edition": null,
+      "support": "Transductive t-SNE fitting and neighborhood visualization.",
+      "access_scope": "Public official page inspected2026-10-25. Rolling documentation is API support, not independent method proof or the pinned installed version. scikit-learn stable currently identifies1.9.1; product pins1.5.1.",
+      "verified_on": "2026-10-25"
+    },
+    {
+      "id": "UMAPAPI",
+      "title": "UMAP transforming new data",
+      "url": "https://umap-learn.readthedocs.io/en/latest/transform.html",
+      "source_class": "official_software_documentation",
+      "edition": null,
+      "support": "Fitted-reference new-data transform; distribution-consistency limitations.",
+      "access_scope": "Public official page inspected2026-10-25. Rolling documentation is API support, not independent method proof or the pinned installed version. scikit-learn stable currently identifies1.9.1; product pins1.5.1.",
+      "verified_on": "2026-10-25"
+    }
+  ]
+}

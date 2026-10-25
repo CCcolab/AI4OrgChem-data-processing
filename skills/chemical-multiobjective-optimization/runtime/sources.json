@@ -1,0 +1,72 @@
+{
+  "schema": "skill-method-sources-v1",
+  "skill": "chemical-multiobjective-optimization",
+  "knowledge_revision": "2026-10-25",
+  "knowledge_scope": "同时变换目标方向和参考点，区分原单位观测HV与对数采集值。噪声输入为SD，GP输入为其平方；保留拟合警告和有限池/单提议边界。使用GP教材支持条件化，用NEHVI/LogEI原论文解释现代采集函数。",
+  "chapter_locator": "GPML第2章Regression（正文）；Daulton等第4–5节与Ament等LogEI/对数超体积附录（作者HTML正文）。",
+  "source_roles": {
+    "textbook_or_monograph": "概念与数学基础；访问范围逐条声明",
+    "original_paper": "原始方法及本教学简化的区别，不继承其性能",
+    "software_documentation": "API/版本行为，不能替代独立方法验证"
+  },
+  "implementation_requirements": [
+    "--extra-index-url https://download.pytorch.org/whl/cpu",
+    "numpy==1.26.4",
+    "torch==2.14.1+cpu",
+    "botorch==0.18.1",
+    "gpytorch==1.15.2"
+  ],
+  "version_note": "固定requirements与结果环境回执用于实际执行身份；公开文档可能滚动更新，不能据文档标题替换依赖版本。",
+  "sources": [
+    {
+      "id": "GPML",
+      "title": "Rasmussen & Williams, Gaussian Processes for Machine Learning",
+      "url": "https://gaussianprocess.org/gpml/chapters/",
+      "source_class": "classic_monograph",
+      "edition": "MIT Press, 2006, web version corresponds to second printing",
+      "support": "Ch2 regression and covariance conditioning; ch4 kernels; ch5 hyperparameters; ch9.7 global optimization. RW2.pdf inspected, including Gaussian observation noise and distinction between latent function and observations.",
+      "access_scope": "Author-hosted TOC and full chapter2 PDF https://gaussianprocess.org/gpml/chapters/RW2.pdf (26 pages) accessible. Other chapter bodies not claimed read.",
+      "verified_on": "2026-10-25"
+    },
+    {
+      "id": "NEHVI",
+      "title": "Daulton, Balandat & Bakshy, Parallel Bayesian Optimization of Multiple Noisy Objectives with Expected Hypervolume Improvement",
+      "url": "https://arxiv.org/html/2105.08195v2",
+      "source_class": "original_paper",
+      "edition": "NeurIPS2021, arXiv v2",
+      "support": "NEHVI integrates uncertain Pareto-frontier values; q variant and finite-Monte-Carlo estimation.",
+      "access_scope": "Author-submitted HTML body/TOC read, especially §4–5; not a general finite-pool convergence guarantee.",
+      "verified_on": "2026-10-25"
+    },
+    {
+      "id": "LOGEI",
+      "title": "Ament et al., Unexpected Improvements to Expected Improvement for Bayesian Optimization",
+      "url": "https://arxiv.org/html/2310.20708v3",
+      "source_class": "original_paper",
+      "edition": "NeurIPS2023 paper, arXiv v3/2025",
+      "support": "LogEI-family numerical reformulation; background EI, log hypervolume and noisy-improvement treatment.",
+      "access_scope": "Author-submitted HTML body/TOC read, including §2.2, §4.4 and appendixA.8; no claim to replicate benchmarks.",
+      "verified_on": "2026-10-25"
+    },
+    {
+      "id": "BOTORCHTUT",
+      "title": "BoTorch multi-objective tutorial0.17.2",
+      "url": "https://botorch.org/docs/v0.17.2/tutorials/multi_objective_bo",
+      "source_class": "official_software_documentation",
+      "edition": null,
+      "support": "Maximize-direction and reference-point convention; tutorial is honestly versioned0.17.2 versus runtime0.18.1.",
+      "access_scope": "Public official page inspected2026-10-25. Rolling documentation is API support, not independent method proof or the pinned installed version. scikit-learn stable currently identifies1.9.1; product pins1.5.1.",
+      "verified_on": "2026-10-25"
+    },
+    {
+      "id": "BOTORCHAPI",
+      "title": "BoTorch acquisition API",
+      "url": "https://botorch.readthedocs.io/en/stable/acquisition.html",
+      "source_class": "official_software_documentation",
+      "edition": null,
+      "support": "qLogNoisyExpectedHypervolumeImprovement constructor, original-outcome-space reference point and X_baseline.",
+      "access_scope": "Public official page inspected2026-10-25. Rolling documentation is API support, not independent method proof or the pinned installed version. scikit-learn stable currently identifies1.9.1; product pins1.5.1.",
+      "verified_on": "2026-10-25"
+    }
+  ]
+}

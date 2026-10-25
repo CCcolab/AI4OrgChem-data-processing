@@ -1,7 +1,7 @@
 [
   {
     "file": "SKILL.md",
-    "sha256": "1f06aa4bed5b21878f05a3b7854ce571bb73c08b2a3d6917f1dc7386745ccbe1"
+    "sha256": "bb76497ae493143e11a211556f86d67e077184e45442d0b25eb4dc2606a178ac"
   },
   {
     "file": "runtime/caffeine-calibration.csv",
@@ -37,7 +37,7 @@
   },
   {
     "file": "runtime/fit_csv.py",
-    "sha256": "f548e5dbeeab2c5cbf4eba7a310d4287b55c3b9d6c0998b9e8c716c05d47e448"
+    "sha256": "8ec2a5a96428ad4ee39607f258123f411ea66ca4b92b05dc8f5122dfd0289d35"
   },
   {
     "file": "runtime/parameters.json",
@@ -53,7 +53,7 @@
   },
   {
     "file": "runtime/SKILL.md",
-    "sha256": "1f06aa4bed5b21878f05a3b7854ce571bb73c08b2a3d6917f1dc7386745ccbe1"
+    "sha256": "bb76497ae493143e11a211556f86d67e077184e45442d0b25eb4dc2606a178ac"
   },
   {
     "file": "runtime/skill_agent.py",
@@ -61,7 +61,7 @@
   },
   {
     "file": "runtime/sources.json",
-    "sha256": "82f71b267054287f3d1a21b98ae738c61eebe36d85c56f16c60e18732f62ba96"
+    "sha256": "783068edb2a379d7d00d9902c2227ff65841c2a7a78247a536809c4ed833cb33"
   },
   {
     "file": "runtime/table-fitting-residuals.py",

@@ -21,6 +21,17 @@
 
 案例CSV由本项目编写，使用通用结构演示重复写法、离子、官能团和无效输入，不是实验数据或外部课程数据。用户CSV按本次提供的原始文件和哈希记录，不自动视为已认证实验数据。程序不提供联网数据库查询、结构编辑或活性/反应预测。
 
+## 知识要点与经典依据
+
+先把“图能被解析”与“这些数字能回答什么化学问题”分开。分子图的节点标记含元素、同位素、电荷和部分立体信息；canonical SMILES是在固定实现中选择一种写法，不是实验鉴定。`@/@@`依赖局部邻接次序，不能逐字当R/S；未标构型不能据此判为外消旋。
+
+对bit集合A、B，非空并集时Tanimoto为`|A∩B|/|A∪B|`；Morgan半径决定局部环境层数，位长与哈希会带来碰撞。手性关闭时一对对映体可能得1，相似度1也不能证明身份或活性。SMARTS匹配是图中满足规则的子图：酸OH模式在碳酸匹配2次，说明它不是通用羧酸分类器。Murcko骨架保留环及连接部分，无环分子可为空；空骨架不表示没有分子。
+
+MolWt区分平均原子量与显式同位素质量，MolLogP是Wildman–Crippen原子贡献模型，TPSA是拓扑片段贡献，均不是实测。盐、多组分、净电荷为0的两性离子、金属、自由基须结合适用性警告解读，不能把解析成功升级为物性认证。固定RDKit规则、默认清理、TPSA硫磷选项及HBD/HBA调用保持前述约定。
+
+经典阅读对应II.3“SMILES”、II.4“Graph Theory in Chemistry”、II.6“Representation and Manipulation of Stereochemistry”，并结合VI结构检索部分。[Gasteiger编《Handbook of Chemoinformatics》](https://onlinelibrary.wiley.com/doi/book/10.1002/9783527618279)，Wiley-VCH，2003；核验的是出版社/作者目录与书目，所列付费章节未作全文核验。经典结构表示背景与具体RDKit接口定义分层使用。
+Daylight规范、RDKit固定版本API与既列Weininger/ECFP方法论文继续作为具体编码/实现依据；书目与开放摘要不冒充全文。逐项作用和访问限度见[runtime/sources.json](runtime/sources.json)。
+
 ## SKILL.md完整源码与下载
 
 下面是本代码包SKILL.md的完整源码，包含YAML头和全部指令，可直接复制。下载导出由该文件自动生成，字节和SHA-256完全一致；只维护顶层一份SKILL.md。
@@ -60,7 +71,7 @@ description: 使用RDKit分析用户CSV中的有机分子SMILES，进行结构�
 
 将parse_status与descriptor_applicability分开：按组分、带电原子数、自由基及金属等提示解释范围；净电荷0不能排除盐或两性离子。盐/多组分的组合描述符不等于实际混合物物性，金属及自由基不能直接沿用普通闭壳层有机分子的亲脂性解释。保留可算数值并附警告，不另行脱盐、中和或归一化互变异构体，不伪装为实测。
 
-解析包含RDKit默认SanitizeMol清理，并非完全不改变图表达。例如CN(=O)=O会变成C[N+](=O)[O-]；cleanup_changes逐项报告清理阶段形式电荷及键类型的变化，警告PARSER_CLEANUP_CHANGED_GRAPH。芳香性识别及默认去显式氢也是解析约定。原子映射标签保留并提示ATOM_MAPPING_PRESENT；重复映射比较保留标签的规范字符串，不等同于忽略映射标签的化学身份比较。
+解析包含RDKit默认SanitizeMol清理，并非完全不改变图表达。例如`CN(=O)=O`会变成`C[N+](=O)[O-]`；cleanup_changes逐项报告清理阶段形式电荷及键类型的变化，警告PARSER_CLEANUP_CHANGED_GRAPH。芳香性识别及默认去显式氢也是解析约定。原子映射标签保留并提示ATOM_MAPPING_PRESENT；重复映射比较保留标签的规范字符串，不等同于忽略映射标签的化学身份比较。
 
 指纹碰撞和参数选择会影响相似度；分数为1不能单独证明化学身份相同或生物活性相同。Murcko骨架不是全部药效团。本Skill不提供结构编辑、联网数据库查询、活性或反应预测。
 
@@ -85,6 +96,10 @@ description: 使用RDKit分析用户CSV中的有机分子SMILES，进行结构�
 ## 学习与验证边界
 
 本科化学基础可跟随案例；独立解释需立体化学、离子化状态和分子描述符知识。六项一致性检查属于工程验收；另运行runtime/chemical_regression.py，显式覆盖随包33条边界输入，不以数据哈希条件静默跳过。该回归也不是批量标准化、全面化学身份认证或药物筛选系统的验收。
+
+## 解释规则与理论依据
+
+解释时先给出图表示、描述符、查询和相似度分别支持的结论，再解释本次警告。非空bit并集下Tanimoto=交集大小/并集大小；用对映体手性关闭时可能得1作为反例，拒绝由高相似度推出身份或活性。酸OH匹配2次的碳酸、空的无环Murcko骨架也应按查询/骨架定义解释。经典背景对应Gasteiger编专著II.3/II.4/II.6；仅核验目录，不能将其说成固定RDKit实现的全文证明。具体编码、清理与描述符仍查既列语言规范、固定版本API及runtime/sources.json；盐、自由基、无效/未指定立体等边界不因新增书目而放宽。
 ````
 
 ## Python调用模板
@@ -98,7 +113,6 @@ description: 使用RDKit分析用户CSV中的有机分子SMILES，进行结构�
 from pathlib import Path
 import argparse
 import importlib.util
-
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
@@ -126,7 +140,6 @@ def main():
     )
     print(receipt['status'])
     print(receipt['result_zip'])
-
 
 if __name__ == '__main__':
     try:
@@ -167,7 +180,6 @@ from pathlib import Path
 import argparse
 from skill_loader import SKILL_DIR, run_skill
 
-
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, required=True)
@@ -184,7 +196,6 @@ def main():
     )
     print(receipt['status'], receipt['report'])
 
-
 if __name__ == '__main__':
     main()
 ```
@@ -192,7 +203,6 @@ if __name__ == '__main__':
 </details>
 
 [查看并下载本案例.py](runtime/examples/01_descriptors.py)
-
 
 实际结果：5条输入，3条有效、2条拒绝。E01/E02均为C2H6O，MolWt为46.069 g/mol，规范SMILES相同；duplicates.csv保存E02→E01映射，两行原始记录都保留。X01/X02进入errors.csv，未填为零。
 
@@ -214,7 +224,6 @@ from pathlib import Path
 import argparse
 from skill_loader import SKILL_DIR, run_skill
 
-
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, required=True)
@@ -231,7 +240,6 @@ def main():
     )
     print(receipt['status'], receipt['report'])
 
-
 if __name__ == '__main__':
     main()
 ```
@@ -239,7 +247,6 @@ if __name__ == '__main__':
 </details>
 
 [查看并下载本案例.py](runtime/examples/02_smarts.py)
-
 
 | ID与结构 | query_match_count | 解读 |
 | --- | --- | --- |
@@ -267,7 +274,6 @@ from pathlib import Path
 import argparse
 from skill_loader import SKILL_DIR, run_skill
 
-
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, required=True, help='全新的比较结果根目录')
@@ -288,7 +294,6 @@ def main():
         )
         print(radius, receipt['status'], receipt['result_zip'])
 
-
 if __name__ == '__main__':
     main()
 ```
@@ -296,7 +301,6 @@ if __name__ == '__main__':
 </details>
 
 [查看并下载本案例.py](runtime/examples/03_similarity_compare.py)
-
 
 | ID | radius=2 Tanimoto | radius=3 Tanimoto |
 | --- | --- | --- |
@@ -335,7 +339,6 @@ from pathlib import Path
 import argparse
 from skill_loader import SKILL_DIR, run_skill
 
-
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--input', type=Path, required=True, help='UTF-8 CSV：id、smiles，可选label')
@@ -353,7 +356,6 @@ def main():
     )
     print(receipt['status'], receipt['report'])
 
-
 if __name__ == '__main__':
     main()
 ```
@@ -361,7 +363,6 @@ if __name__ == '__main__':
 </details>
 
 [查看并下载本案例.py](runtime/examples/04_user_csv.py)
-
 
 主程序CLI的参数优先级为案例模板→--params完整JSON替换→--reference-id显式覆盖。案例程序直接展示自己的参数字典；通用模板使用传入的JSON文件。运行方式和实际参数都会写入运行回执，模型不能更改它们。
 

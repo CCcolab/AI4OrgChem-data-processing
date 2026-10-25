@@ -36,10 +36,10 @@
       0
     ],
     "converged": true,
-    "source_definition": "Authored local derivatives of E=2x+0.5x^2+1.5(y-1)^2 under x=0; not a molecular calculation"
+    "source_definition": "Authored local derivatives of E=2x+0.5x^2-0.5(y-1)^2 at (0,1), under x=0; a different negative-tangent-curvature function from case01, not a molecular calculation"
   },
   "provenance": {
     "kind": "AUTHORED_TEACHING_INPUT",
-    "description": "Analytic constrained quadratic fixture. No geometry optimizer or quantum gradient was called."
+    "description": "A separately defined analytic saddle/negative-curvature fixture, not derivatives of the positive quadratic in case01; no optimizer or quantum gradient was called."
   }
 }

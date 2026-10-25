@@ -1,7 +1,7 @@
 [
   {
     "file": "SKILL.md",
-    "sha256": "a8fdc8827d4a06a63d23753875072602f12d12eb230a506522b372cc331508f6"
+    "sha256": "de30c593db9bba1489a3f6c8a9507430eb07db0beba43e455ddff60268ee335a"
   },
   {
     "file": "runtime/analysis.py",
@@ -42,5 +42,9 @@
   {
     "file": "runtime/run_skill.py",
     "sha256": "634a1309ef0e81731440c30b99207fc59a4efd420da4c64b1f1d802d53b5753f"
+  },
+  {
+    "file": "runtime/sources.json",
+    "sha256": "f0ed7d3826809b8e478fc278be4d5834043e5d799348a374e908bb4eed189edc"
   }
 ]

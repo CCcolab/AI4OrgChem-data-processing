@@ -9,3 +9,5 @@ RDKit页的知识以Daylight、RDKit官方文档及固定版本接口为依据�
 RDKit、NumPy和Matplotlib等依赖由使用者按各页清单安装，完整依赖二进制不随本仓库分发，各自许可证仍适用。上游项目为[AI4OrgChem](https://github.com/CCcolab/AI4OrgChem)及[Runtime](https://github.com/CCcolab/AI4OrgChem-Runtime)。
 
 新增模块使用项目编写的合成案例与自生成图表/权重；旧水AO数组仅用于明确标注的后处理，源文件SHA见相应runtime/sources.json或origin.json。文献支持具体方法定义，不等于许可全文转载，也不为教学结果背书；不新增项目级再分发授权。
+
+各页补充经典教材/专著的书目及相关章节，并区分原始方法论文、软件文档、标准与项目合同。知识阐述和短推导由本项目编写，不随包分发教材全文、付费章节或出版社图片。出处访问仅到目录或摘要时如实标注，不把背景引用说成全文逐式核查；具体支持范围随各Skill的runtime/sources.json保存。

@@ -28,3 +28,7 @@ SD描述样本散布，SEM和置信区间涉及估计对象及独立性等假设
 - [Matplotlib errorbar](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.errorbar.html)：误差数组及非负条件，绘图接口不认证其统计意义。
 - [NumPy std](https://numpy.org/doc/stable/reference/generated/numpy.std.html)：ddof及样本SD约定。
 - [NIST graphical residual analysis](https://www.itl.nist.gov/div898/handbook/pmd/section4/pmd44.htm)：图形诊断与单一数值指标的局限；本Skill不产生拟合残差。
+
+## 解释规则与理论依据
+
+先解释误差条对应观测散布还是估计不确定度。replicate-sd使用s²=Σ(y−mean)²/(n−1)，不能未经用户请求换成s/√n；后者解释还需独立性等条件。n=1只画点，不称零误差。用均值12/SD2/SEM2÷√3的例子区分对象，不由SD条重叠与否下显著性结论。supplied-error只复现已声明半宽，CI_HALF_WIDTH不认证置信水平。Harvey§4.1/§4.4是已核验开放教材正文，Matplotlib/NumPy为绘图/算法接口；本模块不新增区间或假设检验。见runtime/sources.json。

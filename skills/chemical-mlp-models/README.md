@@ -65,3 +65,25 @@ Windows将python替换为`.\.venv\Scripts\python.exe`。案例完整程序：[�
 ```powershell
 .\.venv\Scripts\python.exe runtime\run_from_csv.py --template runtime\examples\01.json --input runtime\examples\molecular-descriptors.csv --features mol_wt_g_mol tpsa_A2 mol_logp_model heavy_atoms --feature-units g/mol angstrom2 dimensionless count --target synthetic_response --target-unit arbitrary_synthetic_response --groups group --output ..\mlp-csv
 ```
+
+## 知识要点、前提与公式
+
+一隐藏层网络可写为f(z)=W₂ReLU(W₁z+b₁)+b₂；本例回归输出为实数，二分类通过logistic输出层形成类别概率。非线性隐藏单元增加表达能力，同时增加小样本过拟合风险。alpha作用于权重L2惩罚，其具体样本数归一约定依赖固定版本的scikit-learn，不与其他框架参数直接数值对照。
+
+本例固定lbfgs优化非凸目标；达到数值停止条件不等于找到全局最优或通过化学泛化验证，ConvergenceWarning使相应检查失败。特征仅训练内缩放；回归还将训练目标标准化，并把预测还原到目标原单位。没有早停验证集或自动网络选择，改变宽度后的独立运行不能反复充当最终测试。
+
+## 基础阅读与来源层级
+
+章节定位：ESL第2版第11章Neural Networks；Deep Learning第6章Deep Feedforward Networks、第8章Optimization（均按目录定位）。
+
+基础阅读：[ESL2](https://link.springer.com/book/10.1007/978-0-387-84858-7)、[DL](https://www.deeplearningbook.org/)。
+
+实现接口：[SKMLP](https://scikit-learn.org/stable/modules/neural_networks_supervised.html)、[SKLEAK](https://scikit-learn.org/stable/common_pitfalls.html#data-leakage)。
+
+ESL为2009年第2版；本次核对出版社目录中的相关主题，未声称读取受限章节正文。 Deep Learning为MIT Press2016版；核对作者公开目录中的相应章节，章节正文抓取超限，不据此声称已读全书。 各条原论文/软件文档的具体访问范围及版本记录见[runtime/sources.json](runtime/sources.json)；滚动API页面与固定运行依赖分开记录。经典书目补充基础，现代算法仍保留其原始论文，API文档继续用于接口约定。
+
+## 二分类概率证据
+
+二分类结果新增classification-probabilities.csv：id、零起始source_index、observed_class、predicted_class、probability_class_0、probability_class_1，行顺序对应test_indices。result.json中的classification_classes及classification_probability_metadata.class_order给出predict_proba列顺序[0,1]，held_out_probabilities保存同一概率矩阵；原held-out-predictions.csv保持原字段。额外检查owned_model_save_restore_probabilities复核自生成模型重载概率与类别顺序。
+
+概率来自同一次已拟合模型，未作概率校准，不代表已验证化学风险。local_prediction_runs=2表示原模型与重载模型两个推断阶段；local_prediction_method_calls明确记录二分类4次predict/predict_proba、回归2次predict。本次复用已有原模型预测，未增加拟合次数或二分类预测方法调用总数。save_model接口变更仅在本页及另外两份相同的回归/分类、树/森林、MLP支持库中同步。

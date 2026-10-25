@@ -18,6 +18,22 @@
 
 [NumPy差分说明](https://numpy.org/doc/stable/reference/generated/numpy.gradient.html)给出非均匀三点公式及有限差分语境；本程序显式解权重并另算二阶导数，不声称调用gradient就完成二阶或科学验证。
 
+## 知识要点与经典依据
+
+三点差分近似的是给定扫描坐标q上的导数，不是自动求出了完整分子Hessian。设左/右步长hm、hp>0，d−=E(q−hm)−E(q)，d+=E(q+hp)−E(q)。局部二次插值给出
+
+`E′≈(−hp·d−/hm+hm·d+/hp)/(hm+hp)`，
+
+`E″≈2(d−/hm+d+/hp)/(hm+hp)`。
+
+hm=hp=h时退化为通常中心公式；二次函数可精确复核。一般光滑函数的非均匀二阶公式含与hp−hm有关的三阶项，不能不加条件就称二阶收敛。E=q³在q=0、hm≠hp时会产生`2(hp−hm)`的曲率反例。能量噪声可被1/h或1/h²放大，步长越小并非总越好；粗细差只是敏感性诊断，不能单独给误差上界。
+
+E单位为Hartree时，导数分别为Hartree/q单位与Hartree/q单位²；degree与radian的数值不能直接比较。标签/收敛一致只是准入，真实态连续仍需波函数等证据。沿受限路径的正曲率不证明无约束极小点，也不直接给振动频率。
+
+经典数值定位为Burden/Faires第3章插值与第4章数值微分。[Burden与Faires《Numerical Analysis》9版](https://www.cengage.co.in/book-list/print/numerical-analysis-c2)第1/3/4章分别涉及误差、插值与数值微分；本次核验出版社目录，未取得这些章节全文，不借目录声称已核对误差定理。
+Jensen公开§1.6.2/§1.9说明几何参数与势能面背景。[Jensen《Introduction to Computational Chemistry》3版](https://catalogimages.wiley.com/images/db/pdf/9781118825990.excerpt.pdf)，Wiley，2017，实际核验出版社开放第1章节选；后述推导为本页给定模型的解析运算，不冒称读过整书。
+NumPy gradient的公开推导支持非均匀一阶语境，上述二阶式来自本页局部插值推导；[runtime/sources.json](runtime/sources.json)分开记录两者。
+
 ## 安装与默认运行
 
 Windows在有写入权限的短路径（例如D:\Chem\s）解压，进入README和runtime所在目录，使用Python3.12的独立环境：

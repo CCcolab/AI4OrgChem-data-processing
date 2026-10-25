@@ -29,3 +29,7 @@ parameters含mode=route/inspect、intent=fixed_water_rhf/saved_ao_review/conditi
 ## 方法来源
 
 本项目明确的Runtime安装合同：ai4orgchem-runtime-installation-v1、molecular-service/single-point/live。匹配只覆盖此合同及本机给定的文件，不声明其他服务或新科学资格。
+
+解释时区分任务路由、字节身份和科学执行资格。`SHA256(bytes)=expected_digest`只核文件变化；预期摘要的可信来源、引擎是否启动、镜像是否存在和波函数/数值是否合格，不能由这项等式推导。匹配记录也必须保留NOT_PROBED/NOT_EXECUTED，不把它翻译成“后端已就绪”或“科学通过”。
+
+工程依据为[NIST FIPS 180-4（2015）](https://csrc.nist.gov/pubs/fips/180-4/upd1/final)的摘要规范及[RFC 8259（2017）§4、§6](https://www.rfc-editor.org/rfc/rfc8259)的JSON互操作说明。严格拒绝重复键是本项目选择，不能说RFC要求所有解析器都拒绝。此模块不需要冒称经典化学教材为安装状态背书；要解释目标任务的RHF、密度或优化理论，应使用相应专业模块的教材和实际证据。具体来源角色见[runtime/sources.json](runtime/sources.json)。

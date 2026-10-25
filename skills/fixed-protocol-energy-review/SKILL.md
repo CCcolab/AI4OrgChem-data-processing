@@ -11,7 +11,23 @@ description: 按明确定义的固定协议、算子和占据声明，复核普�
 
 parameters显式protocol_id、protocol_version、method_id、basis_id、geometry_id、atol_hartree。data含comparison_definition和ordinary/conditional两条states，每态含算子/占据定义、收敛及端点资格、带source_id的功能式项与另报总能量。具体完整schema见案例JSON，不可省略或靠标签补算。
 
-逐项按声明的coefficient×value_hartree用50位Decimal求和，与reported_total_hartree按显式绝对容差比较；同方法/基组/几何/协议身份必须匹配。只有两端声明可用且账本通过才报告conditional−ordinary，否则比较量为null。来源与资格标记仍须外部实证复核。
+逐项按声明的coefficient×value_hartree按skill-ledger-decimal-v2有界自适应精确上下文求和，与reported_total_hartree按显式绝对容差比较；同方法/基组/几何/协议身份必须匹配。只有两端声明可用且账本通过才报告conditional−ordinary，否则比较量为null。来源与资格标记仍须外部实证复核。
+
+## 核心知识：项目能量合同、精确账本与物理资格
+
+先给定protocol_id/version、method/basis、同一geometry身份，再逐态明确operator_definition、occupation_definition、功能式项、来源以及收敛/端点资格声明。相同方法/几何标签不足以证明普通态与条件态共享同一Hamiltonian；改变算子、占据限制或功能式通常定义了不同问题。这个模块接受的是项目明示的比较合同，不从教材推导新的通用条件态理论。
+
+每态账本L=Σk ak Ek，与另报总量Ereported比较|L−Ereported|≤atol_hartree。来源标签和endpoint_qualified/converged只是输入声明，实际资格需真实输出支持；只有两端账本和声明均通过才给Lconditional−Lordinary。算术闭合检查能发现错项/符号/数值不一致，不能证明输入能量真实、分解唯一或两端物理可比。
+
+采用skill-ledger-decimal-v2的有界自适应精确上下文，精度由输入十进制跨度和项数推导，不预先固定精度。字面量≤128字符、系数数字≤80位、指数−200至200，所需精度≤1024位；Inexact/Rounded等触发即失败。例如1e60+0.1−1e60的解析值为0.1，不能因有限精度相消变0而声称闭合。Decimal位数并不认证化学有效数字或测量不确定度。
+
+①合成功能差0.2 Eh只是合同算术；②几何身份不同拒绝；③资格声明false保留账本但比较差null。固定条件功能差不自动是物理键能、激发能、自由能或实验可观测量。新普通/条件SCF及真正端点证据仍NOT_EXECUTED；经典HF变分理论只作标准基础，不能给本项目新条件量背书。
+
+### 经典教材、实现来源及支持范围
+
+[Q1：Helgaker、Jørgensen、Olsen，Molecular Electronic-Structure Theory，Wiley，2000，ISBN 9780471967552](https://www.wiley-vch.de/en/areas-interest/natural-sciences/molecular-electronic-structure-theory-978-0-471-96755-2)的Orbital Rotations/Hartree-Fock Theory供普通态与变分概念学习；项目条件态的物理意义必须另有明确研究协议与证据，当前合成账本不能替代。保留[Decimal舍入与相消说明](https://docs.python.org/3.12/library/decimal.html#mitigating-round-off-error-with-increased-precision)作算术来源。
+
+本模块所引Q1的作者、版次、年份和相关章节名称已对照出版社目录核验；未读取其全书正文，不声称已逐式或按页核验。上文推导由本模块明确给出，API文档仅支持实现接口。完整来源类型、访问范围和输入/保存数据身份见[runtime/sources.json](runtime/sources.json)。
 
 ## 输入校验与方法依据补充
 
