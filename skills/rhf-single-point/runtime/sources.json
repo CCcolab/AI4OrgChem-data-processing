@@ -1,6 +1,5 @@
 {
-  "source": "Fixed water request and saved result provenance remain in fixed-water/request.json and saved-water/origin.json",
-  "scope": "No new quantum calculation by knowledge enrichment.",
+  "schema": "portable-skill-sources-v1",
   "knowledge_review": {
     "schema": "skill-knowledge-foundations-v1",
     "date": "2026-10-25",
@@ -51,5 +50,94 @@
     ],
     "physical_claim_limit": "Only the explicit input/array checks and derivations in this module; not external data authenticity or new scientific backend acceptance.",
     "new_quantum_backend_execution": "NOT_EXECUTED"
+  },
+  "examples": {
+    "01.json": {
+      "provenance": {
+        "kind": "SAVED_ARRAY_REVIEW",
+        "description": "Historical fixed water arrays; no new SCF. Original array identity in sources.json."
+      },
+      "json_sha256": "59490dfbbab6e43950804f65359b401220d09e240dc37509e5eba17345a0943a"
+    },
+    "02.json": {
+      "provenance": {
+        "kind": "AUTHORED_ENGINEERING_NUMBERS",
+        "description": "No molecule, basis integrals or SCF called."
+      },
+      "json_sha256": "1613d73122bf526f6258723f6c56c72cf03c4633320ad52d35a8f516fdf7d71c"
+    },
+    "03.json": {
+      "provenance": {
+        "kind": "AUTHORED_ENGINEERING_NUMBERS",
+        "description": "Deliberately wrong electron count; must fail checks."
+      },
+      "json_sha256": "f1d0d3c5d50653b32aa3474f84dee4b2d2abf4dc61e182aeaec7644b30039947"
+    }
+  },
+  "historical_source_is_dependency": false,
+  "historical_access": "Provided saved data is sufficient for review; no private Runtime or installation record is required.",
+  "native_template_validation": "NO_NEW_QUANTUM_CALCULATION_IN_THIS_LOCAL_ACCEPTANCE",
+  "pyscf_installation": "https://pyscf.org/user/install.html",
+  "pyscf_native_api_references": [
+    "https://pyscf.org/_modules/pyscf/gto/mole.html",
+    "https://pyscf.org/_modules/pyscf/lo/boys.html",
+    "https://pyscf.org/_modules/pyscf/lo/pipek.html"
+  ],
+  "historical_example": {
+    "original_array_sha256": "a26a28d072c8709303440e18dec05535d2f6789d8b39bd7588b8b0a4bb73e919",
+    "molecule": {
+      "atom_count": 3,
+      "charge": 0,
+      "coordinate_unit": "angstrom",
+      "electron_count": 10,
+      "geometry_angstrom": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.757,
+          0.587
+        ],
+        [
+          0.0,
+          0.757,
+          0.587
+        ]
+      ],
+      "multiplicity": 1,
+      "symbols": [
+        "O",
+        "H",
+        "H"
+      ]
+    },
+    "ao_labels": [
+      "0 O 1s    ",
+      "0 O 2s    ",
+      "0 O 3s    ",
+      "0 O 2px   ",
+      "0 O 2py   ",
+      "0 O 2pz   ",
+      "0 O 3px   ",
+      "0 O 3py   ",
+      "0 O 3pz   ",
+      "0 O 3dxy  ",
+      "0 O 3dyz  ",
+      "0 O 3dz^2 ",
+      "0 O 3dxz  ",
+      "0 O 3dx2-y2",
+      "1 H 1s    ",
+      "1 H 2s    ",
+      "2 H 1s    ",
+      "2 H 2s    "
+    ],
+    "historical_convergence_declaration": {
+      "converged": true,
+      "cycles": 11
+    },
+    "scope": "Saved-input provenance; not a new SCF or external data authentication."
   }
 }

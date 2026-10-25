@@ -1,71 +1,103 @@
-# 固定协议普通态与条件态账本复核
+# 固定协议能量复核
 
-**后端待验 · PARTIAL_BACKEND_PENDING**：仅验证账本闭合与显式资格标签；新条件态量子计算未执行。 新后端执行状态为`NOT_EXECUTED`，本地程序或旧结果检查通过不能替代后端验收。
+**真实后端待验 · PARTIAL_BACKEND_PENDING**：独立用户协议账本与结果导入可用；真实条件态后端仍待验，原失败尝试未重试。 本页便携模板和本地复核不继承历史后端PASS。
 
-按明确定义的固定协议、算子和占据声明，复核普通/条件账本及端点资格标签，区分算术、输入证据和新量子计算，不开放用户任意条件态Compute。
+此 Skill 的指令可独立用于用户自己的环境；不强制使用本项目 Runtime、Docker、安装登记或模型账号。顶层两个文件各有职责：本页介绍知识、输入/输出和操作，SKILL.md 提供完整任务指令；runtime 放调用程序、依赖与案例。
 
-| 文件 | 职责 |
-| --- | --- |
-| 本README | 必要知识、三个案例、参数和使用说明 |
-| [完整SKILL.md源码](SKILL.md?plain=1) | 完整处理指令和解释边界，可保存用于自己的代理 |
-| [runtime/run_skill.py](runtime/run_skill.py) | 读取Skill→验证输入→调用[完整工具源码](runtime/analysis.py)→保存真实结果 |
+[查看完整 SKILL.md 代码](SKILL.md?plain=1) · [下载完整指令](downloads/fixed-protocol-energy-review-skill.zip) · [Python代码包下载目录](downloads/) · [源文件SHA-256](runtime/SHA256SUMS.txt)
 
-顶层文件只有README.md和SKILL.md；程序、依赖、参数和案例在runtime。下载[完整Python代码包](downloads/fixed-protocol-energy-review-python.zip)或[Skill单文件ZIP](downloads/SKILL-md.zip)。私有GitHub需有权限的账号，文件页用“Download raw file”保存，不把网页另存为.py。
+下载目录中选择 `fixed-protocol-energy-review-python.zip`，下载后按同目录 SHA256SUMS.txt 核对压缩包。已经解压代码包的用户无需再次下载，直接执行下面步骤；包内源文件哈希见 runtime/SHA256SUMS.txt。
 
-## 核心知识：项目能量合同、精确账本与物理资格
+## 知识点与科学边界
 
-先给定protocol_id/version、method/basis、同一geometry身份，再逐态明确operator_definition、occupation_definition、功能式项、来源以及收敛/端点资格声明。相同方法/几何标签不足以证明普通态与条件态共享同一Hamiltonian；改变算子、占据限制或功能式通常定义了不同问题。这个模块接受的是项目明示的比较合同，不从教材推导新的通用条件态理论。
+普通态与条件态只有在具体协议明确了算子、占据、核几何、基组、方法和能量泛函后才可比较。“条件态”没有可由 Skill 自动推导的通用量子化学算子。
 
-每态账本L=Σk ak Ek，与另报总量Ereported比较|L−Ereported|≤atol_hartree。来源标签和endpoint_qualified/converged只是输入声明，实际资格需真实输出支持；只有两端账本和声明均通过才给Lconditional−Lordinary。算术闭合检查能发现错项/符号/数值不一致，不能证明输入能量真实、分解唯一或两端物理可比。
+本地复核器要求一个 ordinary 和一个 conditional 端点，协议 ID/版本、方法/基组/几何身份一致。按显式带符号系数装配每态 1至32 项账本，再与独立报告的总能比较；只有两个端点的账本、收敛及资格声明通过后才给 conditional−ordinary。十进制精度受有界输入控制，单位为 Hartree。资格布尔值、source_id 和算术闭合并不认证外部证据的独立性。
 
-采用skill-ledger-decimal-v2的有界自适应精确上下文，精度由输入十进制跨度和项数推导，不预先固定精度。字面量≤128字符、系数数字≤80位、指数−200至200，所需精度≤1024位；Inexact/Rounded等触发即失败。例如1e60+0.1−1e60的解析值为0.1，不能因有限精度相消变0而声称闭合。Decimal位数并不认证化学有效数字或测量不确定度。
+差值不自动等于键能、激发能、相互作用能或实验观测；不同泛函不能仅靠改名变得兼容。三个随包账本都是人工教学数据，第三个故意把条件态资格声明设为 false。用户已有程序应提供真实独立分项、总能及资格依据，不能仅将总能反填为单一账本项并称完成独立验收。
 
-①合成功能差0.2 Eh只是合同算术；②几何身份不同拒绝；③资格声明false保留账本但比较差null。固定条件功能差不自动是物理键能、激发能、自由能或实验可观测量。新普通/条件SCF及真正端点证据仍NOT_EXECUTED；经典HF变分理论只作标准基础，不能给本项目新条件量背书。
+教材依据、推导及实现来源见 [完整 Skill](SKILL.md?plain=1) 与 [来源说明](runtime/sources.json)。经典教材用于理论背景，官方软件文档用于 API；不将 API 文档称为教材级物理证明。本轮只验收便携接口及数学复核，真实量子后端资格按独立记录判断。
 
-### 经典教材、实现来源及支持范围
+## 下载、依赖与首次操作
 
-[Q1：Helgaker、Jørgensen、Olsen，Molecular Electronic-Structure Theory，Wiley，2000，ISBN 9780471967552](https://www.wiley-vch.de/en/areas-interest/natural-sciences/molecular-electronic-structure-theory-978-0-471-96755-2)的Orbital Rotations/Hartree-Fock Theory供普通态与变分概念学习；项目条件态的物理意义必须另有明确研究协议与证据，当前合成账本不能替代。保留[Decimal舍入与相消说明](https://docs.python.org/3.12/library/decimal.html#mitigating-round-off-error-with-increased-precision)作算术来源。
+1. 下载 Python 代码包，在 Windows 解压到短路径（例如 `C:\s`），进入解出的 `fixed-protocol-energy-review` 文件夹；其它系统同样先进入该目录。所有命令均从该目录运行。无需下载整个私有仓库。
+2. 已有 Python 3.10+。`prepare` 只用标准库，不安装任何软件。数组复核需要 NumPy；纯 Decimal 账本不需要 NumPy。依赖清单给出本次已验版本，当前平台可用性另行确认。本文已在 Python 3.12.14/NumPy 2.4.6 下复验，未宣称覆盖所有 Python/操作系统。
+3. 可以选择自己的现有虚拟环境；只有缺依赖且你要安装时才手动执行 `python -m pip install -r runtime/requirements.txt`。程序不会自动安装、联网或切换环境。安装后仍使用同一环境的 `python`。
+4. 结果目录必须是包外全新路径。下面 `C:/s/out/...` 是 Windows 示例；其它系统换成自己的绝对短路径。保留上一次目录，下一次更换名称。
 
-本模块所引Q1的作者、版次、年份和相关章节名称已对照出版社目录核验；未读取其全书正文，不声称已逐式或按页核验。上文推导由本模块明确给出，API文档仅支持实现接口。完整来源类型、访问范围和输入/保存数据身份见[runtime/sources.json](runtime/sources.json)。
+## 三个对应案例
 
-## 输入校验与方法依据补充
-
-能量算术采用skill-ledger-decimal-v2：每个十进制输入文字≤128字符、系数≤80位、Decimal指数在−200至200；不接收布尔值、特殊值或带空白文字。这里“系数位数/指数”指Decimal数字元组，不是化学有效数字认证。总精度由所有输入跨度及项数上界推导，上限1024位；乘积求和、独立总量差及阈值比较在同一精确上下文进行。任何Inexact/Rounded或预算越界均失败，绝不把失去的小残差当作闭合。回执的arithmetic记录策略与实际精度，原atol不变。
-
-[Python3.12 Decimal：舍入与相消](https://docs.python.org/3.12/library/decimal.html#mitigating-round-off-error-with-increased-precision)明确有限精度仍会舍入；本策略只保证所定义有界算术，不认证能量来源、方法、端点真实性或物理可比性。例如1e60+0.1−1e60必须报告0.1，不能据夸张数值声称化学合理。
-
-## 安装与默认运行
-
-Windows在有写入权限的短路径（例如D:\Chem\s）解压，进入README和runtime所在目录，使用Python3.12的独立环境：
-
-```powershell
-py -3.12 -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r runtime\requirements.txt
-.\.venv\Scripts\python.exe runtime\run_skill.py --output ..\fixed-protocol-energy-review-default
-```
-
-默认运行第一个教学请求。结果必须在Skill外全新目录；第二次换一个名字，拒绝已有目录且不覆盖。结果包括request.json、SKILL.used.md、result.json、run-receipt.json、SHA256SUMS.txt和results.zip。复制结果目录或ZIP即可保存。输入/计算失败保留failure.json并退出2；数值检查失败保存结果和检查详情并退出1，不当作成功。
-
-## 三个案例：参数与对应结果
-
-下列输入和全部程序是本项目编写的教学案例；合成数字不代表实际电子能或实验测量。反例的预期失败也单独保留。
-
-| 案例 | Python调用 | 对应结果与状态 |
+| 程序 | 实际输入与行为 | 预期产物/状态 |
 | --- | --- | --- |
-| 1 明确定义的合成账本 | `python runtime/examples/01_case.py --output ../fixed-protocol-energy-review-1` | 两账本闭合，合成功能差0.2 Hartree；仅算术验证，不是新条件态。 退出码0。 |
-| 2 几何不一致 | `python runtime/examples/02_case.py --output ../fixed-protocol-energy-review-2` | 拒绝同几何比较并保存失败，退出2。 退出码2。 |
-| 3 端点资格未通过 | `python runtime/examples/03_case.py --output ../fixed-protocol-energy-review-3` | 保存账本、比较差为null，检查失败退出1。 退出码1。 |
-
-Windows将python替换为`.\.venv\Scripts\python.exe`。案例完整程序：[①](runtime/examples/01_case.py)、[②](runtime/examples/02_case.py)、[③](runtime/examples/03_case.py)，请求JSON在对应01.json、02.json、03.json中。
-
-## 修改参数与自己的输入
-
-复制[runtime/examples/01.json](runtime/examples/01.json)到Skill外的`..\my-request.json`，按真实数据修改parameters、data和provenance。parameters显式protocol_id、protocol_version、method_id、basis_id、geometry_id、atol_hartree。data含comparison_definition和ordinary/conditional两条states，每态含算子/占据定义、收敛及端点资格、带source_id的功能式项与另报总能量。具体完整schema见案例JSON，不可省略或靠标签补算。
+| 01_prepare.py | 读取 01.json 和完整 Skill，不调用科学后端 | PREPARED_NOT_EXECUTED、输入快照、调用计划 |
+| 02_review.py | 对 01.json 的已有数组/人工账本做本页限定的数值复核 | COMPLETE_DEFINED_SCOPE、逐项 result.json |
+| 03_user_backend.py | 明确调用 file_backend.py 读取同一用户结果文件，记录文件哈希，再复核 | backend_calls=1、USER_SUPPLIED_RESULT_FILE_REVIEW；新量子调用0 |
 
 ```powershell
-.\.venv\Scripts\python.exe runtime\run_skill.py --input ..\my-request.json --output ..\my-skill-results
+python runtime/examples/01_prepare.py --output C:/s/out/fixed-protocol-energy-review-prep01
+python runtime/examples/02_review.py --output C:/s/out/fixed-protocol-energy-review-review01
+python runtime/examples/03_user_backend.py --output C:/s/out/fixed-protocol-energy-review-file01
 ```
 
-只修改参数不会更改旧结果，必须写新目录。严格UTF-8 JSON≤2 MB，不接受重复键或非有限数值。不应只改科学身份标签来绕过不兼容检查，来源标签本身不证明真实性。完整可复用[调用模板](runtime/examples/call_skill_template.py)支持--skill-dir、--input和--output，程序内部实际读取顶层Skill并保存其哈希，不调用模型。
+`01.json`、`02.json` 是两个具体的复核输入，`03.json` 是故意不合格的反例（非零退出是预期）。每份 provenance 描述其人工/历史来源，不能把教学数据输出当作真实新计算。另有 `demo_backend.py` 演示桥接函数调用，只返回人工数据，execution.kind 明确标注 SYNTHETIC_ENGINEERING_DEMO。
 
-软件执行通过只覆盖声明的输入和数值范围，不代表整个理论、化学身份或新量子方法获认证。下载包[SHA-256](downloads/SHA256SUMS.txt)与内部验收记录分开，内部材料不进入用户包。
+## 修改参数与使用自己的结果
+
+先复制 `runtime/examples/01.json` 到包外（如 `C:/s/my-input.json`），在编辑器将 `parameters.atol_hartree` 改为 `2e-9` 后另存，再运行：
+
+```powershell
+python runtime/run_skill.py --mode review --input C:/s/my-input.json --output C:/s/out/fixed-protocol-energy-review-changed01
+```
+
+该修改的对应结果：两个人工端点保持同一协议，conditional−ordinary=0.2 Hartree；不是物理键能。
+
+不要直接修改受哈希保护的包内程序/实例再自动重算清单掩盖变化。输入必须是 parameters、data、provenance 三部分；字段、数组与单位参照完整 SKILL.md、[复核源码](runtime/analysis.py) 和 [输入实例](runtime/examples/01.json)。参数容差不是物理误差条，放宽它不能修正错误方法。
+
+用户已有软件可导出同一结果 schema。在包外新建下面 JSON，将路径改成实际**绝对路径**（JSON 用 `/` 或 `\\`，不要写未转义的 `\`）：
+
+```json
+{"parameters": {"backend_result_file": "C:/s/my-exported-result.json"}, "data": {},
+ "provenance": {"kind": "USER_RESULT", "description": "说明软件/方法/几何/单位及原生日志位置"}}
+```
+
+```powershell
+python runtime/run_skill.py --mode backend --input C:/s/file-request.json --backend runtime/backends/file_backend.py --execute --output C:/s/out/fixed-protocol-energy-review-user01
+```
+
+file_backend 仅导入文件，不会执行文件中的文本命令；需新计算时选择自己信任的 .py 适配器。调用用户程序是在当前 Python 进程、以当前用户权限执行，不能把它视作不可信代码沙箱。
+
+`backend_calls` 是桥接函数进入次数；科学核函数调用次数、资源和外部行为还需原生日志核对。桥接器不独立监控任意外部 Python 程序的模型/网络调用，也不会将其声明当作已验证事实。
+
+## 完整调用模板
+
+完整程序在 [runtime/run_skill.py](runtime/run_skill.py)。下面代码可在包外保存；把 skill_dir 和输入输出路径替换为实际绝对路径：
+
+```python
+from pathlib import Path
+import importlib.util
+skill_dir = Path("C:/s/fixed-protocol-energy-review")
+skill_text = (skill_dir / "SKILL.md").read_text(encoding="utf-8")
+spec = importlib.util.spec_from_file_location("bridge", skill_dir / "runtime/run_skill.py")
+bridge = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(bridge)
+receipt = bridge.run_skill(
+    mode="backend", request_file="C:/s/file-request.json",
+    output_dir="C:/s/out/new-call01",
+    backend_file=skill_dir / "runtime/backends/file_backend.py", execute=True,
+)
+print(receipt["status"])
+```
+
+实际调用链：读取并固定完整 SKILL.md → 显式参数与数据 → 用户选定后端（可选）→ 保存原始返回 → 科学范围内复核 → 回执、文件、哈希。无模型模式记录 Skill 身份，不宣称 Markdown 已由模型理解。
+
+## 后端与资源选择
+
+本项没有通用量子求解器。“用户已有后端”可以是用户已有 Python 库或软件导出的结果；配套 file_backend.py 真实读取并记录文件哈希，不启动新求解。需要新计算时，由用户将其可信程序的输出转换为这里明确的复核 schema；专用物理方法与端点资格不能由桥接器自动生成。
+
+## 结果保存与失败处理
+
+结果目录包含 request.json、SKILL.used.md、run-receipt.json、result.json（已执行复核时）、SHA256SUMS.txt、results.zip 及其独立哈希。backend 模式另保存后端源码快照、原始返回、来源文件或原生中间产物。准备模式没有数值结果。
+
+检查失败用 FAILED_NUMERICAL_CHECKS；异常用 FAILED_PARTIAL_OUTPUT_RETAINED，保留已经写出的产物、failure.json 与结果 ZIP。失败不等于合格端点。结果状态以实际回执及文件为准，外部来源声明仍需用户核对。成功输出也只证明所列检查。旧目录不会覆盖，无自动重试。
+
+本地工程验收、历史结果复核、真实后端验收分开记录。可选 PySCF 模板本轮没有运行新量子任务；也没有调用模型、安装依赖或上传内部材料。

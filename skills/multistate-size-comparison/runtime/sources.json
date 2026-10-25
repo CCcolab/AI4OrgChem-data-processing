@@ -1,6 +1,5 @@
 {
-  "source": "Project-authored finite state/size tables with explicitly supplied weights; not saved water arrays or new multistate calculations.",
-  "scope": "No new quantum calculation by knowledge enrichment.",
+  "schema": "portable-skill-sources-v1",
   "knowledge_review": {
     "schema": "skill-knowledge-foundations-v1",
     "date": "2026-10-25",
@@ -64,34 +63,36 @@
     "physical_claim_limit": "Project-specific protocol and supplied declarations, not validation of a new physical theory.",
     "new_quantum_backend_execution": "NOT_EXECUTED"
   },
-  "data_origin": {
-    "kind": "PROJECT_AUTHORED_TEACHING_FIXTURES",
-    "external_quantum_backend_execution": "NOT_EXECUTED",
-    "fixtures": [
-      {
-        "file": "examples/01.json",
-        "sha256": "0fa202e692bbecc6dee0b02412e467fd7025ec32792e5f608afdced6a5a8e220",
-        "provenance": {
-          "kind": "AUTHORED_TEACHING_INPUT",
-          "description": "Synthetic energy-like values and fixed weights, no state optimizations or statistical-mechanical populations."
-        }
+  "examples": {
+    "01.json": {
+      "provenance": {
+        "kind": "AUTHORED_TEACHING_INPUT",
+        "description": "Synthetic energy-like values and fixed weights, no state optimizations or statistical-mechanical populations."
       },
-      {
-        "file": "examples/02.json",
-        "sha256": "f762f8dfae320baffa55264cdb2d4a0907a1cf80c4122d955b3925b207f590c5",
-        "provenance": {
-          "kind": "AUTHORED_TEACHING_INPUT",
-          "description": "Synthetic energy-like values and fixed weights, no state optimizations or statistical-mechanical populations."
-        }
+      "json_sha256": "0fa202e692bbecc6dee0b02412e467fd7025ec32792e5f608afdced6a5a8e220"
+    },
+    "02.json": {
+      "provenance": {
+        "kind": "AUTHORED_TEACHING_INPUT",
+        "description": "Synthetic energy-like values and fixed weights, no state optimizations or statistical-mechanical populations."
       },
-      {
-        "file": "examples/03.json",
-        "sha256": "059004873a8d4020d5e5d18f589d1afed6dcbfa5abe6f49759916b9abbbf4bb7",
-        "provenance": {
-          "kind": "AUTHORED_TEACHING_INPUT",
-          "description": "Synthetic energy-like values and fixed weights, no state optimizations or statistical-mechanical populations."
-        }
-      }
-    ]
-  }
+      "json_sha256": "f762f8dfae320baffa55264cdb2d4a0907a1cf80c4122d955b3925b207f590c5"
+    },
+    "03.json": {
+      "provenance": {
+        "kind": "AUTHORED_TEACHING_INPUT",
+        "description": "Synthetic energy-like values and fixed weights, no state optimizations or statistical-mechanical populations."
+      },
+      "json_sha256": "059004873a8d4020d5e5d18f589d1afed6dcbfa5abe6f49759916b9abbbf4bb7"
+    }
+  },
+  "historical_source_is_dependency": false,
+  "historical_access": "Provided saved data is sufficient for review; no private Runtime or installation record is required.",
+  "native_template_validation": "NO_NEW_QUANTUM_CALCULATION_IN_THIS_LOCAL_ACCEPTANCE",
+  "pyscf_installation": "https://pyscf.org/user/install.html",
+  "pyscf_native_api_references": [
+    "https://pyscf.org/_modules/pyscf/gto/mole.html",
+    "https://pyscf.org/_modules/pyscf/lo/boys.html",
+    "https://pyscf.org/_modules/pyscf/lo/pipek.html"
+  ]
 }

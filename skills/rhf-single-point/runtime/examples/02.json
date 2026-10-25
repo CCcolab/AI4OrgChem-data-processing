@@ -1,0 +1,85 @@
+{
+  "parameters": {
+    "method": "RHF",
+    "basis": "SYNTHETIC_NO_BASIS",
+    "geometry_id": "two AO artificial fixture",
+    "ao_order": "two authored orthonormal AOs",
+    "electron_count": 2,
+    "density_semantics": "SPIN_SUMMED_REAL_AO_RHF",
+    "matrix_atol": 1e-08,
+    "energy_atol_hartree": 1e-08
+  },
+  "data": {
+    "overlap": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "coefficients": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "occupations": [
+      2,
+      0
+    ],
+    "density": [
+      [
+        2,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "hcore": [
+      [
+        -1,
+        0
+      ],
+      [
+        0,
+        0.5
+      ]
+    ],
+    "veff": [
+      [
+        0.5,
+        0
+      ],
+      [
+        0,
+        0.4
+      ]
+    ],
+    "fock": [
+      [
+        -0.5,
+        0
+      ],
+      [
+        0,
+        0.9
+      ]
+    ],
+    "nuclear_hartree": 0.2,
+    "reported_total_hartree": -1.3,
+    "scf_converged": true
+  },
+  "provenance": {
+    "kind": "AUTHORED_ENGINEERING_NUMBERS",
+    "description": "No molecule, basis integrals or SCF called."
+  }
+}

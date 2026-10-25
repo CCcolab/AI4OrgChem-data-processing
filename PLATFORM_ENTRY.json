@@ -21,5 +21,18 @@
     "fixed-protocol-energy-review",
     "constrained-optimization-response",
     "multistate-size-comparison"
-  ]
+  ],
+  "portable_backend_skills": [
+    "rhf-single-point",
+    "orbital-localization-density",
+    "fixed-protocol-energy-review",
+    "constrained-optimization-response",
+    "multistate-size-comparison"
+  ],
+  "portable_backend_policy": {
+    "project_runtime_required": false,
+    "docker_required": false,
+    "model_required": false,
+    "backend_selection": "USER_EXISTING_TRUSTED_BACKEND"
+  }
 }

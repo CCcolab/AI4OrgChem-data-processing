@@ -1,15 +1,17 @@
-# 五项后端待验状态
+# 五项便携后端与真实计算待验状态
 
-33项均提供学习页面、完整SKILL.md与Python代码包。下面五项的**新后端计算仍未验收**，状态保持PARTIAL_BACKEND_PENDING；其他本地案例通过也只覆盖各页的明确范围，不代表真实化学应用、预测泛化或新量子方法获认证。
+33项目录保留。下列五项已解除本项目Runtime、Docker和安装登记的强制绑定；可独立准备输入、复核已有结果或调用用户明确选择的可信Python后端。**新便携真实后端保持PARTIAL_BACKEND_PENDING**，本地数学复核不替代真实端点验收。
 
-| 模块 | 当前范围与缺口 |
+| Skill | 当前可用范围及待验边界 |
 | --- | --- |
-| [rhf-single-point](../skills/rhf-single-point/README.md) | 新固定水RHF计算未执行；已验证输入准备及旧AO数组复核，不能替代新SCF。 |
-| [orbital-localization-density](../skills/orbital-localization-density/README.md) | 已验证给定旋转与密度不变性；实际Boys/Pipek局域化优化后端未执行。 |
-| [fixed-protocol-energy-review](../skills/fixed-protocol-energy-review/README.md) | 仅验证账本闭合与显式资格标签；新条件态量子计算未执行。 |
-| [constrained-optimization-response](../skills/constrained-optimization-response/README.md) | 仅验证线性约束端点、给定梯度与Hessian；新量子约束优化未执行。 |
-| [multistate-size-comparison](../skills/multistate-size-comparison/README.md) | 仅验证集合完整性及固定权重算术；新多态量子计算未执行。 |
+| [rhf-single-point](../skills/rhf-single-point/README.md) | 便携输入/用户后端/实AO复核可用；历史固定水结果保留，新便携PySCF任务未实算。 |
+| [orbital-localization-density](../skills/orbital-localization-density/README.md) | 便携旋转/密度复核和用户后端接口可用；历史乙烯证据保留，新便携Boys/PM任务未实算。 |
+| [fixed-protocol-energy-review](../skills/fixed-protocol-energy-review/README.md) | 独立用户协议账本与结果导入可用；真实条件态后端仍待验，原失败尝试未重试。 |
+| [constrained-optimization-response](../skills/constrained-optimization-response/README.md) | 用户优化程序接口与给定线性约束导数复核可用；真实新优化端点/曲率仍待验。 |
+| [multistate-size-comparison](../skills/multistate-size-comparison/README.md) | 用户态集合接口与固定非负归一化权重复核可用；真实多态集合与专用有符号公式仍待验。 |
 
-本版没有执行新的量子计算。现有程序中可执行的准备、给定数组/账本后处理、局部数学检查，与新SCF/局域化优化/条件态/几何优化/多态后端资格分开。来源或converged标签不能代替独立波函数、科学执行、数值门槛和清理回执。
+RHF与局域化提供可选现有PySCF模板；无PySCF时只准备或导入其它已有软件结果，不自动安装或创建环境。PySCF不原生支持Windows，见[官方安装说明](https://pyscf.org/user/install.html)。其它三项的专用物理算法及端点资格必须由用户的明确协议和真实求解后端提供。
 
-后端启动、安装登记、方法或预算改变需要单独核实；下载代码或看到数值程序PASS，不意味着后端已就绪或获准自动启动。没有用历史输出冒充新的计算，没有为展示结果调用语言模型。
+历史固定水RHF和乙烯局域化的既有验收范围保留；原条件态首次失败及修复版尚未完整重验、真实约束导数/曲率、真实多态集合等缺口不改写。五项泛用新便携后端均未在本次发布执行，不上传内部日志或旧执行身份。
+
+准备、历史数组复核、人工数学演示、真实后端运行分别记录；converged或来源标签不是独立真实性证明。普通/条件账本不生成通用条件泛函；约束复核限线性约束；多态默认非负归一化权重不是有符号LDE或自由能。当前进程Python模板不提供安全沙箱或操作系统硬资源限额。

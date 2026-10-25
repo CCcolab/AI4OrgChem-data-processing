@@ -1,15 +1,5 @@
 {
-  "source": "Provided saved water RHF/6-31G(d) AO arrays, not a new SCF",
-  "array_sha256": "a26a28d072c8709303440e18dec05535d2f6789d8b39bd7588b8b0a4bb73e919",
-  "origin": {
-    "schema": "saved-water-origin-v1",
-    "source_url": "https://github.com/CCcolab/AI4OrgChem-Runtime/blob/5cb1d9629c41a81fbe281e793dd5af08a84956f1/evidence/numerical-witnesses/manifest.json",
-    "record_sha256": "91e95a9dfb0dd942cec0ab5c71463062fc7688c15ddbcd89bd0ad423715f8db1",
-    "execution_id": "a95e7d0f4cb74b9585f1528b19162972",
-    "image_id": "sha256:e7ffa6420e743a0db184897d21458d69ec90c113b9e3b3c0df7fd2a94a2e202e",
-    "runtime_commit": "1f139aa87dbd1dca8e318b5e9d0226b2a7c8668b"
-  },
-  "scope": "Only mathematical postprocessing is newly executed; no new electronic energy generation.",
+  "schema": "portable-skill-sources-v1",
   "knowledge_review": {
     "schema": "skill-knowledge-foundations-v1",
     "date": "2026-10-25",
@@ -59,5 +49,94 @@
     ],
     "physical_claim_limit": "Only the explicit input/array checks and derivations in this module; not external data authenticity or new scientific backend acceptance.",
     "new_quantum_backend_execution": "NOT_EXECUTED"
+  },
+  "examples": {
+    "01.json": {
+      "provenance": {
+        "kind": "SAVED_QUANTUM_ARRAY_POSTPROCESSING",
+        "description": "SAVED_QUANTUM_ARRAY_POSTPROCESSING: original source and SHA-256 in runtime/sources.json; no new SCF."
+      },
+      "json_sha256": "9d070ccf0ff9c4af4acdcbf2d134c1b8df4010c066a6b39942f223012d06fe44"
+    },
+    "02.json": {
+      "provenance": {
+        "kind": "AUTHORED_TEACHING_INPUT",
+        "description": "Authored nonorthogonal algebra fixture, not molecular orbitals."
+      },
+      "json_sha256": "b3f43b2d11cab6f17046885001d2dea44dc25d5261c89e148e7b171124fb5e6a"
+    },
+    "03.json": {
+      "provenance": {
+        "kind": "AUTHORED_TEACHING_INPUT",
+        "description": "Authored nonorthogonal algebra fixture, not molecular orbitals."
+      },
+      "json_sha256": "e3e1a16264ded76cdb40a2f256ed669824a7eb3291ee402e1b5df1ec679290a1"
+    }
+  },
+  "historical_source_is_dependency": false,
+  "historical_access": "Provided saved data is sufficient for review; no private Runtime or installation record is required.",
+  "native_template_validation": "NO_NEW_QUANTUM_CALCULATION_IN_THIS_LOCAL_ACCEPTANCE",
+  "pyscf_installation": "https://pyscf.org/user/install.html",
+  "pyscf_native_api_references": [
+    "https://pyscf.org/_modules/pyscf/gto/mole.html",
+    "https://pyscf.org/_modules/pyscf/lo/boys.html",
+    "https://pyscf.org/_modules/pyscf/lo/pipek.html"
+  ],
+  "historical_example": {
+    "original_array_sha256": "a26a28d072c8709303440e18dec05535d2f6789d8b39bd7588b8b0a4bb73e919",
+    "molecule": {
+      "atom_count": 3,
+      "charge": 0,
+      "coordinate_unit": "angstrom",
+      "electron_count": 10,
+      "geometry_angstrom": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.757,
+          0.587
+        ],
+        [
+          0.0,
+          0.757,
+          0.587
+        ]
+      ],
+      "multiplicity": 1,
+      "symbols": [
+        "O",
+        "H",
+        "H"
+      ]
+    },
+    "ao_labels": [
+      "0 O 1s    ",
+      "0 O 2s    ",
+      "0 O 3s    ",
+      "0 O 2px   ",
+      "0 O 2py   ",
+      "0 O 2pz   ",
+      "0 O 3px   ",
+      "0 O 3py   ",
+      "0 O 3pz   ",
+      "0 O 3dxy  ",
+      "0 O 3dyz  ",
+      "0 O 3dz^2 ",
+      "0 O 3dxz  ",
+      "0 O 3dx2-y2",
+      "1 H 1s    ",
+      "1 H 2s    ",
+      "2 H 1s    ",
+      "2 H 2s    "
+    ],
+    "historical_convergence_declaration": {
+      "converged": true,
+      "cycles": 11
+    },
+    "scope": "Saved-input provenance; not a new SCF or external data authentication."
   }
 }

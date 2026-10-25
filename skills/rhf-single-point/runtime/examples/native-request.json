@@ -1,0 +1,47 @@
+{
+  "parameters": {
+    "task": "rhf",
+    "atoms": [
+      [
+        "O",
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      [
+        "H",
+        [
+          0,
+          -0.757,
+          0.587
+        ]
+      ],
+      [
+        "H",
+        [
+          0,
+          0.757,
+          0.587
+        ]
+      ]
+    ],
+    "unit": "angstrom",
+    "basis": "6-31G(d)",
+    "charge": 0,
+    "spin_2s": 0,
+    "threads": 1,
+    "max_memory_mb": 1024,
+    "max_cycle": 100,
+    "conv_tol": 1e-10,
+    "conv_tol_grad": 1e-06,
+    "soft_seconds": 120,
+    "review_atol": 1e-05
+  },
+  "data": {},
+  "provenance": {
+    "kind": "PREPARED_NATIVE_REQUEST_NOT_EXECUTED",
+    "description": "Fixed water example; localizer reuses saved occupied orbitals, no new SCF in localization task."
+  }
+}

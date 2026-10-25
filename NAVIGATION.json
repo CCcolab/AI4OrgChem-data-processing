@@ -324,13 +324,15 @@
       "download": "skills/rhf-single-point/downloads/rhf-single-point-python.zip",
       "execution": "local_python",
       "development_status": "PARTIAL_BACKEND_PENDING",
-      "scientific_scope": "新固定水RHF计算未执行；已验证输入准备及旧AO数组复核，不能替代新SCF。",
+      "scientific_scope": "便携输入/用户后端/实AO复核可用；历史固定水结果保留，新便携PySCF任务未实算。",
       "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
-        "skill": "skills/rhf-single-point/SKILL.md",
+        "skill": "skills/rhf-single-point/downloads/SKILL.md",
         "python": "skills/rhf-single-point/runtime/run_skill.py",
-        "package": "skills/rhf-single-point/downloads/rhf-single-point-python.zip"
-      }
+        "package": "skills/rhf-single-point/downloads/rhf-single-point-python.zip",
+        "skill_archive": "skills/rhf-single-point/downloads/SKILL-md.zip"
+      },
+      "backend_binding": "USER_EXISTING_BACKEND_NO_PROJECT_RUNTIME_OR_DOCKER_REQUIRED"
     },
     {
       "id": "orbital-localization-density",
@@ -343,13 +345,15 @@
       "download": "skills/orbital-localization-density/downloads/orbital-localization-density-python.zip",
       "execution": "local_python",
       "development_status": "PARTIAL_BACKEND_PENDING",
-      "scientific_scope": "已验证给定旋转与密度不变性；实际Boys/Pipek局域化优化后端未执行。",
+      "scientific_scope": "便携旋转/密度复核和用户后端接口可用；历史乙烯证据保留，新便携Boys/PM任务未实算。",
       "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
-        "skill": "skills/orbital-localization-density/SKILL.md",
+        "skill": "skills/orbital-localization-density/downloads/SKILL.md",
         "python": "skills/orbital-localization-density/runtime/run_skill.py",
-        "package": "skills/orbital-localization-density/downloads/orbital-localization-density-python.zip"
-      }
+        "package": "skills/orbital-localization-density/downloads/orbital-localization-density-python.zip",
+        "skill_archive": "skills/orbital-localization-density/downloads/SKILL-md.zip"
+      },
+      "backend_binding": "USER_EXISTING_BACKEND_NO_PROJECT_RUNTIME_OR_DOCKER_REQUIRED"
     },
     {
       "id": "nonorthogonal-subspace",
@@ -438,13 +442,15 @@
       "download": "skills/fixed-protocol-energy-review/downloads/fixed-protocol-energy-review-python.zip",
       "execution": "local_python",
       "development_status": "PARTIAL_BACKEND_PENDING",
-      "scientific_scope": "仅验证账本闭合与显式资格标签；新条件态量子计算未执行。",
+      "scientific_scope": "独立用户协议账本与结果导入可用；真实条件态后端仍待验，原失败尝试未重试。",
       "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
-        "skill": "skills/fixed-protocol-energy-review/SKILL.md",
+        "skill": "skills/fixed-protocol-energy-review/downloads/SKILL.md",
         "python": "skills/fixed-protocol-energy-review/runtime/run_skill.py",
-        "package": "skills/fixed-protocol-energy-review/downloads/fixed-protocol-energy-review-python.zip"
-      }
+        "package": "skills/fixed-protocol-energy-review/downloads/fixed-protocol-energy-review-python.zip",
+        "skill_archive": "skills/fixed-protocol-energy-review/downloads/SKILL-md.zip"
+      },
+      "backend_binding": "USER_EXISTING_BACKEND_NO_PROJECT_RUNTIME_OR_DOCKER_REQUIRED"
     },
     {
       "id": "constrained-optimization-response",
@@ -457,13 +463,15 @@
       "download": "skills/constrained-optimization-response/downloads/constrained-optimization-response-python.zip",
       "execution": "local_python",
       "development_status": "PARTIAL_BACKEND_PENDING",
-      "scientific_scope": "仅验证线性约束端点、给定梯度与Hessian；新量子约束优化未执行。",
+      "scientific_scope": "用户优化程序接口与给定线性约束导数复核可用；真实新优化端点/曲率仍待验。",
       "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
-        "skill": "skills/constrained-optimization-response/SKILL.md",
+        "skill": "skills/constrained-optimization-response/downloads/SKILL.md",
         "python": "skills/constrained-optimization-response/runtime/run_skill.py",
-        "package": "skills/constrained-optimization-response/downloads/constrained-optimization-response-python.zip"
-      }
+        "package": "skills/constrained-optimization-response/downloads/constrained-optimization-response-python.zip",
+        "skill_archive": "skills/constrained-optimization-response/downloads/SKILL-md.zip"
+      },
+      "backend_binding": "USER_EXISTING_BACKEND_NO_PROJECT_RUNTIME_OR_DOCKER_REQUIRED"
     },
     {
       "id": "multistate-size-comparison",
@@ -476,13 +484,15 @@
       "download": "skills/multistate-size-comparison/downloads/multistate-size-comparison-python.zip",
       "execution": "local_python",
       "development_status": "PARTIAL_BACKEND_PENDING",
-      "scientific_scope": "仅验证集合完整性及固定权重算术；新多态量子计算未执行。",
+      "scientific_scope": "用户态集合接口与固定非负归一化权重复核可用；真实多态集合与专用有符号公式仍待验。",
       "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
-        "skill": "skills/multistate-size-comparison/SKILL.md",
+        "skill": "skills/multistate-size-comparison/downloads/SKILL.md",
         "python": "skills/multistate-size-comparison/runtime/run_skill.py",
-        "package": "skills/multistate-size-comparison/downloads/multistate-size-comparison-python.zip"
-      }
+        "package": "skills/multistate-size-comparison/downloads/multistate-size-comparison-python.zip",
+        "skill_archive": "skills/multistate-size-comparison/downloads/SKILL-md.zip"
+      },
+      "backend_binding": "USER_EXISTING_BACKEND_NO_PROJECT_RUNTIME_OR_DOCKER_REQUIRED"
     },
     {
       "id": "chemical-space-embedding",
@@ -1036,6 +1046,6 @@
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     }
   ],
-  "revision": "skills-knowledge-repairs-private-main-20261025",
+  "revision": "five-portable-user-backends-private-main-20261025",
   "remote_publication": "PRIVATE_MAIN_PYTHON_DISTRIBUTION"
 }

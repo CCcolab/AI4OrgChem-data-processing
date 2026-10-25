@@ -1,6 +1,6 @@
 ---
 name: orbital-localization-density
-description: 复核用户提供的实AO轨道旋转、度量正交性、占据兼容与密度/固定矩阵能量不变性，不把任意旋转称为已完成Boys或Pipek局域化。
+description: 为用户已有局域化程序准备输入与调用，复核实AO旋转、占据兼容、密度及固定矩阵能量，区分优化收敛与不变性。
 ---
 
 # 轨道旋转、局域化与密度复核
@@ -33,19 +33,50 @@ C′=CU，D=C diag(n) Cᵀ；核对CᵀSC=I、UᵀU=I、U diag(n) Uᵀ=diag(n)�
 
 数值数组在NumPy类型提升前逐项校验：JSON布尔值true/false、null、字符串或与数值混合的这些值均拒绝，不把标志列自动转换为0/1测量、目标、度量或概率。整数0/1仍可用于已声明的数值/二分类接口；缺失值须先按研究协议处理。数组结构遍历预算为100000项，另保留各模块原有形状、有限性和数据规模限制。
 
-## 完整调用与结果
 
-1. 读取完整SKILL.md及显式JSON请求（parameters、data、provenance三部分），验证资源SHA-256及输入范围；禁止重复JSON键、NaN/Infinity和未知字段。
-2. 将输入文字作为数据，不执行表达式、指令或未知代码，不联网、不调用模型。固定runtime/analysis.py负责实际科学/数学处理；runtime/run_skill.py负责完整可追溯调用。
-3. 结果写Skill目录外全新目录，保存请求、Skill快照、环境、逐项检查、数值结果及真实回执。失败不得覆盖旧结果或标成功；新目录已创建时保留failure.json并非零退出。
-4. 输出SHA-256及results.zip；文件状态以实际回执与哈希为准。无模型模式只记录Skill身份，不称指令已由模型理解。
+## 科学适用性补充
 
-## 科学边界
+同一有限实 AO 度量下 C′=CU，D′−D=C[U diag(n)Uᵀ−diag(n)]Cᵀ。等占据子空间内的正交旋转保持密度与 Tr(DS)；占据/虚轨道互混通常不保持密度。局域轨道逐元素不同不代表波函数改变。
 
-本程序是旋转/局域化输出的复核器，没有优化Boys或Pipek–Mezey目标。没有真实局域化程序输出时不能说已经得到化学局域轨道；也不自动分类σ/π、成键或孤对。新局域化后端、波函数稳定性和新SCF本轮未执行。
+Boys 目标与轨道空间展宽有关；Pipek–Mezey 目标依赖所选原子人口定义，两者不能由任意旋转代替。密度不变、优化器收敛与化学轨道命名是三件事。局域极值不证明全局最佳，也不自动给出 σ/π 或孤对分类。可选 PySCF 模板分别保存迭代目标、梯度和最终端点梯度；PM 固定明确的 meta_lowdin 人口方法。
 
-实际数值执行、合成软件测试、保存结果复核和新量子计算分开报告，不继承其他项目或旧案例资格。输入的来源标签/收敛/身份声明不是外部证据的真实性鉴定。
+本地复核器只接受实 AO、0/2 占据、S 正定且条件数≤1e10、各维≤128。输入为 overlap、coefficients、occupations、rotation；atol 与 density_semantics 显式给定。可选 hcore、veff、nuclear_hartree 必须成组提供，所得能量仅比较固定矩阵，不是新 SCF。案例01复核保存的水轨道旋转，02为非单位度量人工数据，03为应失败的占据/虚空间混合。
 
-## 方法来源
+## 用户环境与后端选择
 
-[PySCF局域轨道说明](https://pyscf.org/user/lo.html)区分不同局域化目标及酉旋转；[PySCF SCF](https://pyscf.org/user/scf.html)给出密度实现语境。当前工具仅执行明确列出的矩阵复核。
+本 Skill 可独立下载阅读，配套 Python 不要求本项目 Runtime、安装登记、Docker 或固定磁盘路径。不自动安装/更新软件，不创建虚拟化环境，不索取模型密钥。先询问用户实际任务、已有程序/版本、输入和资源约束；优先复核已有结果；只有用户要求新计算并已选择可信程序时才执行。
+
+1. 明确模型、体系/几何、单位、电子态、协议身份、来源与期望输出。缺必需信息则列出缺项，不能默补关键科学条件。
+2. 核对用户已有后端是否实际支持该方法；不把某软件的泛用 SCF/优化器冒充专用条件态实现。不改变用户算子/占据/权重来迁就接口。
+3. 生成适合用户现有环境的输入和调用；配套桥接器的 backend 模式只接受用户明确指定的可信 .py 和 execute=True。该 Python 与用户同权限运行，不是安全沙箱；不得把 CSV/JSON 文本当代码执行。准备模式不导入后端，不验证科学端点。
+4. 先保存输入、Skill 快照、后端身份与资源协议；计算时保留原生日志、中间产物、实际收敛证据。后端返回 review_request（parameters/data/provenance）和 execution（至少 kind）；先保存返回，再执行明确范围的复核。
+5. 严格区分准备、历史数组复核、人工数学演示、真实后端计算与模型解释。不使用语言模型也能执行这些显式程序；读取 Markdown 只记录指令文件身份，不是模型已理解/执行 Skill。
+6. 写全新结果目录，禁止覆盖；数值检查失败或解释/适配失败仍保留已生成文件、失败原因与非零退出。无自动重试。不把失败产物视为合格端点。
+7. 交付逐项检查、实际程序回执、文件及 SHA-256。不得从图形外观、文本解释、程序退出或旧 PASS 单独推断科学结论。
+
+## 配套调用合同与依赖
+
+portable-skill-backend-v1 是独立便携模板合同，不修改任何项目冻结合同。JSON 根对象恰为 parameters、data、provenance；provenance 含 kind、description。禁止重复键和非有限数。具体数学复核字段见本文件及 runtime/analysis.py；完整实例见 runtime/examples/*.json。用户可自行输出兼容 JSON，或编写调用已有 Python 库的适配器并返回相同结构。
+
+prepare 仅 Python 3.10+ 标准库；四项数组/几何复核需要 NumPy，纯十进制账本仅标准库。requirements.txt 提供已验依赖版本。PySCF 仅可选模板需要，不能作为其它后端的强制依赖。模板不提供通用作业调度或硬资源隔离；线程参数、库内存建议和回调时间检查不等于操作系统硬限。用户有严格资源要求时使用自己已有的受控调度环境，不自动重试或放宽限制。
+
+## 调用示例
+
+完整 Python 模板在 runtime/run_skill.py；调用链是读取 SKILL.md → 显式请求/参数 → 用户选定适配器（可选）→ 数学复核 → 回执与文件。runtime/examples/01_prepare.py、02_review.py、03_user_backend.py 分别展示准备、复核、读取用户已有后端导出的结果；03 没有新量子计算。demo_backend.py 仅测试桥接合同，严禁当真实求解器。
+
+```python
+receipt = bridge.run_skill(
+    mode="backend", request_file="my-request.json", output_dir="new-results",
+    backend_file="my-trusted-backend.py", execute=True,
+)
+```
+
+后端函数：run_backend(request, output_dir) 返回 {"review_request": {"parameters": ..., "data": ..., "provenance": ...}, "execution": {"kind": "明确的执行类型", ...}}。file_backend.py 是完整可运行的结果导入适配器；连接新求解器时，其物理算法、独立能量分项、端点资格和资源控制仍由真实后端及研究协议负责，不以本桥接器补造。
+
+backend_calls 只统计桥接函数进入次数，不是科学核函数调用总数；Python 模块导入也可执行代码。后端原生任务次数与资源使用须由原生日志另外证明，不能将外部模块自报的 model_calls/network_calls 当作独立监测。桥接器本身不调用模型/网络，亦不执行后台超时强杀。
+
+## 可选现有 PySCF 后端
+
+runtime/backends/pyscf_backend.py 为实际库调用模板，使用 native-request.json。RHF 只执行一次 kernel；局域化使用已有占据轨道，单次 Boys 或 PM，不再执行 SCF。需要保存原生日志、数组、迭代回调与端点梯度，缺回调字段则失败，不伪造收敛。
+
+PySCF 官方不原生支持 Windows；本模板只供已有受支持 Python/PySCF 环境的用户选择。Windows 用户可导入其其它现有软件的结果，不必创建 Docker/WSL。该可选模板本次只做语法、前置校验和缺依赖路径验证，真实新 PySCF 任务未执行。

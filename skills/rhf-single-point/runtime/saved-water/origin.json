@@ -1,8 +1,0 @@
-{
-  "schema": "saved-water-origin-v1",
-  "source_url": "https://github.com/CCcolab/AI4OrgChem-Runtime/blob/5cb1d9629c41a81fbe281e793dd5af08a84956f1/evidence/numerical-witnesses/manifest.json",
-  "record_sha256": "91e95a9dfb0dd942cec0ab5c71463062fc7688c15ddbcd89bd0ad423715f8db1",
-  "execution_id": "a95e7d0f4cb74b9585f1528b19162972",
-  "image_id": "sha256:e7ffa6420e743a0db184897d21458d69ec90c113b9e3b3c0df7fd2a94a2e202e",
-  "runtime_commit": "1f139aa87dbd1dca8e318b5e9d0226b2a7c8668b"
-}

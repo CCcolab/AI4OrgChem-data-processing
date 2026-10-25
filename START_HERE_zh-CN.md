@@ -4,6 +4,8 @@
 
 当前Python学习版。按七个专业分类和一个共用支持分类，共33项；点击名称进入README学习，完整SKILL.md可单独下载，Python程序、依赖和案例位于runtime。各页提供代码包，不需要云端交互账号。每个Skill使用自己的独立Python环境，不将不兼容的依赖混装。
 
+**五项便携后端：** RHF、局域化、固定协议能量、约束响应及多态比较支持独立输入准备、已有结果复核和用户已有后端调用，不强制本项目Runtime、Docker或安装登记。五项新便携真实后端继续待验；原固定协议的历史结果保留，不能据本地程序通过自动提升资格。
+
 **验收范围：** 本地数值计算、旧结果后处理、合成模拟、本地机器学习训练和新量子后端执行分别记录。合成数据高分不证明化学预测能力。下列五项标“后端待验”的项目不能宣称新后端计算已完成；[查看五项状态及适用范围](docs/BACKEND_STATUS.md)。
 
 ## 有机分子结构与身份识别
@@ -26,18 +28,18 @@
 
 ## 计算有机化学与电子结构
 
-- [RHF 单点计算助手](skills/rhf-single-point/README.md)（后端待验；本地复核见页内边界）
-- [轨道局域化与密度不变性验证](skills/orbital-localization-density/README.md)（后端待验；本地复核见页内边界）
+- [RHF 单点计算助手](skills/rhf-single-point/README.md)（便携Python；真实后端待验）
+- [轨道局域化与密度不变性验证](skills/orbital-localization-density/README.md)（便携Python；真实后端待验）
 - [非正交子空间投影与泄漏分析](skills/nonorthogonal-subspace/README.md)
 - [片段工作基组装与一致性审计](skills/fragment-working-basis/README.md)
 - [镜面对称轨道适配与奇偶性分析](skills/reflection-parity/README.md)
 - [矩阵分区掩码与正定性检查](skills/partition-mask-audit/README.md)
-- [固定协议条件态与能量复核](skills/fixed-protocol-energy-review/README.md)（后端待验；本地复核见页内边界）
+- [固定协议条件态与能量复核](skills/fixed-protocol-energy-review/README.md)（便携Python；真实后端待验）
 
 ## 分子结构优化与多态比较
 
-- [约束优化与结构响应](skills/constrained-optimization-response/README.md)（后端待验；本地复核见页内边界）
-- [多态与尺寸比较](skills/multistate-size-comparison/README.md)（后端待验；本地复核见页内边界）
+- [约束优化与结构响应](skills/constrained-optimization-response/README.md)（便携Python；真实后端待验）
+- [多态与尺寸比较](skills/multistate-size-comparison/README.md)（便携Python；真实后端待验）
 
 ## 化学信息学与分子设计
 

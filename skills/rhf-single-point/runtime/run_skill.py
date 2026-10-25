@@ -1,199 +1,228 @@
-"""Prepare/review fixed water, or call an existing registered Runtime once.
+"""Portable Skill preparation, result review and explicit trusted backend call.
 
-No PySCF installation, image building, new registration, settings change, network
-or model call. Compute delegates all scientific/lifecycle gates to the preserved
-registered molecular-service launcher and never kills it independently.
+No model, installer, shell command, Runtime registration or container launcher.
+Backend Python runs with the user's permissions; this bridge is not a sandbox.
 """
 from pathlib import Path
 import argparse
+import copy
 import hashlib
+import importlib.util
 import json
-import shutil
-import subprocess
+import platform
 import sys
+import types
 import zipfile
 
 PAGE = Path(__file__).resolve().parents[1]
+CONTRACT = 'portable-skill-backend-v1'
 
 
 def sha(raw):
     return hashlib.sha256(raw).hexdigest()
 
 
-def dump(path, data):
-    path.write_text(json.dumps(data, ensure_ascii=False, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+def unique(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError('Duplicate JSON key: ' + key)
+        result[key] = value
+    return result
+
+
+def strict_json(raw):
+    return json.loads(raw.decode('utf-8-sig'), object_pairs_hook=unique,
+                      parse_constant=lambda value: (_ for _ in ()).throw(ValueError('Nonfinite JSON: ' + value)))
+
+
+def dump(path, value):
+    path.write_text(json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+
+
+def validate_request(request):
+    if not isinstance(request, dict) or set(request) != {'parameters', 'data', 'provenance'}:
+        raise ValueError('Require exactly parameters, data, provenance.')
+    if not isinstance(request['parameters'], dict) or not isinstance(request['data'], dict):
+        raise ValueError('parameters and data must be objects.')
+    source = request['provenance']
+    if (not isinstance(source, dict) or set(source) != {'kind', 'description'}
+            or not all(isinstance(v, str) and v.strip() for v in source.values())):
+        raise ValueError('Declare provenance kind and description; labels are not authenticated evidence.')
+    # Also validate Python backend returns: json.dumps rejects NaN/Infinity.
+    json.dumps(request, allow_nan=False)
 
 
 def verify_resources():
-    rows = json.loads((PAGE / 'runtime/resource-manifest.json').read_bytes())
+    rows = strict_json((PAGE / 'runtime/resource-manifest.json').read_bytes())
+    if not isinstance(rows, list) or not rows:
+        raise ValueError('Require a nonempty resource manifest.')
     seen = set()
     for row in rows:
-        path = PAGE / row['file']
-        if row['file'] in seen or path.is_symlink() or not path.resolve().is_relative_to(PAGE):
-            raise ValueError('Invalid resource path.')
+        if not isinstance(row, dict) or set(row) != {'file', 'sha256'}:
+            raise ValueError('Invalid manifest entry.')
+        name = row['file']
+        if not isinstance(name, str):
+            raise ValueError('Invalid resource name.')
+        relative = Path(name)
+        path = PAGE / relative
+        if (relative.is_absolute() or '..' in relative.parts or name in seen
+                or path.is_symlink() or not path.resolve().is_relative_to(PAGE)
+                or any(parent.is_symlink() for parent in path.parents if parent != PAGE)):
+            raise ValueError('Invalid or repeated resource path.')
         if sha(path.read_bytes()) != row['sha256']:
-            raise ValueError('Resource changed: ' + row['file'])
-        seen.add(row['file'])
-    if not {'SKILL.md', 'runtime/run_skill.py', 'runtime/fixed-water/request.json',
-            'runtime/fixed-water/molecule.xyz', 'runtime/saved-water/arrays.npz'}.issubset(seen):
-        raise ValueError('Required resources missing.')
+            raise ValueError('Packaged resource changed: ' + name + '; copy editable inputs outside this package.')
+        seen.add(name)
+    if not {'README.md', 'SKILL.md', 'runtime/run_skill.py', 'runtime/analysis.py',
+            'runtime/requirements.txt'}.issubset(seen):
+        raise ValueError('Required resource missing.')
 
 
-def review_arrays(directory):
-    import numpy as np
-
-    directory = Path(directory)
-    with np.load(directory / 'arrays.npz', allow_pickle=False) as archive:
-        expected = {'overlap', 'density', 'hcore', 'veff', 'fock', 'canonical_coefficients',
-                    'occupations', 'orbital_energies_hartree'}
-        if set(archive.files) != expected:
-            raise ValueError('Fixed water evidence arrays differ.')
-        arrays = {key: archive[key] for key in expected}
-    matrices = ['overlap', 'density', 'hcore', 'veff', 'fock', 'canonical_coefficients']
-    if (any(arrays[key].shape != (18, 18) for key in matrices)
-            or any(arrays[key].shape != (18,) for key in ['occupations', 'orbital_energies_hartree'])
-            or any(array.dtype.kind != 'f' or not np.isfinite(array).all() for array in arrays.values())):
-        raise ValueError('Require finite real 18-AO fixed-water evidence.')
-    s, d, c, occupations = [arrays[key] for key in ['overlap', 'density', 'canonical_coefficients', 'occupations']]
-    eigenvalues = np.linalg.eigvalsh(s)
-    if eigenvalues[0] <= 1e-10 or eigenvalues[-1] / eigenvalues[0] > 1e10:
-        raise ValueError('Overlap metric is not admissible.')
-    result = json.loads((directory / 'result.json').read_bytes())
-    if result.get('basis') != '6-31G(d)' or result.get('density_semantics') != 'SPIN_SUMMED_AO_DENSITY_IN_ORIGINAL_AO_ORDER':
-        raise ValueError('Saved result does not match the fixed water convention.')
-    energy = result['diagnostics']['energy_ledger']
-    rebuilt_energy = float(np.trace(d @ arrays['hcore']) + 0.5 * np.trace(d @ arrays['veff']) + energy['nuclear_repulsion'])
-    occupied = c[:, occupations > 0]
-    rebuilt_density = (c * occupations) @ c.T
-    symmetry = max(float(np.max(abs(arrays[key] - arrays[key].T)))
-                   for key in ['overlap', 'density', 'hcore', 'veff', 'fock'])
-    values = [
-        ('electron_number_Tr_DS', abs(float(np.trace(d @ s)) - 10), 1e-8),
-        ('matrix_symmetry', symmetry, 1e-10),
-        ('occupied_orthonormality', float(np.linalg.norm(occupied.T @ s @ occupied - np.eye(occupied.shape[1]))), 1e-8),
-        ('density_relative_reconstruction', float(np.linalg.norm(d - rebuilt_density) / max(np.linalg.norm(d), 1e-15)), 1e-9),
-        ('RHF_energy_ledger', abs(rebuilt_energy - energy['scf_total']), 1e-9),
-        ('F_equals_hcore_plus_veff', float(np.max(abs(arrays['fock'] - arrays['hcore'] - arrays['veff']))), 1e-10),
-        ('closed_shell_occupations', float(np.max(np.minimum(abs(occupations), abs(occupations - 2)))), 1e-12),
-    ]
-    checks = [{'name': key, 'actual': value, 'threshold': threshold, 'passed': value <= threshold}
-              for key, value, threshold in values]
-    return {'scope': 'FIXED_WATER_SAVED_AO_ARRAY_REVIEW_NOT_NEW_SCF', 'checks': checks,
-            'electron_number': float(np.trace(d @ s)), 'rebuilt_energy_hartree': rebuilt_energy,
-            'environment': {'numpy': np.__version__},
-            'limits': ['No new SCF, stability test or physical ground-state certification.',
-                       'Full virtual-space orbital qualification not included; no pointwise orbital coefficient comparison.',
-                       'Saved metadata/source declarations are not independently authenticated experimental evidence.']}
+def load_module(path, name, package_directory=None):
+    if package_directory is not None:
+        package = types.ModuleType(name)
+        package.__path__ = [str(package_directory)]
+        sys.modules[name] = package
+        name += '.analysis'
+    spec = importlib.util.spec_from_file_location(name, path)
+    if spec is None or spec.loader is None:
+        raise ValueError('Provide a regular .py backend file.')
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[name] = module
+    spec.loader.exec_module(module)
+    return module
 
 
-def registration(runtime_root, record_file, expected_sha256):
-    runtime_root, record_file = Path(runtime_root).resolve(), Path(record_file).resolve()
-    if not isinstance(expected_sha256, str) or len(expected_sha256) != 64 or sha(record_file.read_bytes()) != expected_sha256:
-        raise ValueError('Installation-record SHA-256 differs; do not re-register automatically.')
-    record = json.loads(record_file.read_bytes())
-    if (record.get('schema') != 'ai4orgchem-runtime-installation-v1' or record.get('service') != 'molecular-service'
-            or record.get('tasks') != ['single-point'] or record.get('modes') != ['live']):
-        raise ValueError('This adapter accepts only the existing registered v1 molecular single-point service.')
-    for name, digest in record['host_files'].items():
-        path = runtime_root / name
-        if path.is_symlink() or not path.resolve().is_relative_to(runtime_root) or sha(path.read_bytes()) != digest:
-            raise ValueError('Registered host bytes changed: ' + name)
-    for name in ['request.json', 'molecule.xyz']:
-        if (runtime_root / 'examples/molecular-service/water' / name).read_bytes() != (PAGE / 'runtime/fixed-water' / name).read_bytes():
-            raise ValueError('Fixed water request differs from the existing Runtime fixture.')
-    return runtime_root, record_file, record
+def seal_output(output):
+    items = sorted(output.rglob('*'))
+    if any(p.is_symlink() or not p.resolve().is_relative_to(output) for p in items):
+        raise ValueError('Symlink or escaping output artifact rejected; do not archive it.')
+    reserved = {'SHA256SUMS.txt', 'results.zip', 'results.zip.sha256'}
+    if any((output / name).exists() for name in reserved):
+        raise ValueError('Backend must not create reserved output names.')
+    files = [p for p in items if p.is_file()]
+    sums = output / 'SHA256SUMS.txt'
+    sums.write_text(''.join(sha(p.read_bytes()) + '  ' + p.relative_to(output).as_posix() + '\n'
+                            for p in files), encoding='utf-8')
+    archive_path = output / 'results.zip'
+    with zipfile.ZipFile(archive_path, 'w', zipfile.ZIP_DEFLATED) as archive:
+        for path in files + [sums]:
+            archive.write(path, path.relative_to(output).as_posix())
+    (output / 'results.zip.sha256').write_text(sha(archive_path.read_bytes()) + '  results.zip\n', encoding='utf-8')
 
 
-def run_skill(*, mode, output_dir, runtime_root=None, installation_record=None, record_sha256=None, lock_root=None):
-    if mode not in {'prepare', 'review', 'compute'}:
-        raise ValueError('Choose prepare, review or compute.')
+def run_skill(*, mode, request_file, output_dir, backend_file=None, execute=False):
+    if mode not in {'prepare', 'review', 'backend'}:
+        raise ValueError('Choose prepare, review or backend.')
+    if mode == 'backend':
+        if not execute or backend_file is None:
+            raise ValueError('Backend execution requires --backend TRUSTED.py and --execute.')
+    elif execute or backend_file is not None:
+        raise ValueError('--backend and --execute belong only to backend mode.')
     verify_resources()
+    request_file = Path(request_file)
+    if request_file.is_symlink() or not request_file.is_file() or request_file.stat().st_size > 2_000_000:
+        raise ValueError('Provide a regular JSON file no larger than 2 MB.')
+    raw = request_file.read_bytes()
+    request = strict_json(raw)
+    validate_request(request)
+    backend = None
+    if backend_file is not None:
+        backend = Path(backend_file).resolve()
+        if not backend.is_file() or backend.suffix != '.py' or Path(backend_file).is_symlink():
+            raise ValueError('Explicit trusted local Python backend required.')
     output = Path(output_dir).resolve()
     if output.exists() or output.is_relative_to(PAGE):
-        raise ValueError('Use a NEW output directory outside the Skill.')
-    if mode != 'compute' and any(value is not None for value in [runtime_root, installation_record, record_sha256, lock_root]):
-        raise ValueError('Runtime identity arguments belong only to compute mode.')
-    if mode == 'compute' and any(value is None for value in [runtime_root, installation_record, record_sha256, lock_root]):
-        raise ValueError('Compute requires explicit existing runtime, record, expected record SHA-256 and shared lock root.')
+        raise ValueError('Use a NEW output directory outside the Skill package.')
     output.mkdir(parents=True)
     skill = (PAGE / 'SKILL.md').read_bytes()
+    (output / 'request.json').write_bytes(raw)
     (output / 'SKILL.used.md').write_bytes(skill)
-    for name in ['request.json', 'molecule.xyz']:
-        shutil.copyfile(PAGE / 'runtime/fixed-water' / name, output / name)
-    identity = {'mode': mode, 'model_calls': 0, 'skill_sha256': sha(skill),
-                'skill_use': 'READ_AND_SNAPSHOTTED_NO_MODEL_INTERPRETATION',
-                'contract': 'skill-rhf-fixed-water-runtime-adapter-v1',
-                'science_budget': {'threads': 1, 'memory_bytes': 1073741824, 'soft_seconds': 100,
-                                   'hard_seconds': 120, 'max_scf_cycles': 100, 'max_kernel_calls': 1},
-                'budget_owner': 'Preserved registered Runtime; startup/cleanup separate, no independent unsafe launcher kill'}
+    receipt = {'contract': CONTRACT, 'skill': PAGE.name, 'mode': mode,
+               'skill_sha256': sha(skill), 'input_sha256': sha(raw),
+               'skill_use': 'READ_AND_SNAPSHOTTED_NO_MODEL_INTERPRETATION',
+               'python': platform.python_version(), 'runner_model_calls': 0,
+               'runner_network_calls': 0, 'backend_calls': 0,
+               'backend_import_attempts': 0,
+               'backend_execution_kind': 'NOT_EXECUTED',
+               'backend_behavior': 'NOT_SANDBOXED; inspect trusted code before execution',
+               'scientific_qualification': 'EXPLICIT_INPUTS_AND_CHECKS_ONLY'}
+    error = None
     try:
         if mode == 'prepare':
-            receipt = {**identity, 'status': 'PREPARED_NOT_EXECUTED', 'scope': 'FIXED_WATER_INPUT_COPY_ONLY',
-                       'new_scf_calls': 0, 'numerical_qualification': 'NOT_EXECUTED'}
-        elif mode == 'review':
-            reviewed = review_arrays(PAGE / 'runtime/saved-water')
-            dump(output / 'saved-array-review.json', reviewed)
-            receipt = {**identity, 'status': 'PASS_SAVED_ARRAY_REVIEW' if all(row['passed'] for row in reviewed['checks']) else 'FAIL_SAVED_ARRAY_REVIEW',
-                       'scope': reviewed['scope'], 'new_scf_calls': 0}
+            receipt.update(status='PREPARED_NOT_EXECUTED', scope='INPUT_SNAPSHOT_AND_CALL_PLAN_ONLY')
+            dump(output / 'backend-plan.json', {
+                'contract': CONTRACT, 'required_function': 'run_backend(request, output_dir)',
+                'required_return': {'review_request': 'parameters/data/provenance object',
+                                    'execution': 'kind/software/version/resources/source descriptions'},
+                'needs_user_selection': 'Existing trusted backend and method-specific scientific protocol',
+                'dependency_check': 'NOT_EXECUTED', 'science_input_validation': 'NOT_EXECUTED',
+                'hard_resource_limits': 'NOT_PROVIDED_BY_IN_PROCESS_BRIDGE'})
         else:
-            runtime, record_file, record = registration(runtime_root, installation_record, record_sha256)
-            docker = shutil.which('docker')
-            if docker is None:
-                raise RuntimeError('Docker executable unavailable; no installation attempted.')
-            probe = subprocess.run([docker, 'info', '--format', '{{json .}}'], capture_output=True, timeout=10)
-            (output / 'docker-info.stdout.log').write_bytes(probe.stdout)
-            (output / 'docker-info.stderr.log').write_bytes(probe.stderr)
-            if probe.returncode != 0:
-                raise RuntimeError('Existing Docker Linux engine is unavailable; no SCF was started.')
-            info = json.loads(probe.stdout)
-            if info.get('OSType') != 'linux':
-                raise RuntimeError('Existing engine is not Linux; no configuration change attempted.')
-            command = [sys.executable, '-B', str(runtime / 'scripts/run-installed-runtime.py'),
-                       '--installation-record', str(record_file), '--task', 'single-point', '--mode', 'live',
-                       '--request', str(output / 'request.json'), '--output-root', str(output / 'runtime-run'),
-                       '--lock-root', str(Path(lock_root).resolve()), '--docker-executable', docker]
-            dump(output / 'compute-command.json', {'argv': command, 'installation_record_sha256': record_sha256,
-                                                  'image_id': record['image_id'], 'automatic_retry': False})
-            # The original lifecycle supervisor owns all containers and deadlines.
-            # Never impose a child kill that could abandon a native worker.
-            with (output / 'launcher.stdout.log').open('wb') as stdout, (output / 'launcher.stderr.log').open('wb') as stderr:
-                process = subprocess.run(command, stdout=stdout, stderr=stderr)
-            if process.returncode != 0:
-                raise RuntimeError('Registered Runtime did not pass; preserve its full output and cleanup receipts. Exit ' + str(process.returncode))
-            receipt = {**identity, 'status': 'RUNTIME_RETURNED_ZERO_REQUIRES_SCIENTIFIC_RECEIPT_REVIEW',
-                       'scope': 'NEW_FIXED_WATER_RUNTIME_EXECUTION', 'runtime_exit_code': process.returncode,
-                       'scientific_qualification': 'REVIEW_ORIGINAL_RUNTIME_RECEIPTS_AND_ARRAYS', 'automatic_retry': False}
-        dump(output / 'run-receipt.json', receipt)
-    except Exception as error:
-        dump(output / 'failure.json', {**identity, 'status': 'FAILED_OR_NOT_EXECUTED_INPUT_RETAINED',
-                                      'error_type': type(error).__name__, 'message': str(error)})
-        raise
-    files = sorted(path for path in output.rglob('*') if path.is_file())
-    (output / 'SHA256SUMS.txt').write_text(''.join(sha(path.read_bytes()) + '  ' + path.relative_to(output).as_posix() + '\n'
-                                                for path in files), encoding='utf-8')
-    with zipfile.ZipFile(output / 'results.zip', 'w', zipfile.ZIP_DEFLATED) as archive:
-        for path in files + [output / 'SHA256SUMS.txt']:
-            archive.write(path, path.relative_to(output).as_posix())
+            reviewed = copy.deepcopy(request)
+            if mode == 'backend':
+                code = backend.read_bytes()
+                (output / 'backend.used.py').write_bytes(code)
+                receipt.update(backend_sha256=sha(code), backend_import_attempts=1,
+                               backend_execution_kind='IMPORTING_NOT_ENTERED')
+                dump(output / 'run-receipt.json', {**receipt, 'status': 'BACKEND_IMPORT_STARTED'})
+                provider = load_module(backend, '_user_backend_' + sha(code)[:16])
+                if not callable(getattr(provider, 'run_backend', None)):
+                    raise ValueError('Trusted backend must provide callable run_backend(request, output_dir).')
+                receipt.update(backend_calls=1, backend_execution_kind='ENTERED_NOT_COMPLETED')
+                dump(output / 'run-receipt.json', {**receipt, 'status': 'BACKEND_ENTERED'})
+                returned = provider.run_backend(copy.deepcopy(request), output)
+                # Retain the backend return before mathematical validation.
+                dump(output / 'backend-return.json', returned)
+                if not isinstance(returned, dict) or set(returned) != {'review_request', 'execution'}:
+                    raise ValueError('Backend must return exactly review_request and execution.')
+                execution = returned['execution']
+                if (not isinstance(execution, dict) or not isinstance(execution.get('kind'), str)
+                        or not execution['kind'].strip()):
+                    raise ValueError('Backend must declare execution kind; it is not independently authenticated.')
+                receipt.update(backend_execution_kind=execution['kind'], backend_report=execution)
+                reviewed = returned['review_request']
+                validate_request(reviewed)
+            dump(output / 'review-request.json', reviewed)
+            module = load_module(PAGE / 'runtime/analysis.py', '_review_' + sha(str(PAGE).encode())[:16], PAGE / 'runtime')
+            result = module.analyze(reviewed['parameters'], reviewed['data'])
+            checks = result.get('checks')
+            if (not isinstance(checks, list) or not checks
+                    or any(not isinstance(row, dict) or set(row) != {'name', 'passed', 'actual', 'threshold'}
+                           or type(row['passed']) is not bool for row in checks)):
+                raise ValueError('Nonempty explicit mathematical check list required.')
+            status = 'COMPLETE_DEFINED_SCOPE' if all(row['passed'] for row in checks) else 'FAILED_NUMERICAL_CHECKS'
+            result.update(status=status, provenance=reviewed['provenance'], skill_sha256=sha(skill),
+                          skill_use=receipt['skill_use'])
+            dump(output / 'result.json', result)
+            receipt.update(status=status, scope=result['scope'])
+    except Exception as caught:
+        error = caught
+        receipt.update(status='FAILED_PARTIAL_OUTPUT_RETAINED')
+        dump(output / 'failure.json', {'status': receipt['status'], 'type': type(caught).__name__,
+                                      'message': str(caught), 'retry': 'NOT_ATTEMPTED'})
+    dump(output / 'run-receipt.json', receipt)
+    seal_output(output)
+    if error is not None:
+        raise RuntimeError(str(error)) from error
     return receipt
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--mode', choices=['prepare', 'review', 'compute'], default='prepare')
+    parser.add_argument('--mode', choices=['prepare', 'review', 'backend'], default='review')
+    parser.add_argument('--input', type=Path, default=PAGE / 'runtime/examples/01.json')
     parser.add_argument('--output', type=Path, required=True)
-    parser.add_argument('--runtime-root', type=Path)
-    parser.add_argument('--installation-record', type=Path)
-    parser.add_argument('--record-sha256')
-    parser.add_argument('--lock-root', type=Path)
+    parser.add_argument('--backend', type=Path)
+    parser.add_argument('--execute', action='store_true', help='Explicitly execute the trusted Python backend once')
     args = parser.parse_args()
     try:
-        receipt = run_skill(mode=args.mode, output_dir=args.output, runtime_root=args.runtime_root,
-                            installation_record=args.installation_record, record_sha256=args.record_sha256,
-                            lock_root=args.lock_root)
-        print(json.dumps(receipt, ensure_ascii=False))
-        return int(receipt['status'].startswith('FAIL'))
-    except (ValueError, OSError, RuntimeError, ArithmeticError, ImportError, subprocess.TimeoutExpired) as error:
-        print(str(error), file=sys.stderr)
+        receipt = run_skill(mode=args.mode, request_file=args.input, output_dir=args.output,
+                            backend_file=args.backend, execute=args.execute)
+        print(receipt['status'], str(args.output))
+        return int(receipt['status'] == 'FAILED_NUMERICAL_CHECKS')
+    except Exception as error:
+        print(type(error).__name__ + ': ' + str(error), file=sys.stderr)
         return 2
 
 

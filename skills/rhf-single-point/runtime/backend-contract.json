@@ -1,0 +1,32 @@
+{
+  "schema": "portable-skill-backend-v1",
+  "modes": [
+    "prepare",
+    "review",
+    "backend"
+  ],
+  "request_root": [
+    "parameters",
+    "data",
+    "provenance"
+  ],
+  "provider_function": "run_backend(request: dict, output_dir: pathlib.Path) -> dict",
+  "return_fields": [
+    "review_request",
+    "execution"
+  ],
+  "execution_required_fields": [
+    "kind"
+  ],
+  "trusted_code_execution": "Explicit local .py plus execute=True, in process, NOT a sandbox",
+  "backend_calls": "Bridge function entries only; not independently counted quantum kernels",
+  "no_automatic": [
+    "installation",
+    "Runtime registration",
+    "Docker/WSL launch",
+    "network/model call by runner",
+    "retry"
+  ],
+  "hard_resource_limits": "NOT_ENFORCED",
+  "failure_policy": "Retain new outputs, failure receipt and archive; never overwrite old output"
+}
