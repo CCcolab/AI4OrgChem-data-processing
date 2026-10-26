@@ -1,7 +1,7 @@
-"""Portable Skill preparation, result review and explicit trusted backend call.
+"""Verified-scope input preparation, supplied result review and JSON file import.
 
 No model, installer, shell command, Runtime registration or container launcher.
-Backend Python runs with the user's permissions; this bridge is not a sandbox.
+This ordinary entry never imports a user-selected Python backend.
 """
 from pathlib import Path
 import argparse
@@ -15,7 +15,7 @@ import types
 import zipfile
 
 PAGE = Path(__file__).resolve().parents[1]
-CONTRACT = 'portable-skill-backend-v1'
+CONTRACT = 'local-skill-review-v1'
 
 
 def sha(raw):
@@ -74,7 +74,7 @@ def verify_resources():
             raise ValueError('Packaged resource changed: ' + name + '; copy editable inputs outside this package.')
         seen.add(name)
     if not {'README.md', 'SKILL.md', 'runtime/run_skill.py', 'runtime/analysis.py',
-            'runtime/requirements.txt'}.issubset(seen):
+            'runtime/requirements.txt', 'runtime/result_file.py'}.issubset(seen):
         raise ValueError('Required resource missing.')
 
 
@@ -112,23 +112,15 @@ def seal_output(output):
 
 
 def run_skill(*, mode, request_file, output_dir, backend_file=None, execute=False):
-    if mode not in {'prepare', 'review', 'backend'}:
-        raise ValueError('Choose prepare, review or backend.')
-    if mode == 'backend':
-        if not execute or backend_file is None:
-            raise ValueError('Backend execution requires --backend TRUSTED.py and --execute.')
-    elif execute or backend_file is not None:
-        raise ValueError('--backend and --execute belong only to backend mode.')
+    if mode not in {'prepare', 'review', 'import'}:
+        raise ValueError('Use prepare, review or import; real backend calls are only in development_preview/run_backend.py.')
+    if execute or backend_file is not None:
+        raise ValueError('The ordinary entry never executes user Python backends; see development_preview/README.md.')
     verify_resources()
     request_file = Path(request_file)
     if request_file.is_symlink() or not request_file.is_file() or request_file.stat().st_size > 2_000_000:
         raise ValueError('Provide a regular JSON file no larger than 2 MB.')
     raw = request_file.read_bytes()
-    backend = None
-    if backend_file is not None:
-        backend = Path(backend_file).resolve()
-        if not backend.is_file() or backend.suffix != '.py' or Path(backend_file).is_symlink():
-            raise ValueError('Explicit trusted local Python backend required.')
     output = Path(output_dir).resolve()
     if output.exists() or output.is_relative_to(PAGE):
         raise ValueError('Use a NEW output directory outside the Skill package.')
@@ -143,46 +135,31 @@ def run_skill(*, mode, request_file, output_dir, backend_file=None, execute=Fals
                'runner_network_calls': 0, 'backend_calls': 0,
                'backend_import_attempts': 0,
                'backend_execution_kind': 'NOT_EXECUTED',
-               'backend_behavior': 'NOT_SANDBOXED; inspect trusted code before execution',
+               'result_file_imports': 0,
+               'backend_behavior': 'UNAVAILABLE_IN_ORDINARY_ENTRY',
                'scientific_qualification': 'EXPLICIT_INPUTS_AND_CHECKS_ONLY'}
     error = None
     try:
         request = strict_json(raw)
         validate_request(request)
         if mode == 'prepare':
-            receipt.update(status='PREPARED_NOT_EXECUTED', scope='INPUT_SNAPSHOT_AND_CALL_PLAN_ONLY')
-            dump(output / 'backend-plan.json', {
-                'contract': CONTRACT, 'required_function': 'run_backend(request, output_dir)',
-                'required_return': {'review_request': 'parameters/data/provenance object',
-                                    'execution': 'kind/software/version/resources/source descriptions'},
-                'needs_user_selection': 'Existing trusted backend and method-specific scientific protocol',
-                'dependency_check': 'NOT_EXECUTED', 'science_input_validation': 'NOT_EXECUTED',
-                'hard_resource_limits': 'NOT_PROVIDED_BY_IN_PROCESS_BRIDGE'})
+            receipt.update(status='PREPARED_NOT_EXECUTED', scope='INPUT_SNAPSHOT_AND_REVIEW_PLAN_ONLY')
+            dump(output / 'input-plan.json', {
+                'contract': CONTRACT, 'required_request_root': ['parameters', 'data', 'provenance'],
+                'next_step': 'Supply a review request or import existing normalized result JSON',
+                'available_modes': ['review', 'import'], 'new_solver_calls': 0,
+                'science_input_validation': 'NOT_EXECUTED',
+                'real_backend_entry': 'SEPARATE_DEVELOPMENT_PREVIEW_ONLY'})
         else:
             reviewed = copy.deepcopy(request)
-            if mode == 'backend':
-                code = backend.read_bytes()
-                (output / 'backend.used.py').write_bytes(code)
-                receipt.update(backend_sha256=sha(code), backend_import_attempts=1,
-                               backend_execution_kind='IMPORTING_NOT_ENTERED')
-                dump(output / 'run-receipt.json', {**receipt, 'status': 'BACKEND_IMPORT_STARTED'})
-                provider = load_module(backend, '_user_backend_' + sha(code)[:16])
-                if not callable(getattr(provider, 'run_backend', None)):
-                    raise ValueError('Trusted backend must provide callable run_backend(request, output_dir).')
-                receipt.update(backend_calls=1, backend_execution_kind='ENTERED_NOT_COMPLETED')
-                dump(output / 'run-receipt.json', {**receipt, 'status': 'BACKEND_ENTERED'})
-                returned = provider.run_backend(copy.deepcopy(request), output)
-                # Retain the backend return before mathematical validation.
-                dump(output / 'backend-return.json', returned)
-                if not isinstance(returned, dict) or set(returned) != {'review_request', 'execution'}:
-                    raise ValueError('Backend must return exactly review_request and execution.')
-                execution = returned['execution']
-                if (not isinstance(execution, dict) or not isinstance(execution.get('kind'), str)
-                        or not execution['kind'].strip()):
-                    raise ValueError('Backend must declare execution kind; it is not independently authenticated.')
-                receipt.update(backend_execution_kind=execution['kind'], backend_report=execution)
+            if mode == 'import':
+                receipt['result_file_imports'] = 1
+                provider = load_module(PAGE / 'runtime/result_file.py', '_result_file_' + sha(str(PAGE).encode())[:16])
+                returned = provider.read_result_file(request, output)
+                dump(output / 'import-return.json', returned)
                 reviewed = returned['review_request']
                 validate_request(reviewed)
+                receipt['result_file_import'] = returned['execution']
             dump(output / 'review-request.json', reviewed)
             module = load_module(PAGE / 'runtime/analysis.py', '_review_' + sha(str(PAGE).encode())[:16], PAGE / 'runtime')
             result = module.analyze(reviewed['parameters'], reviewed['data'])
@@ -210,15 +187,12 @@ def run_skill(*, mode, request_file, output_dir, backend_file=None, execute=Fals
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--mode', choices=['prepare', 'review', 'backend'], default='review')
+    parser.add_argument('--mode', choices=['prepare', 'review', 'import'], default='review')
     parser.add_argument('--input', type=Path, default=PAGE / 'runtime/examples/01.json')
     parser.add_argument('--output', type=Path, required=True)
-    parser.add_argument('--backend', type=Path)
-    parser.add_argument('--execute', action='store_true', help='Explicitly execute the trusted Python backend once')
     args = parser.parse_args()
     try:
-        receipt = run_skill(mode=args.mode, request_file=args.input, output_dir=args.output,
-                            backend_file=args.backend, execute=args.execute)
+        receipt = run_skill(mode=args.mode, request_file=args.input, output_dir=args.output)
         print(receipt['status'], str(args.output))
         return int(receipt['status'] == 'FAILED_NUMERICAL_CHECKS')
     except Exception as error:

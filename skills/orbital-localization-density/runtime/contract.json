@@ -1,0 +1,14 @@
+{
+  "schema": "local-skill-review-v1",
+  "modes": [
+    "prepare",
+    "review",
+    "import"
+  ],
+  "scientific_schema": "UNCHANGED_PARAMETERS_DATA_PROVENANCE",
+  "new_solver_calls": 0,
+  "import": "Only read normalized JSON using parameters.result_file; no imported user code.",
+  "backend_preview": "development_preview/README.md",
+  "backend_scientific_qualification": "NOT_ACCEPTED",
+  "no_required_project_runtime_or_docker_or_model": true
+}

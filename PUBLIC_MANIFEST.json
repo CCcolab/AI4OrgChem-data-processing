@@ -1,6 +1,6 @@
 {
   "schema": "adp-public-python-skill-publication-v1",
-  "revision": "professional32-f07-main-20261026",
+  "revision": "professional32-verified-scope-main-20261026",
   "visibility": "PUBLIC",
   "entry": "START_HERE_zh-CN.md",
   "legacy_web_enabled": false,
@@ -48,7 +48,11 @@
     },
     {
       "file": "docs/BACKEND_STATUS.md",
-      "sha256": "4f52fef90fb3bf704bf94d77105df6f9000f922f5f72fb2089794580b23c3048"
+      "sha256": "f410c91abea47a666330c4dd96be7b1a918841ba53030819fe356e7fcbe5081b"
+    },
+    {
+      "file": "docs/DEVELOPMENT_PREVIEW.md",
+      "sha256": "d92b66d095ab57e2a771e0e88b040acf9725fd982ea441df9833eaaae96302f4"
     },
     {
       "file": "docs/PLATFORM_BOUNDARY_GUARD_zh-CN.md",
@@ -60,7 +64,7 @@
     },
     {
       "file": "docs/PYTHON_USAGE.md",
-      "sha256": "4f761b4de7c2406d462b0c7ea516b9f684eb491d0a0ae7ed72ceeb646bf09f5b"
+      "sha256": "3975cf59f58c9cab4dddbbc595624fb9af479ce8e14f0759ded53810f4679e85"
     },
     {
       "file": "docs/RIGHTS_REVIEW.md",
@@ -68,19 +72,19 @@
     },
     {
       "file": "docs/RUNTIME_INDEPENDENCE.md",
-      "sha256": "64d6052e1900ba598086994919c8617b95f649aa0db1123f86f9f22257367ad2"
+      "sha256": "d11fa14ed0e66041843acf36619da1c9ae7562b0ed7bb95bbc32e48b0176ff08"
     },
     {
       "file": "NAVIGATION.json",
-      "sha256": "b6701e77dbd55e05c474bef70489abd40a404f092de7aac88b6b91fb7c5f35f7"
+      "sha256": "6249291d2255e1d6652be3afa7f6ab1cfa2276abbc0e0a7c4275caa1c2b142cd"
     },
     {
       "file": "PLATFORM_ENTRY.json",
-      "sha256": "08c58e62d1a4b76609efc37203ecd4951d5ef937a7b487d3a90afef7580fc88d"
+      "sha256": "4937b845d1cedd3167a923c2bafe01a857a7dc14d3c40b8066de52f69161a440"
     },
     {
       "file": "README.md",
-      "sha256": "35f1c9573742e0e6b900763987de0e71c9cd1e1cad4c9e91c92481235cf82bc9"
+      "sha256": "ff402de15488a62e1840eb178f8827b45fa3c359bc5ccf309dd70628258db48a"
     },
     {
       "file": "skills/chemical-bayesian-optimization/downloads/chemical-bayesian-optimization-python.zip",
@@ -1344,59 +1348,75 @@
     },
     {
       "file": "skills/constrained-optimization-response/downloads/constrained-optimization-response-python.zip",
-      "sha256": "75074b8aa8f2565625a376cd7abc1583d14e855971b46d50f673e196bdcc82ba"
+      "sha256": "0625818e2006e3ba504ddb490d43b1cf40f02859b9e771649fcda7f338e1ac99"
     },
     {
       "file": "skills/constrained-optimization-response/downloads/constrained-optimization-response-python.zip.sha256",
-      "sha256": "0117caec62376b0ab7d1d4ca72cde83c8d30b67c7102a098763a22e5a5ea4fa0"
+      "sha256": "92c12f3565874fc2ee44bba51339fb2a9231ad22303f05e8ee3d0437f07b4db0"
     },
     {
       "file": "skills/constrained-optimization-response/downloads/constrained-optimization-response-skill.zip",
-      "sha256": "a3f67650bcf8aeb554d857572c06ce4110834c867de2a71635a1c92bd7373c86"
+      "sha256": "5296eff06f5797110b76269f783021a456e18a5125cfad9c1a50d1af2eccb524"
     },
     {
       "file": "skills/constrained-optimization-response/downloads/constrained-optimization-response-skill.zip.sha256",
-      "sha256": "759495ae3b5871912a5b4163be421960b9a10603c903fd722288eb3984d83207"
+      "sha256": "b220ca436cffddd35c61bdbde50b7f75d44482ea3f7c91023cfbacbb54be6b98"
     },
     {
       "file": "skills/constrained-optimization-response/downloads/README.md",
-      "sha256": "a72d66b8d5e4dfb762f3385adb93329eea14fa940c91118658b44061c4984583"
+      "sha256": "446c82e2b89ed17d7d336e8403dc5ca80c777cfc0359b36b6cb3f62a419e470a"
     },
     {
       "file": "skills/constrained-optimization-response/downloads/SHA256SUMS.txt",
-      "sha256": "c709fe6597e851b30fccbc67875f993e8076494e887efcc9826032b9b8031071"
+      "sha256": "ab2fc03cf3d9e33057cf490c1ad9aca473540e85c393a5452fd2cc6015cd894d"
     },
     {
       "file": "skills/constrained-optimization-response/downloads/SKILL-md.zip",
-      "sha256": "a3f67650bcf8aeb554d857572c06ce4110834c867de2a71635a1c92bd7373c86"
+      "sha256": "5296eff06f5797110b76269f783021a456e18a5125cfad9c1a50d1af2eccb524"
     },
     {
       "file": "skills/constrained-optimization-response/downloads/SKILL-md.zip.sha256",
-      "sha256": "71feb7a3ea57836b36dd0571132f2455b7a16504e9de189b9256f64e1d260142"
+      "sha256": "8d45301bf56bddf395a9eb0a68a4443f3768c4fc17db752da16383c37e50c0e2"
     },
     {
       "file": "skills/constrained-optimization-response/downloads/SKILL.md",
-      "sha256": "3ea2c71bfe44806c920ec1eed0bcc261f79e5e8425993956739b8a3529753388"
+      "sha256": "702b7f8f221b9829d00ea6916151c5d07427811aff48080714b062afd9612b5c"
     },
     {
       "file": "skills/constrained-optimization-response/README.md",
-      "sha256": "e116f6658bdaf7c36e9734b8a0aa4df1f323c691bfc8fcdc8c55af06ce6cb47f"
+      "sha256": "c78eb0375fcd8cb8c859c9d9bffbb699350a46668ce8fe722ad81a8978e82dc2"
     },
     {
       "file": "skills/constrained-optimization-response/runtime/analysis.py",
       "sha256": "55c973680608a00836fbf2c9c4cb9317e3245b4eaa0d21e82a0a9dd6f8ced58e"
     },
     {
-      "file": "skills/constrained-optimization-response/runtime/backend-contract.json",
+      "file": "skills/constrained-optimization-response/runtime/contract.json",
+      "sha256": "5f3313861fe06c69594347ca3032888a079b52df329d8769dc3fec0d6ac40fda"
+    },
+    {
+      "file": "skills/constrained-optimization-response/runtime/development_preview/backend-contract.json",
       "sha256": "8de6f3d94b5996d501c05b94ed4c3d4d7d5958ad705498cf93e23575945ccfbf"
     },
     {
-      "file": "skills/constrained-optimization-response/runtime/backends/demo_backend.py",
+      "file": "skills/constrained-optimization-response/runtime/development_preview/backends/demo_backend.py",
       "sha256": "b79720de3e9736be4797e42cdf100d9e65421cb1d60aa994f3ac33fbf18d34eb"
     },
     {
-      "file": "skills/constrained-optimization-response/runtime/backends/file_backend.py",
+      "file": "skills/constrained-optimization-response/runtime/development_preview/backends/file_backend.py",
       "sha256": "5ee87706897c250b3502139c64d356a05736dfc614839db015a7d2d68226ef59"
+    },
+    {
+      "file": "skills/constrained-optimization-response/runtime/development_preview/examples/03_backend_contract_demo.py",
+      "sha256": "19f92200b91b26251c855171468e42d4969a42e6010129b8e54d672d9dbdd8e7"
+    },
+    {
+      "file": "skills/constrained-optimization-response/runtime/development_preview/README.md",
+      "sha256": "8f888668e3d1963f813c6a02bd2b66b4eaed496b919a3a5ba8793e8556ba7758"
+    },
+    {
+      "file": "skills/constrained-optimization-response/runtime/development_preview/run_backend.py",
+      "sha256": "a348cc1fae8db672afa01fcd6e71437fa715a40b03d86b5b5d6b08c41a609bc3"
     },
     {
       "file": "skills/constrained-optimization-response/runtime/examples/01.json",
@@ -1419,8 +1439,8 @@
       "sha256": "6737814a05a1b2c4697cd020d780c7751ca5fbd341805582114211e559d97dd9"
     },
     {
-      "file": "skills/constrained-optimization-response/runtime/examples/03_user_backend.py",
-      "sha256": "b377eb20bca3eea313c697fd5c6f494918196a1e5533707abc3ba98a7a7941ab"
+      "file": "skills/constrained-optimization-response/runtime/examples/03_import_result.py",
+      "sha256": "73eafe25f3483eb51e1349dbf5b78ca437d3ec3ea5c7271dc53a0276990257c5"
     },
     {
       "file": "skills/constrained-optimization-response/runtime/requirements.txt",
@@ -1428,15 +1448,19 @@
     },
     {
       "file": "skills/constrained-optimization-response/runtime/resource-manifest.json",
-      "sha256": "c6541df7c3e8386e406d8632b1ea6cf3da130e868f3bf96b1f56195ba4094bd9"
+      "sha256": "b0bd715237e96a8a96b7083965a86574de1526c152c3ddbf40b8e2a2d70f8211"
+    },
+    {
+      "file": "skills/constrained-optimization-response/runtime/result_file.py",
+      "sha256": "4684cb8722d777df259c1e55d4fe7622b1fa8cf44d92fb1bdcfc7edf604c96f2"
     },
     {
       "file": "skills/constrained-optimization-response/runtime/run_skill.py",
-      "sha256": "3d72bcfd04fb8b4450c112d64d77bf0f6fdb8332715ab4dba363212d99d9aba0"
+      "sha256": "7235ad81661f62c63fd6d62b85a1338df81722e0c0b87a908189a4f097cc2811"
     },
     {
       "file": "skills/constrained-optimization-response/runtime/SHA256SUMS.txt",
-      "sha256": "7c986e77ff0b2cdb355d02b8d3870c371860db4df2d34b82b6f535069015546d"
+      "sha256": "4643a3a373cab46313c78481ae27ff67bd80f264e0d71c1caa7732ecf2b9c420"
     },
     {
       "file": "skills/constrained-optimization-response/runtime/sources.json",
@@ -1448,67 +1472,83 @@
     },
     {
       "file": "skills/constrained-optimization-response/SKILL.md",
-      "sha256": "3ea2c71bfe44806c920ec1eed0bcc261f79e5e8425993956739b8a3529753388"
+      "sha256": "702b7f8f221b9829d00ea6916151c5d07427811aff48080714b062afd9612b5c"
     },
     {
       "file": "skills/fixed-protocol-energy-review/downloads/fixed-protocol-energy-review-python.zip",
-      "sha256": "d09e400765f7826b677d862cf76772f2d6f7c1293bd949de4b83d5cafc4e4b49"
+      "sha256": "1d6611c422d2a3c455d88e8ad64ad6c877fa942e882b37095fbb86fc33c868e2"
     },
     {
       "file": "skills/fixed-protocol-energy-review/downloads/fixed-protocol-energy-review-python.zip.sha256",
-      "sha256": "5a84c10c0b357fe3b75241e74e4daf0866056a048aef85a587ff24bbb8b34eba"
+      "sha256": "d0538948c65ee725b6235e462874cedb24b6cacfdff6afd7b7cd72c95f1a3032"
     },
     {
       "file": "skills/fixed-protocol-energy-review/downloads/fixed-protocol-energy-review-skill.zip",
-      "sha256": "023ade3f8616b040160889be883465752b10e52d843146ad2f5426455dac79e6"
+      "sha256": "5abc01824b87984a8ecb4b5f7166e84c170cc356b544ec03cd6af3cd426df1c7"
     },
     {
       "file": "skills/fixed-protocol-energy-review/downloads/fixed-protocol-energy-review-skill.zip.sha256",
-      "sha256": "33ad132b1d0196df526bff85266c5b7996c49d9c3bb5df241f64043b582aa85d"
+      "sha256": "129deb2536396b04e99a68da36ef4a4ede668ec76b444d594f823d62c8a061f9"
     },
     {
       "file": "skills/fixed-protocol-energy-review/downloads/README.md",
-      "sha256": "a7b1aa76148dc87337c47440152094556a5e8bbf9ed31bab6c1465efe4a589f8"
+      "sha256": "e5193bcd3aaf5e20ce9d2e7ffbab343b5e3ab03fa186064ca4aaef5256651268"
     },
     {
       "file": "skills/fixed-protocol-energy-review/downloads/SHA256SUMS.txt",
-      "sha256": "88892c3ced6a11c565456bc1aa724ce5a2b7c044d978d16756198d26d6e751ff"
+      "sha256": "01d66e71e9569b668a04f818b7e6c2a4d9e238e194879dc69b8c09811104f822"
     },
     {
       "file": "skills/fixed-protocol-energy-review/downloads/SKILL-md.zip",
-      "sha256": "023ade3f8616b040160889be883465752b10e52d843146ad2f5426455dac79e6"
+      "sha256": "5abc01824b87984a8ecb4b5f7166e84c170cc356b544ec03cd6af3cd426df1c7"
     },
     {
       "file": "skills/fixed-protocol-energy-review/downloads/SKILL-md.zip.sha256",
-      "sha256": "d4dd43d0c55b0f784bf35a1a132c2cd743b9dfda5b7b2457321b5b3eec8d774a"
+      "sha256": "8ae64b80f838b7a722ed760c2da15f980a7f1588238f08780c5e0a23a5f97ccc"
     },
     {
       "file": "skills/fixed-protocol-energy-review/downloads/SKILL.md",
-      "sha256": "c94292a2255f8a1db9b9f5da6f5e0008f598957a9050d889017c3b078ef02861"
+      "sha256": "f0c8843d65517aaa457ec86d408c68216ebcb7b483a45acdc7db8cf7e10e3396"
     },
     {
       "file": "skills/fixed-protocol-energy-review/README.md",
-      "sha256": "9a43bed3ad2f26e77afaa9af46c0c8312600c235045fcd00c18304b74b97fd02"
+      "sha256": "da088571e59b91501b173e07d65c5893ca08e2ea7eb01184c9dc2d8a8657661d"
     },
     {
       "file": "skills/fixed-protocol-energy-review/runtime/analysis.py",
       "sha256": "331a9d5176f469bdccd840537b6acedc66739aa477400b53f00f1a07ab1f9f39"
     },
     {
-      "file": "skills/fixed-protocol-energy-review/runtime/backend-contract.json",
-      "sha256": "8de6f3d94b5996d501c05b94ed4c3d4d7d5958ad705498cf93e23575945ccfbf"
-    },
-    {
-      "file": "skills/fixed-protocol-energy-review/runtime/backends/demo_backend.py",
-      "sha256": "b79720de3e9736be4797e42cdf100d9e65421cb1d60aa994f3ac33fbf18d34eb"
-    },
-    {
-      "file": "skills/fixed-protocol-energy-review/runtime/backends/file_backend.py",
-      "sha256": "5ee87706897c250b3502139c64d356a05736dfc614839db015a7d2d68226ef59"
+      "file": "skills/fixed-protocol-energy-review/runtime/contract.json",
+      "sha256": "5f3313861fe06c69594347ca3032888a079b52df329d8769dc3fec0d6ac40fda"
     },
     {
       "file": "skills/fixed-protocol-energy-review/runtime/decimal_arithmetic.py",
       "sha256": "d427f3ab5ef054bc182998f9fb6ba0edc4ecf0579ac19a5fd35fc386387f0ed4"
+    },
+    {
+      "file": "skills/fixed-protocol-energy-review/runtime/development_preview/backend-contract.json",
+      "sha256": "8de6f3d94b5996d501c05b94ed4c3d4d7d5958ad705498cf93e23575945ccfbf"
+    },
+    {
+      "file": "skills/fixed-protocol-energy-review/runtime/development_preview/backends/demo_backend.py",
+      "sha256": "b79720de3e9736be4797e42cdf100d9e65421cb1d60aa994f3ac33fbf18d34eb"
+    },
+    {
+      "file": "skills/fixed-protocol-energy-review/runtime/development_preview/backends/file_backend.py",
+      "sha256": "5ee87706897c250b3502139c64d356a05736dfc614839db015a7d2d68226ef59"
+    },
+    {
+      "file": "skills/fixed-protocol-energy-review/runtime/development_preview/examples/03_backend_contract_demo.py",
+      "sha256": "19f92200b91b26251c855171468e42d4969a42e6010129b8e54d672d9dbdd8e7"
+    },
+    {
+      "file": "skills/fixed-protocol-energy-review/runtime/development_preview/README.md",
+      "sha256": "9eefe173fd5ec381cc82e8fa54b258447903fd6221d1595f742075f24d9bd7cd"
+    },
+    {
+      "file": "skills/fixed-protocol-energy-review/runtime/development_preview/run_backend.py",
+      "sha256": "a348cc1fae8db672afa01fcd6e71437fa715a40b03d86b5b5d6b08c41a609bc3"
     },
     {
       "file": "skills/fixed-protocol-energy-review/runtime/examples/01.json",
@@ -1531,8 +1571,8 @@
       "sha256": "c1e9af126f28fdde9e8f48dd02f203e386f4cfde1c8c34890bf9378dfe950263"
     },
     {
-      "file": "skills/fixed-protocol-energy-review/runtime/examples/03_user_backend.py",
-      "sha256": "b377eb20bca3eea313c697fd5c6f494918196a1e5533707abc3ba98a7a7941ab"
+      "file": "skills/fixed-protocol-energy-review/runtime/examples/03_import_result.py",
+      "sha256": "73eafe25f3483eb51e1349dbf5b78ca437d3ec3ea5c7271dc53a0276990257c5"
     },
     {
       "file": "skills/fixed-protocol-energy-review/runtime/requirements.txt",
@@ -1540,15 +1580,19 @@
     },
     {
       "file": "skills/fixed-protocol-energy-review/runtime/resource-manifest.json",
-      "sha256": "5d6ad7e815b0a1daf8a34929019e69c9df9aed7d21400ff7c8d0741abe37b9cd"
+      "sha256": "084abf094bd68b75061ea1e89fd64ca29252cd5a8666de30ff3957bed99b028f"
+    },
+    {
+      "file": "skills/fixed-protocol-energy-review/runtime/result_file.py",
+      "sha256": "4684cb8722d777df259c1e55d4fe7622b1fa8cf44d92fb1bdcfc7edf604c96f2"
     },
     {
       "file": "skills/fixed-protocol-energy-review/runtime/run_skill.py",
-      "sha256": "3d72bcfd04fb8b4450c112d64d77bf0f6fdb8332715ab4dba363212d99d9aba0"
+      "sha256": "7235ad81661f62c63fd6d62b85a1338df81722e0c0b87a908189a4f097cc2811"
     },
     {
       "file": "skills/fixed-protocol-energy-review/runtime/SHA256SUMS.txt",
-      "sha256": "ffac3903e4af2ccc1039468340b23b0ec9f3599f8912f0b717ed83656400b48e"
+      "sha256": "fa538d0e8f0f428f6a31e65d373a64b4d055fa41dc6f5d11c702df7549ed7a24"
     },
     {
       "file": "skills/fixed-protocol-energy-review/runtime/sources.json",
@@ -1556,7 +1600,7 @@
     },
     {
       "file": "skills/fixed-protocol-energy-review/SKILL.md",
-      "sha256": "c94292a2255f8a1db9b9f5da6f5e0008f598957a9050d889017c3b078ef02861"
+      "sha256": "f0c8843d65517aaa457ec86d408c68216ebcb7b483a45acdc7db8cf7e10e3396"
     },
     {
       "file": "skills/fragment-working-basis/downloads/fragment-working-basis-python.zip",
@@ -2024,59 +2068,75 @@
     },
     {
       "file": "skills/multistate-size-comparison/downloads/multistate-size-comparison-python.zip",
-      "sha256": "1036b6af84491f6df462044102af82884939a449d313abc8af5d9d9348492171"
+      "sha256": "2b68385902996f6fd42b1d7bb7ac705d23a33b4835099d9d90b2f8fd71e5e6b3"
     },
     {
       "file": "skills/multistate-size-comparison/downloads/multistate-size-comparison-python.zip.sha256",
-      "sha256": "45982d69ec3ed32efc04ca62111a71a957a6efb339681dcfa0a4c01d2468fd46"
+      "sha256": "1773cb74ace4e69ebe59198f9bc9df29c9d91002c3f36ea4fc9b4a53b84603c0"
     },
     {
       "file": "skills/multistate-size-comparison/downloads/multistate-size-comparison-skill.zip",
-      "sha256": "f00f96788c9fac2ca0020e39bf658668ac9a20567c12d3734c0e204142751a1a"
+      "sha256": "5acbad2c43757cc3bef6e48dca21485bba6bff42dfe235cbbf2db862a0d2c021"
     },
     {
       "file": "skills/multistate-size-comparison/downloads/multistate-size-comparison-skill.zip.sha256",
-      "sha256": "ef5de42134f6a688fdfab21d0c5777c82ce00c407f184c1baaa57ec14e953a4f"
+      "sha256": "7618cb0a7ea7ec35d708ff1227011b7b1168d7a3c2be54300b8ef671b10bc247"
     },
     {
       "file": "skills/multistate-size-comparison/downloads/README.md",
-      "sha256": "66d7ae6f40a9ba894fac4c073a120c44b6aadf29145faf32354d0ee02cbc718c"
+      "sha256": "d38d3c25b31ca66e15b073bf5c6ad3b6c175ab3dfd066fb48eb1562cbf8a4d96"
     },
     {
       "file": "skills/multistate-size-comparison/downloads/SHA256SUMS.txt",
-      "sha256": "efdb72e2421a8682f66f19bfb46f97a01f9d3cf6c619b4aa67fccc22e4f9f669"
+      "sha256": "55b3dacffb96488d91c96a68846cc394ee4cbd674fc4131e3846bbd671cf9d24"
     },
     {
       "file": "skills/multistate-size-comparison/downloads/SKILL-md.zip",
-      "sha256": "f00f96788c9fac2ca0020e39bf658668ac9a20567c12d3734c0e204142751a1a"
+      "sha256": "5acbad2c43757cc3bef6e48dca21485bba6bff42dfe235cbbf2db862a0d2c021"
     },
     {
       "file": "skills/multistate-size-comparison/downloads/SKILL-md.zip.sha256",
-      "sha256": "c25d3f60f566b4946f3e8659768c3ca1c52081e5980a26a348ddce1c39b382f6"
+      "sha256": "9f60c07e962ec6fd30b870d6f0c5b95fd189cd4fd9cf6a46c168228679f0a531"
     },
     {
       "file": "skills/multistate-size-comparison/downloads/SKILL.md",
-      "sha256": "bce8ed7f3001bd2ab1b207f6f65520f9768c1bae856b09e58768ddd88dddf37f"
+      "sha256": "c58fc4a7efd02ff2e931bfca7272239118a657673082c37322e7ca333fab31cc"
     },
     {
       "file": "skills/multistate-size-comparison/README.md",
-      "sha256": "22596b9bb49c2aa2ed23f70527376965cfd8daa72a7801a6db15ede47d6c7500"
+      "sha256": "e29bc22b2279b51450d9ca136df7793de5125c4cac17e813ec45126b8aa3b2cb"
     },
     {
       "file": "skills/multistate-size-comparison/runtime/analysis.py",
       "sha256": "c78999786b7e0d5bc23efc8bb424af4ba80d1e9b71e6f0098753a130053cfad8"
     },
     {
-      "file": "skills/multistate-size-comparison/runtime/backend-contract.json",
+      "file": "skills/multistate-size-comparison/runtime/contract.json",
+      "sha256": "5f3313861fe06c69594347ca3032888a079b52df329d8769dc3fec0d6ac40fda"
+    },
+    {
+      "file": "skills/multistate-size-comparison/runtime/development_preview/backend-contract.json",
       "sha256": "8de6f3d94b5996d501c05b94ed4c3d4d7d5958ad705498cf93e23575945ccfbf"
     },
     {
-      "file": "skills/multistate-size-comparison/runtime/backends/demo_backend.py",
+      "file": "skills/multistate-size-comparison/runtime/development_preview/backends/demo_backend.py",
       "sha256": "b79720de3e9736be4797e42cdf100d9e65421cb1d60aa994f3ac33fbf18d34eb"
     },
     {
-      "file": "skills/multistate-size-comparison/runtime/backends/file_backend.py",
+      "file": "skills/multistate-size-comparison/runtime/development_preview/backends/file_backend.py",
       "sha256": "5ee87706897c250b3502139c64d356a05736dfc614839db015a7d2d68226ef59"
+    },
+    {
+      "file": "skills/multistate-size-comparison/runtime/development_preview/examples/03_backend_contract_demo.py",
+      "sha256": "19f92200b91b26251c855171468e42d4969a42e6010129b8e54d672d9dbdd8e7"
+    },
+    {
+      "file": "skills/multistate-size-comparison/runtime/development_preview/README.md",
+      "sha256": "b32fc5c2c47919656fc930a21fba988ddbca1b2bd9535deb4fb5c80cc0aa418c"
+    },
+    {
+      "file": "skills/multistate-size-comparison/runtime/development_preview/run_backend.py",
+      "sha256": "a348cc1fae8db672afa01fcd6e71437fa715a40b03d86b5b5d6b08c41a609bc3"
     },
     {
       "file": "skills/multistate-size-comparison/runtime/examples/01.json",
@@ -2099,8 +2159,8 @@
       "sha256": "059004873a8d4020d5e5d18f589d1afed6dcbfa5abe6f49759916b9abbbf4bb7"
     },
     {
-      "file": "skills/multistate-size-comparison/runtime/examples/03_user_backend.py",
-      "sha256": "b377eb20bca3eea313c697fd5c6f494918196a1e5533707abc3ba98a7a7941ab"
+      "file": "skills/multistate-size-comparison/runtime/examples/03_import_result.py",
+      "sha256": "73eafe25f3483eb51e1349dbf5b78ca437d3ec3ea5c7271dc53a0276990257c5"
     },
     {
       "file": "skills/multistate-size-comparison/runtime/requirements.txt",
@@ -2108,15 +2168,19 @@
     },
     {
       "file": "skills/multistate-size-comparison/runtime/resource-manifest.json",
-      "sha256": "e1638b7e6663ebcaaa1121b8e4f7783c1991d7fcf8ca70e5bca282924d74604f"
+      "sha256": "dcf919946288df094cb8a1196885d913300038df59e37e271af2894561b687a0"
+    },
+    {
+      "file": "skills/multistate-size-comparison/runtime/result_file.py",
+      "sha256": "4684cb8722d777df259c1e55d4fe7622b1fa8cf44d92fb1bdcfc7edf604c96f2"
     },
     {
       "file": "skills/multistate-size-comparison/runtime/run_skill.py",
-      "sha256": "3d72bcfd04fb8b4450c112d64d77bf0f6fdb8332715ab4dba363212d99d9aba0"
+      "sha256": "7235ad81661f62c63fd6d62b85a1338df81722e0c0b87a908189a4f097cc2811"
     },
     {
       "file": "skills/multistate-size-comparison/runtime/SHA256SUMS.txt",
-      "sha256": "505d462a0d86c16b089476832a52625fc54674aeeeb233837830a797894af268"
+      "sha256": "68158fe4b3aa2ff4837d85fb4cff275da202dc5b9cf4fc34de140aacad6b6464"
     },
     {
       "file": "skills/multistate-size-comparison/runtime/sources.json",
@@ -2128,7 +2192,7 @@
     },
     {
       "file": "skills/multistate-size-comparison/SKILL.md",
-      "sha256": "bce8ed7f3001bd2ab1b207f6f65520f9768c1bae856b09e58768ddd88dddf37f"
+      "sha256": "c58fc4a7efd02ff2e931bfca7272239118a657673082c37322e7ca333fab31cc"
     },
     {
       "file": "skills/nonorthogonal-subspace/downloads/nonorthogonal-subspace-python.zip",
@@ -2304,63 +2368,83 @@
     },
     {
       "file": "skills/orbital-localization-density/downloads/orbital-localization-density-python.zip",
-      "sha256": "47d669ba69ad96cf38cffdf3b1eb7d3ea3bfe0004b6d045b57a360f2e43472ab"
+      "sha256": "82a726ce2669b12a5fc1c4de81efd1273671bc3fabb6e6a4c7591f5d791a996a"
     },
     {
       "file": "skills/orbital-localization-density/downloads/orbital-localization-density-python.zip.sha256",
-      "sha256": "e3ac0731fd5464af2475d136a9f0d1e6b19cdeee58abd540b02d6460617a5a1f"
+      "sha256": "c618fec3ce600512e7e5f720f7d60543539eae1f97a1021f2bf57a439f2c773b"
     },
     {
       "file": "skills/orbital-localization-density/downloads/orbital-localization-density-skill.zip",
-      "sha256": "64f1b99691c230c750a6cb0621b4d566a418ab09b1dd7382b1461939098e3e2a"
+      "sha256": "eb05dc02edbcde891e88a72fd8bc1f079942c20572e8ad6f0cc11640c2f4d089"
     },
     {
       "file": "skills/orbital-localization-density/downloads/orbital-localization-density-skill.zip.sha256",
-      "sha256": "d6cffc58802a8903fab05cc5faa89078c772750ffb6708af9f1be9607984174e"
+      "sha256": "81f5d97639ab2236560f5065721382d7901ded1c2df04366b74d489d10d64c03"
     },
     {
       "file": "skills/orbital-localization-density/downloads/README.md",
-      "sha256": "7b752c706fda41e9c724781a4db2909518a83be4721ff578a0e72b0a96e60248"
+      "sha256": "e189428c169a4742cc9174d6bb6c63e0ceb80783bb31aa82574d756f26c2d8f0"
     },
     {
       "file": "skills/orbital-localization-density/downloads/SHA256SUMS.txt",
-      "sha256": "0718ee4b5e83132335f27d2106c8abbf81ff04f08be48b37863f4c082acf053b"
+      "sha256": "8e2ebc822bbbec8bbd1480edf216a741a34c6547a71a106475b4237806bdeb06"
     },
     {
       "file": "skills/orbital-localization-density/downloads/SKILL-md.zip",
-      "sha256": "64f1b99691c230c750a6cb0621b4d566a418ab09b1dd7382b1461939098e3e2a"
+      "sha256": "eb05dc02edbcde891e88a72fd8bc1f079942c20572e8ad6f0cc11640c2f4d089"
     },
     {
       "file": "skills/orbital-localization-density/downloads/SKILL-md.zip.sha256",
-      "sha256": "6d6753200ed1b53c8149185d5447bd5fb516df678090b2ffeac1cd89fc545b38"
+      "sha256": "65ea0c4c4f6ae6654947fb714732155c323f77be7974206deb48f9c73db7d60a"
     },
     {
       "file": "skills/orbital-localization-density/downloads/SKILL.md",
-      "sha256": "8c3db6d65cd58ca10cbf9a46af22effb733633eedbe3db7745ea950015fd0821"
+      "sha256": "193f4018e12dda1ea1bc15a93bcd4d62a95b250b015444e711caa9795c9bcf40"
     },
     {
       "file": "skills/orbital-localization-density/README.md",
-      "sha256": "5001472cf01f291e049dabb913b11fa271661b2b1ffb4f0fa73df04a0a473ad7"
+      "sha256": "9a8c4d600c181cc765900bb9c14e3ce09e79f5854e5f52b87b6c7c6c614bb575"
     },
     {
       "file": "skills/orbital-localization-density/runtime/analysis.py",
       "sha256": "ef2f29a3b3e3d9cba08a98b42587df47a134fa11bef81e831d554bb6e90a40b9"
     },
     {
-      "file": "skills/orbital-localization-density/runtime/backend-contract.json",
+      "file": "skills/orbital-localization-density/runtime/contract.json",
+      "sha256": "5f3313861fe06c69594347ca3032888a079b52df329d8769dc3fec0d6ac40fda"
+    },
+    {
+      "file": "skills/orbital-localization-density/runtime/development_preview/backend-contract.json",
       "sha256": "8de6f3d94b5996d501c05b94ed4c3d4d7d5958ad705498cf93e23575945ccfbf"
     },
     {
-      "file": "skills/orbital-localization-density/runtime/backends/demo_backend.py",
+      "file": "skills/orbital-localization-density/runtime/development_preview/backends/demo_backend.py",
       "sha256": "b79720de3e9736be4797e42cdf100d9e65421cb1d60aa994f3ac33fbf18d34eb"
     },
     {
-      "file": "skills/orbital-localization-density/runtime/backends/file_backend.py",
+      "file": "skills/orbital-localization-density/runtime/development_preview/backends/file_backend.py",
       "sha256": "5ee87706897c250b3502139c64d356a05736dfc614839db015a7d2d68226ef59"
     },
     {
-      "file": "skills/orbital-localization-density/runtime/backends/pyscf_backend.py",
+      "file": "skills/orbital-localization-density/runtime/development_preview/backends/pyscf_backend.py",
       "sha256": "686502b3fd74ac37bf727bd9b94c078fe9827a66a2cc4cd90c36d9ec0f3ccf3b"
+    },
+    {
+      "file": "skills/orbital-localization-density/runtime/development_preview/examples/03_backend_contract_demo.py",
+      "sha256": "19f92200b91b26251c855171468e42d4969a42e6010129b8e54d672d9dbdd8e7"
+    },
+    {
+      "file": "skills/orbital-localization-density/runtime/development_preview/examples/native-request.json",
+      "sha256": "8686d2303d2c40e8cc71a72a41aa1f07965c2d1a2f2b484eafc7f35bfb43b732"
+    },
+    {
+      "file": "skills/orbital-localization-density/runtime/development_preview/README.md",
+      "sha256": "b0a5fe7c802aba67498421bb261828b8881641d2e7675f485259622b3e2a7904"
+    },
+    {
+      "file": "skills/orbital-localization-density/runtime/development_preview/run_backend.py",
+      "sha256": "a348cc1fae8db672afa01fcd6e71437fa715a40b03d86b5b5d6b08c41a609bc3"
     },
     {
       "file": "skills/orbital-localization-density/runtime/examples/01.json",
@@ -2383,12 +2467,8 @@
       "sha256": "e3e1a16264ded76cdb40a2f256ed669824a7eb3291ee402e1b5df1ec679290a1"
     },
     {
-      "file": "skills/orbital-localization-density/runtime/examples/03_user_backend.py",
-      "sha256": "b377eb20bca3eea313c697fd5c6f494918196a1e5533707abc3ba98a7a7941ab"
-    },
-    {
-      "file": "skills/orbital-localization-density/runtime/examples/native-request.json",
-      "sha256": "8686d2303d2c40e8cc71a72a41aa1f07965c2d1a2f2b484eafc7f35bfb43b732"
+      "file": "skills/orbital-localization-density/runtime/examples/03_import_result.py",
+      "sha256": "73eafe25f3483eb51e1349dbf5b78ca437d3ec3ea5c7271dc53a0276990257c5"
     },
     {
       "file": "skills/orbital-localization-density/runtime/requirements.txt",
@@ -2396,15 +2476,19 @@
     },
     {
       "file": "skills/orbital-localization-density/runtime/resource-manifest.json",
-      "sha256": "cf4855cd6f152ebc7049b7540374e0ad6c6679b5d4d228b0b5d1930170e728bd"
+      "sha256": "01a1012f43075d874b0cf09b860f4580f39577c27df8932284233f1c60f3930a"
+    },
+    {
+      "file": "skills/orbital-localization-density/runtime/result_file.py",
+      "sha256": "4684cb8722d777df259c1e55d4fe7622b1fa8cf44d92fb1bdcfc7edf604c96f2"
     },
     {
       "file": "skills/orbital-localization-density/runtime/run_skill.py",
-      "sha256": "3d72bcfd04fb8b4450c112d64d77bf0f6fdb8332715ab4dba363212d99d9aba0"
+      "sha256": "7235ad81661f62c63fd6d62b85a1338df81722e0c0b87a908189a4f097cc2811"
     },
     {
       "file": "skills/orbital-localization-density/runtime/SHA256SUMS.txt",
-      "sha256": "9fba4e5d5f9719c8c66f7fafe8dd37c6838e3ea2d3774d76d53cfedd241a9ab5"
+      "sha256": "1cd80ad3bbf992bafe77a03a71a726c23c069bcda181c25fb9ef028ee0ce954c"
     },
     {
       "file": "skills/orbital-localization-density/runtime/sources.json",
@@ -2416,7 +2500,7 @@
     },
     {
       "file": "skills/orbital-localization-density/SKILL.md",
-      "sha256": "8c3db6d65cd58ca10cbf9a46af22effb733633eedbe3db7745ea950015fd0821"
+      "sha256": "193f4018e12dda1ea1bc15a93bcd4d62a95b250b015444e711caa9795c9bcf40"
     },
     {
       "file": "skills/organic-smiles-rdkit/assets/descriptors.png",
@@ -2744,63 +2828,83 @@
     },
     {
       "file": "skills/rhf-single-point/downloads/README.md",
-      "sha256": "37d299eed1ffe33aff4634501967d961f66a39be7a4af684239fc98467e23d35"
+      "sha256": "63bad323cca26ef02b4cd3e0f8fae4757f1752d9e552dcc3439faad315f618c6"
     },
     {
       "file": "skills/rhf-single-point/downloads/rhf-single-point-python.zip",
-      "sha256": "0100b0e5ab4b86e8cf84abb548d92c23cb13ff19997552add9f33f2bf9bed5a5"
+      "sha256": "e41dc08015b954370a255ee110472634a5242aa4cd4a9c073a6940c6f6a5d157"
     },
     {
       "file": "skills/rhf-single-point/downloads/rhf-single-point-python.zip.sha256",
-      "sha256": "e8fe60bd66b2280e7c977e8a102cad449c2fc4dca95c3e1d70c1b2c78be68278"
+      "sha256": "84497802499ac8ff3f353f2e44e8167f67c1ff51fa7b2987510ddfef6e41b364"
     },
     {
       "file": "skills/rhf-single-point/downloads/rhf-single-point-skill.zip",
-      "sha256": "c946205115f1a311d3fd44e97ec86a9c405d5361b8d3a0fad867440250c2df04"
+      "sha256": "6a78e4c94d98debabbd84c88e5e7fa51900d7f6d1a4feb7f67062db0c16601f4"
     },
     {
       "file": "skills/rhf-single-point/downloads/rhf-single-point-skill.zip.sha256",
-      "sha256": "4d699cefd14ea4e1c9e6a54ae382a42144b07b03b00d2b085c832b85d0a0b36a"
+      "sha256": "c2ae63492d77176246d10dc1f721e7117c297152b9478d2000d7d6c21bc40fd1"
     },
     {
       "file": "skills/rhf-single-point/downloads/SHA256SUMS.txt",
-      "sha256": "63dffce3df4403caf4b74f3a303ef17e3714296764547ee583765d031e0a0f5d"
+      "sha256": "410cf6c83ba4894f21978e18c02b1d0387a6fcb45cbd8ba23c671eb3d27aea3f"
     },
     {
       "file": "skills/rhf-single-point/downloads/SKILL-md.zip",
-      "sha256": "c946205115f1a311d3fd44e97ec86a9c405d5361b8d3a0fad867440250c2df04"
+      "sha256": "6a78e4c94d98debabbd84c88e5e7fa51900d7f6d1a4feb7f67062db0c16601f4"
     },
     {
       "file": "skills/rhf-single-point/downloads/SKILL-md.zip.sha256",
-      "sha256": "f53eced94ec98d2391c160a5aef08085df98be46e388dd42eb63579f74c8cb1d"
+      "sha256": "f0078e6fe172de6ae1645f40c67f4530a785b40c2b1890ab0b0dd006c6edf806"
     },
     {
       "file": "skills/rhf-single-point/downloads/SKILL.md",
-      "sha256": "2bcded4b5bca0ff604701e68ad0624160f9cebb754884004dd6839e3a26dba89"
+      "sha256": "42c27f27057ff76db259a7428d0becf41762db0b6c4b5fdf88f29daa16187642"
     },
     {
       "file": "skills/rhf-single-point/README.md",
-      "sha256": "8e4350c3e00beb445b13e76c302f73829693f4de0babd0ae5de036597a2be6ce"
+      "sha256": "98f223e3a148cf552ffd6f792a68f93cd8829b52e11453b81fd6245f86fd7fec"
     },
     {
       "file": "skills/rhf-single-point/runtime/analysis.py",
       "sha256": "1db6bafbf18637f49eee2ae0816b585cb250396abc319d5c2811882af98a3d93"
     },
     {
-      "file": "skills/rhf-single-point/runtime/backend-contract.json",
+      "file": "skills/rhf-single-point/runtime/contract.json",
+      "sha256": "5f3313861fe06c69594347ca3032888a079b52df329d8769dc3fec0d6ac40fda"
+    },
+    {
+      "file": "skills/rhf-single-point/runtime/development_preview/backend-contract.json",
       "sha256": "8de6f3d94b5996d501c05b94ed4c3d4d7d5958ad705498cf93e23575945ccfbf"
     },
     {
-      "file": "skills/rhf-single-point/runtime/backends/demo_backend.py",
+      "file": "skills/rhf-single-point/runtime/development_preview/backends/demo_backend.py",
       "sha256": "b79720de3e9736be4797e42cdf100d9e65421cb1d60aa994f3ac33fbf18d34eb"
     },
     {
-      "file": "skills/rhf-single-point/runtime/backends/file_backend.py",
+      "file": "skills/rhf-single-point/runtime/development_preview/backends/file_backend.py",
       "sha256": "5ee87706897c250b3502139c64d356a05736dfc614839db015a7d2d68226ef59"
     },
     {
-      "file": "skills/rhf-single-point/runtime/backends/pyscf_backend.py",
+      "file": "skills/rhf-single-point/runtime/development_preview/backends/pyscf_backend.py",
       "sha256": "686502b3fd74ac37bf727bd9b94c078fe9827a66a2cc4cd90c36d9ec0f3ccf3b"
+    },
+    {
+      "file": "skills/rhf-single-point/runtime/development_preview/examples/03_backend_contract_demo.py",
+      "sha256": "19f92200b91b26251c855171468e42d4969a42e6010129b8e54d672d9dbdd8e7"
+    },
+    {
+      "file": "skills/rhf-single-point/runtime/development_preview/examples/native-request.json",
+      "sha256": "25cacfcb159531c00a06f6689d6e78e9317d238b14a75280da88b441761e58d0"
+    },
+    {
+      "file": "skills/rhf-single-point/runtime/development_preview/README.md",
+      "sha256": "cfab31343f7d249152601d9a1fc6f1b7b78ea8a90417db47c9ce72f833bdfada"
+    },
+    {
+      "file": "skills/rhf-single-point/runtime/development_preview/run_backend.py",
+      "sha256": "a348cc1fae8db672afa01fcd6e71437fa715a40b03d86b5b5d6b08c41a609bc3"
     },
     {
       "file": "skills/rhf-single-point/runtime/examples/01.json",
@@ -2823,12 +2927,8 @@
       "sha256": "f1d0d3c5d50653b32aa3474f84dee4b2d2abf4dc61e182aeaec7644b30039947"
     },
     {
-      "file": "skills/rhf-single-point/runtime/examples/03_user_backend.py",
-      "sha256": "b377eb20bca3eea313c697fd5c6f494918196a1e5533707abc3ba98a7a7941ab"
-    },
-    {
-      "file": "skills/rhf-single-point/runtime/examples/native-request.json",
-      "sha256": "25cacfcb159531c00a06f6689d6e78e9317d238b14a75280da88b441761e58d0"
+      "file": "skills/rhf-single-point/runtime/examples/03_import_result.py",
+      "sha256": "73eafe25f3483eb51e1349dbf5b78ca437d3ec3ea5c7271dc53a0276990257c5"
     },
     {
       "file": "skills/rhf-single-point/runtime/requirements.txt",
@@ -2836,15 +2936,19 @@
     },
     {
       "file": "skills/rhf-single-point/runtime/resource-manifest.json",
-      "sha256": "6cbf618bc8507f58d5f7058e048223476ac62703a1b03135043ac2887e8e1c37"
+      "sha256": "158501c0fe226f93b19f4e26c78aca813686785d1dd0ae28d8a8964d3ee0422b"
+    },
+    {
+      "file": "skills/rhf-single-point/runtime/result_file.py",
+      "sha256": "4684cb8722d777df259c1e55d4fe7622b1fa8cf44d92fb1bdcfc7edf604c96f2"
     },
     {
       "file": "skills/rhf-single-point/runtime/run_skill.py",
-      "sha256": "3d72bcfd04fb8b4450c112d64d77bf0f6fdb8332715ab4dba363212d99d9aba0"
+      "sha256": "7235ad81661f62c63fd6d62b85a1338df81722e0c0b87a908189a4f097cc2811"
     },
     {
       "file": "skills/rhf-single-point/runtime/SHA256SUMS.txt",
-      "sha256": "de7bb682d476e8c90165f2fcabd64cba36b5c59b4095b07ba2ca3ed7865dcf83"
+      "sha256": "fb2f1b3147ecbea0b2f99e7ab303a1413fa0405843624f77db5b45043d2d3edc"
     },
     {
       "file": "skills/rhf-single-point/runtime/sources.json",
@@ -2856,7 +2960,7 @@
     },
     {
       "file": "skills/rhf-single-point/SKILL.md",
-      "sha256": "2bcded4b5bca0ff604701e68ad0624160f9cebb754884004dd6839e3a26dba89"
+      "sha256": "42c27f27057ff76db259a7428d0becf41762db0b6c4b5fdf88f29daa16187642"
     },
     {
       "file": "skills/same-hamiltonian-path-closure/downloads/same-hamiltonian-path-closure-python.zip",
@@ -3148,7 +3252,7 @@
     },
     {
       "file": "START_HERE_zh-CN.md",
-      "sha256": "35f1c9573742e0e6b900763987de0e71c9cd1e1cad4c9e91c92481235cf82bc9"
+      "sha256": "ff402de15488a62e1840eb178f8827b45fa3c359bc5ccf309dd70628258db48a"
     },
     {
       "file": "tools/check_platform_boundary.py",

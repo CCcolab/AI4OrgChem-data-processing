@@ -304,7 +304,7 @@
     },
     {
       "id": "rhf-single-point",
-      "title": "RHF 单点计算助手",
+      "title": "RHF输入准备与结果复核",
       "category": "computational-organic",
       "page": "skills/rhf-single-point/README.md",
       "run": "skills/rhf-single-point/README.md",
@@ -312,8 +312,8 @@
       "skill": "skills/rhf-single-point/SKILL.md",
       "download": "skills/rhf-single-point/downloads/rhf-single-point-python.zip",
       "execution": "local_python",
-      "development_status": "PARTIAL_BACKEND_PENDING",
-      "scientific_scope": "便携输入/用户后端/实AO复核可用；历史固定水结果保留，新便携PySCF任务未实算。",
+      "development_status": "PASS_LOCAL_PREPARATION_AND_RESULT_REVIEW",
+      "scientific_scope": "为已有闭壳层RHF结果准备复核请求，复核已有实AO密度、电子数及能量账本，不执行新SCF。",
       "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/rhf-single-point/downloads/SKILL.md",
@@ -321,11 +321,13 @@
         "package": "skills/rhf-single-point/downloads/rhf-single-point-python.zip",
         "skill_archive": "skills/rhf-single-point/downloads/SKILL-md.zip"
       },
-      "backend_binding": "USER_EXISTING_BACKEND_NO_PROJECT_RUNTIME_OR_DOCKER_REQUIRED"
+      "backend_binding": "USER_EXISTING_BACKEND_NO_PROJECT_RUNTIME_OR_DOCKER_REQUIRED",
+      "real_backend_scientific_qualification": "NOT_ACCEPTED",
+      "development_preview": "skills/rhf-single-point/runtime/development_preview/README.md"
     },
     {
       "id": "orbital-localization-density",
-      "title": "轨道局域化与密度不变性验证",
+      "title": "轨道旋转与密度复核",
       "category": "computational-organic",
       "page": "skills/orbital-localization-density/README.md",
       "run": "skills/orbital-localization-density/README.md",
@@ -333,8 +335,8 @@
       "skill": "skills/orbital-localization-density/SKILL.md",
       "download": "skills/orbital-localization-density/downloads/orbital-localization-density-python.zip",
       "execution": "local_python",
-      "development_status": "PARTIAL_BACKEND_PENDING",
-      "scientific_scope": "便携旋转/密度复核和用户后端接口可用；历史乙烯证据保留，新便携Boys/PM任务未实算。",
+      "development_status": "PASS_LOCAL_PREPARATION_AND_RESULT_REVIEW",
+      "scientific_scope": "复核给定轨道旋转、等占据空间的密度与电子数，不运行Boys或PM优化器。",
       "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/orbital-localization-density/downloads/SKILL.md",
@@ -342,7 +344,9 @@
         "package": "skills/orbital-localization-density/downloads/orbital-localization-density-python.zip",
         "skill_archive": "skills/orbital-localization-density/downloads/SKILL-md.zip"
       },
-      "backend_binding": "USER_EXISTING_BACKEND_NO_PROJECT_RUNTIME_OR_DOCKER_REQUIRED"
+      "backend_binding": "USER_EXISTING_BACKEND_NO_PROJECT_RUNTIME_OR_DOCKER_REQUIRED",
+      "real_backend_scientific_qualification": "NOT_ACCEPTED",
+      "development_preview": "skills/orbital-localization-density/runtime/development_preview/README.md"
     },
     {
       "id": "nonorthogonal-subspace",
@@ -422,7 +426,7 @@
     },
     {
       "id": "fixed-protocol-energy-review",
-      "title": "固定协议条件态与能量复核",
+      "title": "固定协议能量账本复核",
       "category": "computational-organic",
       "page": "skills/fixed-protocol-energy-review/README.md",
       "run": "skills/fixed-protocol-energy-review/README.md",
@@ -430,8 +434,8 @@
       "skill": "skills/fixed-protocol-energy-review/SKILL.md",
       "download": "skills/fixed-protocol-energy-review/downloads/fixed-protocol-energy-review-python.zip",
       "execution": "local_python",
-      "development_status": "PARTIAL_BACKEND_PENDING",
-      "scientific_scope": "独立用户协议账本与结果导入可用；真实条件态后端仍待验，原失败尝试未重试。",
+      "development_status": "PASS_LOCAL_PREPARATION_AND_RESULT_REVIEW",
+      "scientific_scope": "按用户明确的固定协议核对已有普通态与条件态能量账本，不生成条件态算子或新量子能量。",
       "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/fixed-protocol-energy-review/downloads/SKILL.md",
@@ -439,11 +443,13 @@
         "package": "skills/fixed-protocol-energy-review/downloads/fixed-protocol-energy-review-python.zip",
         "skill_archive": "skills/fixed-protocol-energy-review/downloads/SKILL-md.zip"
       },
-      "backend_binding": "USER_EXISTING_BACKEND_NO_PROJECT_RUNTIME_OR_DOCKER_REQUIRED"
+      "backend_binding": "USER_EXISTING_BACKEND_NO_PROJECT_RUNTIME_OR_DOCKER_REQUIRED",
+      "real_backend_scientific_qualification": "NOT_ACCEPTED",
+      "development_preview": "skills/fixed-protocol-energy-review/runtime/development_preview/README.md"
     },
     {
       "id": "constrained-optimization-response",
-      "title": "约束优化与结构响应",
+      "title": "线性约束导数与端点复核",
       "category": "structure-state-response",
       "page": "skills/constrained-optimization-response/README.md",
       "run": "skills/constrained-optimization-response/README.md",
@@ -451,8 +457,8 @@
       "skill": "skills/constrained-optimization-response/SKILL.md",
       "download": "skills/constrained-optimization-response/downloads/constrained-optimization-response-python.zip",
       "execution": "local_python",
-      "development_status": "PARTIAL_BACKEND_PENDING",
-      "scientific_scope": "用户优化程序接口与给定线性约束导数复核可用；真实新优化端点/曲率仍待验。",
+      "development_status": "PASS_LOCAL_PREPARATION_AND_RESULT_REVIEW",
+      "scientific_scope": "复核给定线性约束下的梯度、Hessian和候选端点，不执行几何优化或产生新导数。",
       "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/constrained-optimization-response/downloads/SKILL.md",
@@ -460,11 +466,13 @@
         "package": "skills/constrained-optimization-response/downloads/constrained-optimization-response-python.zip",
         "skill_archive": "skills/constrained-optimization-response/downloads/SKILL-md.zip"
       },
-      "backend_binding": "USER_EXISTING_BACKEND_NO_PROJECT_RUNTIME_OR_DOCKER_REQUIRED"
+      "backend_binding": "USER_EXISTING_BACKEND_NO_PROJECT_RUNTIME_OR_DOCKER_REQUIRED",
+      "real_backend_scientific_qualification": "NOT_ACCEPTED",
+      "development_preview": "skills/constrained-optimization-response/runtime/development_preview/README.md"
     },
     {
       "id": "multistate-size-comparison",
-      "title": "多态与尺寸比较",
+      "title": "态集合与固定权重复核",
       "category": "structure-state-response",
       "page": "skills/multistate-size-comparison/README.md",
       "run": "skills/multistate-size-comparison/README.md",
@@ -472,8 +480,8 @@
       "skill": "skills/multistate-size-comparison/SKILL.md",
       "download": "skills/multistate-size-comparison/downloads/multistate-size-comparison-python.zip",
       "execution": "local_python",
-      "development_status": "PARTIAL_BACKEND_PENDING",
-      "scientific_scope": "用户态集合接口与固定非负归一化权重复核可用；真实多态集合与专用有符号公式仍待验。",
+      "development_status": "PASS_LOCAL_PREPARATION_AND_RESULT_REVIEW",
+      "scientific_scope": "核对已有态集合完整性、来源与固定非负归一化权重，不运行多态优化或推断统计权重。",
       "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/multistate-size-comparison/downloads/SKILL.md",
@@ -481,7 +489,9 @@
         "package": "skills/multistate-size-comparison/downloads/multistate-size-comparison-python.zip",
         "skill_archive": "skills/multistate-size-comparison/downloads/SKILL-md.zip"
       },
-      "backend_binding": "USER_EXISTING_BACKEND_NO_PROJECT_RUNTIME_OR_DOCKER_REQUIRED"
+      "backend_binding": "USER_EXISTING_BACKEND_NO_PROJECT_RUNTIME_OR_DOCKER_REQUIRED",
+      "real_backend_scientific_qualification": "NOT_ACCEPTED",
+      "development_preview": "skills/multistate-size-comparison/runtime/development_preview/README.md"
     },
     {
       "id": "chemical-space-embedding",
@@ -830,19 +840,25 @@
     },
     {
       "id": "rhf-single-point",
-      "title": "RHF 单点计算助手",
+      "title": "RHF输入准备与结果复核",
       "category": "computational-organic",
       "has_learning_page": true,
       "page": "skills/rhf-single-point/README.md",
-      "development_status": "PARTIAL_BACKEND_PENDING"
+      "development_status": "PASS_LOCAL_PREPARATION_AND_RESULT_REVIEW",
+      "scientific_scope": "为已有闭壳层RHF结果准备复核请求，复核已有实AO密度、电子数及能量账本，不执行新SCF。",
+      "real_backend_scientific_qualification": "NOT_ACCEPTED",
+      "development_preview": "skills/rhf-single-point/runtime/development_preview/README.md"
     },
     {
       "id": "orbital-localization-density",
-      "title": "轨道局域化与密度不变性验证",
+      "title": "轨道旋转与密度复核",
       "category": "computational-organic",
       "has_learning_page": true,
       "page": "skills/orbital-localization-density/README.md",
-      "development_status": "PARTIAL_BACKEND_PENDING"
+      "development_status": "PASS_LOCAL_PREPARATION_AND_RESULT_REVIEW",
+      "scientific_scope": "复核给定轨道旋转、等占据空间的密度与电子数，不运行Boys或PM优化器。",
+      "real_backend_scientific_qualification": "NOT_ACCEPTED",
+      "development_preview": "skills/orbital-localization-density/runtime/development_preview/README.md"
     },
     {
       "id": "nonorthogonal-subspace",
@@ -878,27 +894,36 @@
     },
     {
       "id": "fixed-protocol-energy-review",
-      "title": "固定协议条件态与能量复核",
+      "title": "固定协议能量账本复核",
       "category": "computational-organic",
       "has_learning_page": true,
       "page": "skills/fixed-protocol-energy-review/README.md",
-      "development_status": "PARTIAL_BACKEND_PENDING"
+      "development_status": "PASS_LOCAL_PREPARATION_AND_RESULT_REVIEW",
+      "scientific_scope": "按用户明确的固定协议核对已有普通态与条件态能量账本，不生成条件态算子或新量子能量。",
+      "real_backend_scientific_qualification": "NOT_ACCEPTED",
+      "development_preview": "skills/fixed-protocol-energy-review/runtime/development_preview/README.md"
     },
     {
       "id": "constrained-optimization-response",
-      "title": "约束优化与结构响应",
+      "title": "线性约束导数与端点复核",
       "category": "structure-state-response",
       "has_learning_page": true,
       "page": "skills/constrained-optimization-response/README.md",
-      "development_status": "PARTIAL_BACKEND_PENDING"
+      "development_status": "PASS_LOCAL_PREPARATION_AND_RESULT_REVIEW",
+      "scientific_scope": "复核给定线性约束下的梯度、Hessian和候选端点，不执行几何优化或产生新导数。",
+      "real_backend_scientific_qualification": "NOT_ACCEPTED",
+      "development_preview": "skills/constrained-optimization-response/runtime/development_preview/README.md"
     },
     {
       "id": "multistate-size-comparison",
-      "title": "多态与尺寸比较",
+      "title": "态集合与固定权重复核",
       "category": "structure-state-response",
       "has_learning_page": true,
       "page": "skills/multistate-size-comparison/README.md",
-      "development_status": "PARTIAL_BACKEND_PENDING"
+      "development_status": "PASS_LOCAL_PREPARATION_AND_RESULT_REVIEW",
+      "scientific_scope": "核对已有态集合完整性、来源与固定非负归一化权重，不运行多态优化或推断统计权重。",
+      "real_backend_scientific_qualification": "NOT_ACCEPTED",
+      "development_preview": "skills/multistate-size-comparison/runtime/development_preview/README.md"
     },
     {
       "id": "chemical-space-embedding",
@@ -1013,7 +1038,7 @@
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     }
   ],
-  "revision": "professional32-thirdparty-repaired-main-20261025",
+  "revision": "professional32-verified-scope-main-20261026",
   "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
   "shared_routing_enabled": false
 }

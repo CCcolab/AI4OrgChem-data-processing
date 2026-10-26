@@ -1,27 +1,47 @@
 [
   {
     "file": "README.md",
-    "sha256": "9a43bed3ad2f26e77afaa9af46c0c8312600c235045fcd00c18304b74b97fd02"
+    "sha256": "da088571e59b91501b173e07d65c5893ca08e2ea7eb01184c9dc2d8a8657661d"
+  },
+  {
+    "file": "SKILL.md",
+    "sha256": "f0c8843d65517aaa457ec86d408c68216ebcb7b483a45acdc7db8cf7e10e3396"
   },
   {
     "file": "runtime/analysis.py",
     "sha256": "331a9d5176f469bdccd840537b6acedc66739aa477400b53f00f1a07ab1f9f39"
   },
   {
-    "file": "runtime/backend-contract.json",
-    "sha256": "8de6f3d94b5996d501c05b94ed4c3d4d7d5958ad705498cf93e23575945ccfbf"
-  },
-  {
-    "file": "runtime/backends/demo_backend.py",
-    "sha256": "b79720de3e9736be4797e42cdf100d9e65421cb1d60aa994f3ac33fbf18d34eb"
-  },
-  {
-    "file": "runtime/backends/file_backend.py",
-    "sha256": "5ee87706897c250b3502139c64d356a05736dfc614839db015a7d2d68226ef59"
+    "file": "runtime/contract.json",
+    "sha256": "5f3313861fe06c69594347ca3032888a079b52df329d8769dc3fec0d6ac40fda"
   },
   {
     "file": "runtime/decimal_arithmetic.py",
     "sha256": "d427f3ab5ef054bc182998f9fb6ba0edc4ecf0579ac19a5fd35fc386387f0ed4"
+  },
+  {
+    "file": "runtime/development_preview/backend-contract.json",
+    "sha256": "8de6f3d94b5996d501c05b94ed4c3d4d7d5958ad705498cf93e23575945ccfbf"
+  },
+  {
+    "file": "runtime/development_preview/backends/demo_backend.py",
+    "sha256": "b79720de3e9736be4797e42cdf100d9e65421cb1d60aa994f3ac33fbf18d34eb"
+  },
+  {
+    "file": "runtime/development_preview/backends/file_backend.py",
+    "sha256": "5ee87706897c250b3502139c64d356a05736dfc614839db015a7d2d68226ef59"
+  },
+  {
+    "file": "runtime/development_preview/examples/03_backend_contract_demo.py",
+    "sha256": "19f92200b91b26251c855171468e42d4969a42e6010129b8e54d672d9dbdd8e7"
+  },
+  {
+    "file": "runtime/development_preview/README.md",
+    "sha256": "9eefe173fd5ec381cc82e8fa54b258447903fd6221d1595f742075f24d9bd7cd"
+  },
+  {
+    "file": "runtime/development_preview/run_backend.py",
+    "sha256": "a348cc1fae8db672afa01fcd6e71437fa715a40b03d86b5b5d6b08c41a609bc3"
   },
   {
     "file": "runtime/examples/01.json",
@@ -44,23 +64,27 @@
     "sha256": "c1e9af126f28fdde9e8f48dd02f203e386f4cfde1c8c34890bf9378dfe950263"
   },
   {
-    "file": "runtime/examples/03_user_backend.py",
-    "sha256": "b377eb20bca3eea313c697fd5c6f494918196a1e5533707abc3ba98a7a7941ab"
+    "file": "runtime/examples/03_import_result.py",
+    "sha256": "73eafe25f3483eb51e1349dbf5b78ca437d3ec3ea5c7271dc53a0276990257c5"
   },
   {
     "file": "runtime/requirements.txt",
     "sha256": "a6dd2e7c4d18c730856b668a57085ed72dcc1ef0768f36278952d2e56200debc"
   },
   {
+    "file": "runtime/result_file.py",
+    "sha256": "4684cb8722d777df259c1e55d4fe7622b1fa8cf44d92fb1bdcfc7edf604c96f2"
+  },
+  {
     "file": "runtime/run_skill.py",
-    "sha256": "3d72bcfd04fb8b4450c112d64d77bf0f6fdb8332715ab4dba363212d99d9aba0"
+    "sha256": "7235ad81661f62c63fd6d62b85a1338df81722e0c0b87a908189a4f097cc2811"
   },
   {
     "file": "runtime/sources.json",
     "sha256": "ae5b95d6abfaef17b6a2c2868b778c552fc4ee674b77c158d0895cab88c379dc"
   },
   {
-    "file": "SKILL.md",
-    "sha256": "c94292a2255f8a1db9b9f5da6f5e0008f598957a9050d889017c3b078ef02861"
+    "file": "runtime/SHA256SUMS.txt",
+    "sha256": "fa538d0e8f0f428f6a31e65d373a64b4d055fa41dc6f5d11c702df7549ed7a24"
   }
 ]

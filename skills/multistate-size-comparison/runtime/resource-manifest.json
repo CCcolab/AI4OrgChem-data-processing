@@ -1,23 +1,43 @@
 [
   {
     "file": "README.md",
-    "sha256": "22596b9bb49c2aa2ed23f70527376965cfd8daa72a7801a6db15ede47d6c7500"
+    "sha256": "e29bc22b2279b51450d9ca136df7793de5125c4cac17e813ec45126b8aa3b2cb"
+  },
+  {
+    "file": "SKILL.md",
+    "sha256": "c58fc4a7efd02ff2e931bfca7272239118a657673082c37322e7ca333fab31cc"
   },
   {
     "file": "runtime/analysis.py",
     "sha256": "c78999786b7e0d5bc23efc8bb424af4ba80d1e9b71e6f0098753a130053cfad8"
   },
   {
-    "file": "runtime/backend-contract.json",
+    "file": "runtime/contract.json",
+    "sha256": "5f3313861fe06c69594347ca3032888a079b52df329d8769dc3fec0d6ac40fda"
+  },
+  {
+    "file": "runtime/development_preview/backend-contract.json",
     "sha256": "8de6f3d94b5996d501c05b94ed4c3d4d7d5958ad705498cf93e23575945ccfbf"
   },
   {
-    "file": "runtime/backends/demo_backend.py",
+    "file": "runtime/development_preview/backends/demo_backend.py",
     "sha256": "b79720de3e9736be4797e42cdf100d9e65421cb1d60aa994f3ac33fbf18d34eb"
   },
   {
-    "file": "runtime/backends/file_backend.py",
+    "file": "runtime/development_preview/backends/file_backend.py",
     "sha256": "5ee87706897c250b3502139c64d356a05736dfc614839db015a7d2d68226ef59"
+  },
+  {
+    "file": "runtime/development_preview/examples/03_backend_contract_demo.py",
+    "sha256": "19f92200b91b26251c855171468e42d4969a42e6010129b8e54d672d9dbdd8e7"
+  },
+  {
+    "file": "runtime/development_preview/README.md",
+    "sha256": "b32fc5c2c47919656fc930a21fba988ddbca1b2bd9535deb4fb5c80cc0aa418c"
+  },
+  {
+    "file": "runtime/development_preview/run_backend.py",
+    "sha256": "a348cc1fae8db672afa01fcd6e71437fa715a40b03d86b5b5d6b08c41a609bc3"
   },
   {
     "file": "runtime/examples/01.json",
@@ -40,16 +60,20 @@
     "sha256": "059004873a8d4020d5e5d18f589d1afed6dcbfa5abe6f49759916b9abbbf4bb7"
   },
   {
-    "file": "runtime/examples/03_user_backend.py",
-    "sha256": "b377eb20bca3eea313c697fd5c6f494918196a1e5533707abc3ba98a7a7941ab"
+    "file": "runtime/examples/03_import_result.py",
+    "sha256": "73eafe25f3483eb51e1349dbf5b78ca437d3ec3ea5c7271dc53a0276990257c5"
   },
   {
     "file": "runtime/requirements.txt",
     "sha256": "33eb232b2ead4ffff0e3b1256e457b26477d2ea6eded746b44a2bbcb53463814"
   },
   {
+    "file": "runtime/result_file.py",
+    "sha256": "4684cb8722d777df259c1e55d4fe7622b1fa8cf44d92fb1bdcfc7edf604c96f2"
+  },
+  {
     "file": "runtime/run_skill.py",
-    "sha256": "3d72bcfd04fb8b4450c112d64d77bf0f6fdb8332715ab4dba363212d99d9aba0"
+    "sha256": "7235ad81661f62c63fd6d62b85a1338df81722e0c0b87a908189a4f097cc2811"
   },
   {
     "file": "runtime/sources.json",
@@ -60,7 +84,7 @@
     "sha256": "03f4e4fc256967fd932a007df2ec483c0206c4f3827acf8cdbb5054ff4ef1f51"
   },
   {
-    "file": "SKILL.md",
-    "sha256": "bce8ed7f3001bd2ab1b207f6f65520f9768c1bae856b09e58768ddd88dddf37f"
+    "file": "runtime/SHA256SUMS.txt",
+    "sha256": "68158fe4b3aa2ff4837d85fb4cff275da202dc5b9cf4fc34de140aacad6b6464"
   }
 ]

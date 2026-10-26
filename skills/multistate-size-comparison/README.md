@@ -1,12 +1,8 @@
-# 多态与尺寸比较
+# 态集合与固定权重复核
 
-**真实后端待验 · PARTIAL_BACKEND_PENDING**：用户态集合接口与固定非负归一化权重复核可用；真实多态集合与专用有符号公式仍待验。 本页便携模板和本地复核不继承历史后端PASS。
+核对已有态集合完整性、来源与固定非负归一化权重，不运行多态优化或推断统计权重。 正式入口提供准备、已有数据复核和结果JSON导入。输入准备不会运行科学求解器；数值复核仅证明输入通过所列检查。
 
-此 Skill 的指令可独立用于用户自己的环境；不强制使用本项目 Runtime、Docker、安装登记或模型账号。顶层两个文件各有职责：本页介绍知识、输入/输出和操作，SKILL.md 提供完整任务指令；runtime 放调用程序、依赖与案例。
-
-[查看完整 SKILL.md 代码](SKILL.md?plain=1) · [下载完整指令](downloads/multistate-size-comparison-skill.zip) · [Python代码包下载目录](downloads/) · [源文件SHA-256](runtime/SHA256SUMS.txt)
-
-下载目录中选择 `multistate-size-comparison-python.zip`，下载后按同目录 SHA256SUMS.txt 核对压缩包。已经解压代码包的用户无需再次下载，直接执行下面步骤；包内源文件哈希见 runtime/SHA256SUMS.txt。
+[完整SKILL.md代码](SKILL.md?plain=1) · [下载完整指令](downloads/multistate-size-comparison-skill.zip) · [Python代码包](downloads/multistate-size-comparison-python.zip) · [源文件SHA-256](runtime/SHA256SUMS.txt)
 
 ## 知识点与科学边界
 
@@ -18,30 +14,29 @@
 
 教材依据、推导及实现来源见 [完整 Skill](SKILL.md?plain=1) 与 [来源说明](runtime/sources.json)。经典教材用于理论背景，官方软件文档用于 API；不将 API 文档称为教材级物理证明。本轮只验收便携接口及数学复核，真实量子后端资格按独立记录判断。
 
-## 下载、依赖与首次操作
+## 依赖与首次操作
 
-1. 下载 Python 代码包，在 Windows 解压到短路径（例如 `C:\s`），进入解出的 `multistate-size-comparison` 文件夹；其它系统同样先进入该目录。所有命令均从该目录运行。无需下载整个仓库。
-2. 已有 Python 3.10+。`prepare` 只用标准库，不安装任何软件。数组复核需要 NumPy；纯 Decimal 账本不需要 NumPy。依赖清单给出本次已验版本，当前平台可用性另行确认。本文已在 Python 3.12.14/NumPy 2.4.6 下复验，未宣称覆盖所有 Python/操作系统。
-3. 可以选择自己的现有虚拟环境；只有缺依赖且你要安装时才手动执行 `python -m pip install -r runtime/requirements.txt`。程序不会自动安装、联网或切换环境。安装后仍使用同一环境的 `python`。
-4. 结果目录必须是包外全新路径。下面 `C:/s/out/...` 是 Windows 示例；其它系统换成自己的绝对短路径。保留上一次目录，下一次更换名称。
+下载代码包并在有权限的短路径解压，例如Windows的 `C:/s/multistate-size-comparison`，进入该目录执行下列命令。使用自己的Python环境，不依赖本项目Runtime、Docker、安装登记或模型账号。
+
+本次验证Python3.12.14。准备模式仅用标准库；数组复核及结果导入后的复核需要NumPy2.4.6。 仅缺依赖时由用户自行执行 `python -m pip install -r runtime/requirements.txt`；程序不安装软件、不联网、不切换环境。正式三个案例不需要PySCF或其它量子化学软件。
 
 ## 三个对应案例
 
-| 程序 | 实际输入与行为 | 预期产物/状态 |
+| 程序 | 操作 | 输出 |
 | --- | --- | --- |
-| 01_prepare.py | 读取 01.json 和完整 Skill，不调用科学后端 | PREPARED_NOT_EXECUTED、输入快照、调用计划 |
-| 02_review.py | 对 01.json 的已有数组/人工账本做本页限定的数值复核 | COMPLETE_DEFINED_SCOPE、逐项 result.json |
-| 03_user_backend.py | 明确调用 file_backend.py 读取同一用户结果文件，记录文件哈希，再复核 | backend_calls=1、USER_SUPPLIED_RESULT_FILE_REVIEW；新量子调用0 |
+| 01_prepare.py | 读取完整Skill和01.json，保存输入计划 | PREPARED_NOT_EXECUTED；不生成新数值 |
+| 02_review.py | 复核01.json中的既有数组或人工账本 | COMPLETE_DEFINED_SCOPE及逐项检查 |
+| 03_import_result.py | 将01.json作为已有结果文件读取并复核 | result_file_imports=1，backend_calls=0及原文件SHA-256 |
 
 ```powershell
-python runtime/examples/01_prepare.py --output C:/s/out/multistate-size-comparison-prep01
+python runtime/examples/01_prepare.py --output C:/s/out/multistate-size-comparison-prepare01
 python runtime/examples/02_review.py --output C:/s/out/multistate-size-comparison-review01
-python runtime/examples/03_user_backend.py --output C:/s/out/multistate-size-comparison-file01
+python runtime/examples/03_import_result.py --output C:/s/out/multistate-size-comparison-import01
 ```
 
-`01.json`、`02.json` 是两个具体的复核输入，`03.json` 是故意不合格的反例（非零退出是预期）。每份 provenance 描述其人工/历史来源，不能把教学数据输出当作真实新计算。另有 `demo_backend.py` 演示桥接函数调用，只返回人工数据，execution.kind 明确标注 SYNTHETIC_ENGINEERING_DEMO。
+01.json与02.json是明确来源的两份复核输入；03.json是故意不合格反例，非零退出是预期。数据来源看各自provenance；保存的历史计算数组与人工示例均不代表本次进行了新实算。
 
-## 修改参数与使用自己的结果
+## 修改参数与结果对应
 
 先复制 `runtime/examples/01.json` 到包外（如 `C:/s/my-input.json`），在编辑器将 `parameters.weight_atol` 改为 `2e-10` 后另存，再运行：
 
@@ -53,55 +48,42 @@ python runtime/run_skill.py --mode review --input C:/s/my-input.json --output C:
 
 不要直接修改受哈希保护的包内程序/实例再自动重算清单掩盖变化。输入必须是 parameters、data、provenance 三部分；字段、数组与单位参照完整 SKILL.md、[复核源码](runtime/analysis.py) 和 [输入实例](runtime/examples/01.json)。参数容差不是物理误差条，放宽它不能修正错误方法。
 
-用户已有软件可导出同一结果 schema。在包外新建下面 JSON，将路径改成实际**绝对路径**（JSON 用 `/` 或 `\\`，不要写未转义的 `\`）：
+## 使用用户已有结果
+
+用户已有程序导出的JSON须符合本Skill的parameters/data/provenance字段、单位和数组顺序，详见[完整Skill](SKILL.md?plain=1)、[复核程序](runtime/analysis.py)及[实例](runtime/examples/02.json)。在包外建立导入请求，例如：
 
 ```json
-{"parameters": {"backend_result_file": "C:/s/my-exported-result.json"}, "data": {},
- "provenance": {"kind": "USER_RESULT", "description": "说明软件/方法/几何/单位及原生日志位置"}}
+{"parameters": {"result_file": "C:/s/my-exported-result.json"}, "data": {},
+ "provenance": {"kind": "USER_RESULT", "description": "说明软件、方法、几何、单位与原生日志来源"}}
 ```
 
 ```powershell
-python runtime/run_skill.py --mode backend --input C:/s/file-request.json --backend runtime/backends/file_backend.py --execute --output C:/s/out/multistate-size-comparison-user01
+python runtime/run_skill.py --mode import --input C:/s/import-request.json --output C:/s/out/multistate-size-comparison-user01
 ```
 
-file_backend 仅导入文件，不会执行文件中的文本命令；需新计算时选择自己信任的 .py 适配器。调用用户程序是在当前 Python 进程、以当前用户权限执行，不能把它视作不可信代码沙箱。
-
-`backend_calls` 是桥接函数进入次数；科学核函数调用次数、资源和外部行为还需原生日志核对。桥接器不独立监控任意外部 Python 程序的模型/网络调用，也不会将其声明当作已验证事实。
+result_file须为绝对路径的常规JSON文件且不超过2MB；不把文件文字当代码执行。保存原文件字节与SHA-256后执行同样的数学复核。来源标签和converged只作为输入声明，不能独立认证其真实性。
 
 ## 完整调用模板
-
-完整程序在 [runtime/run_skill.py](runtime/run_skill.py)。下面代码可在包外保存；把 skill_dir 和输入输出路径替换为实际绝对路径：
 
 ```python
 from pathlib import Path
 import importlib.util
-skill_dir = Path("C:/s/multistate-size-comparison")
-skill_text = (skill_dir / "SKILL.md").read_text(encoding="utf-8")
-spec = importlib.util.spec_from_file_location("bridge", skill_dir / "runtime/run_skill.py")
+
+page = Path("C:/s/multistate-size-comparison").resolve()
+spec = importlib.util.spec_from_file_location("skill_review", page / "runtime/run_skill.py")
 bridge = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(bridge)
-receipt = bridge.run_skill(
-    mode="backend", request_file="C:/s/file-request.json",
-    output_dir="C:/s/out/new-call01",
-    backend_file=skill_dir / "runtime/backends/file_backend.py", execute=True,
-)
-print(receipt["status"])
+receipt = bridge.run_skill(mode="review", request_file="C:/s/my-input.json", output_dir="C:/s/out/review-new")
 ```
 
-实际调用链：读取并固定完整 SKILL.md → 显式参数与数据 → 用户选定后端（可选）→ 保存原始返回 → 科学范围内复核 → 回执、文件、哈希。无模型模式记录 Skill 身份，不宣称 Markdown 已由模型理解。
-
-## 后端与资源选择
-
-本项没有通用量子求解器。“用户已有后端”可以是用户已有 Python 库或软件导出的结果；配套 file_backend.py 真实读取并记录文件哈希，不启动新求解。需要新计算时，由用户将其可信程序的输出转换为这里明确的复核 schema；专用物理方法与端点资格不能由桥接器自动生成。
+程序实际读取并保存SKILL.md身份，再验证输入、复核及写结果。没有调用语言模型，不称模型已理解指令。正式入口不接受--backend或--execute。
 
 ## 结果保存与失败处理
 
-结果目录包含 request.json、SKILL.used.md、run-receipt.json、result.json（已执行复核时）、SHA256SUMS.txt、results.zip 及其独立哈希。backend 模式另保存后端源码快照、原始返回、来源文件或原生中间产物。准备模式没有数值结果。
+写包外全新目录，禁止覆盖。准备模式另保存input-plan.json（复核输入计划，不是新计算软件输入）。保存request.json、SKILL.used.md、run-receipt.json；复核时另有review-request.json、result.json。导入时另存source-result.original.json和import-return.json。SHA256SUMS.txt、results.zip及其侧SHA用于保存和复核。
 
-检查失败用 FAILED_NUMERICAL_CHECKS；异常用 FAILED_PARTIAL_OUTPUT_RETAINED，保留已经写出的产物、failure.json 与结果 ZIP。失败不等于合格端点。结果状态以实际回执及文件为准，外部来源声明仍需用户核对。成功输出也只证明所列检查。旧目录不会覆盖，无自动重试。
+数值检查失败退出1；输入/解析等异常退出2。合法新目录已经创建时保存failure.json、实际回执和已有产物；参数解析、已有输出、危险或超限输入可在写入前拒绝。结果以程序回执、检查项和实际文件为准，不把失败结果或旧PASS当作新合格端点。输入准备只做结构及来源声明检查，不验收科学端点。
 
-本地工程验收、历史结果复核、真实后端验收分开记录。可选 PySCF 模板本轮没有运行新量子任务；也没有调用模型、安装依赖或上传内部材料。
+## 开发预览
 
-## 失败产物与输出保护
-
-对安全读取的限长常规输入，在合法全新输出目录中保存原输入、Skill及适用设置；JSON解析、缺字段、重复ID、非有限数值及CSV前处理失败均保存failure.json、SHA256SUMS.txt和results.zip，并失败退出。CSV入口同时保留原始CSV、模板和列/单位选择。输出已存在、位于源码内或为符号链接时不写入；超限或符号链接输入不复制。命令行缺少必需选项等尚未形成有效调用的错误由参数解析器拒绝，不创建结果。失败回执不代表数值或模型已执行。
+需调用用户现有程序产生新计算结果时，先读[独立开发预览](runtime/development_preview/README.md)。任意Python适配器、原生请求及可选PySCF模板已从正式入口移至该目录；新真实后端完整实算没有完成验收。预览需用户明确选择，并不属于上述三个已验证的常规功能。没有自动安装或启动环境，不以目录重命名提升科学资格。

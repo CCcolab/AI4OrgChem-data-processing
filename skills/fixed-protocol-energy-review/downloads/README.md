@@ -1,5 +1,5 @@
 # 下载与离线使用
 
-仓库本目录中的 fixed-protocol-energy-review-python.zip 是完整代码包；外层 SHA256SUMS.txt 用于下载后核对该 ZIP。
+本目录的 `fixed-protocol-energy-review-python.zip` 是完整代码包；外层SHA256SUMS.txt核对下载。已解压代码包可直接返回[学习页面](../README.md)，按准备、复核和文件导入三例运行。源文件摘要在[清单](../runtime/SHA256SUMS.txt)。
 
-若在解压包内看到本页，代码已经完整解压，无需重复下载；返回 ../README.md 按三例运行，源文件清单在 ../runtime/SHA256SUMS.txt。离线包不递归包含它自身的 ZIP 或外层 ZIP 哈希；可独立下载的完整指令 ZIP 保留在本目录。
+`runtime/development_preview/`是单独说明的真实计算对接预览，不属于已验收的常规实算功能；只有明确选择预览才可能调用用户已有计算软件。

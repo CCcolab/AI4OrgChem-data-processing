@@ -14,7 +14,7 @@
   "execution": "local_python",
   "default_model_required": false,
   "catalog_items": 32,
-  "distribution_status": "PYTHON_SKILLS_WITH_EXPLICIT_BACKEND_GAPS",
+  "distribution_status": "PYTHON_SKILLS_WITH_SEPARATE_REAL_BACKEND_DEVELOPMENT_PREVIEWS",
   "backend_pending_skills": [
     "rhf-single-point",
     "orbital-localization-density",
@@ -51,5 +51,17 @@
     ],
     "new_scientific_backends_retested": false,
     "new_model_calls": 0
+  },
+  "development_preview": {
+    "index": "docs/DEVELOPMENT_PREVIEW.md",
+    "skills": [
+      "rhf-single-point",
+      "orbital-localization-density",
+      "fixed-protocol-energy-review",
+      "constrained-optimization-response",
+      "multistate-size-comparison"
+    ],
+    "backend_scientific_status": "PARTIAL_BACKEND_PENDING",
+    "default_entry_can_execute_user_backend": false
   }
 }

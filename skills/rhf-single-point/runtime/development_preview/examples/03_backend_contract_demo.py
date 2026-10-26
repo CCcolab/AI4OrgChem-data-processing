@@ -4,11 +4,14 @@ import argparse
 import importlib.util
 import json
 
-PAGE = Path(__file__).resolve().parents[2]
+PAGE = Path(__file__).resolve().parents[3]
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--output', type=Path, required=True)
+parser.add_argument('--enable-preview', action='store_true')
 args = parser.parse_args()
-spec = importlib.util.spec_from_file_location('portable_bridge', PAGE / 'runtime/run_skill.py')
+if not args.enable_preview:
+    parser.error('This bridge-contract preview requires --enable-preview; no scientific solver is demonstrated.')
+spec = importlib.util.spec_from_file_location('portable_bridge', PAGE / 'runtime/development_preview/run_backend.py')
 bridge = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(bridge)
 request = PAGE / 'runtime/examples/01.json'
@@ -20,6 +23,6 @@ input_file.parent.mkdir(parents=True, exist_ok=True)
 input_file.write_text(json.dumps({'parameters': {'backend_result_file': str(request)}, 'data': {},
     'provenance': {'kind': 'EXISTING_RESULT_FILE', 'description': 'File adapter demonstration; no new solver.'}}, indent=2), encoding='utf-8')
 request = input_file
-receipt = bridge.run_skill(mode='backend', request_file=request, output_dir=args.output, backend_file=PAGE / 'runtime/backends/file_backend.py', execute=True)
+receipt = bridge.run_skill(mode='backend', request_file=request, output_dir=args.output, backend_file=PAGE / 'runtime/development_preview/backends/file_backend.py', execute=True)
 print(receipt['status'])
 raise SystemExit(int(receipt['status'] == 'FAILED_NUMERICAL_CHECKS'))
