@@ -51,9 +51,9 @@ def features(data, target=False, groups=False):
     if not np.isfinite(x).all():
         raise ValueError('Feature values must be finite.')
     ids, names, units = data['ids'], data['feature_names'], data['feature_units']
-    if not isinstance(ids, list) or len(ids) != len(x) or len(set(ids)) != len(ids) or any(not isinstance(v, str) or not v for v in ids):
+    if not isinstance(ids, list) or len(ids) != len(x) or any(not isinstance(v, str) or not v for v in ids) or len(set(ids)) != len(ids):
         raise ValueError('One unique nonempty string ID per row required.')
-    if not isinstance(names, list) or len(names) != x.shape[1] or len(set(names)) != len(names) or any(not isinstance(v, str) or not v for v in names):
+    if not isinstance(names, list) or len(names) != x.shape[1] or any(not isinstance(v, str) or not v for v in names) or len(set(names)) != len(names):
         raise ValueError('Explicit unique feature names required.')
     if not isinstance(units, list) or len(units) != len(names) or any(not isinstance(v, str) or not v.strip() for v in units):
         raise ValueError('Declare one feature unit label per column; dimensionless must be explicit.')
