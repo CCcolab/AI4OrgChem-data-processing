@@ -44,6 +44,12 @@ parameters显式protocol_id、protocol_version、method_id、basis_id、geometry
 
 差值不自动等于键能、激发能、相互作用能或实验观测；不同泛函不能仅靠改名变得兼容。三个随包账本都是人工教学数据，第三个故意把条件态资格声明设为 false。用户已有程序应提供真实独立分项、总能及资格依据，不能仅将总能反填为单一账本项并称完成独立验收。
 
+## 配套程序已验证运行环境
+
+正式prepare/review/import及结果保存已在Windows 11、Python 3.12.14、CPU环境运行成功。本项账本复核仅用Python标准库Decimal，无需NumPy。 三个正式案例、参数修改、预期错误与输出保护共9/9项本地检查通过，GitHub下载复验同为9/9项符合预期。完整依赖与操作见README。
+
+该结论只对应所列正式功能和已测环境，不把输入准备说成外部实算，也不自动推广到其它软件版本或开发预览。
+
 ## 正式交付与完整调用
 
 正式功能是准备输入、复核给定数据、导入已有结果JSON。三种模式prepare、review、import均不运行外部求解器，不导入用户选择的.py代码。调用链为读取完整SKILL.md并保存身份 → 显式parameters/data/provenance → 输入检查 → 本文件限定数学复核 → 回执、文件与SHA-256。调用名`fixed-protocol-energy-review`保持不变。

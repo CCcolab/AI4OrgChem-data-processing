@@ -42,6 +42,12 @@ Boys 目标与轨道空间展宽有关；Pipek–Mezey 目标依赖所选原子�
 
 本地复核器只接受实 AO、0/2 占据、S 正定且条件数≤1e10、各维≤128。输入为 overlap、coefficients、occupations、rotation；atol 与 density_semantics 显式给定。可选 hcore、veff、nuclear_hartree 必须成组提供，所得能量仅比较固定矩阵，不是新 SCF。案例01复核保存的水轨道旋转，02为非单位度量人工数据，03为应失败的占据/虚空间混合。
 
+## 配套程序已验证运行环境
+
+正式prepare/review/import及结果保存已在Windows 11、Python 3.12.14、CPU环境运行成功。数组复核使用NumPy 2.4.6，prepare仅用标准库。 三个正式案例、参数修改、预期错误与输出保护共8/8项本地检查通过，GitHub下载复验同为8/8项符合预期。完整依赖与操作见README。
+
+该结论只对应所列正式功能和已测环境，不把输入准备说成外部实算，也不自动推广到其它软件版本或开发预览。
+
 ## 正式交付与完整调用
 
 正式功能是准备输入、复核给定数据、导入已有结果JSON。三种模式prepare、review、import均不运行外部求解器，不导入用户选择的.py代码。调用链为读取完整SKILL.md并保存身份 → 显式parameters/data/provenance → 输入检查 → 本文件限定数学复核 → 回执、文件与SHA-256。调用名`orbital-localization-density`保持不变。

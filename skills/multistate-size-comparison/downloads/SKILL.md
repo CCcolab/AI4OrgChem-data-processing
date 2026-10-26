@@ -38,6 +38,12 @@ parameters含protocol_id、method_id、basis_id、weight_atol、expected_states�
 
 要求 1至16 个尺寸标签、总计1至128项态记录，明确 energy_hartree、weight、eligible、来源与态定义；协议/方法/基组身份须匹配。合成例01是完整集合；例02缺失 large/b；例03将 small/a 资格设为 false，后两例均应拒绝。真实新计算应由用户已有各态求解器按协议生成，失败/待验态不得填零或以旧 PASS 顶替。
 
+## 配套程序已验证运行环境
+
+正式prepare/review/import及结果保存已在Windows 11、Python 3.12.14、CPU环境运行成功。数组复核使用NumPy 2.4.6，prepare仅用标准库。 三个正式案例、参数修改、预期错误与输出保护共8/8项本地检查通过，GitHub下载复验同为8/8项符合预期。完整依赖与操作见README。
+
+该结论只对应所列正式功能和已测环境，不把输入准备说成外部实算，也不自动推广到其它软件版本或开发预览。
+
 ## 正式交付与完整调用
 
 正式功能是准备输入、复核给定数据、导入已有结果JSON。三种模式prepare、review、import均不运行外部求解器，不导入用户选择的.py代码。调用链为读取完整SKILL.md并保存身份 → 显式parameters/data/provenance → 输入检查 → 本文件限定数学复核 → 回执、文件与SHA-256。调用名`multistate-size-comparison`保持不变。

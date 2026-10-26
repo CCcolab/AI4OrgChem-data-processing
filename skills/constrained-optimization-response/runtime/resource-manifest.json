@@ -1,11 +1,11 @@
 [
   {
     "file": "README.md",
-    "sha256": "c78eb0375fcd8cb8c859c9d9bffbb699350a46668ce8fe722ad81a8978e82dc2"
+    "sha256": "5053cb2598f2542225cbc017ed997c1e19d661746e8a713083dcc099e113552d"
   },
   {
     "file": "SKILL.md",
-    "sha256": "702b7f8f221b9829d00ea6916151c5d07427811aff48080714b062afd9612b5c"
+    "sha256": "6d0a6d420102fba1f7526a3aefb939f9c661df48a6f30d90ac7d8e0264188441"
   },
   {
     "file": "runtime/analysis.py",
@@ -85,6 +85,6 @@
   },
   {
     "file": "runtime/SHA256SUMS.txt",
-    "sha256": "4643a3a373cab46313c78481ae27ff67bd80f264e0d71c1caa7732ecf2b9c420"
+    "sha256": "99a264de6fcc590a787e232ab346d1d486d035e8df97822190c05c77ce71d95b"
   }
 ]

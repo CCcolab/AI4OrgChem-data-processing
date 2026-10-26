@@ -21,6 +21,12 @@ description: 为已有闭壳层RHF结果准备复核请求，复核已有实AO�
 
 [Helgaker、Jørgensen、Olsen：Molecular Electronic-Structure Theory（Wiley，2000）](https://www.wiley-vch.de/en/areas-interest/natural-sciences/molecular-electronic-structure-theory-978-0-471-96755-2)提供 HF、轨道与密度理论背景。书目信息/目录核验不等于已通读全书或逐页认证本实现。[PySCF SCF 官方指南](https://pyscf.org/user/scf.html)支持可选 API 使用，不代替教材或物理基态资格。明确推导和实际数值检查分别呈现，来源细节见 runtime/sources.json。
 
+## 配套程序已验证运行环境
+
+正式prepare/review/import及结果保存已在Windows 11、Python 3.12.14、CPU环境运行成功。数组复核使用NumPy 2.4.6，prepare仅用标准库。 三个正式案例、参数修改、预期错误与输出保护共8/8项本地检查通过，GitHub下载复验同为8/8项符合预期。完整依赖与操作见README。
+
+该结论只对应所列正式功能和已测环境，不把输入准备说成外部实算，也不自动推广到其它软件版本或开发预览。
+
 ## 正式交付与完整调用
 
 正式功能是准备输入、复核给定数据、导入已有结果JSON。三种模式prepare、review、import均不运行外部求解器，不导入用户选择的.py代码。调用链为读取完整SKILL.md并保存身份 → 显式parameters/data/provenance → 输入检查 → 本文件限定数学复核 → 回执、文件与SHA-256。调用名`rhf-single-point`保持不变。

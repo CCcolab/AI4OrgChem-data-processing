@@ -4,6 +4,23 @@
 
 [完整SKILL.md代码](SKILL.md?plain=1) · [下载完整指令](downloads/orbital-localization-density-skill.zip) · [Python代码包](downloads/orbital-localization-density-python.zip) · [源文件SHA-256](runtime/SHA256SUMS.txt)
 
+## 已在本地运行成功的环境与功能
+
+**本Skill的正式功能已完成本地运行验证，并通过GitHub下载包复验。**
+
+| 项目 | 已验证内容 |
+| --- | --- |
+| 操作系统 | Windows 11 |
+| Python | 3.12.14 |
+| 运行方式 | 本地独立Python环境、CPU |
+| 依赖 | NumPy 2.4.6；准备模式仅用Python标准库 |
+| 成功运行的功能 | 准备复核请求、复核已有结果、导入已有JSON、保存结果及SHA-256 |
+| 测试内容 | 三个正式案例、参数修改、预期错误拒绝与失败保存、旧结果保护；准备模式另以标准库单独运行 |
+| 验证结果 | 本地8/8项、GitHub下载复验8/8项均符合预期（含预期失败测试） |
+| 验证日期 | 2026-10-26 |
+
+“已运行成功”对应上述正式功能。准备步骤的PREPARED_NOT_EXECUTED表示请求准备完成、没有执行外部科学计算，不表示程序失败。新求解器调用的开发预览另有独立范围，不影响本表已通过的准备、复核及文件导入结论。
+
 ## 知识点与科学边界
 
 同一有限实 AO 度量下 C′=CU，D′−D=C[U diag(n)Uᵀ−diag(n)]Cᵀ。等占据子空间内的正交旋转保持密度与 Tr(DS)；占据/虚轨道互混通常不保持密度。局域轨道逐元素不同不代表波函数改变。
@@ -12,7 +29,7 @@ Boys 目标与轨道空间展宽有关；Pipek–Mezey 目标依赖所选原子�
 
 本地复核器只接受实 AO、0/2 占据、S 正定且条件数≤1e10、各维≤128。输入为 overlap、coefficients、occupations、rotation；atol 与 density_semantics 显式给定。可选 hcore、veff、nuclear_hartree 必须成组提供，所得能量仅比较固定矩阵，不是新 SCF。案例01复核保存的水轨道旋转，02为非单位度量人工数据，03为应失败的占据/虚空间混合。
 
-教材依据、推导及实现来源见 [完整 Skill](SKILL.md?plain=1) 与 [来源说明](runtime/sources.json)。经典教材用于理论背景，官方软件文档用于 API；不将 API 文档称为教材级物理证明。本轮只验收便携接口及数学复核，真实量子后端资格按独立记录判断。
+教材依据、推导及实现来源见 [完整 Skill](SKILL.md?plain=1) 与 [来源说明](runtime/sources.json)。经典教材用于理论背景，官方软件文档用于 API；不将 API 文档称为教材级物理证明。本页正式的准备、数学复核与文件导入已经通过上述本地运行验证；外部求解器的新实算对接单列开发预览。
 
 ## 依赖与首次操作
 

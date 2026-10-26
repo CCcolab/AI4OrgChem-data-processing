@@ -323,7 +323,26 @@
       },
       "backend_binding": "USER_EXISTING_BACKEND_NO_PROJECT_RUNTIME_OR_DOCKER_REQUIRED",
       "real_backend_scientific_qualification": "NOT_ACCEPTED",
-      "development_preview": "skills/rhf-single-point/runtime/development_preview/README.md"
+      "development_preview": "skills/rhf-single-point/runtime/development_preview/README.md",
+      "verified_environment": {
+        "status": "PASS_LOCAL_FORMAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "NumPy 2.4.6",
+        "features": [
+          "prepare_review_request",
+          "review_supplied_results",
+          "import_existing_result_json",
+          "save_results_and_sha256"
+        ],
+        "local_checks_passed": 8,
+        "download_reproduction_checks_passed": 8,
+        "negative_tests_included": true,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "32232e88ebaa69153129610960f85ef8cc7dcd1c",
+        "new_scientific_solver_executed": false
+      }
     },
     {
       "id": "orbital-localization-density",
@@ -346,7 +365,26 @@
       },
       "backend_binding": "USER_EXISTING_BACKEND_NO_PROJECT_RUNTIME_OR_DOCKER_REQUIRED",
       "real_backend_scientific_qualification": "NOT_ACCEPTED",
-      "development_preview": "skills/orbital-localization-density/runtime/development_preview/README.md"
+      "development_preview": "skills/orbital-localization-density/runtime/development_preview/README.md",
+      "verified_environment": {
+        "status": "PASS_LOCAL_FORMAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "NumPy 2.4.6",
+        "features": [
+          "prepare_review_request",
+          "review_supplied_results",
+          "import_existing_result_json",
+          "save_results_and_sha256"
+        ],
+        "local_checks_passed": 8,
+        "download_reproduction_checks_passed": 8,
+        "negative_tests_included": true,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "32232e88ebaa69153129610960f85ef8cc7dcd1c",
+        "new_scientific_solver_executed": false
+      }
     },
     {
       "id": "nonorthogonal-subspace",
@@ -445,7 +483,26 @@
       },
       "backend_binding": "USER_EXISTING_BACKEND_NO_PROJECT_RUNTIME_OR_DOCKER_REQUIRED",
       "real_backend_scientific_qualification": "NOT_ACCEPTED",
-      "development_preview": "skills/fixed-protocol-energy-review/runtime/development_preview/README.md"
+      "development_preview": "skills/fixed-protocol-energy-review/runtime/development_preview/README.md",
+      "verified_environment": {
+        "status": "PASS_LOCAL_FORMAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python standard library",
+        "features": [
+          "prepare_review_request",
+          "review_supplied_results",
+          "import_existing_result_json",
+          "save_results_and_sha256"
+        ],
+        "local_checks_passed": 9,
+        "download_reproduction_checks_passed": 9,
+        "negative_tests_included": true,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "32232e88ebaa69153129610960f85ef8cc7dcd1c",
+        "new_scientific_solver_executed": false
+      }
     },
     {
       "id": "constrained-optimization-response",
@@ -468,7 +525,26 @@
       },
       "backend_binding": "USER_EXISTING_BACKEND_NO_PROJECT_RUNTIME_OR_DOCKER_REQUIRED",
       "real_backend_scientific_qualification": "NOT_ACCEPTED",
-      "development_preview": "skills/constrained-optimization-response/runtime/development_preview/README.md"
+      "development_preview": "skills/constrained-optimization-response/runtime/development_preview/README.md",
+      "verified_environment": {
+        "status": "PASS_LOCAL_FORMAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "NumPy 2.4.6",
+        "features": [
+          "prepare_review_request",
+          "review_supplied_results",
+          "import_existing_result_json",
+          "save_results_and_sha256"
+        ],
+        "local_checks_passed": 8,
+        "download_reproduction_checks_passed": 8,
+        "negative_tests_included": true,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "32232e88ebaa69153129610960f85ef8cc7dcd1c",
+        "new_scientific_solver_executed": false
+      }
     },
     {
       "id": "multistate-size-comparison",
@@ -491,7 +567,26 @@
       },
       "backend_binding": "USER_EXISTING_BACKEND_NO_PROJECT_RUNTIME_OR_DOCKER_REQUIRED",
       "real_backend_scientific_qualification": "NOT_ACCEPTED",
-      "development_preview": "skills/multistate-size-comparison/runtime/development_preview/README.md"
+      "development_preview": "skills/multistate-size-comparison/runtime/development_preview/README.md",
+      "verified_environment": {
+        "status": "PASS_LOCAL_FORMAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "NumPy 2.4.6",
+        "features": [
+          "prepare_review_request",
+          "review_supplied_results",
+          "import_existing_result_json",
+          "save_results_and_sha256"
+        ],
+        "local_checks_passed": 8,
+        "download_reproduction_checks_passed": 8,
+        "negative_tests_included": true,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "32232e88ebaa69153129610960f85ef8cc7dcd1c",
+        "new_scientific_solver_executed": false
+      }
     },
     {
       "id": "chemical-space-embedding",
@@ -847,7 +942,26 @@
       "development_status": "PASS_LOCAL_PREPARATION_AND_RESULT_REVIEW",
       "scientific_scope": "为已有闭壳层RHF结果准备复核请求，复核已有实AO密度、电子数及能量账本，不执行新SCF。",
       "real_backend_scientific_qualification": "NOT_ACCEPTED",
-      "development_preview": "skills/rhf-single-point/runtime/development_preview/README.md"
+      "development_preview": "skills/rhf-single-point/runtime/development_preview/README.md",
+      "verified_environment": {
+        "status": "PASS_LOCAL_FORMAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "NumPy 2.4.6",
+        "features": [
+          "prepare_review_request",
+          "review_supplied_results",
+          "import_existing_result_json",
+          "save_results_and_sha256"
+        ],
+        "local_checks_passed": 8,
+        "download_reproduction_checks_passed": 8,
+        "negative_tests_included": true,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "32232e88ebaa69153129610960f85ef8cc7dcd1c",
+        "new_scientific_solver_executed": false
+      }
     },
     {
       "id": "orbital-localization-density",
@@ -858,7 +972,26 @@
       "development_status": "PASS_LOCAL_PREPARATION_AND_RESULT_REVIEW",
       "scientific_scope": "复核给定轨道旋转、等占据空间的密度与电子数，不运行Boys或PM优化器。",
       "real_backend_scientific_qualification": "NOT_ACCEPTED",
-      "development_preview": "skills/orbital-localization-density/runtime/development_preview/README.md"
+      "development_preview": "skills/orbital-localization-density/runtime/development_preview/README.md",
+      "verified_environment": {
+        "status": "PASS_LOCAL_FORMAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "NumPy 2.4.6",
+        "features": [
+          "prepare_review_request",
+          "review_supplied_results",
+          "import_existing_result_json",
+          "save_results_and_sha256"
+        ],
+        "local_checks_passed": 8,
+        "download_reproduction_checks_passed": 8,
+        "negative_tests_included": true,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "32232e88ebaa69153129610960f85ef8cc7dcd1c",
+        "new_scientific_solver_executed": false
+      }
     },
     {
       "id": "nonorthogonal-subspace",
@@ -901,7 +1034,26 @@
       "development_status": "PASS_LOCAL_PREPARATION_AND_RESULT_REVIEW",
       "scientific_scope": "按用户明确的固定协议核对已有普通态与条件态能量账本，不生成条件态算子或新量子能量。",
       "real_backend_scientific_qualification": "NOT_ACCEPTED",
-      "development_preview": "skills/fixed-protocol-energy-review/runtime/development_preview/README.md"
+      "development_preview": "skills/fixed-protocol-energy-review/runtime/development_preview/README.md",
+      "verified_environment": {
+        "status": "PASS_LOCAL_FORMAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python standard library",
+        "features": [
+          "prepare_review_request",
+          "review_supplied_results",
+          "import_existing_result_json",
+          "save_results_and_sha256"
+        ],
+        "local_checks_passed": 9,
+        "download_reproduction_checks_passed": 9,
+        "negative_tests_included": true,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "32232e88ebaa69153129610960f85ef8cc7dcd1c",
+        "new_scientific_solver_executed": false
+      }
     },
     {
       "id": "constrained-optimization-response",
@@ -912,7 +1064,26 @@
       "development_status": "PASS_LOCAL_PREPARATION_AND_RESULT_REVIEW",
       "scientific_scope": "复核给定线性约束下的梯度、Hessian和候选端点，不执行几何优化或产生新导数。",
       "real_backend_scientific_qualification": "NOT_ACCEPTED",
-      "development_preview": "skills/constrained-optimization-response/runtime/development_preview/README.md"
+      "development_preview": "skills/constrained-optimization-response/runtime/development_preview/README.md",
+      "verified_environment": {
+        "status": "PASS_LOCAL_FORMAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "NumPy 2.4.6",
+        "features": [
+          "prepare_review_request",
+          "review_supplied_results",
+          "import_existing_result_json",
+          "save_results_and_sha256"
+        ],
+        "local_checks_passed": 8,
+        "download_reproduction_checks_passed": 8,
+        "negative_tests_included": true,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "32232e88ebaa69153129610960f85ef8cc7dcd1c",
+        "new_scientific_solver_executed": false
+      }
     },
     {
       "id": "multistate-size-comparison",
@@ -923,7 +1094,26 @@
       "development_status": "PASS_LOCAL_PREPARATION_AND_RESULT_REVIEW",
       "scientific_scope": "核对已有态集合完整性、来源与固定非负归一化权重，不运行多态优化或推断统计权重。",
       "real_backend_scientific_qualification": "NOT_ACCEPTED",
-      "development_preview": "skills/multistate-size-comparison/runtime/development_preview/README.md"
+      "development_preview": "skills/multistate-size-comparison/runtime/development_preview/README.md",
+      "verified_environment": {
+        "status": "PASS_LOCAL_FORMAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "NumPy 2.4.6",
+        "features": [
+          "prepare_review_request",
+          "review_supplied_results",
+          "import_existing_result_json",
+          "save_results_and_sha256"
+        ],
+        "local_checks_passed": 8,
+        "download_reproduction_checks_passed": 8,
+        "negative_tests_included": true,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "32232e88ebaa69153129610960f85ef8cc7dcd1c",
+        "new_scientific_solver_executed": false
+      }
     },
     {
       "id": "chemical-space-embedding",
@@ -1038,7 +1228,7 @@
       "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
     }
   ],
-  "revision": "professional32-verified-scope-main-20261026",
+  "revision": "professional32-verified-environment-notes-20261026",
   "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
   "shared_routing_enabled": false
 }
