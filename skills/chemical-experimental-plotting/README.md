@@ -10,6 +10,26 @@
 
 程序、依赖和案例在runtime。下载[完整Python代码包](downloads/chemical-experimental-plotting-python.zip)或[Skill单文件ZIP](downloads/SKILL-md.zip)。公开GitHub文件页使用“Download raw file”保存，不把网页另存为.py。
 
+
+## 已验证运行环境与功能
+
+**下列数据/数值功能已在本地运行成功；结论限定于列出的操作与案例。**
+
+| 项目 | 已验证内容 |
+| --- | --- |
+| 操作系统 | Windows 11 |
+| Python / 设备 | 3.12.14 / CPU |
+| 本轮实际依赖范围 | numpy 2.4.6；matplotlib 3.11.2 |
+| 本轮已验证功能 | 散点、已给误差条、重复测量样本SD、图表及结果保存；参数修改与已有结果保护 |
+| 测试内容 | 01_scatter、02_supplied、03_replicates、user-csv-SD、existing-output-protection；结果文件、ZIP CRC与SHA-256核对 |
+| 测试结果 | 5/5项符合预期；含输入拒绝/旧结果保护，不表示所有命令退出0 |
+| 历史运行记录 | 历史固定bb629ee版（2026-10-25）在Linux / Python 3.12.14 / CPU完成默认入口；不等于本修订版完整运行复验 |
+| 验证日期 / 程序基线 | 2026-10-26 / 67aaaaa；本次只改说明与分发，不改计算程序 |
+| 未覆盖范围 | SD是给定重复记录的描述量；未认证实验独立性、置信水平、显著性或测量准确度。 |
+
+使用已有独立Python环境，没有在本轮重新安装依赖。通过所列小型案例不等于全部平台、输入分布或科学用途已认证。 输入准备、数值复核、模型训练与化学用途验证分别报告；全平台对照见[运行环境与验证范围](../../docs/VERIFIED_ENVIRONMENTS.md)。
+
+
 ## 误差线先说明含义
 
 SD描述观测散布；SEM和置信区间描述的对象及所需假设不同，不能互换。本程序不从误差线自动推断其含义：用户提供yerr时，必须声明SD、SEM或CI_HALF_WIDTH；后者只照原样绘制半宽，置信水平及计算未由本程序认证。

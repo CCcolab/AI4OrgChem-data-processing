@@ -10,6 +10,9 @@
 
 **深度学习示例范围：** 完整Torch训练、推理、权重重载及GPU流程仍未复验，不能从输入检查或下载一致性推断其通过；[查看适用范围](docs/BACKEND_STATUS.md)。
 
+
+各项的环境、已测功能、结果与未覆盖范围见[32项运行验证对照](docs/VERIFIED_ENVIRONMENTS.md)。历史固定版本运行与当前修订测试分别列示。
+
 ## 有机分子结构与身份识别
 
 - [SMILES 与 RDKit](skills/organic-smiles-rdkit/README.md)

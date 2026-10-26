@@ -7,6 +7,26 @@ description: 使用RDKit分析用户CSV中的有机分子SMILES，进行结构�
 
 根据用户的结构分析问题，核对输入和参数，使用实际可用的RDKit工具获得结果，再解释结果与方法局限。未执行时提供可运行代码和预期文件说明，不编造数值或运行回执。
 
+
+## 配套程序已验证运行环境
+
+**下列数据/数值功能已在本地运行成功；结论限定于列出的操作与案例。**
+
+| 项目 | 已验证内容 |
+| --- | --- |
+| 操作系统 | Windows 11 |
+| Python / 设备 | 3.12.14 / CPU |
+| 本轮实际依赖范围 | rdkit 2026.3.6；numpy 2.4.6；matplotlib 3.11.2 |
+| 本轮已验证功能 | CSV结构解析、描述符、SMARTS匹配、Morgan相似度、重复映射、立体/适用性提示及图表/结果保存；参数修改与已有结果保护 |
+| 测试内容 | 01_descriptors、02_smarts、03_similarity_compare、user-csv、changed-parameter、chemical-regression、existing-output-protection；结果文件、ZIP CRC与SHA-256核对；化学语义回归44/44项断言通过 |
+| 测试结果 | 7/7项符合预期；含输入拒绝/旧结果保护，不表示所有命令退出0 |
+| 历史运行记录 | 历史固定bb629ee版（2026-10-25）在Linux / Python 3.12.14 / CPU完成默认入口；不等于本修订版完整运行复验 |
+| 验证日期 / 程序基线 | 2026-10-26 / 67aaaaa；本次只改说明与分发，不改计算程序 |
+| 未覆盖范围 | 未调用Agent/模型服务；没有真实实验物性、指定pH状态、全面身份或化学预测认证。33条边界输入的44项断言不是通用化学认证。 |
+
+使用已有独立Python环境，没有在本轮重新安装依赖。通过所列小型案例不等于全部平台、输入分布或科学用途已认证。 输入准备、数值复核、模型训练与化学用途验证分别报告；全平台对照见[运行环境与验证范围](https://github.com/CCcolab/AI4OrgChem-data-processing/blob/main/docs/VERIFIED_ENVIRONMENTS.md)。
+
+
 ## 输入与任务
 
 - CSV必需`id`、`smiles`列，可选`label`；UTF-8，可带BOM。ID作为字符串保存，唯一且为1–64位字母、数字、点、下划线或连字符，以字母或数字开头。缺少label时使用ID。

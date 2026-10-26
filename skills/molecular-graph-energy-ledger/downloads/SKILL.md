@@ -7,6 +7,26 @@ description: 独立执行有界SMARTS图匹配或有来源的同态Hartree账本
 
 先确认用户目标、实际输入、方法、单位和来源。没有实际工具执行时标NOT_EXECUTED，不从既有文字、模型解释或历史PASS制造新数值。
 
+
+## 配套程序已验证运行环境
+
+**下列数据/数值功能已在本地运行成功；结论限定于列出的操作与案例。**
+
+| 项目 | 已验证内容 |
+| --- | --- |
+| 操作系统 | Windows 11 |
+| Python / 设备 | 3.12.14 / CPU |
+| 本轮实际依赖范围 | rdkit 2026.3.6 |
+| 本轮已验证功能 | 有界SMARTS图匹配与已给账本入口；本轮正路径只运行图匹配，不生成量子能量；参数修改与已有结果保护 |
+| 测试内容 | default、changed-parameter、existing-output-protection；结果文件、ZIP CRC与SHA-256核对 |
+| 测试结果 | 3/3项符合预期；含输入拒绝/旧结果保护，不表示所有命令退出0 |
+| 历史运行记录 | 历史固定bb629ee版（2026-10-25）在Linux / Python 3.12.14 / CPU完成默认入口；不等于本修订版完整运行复验 |
+| 验证日期 / 程序基线 | 2026-10-26 / 67aaaaa；本次只改说明与分发，不改计算程序 |
+| 未覆盖范围 | 图匹配与来源账本是两类功能；本轮未完整复验所有能量账本分支，不由图生成能量，不认证化学身份。 |
+
+使用已有独立Python环境，没有在本轮重新安装依赖。通过所列小型案例不等于全部平台、输入分布或科学用途已认证。 输入准备、数值复核、模型训练与化学用途验证分别报告；全平台对照见[运行环境与验证范围](https://github.com/CCcolab/AI4OrgChem-data-processing/blob/main/docs/VERIFIED_ENVIRONMENTS.md)。
+
+
 ## 输入与方法
 
 graph参数：mode、query_smarts、include_chirality；data.molecules含id、smiles。ledger参数：mode、protocol_id、atol_hartree；data含terms、reference_hartree、reference_source、quantity_definition，项的科学身份字段见第三例JSON。不同模式不强迫同时提供图和能量。

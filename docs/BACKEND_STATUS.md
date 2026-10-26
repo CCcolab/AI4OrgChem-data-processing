@@ -12,14 +12,14 @@
 
 新真实后端继续PARTIAL_BACKEND_PENDING。旧水分子RHF、乙烯局域化及固定协议历史证据各有原范围，本次只做程序和已有数据复核，不执行新SCF、Boys/PM、条件态、约束优化或态集合求解。对用户已有软件结果的导入不等于后端运行；来源和收敛声明仍需独立证据。
 
-## 第三方修订后的Torch复验范围
+## 学习模块的当前复验范围
 
-**完整Torch运行未复验，不能标为已通过。** 此状态单独说明，不将下列学习模块计入或替换上面的五项真实科学后端清单。
+完整Torch运行未复验，不能标为完整流程已通过。本轮仅验证输入和失败保存，详见[32项运行验证对照](VERIFIED_ENVIRONMENTS.md)。Torch相关模块包括：
 
-- [molecular-gnn-mpnn](../skills/molecular-gnn-mpnn/README.md)：完整Torch训练/推理、权重重载及GPU未在本次修订重新验收。
-- [molecular-self-supervised-pretraining](../skills/molecular-self-supervised-pretraining/README.md)：完整Torch训练/推理、权重重载及GPU未在本次修订重新验收。
-- [molecular-smiles-vae](../skills/molecular-smiles-vae/README.md)：完整Torch训练/推理、权重重载及GPU未在本次修订重新验收。
-- [chemical-chemprop-prediction](../skills/chemical-chemprop-prediction/README.md)：完整Torch训练/推理、权重重载及GPU未在本次修订重新验收。
-- [chemical-bayesian-optimization](../skills/chemical-bayesian-optimization/README.md)：完整Torch训练/推理、权重重载及GPU未在本次修订重新验收。
+- [chemical-chemprop-prediction](../skills/chemical-chemprop-prediction/README.md)：完整Torch/BoTorch流程本轮未复验。
+- [chemical-multiobjective-optimization](../skills/chemical-multiobjective-optimization/README.md)：完整Torch/BoTorch流程本轮未复验。
+- [molecular-gnn-mpnn](../skills/molecular-gnn-mpnn/README.md)：完整Torch/BoTorch流程本轮未复验。
+- [molecular-self-supervised-pretraining](../skills/molecular-self-supervised-pretraining/README.md)：完整Torch/BoTorch流程本轮未复验。
+- [molecular-smiles-vae](../skills/molecular-smiles-vae/README.md)：完整Torch/BoTorch流程本轮未复验。
 
-本次完成定点输入、单位、失败证据、数值边界和包/来源链接检查；图输入检查用真实RDKit及原函数表达式，ndarray替身不提供真实Torch张量或模型验收。第三方既有Linux/CPU结论固定在bb629ee，不自动推广到修订版。未重新调用模型或科学后端，内部日志不公开上传。
+单目标贝叶斯优化仅用scikit-learn GP，不属于Torch模块；其完整GP拟合/提议本轮未重跑。其余学习模块同样区分固定历史版本的成功记录与本轮输入检查，不执行新模型调用。五项计算预览的原待验记录保持，内部原始记录不公开上传。

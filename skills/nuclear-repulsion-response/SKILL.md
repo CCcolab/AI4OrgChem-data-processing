@@ -7,6 +7,26 @@ description: 根据显式核电荷和有单位的非周期Cartesian坐标计算�
 
 先确认用户目标、实际输入、方法、单位和来源。没有实际工具执行时标NOT_EXECUTED，不从既有文字、模型解释或历史PASS制造新数值。
 
+
+## 配套程序已验证运行环境
+
+**下列数据/数值功能已在本地运行成功；结论限定于列出的操作与案例。**
+
+| 项目 | 已验证内容 |
+| --- | --- |
+| 操作系统 | Windows 11 |
+| Python / 设备 | 3.12.14 / CPU |
+| 本轮实际依赖范围 | numpy 2.4.6 |
+| 本轮已验证功能 | 有限非周期点核的库仑核排斥项及几何响应；bohr/Å输入一致性；参数修改与已有结果保护 |
+| 测试内容 | default、changed-parameter、existing-output-protection；结果文件、ZIP CRC与SHA-256核对 |
+| 测试结果 | 3/3项符合预期；含输入拒绝/旧结果保护，不表示所有命令退出0 |
+| 历史运行记录 | 历史固定bb629ee版（2026-10-25）在Linux / Python 3.12.14 / CPU完成默认入口；不等于本修订版完整运行复验 |
+| 验证日期 / 程序基线 | 2026-10-26 / 67aaaaa；本次只改说明与分发，不改计算程序 |
+| 未覆盖范围 | 未计算电子项或分子总能量；不适用于周期体系、重合点核或未声明的电荷/坐标约定。 |
+
+使用已有独立Python环境，没有在本轮重新安装依赖。通过所列小型案例不等于全部平台、输入分布或科学用途已认证。 输入准备、数值复核、模型训练与化学用途验证分别报告；全平台对照见[运行环境与验证范围](https://github.com/CCcolab/AI4OrgChem-data-processing/blob/main/docs/VERIFIED_ENVIRONMENTS.md)。
+
+
 ## 输入与方法
 
 parameters.coordinate_unit为bohr或angstrom；data.nuclei含唯一id、整数Z、三维xyz。实际核电荷与几何由用户确认，不能从文件名猜。输出energy_hartree、pairs、gradient、force、hessian及单位。

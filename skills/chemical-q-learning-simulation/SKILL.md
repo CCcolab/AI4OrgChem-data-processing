@@ -7,6 +7,26 @@ description: 在用户完整给出的有限教学MDP中实际执行表格Q-learn
 
 先确认用户目标、实际输入、方法、单位和来源。没有实际工具执行时标NOT_EXECUTED，不从既有文字、模型解释或历史PASS制造新数值。
 
+
+## 配套程序已验证运行环境
+
+**当前版本的输入与失败处理已在下列环境运行成功；完整学习流程仅有固定历史版本的运行记录。**
+
+| 项目 | 已验证内容 |
+| --- | --- |
+| 操作系统 | Windows 11 |
+| Python / 设备 | 3.12.14 / CPU |
+| 本轮实际依赖范围 | Python标准库（仅输入层测试，未导入数值/模型后端） |
+| 本轮已验证功能 | JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端 |
+| 测试内容 | 三种早期输入反例（数组根、缺必需结构、NaN）均退出2并保留失败证据；已有输出被拒绝且原字节不变 |
+| 测试结果 | 4/4项符合预期；含输入拒绝/旧结果保护，不表示所有命令退出0 |
+| 历史运行记录 | 历史固定bb629ee版（2026-10-25）在Linux / Python 3.12.14 / CPU完成默认入口；不等于本修订版完整运行复验 |
+| 验证日期 / 程序基线 | 2026-10-26 / 67aaaaa；本次只改说明与分发，不改计算程序 |
+| 未覆盖范围 | 本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。没有以输入层通过替代完整算法运行结论。不认证真实化学预测泛化、实验改进或最优性。 |
+
+完整运行的依赖仍需按runtime/requirements.txt单独配置；本轮未重新安装或核验整套模型依赖，不能把安装清单当作本轮已运行环境。 输入准备、数值复核、模型训练与化学用途验证分别报告；全平台对照见[运行环境与验证范围](https://github.com/CCcolab/AI4OrgChem-data-processing/blob/main/docs/VERIFIED_ENVIRONMENTS.md)。
+
+
 ## 输入与方法
 
 parameters显式seed、episodes1–200、max_steps1–20、alpha、gamma<1、epsilon、evaluation_episodes1–20。data含states/actions、initial_state/terminal_states、三维transition_probability/reward及reward_unit。终态必须吸收且后续奖励0。

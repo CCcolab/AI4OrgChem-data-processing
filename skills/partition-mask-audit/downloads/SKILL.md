@@ -7,6 +7,26 @@ description: 按完整互斥索引分区及显式耦合规则审计实对称矩�
 
 先确认用户目标、实际输入、方法、单位和来源。没有实际工具执行时标NOT_EXECUTED，不从既有文字、模型解释或历史PASS制造新数值。
 
+
+## 配套程序已验证运行环境
+
+**下列数据/数值功能已在本地运行成功；结论限定于列出的操作与案例。**
+
+| 项目 | 已验证内容 |
+| --- | --- |
+| 操作系统 | Windows 11 |
+| Python / 设备 | 3.12.14 / CPU |
+| 本轮实际依赖范围 | numpy 2.4.6 |
+| 本轮已验证功能 | 给定分区及矩阵角色下的掩码、对称性、谱与正定性核对；参数修改与已有结果保护 |
+| 测试内容 | default、changed-parameter、existing-output-protection；结果文件、ZIP CRC与SHA-256核对 |
+| 测试结果 | 3/3项符合预期；含输入拒绝/旧结果保护，不表示所有命令退出0 |
+| 历史运行记录 | 历史固定bb629ee版（2026-10-25）在Linux / Python 3.12.14 / CPU完成默认入口；不等于本修订版完整运行复验 |
+| 验证日期 / 程序基线 | 2026-10-26 / 67aaaaa；本次只改说明与分发，不改计算程序 |
+| 未覆盖范围 | 正定要求由矩阵角色决定；掩码不是通用物理哈密顿量构造或新方法认证。 |
+
+使用已有独立Python环境，没有在本轮重新安装依赖。通过所列小型案例不等于全部平台、输入分布或科学用途已认证。 输入准备、数值复核、模型训练与化学用途验证分别报告；全平台对照见[运行环境与验证范围](https://github.com/CCcolab/AI4OrgChem-data-processing/blob/main/docs/VERIFIED_ENVIRONMENTS.md)。
+
+
 ## 输入与方法
 
 parameters为atol、matrix_role（overlap/hamiltonian）、allowed_pairs；data为matrix及partitions（id、indices）。索引从0起始，必须完整互斥；允许对为无序耦合对，若要保留对角块也须显式列出。

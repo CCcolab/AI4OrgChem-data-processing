@@ -43,14 +43,31 @@
     "third_party_review_base_commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
     "full_torch_runtime_retested": false,
     "torch_runtime_not_retested_skills": [
+      "chemical-chemprop-prediction",
+      "chemical-multiobjective-optimization",
       "molecular-gnn-mpnn",
       "molecular-self-supervised-pretraining",
-      "molecular-smiles-vae",
-      "chemical-chemprop-prediction",
-      "chemical-bayesian-optimization"
+      "molecular-smiles-vae"
     ],
     "new_scientific_backends_retested": false,
-    "new_model_calls": 0
+    "new_model_calls": 0,
+    "full_local_model_workflows_retested": false,
+    "current_input_output_checks_only_skills": [
+      "chemical-bayesian-optimization",
+      "chemical-chemprop-prediction",
+      "chemical-mlp-models",
+      "chemical-model-validation",
+      "chemical-molecule-clustering",
+      "chemical-multiarmed-bandit",
+      "chemical-multiobjective-optimization",
+      "chemical-q-learning-simulation",
+      "chemical-regression-classification",
+      "chemical-space-embedding",
+      "chemical-tree-forest-models",
+      "molecular-gnn-mpnn",
+      "molecular-self-supervised-pretraining",
+      "molecular-smiles-vae"
+    ]
   },
   "development_preview": {
     "index": "docs/DEVELOPMENT_PREVIEW.md",
@@ -63,5 +80,7 @@
     ],
     "backend_scientific_status": "PARTIAL_BACKEND_PENDING",
     "default_entry_can_execute_user_backend": false
-  }
+  },
+  "verified_environments_page": "docs/VERIFIED_ENVIRONMENTS.md",
+  "verified_environments_count": 32
 }

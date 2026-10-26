@@ -148,6 +148,43 @@
         "skill": "skills/organic-smiles-rdkit/SKILL.md",
         "python": "skills/organic-smiles-rdkit/runtime/organic-smiles-rdkit.py",
         "package": "skills/organic-smiles-rdkit/downloads/organic-smiles-rdkit-python.zip"
+      },
+      "verified_environment": {
+        "status": "PASS_LOCAL_DEFINED_DATA_NUMERICAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "rdkit 2026.3.6；numpy 2.4.6；matplotlib 3.11.2",
+        "current_runtime_requirements": [
+          "rdkit==2026.3.6",
+          "numpy==2.4.6",
+          "matplotlib==3.11.2"
+        ],
+        "features": "CSV结构解析、描述符、SMARTS匹配、Morgan相似度、重复映射、立体/适用性提示及图表/结果保存；参数修改与已有结果保护",
+        "test_cases": [
+          "01_descriptors",
+          "02_smarts",
+          "03_similarity_compare",
+          "user-csv",
+          "changed-parameter",
+          "chemical-regression",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 7,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": true,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "未调用Agent/模型服务；没有真实实验物性、指定pH状态、全面身份或化学预测认证。33条边界输入的44项断言不是通用化学认证。",
+        "new_scientific_solver_executed": false
       }
     },
     {
@@ -167,6 +204,37 @@
         "skill": "skills/chemical-identifier-resolution/SKILL.md",
         "python": "skills/chemical-identifier-resolution/runtime/resolve_identifiers.py",
         "package": "skills/chemical-identifier-resolution/downloads/chemical-identifier-resolution-python.zip"
+      },
+      "verified_environment": {
+        "status": "PASS_LOCAL_DEFINED_DATA_NUMERICAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "rdkit 2026.3.6",
+        "current_runtime_requirements": [
+          "rdkit==2026.3.6"
+        ],
+        "features": "本地SMILES解析、规范结构候选与CSV保存；未调用PubChem或CIR网络服务；参数修改与已有结果保护",
+        "test_cases": [
+          "default-offline",
+          "user-csv-service-parameter",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 3,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": true,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "仅验证本地SMILES候选；远程PubChem/CIR可用性、实时响应和名称/注册身份认证未覆盖。",
+        "new_scientific_solver_executed": false
       }
     },
     {
@@ -186,6 +254,40 @@
         "skill": "skills/chemical-pandas-cleaning/SKILL.md",
         "python": "skills/chemical-pandas-cleaning/runtime/clean_chemical_data.py",
         "package": "skills/chemical-pandas-cleaning/downloads/chemical-pandas-cleaning-python.zip"
+      },
+      "verified_environment": {
+        "status": "PASS_LOCAL_DEFINED_DATA_NUMERICAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.7",
+        "compute": "CPU",
+        "dependencies": "pandas 2.2.2；numpy 1.26.4",
+        "current_runtime_requirements": [
+          "pandas==2.2.2",
+          "numpy==1.26.4"
+        ],
+        "features": "CSV数值审计、保留重复记录、分组描述统计、受约束元数据连接和结果保存；参数修改与已有结果保护",
+        "test_cases": [
+          "01_replicates",
+          "02_issues",
+          "03_join",
+          "changed-parameter",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 5,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": true,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "仅描述统计与显式输入审计；无自动去重/插补/换单位，无独立重复、因果或显著性认证。",
+        "new_scientific_solver_executed": false
       }
     },
     {
@@ -205,6 +307,39 @@
         "skill": "skills/table-fitting-residuals/SKILL.md",
         "python": "skills/table-fitting-residuals/runtime/table-fitting-residuals.py",
         "package": "skills/table-fitting-residuals/downloads/table-fitting-residuals-python.zip"
+      },
+      "verified_environment": {
+        "status": "PASS_LOCAL_DEFINED_DATA_NUMERICAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "numpy 2.4.6；matplotlib 3.11.2",
+        "current_runtime_requirements": [
+          "numpy==2.4.6",
+          "matplotlib==3.11.2"
+        ],
+        "features": "给定CSV的有界线性/二次最小二乘、加权拟合、残差/图表及结果保存；参数修改与已有结果保护",
+        "test_cases": [
+          "02_linear",
+          "03_weighted",
+          "changed-degree",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": true,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "只验证给定小样本和有界次数；不认证实验误差模型、外推、因果或通用预测能力。",
+        "new_scientific_solver_executed": false
       }
     },
     {
@@ -224,6 +359,40 @@
         "skill": "skills/chemical-experimental-plotting/SKILL.md",
         "python": "skills/chemical-experimental-plotting/runtime/plot_experiment.py",
         "package": "skills/chemical-experimental-plotting/downloads/chemical-experimental-plotting-python.zip"
+      },
+      "verified_environment": {
+        "status": "PASS_LOCAL_DEFINED_DATA_NUMERICAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "numpy 2.4.6；matplotlib 3.11.2",
+        "current_runtime_requirements": [
+          "numpy==2.4.6",
+          "matplotlib==3.11.2"
+        ],
+        "features": "散点、已给误差条、重复测量样本SD、图表及结果保存；参数修改与已有结果保护",
+        "test_cases": [
+          "01_scatter",
+          "02_supplied",
+          "03_replicates",
+          "user-csv-SD",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 5,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": true,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "SD是给定重复记录的描述量；未认证实验独立性、置信水平、显著性或测量准确度。",
+        "new_scientific_solver_executed": false
       }
     },
     {
@@ -243,6 +412,37 @@
         "skill": "skills/molecular-graph-energy-ledger/SKILL.md",
         "python": "skills/molecular-graph-energy-ledger/runtime/run_skill.py",
         "package": "skills/molecular-graph-energy-ledger/downloads/molecular-graph-energy-ledger-python.zip"
+      },
+      "verified_environment": {
+        "status": "PASS_LOCAL_DEFINED_DATA_NUMERICAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "rdkit 2026.3.6",
+        "current_runtime_requirements": [
+          "rdkit==2026.3.6"
+        ],
+        "features": "有界SMARTS图匹配与已给账本入口；本轮正路径只运行图匹配，不生成量子能量；参数修改与已有结果保护",
+        "test_cases": [
+          "default",
+          "changed-parameter",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 3,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": true,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "图匹配与来源账本是两类功能；本轮未完整复验所有能量账本分支，不由图生成能量，不认证化学身份。",
+        "new_scientific_solver_executed": false
       }
     },
     {
@@ -262,6 +462,35 @@
         "skill": "skills/same-hamiltonian-path-closure/SKILL.md",
         "python": "skills/same-hamiltonian-path-closure/runtime/run_skill.py",
         "package": "skills/same-hamiltonian-path-closure/downloads/same-hamiltonian-path-closure-python.zip"
+      },
+      "verified_environment": {
+        "status": "PASS_LOCAL_DEFINED_DATA_NUMERICAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "",
+        "current_runtime_requirements": [],
+        "features": "给定同一协议的有向路径、符号和能量循环算术核对；参数修改与已有结果保护",
+        "test_cases": [
+          "default",
+          "changed-parameter",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 3,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": true,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "只证明已给账本的算术闭合，不独立证明算子、电子态或能量来源真实。",
+        "new_scientific_solver_executed": false
       }
     },
     {
@@ -281,6 +510,37 @@
         "skill": "skills/scan-energy-curvature/SKILL.md",
         "python": "skills/scan-energy-curvature/runtime/run_skill.py",
         "package": "skills/scan-energy-curvature/downloads/scan-energy-curvature-python.zip"
+      },
+      "verified_environment": {
+        "status": "PASS_LOCAL_DEFINED_DATA_NUMERICAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "numpy 2.4.6",
+        "current_runtime_requirements": [
+          "numpy==2.4.6"
+        ],
+        "features": "已有扫描表的局部有限差分导数与曲率；本轮使用明确的合成标量函数；参数修改与已有结果保护",
+        "test_cases": [
+          "default",
+          "changed-parameter",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 3,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": true,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "未运行新几何扫描或确认电子态连续性；有限差分检查不认证物理反应曲率。",
+        "new_scientific_solver_executed": false
       }
     },
     {
@@ -300,6 +560,37 @@
         "skill": "skills/nuclear-repulsion-response/SKILL.md",
         "python": "skills/nuclear-repulsion-response/runtime/run_skill.py",
         "package": "skills/nuclear-repulsion-response/downloads/nuclear-repulsion-response-python.zip"
+      },
+      "verified_environment": {
+        "status": "PASS_LOCAL_DEFINED_DATA_NUMERICAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "numpy 2.4.6",
+        "current_runtime_requirements": [
+          "numpy==2.4.6"
+        ],
+        "features": "有限非周期点核的库仑核排斥项及几何响应；bohr/Å输入一致性；参数修改与已有结果保护",
+        "test_cases": [
+          "default",
+          "changed-parameter",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 3,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": true,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "未计算电子项或分子总能量；不适用于周期体系、重合点核或未声明的电荷/坐标约定。",
+        "new_scientific_solver_executed": false
       }
     },
     {
@@ -403,6 +694,37 @@
         "skill": "skills/nonorthogonal-subspace/SKILL.md",
         "python": "skills/nonorthogonal-subspace/runtime/run_skill.py",
         "package": "skills/nonorthogonal-subspace/downloads/nonorthogonal-subspace-python.zip"
+      },
+      "verified_environment": {
+        "status": "PASS_LOCAL_DEFINED_DATA_NUMERICAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "numpy 2.4.6",
+        "current_runtime_requirements": [
+          "numpy==2.4.6"
+        ],
+        "features": "给定实度量的子空间投影、数值秩、残差和平方范数泄漏复核；参数修改与已有结果保护",
+        "test_cases": [
+          "default",
+          "changed-parameter",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 3,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": true,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "平方范数泄漏不是概率、电子数损失或能量；未认证新的科学后端或任意复杂数据。",
+        "new_scientific_solver_executed": false
       }
     },
     {
@@ -422,6 +744,37 @@
         "skill": "skills/fragment-working-basis/SKILL.md",
         "python": "skills/fragment-working-basis/runtime/run_skill.py",
         "package": "skills/fragment-working-basis/downloads/fragment-working-basis-python.zip"
+      },
+      "verified_environment": {
+        "status": "PASS_LOCAL_DEFINED_DATA_NUMERICAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "numpy 2.4.6",
+        "current_runtime_requirements": [
+          "numpy==2.4.6"
+        ],
+        "features": "给定片段支持、全局AO度量、工作基秩与单电子变换的一致性复核；参数修改与已有结果保护",
+        "test_cases": [
+          "default",
+          "changed-parameter",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 3,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": true,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "未认证全部双电子张量/新哈密顿量、片段物理解释或相关能计算。",
+        "new_scientific_solver_executed": false
       }
     },
     {
@@ -441,6 +794,37 @@
         "skill": "skills/reflection-parity/SKILL.md",
         "python": "skills/reflection-parity/runtime/run_skill.py",
         "package": "skills/reflection-parity/downloads/reflection-parity-python.zip"
+      },
+      "verified_environment": {
+        "status": "PASS_LOCAL_DEFINED_DATA_NUMERICAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "numpy 2.4.6",
+        "current_runtime_requirements": [
+          "numpy==2.4.6"
+        ],
+        "features": "给定AO反射表示的度量、子空间闭合及奇偶适配复核；参数修改与已有结果保护",
+        "test_cases": [
+          "default",
+          "changed-parameter",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 3,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": true,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "输入反射表示及AO来源需独立支持；数值奇偶/闭合不证明任意真实分子具有该对称性。",
+        "new_scientific_solver_executed": false
       }
     },
     {
@@ -460,6 +844,37 @@
         "skill": "skills/partition-mask-audit/SKILL.md",
         "python": "skills/partition-mask-audit/runtime/run_skill.py",
         "package": "skills/partition-mask-audit/downloads/partition-mask-audit-python.zip"
+      },
+      "verified_environment": {
+        "status": "PASS_LOCAL_DEFINED_DATA_NUMERICAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "numpy 2.4.6",
+        "current_runtime_requirements": [
+          "numpy==2.4.6"
+        ],
+        "features": "给定分区及矩阵角色下的掩码、对称性、谱与正定性核对；参数修改与已有结果保护",
+        "test_cases": [
+          "default",
+          "changed-parameter",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 3,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": true,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "正定要求由矩阵角色决定；掩码不是通用物理哈密顿量构造或新方法认证。",
+        "new_scientific_solver_executed": false
       }
     },
     {
@@ -598,14 +1013,52 @@
       "skill": "skills/chemical-space-embedding/SKILL.md",
       "download": "skills/chemical-space-embedding/downloads/chemical-space-embedding-python.zip",
       "execution": "local_python",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
       "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/chemical-space-embedding/SKILL.md",
         "python": "skills/chemical-space-embedding/runtime/run_skill.py",
         "package": "skills/chemical-space-embedding/downloads/chemical-space-embedding-python.zip"
-      }
+      },
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4",
+          "scipy==1.13.1",
+          "scikit-learn==1.5.1",
+          "joblib==1.4.2",
+          "umap-learn==0.5.7",
+          "matplotlib==3.9.2"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。没有以输入层通过替代完整算法运行结论。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS"
     },
     {
       "id": "chemical-molecule-clustering",
@@ -617,14 +1070,50 @@
       "skill": "skills/chemical-molecule-clustering/SKILL.md",
       "download": "skills/chemical-molecule-clustering/downloads/chemical-molecule-clustering-python.zip",
       "execution": "local_python",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
       "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/chemical-molecule-clustering/SKILL.md",
         "python": "skills/chemical-molecule-clustering/runtime/run_skill.py",
         "package": "skills/chemical-molecule-clustering/downloads/chemical-molecule-clustering-python.zip"
-      }
+      },
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4",
+          "scipy==1.13.1",
+          "scikit-learn==1.5.1",
+          "joblib==1.4.2"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。没有以输入层通过替代完整算法运行结论。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS"
     },
     {
       "id": "chemical-regression-classification",
@@ -636,14 +1125,50 @@
       "skill": "skills/chemical-regression-classification/SKILL.md",
       "download": "skills/chemical-regression-classification/downloads/chemical-regression-classification-python.zip",
       "execution": "local_python",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
       "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/chemical-regression-classification/SKILL.md",
         "python": "skills/chemical-regression-classification/runtime/run_skill.py",
         "package": "skills/chemical-regression-classification/downloads/chemical-regression-classification-python.zip"
-      }
+      },
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4",
+          "scipy==1.13.1",
+          "scikit-learn==1.5.1",
+          "joblib==1.4.2"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。没有以输入层通过替代完整算法运行结论。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS"
     },
     {
       "id": "chemical-model-validation",
@@ -655,14 +1180,50 @@
       "skill": "skills/chemical-model-validation/SKILL.md",
       "download": "skills/chemical-model-validation/downloads/chemical-model-validation-python.zip",
       "execution": "local_python",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
       "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/chemical-model-validation/SKILL.md",
         "python": "skills/chemical-model-validation/runtime/run_skill.py",
         "package": "skills/chemical-model-validation/downloads/chemical-model-validation-python.zip"
-      }
+      },
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4",
+          "scipy==1.13.1",
+          "scikit-learn==1.5.1",
+          "joblib==1.4.2"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。没有以输入层通过替代完整算法运行结论。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS"
     },
     {
       "id": "chemical-tree-forest-models",
@@ -674,14 +1235,50 @@
       "skill": "skills/chemical-tree-forest-models/SKILL.md",
       "download": "skills/chemical-tree-forest-models/downloads/chemical-tree-forest-models-python.zip",
       "execution": "local_python",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
       "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/chemical-tree-forest-models/SKILL.md",
         "python": "skills/chemical-tree-forest-models/runtime/run_skill.py",
         "package": "skills/chemical-tree-forest-models/downloads/chemical-tree-forest-models-python.zip"
-      }
+      },
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4",
+          "scipy==1.13.1",
+          "scikit-learn==1.5.1",
+          "joblib==1.4.2"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。没有以输入层通过替代完整算法运行结论。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS"
     },
     {
       "id": "chemical-mlp-models",
@@ -693,14 +1290,50 @@
       "skill": "skills/chemical-mlp-models/SKILL.md",
       "download": "skills/chemical-mlp-models/downloads/chemical-mlp-models-python.zip",
       "execution": "local_python",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
       "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/chemical-mlp-models/SKILL.md",
         "python": "skills/chemical-mlp-models/runtime/run_skill.py",
         "package": "skills/chemical-mlp-models/downloads/chemical-mlp-models-python.zip"
-      }
+      },
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4",
+          "scipy==1.13.1",
+          "scikit-learn==1.5.1",
+          "joblib==1.4.2"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。没有以输入层通过替代完整算法运行结论。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS"
     },
     {
       "id": "molecular-gnn-mpnn",
@@ -712,7 +1345,7 @@
       "skill": "skills/molecular-gnn-mpnn/SKILL.md",
       "download": "skills/molecular-gnn-mpnn/downloads/molecular-gnn-mpnn-python.zip",
       "execution": "local_python",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。 本次修订完整Torch运行未复验。",
       "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
@@ -720,7 +1353,43 @@
         "python": "skills/molecular-gnn-mpnn/runtime/run_skill.py",
         "package": "skills/molecular-gnn-mpnn/downloads/molecular-gnn-mpnn-python.zip"
       },
-      "full_torch_runtime_retest": "NOT_RETESTED_AFTER_THIRD_PARTY_REPAIRS"
+      "full_torch_runtime_retest": "NOT_RETESTED_AFTER_THIRD_PARTY_REPAIRS",
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4",
+          "rdkit==2026.3.6",
+          "torch==2.14.1+cpu"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。完整Torch运行未复验，GPU及其它依赖版本也未验证。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false,
+        "full_torch_runtime_retested": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS"
     },
     {
       "id": "chemical-chemprop-prediction",
@@ -732,7 +1401,7 @@
       "skill": "skills/chemical-chemprop-prediction/SKILL.md",
       "download": "skills/chemical-chemprop-prediction/downloads/chemical-chemprop-prediction-python.zip",
       "execution": "local_python",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。 本次修订完整Torch运行未复验。",
       "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
@@ -740,7 +1409,44 @@
         "python": "skills/chemical-chemprop-prediction/runtime/run_skill.py",
         "package": "skills/chemical-chemprop-prediction/downloads/chemical-chemprop-prediction-python.zip"
       },
-      "full_torch_runtime_retest": "NOT_RETESTED_AFTER_THIRD_PARTY_REPAIRS"
+      "full_torch_runtime_retest": "NOT_RETESTED_AFTER_THIRD_PARTY_REPAIRS",
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4",
+          "rdkit==2026.3.6",
+          "torch==2.14.1+cpu",
+          "chemprop==2.3.1"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。完整Torch运行未复验，GPU及其它依赖版本也未验证。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false,
+        "full_torch_runtime_retested": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS"
     },
     {
       "id": "molecular-self-supervised-pretraining",
@@ -752,7 +1458,7 @@
       "skill": "skills/molecular-self-supervised-pretraining/SKILL.md",
       "download": "skills/molecular-self-supervised-pretraining/downloads/molecular-self-supervised-pretraining-python.zip",
       "execution": "local_python",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。 本次修订完整Torch运行未复验。",
       "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
@@ -760,7 +1466,43 @@
         "python": "skills/molecular-self-supervised-pretraining/runtime/run_skill.py",
         "package": "skills/molecular-self-supervised-pretraining/downloads/molecular-self-supervised-pretraining-python.zip"
       },
-      "full_torch_runtime_retest": "NOT_RETESTED_AFTER_THIRD_PARTY_REPAIRS"
+      "full_torch_runtime_retest": "NOT_RETESTED_AFTER_THIRD_PARTY_REPAIRS",
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4",
+          "rdkit==2026.3.6",
+          "torch==2.14.1+cpu"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。完整Torch运行未复验，GPU及其它依赖版本也未验证。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false,
+        "full_torch_runtime_retested": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS"
     },
     {
       "id": "molecular-smiles-vae",
@@ -772,7 +1514,7 @@
       "skill": "skills/molecular-smiles-vae/SKILL.md",
       "download": "skills/molecular-smiles-vae/downloads/molecular-smiles-vae-python.zip",
       "execution": "local_python",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。 本次修订完整Torch运行未复验。",
       "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
@@ -780,7 +1522,43 @@
         "python": "skills/molecular-smiles-vae/runtime/run_skill.py",
         "package": "skills/molecular-smiles-vae/downloads/molecular-smiles-vae-python.zip"
       },
-      "full_torch_runtime_retest": "NOT_RETESTED_AFTER_THIRD_PARTY_REPAIRS"
+      "full_torch_runtime_retest": "NOT_RETESTED_AFTER_THIRD_PARTY_REPAIRS",
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4",
+          "rdkit==2026.3.6",
+          "torch==2.14.1+cpu"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。完整Torch运行未复验，GPU及其它依赖版本也未验证。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false,
+        "full_torch_runtime_retested": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS"
     },
     {
       "id": "chemical-bayesian-optimization",
@@ -792,15 +1570,50 @@
       "skill": "skills/chemical-bayesian-optimization/SKILL.md",
       "download": "skills/chemical-bayesian-optimization/downloads/chemical-bayesian-optimization-python.zip",
       "execution": "local_python",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
-      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。 本次修订完整Torch运行未复验。",
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
+      "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。 本项使用scikit-learn GP，不依赖Torch；本轮未重新拟合或预测。",
       "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/chemical-bayesian-optimization/SKILL.md",
         "python": "skills/chemical-bayesian-optimization/runtime/run_skill.py",
         "package": "skills/chemical-bayesian-optimization/downloads/chemical-bayesian-optimization-python.zip"
       },
-      "full_torch_runtime_retest": "NOT_RETESTED_AFTER_THIRD_PARTY_REPAIRS"
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4",
+          "scipy==1.13.1",
+          "scikit-learn==1.5.1",
+          "joblib==1.4.2"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。没有以输入层通过替代完整算法运行结论。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS"
     },
     {
       "id": "chemical-multiobjective-optimization",
@@ -812,14 +1625,52 @@
       "skill": "skills/chemical-multiobjective-optimization/SKILL.md",
       "download": "skills/chemical-multiobjective-optimization/downloads/chemical-multiobjective-optimization-python.zip",
       "execution": "local_python",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
       "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/chemical-multiobjective-optimization/SKILL.md",
         "python": "skills/chemical-multiobjective-optimization/runtime/run_skill.py",
         "package": "skills/chemical-multiobjective-optimization/downloads/chemical-multiobjective-optimization-python.zip"
-      }
+      },
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4",
+          "torch==2.14.1+cpu",
+          "botorch==0.18.1",
+          "gpytorch==1.15.2"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。完整Torch运行未复验，GPU及其它依赖版本也未验证。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false,
+        "full_torch_runtime_retested": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS",
+      "full_torch_runtime_retest": "NOT_RETESTED_AFTER_THIRD_PARTY_REPAIRS"
     },
     {
       "id": "chemical-multiarmed-bandit",
@@ -831,14 +1682,47 @@
       "skill": "skills/chemical-multiarmed-bandit/SKILL.md",
       "download": "skills/chemical-multiarmed-bandit/downloads/chemical-multiarmed-bandit-python.zip",
       "execution": "local_python",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
       "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/chemical-multiarmed-bandit/SKILL.md",
         "python": "skills/chemical-multiarmed-bandit/runtime/run_skill.py",
         "package": "skills/chemical-multiarmed-bandit/downloads/chemical-multiarmed-bandit-python.zip"
-      }
+      },
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。没有以输入层通过替代完整算法运行结论。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS"
     },
     {
       "id": "chemical-q-learning-simulation",
@@ -850,14 +1734,47 @@
       "skill": "skills/chemical-q-learning-simulation/SKILL.md",
       "download": "skills/chemical-q-learning-simulation/downloads/chemical-q-learning-simulation-python.zip",
       "execution": "local_python",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
       "scientific_scope": "已执行本地案例；资格仅限各页明确的数据、算法与边界，不代表真实化学应用验证。",
       "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
       "downloads": {
         "skill": "skills/chemical-q-learning-simulation/SKILL.md",
         "python": "skills/chemical-q-learning-simulation/runtime/run_skill.py",
         "package": "skills/chemical-q-learning-simulation/downloads/chemical-q-learning-simulation-python.zip"
-      }
+      },
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。没有以输入层通过替代完整算法运行结论。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS"
     }
   ],
   "training_catalog": [
@@ -867,7 +1784,44 @@
       "category": "organic-structure",
       "has_learning_page": true,
       "page": "skills/organic-smiles-rdkit/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "verified_environment": {
+        "status": "PASS_LOCAL_DEFINED_DATA_NUMERICAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "rdkit 2026.3.6；numpy 2.4.6；matplotlib 3.11.2",
+        "current_runtime_requirements": [
+          "rdkit==2026.3.6",
+          "numpy==2.4.6",
+          "matplotlib==3.11.2"
+        ],
+        "features": "CSV结构解析、描述符、SMARTS匹配、Morgan相似度、重复映射、立体/适用性提示及图表/结果保存；参数修改与已有结果保护",
+        "test_cases": [
+          "01_descriptors",
+          "02_smarts",
+          "03_similarity_compare",
+          "user-csv",
+          "changed-parameter",
+          "chemical-regression",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 7,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": true,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "未调用Agent/模型服务；没有真实实验物性、指定pH状态、全面身份或化学预测认证。33条边界输入的44项断言不是通用化学认证。",
+        "new_scientific_solver_executed": false
+      }
     },
     {
       "id": "chemical-identifier-resolution",
@@ -875,7 +1829,38 @@
       "category": "organic-structure",
       "has_learning_page": true,
       "page": "skills/chemical-identifier-resolution/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "verified_environment": {
+        "status": "PASS_LOCAL_DEFINED_DATA_NUMERICAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "rdkit 2026.3.6",
+        "current_runtime_requirements": [
+          "rdkit==2026.3.6"
+        ],
+        "features": "本地SMILES解析、规范结构候选与CSV保存；未调用PubChem或CIR网络服务；参数修改与已有结果保护",
+        "test_cases": [
+          "default-offline",
+          "user-csv-service-parameter",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 3,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": true,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "仅验证本地SMILES候选；远程PubChem/CIR可用性、实时响应和名称/注册身份认证未覆盖。",
+        "new_scientific_solver_executed": false
+      }
     },
     {
       "id": "chemical-pandas-cleaning",
@@ -883,7 +1868,41 @@
       "category": "organic-analysis",
       "has_learning_page": true,
       "page": "skills/chemical-pandas-cleaning/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "verified_environment": {
+        "status": "PASS_LOCAL_DEFINED_DATA_NUMERICAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.7",
+        "compute": "CPU",
+        "dependencies": "pandas 2.2.2；numpy 1.26.4",
+        "current_runtime_requirements": [
+          "pandas==2.2.2",
+          "numpy==1.26.4"
+        ],
+        "features": "CSV数值审计、保留重复记录、分组描述统计、受约束元数据连接和结果保存；参数修改与已有结果保护",
+        "test_cases": [
+          "01_replicates",
+          "02_issues",
+          "03_join",
+          "changed-parameter",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 5,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": true,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "仅描述统计与显式输入审计；无自动去重/插补/换单位，无独立重复、因果或显著性认证。",
+        "new_scientific_solver_executed": false
+      }
     },
     {
       "id": "table-fitting-residuals",
@@ -891,7 +1910,40 @@
       "category": "organic-analysis",
       "has_learning_page": true,
       "page": "skills/table-fitting-residuals/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "verified_environment": {
+        "status": "PASS_LOCAL_DEFINED_DATA_NUMERICAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "numpy 2.4.6；matplotlib 3.11.2",
+        "current_runtime_requirements": [
+          "numpy==2.4.6",
+          "matplotlib==3.11.2"
+        ],
+        "features": "给定CSV的有界线性/二次最小二乘、加权拟合、残差/图表及结果保存；参数修改与已有结果保护",
+        "test_cases": [
+          "02_linear",
+          "03_weighted",
+          "changed-degree",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": true,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "只验证给定小样本和有界次数；不认证实验误差模型、外推、因果或通用预测能力。",
+        "new_scientific_solver_executed": false
+      }
     },
     {
       "id": "chemical-experimental-plotting",
@@ -899,7 +1951,41 @@
       "category": "organic-analysis",
       "has_learning_page": true,
       "page": "skills/chemical-experimental-plotting/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "verified_environment": {
+        "status": "PASS_LOCAL_DEFINED_DATA_NUMERICAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "numpy 2.4.6；matplotlib 3.11.2",
+        "current_runtime_requirements": [
+          "numpy==2.4.6",
+          "matplotlib==3.11.2"
+        ],
+        "features": "散点、已给误差条、重复测量样本SD、图表及结果保存；参数修改与已有结果保护",
+        "test_cases": [
+          "01_scatter",
+          "02_supplied",
+          "03_replicates",
+          "user-csv-SD",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 5,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": true,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "SD是给定重复记录的描述量；未认证实验独立性、置信水平、显著性或测量准确度。",
+        "new_scientific_solver_executed": false
+      }
     },
     {
       "id": "molecular-graph-energy-ledger",
@@ -907,7 +1993,38 @@
       "category": "physical-organic",
       "has_learning_page": true,
       "page": "skills/molecular-graph-energy-ledger/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "verified_environment": {
+        "status": "PASS_LOCAL_DEFINED_DATA_NUMERICAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "rdkit 2026.3.6",
+        "current_runtime_requirements": [
+          "rdkit==2026.3.6"
+        ],
+        "features": "有界SMARTS图匹配与已给账本入口；本轮正路径只运行图匹配，不生成量子能量；参数修改与已有结果保护",
+        "test_cases": [
+          "default",
+          "changed-parameter",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 3,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": true,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "图匹配与来源账本是两类功能；本轮未完整复验所有能量账本分支，不由图生成能量，不认证化学身份。",
+        "new_scientific_solver_executed": false
+      }
     },
     {
       "id": "same-hamiltonian-path-closure",
@@ -915,7 +2032,36 @@
       "category": "physical-organic",
       "has_learning_page": true,
       "page": "skills/same-hamiltonian-path-closure/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "verified_environment": {
+        "status": "PASS_LOCAL_DEFINED_DATA_NUMERICAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "",
+        "current_runtime_requirements": [],
+        "features": "给定同一协议的有向路径、符号和能量循环算术核对；参数修改与已有结果保护",
+        "test_cases": [
+          "default",
+          "changed-parameter",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 3,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": true,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "只证明已给账本的算术闭合，不独立证明算子、电子态或能量来源真实。",
+        "new_scientific_solver_executed": false
+      }
     },
     {
       "id": "scan-energy-curvature",
@@ -923,7 +2069,38 @@
       "category": "physical-organic",
       "has_learning_page": true,
       "page": "skills/scan-energy-curvature/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "verified_environment": {
+        "status": "PASS_LOCAL_DEFINED_DATA_NUMERICAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "numpy 2.4.6",
+        "current_runtime_requirements": [
+          "numpy==2.4.6"
+        ],
+        "features": "已有扫描表的局部有限差分导数与曲率；本轮使用明确的合成标量函数；参数修改与已有结果保护",
+        "test_cases": [
+          "default",
+          "changed-parameter",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 3,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": true,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "未运行新几何扫描或确认电子态连续性；有限差分检查不认证物理反应曲率。",
+        "new_scientific_solver_executed": false
+      }
     },
     {
       "id": "nuclear-repulsion-response",
@@ -931,7 +2108,38 @@
       "category": "physical-organic",
       "has_learning_page": true,
       "page": "skills/nuclear-repulsion-response/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "verified_environment": {
+        "status": "PASS_LOCAL_DEFINED_DATA_NUMERICAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "numpy 2.4.6",
+        "current_runtime_requirements": [
+          "numpy==2.4.6"
+        ],
+        "features": "有限非周期点核的库仑核排斥项及几何响应；bohr/Å输入一致性；参数修改与已有结果保护",
+        "test_cases": [
+          "default",
+          "changed-parameter",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 3,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": true,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "未计算电子项或分子总能量；不适用于周期体系、重合点核或未声明的电荷/坐标约定。",
+        "new_scientific_solver_executed": false
+      }
     },
     {
       "id": "rhf-single-point",
@@ -999,7 +2207,38 @@
       "category": "computational-organic",
       "has_learning_page": true,
       "page": "skills/nonorthogonal-subspace/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "verified_environment": {
+        "status": "PASS_LOCAL_DEFINED_DATA_NUMERICAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "numpy 2.4.6",
+        "current_runtime_requirements": [
+          "numpy==2.4.6"
+        ],
+        "features": "给定实度量的子空间投影、数值秩、残差和平方范数泄漏复核；参数修改与已有结果保护",
+        "test_cases": [
+          "default",
+          "changed-parameter",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 3,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": true,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "平方范数泄漏不是概率、电子数损失或能量；未认证新的科学后端或任意复杂数据。",
+        "new_scientific_solver_executed": false
+      }
     },
     {
       "id": "fragment-working-basis",
@@ -1007,7 +2246,38 @@
       "category": "computational-organic",
       "has_learning_page": true,
       "page": "skills/fragment-working-basis/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "verified_environment": {
+        "status": "PASS_LOCAL_DEFINED_DATA_NUMERICAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "numpy 2.4.6",
+        "current_runtime_requirements": [
+          "numpy==2.4.6"
+        ],
+        "features": "给定片段支持、全局AO度量、工作基秩与单电子变换的一致性复核；参数修改与已有结果保护",
+        "test_cases": [
+          "default",
+          "changed-parameter",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 3,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": true,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "未认证全部双电子张量/新哈密顿量、片段物理解释或相关能计算。",
+        "new_scientific_solver_executed": false
+      }
     },
     {
       "id": "reflection-parity",
@@ -1015,7 +2285,38 @@
       "category": "computational-organic",
       "has_learning_page": true,
       "page": "skills/reflection-parity/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "verified_environment": {
+        "status": "PASS_LOCAL_DEFINED_DATA_NUMERICAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "numpy 2.4.6",
+        "current_runtime_requirements": [
+          "numpy==2.4.6"
+        ],
+        "features": "给定AO反射表示的度量、子空间闭合及奇偶适配复核；参数修改与已有结果保护",
+        "test_cases": [
+          "default",
+          "changed-parameter",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 3,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": true,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "输入反射表示及AO来源需独立支持；数值奇偶/闭合不证明任意真实分子具有该对称性。",
+        "new_scientific_solver_executed": false
+      }
     },
     {
       "id": "partition-mask-audit",
@@ -1023,7 +2324,38 @@
       "category": "computational-organic",
       "has_learning_page": true,
       "page": "skills/partition-mask-audit/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
+      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT",
+      "verified_environment": {
+        "status": "PASS_LOCAL_DEFINED_DATA_NUMERICAL_FEATURES",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "numpy 2.4.6",
+        "current_runtime_requirements": [
+          "numpy==2.4.6"
+        ],
+        "features": "给定分区及矩阵角色下的掩码、对称性、谱与正定性核对；参数修改与已有结果保护",
+        "test_cases": [
+          "default",
+          "changed-parameter",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 3,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": true,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "正定要求由矩阵角色决定；掩码不是通用物理哈密顿量构造或新方法认证。",
+        "new_scientific_solver_executed": false
+      }
     },
     {
       "id": "fixed-protocol-energy-review",
@@ -1121,7 +2453,45 @@
       "category": "cheminformatics-design",
       "has_learning_page": true,
       "page": "skills/chemical-space-embedding/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4",
+          "scipy==1.13.1",
+          "scikit-learn==1.5.1",
+          "joblib==1.4.2",
+          "umap-learn==0.5.7",
+          "matplotlib==3.9.2"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。没有以输入层通过替代完整算法运行结论。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS"
     },
     {
       "id": "chemical-molecule-clustering",
@@ -1129,7 +2499,43 @@
       "category": "cheminformatics-design",
       "has_learning_page": true,
       "page": "skills/chemical-molecule-clustering/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4",
+          "scipy==1.13.1",
+          "scikit-learn==1.5.1",
+          "joblib==1.4.2"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。没有以输入层通过替代完整算法运行结论。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS"
     },
     {
       "id": "chemical-regression-classification",
@@ -1137,7 +2543,43 @@
       "category": "cheminformatics-design",
       "has_learning_page": true,
       "page": "skills/chemical-regression-classification/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4",
+          "scipy==1.13.1",
+          "scikit-learn==1.5.1",
+          "joblib==1.4.2"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。没有以输入层通过替代完整算法运行结论。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS"
     },
     {
       "id": "chemical-model-validation",
@@ -1145,7 +2587,43 @@
       "category": "cheminformatics-design",
       "has_learning_page": true,
       "page": "skills/chemical-model-validation/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4",
+          "scipy==1.13.1",
+          "scikit-learn==1.5.1",
+          "joblib==1.4.2"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。没有以输入层通过替代完整算法运行结论。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS"
     },
     {
       "id": "chemical-tree-forest-models",
@@ -1153,7 +2631,43 @@
       "category": "cheminformatics-design",
       "has_learning_page": true,
       "page": "skills/chemical-tree-forest-models/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4",
+          "scipy==1.13.1",
+          "scikit-learn==1.5.1",
+          "joblib==1.4.2"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。没有以输入层通过替代完整算法运行结论。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS"
     },
     {
       "id": "chemical-mlp-models",
@@ -1161,7 +2675,43 @@
       "category": "cheminformatics-design",
       "has_learning_page": true,
       "page": "skills/chemical-mlp-models/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4",
+          "scipy==1.13.1",
+          "scikit-learn==1.5.1",
+          "joblib==1.4.2"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。没有以输入层通过替代完整算法运行结论。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS"
     },
     {
       "id": "molecular-gnn-mpnn",
@@ -1169,7 +2719,44 @@
       "category": "cheminformatics-design",
       "has_learning_page": true,
       "page": "skills/molecular-gnn-mpnn/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4",
+          "rdkit==2026.3.6",
+          "torch==2.14.1+cpu"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。完整Torch运行未复验，GPU及其它依赖版本也未验证。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false,
+        "full_torch_runtime_retested": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS",
+      "full_torch_runtime_retest": "NOT_RETESTED_AFTER_THIRD_PARTY_REPAIRS"
     },
     {
       "id": "chemical-chemprop-prediction",
@@ -1177,7 +2764,45 @@
       "category": "cheminformatics-design",
       "has_learning_page": true,
       "page": "skills/chemical-chemprop-prediction/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4",
+          "rdkit==2026.3.6",
+          "torch==2.14.1+cpu",
+          "chemprop==2.3.1"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。完整Torch运行未复验，GPU及其它依赖版本也未验证。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false,
+        "full_torch_runtime_retested": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS",
+      "full_torch_runtime_retest": "NOT_RETESTED_AFTER_THIRD_PARTY_REPAIRS"
     },
     {
       "id": "molecular-self-supervised-pretraining",
@@ -1185,7 +2810,44 @@
       "category": "cheminformatics-design",
       "has_learning_page": true,
       "page": "skills/molecular-self-supervised-pretraining/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4",
+          "rdkit==2026.3.6",
+          "torch==2.14.1+cpu"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。完整Torch运行未复验，GPU及其它依赖版本也未验证。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false,
+        "full_torch_runtime_retested": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS",
+      "full_torch_runtime_retest": "NOT_RETESTED_AFTER_THIRD_PARTY_REPAIRS"
     },
     {
       "id": "molecular-smiles-vae",
@@ -1193,7 +2855,44 @@
       "category": "cheminformatics-design",
       "has_learning_page": true,
       "page": "skills/molecular-smiles-vae/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4",
+          "rdkit==2026.3.6",
+          "torch==2.14.1+cpu"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。完整Torch运行未复验，GPU及其它依赖版本也未验证。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false,
+        "full_torch_runtime_retested": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS",
+      "full_torch_runtime_retest": "NOT_RETESTED_AFTER_THIRD_PARTY_REPAIRS"
     },
     {
       "id": "chemical-bayesian-optimization",
@@ -1201,7 +2900,43 @@
       "category": "synthesis-experiment-optimization",
       "has_learning_page": true,
       "page": "skills/chemical-bayesian-optimization/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4",
+          "scipy==1.13.1",
+          "scikit-learn==1.5.1",
+          "joblib==1.4.2"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。没有以输入层通过替代完整算法运行结论。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS"
     },
     {
       "id": "chemical-multiobjective-optimization",
@@ -1209,7 +2944,45 @@
       "category": "synthesis-experiment-optimization",
       "has_learning_page": true,
       "page": "skills/chemical-multiobjective-optimization/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4",
+          "torch==2.14.1+cpu",
+          "botorch==0.18.1",
+          "gpytorch==1.15.2"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。完整Torch运行未复验，GPU及其它依赖版本也未验证。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false,
+        "full_torch_runtime_retested": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS",
+      "full_torch_runtime_retest": "NOT_RETESTED_AFTER_THIRD_PARTY_REPAIRS"
     },
     {
       "id": "chemical-multiarmed-bandit",
@@ -1217,7 +2990,40 @@
       "category": "synthesis-experiment-optimization",
       "has_learning_page": true,
       "page": "skills/chemical-multiarmed-bandit/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。没有以输入层通过替代完整算法运行结论。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS"
     },
     {
       "id": "chemical-q-learning-simulation",
@@ -1225,10 +3031,43 @@
       "category": "synthesis-experiment-optimization",
       "has_learning_page": true,
       "page": "skills/chemical-q-learning-simulation/README.md",
-      "development_status": "PASS_LOCAL_DEFINED_SCOPE_AND_PACKAGED_DEFAULT"
+      "development_status": "PASS_INPUT_OUTPUT_CHECKS_FULL_WORKFLOW_NOT_RETESTED",
+      "verified_environment": {
+        "status": "PASS_CURRENT_INPUT_OUTPUT_ONLY_FULL_WORKFLOW_NOT_RETESTED",
+        "os": "Windows 11",
+        "python": "3.12.14",
+        "compute": "CPU",
+        "dependencies": "Python标准库（仅输入层测试，未导入数值/模型后端）",
+        "current_runtime_requirements": [
+          "numpy==1.26.4"
+        ],
+        "features": "JSON根类型/必需结构/非有限值拒绝、输入与Skill快照、failure.json、ZIP/SHA-256保存、已有结果保护；未进入analysis或模型后端",
+        "test_cases": [
+          "array-root",
+          "empty-object",
+          "nan-json",
+          "existing-output-protection"
+        ],
+        "local_checks_passed": 4,
+        "verification_date": "2026-10-26",
+        "source_code_base_commit": "67aaaaa3ebf2ce00b4730f6109f5552400159b0f",
+        "current_full_workflow_retested": false,
+        "model_calls": 0,
+        "historical_run": {
+          "commit": "bb629ee486c221c8fe979918e9121a03cd2c5dcb",
+          "os": "Linux",
+          "python": "3.12.14",
+          "compute": "CPU",
+          "date": "2026-10-25",
+          "scope": "FIXED_VERSION_DEFAULT_ONLY"
+        },
+        "uncovered": "本轮未执行完整拟合、训练、预测、采样/策略学习或模型权重重载；默认入口完整运行仅有固定历史版本记录。没有以输入层通过替代完整算法运行结论。不认证真实化学预测泛化、实验改进或最优性。",
+        "new_scientific_solver_executed": false
+      },
+      "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS"
     }
   ],
-  "revision": "professional32-verified-environment-notes-20261026",
+  "revision": "professional32-per-skill-environments-20261026",
   "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
   "shared_routing_enabled": false
 }
