@@ -3067,7 +3067,9 @@
       "full_model_runtime_retest": "NOT_RETESTED_NO_MODEL_CALLS"
     }
   ],
-  "revision": "professional32-per-skill-environments-20261026",
+  "revision": "professional32-v0.1.0",
   "remote_publication": "PUBLIC_MAIN_PYTHON_DISTRIBUTION",
-  "shared_routing_enabled": false
+  "shared_routing_enabled": false,
+  "release_version": "0.1.0",
+  "release_tag": "v0.1.0"
 }

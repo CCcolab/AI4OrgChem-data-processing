@@ -1,6 +1,6 @@
 {
   "schema": "adp-public-python-skill-publication-v1",
-  "revision": "professional32-per-skill-environments-20261026",
+  "revision": "professional32-v0.1.0",
   "visibility": "PUBLIC",
   "entry": "START_HERE_zh-CN.md",
   "legacy_web_enabled": false,
@@ -47,20 +47,28 @@
       "sha256": "19ff32ce0cf95dbb589b7f6faacec6510a35429bb82d102e74e250d3647f0713"
     },
     {
+      "file": "CHANGELOG.md",
+      "sha256": "378be32579184f8a6c3a27f8ab94fc244988b945afc2f8bda5265ff5627c7be0"
+    },
+    {
       "file": "NAVIGATION.json",
-      "sha256": "98d6f352774d75c73d058221e1d0ec4c816ea977b277d8f7fbfbc4cff641fba8"
+      "sha256": "cec1a1dd0338fc040652d76740e0879cc8a234e019cfd2f4f86d9c894327c162"
     },
     {
       "file": "PLATFORM_ENTRY.json",
-      "sha256": "cc6584e9d91064d14b2c25556807740af1721a45dd8934222550419a3643bd1c"
+      "sha256": "85c5ccec75bebd6850d22168d2c68d8402266ca87c0874a02e8f0945a04df3f9"
     },
     {
       "file": "README.md",
-      "sha256": "20f2e02ae57c83f7ba309c37b8f9c8b70aad5778985e96a9b1d8ffb03c006a04"
+      "sha256": "5cbfce88e7f940cfb823c6677d8838200ad695894bf1539c23556651f2a56266"
     },
     {
       "file": "START_HERE_zh-CN.md",
-      "sha256": "20f2e02ae57c83f7ba309c37b8f9c8b70aad5778985e96a9b1d8ffb03c006a04"
+      "sha256": "5cbfce88e7f940cfb823c6677d8838200ad695894bf1539c23556651f2a56266"
+    },
+    {
+      "file": "VERSION",
+      "sha256": "3d097c315a1c543040f548da4c7051265e94c77211a2411ced1d4621344270de"
     },
     {
       "file": "docs/BACKEND_STATUS.md",
@@ -76,11 +84,15 @@
     },
     {
       "file": "docs/PUBLIC_RELEASE.md",
-      "sha256": "d07e1acffddd64096655fd0aa3fbcbb89f87187aabafefff38d9445144b02887"
+      "sha256": "18d250f62d6f52d63057956acdbf7b77ed4eb55708e9f3fc94da84d30ecb5406"
     },
     {
       "file": "docs/PYTHON_USAGE.md",
       "sha256": "3975cf59f58c9cab4dddbbc595624fb9af479ce8e14f0759ded53810f4679e85"
+    },
+    {
+      "file": "docs/RELEASE_v0.1.0_zh-CN.md",
+      "sha256": "08fad8172a3c72ae64d66be4366a04428cbd4ccc30bb8c55bb0de18141aa158a"
     },
     {
       "file": "docs/RIGHTS_REVIEW.md",
@@ -3270,5 +3282,7 @@
       "file": "tools/publish_checked_skill.py",
       "sha256": "bdbfaa07ee99aa6b83c6d3b818743c4bdc9a7f5f865752a9e6acb8f9961e939e"
     }
-  ]
+  ],
+  "version": "0.1.0",
+  "release_tag": "v0.1.0"
 }

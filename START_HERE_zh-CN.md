@@ -1,5 +1,7 @@
 # AI4OrgChem · 有机化学数据处理Skill目录
 
+**版本：[v0.1.0](docs/RELEASE_v0.1.0_zh-CN.md) · 2026-10-26**
+
 <!-- Canonical entry: https://github.com/CCcolab/AI4OrgChem-data-processing/blob/main/START_HERE_zh-CN.md -->
 
 公开Python学习版。按七个专业分类，共32项专业Skill；点击名称进入README学习，完整SKILL.md可单独下载，Python程序、依赖和案例位于runtime。各页提供代码包，不需要云端交互账号。每个Skill使用自己的独立Python环境，不将不兼容的依赖混装。

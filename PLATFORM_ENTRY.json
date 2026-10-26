@@ -82,5 +82,17 @@
     "default_entry_can_execute_user_backend": false
   },
   "verified_environments_page": "docs/VERIFIED_ENVIRONMENTS.md",
-  "verified_environments_count": 32
+  "verified_environments_count": 32,
+  "release": {
+    "version": "0.1.0",
+    "tag": "v0.1.0",
+    "date": "2026-10-26",
+    "scope": "PUBLIC_LEARNING_AND_LOCAL_PYTHON_DEFINED_FEATURES",
+    "notes": "docs/RELEASE_v0.1.0_zh-CN.md",
+    "source_base_commit": "82f6efec3195d9d447a93d74dc189226360e27a4",
+    "url": "https://github.com/CCcolab/AI4OrgChem-data-processing/releases/tag/v0.1.0",
+    "versioned_entry_url": "https://github.com/CCcolab/AI4OrgChem-data-processing/blob/v0.1.0/START_HERE_zh-CN.md",
+    "new_model_calls": 0,
+    "scientific_qualification_unchanged": true
+  }
 }
