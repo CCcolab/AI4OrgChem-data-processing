@@ -57,7 +57,7 @@
   },
   {
     "file": "runtime/SKILL.md",
-    "sha256": "bb76497ae493143e11a211556f86d67e077184e45442d0b25eb4dc2606a178ac"
+    "sha256": "347222fa09ab0de9af68a181397c5269d47ef96d7458c355966b15f810f7e5d8"
   },
   {
     "file": "runtime/skill_agent.py",
