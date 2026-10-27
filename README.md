@@ -1,19 +1,16 @@
-# AI4OrgChem · 有机化学数据处理Skill目录
+# AI4OrgChem · 有机化学数据处理 Skill 目录
 
 **版本：[v0.1.0](docs/RELEASE_v0.1.0_zh-CN.md) · 2026-10-26**
 
 <!-- Canonical entry: https://github.com/CCcolab/AI4OrgChem-data-processing/blob/main/START_HERE_zh-CN.md -->
 
-公开Python学习版。按七个专业分类，共32项专业Skill；点击名称进入README学习，完整SKILL.md可单独下载，Python程序、依赖和案例位于runtime。各页提供代码包，不需要云端交互账号。每个Skill使用自己的独立Python环境，不将不兼容的依赖混装。
+面向有机化学学习与科研数据分析的 Skill 学习与工具集，按 7 个专业分类提供 32 项 Skill，涵盖分子结构、实验数据、能量与电子结构分析，以及化学机器学习与实验设计。
 
-**独立运行：** 用户直接选择各Skill，使用自己的Python环境和页内入口，不经过共用路由，也不强制本项目Runtime或Docker。科学库及用户已有后端仍需按页配置。[环境与后端说明](docs/RUNTIME_INDEPENDENCE.md)。
+**如何使用：** 点击目录中的名称，先读各项 README 的知识点、科学边界与案例；完整 SKILL.md 可单独下载，配套 Python 程序、依赖和案例位于 runtime，各页提供完整代码包。
 
-**功能与使用范围：** 输入准备、已有结果复核、本地数值案例、模型教学和外部求解是不同操作，具体以各页README为准。真实求解器调用单独放在[开发预览](docs/DEVELOPMENT_PREVIEW.md)，不列为已验收实算功能。
+**运行环境：** 各项在用户自己的独立 Python 环境中运行，不需要统一平台账号，不强制使用 AI4OrgChem-Runtime 或 Docker。依赖库、可选服务及已有计算后端按对应页面配置，避免混装不兼容的依赖。见[环境与后端说明](docs/RUNTIME_INDEPENDENCE.md)。
 
-**深度学习示例范围：** 完整Torch训练、推理、权重重载及GPU流程仍未复验，不能从输入检查或下载一致性推断其通过；[查看适用范围](docs/BACKEND_STATUS.md)。
-
-
-各项的环境、已测功能、结果与未覆盖范围见[32项运行验证对照](docs/VERIFIED_ENVIRONMENTS.md)。历史固定版本运行与当前修订测试分别列示。
+**已验证范围：** 各项的运行环境、已测功能、测试结果与未覆盖内容见[32项运行验证对照](docs/VERIFIED_ENVIRONMENTS.md)，历史固定版本运行与当前修订测试分别列示。五项计算对接的正式功能为输入准备、已有结果复核等；新真实求解器调用列入[开发预览](docs/DEVELOPMENT_PREVIEW.md)。完整 Torch 训练、推理、权重重载及 GPU 流程仍未复验，不能由输入检查或下载一致性推断其通过，详见[功能与验证范围](docs/BACKEND_STATUS.md)。
 
 ## 有机分子结构与身份识别
 
@@ -70,6 +67,6 @@
 
 ## 使用与科学范围
 
-先读知识、输入/单位、三个案例及对应输出，再按页面短路径安装。用户数据修改时需同步参数、列名和来源，不自动删错行或把模型解释当作程序回执。数值、文件及SHA-256以本轮真实输出为准。
+先读知识、输入/单位、配套案例及对应输出，再按页面短路径安装。用户数据修改时需同步参数、列名和来源，不自动删错行或把模型解释当作程序回执。数值、文件及SHA-256以本轮真实输出为准。
 
 [Python使用说明](docs/PYTHON_USAGE.md) · [方法与来源说明](docs/RIGHTS_REVIEW.md)
